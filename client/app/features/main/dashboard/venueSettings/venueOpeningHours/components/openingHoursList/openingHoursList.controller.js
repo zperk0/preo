@@ -17,14 +17,6 @@ export default class openingHoursListController {
 
   onUpdateHour () {
 
-    // this.openingHoursForm.$setSubmitted();
-
-    // if (!this.openingHoursForm.$valid) {
-    //   console.log('invalid form');
-    //   return;
-    // }
-
-    console.log('valid form');
     this.update();
   }
 
@@ -33,15 +25,6 @@ export default class openingHoursListController {
     this.openingHours.splice(this.openingHours.indexOf(openingHour), 1);
 
     this.$timeout(() => {
-
-      // this.openingHoursForm.$setSubmitted();
-
-      // if (!this.openingHoursForm.$valid) {
-      //   console.log('invalid form');
-      //   return;
-      // }
-
-      console.log('valid form');
 
       this.update();
     });

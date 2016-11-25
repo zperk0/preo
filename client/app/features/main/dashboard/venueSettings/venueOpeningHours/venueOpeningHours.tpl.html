@@ -38,7 +38,7 @@
 						 ng-if="venueOpeningHoursCtrl.loaded && !venueOpeningHoursCtrl.hasServiceMethods()">
 						 <span><icon>info</icon></span>
 						 {{ 'All your service methods are currently disabled.' | translate }}
-						 <a ng-href>{{ 'Click here' | translate }}</a> {{'to activate them' | translate}}.
+						 <a ui-sref="main.dashboard.venueSettings.venueServices">{{ 'Click here' | translate }}</a> {{'to activate them' | translate}}.
 					</p>
 
 					<div ng-if="venueOpeningHoursCtrl.hasOpeningHours() && venueOpeningHoursCtrl.hasServiceMethods()">

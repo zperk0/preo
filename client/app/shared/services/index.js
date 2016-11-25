@@ -16,6 +16,7 @@ import Taxes from './taxes/taxes.service';
 import StyleService from './style/style.service';
 import deliveryZones from './deliveryZones/deliveryZones.service';
 import Maps from './maps/maps.service';
+import Hours from './hours/hours.service';
 
 
 export default angular.module("Services" , ['ui.router'])
@@ -37,4 +38,5 @@ export default angular.module("Services" , ['ui.router'])
   .service(Taxes.UID, Taxes)
   .service(EventSchedule.UID, EventSchedule)
   .service(DateUtils.UID, DateUtils)
+  .service(Hours.UID, Hours)
   .name;

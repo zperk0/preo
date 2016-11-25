@@ -6,7 +6,7 @@ export default class venueOpeningHoursController {
 
   hasOpeningHours () {
 
-    return this.openingHours && this.openingHours.length > 0;
+    return this.allHours && this.allHours.length > 0;
   }
 
   hasServiceMethods () {
@@ -76,20 +76,28 @@ export default class venueOpeningHoursController {
 
   debounce(func, wait, immediate) {
     console.log("debouncing");
-    var timeout;
-    return function() {
+
+    return () => {
       var context = this, args = arguments;
       var later = function() {
-        timeout = null;
+        context.timeoutDebounce = null;
         console.log("in later", immediate)
         if (!immediate) func.apply(context, args);
       };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+      var callNow = immediate && !context.timeoutDebounce;
+      clearTimeout(context.timeoutDebounce);
+      context.timeoutDebounce = setTimeout(later, wait);
       console.log("if call now", callNow);
       if (callNow) func.apply(context, args);
     };
+  }
+
+  hasAnHourWithoutDay (collection) {
+
+    return collection.filter((item) => {
+
+      return item.days.length === 0;
+    }).length > 0;
   }
 
   updateHours () {
@@ -106,7 +114,18 @@ export default class venueOpeningHoursController {
       return;
     }
 
-    this.buildHoursFormat();
+    if (this.hasAnHourWithoutDay(this.openingHours)) {
+      return;
+    }
+
+    if (!this.collectionSameAsOpening && this.hasAnHourWithoutDay(this.collectionHours)) {
+      return;
+    }
+
+    if (!this.deliverySameAsOpening && this.hasAnHourWithoutDay(this.deliveryHours)) {
+      return;
+    }
+
 
     this.openingHoursForm.$setPristine();
     this.openingHoursForm.$setUntouched();
@@ -114,49 +133,95 @@ export default class venueOpeningHoursController {
     this.isSaving = true;
     this.isFormError = false;
     this.isError = false;
-    this.debounce(this.doUpdate.bind(this), 1000)()
+    this.debounce(this.doUpdate.bind(this), 1500)()
   }
 
   doUpdate () {
 
-    this.$timeout(()=>{
-      this.isSaving = false;
-      this.isError = false;
-      this.isFormError = false;
-    })
+    let hoursToSave = this.buildHoursFormat();
+
+    this.HoursService.save(hoursToSave)
+      .then((hours) => {
+
+        this.allHours = this.filterOpeningHours(hours);
+
+        this.$timeout(() => {
+          this.isSaving = false;
+          this.isError = false;
+          this.isFormError = false;
+        });
+      }, () => {
+
+        this.$timeout(() => {
+          this.isSaving = false;
+          this.isError = true;
+          this.isFormError = false;
+        });
+      }).catch(() => {
+
+        this.$timeout(() => {
+          this.isSaving = false;
+          this.isError = true;
+          this.isFormError = false;
+        });
+      });
   }
 
   toggleServiceHours () {
 
-    if (!this.collectionSameAsOpening || !this.deliverySameAsOpening) {
-      if (this.openingHours.length === 1 && this.openingHoursForm.$invalid) {
-        return this.showInvalidConfigurationDialog();
-      }
+    if (this.collectionSameAsOpening) {
+      this.collectionHours = [];
     }
 
-    this.updateHours();
-  }
+    if (this.deliverySameAsOpening) {
+      this.deliveryHours = [];
+    }
 
-  showInvalidConfigurationDialog () {
+    this.$timeout(() => {
 
-    this.DialogService.show(this.ErrorService.INVALID_OPENING_HOURS_CONFIGURATION.title, this.ErrorService.INVALID_OPENING_HOURS_CONFIGURATION.message, [{
-        name: this.gettextCatalog.getString('Got it')
-      }]);
+      this.updateHours();
+    });
   }
 
   buildHoursFormat () {
 
     let hours = [];
-console.log('opening hoursss ===', this.openingHours);
-    this.openingHours.forEach((currentHour) => {
 
-      let hour = {
+    hours = hours.concat(this.buildHours(this.openingHours, {
+      pickup: this.collectionSameAsOpening ? 1 : 0,
+      delivery: this.deliverySameAsOpening ? 1 : 0,
+      opening: 1,
+    }));
+
+    if (!this.collectionSameAsOpening) {
+      hours = hours.concat(this.buildHours(this.collectionHours, {
+        pickup: 1,
+        delivery: 0,
+        opening: 0,
+      }));
+    }
+
+    if (!this.deliverySameAsOpening) {
+      hours = hours.concat(this.buildHours(this.deliveryHours, {
+        pickup: 0,
+        delivery: 1,
+        opening: 0,
+      }));
+    }
+
+    return hours;
+  }
+
+  buildHours (collection, dataToMerge) {
+
+    let hours = [];
+
+    collection.forEach((currentHour) => {
+
+      let hour = angular.extend({
         open: currentHour.open,
-        close: currentHour.close,
-        // pickup: currentHour.pickup,
-        // delivery: currentHour.delivery,
-        // opening: currentHour.opening,
-      };
+        close: currentHour.close
+      }, dataToMerge);
 
       if (currentHour.$open) {
         hour.open = moment(currentHour.$open).format("HH:mm:00.000");
@@ -171,21 +236,23 @@ console.log('opening hoursss ===', this.openingHours);
       });
     });
 
-    console.log('hours to send to api = == = ', hours);
+    return hours;
   }
 
-  constructor($timeout, Spinner, VenueService, DialogService, ErrorService) {
+  constructor($timeout, Spinner, VenueService, DialogService, ErrorService, HoursService, gettextCatalog) {
     "ngInject";
 
     this.$timeout = $timeout;
     this.Spinner = Spinner;
     this.VenueService = VenueService;
-    this.DialogService = DialogService;
-    this.ErrorService = ErrorService;
+    this.HoursService = HoursService;
+    this.gettextCatalog = gettextCatalog;
 
     Spinner.show('venue-opening-hours');
 
     this.loaded = false;
+
+    this.timeoutDebounce = null;
 
     this.openingHours = {};
     this.allHours = [];
@@ -198,8 +265,8 @@ console.log('opening hoursss ===', this.openingHours);
         this.deliveryHours = this.groupHoursByTime(this.filterDeliveryHours(hours));
         this.collectionHours = this.groupHoursByTime(this.filterCollectionHours(hours));
 
-        this.collectionSameAsOpening = this.collectionHours.length === 0;
-        this.deliverySameAsOpening = this.deliveryHours.length === 0;
+        this.collectionSameAsOpening = this.hasCollectionService () && this.collectionHours.length === 0;
+        this.deliverySameAsOpening = this.hasDeliveryService() && this.deliveryHours.length === 0;
 
         Spinner.hide('venue-opening-hours');
         this.loaded = true;

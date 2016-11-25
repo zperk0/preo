@@ -17,6 +17,10 @@ export default class openingHourController {
     let index = this.openingHour.days.indexOf(day.value);
 
     if (index !== -1) {
+      if (this.openingHour.days.length === 1) {
+        return this.showInvalidConfigurationDialog();
+      }
+
       this.openingHour.days.splice(index, 1);
     } else {
       this.openingHour.days.push(day.value);
@@ -27,9 +31,9 @@ export default class openingHourController {
 
   update () {
 
-    console.log('debounceUpdate here');
-
-    this.onUpdate && this.onUpdate();
+    if (this.openingHour.days.length > 0) {
+      this.onUpdate && this.onUpdate();
+    }
   }
 
   delete () {
@@ -39,10 +43,20 @@ export default class openingHourController {
     });
   }
 
-  constructor($scope) {
+  showInvalidConfigurationDialog () {
+
+    this.DialogService.show(this.ErrorService.INVALID_OPENING_HOURS_CONFIGURATION.title, this.ErrorService.INVALID_OPENING_HOURS_CONFIGURATION.message, [{
+        name: this.gettextCatalog.getString('Got it')
+      }]);
+  }
+
+  constructor($scope, DialogService, ErrorService, gettextCatalog) {
     "ngInject";
 
     this.$scope = $scope;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
+    this.gettextCatalog = gettextCatalog;
 
     this.days = [];
 
@@ -67,10 +81,9 @@ export default class openingHourController {
 
       return this.openingHour.$open;
     }, (newValue, oldValue) => {
-// console.log('watch open here', oldValue, newValue);
 
       if ((!oldValue && newValue) || (moment(oldValue).format('HH:mm') !== moment(newValue).format('HH:mm'))) {
-        this.debounceUpdate();
+        this.update();
       }
     });
 
@@ -78,10 +91,9 @@ export default class openingHourController {
 
       return this.openingHour.$close;
     }, (newValue, oldValue) => {
-// console.log('watch $close here', oldValue, newValue);
 
       if ((!oldValue && newValue) || (moment(oldValue).format('HH:mm') !== moment(newValue).format('HH:mm'))) {
-        this.debounceUpdate();
+        this.update();
       }
     });
   }
