@@ -3,7 +3,23 @@ export default class eventListController {
     return "eventListController"
   }
 
+  showNoSlotsDialog () {
+
+    this.DialogService.show(this.ErrorService.EVENT_NO_SLOTS.title, this.ErrorService.EVENT_NO_SLOTS.message, [{
+        name: this.gettextCatalog.getString('Create a slot')
+      }], {
+        hasCancel: true
+      }).then(() => {
+
+        this.$state.go('main.dashboard.events.collectionSlots');
+      });
+  }
+
   showCreateEvent(){
+
+    if (!this.CollectionSlotsService.hasSlots()) {
+      return this.showNoSlotsDialog();
+    }
 
     let isCreating = this.events.filter(function (item) {
 
@@ -45,11 +61,16 @@ export default class eventListController {
   }
 
   /* @ngInject */
-  constructor(VenueService, EventService, $q) {
+  constructor(VenueService, EventService, CollectionSlotsService, DialogService, ErrorService, gettextCatalog, $q, $state) {
   	'ngInject';
 
     this.VenueService = VenueService;
     this.EventService = EventService;
+    this.CollectionSlotsService = CollectionSlotsService;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
+    this.gettextCatalog = gettextCatalog;
     this.$q = $q;
+    this.$state = $state;
   }
 }

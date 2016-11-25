@@ -63,6 +63,8 @@ export default class ErrorService {
     this.EVENT_OUTLET_LOCATION = {code:'EVENT_OUTLET_LOCATION', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
     this.EVENT_OUTLET_LOCATION_NO_CHILDREN = {code:'EVENT_OUTLET_LOCATION_NO_CHILDREN', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
 
+    this.EVENT_NO_SLOTS = {code:'EVENT_NO_SLOTS', message:gettextCatalog.getString("You must create at least one collection before you can add events"), title: 'No collection slots'};
+
     // EVENT OUTLET LOCATION
     this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: gettextCatalog.getString('Sorry')};
     // EVENT OUTLET LOCATION
