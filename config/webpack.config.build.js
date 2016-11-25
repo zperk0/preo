@@ -42,7 +42,8 @@ module.exports = function(ENV) {
       new webpack.NoErrorsPlugin(),
       new CopyWebpackPlugin([
         { from: 'client/index.php'},
-        { from: 'client/.htaccess'}
+        { from: 'client/.htaccess'},
+        { from: 'client/stripe-success.php', to:'payments/stripe-success.php'}
       ]),
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin

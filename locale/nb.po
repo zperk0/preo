@@ -1,0 +1,1307 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"Language: nb\n"
+"Content-Type: text/plain; charset=UTF-8"
+
+
+msgid "+ VAT"
+msgstr "+ MVA"
+
+msgid "404 - Page Not Found"
+msgstr "404 - Siden ble ikke funnet"
+
+msgid ""
+"<icon>info</icon> Drag and drop the pin to set the exact location of your "
+"venue"
+msgstr ""
+"<icon>info</icon> Dra og slipp pinnen for å sette nøyaktig plassering av din "
+"bedrift"
+
+msgid "Add Item"
+msgstr "Legg til vare"
+
+msgid "Add New"
+msgstr "Legg til ny"
+
+msgid "Add Section"
+msgstr "Legg til gruppe"
+
+msgid "Add delivery Zones"
+msgstr "Legg til leveringsområder"
+
+msgid "Add delivery zone"
+msgstr "Legg til leveringsområde"
+
+msgid "Add item"
+msgstr "Legg til vare"
+
+msgid "Add menu"
+msgstr "Legg til meny"
+
+msgid "Add modifier"
+msgstr "Legg til variasjon"
+
+msgid "Add new collection slot"
+msgstr "Legg til ny periode for henting"
+
+msgid "Add new event"
+msgstr "Legg til nytt arrangement"
+
+msgid "Add new group"
+msgstr "Legg til ny gruppe"
+
+msgid "Add new outlet"
+msgstr "Legg til nytt utleveringssted"
+
+msgid "Add new outlet location"
+msgstr "Legg til nytt leveringsområde"
+
+msgid "Add new schedule"
+msgstr "Legg til ny tidsplan"
+
+msgid "Add new tax group"
+msgstr "Legg til ny moms gruppe"
+
+msgid "Add option"
+msgstr "Legg til alternativ"
+
+msgid "Add outlets"
+msgstr "Legg til utleveringssted"
+
+msgid "Add schedule"
+msgstr "Legg til tidsplan"
+
+msgid "Add section"
+msgstr "Legg til seksjon"
+
+msgid "Add size"
+msgstr "Legg til størrelse"
+
+msgid "Add sub group"
+msgstr "Legg til undergruppe"
+
+msgid "Address line 1"
+msgstr "Adresselinje 1"
+
+msgid "Address line 2"
+msgstr "Adresselinje 2"
+
+msgid "Address line 3"
+msgstr "Adresselinje 3"
+
+msgid "Address not found"
+msgstr "Adresse ikke funnet"
+
+msgid "Advanced"
+msgstr "Avansert"
+
+msgid "After event start time"
+msgstr "Etter arrangement start tid"
+
+msgid "All menus"
+msgstr "Alle menyer"
+
+msgid "An error ocurred to change your email, try again later"
+msgstr "Feil ved endring av e-postadresse, prøv igjen senere"
+
+msgid "An error ocurred to change your language. Try again later"
+msgstr "Feil ved endring språk, prøv igjen senere"
+
+msgid "An error ocurred to change your password, try again later"
+msgstr "Feil ved endring av passord, prøv igjen senere"
+
+msgid "An event must have at least one schedule."
+msgstr "Et arrangement må ha minst en tidsplan."
+
+msgid "An outlet location is using this outlet. You need remove it before"
+msgstr ""
+"Et leveringsområde bruker dette utleveringsstedet. Du må slette dette først"
+
+msgid "An unexpected error occurred"
+msgstr "En uventet feil har oppstått"
+
+msgid "An unexpected error occurred loading this page, please try again"
+msgstr "Feil ved innlasting av side, prøv igjen"
+
+msgid "An unexpected error occurred while loading menus"
+msgstr "En uventet feil har oppstått ved lasting av menyer"
+
+msgid "An unexpected error occurred while loading your venues"
+msgstr "En uventet feil har oppstått ved lasting av dine steder"
+
+msgid "Analytics"
+msgstr "Analyser"
+
+msgid "Are you sure you want to delete this collection slot?"
+msgstr "Vil du slette denne perioden for henting?"
+
+msgid "Are you sure you want to delete this event?"
+msgstr "Vil du slette dette arrangementet?"
+
+msgid "Are you sure you want to delete this image?"
+msgstr "Er du sikker på at du vil slette dette bilde?"
+
+msgid "Are you sure you want to delete this outlet location?"
+msgstr "Er du sikker på at du vil slette dette leveringsområdet?"
+
+msgid "Are you sure you want to delete this outlet?"
+msgstr "Er du sikker på at du vil slette dette utleveringsstedet?"
+
+msgid "Are you sure you want to delete this schedule?"
+msgstr "Vil du slette denne tidsplanen?"
+
+msgid "Are you sure you want to delete this section?"
+msgstr "Er du sikker på at du vil slette denne seksjonen?"
+
+msgid "Are you sure you want to delete this tax group?"
+msgstr "Vil du slette denne moms gruppen?"
+
+msgid "Are you sure you want to permanently delete this delivery zone?"
+msgstr "Vil du slette dette leveringsområde?"
+
+msgid "Are you sure you want to permanently delete this image?"
+msgstr "Vil du slette dette bilde?"
+
+msgid "Are you sure you want to permanently delete this item?"
+msgstr "Er du sikker på at du vil slette denne varen?"
+
+msgid "Are you sure you want to remove this item from the section?"
+msgstr "Er du sikker på at du vil fjerne denne varen fra seksjonen?"
+
+msgid "Auto accept"
+msgstr "Automatisk godkjenning"
+
+msgid "Autosave error."
+msgstr "Automatisk lagring feilet."
+
+msgid "Basic"
+msgstr "Generelt"
+
+msgid "Basics"
+msgstr "Generelt"
+
+msgid "Before event start time"
+msgstr "Før arrangementets start tidspunkt"
+
+msgid "Billing"
+msgstr "Fakturering"
+
+msgid "Billing amount:"
+msgstr "Fakturabeløp:"
+
+msgid "Billing date not set"
+msgstr "Fakturadato ikke satt"
+
+msgid "Billing info"
+msgstr "Faktura info"
+
+msgid "Buttons Background"
+msgstr "Bakgrunn for knapper"
+
+msgid "Buttons and section names"
+msgstr "Knapper og seksjons navn"
+
+msgid "CVC"
+msgstr "CVC"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Cannot delete schedule"
+msgstr "Kan ikke slette tidsplan"
+
+msgid "Can’t delete this tax code while there are menu items using it."
+msgstr "Kan ikke slette momsgruppe, det er produkter som bruker den."
+
+msgid "Card number"
+msgstr "Kortnummer"
+
+msgid "Cash"
+msgstr "Betal ved henting/levering"
+
+msgid "Change email address"
+msgstr "Endre e-postadresse"
+
+msgid "Changes saved"
+msgstr "Endringer lagret"
+
+msgid "Choose a colour"
+msgstr "Velg en farge"
+
+msgid "Choose collection slots:"
+msgstr "Velg perioder for henting:"
+
+msgid "Clear"
+msgstr "Tilbakestill"
+
+msgid "Click here"
+msgstr "Klikk her"
+
+msgid ""
+"Click on the map to begin drawing your custom area. Connect the first and "
+"last points to finish."
+msgstr ""
+"Klikk på kartet for å tegne inn egendefinert området. Du må koble det første "
+"og det siste punktet til slutt."
+
+msgid "Collection"
+msgstr "Henting"
+
+msgid "Collection Slot created"
+msgstr "Periode for henting opprettet"
+
+msgid "Collection Slot updated"
+msgstr "Periode for henting oppdatert"
+
+msgid "Collection Slots"
+msgstr "Perioder for henting"
+
+msgid "Collection time"
+msgstr "Tidspunkt for henting"
+
+msgid "Collection time:"
+msgstr "Tidspunkt for henting:"
+
+msgid "Colour"
+msgstr "Farge"
+
+msgid "Confirm new password"
+msgstr "Bekreft nytt passord"
+
+msgid "Confirmation code:"
+msgstr "Bekreftelseskode:"
+
+msgid "Connect to stripe"
+msgstr "Koble til Stripe"
+
+msgid "Connected"
+msgstr "Tilkoblet"
+
+msgid "Connection confirmed"
+msgstr "Tilkobling bekreftet"
+
+msgid "Connection failed"
+msgstr "Tilkobling feilet"
+
+msgid "Could not save emails style"
+msgstr "Kunne ikke lagre tilpasset e-post"
+
+msgid "Could not save weborders style"
+msgstr "Kunne ikke lagre"
+
+msgid "Create new item"
+msgstr "Opprett ny vare"
+
+msgid "Custom"
+msgstr "Tilpasset"
+
+msgid "Customers can choose to pay <br> cash on receipt of their order"
+msgstr "Kunder kan velge å betale <br> ved henting/levering"
+
+msgid "Dannish"
+msgstr "Dansk"
+
+msgid "Date"
+msgstr "Dato"
+
+msgid "Delete"
+msgstr "Slett"
+
+msgid "Delete collection slot?"
+msgstr "Slette tidspunkt henting?"
+
+msgid "Delete delivery zone?"
+msgstr "Slette leveringsområdet?"
+
+msgid "Delete event?"
+msgstr "Sette arrangement?"
+
+msgid "Delete group?"
+msgstr "Slett gruppe?"
+
+msgid "Delete image?"
+msgstr "Slett bilde?"
+
+msgid "Delete item?"
+msgstr "Slett vare?"
+
+msgid "Delete menu?"
+msgstr "Slett meny?"
+
+msgid "Delete modifier?"
+msgstr "Slett variasjon?"
+
+msgid "Delete outlet location?"
+msgstr "Slett leveringsområdet?"
+
+msgid "Delete outlet?"
+msgstr "Slett utleveringssted?"
+
+msgid "Delete schedule?"
+msgstr "Slette tidsplan?"
+
+msgid "Delete section?"
+msgstr "Slett seksjon?"
+
+msgid "Delete tax group?"
+msgstr "Slette momsgruppe?"
+
+msgid "Delivery"
+msgstr "Levering"
+
+msgid "Delivery Fee"
+msgstr "Avgift for levering"
+
+msgid "Delivery Time"
+msgstr "Leveringstidspunkt:"
+
+msgid "Delivery Zone"
+msgstr "Leveringsområdet"
+
+msgid "Delivery Zones"
+msgstr "Leveringsområder"
+
+msgid "Delivery fee"
+msgstr "Avgift for levering"
+
+msgid "Delivery rate"
+msgstr "Sats for levering"
+
+msgid "Delivery zone not saved"
+msgstr "Leveringområdet ikke lagret"
+
+msgid "Delivery zone saved"
+msgstr "Leveringsområdet lagret"
+
+msgid "Demo mode"
+msgstr "Demo modus"
+
+msgid "Description"
+msgstr "Beskrivelse"
+
+msgid "Details"
+msgstr "Innstillinger"
+
+msgid "Dimensions"
+msgstr "Dimensjoner"
+
+msgid "Directions"
+msgstr "Beskrivelse"
+
+msgid "Display Name"
+msgstr "Visningsnavn"
+
+msgid "Display name"
+msgstr "Visningsnavn"
+
+msgid "Distance"
+msgstr "Avstand"
+
+msgid "Done"
+msgstr "Fullfør"
+
+msgid "Dummy orders only. Payments are not processed."
+msgstr "Kun test bestillinger. Betalinger vil ikke behandles."
+
+msgid "Duplicate"
+msgstr "Dupliser"
+
+msgid "Dutch"
+msgstr "Tysk"
+
+msgid "ERROR"
+msgstr "FEIL"
+
+msgid "Edit"
+msgstr "Rediger"
+
+msgid "Edit Mode"
+msgstr "Redigerings modus"
+
+msgid "Edit footer"
+msgstr "Rediger footer"
+
+msgid "Edit header"
+msgstr "Rediger header"
+
+msgid "Email Address"
+msgstr "E-postadresse"
+
+msgid "Email address"
+msgstr "E-postadresse"
+
+msgid "Emails"
+msgstr "E-post"
+
+msgid "End date"
+msgstr "Slutt dato"
+
+msgid "End date need to be higher than start date."
+msgstr "Slutt dato må være senere enn start dato."
+
+msgid "End number"
+msgstr "Slutt-nummer"
+
+msgid "End number need to be bigger than start number"
+msgstr "Slutt-nummer må være høyere enn start-nummer"
+
+msgid "English"
+msgstr "Engelsk"
+
+msgid "Error adding outlet to outlet location"
+msgstr "Feil ved kobling av utleveringssted til leveringsområdet"
+
+msgid "Error deleting outlet"
+msgstr "Feil ved sletting av utleveringssted"
+
+msgid "Error deleting outlet location"
+msgstr "Feil ve sletting av leveringsområde"
+
+msgid "Error loading tax settings"
+msgstr "Feil ved lasting av moms innstillinger"
+
+msgid "Error moving outlet"
+msgstr "Feil ved flytting av utleveringssted"
+
+msgid "Error moving outlet location"
+msgstr "Feil ved flytting av leveringsområde"
+
+msgid "Error saving collection slot"
+msgstr "Feil ved lagring av tidspunkt for henting"
+
+msgid "Error saving event"
+msgstr "Feil ved lagring av arrangement"
+
+msgid "Error saving outlet"
+msgstr "Feil ved lagring av utleveringssted"
+
+msgid "Error saving outlet location"
+msgstr "Feil ved lagring av leveringsområde"
+
+msgid "Error saving schedule"
+msgstr "Feil ved lagring av tidsplan"
+
+msgid "Error saving tax Group"
+msgstr "Feil ved lagring av momsgruppe"
+
+msgid "Error updating collection slot"
+msgstr "Feil ved oppdatering av tidspunkt for henting"
+
+msgid "Error updating event"
+msgstr "Feil ved oppdatering av arrangement"
+
+msgid "Error updating schedule"
+msgstr "Feil ved oppdatering av tidsplan"
+
+msgid "Event created"
+msgstr "Arrangement opprettet"
+
+msgid "Event name"
+msgstr "Arrangement navn"
+
+msgid "Event updated"
+msgstr "Arrangement oppdatert"
+
+msgid "Events"
+msgstr "Arrangementer"
+
+msgid "Expiry:"
+msgstr "Utløper:"
+
+msgid "Failed duplicating outlet location"
+msgstr "Duplisering av leveringsområde feilet"
+
+msgid "Failed to delete the group"
+msgstr "Sletting av gruppen feilet"
+
+msgid "Failed to move outlet location"
+msgstr "Flytting av leveringsområde feilet"
+
+msgid "Failed to remove outlet"
+msgstr "Sletting av utleveringssted feilet"
+
+msgid "Failed to update the group"
+msgstr "Oppdatering av gruppen feilet"
+
+msgid "File type"
+msgstr "Filtype"
+
+msgid "Finnish"
+msgstr "Finsk"
+
+msgid "Footer"
+msgstr "Bunnområde"
+
+msgid "Footer text"
+msgstr "Tekst for bunnområde"
+
+msgid "Free delivery order value"
+msgstr "Ordreverdi for gratis levering"
+
+msgid "French"
+msgstr "Fransk"
+
+msgid "Frequency:"
+msgstr "Frekvens:"
+
+msgid "GOT IT"
+msgstr "FORSTÅTT"
+
+msgid "German"
+msgstr "Tysk"
+
+msgid "Gift vouchers"
+msgstr "Gavekort"
+
+msgid "Go to Signin"
+msgstr "Gå til innlogging"
+
+msgid "Go to stripe"
+msgstr "Gå til Stripe"
+
+msgid "Got it"
+msgstr "Forstått"
+
+msgid "Group Bookings"
+msgstr "Forhåndsbestillinger"
+
+msgid "Group label"
+msgstr "Gruppe merking"
+
+msgid "Header"
+msgstr "Header"
+
+msgid "Hide delivery zone"
+msgstr "Skjul leveringsområde"
+
+msgid "Hide from menu"
+msgstr "Skjul fra meny"
+
+msgid "If there are any problems, please contact {{venue}} on {{contact}}"
+msgstr "Ved spørsmål vennligst kontakt {{venue}} på {{contact}}"
+
+msgid "If there are any problems, please contact {{venue}}'s staff"
+msgstr "Ved spørsmål vennligst ta direkte kontakt med {{venue}}"
+
+msgid ""
+"If you delete this slot, it will be removed from all your events. <br /> Are "
+"you sure?"
+msgstr ""
+"Hvis du sletter denne perioden vil den bli fjernet fra alle dine arrangement."
+" <br/> Er du sikker?"
+
+msgid "Image"
+msgstr "Bilde"
+
+msgid "Image not found"
+msgstr "Bilde ikke funnet"
+
+msgid "Import existing item"
+msgstr "Importer eksisterende vare"
+
+msgid "Individially numbered locations"
+msgstr "Individuelt nummererte steder"
+
+msgid "Invalid configuration"
+msgstr "Ugyldig konfigurasjon"
+
+msgid "Invalid date."
+msgstr "Ugyldig dato."
+
+msgid "Invalid email"
+msgstr "Ugyldig e-post"
+
+msgid "Invalid format."
+msgstr "Ugyldig format."
+
+msgid "Invalid price."
+msgstr "Ugyldig pris."
+
+msgid "Invalid username and/or password"
+msgstr "Ugyldig brukernavn og/eller passord"
+
+msgid ""
+"It is not possible to select a single location as your outlet configuration."
+msgstr "Det er ikke mulig å velge kun ett område for ditt utleveringssted."
+
+msgid "Item"
+msgstr "Vare"
+
+msgid "Item name"
+msgstr "Varenavn"
+
+msgid "Items"
+msgstr "Varer"
+
+msgid "Just this menu"
+msgstr "Kun denne menyen"
+
+msgid "Language"
+msgstr "Språk"
+
+msgid "Language saved"
+msgstr "Språk lagret"
+
+msgid "Lead Time"
+msgstr "Standard forberedelsestid"
+
+msgid "Lead time"
+msgstr "Standard forberedelsestid"
+
+msgid "Live"
+msgstr "Live"
+
+msgid "Location"
+msgstr "Område"
+
+msgid "Location label"
+msgstr "Område etikett"
+
+msgid "Location name"
+msgstr "Navn"
+
+msgid "Location not found"
+msgstr "Område ikke funnet"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "MM"
+msgstr "MM"
+
+msgid "Manage Users"
+msgstr "Administrere brukere"
+
+msgid "Mandatory"
+msgstr "Påbudt"
+
+msgid "Max file size"
+msgstr "Maks filstørrelse"
+
+msgid "Max length is 100."
+msgstr "Maks lengde er 100."
+
+msgid "Max length is 255."
+msgstr "Maks lengde er 255."
+
+msgid "Max length is 256."
+msgstr "Maks lengde er 256."
+
+msgid "Max value is 1000."
+msgstr "Maks veri er 1000."
+
+msgid "Max value is 2147483646."
+msgstr "Maks verdi er 2147483646."
+
+msgid "Max value is {{ '99999999.99' | currency:true }}."
+msgstr "Maks verdi er {{ '99999999.99' | currency:true }}."
+
+msgid "Max value is {{ modifierSelectionCtrl.maxIntegerValue }}."
+msgstr "Maks verdi er {{ modifierSelectionCtrl.maxIntegerValue }}."
+
+msgid "Maximum Selection"
+msgstr "Maks valg"
+
+msgid "Maximum selection needs to be equal or bigger than minimum selection"
+msgstr "Maks valg må være lik eller høyere enn minimum valg"
+
+msgid "Maximum value is 100%"
+msgstr "Maks verdi er 100%"
+
+msgid "Menu is required."
+msgstr "Meny er påkrevd."
+
+msgid "Menu name"
+msgstr "Meny navn"
+
+msgid "Menus"
+msgstr "Menyer"
+
+msgid "Minimum Selection"
+msgstr "Minimum valg"
+
+msgid "Minimum order value"
+msgstr "Minstebeløp for ordre"
+
+msgid "Minimum selection needs to be equal or smaller than maximum selection"
+msgstr "Minimum valg må være lik eller lavere enn maks valg"
+
+msgid "Mins"
+msgstr "Min"
+
+msgid "Modifier name"
+msgstr "Variasjon navn"
+
+msgid "Modifiers"
+msgstr "Variasjoner"
+
+msgid "Move"
+msgstr "Flytt"
+
+msgid "Multiple Sizes"
+msgstr "Flere størrelser"
+
+msgid "Multiple instances found"
+msgstr "Flere forekomster funnet"
+
+msgid "My Events"
+msgstr "Mine arrangementer"
+
+msgid "My Outlets"
+msgstr "Mine utleveringssteder"
+
+msgid "My account"
+msgstr "Min konto"
+
+msgid "My menus"
+msgstr "Mine menyer"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Navigation"
+msgstr "Navigasjon"
+
+msgid "New email address"
+msgstr "Ny e-post adresse"
+
+msgid "New password"
+msgstr "Nytt passord"
+
+msgid "Next billing date:"
+msgstr "Neste fakturerings dato:"
+
+msgid "No results..."
+msgstr "Ingen resultater..."
+
+msgid "Norwegian"
+msgstr "Norsk"
+
+msgid "Not connected"
+msgstr "Ikke tilkoblet"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Old password"
+msgstr "Gammelt passord"
+
+msgid "One off"
+msgstr "En av"
+
+msgid "Open phone interactions menu"
+msgstr "Åpne telefon menyen"
+
+msgid "Open profile interactions menu"
+msgstr "Åpne profil menyen"
+
+msgid "Open {{ name }} interactions menu"
+msgstr "Åpne {{name}} menyen"
+
+msgid "Option"
+msgstr "Valg"
+
+msgid "Optional"
+msgstr "Valgfritt"
+
+msgid "Order #123456"
+msgstr "Ordre #123456"
+
+msgid "Orders"
+msgstr "Ordre"
+
+msgid "Outlet Locations"
+msgstr "Leveringsområder"
+
+msgid "Outlet configuration"
+msgstr "Instillinger for utleveringssted"
+
+msgid "Outlet created"
+msgstr "Utleveringssted opprettet"
+
+msgid "Outlet deleted"
+msgstr "Utleveringssted slettet"
+
+msgid "Outlet location created"
+msgstr "Leveringsområde opprettet"
+
+msgid "Outlet location deleted"
+msgstr "Leveringsområde slettet"
+
+msgid "Outlet location duplicated"
+msgstr "Leveringsområde duplisert"
+
+msgid "Outlet location moved"
+msgstr "Leveringsområde flyttet"
+
+msgid "Outlet location updated"
+msgstr "Leveringsområde oppdatert"
+
+msgid "Outlet menu:"
+msgstr "Utleveringssted meny:"
+
+msgid "Outlet moved"
+msgstr "Utleveringssted flyttet"
+
+msgid "Outlet name"
+msgstr "Utleveringssted navn"
+
+msgid "Outlet updated"
+msgstr "Utleveringssted oppdatert"
+
+msgid "Outlets"
+msgstr "Utleveringssteder"
+
+msgid "Page Background"
+msgstr "Sidens bakgrunn"
+
+msgid "Password"
+msgstr "Passord"
+
+msgid "Password doesn't match."
+msgstr "Passord stemmer ikke."
+
+msgid "Payment Card"
+msgstr "Kort for betaling"
+
+msgid "Payments"
+msgstr "Betaling"
+
+msgid "Payments not saved"
+msgstr "Betaling ikke lagret"
+
+msgid "Payments saved"
+msgstr "Betaling lagret"
+
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+msgid "Please collect from:"
+msgstr "Hentes ved:"
+
+msgid "Please select a circle or draw a delivery area"
+msgstr "Velg en sirkel eller tegn opp leveringsområde"
+
+msgid "Postcode/ZIP"
+msgstr "Postnummer"
+
+msgid "Price"
+msgstr "Pris"
+
+msgid "Promotions"
+msgstr "Kampanjer"
+
+msgid "Qty"
+msgstr "Antall"
+
+msgid "Repeat daily"
+msgstr "Gjenta daglig"
+
+msgid "Repeat weekly"
+msgstr "Gjenta ukentlig"
+
+msgid "Retry"
+msgstr "Prøv på nytt"
+
+msgid "Save"
+msgstr "Lagre"
+
+msgid "Saved emails style"
+msgstr "Lagret e-post innstillinger"
+
+msgid "Saved weborders style"
+msgstr "Lagret"
+
+msgid "Saving..."
+msgstr "Lagrer..."
+
+msgid "Schedule created"
+msgstr "Tidsplan opprettet"
+
+msgid "Schedule not deleted"
+msgstr "Tidsplan ikke slettet"
+
+msgid "Schedule updated"
+msgstr "Tidsplan oppdatert"
+
+msgid "Search {{cardItemListCtrl.searchLabel}}"
+msgstr "Søk {{cardItemListCtrl.searchLabel}}"
+
+msgid "Section name"
+msgstr "Seksjonsnavn"
+
+msgid "Segment time"
+msgstr "Segment tid"
+
+msgid "Seller Details"
+msgstr "Bedriftsinnstillinger"
+
+msgid "Seller Name"
+msgstr "Bedriftsnavn"
+
+msgid "Seller details not saved"
+msgstr "Bedriftsinnstillinger ikke lagret"
+
+msgid "Seller details saved"
+msgstr "Bedriftsinnstillinger lagret"
+
+msgid "Send confirmation"
+msgstr "Send bekreftelse"
+
+msgid "Services"
+msgstr "Tjenester"
+
+msgid "Services not saved"
+msgstr "Tjenester ikke lagret"
+
+msgid "Services saved"
+msgstr "Tjenester lagret"
+
+msgid "Set area by:"
+msgstr "Sett området ved:"
+
+msgid "Set outlet configuration"
+msgstr "Instillinger for utleveringssted"
+
+msgid "Settings"
+msgstr "Innstillinger"
+
+msgid "Show delivery zone"
+msgstr "Vis leveringsområde"
+
+msgid "Show modifiers"
+msgstr "Vis variasjoner"
+
+msgid "Show on menu"
+msgstr "Vis på meny"
+
+msgid "Show weborders"
+msgstr "Vis web bestillinger"
+
+msgid "Sign In"
+msgstr "Logg inn"
+
+msgid "Sign in"
+msgstr "Logg inn"
+
+msgid "Signout"
+msgstr "Logg ut"
+
+msgid "Single Size"
+msgstr "Enkelt størrelse"
+
+msgid "Slot ends"
+msgstr "Periode ender"
+
+msgid "Slot name"
+msgstr "Periode navn"
+
+msgid "Slot starts"
+msgstr "Periode starter"
+
+msgid "Sorry"
+msgstr "Beklager"
+
+msgid "Sorry, the old password you entered was incorrect. Please try again!"
+msgstr "Ugyldig passord, prøv igjen."
+
+msgid "Sorry, the password you entered was incorrect. Please try again!"
+msgstr "Ugyldig passord, prøv igjen."
+
+msgid "Spanish"
+msgstr "Spansk"
+
+msgid "Split slot into segments"
+msgstr "Splitt periode til segmenter"
+
+msgid "Start date"
+msgstr "Start dato"
+
+msgid "Start date need to be smaller than end date."
+msgstr "Start dato må være før slutt dato."
+
+msgid "Start number"
+msgstr "Startnummer"
+
+msgid "Start number need to be smaller than end number"
+msgstr "Startnummer må være lavere enn sluttnummer"
+
+msgid "Start time"
+msgstr "Start tidspunkt"
+
+msgid "Street name & number"
+msgstr "Gatenavn og nummer"
+
+msgid "Stripe"
+msgstr "Stripe"
+
+msgid "Styling"
+msgstr "Styling"
+
+msgid "Swedish"
+msgstr "Svensk"
+
+msgid "TOTAL"
+msgstr "TOTALT"
+
+msgid "Takeaway rate"
+msgstr "Sats for takeaway"
+
+msgid "Tax"
+msgstr "Moms"
+
+msgid "Tax Group saved"
+msgstr "Momsgruppe lagret"
+
+msgid "Tax Groups"
+msgstr "Momsgrupper"
+
+msgid "Tax ID"
+msgstr "Moms ID"
+
+msgid "Tax group"
+msgstr "Momsgruppe"
+
+msgid "Tax group name"
+msgstr "Momsgruppe navn"
+
+msgid "Text"
+msgstr "Tekst"
+
+msgid "Thanks for your order"
+msgstr "Takk for bestillingen"
+
+msgid ""
+"There was a problem loading this page. <span class=\"fake-link\" ng-click="
+"\"vm.reload()\" translate=\"\">Retry</span>"
+msgstr ""
+"Det oppstod er problem ved lasting av denne siden.<span class=\"fake-link\" "
+"ng-click=\"vm.reload()\" translate=\"\">Prøv igjen</span>"
+
+msgid "This drawer is empty"
+msgstr "Denne kassen er tom"
+
+msgid "This email is already in use, please use another"
+msgstr "E-postadressen er allerede i bruk, vennligst bruk en annen"
+
+msgid "This is required."
+msgstr "Påkrevd."
+
+msgid "This outlet location already has an outlet"
+msgstr "Dette leveringsområde har allerede et utleveringssted"
+
+msgid "This slot is being used"
+msgstr "Denne perioden er i bruk"
+
+msgid ""
+"This will delete all section and item configurations for this menu. Are you "
+"sure?"
+msgstr ""
+"Dette vil slette alle seksjoner og produkt innstillinger for denne menyen, "
+"er du sikker?"
+
+msgid "This will delete the configuration of all sub-groups. Are you sure?"
+msgstr "Dette vil slette innstillinger for alle undergrupper, er du sikker?"
+
+msgid "This will delete the modifier from all menus."
+msgstr "Dette vil slette variasjoner fra alle menyer."
+
+msgid "To seat rate"
+msgstr "Sats for in-house"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Town / City"
+msgstr "Poststed"
+
+msgid "Town/City"
+msgstr "Poststed"
+
+msgid "Upload specs"
+msgstr "Last opp spesifkasjoner"
+
+msgid "Username"
+msgstr "Brukernavn"
+
+msgid "Variant Name"
+msgstr "Variant navn"
+
+msgid "Venue Details"
+msgstr "Innstillinger"
+
+msgid "Venue Settings"
+msgstr "Innstillinger for sted"
+
+msgid "Venue details not saved"
+msgstr "Innstillinger ikke lagret"
+
+msgid "Venue details saved"
+msgstr "Innstillinger lagret"
+
+msgid "Venue is"
+msgstr "Sted er"
+
+msgid "Venue location not saved"
+msgstr "Lokasjon ikke lagret"
+
+msgid "Venue location saved"
+msgstr "Lokasjon lagret"
+
+msgid "Venue mode not changed"
+msgstr "Modus for sted ikke endret"
+
+msgid "Venue name"
+msgstr "Navn på sted"
+
+msgid "Venue not found"
+msgstr "Sted ikke funnet"
+
+msgid "View Calendar"
+msgstr "Vis kalender"
+
+msgid "View:"
+msgstr "Vis:"
+
+msgid "Voucher rate"
+msgstr "Gavekort sats"
+
+msgid "We could not connect to your Stripe account. Please try again."
+msgstr "Vi kunne ikke koble til din Stripe konto, vennligst prøv igjen."
+
+msgid "Web Orders"
+msgstr "Web ordre"
+
+msgid ""
+"When selected, all collection orders will be accepted automatically, without "
+"the need for you to first approve them manually"
+msgstr ""
+"Når dette er valgt vil alle bestillinger med henting bli akseptert "
+"automatisk, uten at du behøver å godkjenne de manuelt"
+
+msgid "Write a valid email address."
+msgstr "Skriv inn en gyldig e-postadresse."
+
+msgid "YY"
+msgstr "ÅÅ"
+
+msgid "You are not accepting orders right now"
+msgstr "Du tar ikke i mot bestillinger akkurat nå"
+
+msgid "You are ready to take orders"
+msgstr "Du er klar for å motta bestillinger"
+
+msgid ""
+"You cannot add a sub group because this outlet location already has one"
+msgstr ""
+"Du kan ikke legge til en undergruppe fordi dette leveringsområde allerede "
+"har en"
+
+msgid "You cannot add a sub group because this outlet location has an outlet"
+msgstr ""
+"Du kan ikke legge til en undergruppe fordi dette leveringsområde har et "
+"utleveringssted"
+
+msgid "You cannot add a sub group because this outlet location is for seat"
+msgstr ""
+"Du kan ikke legge til en undergruppe fordi dette leveringsområde er for "
+"sitting"
+
+msgid ""
+"You do not have the necessary permissions to view this dashboard, please "
+"contact your administrator"
+msgstr ""
+"Du har ikke nok rettigheter til å vise kontrollpanelet. Kontakt din "
+"administrator om du mener dette er feil."
+
+msgid "You don't have outlet locations yet"
+msgstr "Du har ingen leveringsområder enda"
+
+msgid ""
+"You have edited an item that is in more than one menu. Where would you like "
+"to apply the changes?"
+msgstr ""
+"Du har redigert en vare som brukes på flere menyer. Hvor ønsker du å bruke "
+"endringene?"
+
+msgid "You must accept at least one payment method before going live."
+msgstr "Du må aktivere minst en betalingsmetode før du kan gå live."
+
+msgid "You must have at least one active payment method."
+msgstr "Du må ha minst en aktiv betalingsmetode."
+
+msgid "You must select at least one collection slot."
+msgstr "Du må velge minst en periode for henting"
+
+msgid ""
+"You need to set up your address before selecting your location.  You'll be "
+"redirected to your Details page to configure your address."
+msgstr ""
+"Du må sette opp en adresse før du kan velge lokasjon.\n"
+"Du vil bli videresendt til siden for å konfigurere dine innstillinger."
+
+msgid ""
+"You need to set up your location before creating delivery zones.  You'll be "
+"redirected to your Location page to configure your location."
+msgstr ""
+"Du må sette opp din lokasjon før du kan opprette leveringsområder. Du vil "
+"bli videresendt til siden for å konfigurere din lokasjon."
+
+msgid "You only can add an outlet for the last child"
+msgstr "Du kan kun legge til ett utleveringssted for siste \"child\""
+
+msgid "Your email address was changed successfully"
+msgstr "E-postadressen din ble endret"
+
+msgid "Your email has been changed"
+msgstr "Din e-postadresse har blitt endret"
+
+msgid "Your new username is"
+msgstr "Din nye brukernavn er"
+
+msgid "Your password has been changed"
+msgstr "Passordet ditt ble endret"
+
+msgid "Your stripe account has been connected!"
+msgstr "Din Stripe konto er tilkoblet!"
+
+msgid "Your venue was successfully connected to your Stripe account"
+msgstr "Du har koblet til din Stripe konto"
+
+msgid "Zone name"
+msgstr "Områdenavn"
+
+msgid "click here"
+msgstr "klikk her"
+
+msgid "events"
+msgstr "arrangementer"
+
+msgid "in demo mode"
+msgstr "i demo modus"
+
+msgid "kms"
+msgstr "km"
+
+msgid "live"
+msgstr "live"
+
+msgid "miles"
+msgstr "miles"
+
+msgid "mins"
+msgstr "min"
+
+msgid "offline"
+msgstr "offline"
+
+msgid "to try again."
+msgstr "for å prøve igjen."
+
+msgid "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
+msgstr "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
+
+msgid "{{getBillingDate()}}"
+msgstr "{{getBillingDate()}}"
