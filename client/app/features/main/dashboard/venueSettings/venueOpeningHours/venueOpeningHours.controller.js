@@ -102,8 +102,6 @@ export default class venueOpeningHoursController {
 
   updateHours () {
 
-    console.log('update openingHours here');
-
     this.openingHoursForm.$setSubmitted();
     this.serviceHoursForm.$setSubmitted();
 
@@ -254,7 +252,9 @@ export default class venueOpeningHoursController {
 
     this.timeoutDebounce = null;
 
-    this.openingHours = {};
+    this.openingHours = [];
+    this.deliveryHours = [];
+    this.collectionHours = [];
     this.allHours = [];
 
     VenueService.currentVenue.getHours()
@@ -265,7 +265,7 @@ export default class venueOpeningHoursController {
         this.deliveryHours = this.groupHoursByTime(this.filterDeliveryHours(hours));
         this.collectionHours = this.groupHoursByTime(this.filterCollectionHours(hours));
 
-        this.collectionSameAsOpening = this.hasCollectionService () && this.collectionHours.length === 0;
+        this.collectionSameAsOpening = this.hasCollectionService() && this.collectionHours.length === 0;
         this.deliverySameAsOpening = this.hasDeliveryService() && this.deliveryHours.length === 0;
 
         Spinner.hide('venue-opening-hours');
