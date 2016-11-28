@@ -142,12 +142,9 @@ export default class eventListViewController {
 
     MaterialCalendarData.setDayContent = this.setDayContent.bind(this);
 
-    let filter = {
-      'after' : moment().subtract(7, 'days').format('YYYY/M/D')
-    };
 
     $q.all([
-        EventService.getEvents(VenueService.currentVenue.id, filter),
+        EventService.getLastWeekEvents(VenueService.currentVenue.id),
         OutletLocationService.getOutletLocations()
       ]).then((results) => {
 

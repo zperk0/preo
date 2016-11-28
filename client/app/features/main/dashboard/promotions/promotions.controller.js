@@ -21,6 +21,7 @@ export default class promotionsController {
       "maxUserClaims": null,
       "maxClaims": null,
       "apply": "ALWAYS",
+      eventId:4258,
       "firstOrder": 0,
       "visible": 1,
       "active": 1,
@@ -77,8 +78,13 @@ export default class promotionsController {
   }
 
   init(){
+
+    if (this.VenueService.currentVenue.isEvent()){ //pre-load events
+      this.EventService.getLastWeekEvents(this.VenueService.currentVenue.id)
+    }
     this.Spinner.show("fetch-promo");
-    this.fetchPromotions()
+    // this.fetchPromotions()
+    Preoday.Offer.getByVenueId(this.VenueService.currentVenue.id)
       .then((promotions)=>{
         this.promotions = promotions;
         console.log("got promotions", this.promotions);
@@ -93,12 +99,13 @@ export default class promotionsController {
   }
 
   /* @ngInject */
-  constructor($q, Spinner, Snack, VenueService,  $timeout) {
+  constructor($q, Spinner, Snack, VenueService, EventService,  $timeout) {
     "ngInject";
     this.Spinner = Spinner;
     this.$q = $q;
     this.Snack = Snack;
     this.VenueService = VenueService;
+    this.EventService = EventService;
     this.$timeout = $timeout;
     this.promotions=[];
     this.init();

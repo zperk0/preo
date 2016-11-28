@@ -1,8 +1,8 @@
 <div class='promotion-display'>
-    <md-checkbox ng-model="$displayInMenu" ng-change="onDisplayChange()">
+    <md-checkbox ng-model="promotion.visible" ng-true-value="1" ng-false-value="0" ng-change="onDisplayChange()">
       {{'Display promotion on the menu' | translate}}
     </md-checkbox>
-   <md-input-container class="md-block" ng-if="$displayInMenu">
+   <md-input-container class="md-block" ng-if="promotion.visible">
           <label translate>Display text</label>
           <input type="text" autocomplete="off"  required name="displayName" ng-model="promotion.displayName" ng-maxlength="100">
           <div ng-messages="contextualMenuCtrl.contextualForm.displayName.$error">

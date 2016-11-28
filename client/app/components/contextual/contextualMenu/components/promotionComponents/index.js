@@ -3,7 +3,7 @@ import './promotionDiscountValue/promotionDiscountValue.scss';
 import './promotionApply/promotionApply.scss';
 import './promotionDisplay/promotionDisplay.scss';
 import './promotionDates/promotionDates.scss';
-// import './promotionEvents/promotionEvents.scss';
+import './promotionEvents/promotionEvents.scss';
 import './promotionServices/promotionServices.scss';
 import './promotionPayments/promotionPayments.scss';
 import './promotionUsage/promotionUsage.scss';

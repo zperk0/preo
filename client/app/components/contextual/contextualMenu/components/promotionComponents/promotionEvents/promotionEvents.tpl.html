@@ -1,3 +1,12 @@
 <div class='promotion-events'>
-  Events
+  <div class='label' translate> Apply discount to specific event: </div>
+  <md-input-container class='tax-group-select'>
+    <label translate>Event name</label>
+    <md-select ng-model="promotion.eventId" name="event">
+      <md-option value=""><em>None</em></md-option>
+      <md-option ng-value="event.id" ng-repeat="event in events">
+        {{ event.name }}
+      </md-option>
+    </md-select>
+  </md-input-container>
 </div>

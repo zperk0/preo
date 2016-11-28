@@ -34,11 +34,10 @@
       </md-tab-label>
       <md-tab-body>
           <md-card-content>
-        {{contextualMenuCtrl.entity}}
-
-          <promotion-services promotion="contextualMenuCtrl.entity"></promotion-services>
+          <promotion-services ng-if="!venue.isEvent()" promotion="contextualMenuCtrl.entity"></promotion-services>
           <promotion-payments promotion="contextualMenuCtrl.entity"></promotion-payments>
-          <promotion-dates promotion="contextualMenuCtrl.entity"></promotion-dates>
+          <promotion-events  promotion="contextualMenuCtrl.entity" events="events" ng-if="venue.isEvent()"></promotion-events>
+          <promotion-dates ng-if="!venue.isEvent()" promotion="contextualMenuCtrl.entity"></promotion-dates>
           <promotion-display promotion="contextualMenuCtrl.entity"></promotion-display>
         </md-card-content>
       </md-tab-body>
