@@ -126,7 +126,7 @@ export default class promotionController {
   }
 
   /* @ngInject */
-  constructor($q, Spinner, Snack, $timeout, DialogService, LabelService, contextual, contextualMenu) {
+  constructor($q,$stateParams, Spinner, Snack, $timeout, DialogService, LabelService, contextual, contextualMenu) {
     "ngInject";
     this.$q = $q;
     this.title = "I am a promotion component"
@@ -138,7 +138,8 @@ export default class promotionController {
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'promotion';
-    if (this.promotion && !this.promotion.id) {
+    console.log("state params, ", $stateParams.promotionId, this.promotion.id);
+    if (this.promotion && !this.promotion.id || $stateParams.promotionId && $stateParams.promotionId == this.promotion.id) {
       this.showContextual();
     }
   }

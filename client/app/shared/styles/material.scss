@@ -135,6 +135,11 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
         background-color: $colorPrimary;
       }
     }
+    .md-label, .md-label span{
+      font-size: 16px;
+      color: rgba(0,0,0,0.50);
+      line-height: 16px;
+    }
   }
 
 

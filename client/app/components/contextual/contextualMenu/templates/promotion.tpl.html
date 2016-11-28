@@ -1,5 +1,5 @@
-<div>
-  <md-tabs md-dynamic-height md-stretch-tabs="always">
+<div class='contextual-promotion'>
+  <md-tabs md-dynamic-height md-stretch-tabs="always" md-selected="1">
     <md-tab label="{{'Basics' | translate}}">
     <md-card-content>
        <md-input-container class="md-block">
@@ -8,18 +8,21 @@
           <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
             <div ng-message="required" translate>This is required.</div>
           </div>
+
       </md-input-container>
+      <promotion-discount-value promotion="contextualMenuCtrl.entity"></promotion-discount-value>
+      <promotion-apply promotion="contextualMenuCtrl.entity"></promotion-apply>
+      <promotion-usage promotion="contextualMenuCtrl.entity"></promotion-usage>
     </md-card-content>
     </md-tab>
     <md-tab label="{{'Advanced' | translate}}">
       <md-card-content>
-       <md-input-container class="md-block">
-          <label translate>Display text</label>
-          <input type="text" autocomplete="off"  required name="displayName" ng-model="contextualMenuCtrl.entity.displayName" ng-maxlength="100">
-          <div ng-messages="contextualMenuCtrl.contextualForm.displayName.$error">
-            <div ng-message="required" translate>This is required.</div>
-          </div>
-      </md-input-container>
+    {{contextualMenuCtrl.entity}}
+
+      <promotion-services promotion="contextualMenuCtrl.entity"></promotion-services>
+      <promotion-payments promotion="contextualMenuCtrl.entity"></promotion-payments>
+      <promotion-dates promotion="contextualMenuCtrl.entity"></promotion-dates>
+      <promotion-display promotion="contextualMenuCtrl.entity"></promotion-display>
     </md-card-content>
     </md-tab>
     </md-tab>

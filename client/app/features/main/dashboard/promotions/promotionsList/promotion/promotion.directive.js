@@ -2,7 +2,7 @@ import controller from './promotion.controller'
 
 export default function promotion(){
   return {
-    restrict: 'A',
+    restrict: 'E',
     scope: {
       promotion:"="
     },
