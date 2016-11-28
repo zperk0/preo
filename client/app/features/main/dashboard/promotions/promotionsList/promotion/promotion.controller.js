@@ -34,22 +34,22 @@ export default class promotionController {
      return this.$q((resolve,reject)=>{
       this.Spinner.show("saving-promotion");
       this.promotion.update()
-      .then(()=>{
+      .then((newPromotion)=>{
         this.Spinner.hide('saving-promotion')
         console.log("promotion-saved",this.promotion)
-        resolve();
-      })
+        resolve(newPromotion);
+      },reject)
     })
   }
   savePromotion(){
     return this.$q((resolve,reject)=>{
       this.Spinner.show("saving-promotion");
       Preoday.Offer.create(this.promotion)
-        .then(()=>{
+        .then((newPromotion)=>{
           this.Spinner.hide('saving-promotion')
           console.log("promotion-saved",this.promotion)
-          resolve();
-      })
+          resolve(newPromotion);
+      },reject)
     })
   }
 
@@ -91,10 +91,28 @@ export default class promotionController {
     $event.stopPropagation();
   }
 
+// TODO make resume button active when promotion is active but expiration date has ended
+
+
   onPause(newStatus){
-    console.log("on pause", newStatus, arguments);
-    this.promotion.active = newStatus ? 1 : 0;
-    this.updatePromotion();
+
+    const updateActiveStatus = ()=>{
+      this.promotion.active = newStatus ? 1 : 0;
+      this.updatePromotion();
+    }
+
+    if (newStatus){
+        this.DialogService.show(this.LabelService.TITLE_INACTIVE_PROMOTION, this.LabelService.CONTENT_INACTIVE_PROMOTION, [{
+        name: this.LabelService.CONFIRMATION
+      }], true).then(()=>{
+        this.promotion.startDate = null;
+        this.promotion.endDate = null;
+        this.promotion.now = true;
+        updateActiveStatus();
+      })
+    } else {
+      updateActiveStatus();
+    }
   }
 
   restoreOriginalValues() {

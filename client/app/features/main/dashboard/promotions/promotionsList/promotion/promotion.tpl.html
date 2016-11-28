@@ -11,7 +11,7 @@
     <card-item-actions on-delete="promotionCtrl.onDelete()"
                        on-edit="promotionCtrl.onEdit($event)"
                        on-pause="promotionCtrl.onPause(newStatus)"
-                       is-paused="!promotionCtrl.promotion.active"
+                       is-paused="!promotionCtrl.promotion.active || !promotionCtrl.promotion.now"
                         ></card-item-actions>
   </card-item>
 </div>

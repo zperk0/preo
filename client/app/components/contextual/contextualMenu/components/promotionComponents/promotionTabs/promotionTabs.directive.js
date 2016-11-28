@@ -10,7 +10,7 @@ export default function promotionTabs(BroadcastEvents, VenueService, EventServic
     require:'^contextualMenu',
     link: (scope, el, attr, contextualMenuCtrl) => {
       scope.contextualMenuCtrl = contextualMenuCtrl;
-      scope.selectedTabIndex = 1;
+      scope.selectedTabIndex = 0;
 
       scope.venue = VenueService.currentVenue;
 

@@ -102,6 +102,9 @@ export default class LabelService {
 
 
 
+    this.TITLE_INACTIVE_PROMOTION = gettextCatalog.getString("Remove validity period?");
+    this.CONTENT_INACTIVE_PROMOTION = gettextCatalog.getString("This promotion hasn't started yet or has ended. If you activate it manually, the start and end dates will be removed.");
+
     this.TITLE_DELETE_PROMOTION = gettextCatalog.getString("Delete promotion?");
     this.CONTENT_DELETE_PROMOTION = gettextCatalog.getString("Are you sure you want to permanently delete this promotion?");
     this.SNACK_PROMOTION_DELETED = gettextCatalog.getString("Promotion deleted");
