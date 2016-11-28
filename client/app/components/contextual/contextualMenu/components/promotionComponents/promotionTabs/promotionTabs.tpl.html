@@ -1,0 +1,48 @@
+<div class='promotion-tabs'>
+  <md-tabs md-dynamic-height
+    md-stretch-tabs="always"
+    class="md-tabs-with-errors"
+    ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}"
+    md-selected="selectedTabIndex">
+    <md-tab>
+      <md-tab-label>
+        <div ng-class="{'has-error': hasBasicTabErrors()}" class="md-tab-label">
+          <span>{{ 'Basic' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <md-card-content>
+           <md-input-container class="md-block">
+              <label translate>Promotion name</label>
+              <input type="text" autocomplete="off"  required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
+              <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
+                <div ng-message="required" translate>This is required.</div>
+              </div>
+
+          </md-input-container>
+          <promotion-discount-value promotion="contextualMenuCtrl.entity"></promotion-discount-value>
+          <promotion-apply promotion="contextualMenuCtrl.entity"></promotion-apply>
+          <promotion-usage promotion="contextualMenuCtrl.entity"></promotion-usage>
+        </md-card-content>
+      </md-tab-body>
+    </md-tab>
+    <md-tab>
+      <md-tab-label>
+        <div ng-class="{'has-error': hasAdvancedTabErrors()}" class="md-tab-label">
+          <span>{{ 'Basic' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+          <md-card-content>
+        {{contextualMenuCtrl.entity}}
+
+          <promotion-services promotion="contextualMenuCtrl.entity"></promotion-services>
+          <promotion-payments promotion="contextualMenuCtrl.entity"></promotion-payments>
+          <promotion-dates promotion="contextualMenuCtrl.entity"></promotion-dates>
+          <promotion-display promotion="contextualMenuCtrl.entity"></promotion-display>
+        </md-card-content>
+      </md-tab-body>
+    </md-tab>
+    </md-tab>
+  </md-tabs>
+</div>

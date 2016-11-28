@@ -6,6 +6,7 @@ export default function promotionDisplay(){
     },
     template: require("./promotionDisplay.tpl.html"),
     require:"^contextualMenu",
+    replace:true,
     link: (scope, el, attr, ctrl) => {
       scope.contextualMenuCtrl = ctrl;
       scope.$displayInMenu = scope.promotion.displayName ? true : false;
