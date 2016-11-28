@@ -326,6 +326,7 @@ describe('menuItem Controller', function () {
     it("Should add a modifier to an item", function(done) {
 
       spyOn(ItemService, 'checkMultipleOccurrences').and.returnValue($q.resolve('single'));
+      spyOn(ItemService, 'addModifiersToItem').and.callThrough();
       spyOn(ModifierService, 'addCustomModifierToParent').and.callThrough();
       spyOn(ModifierService, 'isModifiersDuplicated').and.callThrough();
       spyOn(contextualMenu, 'hide').and.callThrough();
@@ -355,6 +356,7 @@ describe('menuItem Controller', function () {
       let mockSection = new Preoday.Section();
 
       ItemService.data.items = [mockItem];
+      ModifierService.data.modifiers = [$modifiers[0]];
 
       CardItemListCtrl.instance.collection = [mockItem];
       MenuSectionItemListCtrl.instance.items = [mockItem];
@@ -389,18 +391,26 @@ describe('menuItem Controller', function () {
 
           $rootScope.$digest();
 
-          expect(MenuItemCtrl.modifiers.length).toBe(1);
-          expect(MenuItemCtrl.item.modifiers.length).toBe(1);
+          setTimeout(() => {
 
-          expect(MenuItemCtrl.modifiers[0].id).toBe($modifiers[0].id);
-          expect(MenuItemCtrl.item.modifiers[0].id).toBe($modifiers[0].id);
+            $rootScope.$digest();
 
-          expect(Spinner.hide).toHaveBeenCalled();
-          expect(Snack.show).toHaveBeenCalled();
-          expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
-          expect(ModifierService.addCustomModifierToParent).toHaveBeenCalled();
+            expect(MenuItemCtrl.modifiers.length).toBe(1);
+            expect(MenuItemCtrl.item.modifiers.length).toBe(1);
 
-          done();
+            expect(MenuItemCtrl.modifiers[0].id).toBe($modifiers[0].id);
+            expect(MenuItemCtrl.item.modifiers[0].id).toBe($modifiers[0].id);
+
+            expect(Spinner.hide).toHaveBeenCalled();
+            expect(Snack.show).toHaveBeenCalled();
+            expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
+            expect(ModifierService.addCustomModifierToParent).toHaveBeenCalled();
+            expect(ItemService.addModifiersToItem).toHaveBeenCalledWith(mockItem.id, [jasmine.objectContaining({
+              id: $modifiers[0].id
+            })]);
+
+            done();
+          })
         });
       });
     });
