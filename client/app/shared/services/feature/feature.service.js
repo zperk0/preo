@@ -28,6 +28,11 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.DELIVERY_ZONES);
   }
 
+  hasVoucherFeature () {
+
+    return this.getLocalFeature(Preoday.constants.Feature.VOUCHER);
+  }
+
 
   getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
