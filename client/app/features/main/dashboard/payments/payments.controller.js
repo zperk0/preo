@@ -66,6 +66,10 @@ export default class paymentsController {
     }
   }
 
+  goToStripe(){
+    window.open(this.stripeLink);
+  }
+
   connectToStripe(){
     console.log("opening", this.stripeLink);
     var myWindow = window.open(this.stripeLink);
@@ -107,6 +111,7 @@ export default class paymentsController {
       var pp = this.paymentProviders[i];
       if (pp.type === 'Stripe'){
         this.stripe = pp;
+        this.stripeLink = 'https://stripe.com';
         return;
       }
     }
@@ -174,7 +179,7 @@ export default class paymentsController {
     this.LabelService = LabelService;
     this.isError = false;
     this.$timeout = $timeout;
-    this.stripeLink = '';
+    this.stripeLink = 'https://stripe.com';
     this.stripeRedirectUri = window.location.origin + window.location.pathname;
     if (this.stripeRedirectUri[this.stripeRedirectUri.length-1] !== '/'){
       this.stripeRedirectUri += "/"

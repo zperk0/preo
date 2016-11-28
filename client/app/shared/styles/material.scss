@@ -329,3 +329,41 @@ md-switch.md-default-theme.md-checked.md-focused .md-thumb:before, md-switch.md-
 i, em {
   font-style: italic !important;
 }
+
+mdp-time-picker, mdp-date-picker {
+  input {
+    &::-webkit-input-placeholder {
+      color: transparent !important;
+    }
+
+    &:-moz-placeholder {
+      color: transparent !important;
+    }
+
+    &::-moz-placeholder {
+      color: transparent !important;
+    }
+
+    &:-ms-input-placeholder {
+      color: transparent !important;
+    }
+
+    color: transparent;
+  }
+}
+
+.preo-ng-messages {
+  div[ng-message] {
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    transition: all .3s cubic-bezier(.55,0,.55,.2);
+    opacity: 1;
+    margin-top: 0;
+    padding-top: 5px;
+
+    span {
+      color: rgb(221,44,0);
+    }
+  }
+}
