@@ -23,6 +23,11 @@
       margin-bottom: 0;
       margin-left: 0px;
     }
+    .md-block-timepicker{
+      div[ng-messages] {
+        margin-left: 10px;
+      }
+    }
 
     mdp-date-picker{
       button {

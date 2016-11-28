@@ -16,10 +16,10 @@ export default class promotionsListController {
 
     let promotion = new Preoday.Invite({
       "venueId": this.VenueService.currentVenue.id,
-      "type": "PERCENT",
+      "type": "FIXED",
       "name": "",
-      $displayName:"",
-      "paymentType": "",
+      "displayName":"",
+      "paymentType": null,
       "items": null,
       "amount": null,
       "startDate":null,
@@ -27,8 +27,9 @@ export default class promotionsListController {
       "minBasket": 0,
       "maxUserClaims": null,
       "apply": "ALWAYS",
+      "now":true,
       "firstOrder": 0,
-      "visible": 1,
+      "visible": 0,
       "active": 1,
       $selected:true
     });

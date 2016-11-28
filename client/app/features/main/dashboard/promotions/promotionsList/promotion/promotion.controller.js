@@ -3,16 +3,11 @@ export default class promotionController {
     return "promotionController"
   }
 
-  fakePromotionDelete(){
-    return this.$q.resolve();
-  }
-
   onDelete(){
     this.DialogService.delete(this.LabelService.TITLE_DELETE_PROMOTION, this.LabelService.CONTENT_DELETE_PROMOTION)
       .then(()=>{
           this.Spinner.show("promotion-delete");
-          // this.promotion.remove()
-          this.fakePromotionDelete()
+          this.promotion.remove()
             .then(()=>{
               this.cardItemList.onItemDeleted(this.promotion);
               if (this.onItemDeleted){
@@ -32,31 +27,29 @@ export default class promotionController {
   }
 
   isPaused(){
-    return !this.promotion.active || (this.promotion.startDate && this.promotion.endDate && !this.promotion.today);
+    return !this.promotion.active || (this.promotion.startDate && this.promotion.endDate && !this.promotion.now);
   }
 
   updatePromotion(){
      return this.$q((resolve,reject)=>{
       this.Spinner.show("saving-promotion");
-      //this.promotion.update().then(
-      this.$timeout(
-        ()=>{
-          this.Spinner.hide('saving-promotion')
-          console.log("promotion-saved",this.promotion)
-          resolve();
-        },1000)
+      this.promotion.update()
+      .then(()=>{
+        this.Spinner.hide('saving-promotion')
+        console.log("promotion-saved",this.promotion)
+        resolve();
+      })
     })
   }
   savePromotion(){
     return this.$q((resolve,reject)=>{
       this.Spinner.show("saving-promotion");
-      //this.promotion.update().then(
-      this.$timeout(
-        ()=>{
+      Preoday.Offer.create(this.promotion)
+        .then(()=>{
           this.Spinner.hide('saving-promotion')
           console.log("promotion-saved",this.promotion)
           resolve();
-        },1000)
+      })
     })
   }
 
@@ -65,7 +58,7 @@ export default class promotionController {
     if (this.promotion && entity && entity.name){
 
       this.promotion = entity;
-      var saveOrUpdate = this.promotion.id ? this.savePromotion.bind(this) : this.updatePromotion.bind(this);
+      var saveOrUpdate = this.promotion.id ? this.updatePromotion.bind(this) : this.savePromotion.bind(this);
       saveOrUpdate().then((newPromotion)=>{
 
         this.promotion.$deleted = false;

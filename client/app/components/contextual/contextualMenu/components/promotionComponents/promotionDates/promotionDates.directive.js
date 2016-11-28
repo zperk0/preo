@@ -11,11 +11,15 @@ export default function promotionDates(){
       scope.contextualMenuCtrl = contextualMenuCtrl;
       scope.contextualForm = contextualMenuCtrl.contextualForm;
 
-      scope.$startDate = moment(scope.promotion.startDate).toDate();
-      scope.$startTime = moment(scope.promotion.startDate).toDate();
+      if (scope.promotion.startDate){
+        scope.$startDate = moment(scope.promotion.startDate).toDate();
+        scope.$startTime = moment(scope.promotion.startDate).toDate();
+      }
 
-      scope.$endDate = moment(scope.promotion.endDate).toDate()
-      scope.$endTime = moment(scope.promotion.endDate).toDate()
+      if (scope.promotion.endDate){
+        scope.$endDate = moment(scope.promotion.endDate).toDate()
+        scope.$endTime = moment(scope.promotion.endDate).toDate()
+      }
 
       function setStartDate(date = new Date(), time = new Date()){
         scope.promotion.startDate =  new Date(date.getFullYear(), date.getMonth(), date.getDate(),
