@@ -256,9 +256,7 @@ export default class ModifierService {
     this.$stateParams = $stateParams;
     this.BroadcastEvents = BroadcastEvents;
     this.$q =$q;
-    this.data = {
-      modifiers: []
-    };
+    this.data = {};
 
   }
 }
