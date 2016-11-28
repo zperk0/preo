@@ -1,3 +1,31 @@
 .menu-item-advanced {
+	.checkbox-row {
+		.label-text {
+			display: flex;
+			flex: 1;
+			font-size: 16px;
+			color: #424242;
+			margin-bottom: 13px;
+		}
 
+		md-checkbox {
+			margin-bottom: 0px;
+
+			.md-label {
+				font-size: 16px;
+				color: rgba(0,0,0, 0.5);
+		    vertical-align: text-bottom;
+		    margin-top: 2px;
+			}
+
+			&[disabled] {
+				opacity: 0.4;
+			}
+		}
+	}
+
+	md-input-container {
+		margin-bottom: 18px;
+		margin-top: 6px;
+	}
 }

@@ -6,7 +6,7 @@ export default function menuItemSize(){
     template: require("./menuItemAdvanced.tpl.html"),
     controller: controller.UID,
     scope:{
-      ngModel: "=",
+      item: "=ngModel",
     },
     controllerAs: "menuItemAdvancedCtrl",
     bindToController: true,

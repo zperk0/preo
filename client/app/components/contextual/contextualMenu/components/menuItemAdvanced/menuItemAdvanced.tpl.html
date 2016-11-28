@@ -1,3 +1,44 @@
 <div class="menu-item-advanced">
-	test
+	<md-card-content>
+  <div class='price' layout="row" layout-align="start center">
+    <md-input-container flex>
+        <label translate>Voucher value:</label>
+        <input flex type="text" required name="entityPrice" ng-model="menuItemAdvancedCtrl.item.price" valid-price />
+        <div ng-messages="menuItemAdvancedCtrl.contextualMenuCtrl.contextualForm.entityPrice.$error" ng-show="menuItemAdvancedCtrl.contextualMenuCtrl.contextualForm.entityPrice.$dirty || menuItemAdvancedCtrl.contextualMenuCtrl.contextualForm.$submitted">
+          <div ng-message="required" translate>This is required.</div>
+          <div ng-message="invalidPrice" translate>Invalid price.</div>
+          <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
+        </div>
+    </md-input-container>
+  </div>
+  <div class="checkbox-row" layout="row" layout-align="start center">
+    <md-input-container flex>
+        <span class="label-text" translate>Voucher type</span>
+        <md-checkbox aria-label="E-voucher" ng-model="menuItemAdvancedCtrl.entity.$voucherTypeEmail">
+          {{'E-voucher' | translate}}
+        </md-checkbox>
+        <md-checkbox aria-label="Post voucher" ng-model="menuItemAdvancedCtrl.entity.$voucherTypePost" ng-change="menuItemAdvancedCtrl.changeVoucherPostType()">
+          {{'Post voucher' | translate}}
+        </md-checkbox>
+    </md-input-container>
+  </div>
+  <div class="checkbox-row" layout="row" layout-align="start center">
+    <md-input-container flex>
+        <span class="label-text" translate>Allow custom messages:</span>
+        <md-checkbox aria-label="E-voucher" ng-model="menuItemAdvancedCtrl.entity.$hasMessageEmail">
+          {{'E-voucher' | translate}}
+        </md-checkbox>
+        <md-checkbox aria-label="Post voucher" ng-model="menuItemAdvancedCtrl.entity.$hasMessagePost" ng-disabled="!menuItemAdvancedCtrl.entity.$voucherTypePost">
+          {{'Post voucher' | translate}}
+        </md-checkbox>
+    </md-input-container>
+  </div>
+  <md-input-container class="md-block">
+      <label translate>Voucher footer text</label>
+      <textarea type="text" name="entityAdditionalInfo" ng-maxlength="1000" ng-model="menuItemAdvancedCtrl.contextualMenuCtrl.entity.entityAdditionalInfo"></textarea>
+      <div ng-messages="menuItemAdvancedCtrl.contextualMenuCtrl.contextualForm.entityAdditionalInfo.$error">
+        <div ng-message="maxlength" translate>Max length is 1000 chars.</div>
+      </div>
+  </md-input-container>
+  </md-card-content>
 </div>

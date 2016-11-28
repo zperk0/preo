@@ -3,6 +3,13 @@ export default class menuItemAdvancedController {
     return "menuItemAdvancedController"
   }
 
+  changeVoucherPostType () {
+
+    if (!this.entity.$voucherTypePost) {
+      this.entity.$hasMessagePost = false;
+    }
+  }
+
   /* @ngInject */
   constructor() {
     'ngInject';
