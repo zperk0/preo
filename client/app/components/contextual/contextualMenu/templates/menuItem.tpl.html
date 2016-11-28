@@ -24,8 +24,11 @@
         ng-model="contextualMenuCtrl.entity.images"
         on-delete="contextualMenuCtrl.params.onDeleteImage(image)"></image-uploader>
     </md-tab>
-    <md-tab label="Labels">
+<!--     <md-tab label="Labels">
       <tag-list ng-model="contextualMenuCtrl.entity.tags"></tag-list>
+    </md-tab> -->
+    <md-tab label="Advanced">
+      <menu-item-advanced ng-model="contextualMenuCtrl.entity"></menu-item-advanced>
     </md-tab>
   </md-tabs>
 </div>
