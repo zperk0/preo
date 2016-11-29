@@ -9,9 +9,9 @@ export default class menuItemListController {
     this.cardItemList.deleteItem(item);
   }
 
-  showCreateItem() {
+  showCreateItem($event, type) {
 
-    let newItem =  this.ItemService.getNewItemBase(this.$stateParams.venueId);
+    let newItem =  this.ItemService.getNewItemBase(this.$stateParams.venueId, type === 'VOUCHER');
 
     let isCreating = this.items.filter((s, index) => {
 
@@ -51,7 +51,7 @@ export default class menuItemListController {
     return !filterName || item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1;
   }
 
-  constructor($scope, $stateParams, Spinner, Snack, ItemService) {
+  constructor($scope, $stateParams, Spinner, Snack, ItemService, FeatureService) {
     "ngInject";
 
     $scope.results = this.items;
@@ -63,5 +63,19 @@ export default class menuItemListController {
 
     this.items = this.items === undefined ? [] : this.items;
     this.ItemService = ItemService;
+
+
+    let itemTypes = ['NONE'];
+
+    if (FeatureService.hasVoucherFeature()) {
+      itemTypes.push('ALL');
+      itemTypes.push('EMAIL');
+      itemTypes.push('POST');
+    }
+
+    this.items = this.items.filter((item) => {
+
+      return itemTypes.indexOf(item.voucherType) !== -1;
+    });
   }
 }
