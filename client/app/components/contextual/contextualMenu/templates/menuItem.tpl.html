@@ -1,4 +1,4 @@
-<div>
+<div class="contextual-menu-item">
   <md-tabs md-dynamic-height md-stretch-tabs="always">
     <md-tab label="Basics">
     <md-card-content>
@@ -24,10 +24,10 @@
         ng-model="contextualMenuCtrl.entity.images"
         on-delete="contextualMenuCtrl.params.onDeleteImage(image)"></image-uploader>
     </md-tab>
-<!--     <md-tab label="Labels">
+    <md-tab label="Labels" ng-if="!contextualMenuCtrl.entity.isVoucher()">
       <tag-list ng-model="contextualMenuCtrl.entity.tags"></tag-list>
-    </md-tab> -->
-    <md-tab label="Advanced">
+    </md-tab>
+    <md-tab label="Advanced" ng-if="contextualMenuCtrl.entity.isVoucher()">
       <menu-item-advanced ng-model="contextualMenuCtrl.entity"></menu-item-advanced>
     </md-tab>
   </md-tabs>
