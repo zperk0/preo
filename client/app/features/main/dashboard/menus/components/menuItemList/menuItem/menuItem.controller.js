@@ -118,6 +118,7 @@ export default class menuItemController {
   createItem() {
 
     this.Spinner.show("item-create")
+
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
         this.cardItemList.onUpdateItem(this.item, createdItem);
@@ -203,6 +204,7 @@ export default class menuItemController {
   contextualMenuSuccess(entity){
     if (this.item.isVoucher()) {
       if (!entity.$voucherTypeEmail && !entity.$voucherTypePost) {
+        this.$rootScope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED);
         return;
       }
     }
@@ -213,7 +215,7 @@ export default class menuItemController {
       this.createItem();
     }
     else {
-      this.updateItem(updates);
+      this.updateItem(entity);
     }
   }
 
@@ -319,6 +321,9 @@ export default class menuItemController {
     this.$stateParams=$stateParams;
     this.contextual = contextual;
     this.ItemService = ItemService;
+    this.BroadcastEvents = BroadcastEvents;
+    this.$rootScope =$rootScope;
+
     this.newModifiers = [];
     this.modifiers = [];
 

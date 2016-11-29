@@ -268,6 +268,29 @@ export default class ItemService {
     this.data.items && this.data.items.push(item);
   }
 
+  hasBasicTabErrors (contextualForm, entity) {
+
+    return  contextualForm
+            && contextualForm.$submitted
+            &&
+            (
+              contextualForm.entityName.$invalid
+              || (contextualForm.entityPrice && contextualForm.entityPrice.$invalid)
+              || (contextualForm.sizeForm && contextualForm.sizeForm.$invalid)
+            );
+  }
+
+  hasAdvancedTabErrors (contextualForm, entity) {
+
+    return  contextualForm
+            && contextualForm.$submitted
+            &&
+            (
+              contextualForm.entityVoucherValue.$invalid
+              || (!entity.$voucherTypeEmail && !entity.$voucherTypePost)
+            );
+  }
+
   constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService) {
     "ngInject";
     this.data = {};

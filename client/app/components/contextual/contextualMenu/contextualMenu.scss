@@ -215,8 +215,8 @@
   .md-tabs-with-errors {
     &.has-error {
       md-ink-bar {
-        color: $redDefault;
-        background-color: $redDefault;
+        color: $redDefault !important;
+        background-color: $redDefault !important;
       }
     }
 
@@ -229,7 +229,7 @@
 
         &.has-error {
           span {
-            color: $redDefault;
+            color: $redDefault !important;
           }
 
           &+.md-ripple-container {
@@ -260,7 +260,7 @@
         .md-tab-label {
           &.has-error {
             &:after {
-              border-color: $redDefault;
+              border-color: $redDefault !important;
             }
           }
 
@@ -312,26 +312,6 @@
 
     spinner {
       display: inline-block;
-    }
-  }
-
-  .contextual-menu-item {
-    md-input-container {
-      margin-top: 6px;
-
-      &.tax-group-select {
-        margin-top: 2px;
-      }
-    }
-
-    md-radio-group {
-      margin-top: 6px;
-      margin-bottom: 0px;
-
-      md-radio-button {
-        margin-bottom: 18px;
-        margin-top: 0px;
-      }
     }
   }
 }

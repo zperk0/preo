@@ -5,13 +5,27 @@ export default class menuItemAdvancedController {
 
   changeVoucherPostType () {
 
-    if (!this.entity.$voucherTypePost) {
-      this.entity.$hasMessagePost = false;
+    if (!this.item.$voucherTypePost) {
+      this.item.$hasMessagePost = false;
+    }
+  }
+
+  changeOnlyEmailMessage () {
+
+    if (this.item.$hasMessageOnlyEmail) {
+      this.item.$hasMessageAnyVoucher = false;
+    }
+  }
+
+  changeAnyVoucherMessage () {
+
+    if (this.item.$hasMessageAnyVoucher) {
+      this.item.$hasMessageOnlyEmail = false;
     }
   }
 
   /* @ngInject */
-  constructor() {
+  constructor($scope) {
     'ngInject';
 
     switch (this.item.voucherType) {

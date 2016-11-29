@@ -8,6 +8,7 @@ import service from './contextualMenu.service';
 import directive from './contextualMenu.directive';
 import holderDirective from './contextualMenuHolder.directive';
 
+import menuItemBasic from './components/menuItemBasic';
 import menuItemSize from './components/menuItemSize';
 import modifierItems from './components/modifierItems';
 import modifierSelection from './components/modifierSelection';
@@ -30,6 +31,7 @@ import venueCurrency from '../../../components/venueCurrency';
 
 
 export default angular.module("contextualMenu" , [
+	menuItemBasic,
 	menuItemSize,
 	menusSelect,
 	modifierItems,

@@ -1,6 +1,6 @@
 import controller from './menuItemAdvanced.controller'
 
-export default function menuItemSize(){
+export default function menuItemAdvanced(){
   return {
     restrict: 'E',
     template: require("./menuItemAdvanced.tpl.html"),
@@ -10,9 +10,9 @@ export default function menuItemSize(){
     },
     controllerAs: "menuItemAdvancedCtrl",
     bindToController: true,
-    require:['menuItemAdvanced', '^contextualMenu'],
+    require:['^form', '^menuItemAdvanced'],
     link: (scope, el, attr, ctrls) => {
-      ctrls[0].contextualMenuCtrl = ctrls[1];
+      ctrls[1].contextualForm = ctrls[0];
 
     }
   }
