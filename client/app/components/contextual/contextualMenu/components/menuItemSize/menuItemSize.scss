@@ -17,7 +17,7 @@
 }
 
 .menu-item-size-form{
-  padding-top: 12px;
+  padding-top: 6px;
   padding-bottom: 6px;
 
   &.sv-long-pressing{
@@ -45,6 +45,8 @@
     cursor:grab;
     top:11px;
     align-self: flex-start;
+    text-align: center !important;
+    margin-top: 8px !important;
 
     md-icon:first-child{
       position: absolute;

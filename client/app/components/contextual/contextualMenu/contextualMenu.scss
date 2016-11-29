@@ -314,6 +314,26 @@
       display: inline-block;
     }
   }
+
+  .contextual-menu-item {
+    md-input-container {
+      margin-top: 6px;
+
+      &.tax-group-select {
+        margin-top: 2px;
+      }
+    }
+
+    md-radio-group {
+      margin-top: 6px;
+      margin-bottom: 0px;
+
+      md-radio-button {
+        margin-bottom: 18px;
+        margin-top: 0px;
+      }
+    }
+  }
 }
 
 .md-datepicker-calendar-pane {
