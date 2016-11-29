@@ -14,7 +14,7 @@ export default class promotionsListController {
       return;
     }
 
-    let promotion = new Preoday.Invite({
+    let promotion = new Preoday.Offer({
       "venueId": this.VenueService.currentVenue.id,
       "type": "FIXED",
       "name": "",
