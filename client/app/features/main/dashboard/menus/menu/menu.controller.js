@@ -32,17 +32,20 @@ export default class menuController {
   handleFinishLoading(dataMenu){
 
     this.menu = dataMenu;
+    this.MenuService.setCurrentMenu(this.menu);
     this.hideSpinner();
   }
 
 
-  constructor($stateParams, $timeout,Spinner, contextual, ItemService) {
+  constructor($stateParams, $timeout,Spinner, contextual, ItemService, MenuService) {
     "ngInject";
     this.Spinner = Spinner;
     this.showSpinner();
     this.ItemService = ItemService;
+    this.MenuService = MenuService;
     this.$timeout = $timeout;
     this.contextual = contextual;
+
     ItemService.getItems($stateParams.venueId).then(()=>{
       this.setMenu($stateParams.menuId);
     });

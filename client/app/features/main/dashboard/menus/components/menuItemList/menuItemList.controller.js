@@ -48,6 +48,13 @@ export default class menuItemListController {
 
   isInFilter (item, filterName) {
 
+    if (this.types) {
+      let validType = this.types.indexOf(item.voucherType) !== -1;
+      if (!validType) {
+        return false;
+      }
+    }
+
     return !filterName || (item.name && item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
   }
 
