@@ -6,12 +6,14 @@ import controller from './vouchers.controller';
  * @param  $stateProvider
  */
 
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.vouchers", {
     url: "/vouchers",
     template: require("./vouchers.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vouchers"
+    controllerAs: "vouchers",
+    requiresPermission:Permissions.VOUCHERS
+
   });
 }

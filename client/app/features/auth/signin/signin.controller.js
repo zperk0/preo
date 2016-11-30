@@ -19,12 +19,21 @@ export default class signinController {
   handleSuccess(){
 
     this.VenueService.selectVenue()
-      .then(() => {
-        this.hideSpinner(2000);
+      .then((venues) => {
+        console.log("venue selected",  venues)
+        if (venues && venues.length){
+          this.hideSpinner(2000);
+          this.$state.go('main.dashboard');
+        } else {
+          console.log("doing signout")
+          Preoday.User.signout();
+        console.log("handle error error else")
 
-        this.$state.go('main.dashboard');
+          this.handleError()
+        }
       }, () => {
-        this.hideSpinner(2000);
+        console.log("handle error error")
+        this.handleError()
       });
 
   }

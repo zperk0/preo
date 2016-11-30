@@ -6,12 +6,13 @@ import controller from './analytics.controller';
  * @param  $stateProvider
  */
 
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.analytics", {
     url: "/analytics",
     template: require("./analytics.tpl.html"),
     controller: controller.UID,
-    controllerAs: "analytics"
+    controllerAs: "analytics",
+    requiresPermission: Permissions.ANALYTICS
   });
 }

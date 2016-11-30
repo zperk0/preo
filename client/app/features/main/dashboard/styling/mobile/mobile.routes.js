@@ -6,10 +6,11 @@ import controller from './mobile.controller';
  * @param  $stateProvider
  */
 
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.styling.mobile", {
     url: "/mobile",
+    requiresPermission:Permissions.VENUE_CREATE,
     views:{
       stylingContent:{
         template: require("./mobile.tpl.html"),

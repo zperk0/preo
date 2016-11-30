@@ -6,7 +6,9 @@ export default function cardItemTitle(){
     template: require("./cardItemTitle.tpl.html"),
     scope:{
       showVisible:"&?",
-      hasVisible:"=?"
+      hasVisible:"=?",
+      showPaused:"&?",
+      hasPause:"=?"
     },
     replace:true,
     transclude:true,

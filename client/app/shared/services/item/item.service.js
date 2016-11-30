@@ -291,16 +291,51 @@ export default class ItemService {
             );
   }
 
-  constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService) {
+  addModifiersToItem (itemId, modifiersToAdd) {
+
+    let item = this.getById(itemId);
+
+    if (!item) {
+      return false;
+    }
+
+    item.modifiers.push.apply(item.modifiers, modifiersToAdd);
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_ADD_MODIFIER + item.id, item);
+  }
+
+  removeModifierFromItem (itemId, modifier) {
+
+    let item = this.getById(itemId);
+
+    if (!item) {
+      return false;
+    }
+
+    let index = item.modifiers.map((mod) => {
+
+      return mod.id;
+    }).indexOf(modifier.id);
+
+    if (index !== -1) {
+      item.modifiers.splice(index, 1);
+    }
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_REMOVE_MODIFIER + item.id, item);
+  }
+
+  constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService, BroadcastEvents) {
     "ngInject";
     this.data = {};
     this.$q =$q;
+    this.$rootScope =$rootScope;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.UtilsService = UtilsService;
     this.gettextCatalog = gettextCatalog;
     this.DEBUG = window.DEBUG || $location.search().debug;
     this.ModifierService = ModifierService;
+    this.BroadcastEvents = BroadcastEvents;
 
 
   }

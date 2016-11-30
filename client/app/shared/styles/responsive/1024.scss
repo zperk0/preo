@@ -34,18 +34,18 @@ html {
       }
   }
 
+  // events schedule form
+  .event-schedule-form {
+    .datepicker-wrapper {
+      width: 140px;
+    }
+  }
+
   .venue-services{
     form  {
       venue-currency {
         flex: 0 1 15% !important;
       }
-    }
-  }
-
-  // events schedule form
-  .event-schedule-form {
-    .datepicker-wrapper {
-      width: 140px;
     }
   }
 }

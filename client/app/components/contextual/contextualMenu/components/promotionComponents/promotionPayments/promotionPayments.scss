@@ -1,0 +1,22 @@
+.promotion-payments{
+  md-input-container{
+    margin-bottom:8px;
+    margin-top: 0;
+  }
+  .label{
+    font-size: 16px;
+    color: #424242;
+    line-height: 16px;
+    margin-bottom:12px;
+
+    &+md-checkbox{
+      margin-left:6px;
+      width:35%;
+    }
+  }
+  .md-label span{
+    font-size: 16px;
+    color: rgba(0,0,0,0.50);
+    line-height: 16px;
+  }
+}

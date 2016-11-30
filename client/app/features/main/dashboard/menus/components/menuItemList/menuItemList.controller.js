@@ -48,7 +48,7 @@ export default class menuItemListController {
 
   isInFilter (item, filterName) {
 
-    return !filterName || item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1;
+    return !filterName || (item.name && item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
   }
 
   constructor($scope, $stateParams, Spinner, Snack, ItemService, FeatureService) {

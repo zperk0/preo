@@ -75,5 +75,7 @@ export default class ErrorService {
     this.VENUE_MODE_PAYMENT = {code:'VENUE_MODE_PAYMENT', message:gettextCatalog.getString("You must accept at least one payment method before going live."), title: gettextCatalog.getString('Sorry')};
     this.VENUE_MODE_FAILED = {code:'VENUE_MODE_FAILED', message:gettextCatalog.getString("Venue mode not changed")};
 
+    this.INVALID_OPENING_HOURS_CONFIGURATION = {code:'INVALID_OPENING_HOURS_CONFIGURATION', message:gettextCatalog.getString("You must have opening hours set for at least one day"), title: gettextCatalog.getString("Invalid configuration")};
+
   }
 }

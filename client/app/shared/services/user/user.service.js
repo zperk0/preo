@@ -17,7 +17,11 @@ export default class UserService {
     this.authDeferred = this.$q.defer();
 
     Preoday.User.auth(data).then((user) => {
-      this.checkAdmin(user);
+      console.log("doing auth", user);
+      if (user){
+        console.log("checking admin")
+        this.checkAdmin(user);
+      }
     }, (error)=>{
       this.authDeferred.reject(error);
 

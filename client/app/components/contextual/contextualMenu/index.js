@@ -20,6 +20,8 @@ import eventBasic from './components/eventBasic';
 import eventScheduleForm from './components/eventScheduleForm';
 import taxGroupSelect from './components/taxGroupSelect';
 import menuItemAdvanced from './components/menuItemAdvanced';
+import userRoleSelect from './components/userRoleSelect';
+import promotionComponents from './components/promotionComponents';
 
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
@@ -43,12 +45,14 @@ export default angular.module("contextualMenu" , [
   eventScheduleForm,
 	taxGroupSelect,
 	menuItemAdvanced,
+	userRoleSelect,
 	services,
 	validNumber,
   validPrice,
 	validPercentage,
 	maxIntegerValue,
 	compareNumber,
+  promotionComponents,
 	venueCurrency
 ])
 

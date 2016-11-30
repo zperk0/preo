@@ -11,8 +11,8 @@ export default class menuItemController {
 
       return promise.then((modifiers)=>{
 
-        this.item.modifiers = this.item.modifiers.concat(modifiers);
-        this.modifiers = this.modifiers.concat(modifiers);
+        this.ItemService.addModifiersToItem(this.item.id, modifiers);
+
         this.Snack.show("Added modifiers to item");
       })
       .then(()=>{
@@ -127,6 +127,8 @@ export default class menuItemController {
         if (this.onItemCreated){
           this.onItemCreated({item: createdItem});
         }
+
+        this.watchModifiers();
         this.Spinner.hide("item-create")
         this.Snack.show('Item created');
       }, (err)=>{
@@ -284,15 +286,7 @@ export default class menuItemController {
 
   onModifierRemoved (modifier) {
 
-    let index = this.item.modifiers.map((mod) => {
-
-      return mod.id;
-    }).indexOf(modifier.id);
-
-    if (index !== -1) {
-      this.modifiers.splice(index, 1);
-      this.item.modifiers.splice(index, 1);
-    }
+    this.ItemService.removeModifierFromItem(this.item.id, modifier);
   }
 
   buildModifiers () {
@@ -305,6 +299,23 @@ export default class menuItemController {
         return modifier;
       });
     }
+  }
+
+  watchModifiers () {
+
+    this.$scope.$on(this.BroadcastEvents.ON_ITEM_ADD_MODIFIER + this.item.id, (event, item) => {
+
+      this.item.modifiers = item.modifiers;
+
+      this.buildModifiers();
+    });
+
+    this.$scope.$on(this.BroadcastEvents.ON_ITEM_REMOVE_MODIFIER + this.item.id, (event, item) => {
+
+      this.item.modifiers = item.modifiers;
+
+      this.buildModifiers();
+    });
   }
 
   constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService) {
@@ -343,6 +354,7 @@ export default class menuItemController {
 
         if (this.item.id) {
           this.buildModifiers();
+          this.watchModifiers();
         }
 
         this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
@@ -351,6 +363,7 @@ export default class menuItemController {
       })
     } else {
       this.buildModifiers();
+      this.watchModifiers();
     }
   }
 }

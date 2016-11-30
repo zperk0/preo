@@ -1,0 +1,41 @@
+.promotion-dates{
+  margin-bottom:32px;
+  margin-top:32px;
+  .label{
+    font-size: 16px;
+    color: #424242;
+    line-height: 16px;
+    margin-bottom:12px;
+  }
+  .start-wrapper, .end-wrapper{
+    md-input-container{
+      margin-bottom:0;
+      margin-top:6px;
+    }
+    button{
+      margin-top:6px;
+    }
+    .md-errors-spacer{
+      display: none;
+    }
+    div[ng-messages] {
+      margin-top: -6px;
+      margin-bottom: 0;
+      margin-left: 0px;
+    }
+    .md-block-timepicker{
+      div[ng-messages] {
+        margin-left: 10px;
+      }
+    }
+
+    mdp-date-picker{
+      button {
+        margin-left: -8px;
+        padding-left: 0;
+        margin-right: -8px;
+      }
+    }
+  }
+
+}

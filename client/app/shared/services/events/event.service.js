@@ -5,6 +5,13 @@ export default class EventService {
     return "EventService";
   }
 
+  getLastWeekEvents(venueId){
+    let filter = {
+      'after' : moment().subtract(7, 'days').format('YYYY/M/D')
+    };
+    return this.getEvents(venueId, filter);
+  }
+
   getEvents(venueId, params) {
 
     if (this.data.events){
