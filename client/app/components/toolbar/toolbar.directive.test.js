@@ -67,14 +67,4 @@ describe('Toolbar Directive', function () {
 
       expect(elemData.buttons.length).toBe(0); //we dont have buttons there anymore
     });
-
-    it("Should get venues", function() {
-
-      let venues = [{}];
-      VenueService.venues = venues;
-
-      _compileDirective();
-
-      expect(toolbarCtrl.getVenues()).toEqual(venues);
-    });
 });

@@ -21,6 +21,18 @@
           {{vm.invisibleMessage}}
         </md-tooltip>
       </md-button>
+       <md-button ng-if="cardItem.showCardActions && vm.onPause" ng-show="!vm.isPaused" class="md-icon-button" ng-click="vm.onPause({newStatus:false})">
+        <icon>pause_circle_outline</icon> <!-- pause_circle_outline -->
+        <md-tooltip md-direction="bottom">
+          <span translate>Pause this promotion</span>
+        </md-tooltip>
+      </md-button>
+      <md-button ng-if="cardItem.showCardActions && vm.onPause" ng-show="vm.isPaused" class="md-icon-button" ng-click="vm.onPause({newStatus:true})">
+        <icon>play_circle_outline</icon> <!-- visibility_off -->
+        <md-tooltip md-direction="bottom">
+          <span translate>Resume this promotion</span>
+        </md-tooltip>
+      </md-button>
       <md-button ng-if="cardItem.showCardActions && vm.onClone" class="md-icon-button" ng-click="vm.onClone({$event:$event})">
         <icon>content_copy</icon>
         <md-tooltip md-direction="bottom">

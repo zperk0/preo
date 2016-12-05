@@ -1,0 +1,8 @@
+<md-card-content class='user-content-contextual'>
+  <md-input-container class="md-block no-spacer">
+    <div class='user-label'><icon>person</icon>{{contextualMenuCtrl.entity.firstName}} {{contextualMenuCtrl.entity.lastName}}</div>
+    <div class='user-label'><icon>mail</icon>{{contextualMenuCtrl.entity.email}}</div>
+  </md-input-container>
+  <user-role-select ng-model="contextualMenuCtrl.entity.role"></user-role-select>
+</md-card-content>
+

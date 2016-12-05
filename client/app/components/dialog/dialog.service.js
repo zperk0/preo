@@ -67,7 +67,6 @@ export default class DialogService {
     options = options || {};
 
     angular.extend(newScope, options);
-
     return this.$mdDialog.show({
       template:require('./dialog.tpl.html'),
       scope:newScope,

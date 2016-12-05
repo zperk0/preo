@@ -1,0 +1,102 @@
+.venue-opening-hours-view {
+	md-card-title {
+		padding: 24px;
+	}
+
+	md-card-content {
+		padding: 0px 24px 24px 24px;
+	}
+
+	.auto-save {
+		font-size: 13px;
+		height: 24px;
+		display: block !important;
+
+		&.ng-hide {
+			md-icon {
+				visibility: hidden;
+			}
+
+			span {
+				visibility: hidden;
+			}
+		}
+
+		.error {
+			vertical-align: middle;
+
+			span {
+				vertical-align: baseline;
+			}
+		}
+
+		span {
+			vertical-align: middle;
+		}
+
+		md-icon {
+			span {
+				vertical-align: top;
+			}
+		}
+	}
+
+	.main-content-full {
+		flex-flow: row wrap;
+
+		md-card {
+			&.full-card {
+				flex: 1 100%;
+			}
+		}
+	}
+
+	.service-message {
+		font-size: 14px;
+		color: #333333;
+
+		&>span {
+			vertical-align: text-top;
+		}
+
+		a {
+			text-decoration: underline;
+			cursor: pointer;
+			color: #333333;
+			font-size: 14px;
+		}
+	}
+
+	.service-type {
+		padding-bottom: 24px;
+
+		&:last-child {
+			padding-bottom: 0px;
+
+			.opening-hours-list {
+				margin-bottom: 0px;
+			}
+		}
+
+		p {
+			font-size: 16px;
+			color: #424242;
+			margin-bottom: 8px;
+		}
+
+		.service-type-toogle {
+			font-size: 16px;
+			color: rgba(0, 0, 0, 0.5);
+			margin-bottom: 0px;
+
+			.md-label {
+				margin-top: 2px;
+			}
+		}
+
+		.opening-hours-list {
+			margin-top: 14px;
+			margin-bottom: 12px;
+		}
+	}
+}

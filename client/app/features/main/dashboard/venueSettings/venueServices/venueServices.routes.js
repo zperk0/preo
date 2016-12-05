@@ -5,10 +5,11 @@ import controller from './venueServices.controller'
  * @param  $stateProvider
  */
 /* @ngInject */
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.venueSettings.venueServices", {
     url: "/venueServices",
+    requiresPermission:Permissions.VENUE_CREATE,
      views:{
       venueSettingsContent:{
         template: require("./venueServices.tpl.html"),

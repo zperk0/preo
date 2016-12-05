@@ -1,0 +1,14 @@
+<div class="promotion-apply">
+    <md-radio-group class='type' ng-change="onTypeChange()" ng-model="promotion.apply">
+      <md-radio-button  value="ALWAYS" class="md-primary"> {{'Apply automatically at checkout' | translate}}</md-radio-button>
+      <md-radio-button value="CODE" class="md-primary">{{'User enters a promotion code' | translate}}    </md-radio-button>
+    </md-radio-group>
+  <md-input-container ng-if="promotion.apply ==='CODE'" class="md-block">
+    <label translate>Promotion code</label>
+    <input type="text" required name="promotionCode" ng-model="promotion.code" ng-max-length="50" >
+    <div ng-messages="contextualMenuCtrl.contextualForm.promotionCode.$error">
+      <div ng-message="required" translate>This is required.</div>
+      <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.promotionCode.$error.maxlength}">Max length is 50.</div>
+    </div>
+  </md-input-container>
+</div>

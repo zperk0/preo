@@ -60,7 +60,7 @@ describe('Venue Service', function () {
         id: 1
       });
 
-      server.respondWith('GET', '/api/venues?expand=settings,hours,features&adminId=1&roles=admin%2Cowner', [200, {"Content-Type": "application/json"}, JSON.stringify(venues)]);
+      server.respondWith('GET', '/api/venues?expand=settings,hours,features&adminId=1', [200, {"Content-Type": "application/json"}, JSON.stringify(venues)]);
 
       VenueService.fetchUserVenues(user)
         .then(resolve, reject);
@@ -89,7 +89,7 @@ describe('Venue Service', function () {
           expect($rootScope.$broadcast).toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
 
           done();
-        })
+        });
       });
     });
 

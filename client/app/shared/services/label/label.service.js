@@ -86,5 +86,31 @@ export default class LabelService {
     this.TITLE_STRIPE_CONNECTED = gettextCatalog.getString("Connection confirmed");
     this.CONTENT_STRIPE_CONNECTED= gettextCatalog.getString("Your venue was successfully connected to your Stripe account");
 
+    this.TITLE_DELETE_USER = gettextCatalog.getString("Delete user?");
+    this.CONTENT_DELETE_USER= gettextCatalog.getString("This user will no longer be able to access the dashboard. Are you sure?");
+
+    this.SNACK_USER_DELETED= gettextCatalog.getString("User access removed");
+    this.SNACK_USER_DELETED_ERROR= gettextCatalog.getString("User access not removed");
+    this.SNACK_USER_ROLE_UPDATE= gettextCatalog.getString("User access updated");
+    this.SNACK_USER_ROLE_UPDATE_ERROR= gettextCatalog.getString("User access not updated");
+    this.UPDATE_ROLE_BUTTON= gettextCatalog.getString("Update role");
+    this.SEND_INVITE_BUTTON= gettextCatalog.getString("Send invite");
+    this.RESEND_INVITE_BUTTON= gettextCatalog.getString("Resend invite");
+    this.SNACK_USER_INVITE_ERROR= gettextCatalog.getString("Invitation not sent");
+    this.SNACK_USER_INVITE_CONFLICT= gettextCatalog.getString("This user already has an account");
+    this.SNACK_USER_INVITE_SUCCESS= gettextCatalog.getString("Invitation sent");
+
+
+
+    this.TITLE_INACTIVE_PROMOTION = gettextCatalog.getString("Remove validity period?");
+    this.CONTENT_INACTIVE_PROMOTION = gettextCatalog.getString("This promotion hasn't started yet or has ended. If you activate it manually, the start and end dates will be removed.");
+
+    this.TITLE_DELETE_PROMOTION = gettextCatalog.getString("Delete promotion?");
+    this.CONTENT_DELETE_PROMOTION = gettextCatalog.getString("Are you sure you want to permanently delete this promotion?");
+    this.SNACK_PROMOTION_DELETED = gettextCatalog.getString("Promotion deleted");
+    this.SNACK_PROMOTION_DELETED_ERROR = gettextCatalog.getString("Promotion not deleted");
+    this.SNACK_PROMOTION_SAVED = gettextCatalog.getString("Promotion saved");
+    this.SNACK_PROMOTION_SAVED_ERROR = gettextCatalog.getString("Promotion not saved");
+
   }
 }

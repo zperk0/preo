@@ -1,0 +1,15 @@
+.notifications-form{
+  md-card-title, md-card-content{
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .inline-fields{
+    md-input-container:first-child{
+      margin-right:24px;
+    }
+  }
+  .auto-save{
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+}

@@ -5,6 +5,8 @@ msgstr ""
 "Language: nb\n"
 "Content-Type: text/plain; charset=UTF-8"
 
+msgid "(pending)"
+msgstr "(venter)"
 
 msgid "+ VAT"
 msgstr "+ MVA"
@@ -52,6 +54,9 @@ msgstr "Legg til nytt arrangement"
 msgid "Add new group"
 msgstr "Legg til ny gruppe"
 
+msgid "Add new opening hour"
+msgstr "Legg til nye åpningstider"
+
 msgid "Add new outlet"
 msgstr "Legg til nytt utleveringssted"
 
@@ -94,6 +99,9 @@ msgstr "Adresselinje 3"
 msgid "Address not found"
 msgstr "Adresse ikke funnet"
 
+msgid "Administrator"
+msgstr "Administrator"
+
 msgid "Advanced"
 msgstr "Avansert"
 
@@ -102,6 +110,9 @@ msgstr "Etter arrangement start tid"
 
 msgid "All menus"
 msgstr "Alle menyer"
+
+msgid "All your service methods are currently disabled."
+msgstr "Alle er nå deaktivert."
 
 msgid "An error ocurred to change your email, try again later"
 msgstr "Feil ved endring av e-postadresse, prøv igjen senere"
@@ -176,6 +187,9 @@ msgstr "Automatisk godkjenning"
 msgid "Autosave error."
 msgstr "Automatisk lagring feilet."
 
+msgid "Autosave error. Invalid fields"
+msgstr "Feil ved automatisk lagring. Ugyldige verdier"
+
 msgid "Basic"
 msgstr "Generelt"
 
@@ -246,6 +260,9 @@ msgstr ""
 "Klikk på kartet for å tegne inn egendefinert området. Du må koble det første "
 "og det siste punktet til slutt."
 
+msgid "Closed"
+msgstr "Stengt"
+
 msgid "Collection"
 msgstr "Henting"
 
@@ -290,6 +307,9 @@ msgstr "Kunne ikke lagre tilpasset e-post"
 
 msgid "Could not save weborders style"
 msgstr "Kunne ikke lagre"
+
+msgid "Create a slot"
+msgstr "Opprett sted"
 
 msgid "Create new item"
 msgstr "Opprett ny vare"
@@ -347,6 +367,9 @@ msgstr "Slett seksjon?"
 
 msgid "Delete tax group?"
 msgstr "Slette momsgruppe?"
+
+msgid "Delete user?"
+msgstr "Slett bruker?"
 
 msgid "Delivery"
 msgstr "Levering"
@@ -426,6 +449,9 @@ msgstr "Rediger footer"
 msgid "Edit header"
 msgstr "Rediger header"
 
+msgid "Email"
+msgstr "E-post"
+
 msgid "Email Address"
 msgstr "E-postadresse"
 
@@ -455,9 +481,6 @@ msgstr "Feil ved kobling av utleveringssted til leveringsområdet"
 
 msgid "Error deleting outlet"
 msgstr "Feil ved sletting av utleveringssted"
-
-msgid "Error deleting outlet location"
-msgstr "Feil ve sletting av leveringsområde"
 
 msgid "Error loading tax settings"
 msgstr "Feil ved lasting av moms innstillinger"
@@ -513,9 +536,6 @@ msgstr "Utløper:"
 msgid "Failed duplicating outlet location"
 msgstr "Duplisering av leveringsområde feilet"
 
-msgid "Failed to delete the group"
-msgstr "Sletting av gruppen feilet"
-
 msgid "Failed to move outlet location"
 msgstr "Flytting av leveringsområde feilet"
 
@@ -551,6 +571,9 @@ msgstr "FORSTÅTT"
 
 msgid "German"
 msgstr "Tysk"
+
+msgid "Gift Vouchers"
+msgstr "Gavekort"
 
 msgid "Gift vouchers"
 msgstr "Gavekort"
@@ -622,6 +645,15 @@ msgstr "Ugyldig pris."
 msgid "Invalid username and/or password"
 msgstr "Ugyldig brukernavn og/eller passord"
 
+msgid "Invitation not sent"
+msgstr "Invitasjon ikke sendt"
+
+msgid "Invitation sent"
+msgstr "Invitasjon sendt"
+
+msgid "Invite new user"
+msgstr "Inviter ny bruker"
+
 msgid ""
 "It is not possible to select a single location as your outlet configuration."
 msgstr "Det er ikke mulig å velge kun ett område for ditt utleveringssted."
@@ -674,6 +706,9 @@ msgstr "MM"
 msgid "Manage Users"
 msgstr "Administrere brukere"
 
+msgid "Manager"
+msgstr "Leder"
+
 msgid "Mandatory"
 msgstr "Påbudt"
 
@@ -688,6 +723,9 @@ msgstr "Maks lengde er 255."
 
 msgid "Max length is 256."
 msgstr "Maks lengde er 256."
+
+msgid "Max length is 512."
+msgstr "Maks lengde er 512."
 
 msgid "Max value is 1000."
 msgstr "Maks veri er 1000."
@@ -718,6 +756,9 @@ msgstr "Meny navn"
 
 msgid "Menus"
 msgstr "Menyer"
+
+msgid "Message"
+msgstr "Melding"
 
 msgid "Minimum Selection"
 msgstr "Minimum valg"
@@ -782,6 +823,9 @@ msgstr "Norsk"
 msgid "Not connected"
 msgstr "Ikke tilkoblet"
 
+msgid "Notifications"
+msgstr "Notifikasjoner"
+
 msgid "Offline"
 msgstr "Offline"
 
@@ -790,6 +834,9 @@ msgstr "Gammelt passord"
 
 msgid "One off"
 msgstr "En av"
+
+msgid "Open"
+msgstr "Åpen"
 
 msgid "Open phone interactions menu"
 msgstr "Åpne telefon menyen"
@@ -800,6 +847,12 @@ msgstr "Åpne profil menyen"
 msgid "Open {{ name }} interactions menu"
 msgstr "Åpne {{name}} menyen"
 
+msgid "Opening hours"
+msgstr "Åpningstider"
+
+msgid "Operational hours"
+msgstr "Serveringstider"
+
 msgid "Option"
 msgstr "Valg"
 
@@ -808,6 +861,15 @@ msgstr "Valgfritt"
 
 msgid "Order #123456"
 msgstr "Ordre #123456"
+
+msgid "Order rejection"
+msgstr "Avvist bestilling"
+
+msgid "Order screen"
+msgstr "Ordreskjerm"
+
+msgid "Order status"
+msgstr "Ordrestatus"
 
 msgid "Orders"
 msgstr "Ordre"
@@ -902,8 +964,17 @@ msgstr "Gjenta daglig"
 msgid "Repeat weekly"
 msgstr "Gjenta ukentlig"
 
+msgid "Resend invite"
+msgstr "Send invitasjon på nytt"
+
 msgid "Retry"
 msgstr "Prøv på nytt"
+
+msgid "Role"
+msgstr "Rolle"
+
+msgid "Same as opening hours"
+msgstr "Samme som åpningstiden"
 
 msgid "Save"
 msgstr "Lagre"
@@ -950,6 +1021,12 @@ msgstr "Bedriftsinnstillinger lagret"
 msgid "Send confirmation"
 msgstr "Send bekreftelse"
 
+msgid "Send invite"
+msgstr "Send invitasjon"
+
+msgid "Service hours"
+msgstr "Serveringstider"
+
 msgid "Services"
 msgstr "Tjenester"
 
@@ -967,6 +1044,9 @@ msgstr "Instillinger for utleveringssted"
 
 msgid "Settings"
 msgstr "Innstillinger"
+
+msgid "Short Name"
+msgstr "Kortnavn"
 
 msgid "Show delivery zone"
 msgstr "Vis leveringsområde"
@@ -1015,6 +1095,9 @@ msgstr "Spansk"
 
 msgid "Split slot into segments"
 msgstr "Splitt periode til segmenter"
+
+msgid "Staff Member"
+msgstr "Betjening"
 
 msgid "Start date"
 msgstr "Start dato"
@@ -1095,6 +1178,14 @@ msgstr "Dette leveringsområde har allerede et utleveringssted"
 msgid "This slot is being used"
 msgstr "Denne perioden er i bruk"
 
+msgid "This user already has an account"
+msgstr "Denne brukeren har allerede en konto"
+
+msgid ""
+"This user will no longer be able to access the dashboard. Are you sure?"
+msgstr ""
+"Denne brukeren vil heretter ikke få tilgang til dashbordet. Er du sikker?"
+
 msgid ""
 "This will delete all section and item configurations for this menu. Are you "
 "sure?"
@@ -1120,8 +1211,26 @@ msgstr "Poststed"
 msgid "Town/City"
 msgstr "Poststed"
 
+msgid "Update role"
+msgstr "Oppdater rolle"
+
 msgid "Upload specs"
 msgstr "Last opp spesifkasjoner"
+
+msgid "User access not removed"
+msgstr "Brukertilgang ikke fjernet"
+
+msgid "User access not updated"
+msgstr "Brukertilgang ikke oppdatert"
+
+msgid "User access removed"
+msgstr "Brukertilgang fjernet"
+
+msgid "User access updated"
+msgstr "Brukertilgang oppdatert"
+
+msgid "User permissions:"
+msgstr "Brukerrettigheter:"
 
 msgid "Username"
 msgstr "Brukernavn"
@@ -1210,6 +1319,16 @@ msgstr ""
 "sitting"
 
 msgid ""
+"You do not have permission to delete this group, please contact the support "
+"team"
+msgstr "Du har ikke rettigheter til å slette denne gruppen"
+
+msgid ""
+"You do not have permission to delete this outlet, please contact the support "
+"team"
+msgstr "Du har ikke rettigheter til å slette stedet"
+
+msgid ""
 "You do not have the necessary permissions to view this dashboard, please "
 "contact your administrator"
 msgstr ""
@@ -1229,8 +1348,17 @@ msgstr ""
 msgid "You must accept at least one payment method before going live."
 msgstr "Du må aktivere minst en betalingsmetode før du kan gå live."
 
+msgid "You must add opening hours before specifying your service hours."
+msgstr "Du må opprette åpningstider før du legger til serveringstiden."
+
+msgid "You must create at least one collection before you can add events"
+msgstr "Du må opprette minst en samling før du kan legge til event"
+
 msgid "You must have at least one active payment method."
 msgstr "Du må ha minst en aktiv betalingsmetode."
+
+msgid "You must have opening hours set for at least one day"
+msgstr "Du må ha opprettet åpningstider for minst en dag"
 
 msgid "You must select at least one collection slot."
 msgstr "Du må velge minst en periode for henting"
@@ -1297,6 +1425,9 @@ msgstr "min"
 msgid "offline"
 msgstr "offline"
 
+msgid "to activate them"
+msgstr "for å aktivere"
+
 msgid "to try again."
 msgstr "for å prøve igjen."
 
@@ -1305,3 +1436,6 @@ msgstr "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
 
 msgid "{{getBillingDate()}}"
 msgstr "{{getBillingDate()}}"
+
+msgid "{{notificationsFormCtrl.title}}"
+msgstr "{{notificationsFormCtrl.title}}"
