@@ -38,7 +38,6 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.BOOKING);
   }
 
-
   getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
         return +item.id;

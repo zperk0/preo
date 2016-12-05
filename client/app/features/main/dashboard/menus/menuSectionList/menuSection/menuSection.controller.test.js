@@ -160,7 +160,7 @@ describe('menuSection Controller', function () {
 
           $rootScope.$digest();
 
-          expect(Preoday.Section.save).toHaveBeenCalledWith(mockSection);
+          expect(Preoday.Section.save).toHaveBeenCalled();
           expect(CardItemListCtrl.onUpdateItem).toHaveBeenCalledWith(mockSection, jasmine.any(Preoday.Section));
           expect(contextualMenu.hide).toHaveBeenCalled();
           expect(Spinner.hide).toHaveBeenCalled();

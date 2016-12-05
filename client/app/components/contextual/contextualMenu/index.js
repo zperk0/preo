@@ -8,6 +8,7 @@ import service from './contextualMenu.service';
 import directive from './contextualMenu.directive';
 import holderDirective from './contextualMenuHolder.directive';
 
+import menuItemBasic from './components/menuItemBasic';
 import menuItemSize from './components/menuItemSize';
 import modifierItems from './components/modifierItems';
 import modifierSelection from './components/modifierSelection';
@@ -18,6 +19,7 @@ import collectionSlotsSelect from './components/collectionSlotsSelect';
 import eventBasic from './components/eventBasic';
 import eventScheduleForm from './components/eventScheduleForm';
 import taxGroupSelect from './components/taxGroupSelect';
+import menuItemAdvanced from './components/menuItemAdvanced';
 import userRoleSelect from './components/userRoleSelect';
 import promotionComponents from './components/promotionComponents';
 
@@ -31,6 +33,7 @@ import venueCurrency from '../../../components/venueCurrency';
 
 
 export default angular.module("contextualMenu" , [
+	menuItemBasic,
 	menuItemSize,
 	menusSelect,
 	modifierItems,
@@ -40,7 +43,8 @@ export default angular.module("contextualMenu" , [
 	collectionSlotsSelect,
 	eventBasic,
   eventScheduleForm,
-  taxGroupSelect,
+	taxGroupSelect,
+	menuItemAdvanced,
 	userRoleSelect,
 	services,
 	validNumber,

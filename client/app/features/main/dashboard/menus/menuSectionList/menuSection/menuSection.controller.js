@@ -175,7 +175,7 @@
 
       if (!this.section.id){
         this.Spinner.show("section-create");
-        Preoday.Section.save(this.section)
+        Preoday.Section.save(this.section, this.section.getMenu())
         .then((section) => {
 
             this.cardItemList.onUpdateItem(this.section, section);

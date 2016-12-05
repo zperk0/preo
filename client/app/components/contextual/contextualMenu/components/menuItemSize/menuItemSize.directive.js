@@ -8,6 +8,7 @@ export default function menuItemSize(){
     scope:{
       ngModel:"=",
       ngPriceModel:"=",
+      item:"=",
     },
     controllerAs: "menuItemSizeCtrl",
     bindToController: true,

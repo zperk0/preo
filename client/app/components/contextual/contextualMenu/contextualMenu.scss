@@ -68,7 +68,7 @@
     }
   }
 
-  .contextual-menu-event, .contextual-menu-outlet, .contextual-menu-collection-slot, .contextual-menu-event-schedule {
+  .contextual-menu-event, .contextual-menu-outlet, .contextual-menu-collection-slot, .contextual-menu-event-schedule, .menu-item-advanced, .contextual-menu-item {
     .md-errors-spacer {
       display: none;
     }
@@ -215,8 +215,8 @@
   .md-tabs-with-errors {
     &.has-error {
       md-ink-bar {
-        color: $redDefault;
-        background-color: $redDefault;
+        color: $redDefault !important;
+        background-color: $redDefault !important;
       }
     }
 
@@ -229,7 +229,7 @@
 
         &.has-error {
           span {
-            color: $redDefault;
+            color: $redDefault !important;
           }
 
           &+.md-ripple-container {
@@ -260,7 +260,7 @@
         .md-tab-label {
           &.has-error {
             &:after {
-              border-color: $redDefault;
+              border-color: $redDefault !important;
             }
           }
 

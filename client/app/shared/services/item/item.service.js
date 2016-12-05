@@ -236,9 +236,9 @@ export default class ItemService {
     })
   }
 
-  getNewItemBase (venueId) {
+  getNewItemBase (venueId, isVoucher) {
 
-    let newItem = {
+    let newItem = new Preoday.Item({
         $id: -1,
         $show: true,
         $selected: true,
@@ -248,9 +248,17 @@ export default class ItemService {
         visible: 1,
         tags: [],
         images: [],
+        modifiers: [],
         position: 0,
-        venueId: venueId
-    };
+        venueId: venueId,
+
+        voucherType: Preoday.constants.VoucherType.NONE
+    });
+
+    if (isVoucher) {
+      newItem.voucherType = Preoday.constants.VoucherType.EMAIL;
+      newItem.hasMessage = 0;
+    }
 
     return newItem;
   }
@@ -258,6 +266,29 @@ export default class ItemService {
   addItem (item) {
 
     this.data.items && this.data.items.push(item);
+  }
+
+  hasBasicTabErrors (contextualForm, entity) {
+
+    return  contextualForm
+            && contextualForm.$submitted
+            &&
+            (
+              contextualForm.entityName.$invalid
+              || (contextualForm.entityPrice && contextualForm.entityPrice.$invalid)
+              || (contextualForm.sizeForm && contextualForm.sizeForm.$invalid)
+            );
+  }
+
+  hasAdvancedTabErrors (contextualForm, entity) {
+
+    return  contextualForm
+            && contextualForm.$submitted
+            &&
+            (
+              contextualForm.entityVoucherValue.$invalid
+              || (!entity.$voucherTypeEmail && !entity.$voucherTypePost)
+            );
   }
 
   addModifiersToItem (itemId, modifiersToAdd) {
