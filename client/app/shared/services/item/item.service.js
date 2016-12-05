@@ -51,6 +51,10 @@ export default class ItemService {
 
         ((image, deferred) => {
 
+          if (item.isVoucher()) {
+            image.type = Preoday.constants.MenuItemImageType.BG;
+          }
+
           if (!image.$save) {
             return deferred.resolve();
           }
