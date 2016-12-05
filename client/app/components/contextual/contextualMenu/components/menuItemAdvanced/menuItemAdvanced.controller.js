@@ -6,7 +6,14 @@ export default class menuItemAdvancedController {
   changeVoucherPostType () {
 
     if (!this.item.$voucherTypePost) {
-      this.item.$hasMessagePost = false;
+      this.item.$hasMessageAnyVoucher = false;
+    }
+  }
+
+  changeVoucherEmailType () {
+
+    if (!this.item.$voucherTypeEmail) {
+      this.item.$hasMessageOnlyEmail = false;
     }
   }
 

@@ -14,7 +14,7 @@
   <div class="checkbox-row" layout="row" layout-align="start center">
     <md-input-container flex>
         <span class="label-text" translate>Voucher type</span>
-        <md-checkbox aria-label="E-voucher" ng-model="menuItemAdvancedCtrl.item.$voucherTypeEmail">
+        <md-checkbox aria-label="E-voucher" ng-model="menuItemAdvancedCtrl.item.$voucherTypeEmail" ng-change="menuItemAdvancedCtrl.changeVoucherEmailType()">
           {{'E-voucher' | translate}}
         </md-checkbox>
         <md-checkbox aria-label="Post voucher" ng-model="menuItemAdvancedCtrl.item.$voucherTypePost" ng-change="menuItemAdvancedCtrl.changeVoucherPostType()">
