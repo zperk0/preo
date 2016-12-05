@@ -6,6 +6,7 @@ import './menuItem.scss';
 import controller from './menuItem.controller';
 import directive from './menuItem.directive';
 import directiveNew from './menuItemNew.directive';
+import directiveTypeNew from './menuItemTypeNew.directive';
 
 import cardItem from '../../../../../../../components/cardItem';
 import modifierChips from '../../modifierChips';
@@ -20,4 +21,5 @@ export default angular.module("menuItem" , [cardItem, modifierChips, menuSection
   .controller(controller.UID, controller)
   .directive("menuItem", directive)
   .directive("menuItemNew", directiveNew)
+  .directive("menuItemTypeNew", directiveTypeNew)
   .name;

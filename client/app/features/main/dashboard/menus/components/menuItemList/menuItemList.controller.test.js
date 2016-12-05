@@ -55,8 +55,8 @@ describe('itemList Controller', function () {
       MenuItemListCtrl = MenuItemListCtrl();
 
       expect(MenuItemListCtrl.deleteItem).toEqual(jasmine.any(Function));
-      expect(MenuItemListCtrl.showCreateItem).toEqual(jasmine.any(Function));      
-      expect(MenuItemListCtrl.onClone).toEqual(jasmine.any(Function));      
+      expect(MenuItemListCtrl.showCreateItem).toEqual(jasmine.any(Function));
+      expect(MenuItemListCtrl.onClone).toEqual(jasmine.any(Function));
       expect(MenuItemListCtrl.items.length).toBe(0);
     });
 
@@ -110,7 +110,8 @@ describe('itemList Controller', function () {
         id: 1,
         name: 'Test',
         venueId: venueId,
-        modifiers: [modifier]
+        modifiers: [modifier],
+        voucherType: 'NONE'
       });
 
       $stateParams.venueId = venueId;
@@ -159,7 +160,8 @@ describe('itemList Controller', function () {
         id: 1,
         name: 'Test',
         venueId: venueId,
-        modifiers: []
+        modifiers: [],
+        voucherType: 'NONE'
       });
 
       $stateParams.venueId = venueId;

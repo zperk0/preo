@@ -118,6 +118,7 @@ export default class menuItemController {
   createItem() {
 
     this.Spinner.show("item-create")
+
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
         this.cardItemList.onUpdateItem(this.item, createdItem);
@@ -179,12 +180,44 @@ export default class menuItemController {
     })
   }
 
-  contextualMenuSuccess(updates){
+  buildEntityToItem (entity) {
+
+    this.item = entity;
+
+    if (this.item.isVoucher()) {
+      if (entity.$voucherTypeEmail && entity.$voucherTypePost) {
+        this.item.voucherType = Preoday.constants.VoucherType.ALL;
+      } else if (entity.$voucherTypeEmail) {
+        this.item.voucherType = Preoday.constants.VoucherType.EMAIL;
+      } else {
+        this.item.voucherType = Preoday.constants.VoucherType.POST;
+      }
+
+      if (entity.$hasMessageAnyVoucher) {
+        this.item.hasMessage = 1;
+      } else if (entity.$hasMessageOnlyEmail) {
+        this.item.hasMessage = -1;
+      } else {
+        this.item.hasMessage = 0;
+      }
+    }
+  }
+
+  contextualMenuSuccess(entity){
+    if (this.item.isVoucher()) {
+      if (!entity.$voucherTypeEmail && !entity.$voucherTypePost) {
+        this.$rootScope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED);
+        return;
+      }
+    }
+
+    this.buildEntityToItem(entity);
+
     if (!this.item.id){
       this.createItem();
     }
     else {
-      this.updateItem(updates);
+      this.updateItem(entity);
     }
   }
 
@@ -300,6 +333,7 @@ export default class menuItemController {
     this.contextual = contextual;
     this.ItemService = ItemService;
     this.BroadcastEvents = BroadcastEvents;
+    this.$rootScope =$rootScope;
 
     this.newModifiers = [];
     this.modifiers = [];

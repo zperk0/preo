@@ -50,7 +50,7 @@ export default class menuItemSizeController {
   hasNestedModifierFeature () {
 
     return this.FeatureService.hasNestedModifierFeature();
-  }  
+  }
 
   /* @ngInject */
   constructor($scope, $stateParams, $timeout, FeatureService, VenueService) {
@@ -70,7 +70,7 @@ export default class menuItemSizeController {
       }
     }
 
-    if (this.ngModel.$isMultiple && !this.hasNestedModifierFeature()) {
+    if (this.ngModel.$isMultiple && (!this.hasNestedModifierFeature() || this.item.isVoucher())) {
       this.ngModel.$isMultiple = false;
     }
   }

@@ -1,14 +1,14 @@
 <div class='menu-card-list'>
   <card-item-list
-      collection="vm.menus"
-      has-new="true"
+      collection="menuCardCtrl.menus"
       tooltip="{{'Add menu' | translate}}"
-      on-click-new="vm.showCreateMenu($event)"
-      collection-results="vm.menus">
+      collection-results="menuCardCtrl.menus">
         <menu-card-item
-            ng-repeat="menu in vm.menus"
-            ng-click="vm.showMenu(menu)"
+            ng-repeat="menu in menuCardCtrl.menus"
+            ng-click="menuCardCtrl.showMenu(menu)"
             menu="menu">
         </menu-card-item>
   </card-item-list>
+
+  <menu-card-new on-click="menuCardCtrl.showCreateMenu($event, type)"></menu-card-new>
 </div>

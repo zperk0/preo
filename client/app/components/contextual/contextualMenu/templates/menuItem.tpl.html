@@ -1,31 +1,53 @@
-<div>
-  <md-tabs md-dynamic-height md-stretch-tabs="always">
-    <md-tab label="Basics">
-    <md-card-content>
-       <md-input-container class="md-block">
-          <label translate>Item name</label>
-          <input type="text" autocomplete="off"  required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
-          <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
-            <div ng-message="required" translate>This is required.</div>
-          </div>
-      </md-input-container>
-      <md-input-container class="md-block">
-          <label translate>Description</label>
-          <textarea type="text" name="entityDescription" ng-maxlength="1000" ng-model="contextualMenuCtrl.entity.description"></textarea>
-      </md-input-container>
-      <tax-group-select ng-model="contextualMenuCtrl.entity.taxId"></tax-group-select>
-
-    <menu-item-size ng-price-model="contextualMenuCtrl.entity.price" ng-model="contextualMenuCtrl.entity.$size"></menu-item-size>
-    </md-card-content>
+<div class="contextual-menu-item">
+  <md-tabs md-dynamic-height
+          md-stretch-tabs="always"
+          class="md-tabs-with-errors"
+          ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}"
+          md-selected="contextualMenuCtrl.contextualForm.selectedTabIndex">
+    <md-tab>
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.ItemService.hasBasicTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+          <span>{{ 'Basics' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <md-card-content>
+          <menu-item-basic ng-model="contextualMenuCtrl.entity"></menu-item-basic>
+        </md-card-content>
+      </md-tab-body>
     </md-tab>
-    <md-tab label="Image">
-      <image-uploader
-        dimensions="590 x 333px"
-        ng-model="contextualMenuCtrl.entity.images"
-        on-delete="contextualMenuCtrl.params.onDeleteImage(image)"></image-uploader>
+    <md-tab>
+      <md-tab-label>
+        <div class="md-tab-label">
+          <span>{{ 'Image' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <image-uploader
+          dimensions="590 x 333px"
+          ng-model="contextualMenuCtrl.entity.images"
+          on-delete="contextualMenuCtrl.params.onDeleteImage(image)"></image-uploader>
+      </md-tab-body>
     </md-tab>
-    <md-tab label="Labels">
-      <tag-list ng-model="contextualMenuCtrl.entity.tags"></tag-list>
+    <md-tab ng-if="!contextualMenuCtrl.entity.isVoucher()">
+      <md-tab-label>
+        <div class="md-tab-label">
+          <span>{{ 'Labels' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <tag-list ng-model="contextualMenuCtrl.entity.tags"></tag-list>
+      </md-tab-body>
+    </md-tab>
+    <md-tab ng-if="contextualMenuCtrl.entity.isVoucher()">
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.ItemService.hasAdvancedTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+          <span>{{ 'Advanced' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <menu-item-advanced ng-model="contextualMenuCtrl.entity"></menu-item-advanced>
+      </md-tab-body>
     </md-tab>
   </md-tabs>
 </div>

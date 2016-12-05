@@ -104,7 +104,9 @@ export default class promotionController {
     if (newStatus){
         this.DialogService.show(this.LabelService.TITLE_INACTIVE_PROMOTION, this.LabelService.CONTENT_INACTIVE_PROMOTION, [{
         name: this.LabelService.CONFIRMATION
-      }], true).then(()=>{
+      }], {
+        hasCancel: true
+      }).then(()=>{
         this.promotion.startDate = null;
         this.promotion.endDate = null;
         this.promotion.now = true;

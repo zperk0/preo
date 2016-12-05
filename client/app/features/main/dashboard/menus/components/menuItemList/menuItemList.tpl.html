@@ -6,9 +6,6 @@
     <card-item-list
           collection="menuItemListCtrl.items"
           search-filter="menuItemListCtrl.searchText"
-          has-new="menuItemListCtrl.hasNew"
-          tooltip="{{ 'Add item' | translate }}"
-          on-click-new="menuItemListCtrl.showCreateItem()"        
           search-label="{{menuItemListCtrl.hasSearch ? 'items' : ''}}">
           <div class='sort-holder'
             sv-part="menuItemListCtrl.items"
@@ -31,6 +28,8 @@
                <div sv-placeholder></div>
            </div>
     </card-item-list>
-    
+
   </div>
+
+  <menu-item-type-new ng-if="menuItemListCtrl.hasNew" on-click="menuItemListCtrl.showCreateItem($event, type)"></menu-item-type-new>
 </div>

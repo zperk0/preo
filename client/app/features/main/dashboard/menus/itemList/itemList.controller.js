@@ -24,6 +24,8 @@ export default class itemListController {
       .catch((err)=> {
 
         this.handleError();
+
+        this.loaded = true;
         console.log("err",err)
       });
 
@@ -37,12 +39,14 @@ export default class itemListController {
       this.data = data;
 
       this.hideSpinner();
+
+      this.loaded = true;
     })
 
   }
 
   handleError(menu){
-    
+
     this.hideSpinner();
   }
 
@@ -55,10 +59,11 @@ export default class itemListController {
     this.ItemService = ItemService;
     this.contextual = contextual;
     this.Spinner = Spinner;
+    this.loaded = false;
 
     this.showSpinner();
     this.setItems($stateParams.venueId);
 
-    FeatureService.hasFeature(Preoday.constants.Feature.NESTED_MODIFIER);    
+    FeatureService.hasFeature(Preoday.constants.Feature.NESTED_MODIFIER);
   }
 }

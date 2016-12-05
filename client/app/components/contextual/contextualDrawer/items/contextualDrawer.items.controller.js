@@ -11,27 +11,49 @@ export default class contextualDrawerItemController {
       this.$state.go("main.dashboard.menus.itemList")
   }
 
-  constructor($scope, ItemService, $stateParams,$mdSidenav, $state) {
+  checkTypes () {
+
+    let currentMenu = this.MenuService.getCurrentMenu();
+    if (currentMenu) {
+      if (currentMenu.isVoucher()) {
+        this.types = ['ALL', 'EMAIL', 'POST'];
+      } else {
+        this.types = ['NONE'];
+      }
+    } else {
+      this.types = ['NONE'];
+    }
+  }
+
+  constructor($scope, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
     "ngInject";
     this.data = {items:[]};
     this.$mdSidenav = $mdSidenav;
     this.$scope = $scope;
     this.$state = $state;
-    this.cancelledItems = [];
+    this.MenuService = MenuService;
 
-    // $scope.$watch(()=>{
-    //   return ItemService.data;
-    // },(newVal,oldVal)=>{
-    //   if (newVal && newVal.items && newVal.items.length){
-    //     this.data = newVal;
-    //     // {items:newVal.items.map((i, index)=>({id:i.id, item:i}))};
-    //   }
-    // }, true)
+    this.cancelledItems = [];
+    this.types = ['NONE'];
+
 
     ItemService.getItems($stateParams.venueId)
       .then(() => {
 
         this.data = ItemService.data;
       });
+
+    let unRegisterWatch = $scope.$watch(() => {
+
+      return MenuService.getCurrentMenu();
+    }, () => {
+
+      this.checkTypes();
+    });
+
+    $scope.$on('$destroy', () => {
+
+      unRegisterWatch && unRegisterWatch();
+    });
   }
 }

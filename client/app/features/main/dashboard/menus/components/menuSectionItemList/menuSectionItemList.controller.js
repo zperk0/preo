@@ -31,7 +31,8 @@ export default class menuSectionItemListController {
 
   showCreateItem($event, isImport){
 
-    let newItem = this.ItemService.getNewItemBase(this.$stateParams.venueId);
+    let currentMenu = this.section.getMenu();
+    let newItem = this.ItemService.getNewItemBase(this.$stateParams.venueId, currentMenu.isVoucher());
 
     if(!isImport){
       let isCreating = this.items.filter((s, index) => {

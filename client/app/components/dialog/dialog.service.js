@@ -48,7 +48,7 @@ export default class DialogService {
   }
 
   //tittle, content and array of buttons with {text:'confirm', id:1}. id will be returned on promise success
-  show (title, content, buttons, hasCancel=false) {
+  show (title, content, buttons, options) {
 
     function DialogController($scope, $mdDialog) {
       "ngInject";
@@ -63,7 +63,10 @@ export default class DialogService {
     newScope.title=title;
     newScope.content = content;
     newScope.buttons = buttons;
-    newScope.hasCancel = hasCancel
+
+    options = options || {};
+
+    angular.extend(newScope, options);
     return this.$mdDialog.show({
       template:require('./dialog.tpl.html'),
       scope:newScope,
