@@ -26,7 +26,7 @@ export default class CollectionSlotsService {
           reject(err);
         })
         .catch((err)=>{
-          
+
           console.log("Error fetching collectionSlots", err);
           reject(err);
         });
@@ -52,7 +52,7 @@ export default class CollectionSlotsService {
 
     return  contextualForm
             && contextualForm.$submitted
-            && 
+            &&
             (
               contextualForm.entityName.$invalid
               || contextualForm.entityDisplayName.$invalid
@@ -65,11 +65,16 @@ export default class CollectionSlotsService {
 
     return  contextualForm
             && contextualForm.$submitted
-            && 
+            &&
             (
               contextualForm.entityStart.$invalid
               || (entity.$hasSteps && contextualForm.entityStep.$invalid)
             );
+  }
+
+  hasSlots () {
+
+    return this.data.collectionSlots && this.data.collectionSlots.length > 0;
   }
 
   constructor($q, $rootScope, $stateParams) {
