@@ -4,6 +4,7 @@ session_start();
 $cdnRoot = "https://cdn-demo.preoday.com/";
 $ordersapp = "https://orders-demo.preoday.com/";
 $weborders = "https://menus-v2-demo.preoday.com/";
+$webappV1 = "https://app-demo.preoday.com/";
 $analytics = '';
 $sessionId = session_id();
 
@@ -20,6 +21,11 @@ if(isset($_SERVER["PREO_WEBORDERS"]))
 if(isset($_SERVER["PREO_ORDERSAPP"]))
 {
     $ordersapp = $_SERVER["PREO_ORDERSAPP"];
+}
+
+if(isset($_SERVER["PREO_WEBAPP_V1"]))
+{
+    $webappV1 = $_SERVER["PREO_WEBAPP_V1"];
 }
 
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
@@ -43,6 +49,7 @@ $overrides .= "window._PREO_DATA={};";
 $overrides .= "window._PREO_DATA._CDNROOT='$cdnRoot';";
 $overrides .= "window._PREO_DATA._ORDERSAPP='$ordersapp';";
 $overrides .= "window._PREO_DATA._WEBORDERS='$weborders';";
+$overrides .= "window._PREO_DATA._WEBAPP_V1='$webappV1';";
 $overrides .= "window._PREO_DATA._SESSION='$sessionId';";
 $overrides .= "</script>";
 

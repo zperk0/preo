@@ -7,6 +7,7 @@ export default function config($mdThemingProvider, $locationProvider, $mdDateLoc
       _CDNROOT : 'http://cdn-local.preoday.com',
       _WEBORDERS : 'http://localhost:3000/',
       _ORDERSAPP : 'http://local.orders.preoday.com/',
+      _WEBAPP_V1 : 'http://local.app.preoday.com/',
     }
   }
 

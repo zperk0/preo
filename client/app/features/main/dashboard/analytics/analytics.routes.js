@@ -12,7 +12,7 @@ export default function routes($stateProvider, Permissions) {
     url: "/analytics",
     template: require("./analytics.tpl.html"),
     controller: controller.UID,
-    controllerAs: "analytics",
+    controllerAs: "analyticsCtrl",
     requiresPermission: Permissions.ANALYTICS
   });
 }

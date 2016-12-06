@@ -1,0 +1,30 @@
+.analytics-view {
+	.iframe-content {
+		width: 100%;
+	}
+
+	#analytics-iframe {
+		width: 100%;
+		height: 100vh;
+
+		html {
+			&:not(root) {
+				#wrap {
+					& > .contain-to-grid {
+						display: none;
+					}
+
+					#kycWrapper {
+						.faixa-orange {
+							display: none;
+						}
+					}
+
+					footer {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
