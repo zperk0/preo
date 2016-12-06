@@ -13,6 +13,7 @@ export default function imageUploader(){
       dimensions:"@",
       onChange: "&?",
       onDelete: "&?",
+      keepOnDestroy: '=?'
     },
     template: require("./imageUploader.tpl.html"),
     controller: controller.UID,
