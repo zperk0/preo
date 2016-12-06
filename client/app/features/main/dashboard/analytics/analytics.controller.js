@@ -9,10 +9,10 @@ export default class analyticsController {
     window.location.reload();
   }
 
-  constructor($timeout, $window, VenueService, UserService) {
+  constructor($timeout, $window, VenueService, UserService, Spinner) {
     "ngInject";
 
-    this.analyticsUrl = $window._PREO_DATA._WEBAPP_V1 + 'kyc#/dashboard';
+    this.analyticsUrl = $window._PREO_DATA._WEBAPP_V1 + 'kyc?noFooter=true&noHeader=true#/dashboard';
     this.iframeFailed = false;
 
     this.onIframeLoad = (status) => {
