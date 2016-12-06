@@ -9,20 +9,30 @@ export default class analyticsController {
     window.location.reload();
   }
 
-  constructor($timeout, $window, VenueService, UserService, Spinner) {
+  constructor($timeout, $window, VenueService, UserService, Spinner, UtilsService) {
     "ngInject";
+
+    Spinner.show('analytics');
 
     this.analyticsUrl = $window._PREO_DATA._WEBAPP_V1 + 'kyc?noFooter=true&noHeader=true#/dashboard';
     this.iframeFailed = false;
 
     this.onIframeLoad = (status) => {
-
     	if (status) {
     		_iframeSuccessLoaded();
     	} else {
     		_iframeError();
     	}
     }
+
+    UtilsService.onMessage((e) => {
+      if (e.origin.indexOf($window._PREO_DATA._WEBAPP_V1) !== -1) {
+        if (e.data instanceof Object && e.data.loaded === true) {
+            Spinner.hide('analytics');
+        }
+      }
+    });
+
 
     function _iframeSuccessLoaded() {
 
@@ -44,11 +54,14 @@ export default class analyticsController {
     		module: 'kyc',
     		sessionId: window._PREO_DATA._SESSION
     	}, $window._PREO_DATA._WEBAPP_V1);
+
+        Spinner.hide('analytics');
     };
 
     function _iframeError () {
 
     	this.iframeFailed = true;
+        Spinner.hide('analytics');
     }
   }
 }

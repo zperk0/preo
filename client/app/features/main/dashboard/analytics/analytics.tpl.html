@@ -1,8 +1,5 @@
 <div class="analytics-view view-content" flex layout='row' layout-align="stretch stretch">
   <div class="iframe-content" ng-if="!analyticsCtrl.iframeFailed">
-  	<div class="content-loader">
-  		<spinner></spinner>
-  	</div>
   	<iframe id='analytics-iframe' src='{{analyticsCtrl.analyticsUrl | sanitize}}' iframe-load="analyticsCtrl.onIframeLoad(status)"></iframe>
   </div>
 
