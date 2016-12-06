@@ -11,7 +11,17 @@ export default function iframeLoad(){
 
       element.on('load', function() {
 
-        scope.callback && scope.callback();
+        scope.callback && scope.callback({
+          status: true
+        });
+      });
+
+
+      element.on('error', function() {
+
+        scope.callback && scope.callback({
+          status: false
+        });
       });
     }
   }

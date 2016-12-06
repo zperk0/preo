@@ -4,13 +4,27 @@ export default class analyticsController {
     return "analyticsController";
   }
 
+  reload() {
+
+    window.location.reload();
+  }
 
   constructor($timeout, $window, VenueService, UserService) {
     "ngInject";
 
     this.analyticsUrl = $window._PREO_DATA._WEBAPP_V1 + 'kyc#/dashboard';
+    this.iframeFailed = false;
 
-    this.onIframeLoad = () => {
+    this.onIframeLoad = (status) => {
+
+    	if (status) {
+    		_iframeSuccessLoaded();
+    	} else {
+    		_iframeError();
+    	}
+    }
+
+    function _iframeSuccessLoaded() {
 
     	var receiver = document.getElementById('analytics-iframe').contentWindow;
 
@@ -31,5 +45,10 @@ export default class analyticsController {
     		sessionId: window._PREO_DATA._SESSION
     	}, $window._PREO_DATA._WEBAPP_V1);
     };
+
+    function _iframeError () {
+
+    	this.iframeFailed = true;
+    }
   }
 }
