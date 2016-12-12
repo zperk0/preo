@@ -256,6 +256,20 @@ module.exports = function(ENV, options) {
         chunksSortMode: chunkSort,
         inject:true,
         filename:'payments/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['manageUsers','app','vendor'],
+        chunksSortMode: chunkSort,
+        inject:true,
+        filename:'manageUsers/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['notifications','app','vendor'],
+        chunksSortMode: chunkSort,
+        inject:true,
+        filename:'notifications/index.php'
       })
     ]
   }

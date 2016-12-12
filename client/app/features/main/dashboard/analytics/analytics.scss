@@ -1,0 +1,17 @@
+.analytics-view {
+	.iframe-content {
+		width: 100%;
+	}
+
+	.content-loader {
+		text-align: center;
+		width: 100%;
+    position: absolute;
+    z-index: -1;
+	}
+
+	#analytics-iframe {
+		width: 100%;
+		height: 100vh;
+	}
+}
