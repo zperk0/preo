@@ -75,18 +75,18 @@ export default class promotionController {
         });
         
       }, (err)=>{
-        console.log('error on save user-role', err);
+        console.log('error on save promotions', err);
         this.Spinner.hide("save-update-promotion");
-        if (err && err.errorCode && err.errorCode === "EXISTING_OFFER_CODE") {
+        if (err && err.errorCode && err.errorCode === this.APIErrorCode.EXISTING_OFFER_CODE) {
           this.Snack.showError(this.LabelService.SNACK_PROMOTION_EXISTING_CODE);
         } else {
           this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
         }
         
       }). catch((err)=>{
-        console.error('error on save user-role', err);
+        console.error('error on save promotions', err);
         this.Spinner.hide("save-update-promotion");
-        if (err && err.errorCode && err.errorCode === "EXISTING_OFFER_CODE") {
+        if (err && err.errorCode && err.errorCode === this.APIErrorCode.EXISTING_OFFER_CODE) {
           this.Snack.showError(this.LabelService.SNACK_PROMOTION_EXISTING_CODE);
         } else {
           this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
@@ -152,7 +152,7 @@ export default class promotionController {
   }
 
   /* @ngInject */
-  constructor($q,$stateParams, Spinner, Snack, $timeout, DialogService, LabelService, contextual, contextualMenu) {
+  constructor($q,$stateParams, Spinner, Snack, $timeout, DialogService, LabelService, contextual, contextualMenu, APIErrorCode) {
     "ngInject";
     this.$q = $q;
     this.title = "I am a promotion component"
@@ -164,6 +164,7 @@ export default class promotionController {
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'promotion';
+    this.APIErrorCode = APIErrorCode;
     console.log("state params, ", $stateParams.promotionId, this.promotion.id);
     if (this.promotion && !this.promotion.id || $stateParams.promotionId && $stateParams.promotionId == this.promotion.id) {
       this.showContextual();
