@@ -49,7 +49,10 @@ export default class promotionController {
           this.Spinner.hide('saving-promotion')
           console.log("promotion-saved",this.promotion)
           resolve(newPromotion);
-      },reject)
+      },(err)=>{
+        this.Spinner.hide('saving-promotion');
+        reject(err);
+      })
     })
   }
 
@@ -70,14 +73,24 @@ export default class promotionController {
           this.Spinner.hide("save-update-promotion");
           this.Snack.show(this.LabelService.SNACK_PROMOTION_SAVED);
         });
+        
       }, (err)=>{
         console.log('error on save user-role', err);
         this.Spinner.hide("save-update-promotion");
-        this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
+        if (err && err.errorCode && err.errorCode === "EXISTING_OFFER_CODE") {
+          this.Snack.showError(this.LabelService.SNACK_PROMOTION_EXISTING_CODE);
+        } else {
+          this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
+        }
+        
       }). catch((err)=>{
         console.error('error on save user-role', err);
         this.Spinner.hide("save-update-promotion");
-        this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
+        if (err && err.errorCode && err.errorCode === "EXISTING_OFFER_CODE") {
+          this.Snack.showError(this.LabelService.SNACK_PROMOTION_EXISTING_CODE);
+        } else {
+          this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
+        }
       })
     }
   }
