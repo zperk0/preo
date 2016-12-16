@@ -111,6 +111,7 @@ export default class LabelService {
     this.SNACK_PROMOTION_DELETED_ERROR = gettextCatalog.getString("Promotion not deleted");
     this.SNACK_PROMOTION_SAVED = gettextCatalog.getString("Promotion saved");
     this.SNACK_PROMOTION_SAVED_ERROR = gettextCatalog.getString("Promotion not saved");
+    this.SNACK_PROMOTION_EXISTING_CODE = gettextCatalog.getString("This promotion code is already being used.");
 
   }
 }
