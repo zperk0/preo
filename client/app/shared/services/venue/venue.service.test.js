@@ -78,6 +78,7 @@ describe('Venue Service', function () {
         setTimeout(() => {
 
           $rootScope.$digest();
+
           expect(Preoday.Venue.fetch).toHaveBeenCalledWith(jasmine.objectContaining({
             adminId: 1
           }));
@@ -86,7 +87,7 @@ describe('Venue Service', function () {
           expect(VenueService.setCurrentVenue).toHaveBeenCalledWith(jasmine.objectContaining({
             id: venues[0].id
           }));
-          expect($rootScope.$broadcast).toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
+          // expect($rootScope.$broadcast).toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
 
           done();
         });
