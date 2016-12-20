@@ -9,7 +9,6 @@
             name="startDate"
             mdp-max-date="$endDate"
             ng-change="selectStartDate()"
-            required
             mdp-format="DD/MM/YYYY"></mdp-date-picker>
 
       <div ng-messages="contextualForm.startDate.$error" ng-show="contextualForm.$submitted">
@@ -26,8 +25,7 @@
             mdp-placeholder="{{ 'Start time' | translate }}"
             ng-model="$startTime"
             ng-change="selectStartTime()"
-            mdp-format="LT"
-            required></mdp-time-picker>
+            mdp-format="LT"></mdp-time-picker>
 
       <div ng-messages="contextualForm.startTime.$error" ng-show="contextualForm.$submitted">
         <div ng-message="required" translate ng-class="{'activated': contextualForm.startTime.$error.required}">This is required.</div>
@@ -43,7 +41,6 @@
             name="endDate"
             mdp-min-date="$startDate"
             ng-change="selectEndDate()"
-            required
             mdp-format="DD/MM/YYYY"></mdp-date-picker>
 
       <div ng-messages="contextualForm.endDate.$error" ng-show="contextualForm.$submitted">
@@ -59,8 +56,7 @@
           mdp-placeholder="{{ 'End time' | translate }}"
           ng-model="$endTime"
           ng-change="selectEndTime()"
-          mdp-format="LT"
-          required></mdp-time-picker>
+          mdp-format="LT"></mdp-time-picker>
 
     <div ng-messages="contextualForm.endTime.$error" ng-show="contextualForm.$submitted">
       <div ng-message="required" translate ng-class="{'activated': contextualForm.endTime.$error.required}">This is required.</div>
