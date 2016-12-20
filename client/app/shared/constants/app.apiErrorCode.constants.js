@@ -1,0 +1,3 @@
+export default {
+  EXISTING_OFFER_CODE: 'EXISTING_OFFER_CODE'
+};
