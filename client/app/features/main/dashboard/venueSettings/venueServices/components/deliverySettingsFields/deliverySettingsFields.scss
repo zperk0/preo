@@ -1,7 +1,9 @@
 .delivery-settings-fields {
-	md-input-container {
-		&:last-child {
-			margin-bottom: 0px;
-		}
+	.tax-group-select {
+		margin-bottom: 0px;
+	}
+
+	.auto-save {
+		margin-left: 4px;
 	}
 }

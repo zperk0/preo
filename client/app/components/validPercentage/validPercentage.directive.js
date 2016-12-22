@@ -14,7 +14,10 @@ export default function validPercentage($timeout){
       // "0.1234" -> "12.34"
       // "0.12345678" -> 123456.78
       var formatPercentToFloat = function(str) {
-          str = Number(String(str).replace(/[^0-9\.]/g,'') || 0).toFixed(4).replace(".","");
+          str = Number(String(str).replace(/[^0-9\.]/g,'') || 0).toFixed(4);
+
+          return str * 100;
+
           if (str[0] == '0'){
             str = str.slice(1);
           }
@@ -25,6 +28,10 @@ export default function validPercentage($timeout){
           return str;
       }
        var formatFloatToPercent = function(str) {
+
+
+        return Number(str) / 100;
+
         console.log("formatting float to percent" , str)
           if (str){
             if (str[0] !== '0' && str[1] !== '.'){
@@ -47,6 +54,7 @@ export default function validPercentage($timeout){
       // 12.34 - > 0.1234
       // 12123.1234 -> 0.121231234
       var parseNumber = function(val) {
+        console.log('parsing number...', val);
         var newVal  = val;
         var valLength = 0;
         var newVal = String(newVal).replace(/[^0-9\.]/g,'');
@@ -61,6 +69,7 @@ export default function validPercentage($timeout){
 
       }
       var formatNumber = function(val) {
+        console.log('formating number...', val);
           if (val) {
               val = formatPercentToFloat(val);
           }

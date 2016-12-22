@@ -1,93 +1,95 @@
 <div class="delivery-settings-fields">
-	<md-input-container class="md-block no-spacer inline-mins">
-	  <label translate>Delivery Areas</label>
-	  <div class='input-with-label' flex layout="row" layout-align="space-between start">
-	    <div class='input-wrapper' flex="grow">
-	      <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" name="deliveryZone" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryZone" ng-maxlength="500" >
-	    </div>
-	  </div>
-	  <div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryZone.$error">
-	      <div ng-message="maxlength" translate ng-class="{'activated': deliverySettingsFieldsCtrl.deliveryForm.deliveryZone.$error.maxIntegerValue}">Max length is 500.</div>
+	  <div class='form-content' >
+			<md-input-container class="md-block no-spacer inline-mins">
+			  <label translate>Delivery Areas</label>
+			  <div class='input-with-label' flex layout="row" layout-align="space-between start">
+			    <div class='input-wrapper' flex="grow">
+			      <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" name="deliveryZone" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryZone" ng-maxlength="500" >
+			    </div>
+			  </div>
+			  <div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryZone.$error">
+			      <div ng-message="maxlength" translate ng-class="{'activated': deliverySettingsFieldsCtrl.deliveryForm.deliveryZone.$error.maxIntegerValue}">Max length is 500.</div>
 
-		</div>
-	</md-input-container>
-	<md-input-container class="md-block no-spacer inline-price">
-		<div flex layout="row" layout-align="space-between start">
-		  <div class='input-wrapper' flex="grow">
-		    <label translate>In case of customer queries contact</label>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block no-spacer inline-price">
+				<div flex layout="row" layout-align="space-between start">
+				  <div class='input-wrapper' flex="grow">
+				    <label translate>In case of customer queries contact</label>
 
-		    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" name="deliveryPhone" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryPhone" required>
-		  </div>
-		</div>
-		<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryPhone.$error">
-		  <div ng-message="required" translate>This is required.</div>
-		</div>
-	</md-input-container>
-	<md-input-container class="md-block no-spacer inline-price">
-		<div flex layout="row" layout-align="space-between start">
-		  <div class='input-wrapper' flex="grow">
-		    <label translate>Minimum order value</label>
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" name="deliveryPhone" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryPhone" required>
+				  </div>
+				</div>
+				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryPhone.$error">
+				  <div ng-message="required" translate>This is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block no-spacer inline-price">
+				<div flex layout="row" layout-align="space-between start">
+				  <div class='input-wrapper' flex="grow">
+				    <label translate>Minimum order value</label>
 
-		    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price name="deliveryOrderMin" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryOrderMin">
-		  </div>
-		</div>
-		<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryOrderMin.$error">
-		  <div ng-message="invalidPrice" translate>Invalid price.</div>
-		  <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
-		</div>
-	</md-input-container>
-	<md-input-container class="md-block no-spacer inline-price">
-		<div flex layout="row" layout-align="space-between start">
-		  <div class='input-wrapper' flex="grow">
-		    <label translate>Delivery charge</label>
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price name="deliveryOrderMin" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryOrderMin">
+				  </div>
+				</div>
+				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryOrderMin.$error">
+				  <div ng-message="invalidPrice" translate>Invalid price.</div>
+				  <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block no-spacer inline-price">
+				<div flex layout="row" layout-align="space-between start">
+				  <div class='input-wrapper' flex="grow">
+				    <label translate>Delivery charge</label>
 
-		    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price name="amount" ng-model="deliverySettingsFieldsCtrl.deliveryFee.amount">
-		  </div>
-		</div>
-		<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.amount.$error">
-		  <div ng-message="invalidPrice" translate>Invalid price.</div>
-		  <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
-		</div>
-	</md-input-container>
-	<md-input-container class="md-block no-spacer inline-price">
-		<div flex layout="row" layout-align="space-between start">
-		  <div class='input-wrapper' flex="grow">
-		    <label translate>Free delivery for orders above</label>
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price name="amount" ng-model="deliverySettingsFieldsCtrl.deliveryFee.amount">
+				  </div>
+				</div>
+				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.amount.$error">
+				  <div ng-message="invalidPrice" translate>Invalid price.</div>
+				  <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block no-spacer inline-price">
+				<div flex layout="row" layout-align="space-between start">
+				  <div class='input-wrapper' flex="grow">
+				    <label translate>Free delivery for orders above</label>
 
-		    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price name="maxBasket" ng-model="deliverySettingsFieldsCtrl.deliveryFee.maxBasket">
-		  </div>
-		</div>
-		<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.maxBasket.$error">
-		  <div ng-message="invalidPrice" translate>Invalid price.</div>
-		  <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
-		</div>
-	</md-input-container>
-	<md-input-container class="md-block no-spacer inline-price">
-		<div flex layout="row" layout-align="space-between start">
-		  <div class='input-wrapper' flex="grow">
-		    <label translate>Default delivery time <small>(minutes)</small></label>
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price name="maxBasket" ng-model="deliverySettingsFieldsCtrl.deliveryFee.maxBasket">
+				  </div>
+				</div>
+				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.maxBasket.$error">
+				  <div ng-message="invalidPrice" translate>Invalid price.</div>
+				  <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block no-spacer inline-price">
+				<div flex layout="row" layout-align="space-between start">
+				  <div class='input-wrapper' flex="grow">
+				    <label translate>Default delivery time <small>(minutes)</small></label>
 
-		    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-number max-integer-value name="deliveryLeadTime" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryLeadTime">
-		  </div>
-		</div>
-		<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryLeadTime.$error">
-		  <div ng-message="maxIntegerValue" translate>Max value is 2147483646.</div>
-		</div>
-	</md-input-container>
-	<md-input-container class="md-block no-spacer inline-price">
-		<div flex layout="row" layout-align="space-between start">
-		  <div class='input-wrapper' flex="grow">
-		    <label translate>Discount for delivery orders (%)</label>
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-number max-integer-value name="deliveryLeadTime" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryLeadTime">
+				  </div>
+				</div>
+				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryLeadTime.$error">
+				  <div ng-message="maxIntegerValue" translate>Max value is 2147483646.</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block no-spacer inline-price">
+				<div flex layout="row" layout-align="space-between start">
+				  <div class='input-wrapper' flex="grow">
+				    <label translate>Discount for delivery orders (%)</label>
 
-		    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" min=0 max=100  valid-percentage name="deliveryDiscount" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryDiscount">
-		  </div>
-		</div>
-		<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryDiscount.$error">
-		  <div ng-message="maxDecimalValue" translate>Max value is 100%.</div>
-		</div>
-	</md-input-container>
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" min=0 max=100  valid-percentage name="deliveryDiscount" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryDiscount">
+				  </div>
+				</div>
+				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryDiscount.$error">
+				  <div ng-message="maxDecimalValue" translate>Max value is 100%.</div>
+				</div>
+			</md-input-container>
 
-	<tax-group-select ng-model="deliverySettingsFieldsCtrl.deliveryFee.taxId" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()"></tax-group-select>
+			<tax-group-select ng-model="deliverySettingsFieldsCtrl.deliveryFee.taxId" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()"></tax-group-select>
+  	</div>
 
-	<auto-save is-saving="deliverySettingsFieldsCtrl.isSaving" is-error="deliverySettingsFieldsCtrl.isError" retry="deliverySettingsFieldsCtrl.debounceUpdate()"></auto-save>
+		<auto-save is-saving="deliverySettingsFieldsCtrl.isSaving" is-error="deliverySettingsFieldsCtrl.isError" retry="deliverySettingsFieldsCtrl.debounceUpdate()"></auto-save>
 </div>

@@ -57,7 +57,8 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content ng-class="{active:venueServicesCtrl.venue.deliverFlag}" flex layout="column" layout-align="center stretch" >
-          <form name="venueServicesCtrl.deliveryForm"
+
+          <form name="deliverySettingsFieldsCtrl.deliveryForm"
                 layout="column"
                 layout-align="center stretch" >
 
@@ -67,9 +68,7 @@
                        flex translate> Add delivery Zones </md-button>
 
 
-            <div class='form-content' ng-if="!venueServicesCtrl.hasDeliveryZoneFeature">
-              <delivery-settings-fields venue="venueServicesCtrl.venue"></delivery-settings-fields>
-            </div>
+            <delivery-settings-fields venue="venueServicesCtrl.venue" ng-if="!venueServicesCtrl.hasDeliveryZoneFeature"></delivery-settings-fields>
           </form>
         </md-card-content>
       </md-card>
