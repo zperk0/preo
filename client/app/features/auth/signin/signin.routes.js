@@ -12,6 +12,6 @@ export default function routes($stateProvider) {
     url: "/signin",
     template: require("./signin.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm"
+    controllerAs: "signinCtrl"
   });
 }

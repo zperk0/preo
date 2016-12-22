@@ -114,7 +114,10 @@ export default class venueServicesController {
     this.venue = this.VenueService.currentVenue ;
     this.$timeout(()=>{
       console.log(this.venue);
-      this.Spinner.hide("venue-details");
+
+      if (this.hasDeliveryZoneFeature) {
+        this.Spinner.hide("venue-details");
+      }
     })
   }
 
@@ -132,7 +135,6 @@ export default class venueServicesController {
     this.ErrorService = ErrorService;
     this.VenueService = VenueService;
     this.LabelService = LabelService;
-    this.isError = false;
     this.$timeout = $timeout;
     this.hasDeliveryZoneFeature = FeatureService.hasDeliveryZoneFeature()
     this.debounceTimeout = null;

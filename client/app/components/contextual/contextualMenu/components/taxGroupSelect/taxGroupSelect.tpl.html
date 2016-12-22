@@ -1,6 +1,6 @@
 <md-input-container class='tax-group-select'>
   <label translate>Tax group</label>
-  <md-select ng-model="taxGroupSelectCtrl.ngModel">
+  <md-select ng-model="taxGroupSelectCtrl.ngModel" ng-change="taxGroupSelectCtrl.onChange()">
     <md-option value=""><em>None</em></md-option>
     <md-option ng-repeat="taxGroup in taxGroupSelectCtrl.taxes" ng-value="taxGroup.id" >
       {{taxGroup.name}}
