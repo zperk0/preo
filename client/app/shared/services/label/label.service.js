@@ -113,5 +113,7 @@ export default class LabelService {
     this.SNACK_PROMOTION_SAVED_ERROR = gettextCatalog.getString("Promotion not saved");
     this.SNACK_PROMOTION_EXISTING_CODE = gettextCatalog.getString("This promotion code is already being used.");
 
+    this.SNACK_ERROR_FETCHING_FEES = gettextCatalog.getString("An error ocurred to fetch the fees. Try again later.");
+
   }
 }
