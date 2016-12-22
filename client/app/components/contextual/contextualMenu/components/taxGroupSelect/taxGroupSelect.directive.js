@@ -5,7 +5,8 @@ export default function taxGroupSelect(){
   return {
     restrict: 'E',
     scope: {
-      ngModel: '='
+      ngModel: '=',
+      ngChange: '&?'
     },
     template: require("./taxGroupSelect.tpl.html"),
     replace: true,

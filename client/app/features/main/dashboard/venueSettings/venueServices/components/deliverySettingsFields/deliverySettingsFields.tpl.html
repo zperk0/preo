@@ -87,5 +87,7 @@
 		</div>
 	</md-input-container>
 
+	<tax-group-select ng-model="deliverySettingsFieldsCtrl.deliveryFee.taxId" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()"></tax-group-select>
+
 	<auto-save is-saving="deliverySettingsFieldsCtrl.isSaving" is-error="deliverySettingsFieldsCtrl.isError" retry="deliverySettingsFieldsCtrl.debounceUpdate()"></auto-save>
 </div>

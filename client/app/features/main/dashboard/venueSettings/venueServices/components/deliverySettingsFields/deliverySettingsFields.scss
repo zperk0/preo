@@ -1,3 +1,7 @@
 .delivery-settings-fields {
-
+	md-input-container {
+		&:last-child {
+			margin-bottom: 0px;
+		}
+	}
 }
