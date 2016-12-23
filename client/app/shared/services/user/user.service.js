@@ -88,6 +88,21 @@ export default class UserService {
     this.isUserAdmin = false;
   }
 
+  forgotPassword (data) {
+    const deferred = this.$q.defer();
+    const that = this;
+    Preoday.User.forgotPassword(data).then(
+      function () {
+        deferred.resolve();
+      },
+      function (error) {
+        console.log("rejecting forgotPassword", error)
+        deferred.reject(error);
+      }
+    );
+    return deferred.promise;
+  }
+
   constructor($q, $rootScope, BroadcastEvents, UtilsService) {
     "ngInject";
     this.$q = $q;

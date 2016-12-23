@@ -1,22 +1,41 @@
 <div class='signin'>
-  <form name='signin' ng-submit='vm.doSignin()' novalidate>
+  <form name='signinCtrl.signinForm' ng-submit='signinCtrl.doSignin()' novalidate ng-if="!signinCtrl.shouldShowForgotPassword">
     <div class='md-title' translate>Sign in</div>
     <md-input-container class="md-block">
       <label translate>Username</label>
-      <input type="email" autocomplete="email" required name="username" ng-model="vm.user.username">
-      <div ng-messages="signin.username.$error">
+      <input type="email" autocomplete="email" required name="username" ng-model="signinCtrl.user.username">
+      <div ng-messages="signinCtrl.signinForm.username.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
     <md-input-container class="md-block">
       <label translate>Password</label>
-      <input type="password" autocomplete="password" required name="password" ng-model="vm.user.password">
-      <div ng-messages="signin.password.$error">
+      <input type="password" autocomplete="password" required name="password" ng-model="signinCtrl.user.password">
+      <div ng-messages="signinCtrl.signinForm.password.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
-      <md-button  type='submit' class='md-raised md-block' translate>
-          Sign In
-      </md-button>
+    <md-button  type='submit' class='md-raised md-block' translate>
+        Sign In
+    </md-button>
+    <md-button type="button" ng-click="signinCtrl.onForgotPassword()" class="md-primary" translate>Forgot Password?</md-button>
+  </form>
+
+
+  <form novalidate name="signinCtrl.forgotPasswordForm" ng-submit="signinCtrl.doForgotPassword()" ng-if="signinCtrl.shouldShowForgotPassword">
+    <div class='md-title' translate>Forgot Password</div>
+    <md-input-container class="md-block">
+      <label translate>Email address</label>
+      <input type="email" autocomplete="email" name="email" ng-model="signinCtrl.forgotPassword.email" class="grey-input" required />
+
+      <div ng-messages="signinCtrl.forgotPasswordForm.email.$error" ng-if="signinCtrl.forgotPasswordForm.$submitted">
+        <div ng-message="required">{{'This is required.' | translate}}</div>
+        <div ng-message="email">{{'Invalid email address.' | translate}}</div>
+      </div>
+    </md-input-container>
+    <md-button  type='submit' class='md-raised md-block' translate>
+        Reset password
+    </md-button>
+    <md-button type="button" ng-click="signinCtrl.onSignIn()" class="md-primary" translate>Sign in?</md-button>
   </form>
 </div>
