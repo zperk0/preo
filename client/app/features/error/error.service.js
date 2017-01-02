@@ -80,6 +80,7 @@ export default class ErrorService {
     this.INVALID_OPENING_HOURS_CONFIGURATION = {code:'INVALID_OPENING_HOURS_CONFIGURATION', message:gettextCatalog.getString("You must have opening hours set for at least one day"), title: gettextCatalog.getString("Invalid configuration")};
 
     this.SECTION_HAS_MODIFIER = {code:'SECTION_HAS_MODIFIER', message:gettextCatalog.getString("Some modifiers are already applied at the section level. Duplicate modifiers will only appear once to the user. Do you still want to add?"), title: gettextCatalog.getString("Duplicate modifier")};
+    this.SECTION_HAS_MODIFIER_ON_MOVE = {code:'SECTION_HAS_MODIFIER_ON_MOVE', message:gettextCatalog.getString("Some modifiers on this item are already applied at section level. Duplicate modifiers will only appear once to the user."), title: gettextCatalog.getString("Duplicate modifier")};
     this.SECTION_ITEM_HAS_MODIFIER = {code:'SECTION_ITEM_HAS_MODIFIER', message:gettextCatalog.getString("Some modifiers are already applied in some items in this section. Duplicate modifiers will only appear once to the user. Do you still want to add?"), title: gettextCatalog.getString("Duplicate modifier")};
 
   }
