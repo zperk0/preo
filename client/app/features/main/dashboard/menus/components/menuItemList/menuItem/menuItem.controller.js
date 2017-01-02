@@ -358,7 +358,7 @@ export default class menuItemController {
     this.ErrorService =ErrorService;
     this.gettextCatalog =gettextCatalog;
 
-    this.sectionId = this.section && this.section.id || null;
+    this.sectionId = this.section && this.section.id;
 
     this.newModifiers = [];
     this.modifiers = [];

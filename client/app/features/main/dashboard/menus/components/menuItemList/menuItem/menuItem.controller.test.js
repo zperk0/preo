@@ -124,6 +124,7 @@ describe('menuItem Controller', function () {
       expect(contextual.showMenu).toHaveBeenCalledWith(MenuItemCtrl.type, mockItem, jasmine.any(Function), jasmine.any(Function), {
         onDeleteImage: jasmine.any(Function)
       });
+      expect(MenuItemCtrl.section).toBeUndefined();
       expect(MenuItemCtrl.sectionId).toBeUndefined();
       expect(MenuItemCtrl.modifiers.length).toBe(0);
     });
@@ -256,7 +257,10 @@ describe('menuItem Controller', function () {
       spyOn(Preoday.Section, 'removeItems').and.callThrough();
 
       let venueId = 5;
-      let sectionId = 1;
+      let mockSection = new Preoday.Section({
+        id: 1,
+        items: []
+      });
 
       $stateParams.venueId = venueId;
 
@@ -265,12 +269,10 @@ describe('menuItem Controller', function () {
       _startMenuSectionItemListController();
       _startController();
 
-      mockItem.sectionId = sectionId;
+      mockItem.sectionId = mockSection.id;
       mockItem.venueId = venueId;
       mockItem.images = [];
       mockItem.position = 0;
-
-      let mockSection = new Preoday.Section();
 
       ItemService.data.items = [mockItem];
 
@@ -281,7 +283,7 @@ describe('menuItem Controller', function () {
       CardItemListCtrl = CardItemListCtrl();
       MenuSectionItemListCtrl = MenuSectionItemListCtrl();
 
-      MenuItemCtrl.instance.sectionId = sectionId;
+      MenuItemCtrl.instance.section = mockSection;
       MenuItemCtrl.instance.item = mockItem;
       MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
       MenuItemCtrl.instance.menuSectionItemList = MenuSectionItemListCtrl;
@@ -291,8 +293,9 @@ describe('menuItem Controller', function () {
       spyOn(MenuSectionItemListCtrl, 'getPosition').and.callThrough();
 
       expect(CardItemListCtrl.collection.length).toBe(1);
+      expect(MenuItemCtrl.sectionId).toBe(mockSection.id);
 
-      server.respondWith('POST', '/api/sections/' + sectionId + '/items', [200, {"Content-Type": "application/json"}, JSON.stringify(mockItem)]);
+      server.respondWith('POST', '/api/sections/' + mockSection.id + '/items', [200, {"Content-Type": "application/json"}, JSON.stringify(mockItem)]);
 
       MenuItemCtrl.updateItem(mockItem);
 
@@ -302,8 +305,8 @@ describe('menuItem Controller', function () {
 
         expect(MenuSectionItemListCtrl.getPosition).toHaveBeenCalledWith(mockItem);
         expect(Spinner.show).toHaveBeenCalled();
-        expect(ItemService.doSingleEdit).toHaveBeenCalledWith(jasmine.any(Preoday.Item), sectionId, mockItem.position);
-        expect(ItemService.cloneItem).toHaveBeenCalledWith(jasmine.any(Preoday.Item), sectionId, mockItem.position);
+        expect(ItemService.doSingleEdit).toHaveBeenCalledWith(jasmine.any(Preoday.Item), mockSection.id, mockItem.position);
+        expect(ItemService.cloneItem).toHaveBeenCalledWith(jasmine.any(Preoday.Item), mockSection.id, mockItem.position);
 
         server.respond();
 
