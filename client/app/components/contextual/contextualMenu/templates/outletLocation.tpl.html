@@ -9,7 +9,7 @@
       </div>
   </md-input-container>
    <md-input-container class="md-block input-label">
-      <md-checkbox ng-disabled="contextualMenuCtrl.entity.hasChildren() && !contextualMenuCtrl.entity.toSeatFlag && !contextualMenuCtrl.entity.isSeat()" aria-label="{{'Individially numbered locations' | translate}}" ng-model="contextualMenuCtrl.entity.toSeatFlag" ng-true-value="1" ng-false-value="0">
+      <md-checkbox ng-disabled="contextualMenuCtrl.entity.hasChildren() && !contextualMenuCtrl.entity.isSeat()" aria-label="{{'Individially numbered locations' | translate}}" ng-model="contextualMenuCtrl.entity.toSeatFlag" ng-true-value="1" ng-false-value="0">
         {{'Individially numbered locations' | translate}}
       </md-checkbox>
   </md-input-container>
@@ -23,7 +23,7 @@
         <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.maxIntegerValue}">Max value is 1000.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.compareNumber}">Start number need to be smaller than end number</div>
       </div>
-    </md-input-container>   
+    </md-input-container>
     <md-input-container class="md-block md-input-container-with-no-float md-input-container-seat-number" md-no-float>
       <span class="input-label" translate>End number</span>
       <input type="text" aria-label="{{ 'End number' | translate }}" name="seatEnd" ng-model="contextualMenuCtrl.entity.seatEnd" valid-number max-integer-value="1000" compare-number="contextualMenuCtrl.entity.seatStart" bigger required />
@@ -33,6 +33,6 @@
         <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.maxIntegerValue}">Max value is 1000.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.compareNumber}">End number need to be bigger than start number</div>
       </div>
-    </md-input-container>  	
+    </md-input-container>
   </div>
 </md-card-content>
