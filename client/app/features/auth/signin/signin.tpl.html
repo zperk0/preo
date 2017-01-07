@@ -1,4 +1,4 @@
-<div class='signin'>
+<div class='signin' ng-style="{'backgroundImage': 'url(' + signinCtrl.backgroundImage + ')'}">
   <form name='signinCtrl.signinForm' ng-submit='signinCtrl.doSignin()' novalidate ng-if="!signinCtrl.shouldShowForgotPassword">
     <div class='md-title' translate>Sign in</div>
     <md-input-container class="md-block">
