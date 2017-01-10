@@ -26,6 +26,10 @@ export default class menuItemController {
       return this.Snack.showError("One or more modifiers already in item");
     }
 
+    if (this.item.isVoucher()){
+      return this.Snack.showError("You cannot add a modifier to a voucher");
+    }
+
     return this.checkMultipleOccurrences(this.item)
     .then((updateAction)=>{
       if (updateAction === 'all'){

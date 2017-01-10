@@ -8,7 +8,7 @@
       <menu-section-list ng-if="vm.menu.sections" menu="vm.menu" sections="vm.menu.sections">
       </menu-section-list>
     </div>
-    <div class='floating-right-buttons'>
+    <div class='floating-right-buttons' ng-if="!vm.menu.isVoucher()">
       <md-button ng-click="vm.toggleDrawer('modifiers')" class="md-primary md-hue-2" translate>Show modifiers</md-button>
     </div>
     <div class='main-content-right' media-query="min-width: 1024px" sticky offset="134" contextual-menu-holder></div>
