@@ -209,7 +209,7 @@ describe('OutletLocation item Controller', function () {
       });
     });
 
-    it("Should update an outlet location", function(done) {
+    it("Should update an outlet location and reset seat values", function(done) {
 
       _startOutletLocationListController();
       _startController();
@@ -230,6 +230,9 @@ describe('OutletLocation item Controller', function () {
       OutletLocationCtrl = OutletLocationCtrl();
 
       OutletLocationCtrl.outletLocation.name = 'Outlet location test';
+      OutletLocationCtrl.outletLocation.toSeatFlag = 0;
+      OutletLocationCtrl.outletLocation.seatStart = 1;
+      OutletLocationCtrl.outletLocation.seatEnd = 100;
 
       OutletLocationCtrl.contextualMenuSuccess(OutletLocationCtrl.outletLocation);
 
@@ -254,6 +257,8 @@ describe('OutletLocation item Controller', function () {
           expect(OutletLocationCtrl.outlets.length).toBe(0);
           expect(outletLocationdLength).toBe(1);
           expect(rootGroup.outletLocations.length).toBe(1);
+          expect(OutletLocationCtrl.outletLocation.seatStart).toBe(null);
+          expect(OutletLocationCtrl.outletLocation.seatEnd).toBe(null);
 
           done();
         });
