@@ -1,13 +1,22 @@
 <div class='venue-select' layout="row" layout-align="start center">
-  <div layout="row" ng-if="vm.venues && vm.venues.length===1">
+  <div layout="row" ng-if="vm.venues && vm.venues.length===1 && !vm.showSearch()">
     <span flex class='ellipsis'>{{vm.venue.name}}</span>
   </div>
-  <md-menu ng-if="vm.venues && vm.venues.length>1">
+  <md-menu ng-if="(vm.venues && vm.venues.length>1) || vm.showSearch()">
     <md-button layout="row" aria-label="{{'Open phone interactions menu' | translate}}" ng-click="vm.openMenu($mdOpenMenu, $event)" >
       <span flex class='ellipsis' md-menu-origin>{{vm.venue.name}}</span>
       <icon>arrow_drop_down</icon>
     </md-button>
     <md-menu-content width="4">
+      <md-menu-item ng-if="vm.showSearch()">
+      <form ng-submit="vm.doSearch()">
+        <md-input-container>
+          <icon>search</icon>
+          <label translate>Search venue name</label>
+          <input flex name="search" ng-model="vm.searchLabel">
+        </md-input-container>
+      </form>
+      </md-menu-item>
       <md-menu-item ng-repeat="venue in vm.venues">
         <md-button ng-click="vm.switchVenue(venue)">
           <span> {{venue.name}} </span>

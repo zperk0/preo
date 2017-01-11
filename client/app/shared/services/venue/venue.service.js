@@ -10,18 +10,29 @@ export default class VenueService {
     return this.$q((resolve,reject)=>{
       //If i have a list, try to find it in the cached list
       console.log("loading", this.venues, venueId)
-      if (this.venues){
+      debugger;
         let filtered = this.venues.filter((v)=>{
           return v.id===Number(venueId);
         });
         if (filtered.length){
           return resolve(filtered[0]);
         }
-        //Else try to get the venue if i'm super admin, or redirect to 404
-        //this.$state.go("notFound");
-      } else {
-        reject();
-      }
+        if (this.UserService.isAdmin()){
+          Preoday.Venue.getById(venueId)
+            .then((newVenue)=>{
+              debugger;
+              if (newVenue){
+                resolve(newVenue)
+              }
+              else {
+                reject();
+              }
+            },()=>{
+              reject();
+            })
+        } else {
+          reject();
+        }
     });
   }
 
@@ -46,8 +57,9 @@ export default class VenueService {
           let venueId = this.getVenueIdParameter();
 
           if (venueId && Number(venueId) > 0){
-
+            debugger;
             return this.fetchById(Number(venueId)).then((venue)=>{
+              debugger;
               this.setCurrentVenue(venue)
                 .then(() => {
 
@@ -76,7 +88,7 @@ export default class VenueService {
   }
 
   setCurrentVenue (venue) {
-
+    debugger;
     let deferred = this.$q.defer();
 
     this.currentVenue = venue;

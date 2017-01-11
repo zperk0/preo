@@ -63,7 +63,7 @@ export default class mainController {
       if (Number($stateParams.venueId) > 0) {
         VenueService.fetchById($stateParams.venueId).then((venue)=>{
           this.setVenue(null,venue.id)
-        });
+        }, this.handleError.bind(this,"VENUE_NOT_FOUND"));
       } else {
         VenueService.selectVenue();
         this.handleFinishLoading();

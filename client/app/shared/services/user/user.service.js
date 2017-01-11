@@ -35,11 +35,9 @@ export default class UserService {
 
     this.PermissionService.checkSystemPermission()
       .then(() => {
-        this.isUserAdmin = true;
         user.$admin = true;
         this.setCurrentUser(user);
       }, () => {
-        this.isUserAdmin = false;
         user.$admin = false;
         this.setCurrentUser(user);
       });
@@ -79,7 +77,7 @@ export default class UserService {
 
   isAdmin () {
 
-    return this.isUserAdmin;
+    return this.user && this.user.$admin;
   }
 
   restore () {
@@ -87,7 +85,6 @@ export default class UserService {
     Preoday.User.setUser(null);
     this.user = null;
     this.authDeferred = null;
-    this.isUserAdmin = false;
   }
 
   forgotPassword (data) {
@@ -114,7 +111,5 @@ export default class UserService {
     this.PermissionService = PermissionService;
 
     this.authDeferred = null;
-
-    this.isUserAdmin = false;
   }
 }
