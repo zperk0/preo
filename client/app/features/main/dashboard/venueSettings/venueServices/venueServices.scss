@@ -4,7 +4,7 @@
     // width:30%;
     &.delivery{
       form{
-        padding-top:12px;
+        // padding-top:12px;
       }
     }
   }
@@ -34,17 +34,26 @@
         margin-top:6px;
         margin-bottom: 0;
         .md-label{
+          .label-text {
+            font-size: 16px;
+            color: rgba(0,0,0, 0.5);
+          }
+
           span{
-            position: relative;
-            top: 1px;
             margin-right: 10px;
+            vertical-align: middle;
+            display: inline-block;
+
+            span {
+              vertical-align: top;
+            }
           }
         }
       }
     }
 
     &.active{
-      max-height: 300px;
+      max-height: 515px;
     }
   }
 

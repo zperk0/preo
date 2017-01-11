@@ -138,6 +138,19 @@ export default class UtilsService {
     return this.setLocale();
   }
 
+  onMessage (callback) {
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+    eventer(messageEvent,function(e) {
+
+      callback && callback(e);
+
+    },false);
+  }
+
   constructor($q, gettextCatalog, $injector) {
     "ngInject";
 

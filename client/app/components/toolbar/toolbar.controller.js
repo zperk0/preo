@@ -3,31 +3,18 @@ export default class toolbarController {
     return "toolbarController";
   }
 
-  getVenues(){
-    return this.VenueService.venues;
-  }
 
-  getUser(){
-    return this.UserService.user;
-  }
-
-  getStateAsUrl (stateName) {
-
-    return this.hasVenueSet() && this.$state.href(stateName, {
-      venueId: this.VenueService.currentVenue.id
-    });
-  }
-
-  hasVenueSet() {
-
-    return this.VenueService.hasVenueSet();
+  hasVenuePermission(){
+    return this.PermissionService.hasPermission(this.Permissions.VENUE)
   }
 
 
-  constructor(VenueService, UserService, $state) {
+  constructor(VenueService, UserService, $state, PermissionService, Permissions) {
     "ngInject";
     this.UserService=UserService;
     this.VenueService=VenueService;
+    this.PermissionService=PermissionService;
+    this.Permissions=Permissions;
     this.$state=$state;
   }
 }

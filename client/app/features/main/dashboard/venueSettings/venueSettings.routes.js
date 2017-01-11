@@ -6,7 +6,7 @@ import controller from './venueSettings.controller';
  * @param  $stateProvider
  */
 
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.venueSettings", {
     url: "/venueSettings",
@@ -14,6 +14,7 @@ export default function routes($stateProvider) {
     controller: controller.UID,
     controllerAs: "venueSettingsCtrl",
     abstract:true,
+    requiresPermission:Permissions.VENUE_CREATE,
     resolve:{
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
       maps:function(authenticated, MapsService){

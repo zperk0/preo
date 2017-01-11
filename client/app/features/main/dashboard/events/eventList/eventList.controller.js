@@ -24,21 +24,18 @@ export default class eventListViewController {
 
     let eventsName = events.map((event) => {
 
-      return '<span>' + event.name + '</span><br />';
+      return '<span>' + event.name + '</span>';
     }).join('');
 
     let html = eventsName;
 
     if (events.length > 1) {
-      eventsName = events.map((event) => {
-
-        return event.name + '\n';
-      }).join('');
-
       html = [
                 '<div>',
-                '<a ng-href title="' + eventsName + '">' + events.length + ' ' + this.gettextCatalog.getString('events') + '</a>',
-                // '<md-tooltip>' + eventsName + '</md-tooltip>',
+                  '<div class="event-calendar-item">',
+                    '<a ng-href>' + events.length + ' ' + this.gettextCatalog.getString('events') + '</a>',
+                    '<div class="event-tooltip">' + eventsName + '</div>',
+                  '</div>',
                 '</div>'
               ].join('');
     }
@@ -52,9 +49,7 @@ export default class eventListViewController {
 
     if (eventsName) {
       eventsName = this.$compile(eventsName)(this.$scope);
-      // console.log(eventsName[0].innerHTML);
       eventsName = this.$sce.trustAsHtml(eventsName[0].innerHTML);
-      // console.log(eventsName);
     }
 
     this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] = eventsName || "";
@@ -115,7 +110,7 @@ export default class eventListViewController {
   }
 
   /* @ngInject */
-  constructor($scope, $q, $sce, $timeout, $compile, Spinner, EventService, VenueService, OutletLocationService, gettextCatalog, MaterialCalendarData, EventScheduleService) {
+  constructor($scope, $q, $sce, $timeout, $compile, Spinner, EventService, VenueService, OutletLocationService, CollectionSlotsService, gettextCatalog, MaterialCalendarData, EventScheduleService) {
   	'ngInject';
 
     this.$scope = $scope;
@@ -142,13 +137,13 @@ export default class eventListViewController {
 
     MaterialCalendarData.setDayContent = this.setDayContent.bind(this);
 
-    let filter = {
-      'after' : moment().subtract(7, 'days').format('YYYY/M/D')
-    };
 
     $q.all([
-        EventService.getEvents(VenueService.currentVenue.id, filter),
-        OutletLocationService.getOutletLocations()
+        EventService.getLastWeekEvents(VenueService.currentVenue.id),
+        OutletLocationService.getOutletLocations(),
+        CollectionSlotsService.getCollectionSlots({
+          venueId: VenueService.currentVenue.id
+        })
       ]).then((results) => {
 
         this.data = results[0];

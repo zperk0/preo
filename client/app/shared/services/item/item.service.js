@@ -51,6 +51,10 @@ export default class ItemService {
 
         ((image, deferred) => {
 
+          if (item.isVoucher()) {
+            image.type = Preoday.constants.MenuItemImageType.BG;
+          }
+
           if (!image.$save) {
             return deferred.resolve();
           }
@@ -236,9 +240,9 @@ export default class ItemService {
     })
   }
 
-  getNewItemBase (venueId) {
+  getNewItemBase (venueId, isVoucher) {
 
-    let newItem = {
+    let newItem = new Preoday.Item({
         $id: -1,
         $show: true,
         $selected: true,
@@ -248,9 +252,17 @@ export default class ItemService {
         visible: 1,
         tags: [],
         images: [],
+        modifiers: [],
         position: 0,
-        venueId: venueId
-    };
+        venueId: venueId,
+
+        voucherType: Preoday.constants.VoucherType.NONE
+    });
+
+    if (isVoucher) {
+      newItem.voucherType = Preoday.constants.VoucherType.EMAIL;
+      newItem.hasMessage = 0;
+    }
 
     return newItem;
   }
@@ -260,16 +272,74 @@ export default class ItemService {
     this.data.items && this.data.items.push(item);
   }
 
-  constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService) {
+  hasBasicTabErrors (contextualForm, entity) {
+
+    return  contextualForm
+            && contextualForm.$submitted
+            &&
+            (
+              contextualForm.entityName.$invalid
+              || (contextualForm.entityPrice && contextualForm.entityPrice.$invalid)
+              || (contextualForm.sizeForm && contextualForm.sizeForm.$invalid)
+            );
+  }
+
+  hasAdvancedTabErrors (contextualForm, entity) {
+
+    return  contextualForm
+            && contextualForm.$submitted
+            &&
+            (
+              contextualForm.entityVoucherValue.$invalid
+              || (!entity.$voucherTypeEmail && !entity.$voucherTypePost)
+            );
+  }
+
+  addModifiersToItem (itemId, modifiersToAdd) {
+
+    let item = this.getById(itemId);
+
+    if (!item) {
+      return false;
+    }
+
+    item.modifiers.push.apply(item.modifiers, modifiersToAdd);
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_ADD_MODIFIER + item.id, item);
+  }
+
+  removeModifierFromItem (itemId, modifier) {
+
+    let item = this.getById(itemId);
+
+    if (!item) {
+      return false;
+    }
+
+    let index = item.modifiers.map((mod) => {
+
+      return mod.id;
+    }).indexOf(modifier.id);
+
+    if (index !== -1) {
+      item.modifiers.splice(index, 1);
+    }
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_REMOVE_MODIFIER + item.id, item);
+  }
+
+  constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService, BroadcastEvents) {
     "ngInject";
     this.data = {};
     this.$q =$q;
+    this.$rootScope =$rootScope;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.UtilsService = UtilsService;
     this.gettextCatalog = gettextCatalog;
     this.DEBUG = window.DEBUG || $location.search().debug;
     this.ModifierService = ModifierService;
+    this.BroadcastEvents = BroadcastEvents;
 
 
   }

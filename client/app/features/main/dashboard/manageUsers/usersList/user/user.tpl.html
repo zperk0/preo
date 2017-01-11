@@ -1,0 +1,15 @@
+<div class='user'
+      ng-attr-data-id="{{userCtrl.user.id}}">
+  <card-item  has-actions="true"
+              deleted="userCtrl.user.$deleted"
+              selected="userCtrl.user.$selected"
+              class='small'>
+    <card-item-title has-visible="false">
+        <span>{{userCtrl.user.firstName}} {{userCtrl.user.lastName}} </span>
+    </card-item-title>
+
+    <card-item-actions on-delete="userCtrl.onDelete()"
+                       on-edit="userCtrl.onEdit($event)"
+                        ></card-item-actions>
+  </card-item>
+</div>

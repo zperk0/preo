@@ -6,12 +6,13 @@ import controller from './promotions.controller';
  * @param  $stateProvider
  */
 
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.promotions", {
-    url: "/promotions",
+    url: "/promotions/:promotionId?",
     template: require("./promotions.tpl.html"),
     controller: controller.UID,
-    controllerAs: "promotions"
+    requiresPermission:Permissions.OFFERS,
+    controllerAs: "promotionsCtrl"
   });
 }

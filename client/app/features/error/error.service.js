@@ -63,6 +63,8 @@ export default class ErrorService {
     this.EVENT_OUTLET_LOCATION = {code:'EVENT_OUTLET_LOCATION', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
     this.EVENT_OUTLET_LOCATION_NO_CHILDREN = {code:'EVENT_OUTLET_LOCATION_NO_CHILDREN', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
 
+    this.EVENT_NO_SLOTS = {code:'EVENT_NO_SLOTS', message:gettextCatalog.getString("You must create at least one collection before you can add events"), title: 'No collection slots'};
+
     // EVENT OUTLET LOCATION
     this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: gettextCatalog.getString('Sorry')};
     // EVENT OUTLET LOCATION
@@ -74,6 +76,12 @@ export default class ErrorService {
 
     this.VENUE_MODE_PAYMENT = {code:'VENUE_MODE_PAYMENT', message:gettextCatalog.getString("You must accept at least one payment method before going live."), title: gettextCatalog.getString('Sorry')};
     this.VENUE_MODE_FAILED = {code:'VENUE_MODE_FAILED', message:gettextCatalog.getString("Venue mode not changed")};
+
+    this.INVALID_OPENING_HOURS_CONFIGURATION = {code:'INVALID_OPENING_HOURS_CONFIGURATION', message:gettextCatalog.getString("You must have opening hours set for at least one day"), title: gettextCatalog.getString("Invalid configuration")};
+
+    this.SECTION_HAS_MODIFIER = {code:'SECTION_HAS_MODIFIER', message:gettextCatalog.getString("Some modifiers are already applied at the section level. Duplicate modifiers will only appear once to the user. Do you still want to add?"), title: gettextCatalog.getString("Duplicate modifier")};
+    this.SECTION_HAS_MODIFIER_ON_MOVE = {code:'SECTION_HAS_MODIFIER_ON_MOVE', message:gettextCatalog.getString("Some modifiers on this item are already applied at section level. Duplicate modifiers will only appear once to the user."), title: gettextCatalog.getString("Duplicate modifier")};
+    this.SECTION_ITEM_HAS_MODIFIER = {code:'SECTION_ITEM_HAS_MODIFIER', message:gettextCatalog.getString("Some modifiers are already applied in some items in this section. Duplicate modifiers will only appear once to the user. Do you still want to add?"), title: gettextCatalog.getString("Duplicate modifier")};
 
   }
 }

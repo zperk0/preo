@@ -5,7 +5,9 @@ import './venueServices.scss';
 import controller from './venueServices.controller';
 import routes from './venueServices.routes';
 
-export default angular.module("venueServices" , ['ui.router'])
+import deliverySettingsFields from './components/deliverySettingsFields';
+
+export default angular.module("venueServices" , ['ui.router', deliverySettingsFields])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

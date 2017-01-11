@@ -1,0 +1,15 @@
+<div class="promotions-list">
+    <div>
+    <card-item-list
+        has-new="true"
+        tooltip="{{ 'Add promotion' | translate }}"
+        on-click-new="promotionsListCtrl.showCreate()"
+        collection="promotionsListCtrl.promotions">
+        <promotion
+          has-actions="true"
+          ng-repeat="promotion in promotionsListCtrl.promotions | orderBy: id"
+          promotion="promotion">
+        </promotion>
+    </card-item-list>
+  </div>
+</div>

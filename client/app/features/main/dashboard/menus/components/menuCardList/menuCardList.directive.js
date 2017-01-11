@@ -8,7 +8,7 @@ export default function menuCardList(){
     },
     template: require("./menuCardList.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "menuCardCtrl",
     bindToController: true,
     link: (scope, el, attr, ctrl) => {
 

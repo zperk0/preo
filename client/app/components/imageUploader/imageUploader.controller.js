@@ -79,7 +79,8 @@ export default class imageUploaderController {
   }
 
   onDestroy(){
-    if (this.ngModel && this.ngModel.length && this.ngModel[0]){
+
+    if (this.ngModel && this.ngModel.length && this.ngModel[0] && !this.keepOnDestroy){
       delete this.ngModel[0].$save;
       delete this.ngModel[0].$delete;
       delete this.ngModel[0].$image;

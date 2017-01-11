@@ -20,6 +20,8 @@ describe('menuSection Controller', function () {
       $q,
       contextual,
       contextualMenu,
+      ModifierService,
+      DialogService,
       mockSection;
 
     beforeEach(angular.mock.module('webapp'));
@@ -37,6 +39,8 @@ describe('menuSection Controller', function () {
       $q = $injector.get('$q');
       contextual = $injector.get('contextual');
       contextualMenu = $injector.get('contextualMenu');
+      ModifierService = $injector.get('ModifierService');
+      DialogService = $injector.get('DialogService');
 
       $scope = $rootScope.$new();
 
@@ -160,7 +164,7 @@ describe('menuSection Controller', function () {
 
           $rootScope.$digest();
 
-          expect(Preoday.Section.save).toHaveBeenCalledWith(mockSection);
+          expect(Preoday.Section.save).toHaveBeenCalled();
           expect(CardItemListCtrl.onUpdateItem).toHaveBeenCalledWith(mockSection, jasmine.any(Preoday.Section));
           expect(contextualMenu.hide).toHaveBeenCalled();
           expect(Spinner.hide).toHaveBeenCalled();
@@ -228,4 +232,192 @@ describe('menuSection Controller', function () {
         });
       });
     });
+
+    it("Should add a modifier to a section", function(done) {
+
+      spyOn(ModifierService, 'addModifiersToParent').and.callThrough();
+      spyOn(ModifierService, 'isModifiersDuplicated').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(Snack, 'show').and.callThrough();
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockSection();
+      _startCardItemListController();
+      _startController();
+
+      let $modifiers = [new Preoday.Modifier({
+        id: 1,
+        name: 'test',
+        venueId: venueId,
+        items: []
+      })];
+
+      let mockItem = new Preoday.Item({
+        id: 1,
+        name: 'Test item',
+        venueId: venueId,
+        images: [],
+        position: 0,
+        modifiers: [],
+        tags: []
+      });
+
+      ItemService.data.items = [mockItem];
+      ModifierService.data.modifiers = [$modifiers[0]];
+
+      CardItemListCtrl.instance.collection = [mockSection];
+
+      CardItemListCtrl = CardItemListCtrl();
+
+      MenuSectionCtrl.instance.section = mockSection;
+      MenuSectionCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuSectionCtrl = MenuSectionCtrl();
+
+      spyOn(MenuSectionCtrl, 'showSameItemModifierDialog');
+      spyOn(MenuSectionCtrl, 'hasItemWithTheseModifiers');
+
+      expect(CardItemListCtrl.collection.length).toBe(1);
+
+      server.respondWith('POST', '/api/modifiers', [200, {"Content-Type": "application/json"}, JSON.stringify($modifiers[0])]);
+
+      expect(MenuSectionCtrl.section.modifiers.length).toBe(0);
+
+      MenuSectionCtrl.onNewModifierMoved($modifiers);
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalled();
+
+        server.respond();
+
+        setTimeout(() => {
+
+          $rootScope.$digest();
+
+          setTimeout(() => {
+
+            $rootScope.$digest();
+
+            expect(MenuSectionCtrl.section.modifiers.length).toBe(1);
+
+            expect(MenuSectionCtrl.section.modifiers[0].id).toBe($modifiers[0].id);
+
+            expect(Spinner.hide).toHaveBeenCalled();
+            expect(Snack.show).toHaveBeenCalled();
+            expect(MenuSectionCtrl.hasItemWithTheseModifiers).not.toHaveBeenCalled();
+            expect(MenuSectionCtrl.showSameItemModifierDialog).not.toHaveBeenCalled();
+            expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
+            expect(ModifierService.addModifiersToParent).toHaveBeenCalled();
+
+            done();
+          })
+        });
+      });
+    });
+
+    it("Should show existing item's modifier dialog and add the modifier to the section", function(done) {
+
+      spyOn(ModifierService, 'addModifiersToParent').and.callThrough();
+      spyOn(ModifierService, 'isModifiersDuplicated').and.callThrough();
+      spyOn(DialogService, 'show').and.returnValue($q.resolve());
+      spyOn(contextualMenu, 'hide').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(Snack, 'show').and.callThrough();
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockSection();
+      _startCardItemListController();
+      _startController();
+
+      let $modifiers = [new Preoday.Modifier({
+        id: 1,
+        name: 'test',
+        venueId: venueId,
+        items: []
+      })];
+
+
+      let mockItem = new Preoday.Item({
+        id: 1,
+        name: 'Test item',
+        venueId: venueId,
+        images: [],
+        position: 0,
+        modifiers: $modifiers,
+        tags: []
+      });
+
+      mockSection.items = [mockItem];
+
+      ItemService.data.items = [mockItem];
+      ModifierService.data.modifiers = [$modifiers[0]];
+
+      CardItemListCtrl.instance.collection = [mockSection];
+
+      CardItemListCtrl = CardItemListCtrl();
+
+      MenuSectionCtrl.instance.section = mockSection;
+      MenuSectionCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuSectionCtrl = MenuSectionCtrl();
+
+      spyOn(MenuSectionCtrl, 'hasItemWithTheseModifiers').and.callThrough();
+      spyOn(MenuSectionCtrl, 'showSameItemModifierDialog').and.callThrough();
+
+      expect(CardItemListCtrl.collection.length).toBe(1);
+
+      server.respondWith('POST', '/api/modifiers', [200, {"Content-Type": "application/json"}, JSON.stringify($modifiers[0])]);
+
+      expect(MenuSectionCtrl.section.modifiers.length).toBe(0);
+
+      MenuSectionCtrl.onNewModifierMoved($modifiers);
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        setTimeout(() => {
+
+          $rootScope.$digest();
+
+          expect(Spinner.show).toHaveBeenCalled();
+
+          server.respond();
+
+          setTimeout(() => {
+
+            $rootScope.$digest();
+
+            setTimeout(() => {
+
+              $rootScope.$digest();
+
+              expect(MenuSectionCtrl.section.modifiers.length).toBe(1);
+
+              expect(MenuSectionCtrl.section.modifiers[0].id).toBe($modifiers[0].id);
+
+              expect(Spinner.hide).toHaveBeenCalled();
+              expect(Snack.show).toHaveBeenCalled();
+              expect(MenuSectionCtrl.showSameItemModifierDialog).toHaveBeenCalled();
+              expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
+              expect(ModifierService.addModifiersToParent).toHaveBeenCalled();
+
+              done();
+            })
+          });
+        });
+      });
+    });
+
+
 });

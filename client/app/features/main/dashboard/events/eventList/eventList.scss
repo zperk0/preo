@@ -98,5 +98,81 @@
             background: none !important;
         }
     }
+
+    md-content {
+        & > .layout-row  {
+            &:last-child {
+                & > div {
+                    .event-calendar-item {
+                        .event-tooltip {
+                            top: auto;
+                            bottom: 18px;
+                        }
+                    }
+                }
+            }
+
+            & > div {
+                &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+                    .event-calendar-item {
+                        .event-tooltip {
+                            right: auto;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    calendar-md {
+        md-content{
+            & > md-content {
+                &.calendar {
+                    & > :not(:first-child) {
+                        & > * {
+                            :last-child {
+                                overflow: visible;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
+
+  .event-calendar-item {
+    position: relative;
+
+    &:hover {
+        .event-tooltip {
+            transform: scale(1);
+            opacity: .9;
+        }
+    }
+
+    .event-tooltip {
+        position: absolute;
+        right: 0;
+        top: 18px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding: 6px 16px;
+        color: #fff;
+        background-color: rgb(97,97,97);
+        border-radius: 4px;
+        transition: all .4s cubic-bezier(.25,.8,.25,1);
+        transform: scale(0);
+        opacity: 0;
+        // transform: scale(1);
+        // opacity: .9;
+        span {
+            display: block;
+            color: #fff;
+            font-size: 13px;
+        }
+    }
   }
 }

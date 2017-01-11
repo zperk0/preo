@@ -41,7 +41,7 @@
                     </div>
                   </md-input-container>
                     <md-checkbox  ng-change="venueServicesCtrl.debounceUpdate('venue')" ng-true-value="1" ng-false-value="0" aria-label="Auto accept collection orders" ng-model="venueServicesCtrl.venue.autoAcceptCollection">
-                      {{'Auto accept' | translate}} <span><icon>info</icon> <md-tooltip>{{'When selected, all collection orders will be accepted automatically, without the need for you to first approve them manually' | translate}}</md-tooltip></span>
+                      <span class="label-text">{{'Auto accept' | translate}}</span> <span><icon>info</icon> <md-tooltip>{{'When selected, all collection orders will be accepted automatically, without the need for you to first approve them manually' | translate}}</md-tooltip></span>
                     </md-checkbox>
               </div>
               <auto-save is-saving="venueServicesCtrl.isSaving" is-error="venueServicesCtrl.isError" retry="venueServicesCtrl.debounceUpdate()"></auto-save>
@@ -57,8 +57,18 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content ng-class="{active:venueServicesCtrl.venue.deliverFlag}" flex layout="column" layout-align="center stretch" >
-          <form name="venueServicesCtrl.deliveryForm" layout="column" layout-align="center stretch" ng-if="venueServicesCtrl.hasDeliveryZoneFeature">
-            <md-button class='md-raised md-primary' ng-click="venueServicesCtrl.loadDeliveryZones()" flex translate> Add delivery Zones </md-button>
+
+          <form name="deliverySettingsFieldsCtrl.deliveryForm"
+                layout="column"
+                layout-align="center stretch" >
+
+            <md-button class='md-raised md-primary'
+                       ng-click="venueServicesCtrl.loadDeliveryZones()"
+                       ng-if="venueServicesCtrl.hasDeliveryZoneFeature"
+                       flex translate> Add delivery Zones </md-button>
+
+
+            <delivery-settings-fields venue="venueServicesCtrl.venue" ng-if="!venueServicesCtrl.hasDeliveryZoneFeature"></delivery-settings-fields>
           </form>
         </md-card-content>
       </md-card>

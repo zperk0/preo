@@ -1,0 +1,15 @@
+<div class="users-invite-list">
+    <div>
+    <card-item-list
+        has-new="true"
+        tooltip="{{ 'Invite new user' | translate }}"
+        on-click-new="usersInviteListCtrl.showCreate()"
+        collection="usersInviteListCtrl.users">
+        <user-invite
+          has-actions="true"
+          ng-repeat="user in usersInviteListCtrl.users | orderBy: id"
+          user="user">
+        </user-invite>
+    </card-item-list>
+  </div>
+</div>

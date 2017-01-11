@@ -1,0 +1,25 @@
+<div class="promotion-discount-value" layout-align="row">
+  <md-input-container ng-if="promotion.type ==='FIXED'" flex=50>
+    <label translate>Discount Value</label>
+    <input type="text" autocomplete="off" valid-price no-currency="true" required name="discountValue" ng-model="promotion.amount" >
+    <div ng-messages="contextualMenuCtrl.contextualForm.discountValue.$error">
+      <div ng-message="required" translate>This is required.</div>
+      <div ng-message="invalidPrice" translate>Invalid price.</div>
+      <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
+    </div>
+  </md-input-container>
+  <md-input-container ng-if="promotion.type ==='PERCENT'"  flex=50>
+    <label translate>Discount Value</label>
+    <input type="text" autocomplete="off" min=0 max=100  valid-percentage required name="discountValue2" ng-model="promotion.amount" >
+    <div ng-messages="contextualMenuCtrl.contextualForm.discountValue2.$error">
+      <div ng-message="required" translate>This is required.</div>
+      <div ng-message="maxDecimalValue"  translate ng-class="{'activated': contextualMenuCtrl.contextualForm.discountValue2.$error.maxDecimalValue}">Maximum value is 100%</div>
+    </div>
+  </md-input-container>
+  <md-input-container  flex=50>
+    <md-radio-group class='type' ng-change="onTypeChange()" ng-model="promotion.type">
+      <md-radio-button  value="FIXED" class="md-primary"><venue-currency></venue-currency></md-radio-button>
+      <md-radio-button value="PERCENT" class="md-primary"> % </md-radio-button>
+    </md-radio-group>
+  </md-input-container>
+</div>

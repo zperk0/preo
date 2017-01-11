@@ -22,6 +22,7 @@ describe('menuItem Controller', function () {
       $q,
       contextual,
       contextualMenu,
+      DialogService,
       mockItem;
 
     beforeEach(angular.mock.module('webapp'));
@@ -41,6 +42,7 @@ describe('menuItem Controller', function () {
       $q = $injector.get('$q');
       contextual = $injector.get('contextual');
       contextualMenu = $injector.get('contextualMenu');
+      DialogService = $injector.get('DialogService');
 
       $scope = $rootScope.$new();
       $scope.scrollToBottom = () => {};
@@ -82,6 +84,7 @@ describe('menuItem Controller', function () {
       mockItem = new Preoday.Item({
         id: 1,
         name: 'Test item',
+        voucherType: Preoday.constants.VoucherType.NONE,
         modifiers: [],
         tags: []
       });
@@ -124,6 +127,7 @@ describe('menuItem Controller', function () {
       expect(contextual.showMenu).toHaveBeenCalledWith(MenuItemCtrl.type, mockItem, jasmine.any(Function), jasmine.any(Function), {
         onDeleteImage: jasmine.any(Function)
       });
+      expect(MenuItemCtrl.section).toBeUndefined();
       expect(MenuItemCtrl.sectionId).toBeUndefined();
       expect(MenuItemCtrl.modifiers.length).toBe(0);
     });
@@ -256,7 +260,10 @@ describe('menuItem Controller', function () {
       spyOn(Preoday.Section, 'removeItems').and.callThrough();
 
       let venueId = 5;
-      let sectionId = 1;
+      let mockSection = new Preoday.Section({
+        id: 1,
+        items: []
+      });
 
       $stateParams.venueId = venueId;
 
@@ -265,12 +272,10 @@ describe('menuItem Controller', function () {
       _startMenuSectionItemListController();
       _startController();
 
-      mockItem.sectionId = sectionId;
+      mockItem.sectionId = mockSection.id;
       mockItem.venueId = venueId;
       mockItem.images = [];
       mockItem.position = 0;
-
-      let mockSection = new Preoday.Section();
 
       ItemService.data.items = [mockItem];
 
@@ -281,7 +286,7 @@ describe('menuItem Controller', function () {
       CardItemListCtrl = CardItemListCtrl();
       MenuSectionItemListCtrl = MenuSectionItemListCtrl();
 
-      MenuItemCtrl.instance.sectionId = sectionId;
+      MenuItemCtrl.instance.section = mockSection;
       MenuItemCtrl.instance.item = mockItem;
       MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
       MenuItemCtrl.instance.menuSectionItemList = MenuSectionItemListCtrl;
@@ -291,8 +296,9 @@ describe('menuItem Controller', function () {
       spyOn(MenuSectionItemListCtrl, 'getPosition').and.callThrough();
 
       expect(CardItemListCtrl.collection.length).toBe(1);
+      expect(MenuItemCtrl.sectionId).toBe(mockSection.id);
 
-      server.respondWith('POST', '/api/sections/' + sectionId + '/items', [200, {"Content-Type": "application/json"}, JSON.stringify(mockItem)]);
+      server.respondWith('POST', '/api/sections/' + mockSection.id + '/items', [200, {"Content-Type": "application/json"}, JSON.stringify(mockItem)]);
 
       MenuItemCtrl.updateItem(mockItem);
 
@@ -302,8 +308,8 @@ describe('menuItem Controller', function () {
 
         expect(MenuSectionItemListCtrl.getPosition).toHaveBeenCalledWith(mockItem);
         expect(Spinner.show).toHaveBeenCalled();
-        expect(ItemService.doSingleEdit).toHaveBeenCalledWith(jasmine.any(Preoday.Item), sectionId, mockItem.position);
-        expect(ItemService.cloneItem).toHaveBeenCalledWith(jasmine.any(Preoday.Item), sectionId, mockItem.position);
+        expect(ItemService.doSingleEdit).toHaveBeenCalledWith(jasmine.any(Preoday.Item), mockSection.id, mockItem.position);
+        expect(ItemService.cloneItem).toHaveBeenCalledWith(jasmine.any(Preoday.Item), mockSection.id, mockItem.position);
 
         server.respond();
 
@@ -326,12 +332,14 @@ describe('menuItem Controller', function () {
     it("Should add a modifier to an item", function(done) {
 
       spyOn(ItemService, 'checkMultipleOccurrences').and.returnValue($q.resolve('single'));
+      spyOn(ItemService, 'addModifiersToItem').and.callThrough();
       spyOn(ModifierService, 'addCustomModifierToParent').and.callThrough();
       spyOn(ModifierService, 'isModifiersDuplicated').and.callThrough();
       spyOn(contextualMenu, 'hide').and.callThrough();
       spyOn(Spinner, 'show').and.callThrough();
       spyOn(Spinner, 'hide').and.callThrough();
       spyOn(Snack, 'show').and.callThrough();
+      spyOn(Snack, 'showError').and.callThrough();
 
       let venueId = 5;
 
@@ -355,6 +363,7 @@ describe('menuItem Controller', function () {
       let mockSection = new Preoday.Section();
 
       ItemService.data.items = [mockItem];
+      ModifierService.data.modifiers = [$modifiers[0]];
 
       CardItemListCtrl.instance.collection = [mockItem];
       MenuSectionItemListCtrl.instance.items = [mockItem];
@@ -367,6 +376,8 @@ describe('menuItem Controller', function () {
       MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
       MenuItemCtrl.instance.menuSectionItemList = MenuSectionItemListCtrl;
       MenuItemCtrl = MenuItemCtrl();
+
+      spyOn(MenuItemCtrl, 'showSameSectionModifierDialog');
 
       expect(CardItemListCtrl.collection.length).toBe(1);
 
@@ -389,20 +400,294 @@ describe('menuItem Controller', function () {
 
           $rootScope.$digest();
 
-          expect(MenuItemCtrl.modifiers.length).toBe(1);
-          expect(MenuItemCtrl.item.modifiers.length).toBe(1);
+          setTimeout(() => {
 
-          expect(MenuItemCtrl.modifiers[0].id).toBe($modifiers[0].id);
-          expect(MenuItemCtrl.item.modifiers[0].id).toBe($modifiers[0].id);
+            $rootScope.$digest();
 
-          expect(Spinner.hide).toHaveBeenCalled();
-          expect(Snack.show).toHaveBeenCalled();
-          expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
-          expect(ModifierService.addCustomModifierToParent).toHaveBeenCalled();
+            expect(MenuItemCtrl.modifiers.length).toBe(1);
+            expect(MenuItemCtrl.item.modifiers.length).toBe(1);
 
-          done();
+            expect(MenuItemCtrl.modifiers[0].id).toBe($modifiers[0].id);
+            expect(MenuItemCtrl.item.modifiers[0].id).toBe($modifiers[0].id);
+
+            expect(Spinner.hide).toHaveBeenCalled();
+            expect(Snack.show).toHaveBeenCalled();
+            expect(Snack.showError).not.toHaveBeenCalled();
+            expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
+            expect(ModifierService.addCustomModifierToParent).toHaveBeenCalled();
+            expect(ItemService.addModifiersToItem).toHaveBeenCalledWith(mockItem.id, [jasmine.objectContaining({
+              id: $modifiers[0].id
+            })]);
+
+            done();
+          })
         });
       });
+    });
+
+    it("Should add an existing section's modifier to an item", function(done) {
+
+      spyOn(ItemService, 'checkMultipleOccurrences').and.returnValue($q.resolve('all'));
+      spyOn(ItemService, 'addModifiersToItem').and.callThrough();
+      spyOn(ModifierService, 'addCustomModifierToParent').and.callThrough();
+      spyOn(ModifierService, 'isModifiersDuplicated').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(Snack, 'show').and.callThrough();
+      spyOn(DialogService, 'show').and.returnValue($q.resolve());
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockItem();
+      _startCardItemListController();
+      _startMenuSectionItemListController();
+      _startController();
+
+      mockItem.venueId = venueId;
+      mockItem.images = [];
+      mockItem.position = 0;
+
+      let $modifiers = [new Preoday.Modifier({
+        id: 1,
+        name: 'test',
+        venueId: venueId,
+        items: []
+      })];
+      let mockSection = new Preoday.Section({
+        id: 1,
+        modifiers: $modifiers,
+        items: []
+      });
+
+      ItemService.data.items = [mockItem];
+      ModifierService.data.modifiers = [$modifiers[0]];
+
+      CardItemListCtrl.instance.collection = [mockItem];
+      MenuSectionItemListCtrl.instance.items = [mockItem];
+      MenuSectionItemListCtrl.instance.section = [mockSection];
+
+      CardItemListCtrl = CardItemListCtrl();
+      MenuSectionItemListCtrl = MenuSectionItemListCtrl();
+
+      MenuItemCtrl.instance.item = mockItem;
+      MenuItemCtrl.instance.section = mockSection;
+      MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuItemCtrl.instance.menuSectionItemList = MenuSectionItemListCtrl;
+      MenuItemCtrl = MenuItemCtrl();
+
+      spyOn(MenuItemCtrl, 'showSameSectionModifierDialog').and.callThrough();
+
+      expect(CardItemListCtrl.collection.length).toBe(1);
+
+      server.respondWith('POST', '/api/modifiers', [200, {"Content-Type": "application/json"}, JSON.stringify($modifiers[0])]);
+
+      expect(MenuItemCtrl.modifiers.length).toBe(0);
+      expect(MenuItemCtrl.item.modifiers.length).toBe(0);
+
+      MenuItemCtrl.onNewModifierMoved($modifiers);
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        setTimeout(() => {
+
+          $rootScope.$digest();
+
+          expect(Spinner.show).toHaveBeenCalled();
+
+          server.respond();
+
+          setTimeout(() => {
+
+            $rootScope.$digest();
+
+            setTimeout(() => {
+
+              $rootScope.$digest();
+
+              expect(MenuItemCtrl.modifiers.length).toBe(1);
+              expect(MenuItemCtrl.item.modifiers.length).toBe(1);
+
+              expect(MenuItemCtrl.modifiers[0].id).toBe($modifiers[0].id);
+              expect(MenuItemCtrl.item.modifiers[0].id).toBe($modifiers[0].id);
+
+              expect(Spinner.hide).toHaveBeenCalled();
+              expect(Snack.show).toHaveBeenCalled();
+              expect(MenuItemCtrl.showSameSectionModifierDialog).toHaveBeenCalled();
+              expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
+              expect(ModifierService.addCustomModifierToParent).toHaveBeenCalled();
+              expect(ItemService.addModifiersToItem).toHaveBeenCalledWith(mockItem.id, [jasmine.objectContaining({
+                id: $modifiers[0].id
+              })]);
+
+              done();
+            })
+          });
+        })
+      });
+    });
+
+    it("Should cancel move modifier to an item", function(done) {
+
+      spyOn(ItemService, 'checkMultipleOccurrences').and.returnValue($q.resolve('all'));
+      spyOn(ItemService, 'addModifiersToItem').and.callThrough();
+      spyOn(ModifierService, 'addCustomModifierToParent').and.callThrough();
+      spyOn(ModifierService, 'isModifiersDuplicated').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(Snack, 'show').and.callThrough();
+      spyOn(DialogService, 'show').and.returnValue($q.reject());
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockItem();
+      _startCardItemListController();
+      _startMenuSectionItemListController();
+      _startController();
+
+      mockItem.venueId = venueId;
+      mockItem.images = [];
+      mockItem.position = 0;
+
+      let $modifiers = [new Preoday.Modifier({
+        id: 1,
+        name: 'test',
+        venueId: venueId,
+        items: []
+      })];
+      let mockSection = new Preoday.Section({
+        id: 1,
+        modifiers: $modifiers,
+        items: []
+      });
+
+      ItemService.data.items = [mockItem];
+      ModifierService.data.modifiers = [$modifiers[0]];
+
+      CardItemListCtrl.instance.collection = [mockItem];
+      MenuSectionItemListCtrl.instance.items = [mockItem];
+      MenuSectionItemListCtrl.instance.section = [mockSection];
+
+      CardItemListCtrl = CardItemListCtrl();
+      MenuSectionItemListCtrl = MenuSectionItemListCtrl();
+
+      MenuItemCtrl.instance.item = mockItem;
+      MenuItemCtrl.instance.section = mockSection;
+      MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuItemCtrl.instance.menuSectionItemList = MenuSectionItemListCtrl;
+      MenuItemCtrl = MenuItemCtrl();
+
+      spyOn(MenuItemCtrl, 'showSameSectionModifierDialog').and.callThrough();
+
+      expect(CardItemListCtrl.collection.length).toBe(1);
+
+      expect(MenuItemCtrl.modifiers.length).toBe(0);
+      expect(MenuItemCtrl.item.modifiers.length).toBe(0);
+
+      MenuItemCtrl.onNewModifierMoved($modifiers);
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        setTimeout(() => {
+
+          $rootScope.$digest();
+
+          setTimeout(() => {
+
+            $rootScope.$digest();
+
+            expect(MenuItemCtrl.modifiers.length).toBe(0);
+            expect(MenuItemCtrl.item.modifiers.length).toBe(0);
+
+            expect(Spinner.hide).not.toHaveBeenCalled();
+            expect(Snack.show).not.toHaveBeenCalled();
+            expect(MenuItemCtrl.showSameSectionModifierDialog).toHaveBeenCalled();
+            expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
+            expect(ModifierService.addCustomModifierToParent).not.toHaveBeenCalled();
+            expect(ItemService.addModifiersToItem).not.toHaveBeenCalled();
+
+            done();
+          })
+        });
+      });
+    });
+
+    it("Should show error message when add a modifier to a voucher", function(done) {
+
+      spyOn(ItemService, 'checkMultipleOccurrences').and.returnValue($q.resolve('single'));
+      spyOn(ItemService, 'addModifiersToItem').and.callThrough();
+      spyOn(ModifierService, 'addCustomModifierToParent').and.callThrough();
+      spyOn(ModifierService, 'isModifiersDuplicated').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(Snack, 'show').and.callThrough();
+      spyOn(Snack, 'showError').and.callThrough();
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockItem();
+      _startCardItemListController();
+      _startMenuSectionItemListController();
+      _startController();
+
+      mockItem.voucherType = Preoday.constants.VoucherType.ALL;
+      mockItem.venueId = venueId;
+      mockItem.images = [];
+      mockItem.position = 0;
+
+      let $modifiers = [new Preoday.Modifier({
+        id: 1,
+        name: 'test',
+        venueId: venueId,
+        items: []
+      })];
+      let mockSection = new Preoday.Section();
+
+      ItemService.data.items = [mockItem];
+      ModifierService.data.modifiers = [$modifiers[0]];
+
+      CardItemListCtrl.instance.collection = [mockItem];
+      MenuSectionItemListCtrl.instance.items = [mockItem];
+      MenuSectionItemListCtrl.instance.section = [mockSection];
+
+      CardItemListCtrl = CardItemListCtrl();
+      MenuSectionItemListCtrl = MenuSectionItemListCtrl();
+
+      MenuItemCtrl.instance.item = mockItem;
+      MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuItemCtrl.instance.menuSectionItemList = MenuSectionItemListCtrl;
+      MenuItemCtrl = MenuItemCtrl();
+
+      expect(CardItemListCtrl.collection.length).toBe(1);
+
+      expect(MenuItemCtrl.modifiers.length).toBe(0);
+      expect(MenuItemCtrl.item.modifiers.length).toBe(0);
+
+      MenuItemCtrl.onNewModifierMoved($modifiers);
+
+      expect(MenuItemCtrl.modifiers.length).toBe(0);
+      expect(MenuItemCtrl.item.modifiers.length).toBe(0);
+
+      expect(Spinner.hide).not.toHaveBeenCalled();
+      expect(Snack.show).not.toHaveBeenCalled();
+      expect(Snack.showError).toHaveBeenCalledWith('You cannot add a modifier to a voucher');
+      expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
+      expect(ModifierService.addCustomModifierToParent).not.toHaveBeenCalled();
+      expect(ItemService.addModifiersToItem).not.toHaveBeenCalled();
+
+      done();
     });
 
     it("Should remove a modifier from an item", function(done) {

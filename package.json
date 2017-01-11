@@ -1,10 +1,10 @@
 {
-  "name": "webapp",
-  "version": "1.0.0",
+  "name": "webapp-v2",
+  "version": "1.0.6",
   "description": "",
   "scripts": {
     "build-debug": "webpack --bail --type build  --env prod --progress",
-    "build": "rm -rf dist && webpack --bail -p --type build  --env prod --progress && npm run release-v1",
+    "build": "rm -rf dist && webpack --bail -p --type build  --env prod --progress && npm run release-v1 && npm run package",
     "serve": "webpack-dev-server --inline --type serve",
     "serve:dev": "webpack-dev-server --env dev --type serve --inline",
     "serve:prod": "webpack-dev-server --env prod --type serve --inline",
@@ -12,6 +12,7 @@
     "test:live": "karma start --type test --auto-watch --no-single-run",
     "prepublish": "npm run build",
     "release-v1": "node scripts/v1.js",
+    "package": "node scripts/package.js",
     "release": "npm run build && remove-console-logs --io ./dist/*.js",
     "gettext:compile": "angular-gettext-cli --compile --files './locale/*.po' --dest client/app/app.translations.js --format javascript --module gettext",
     "gettext:extract": "angular-gettext-cli --files \"./client/**/*.+(js|html)\" --dest ./locale/en.pot --marker-name i18n"
@@ -19,15 +20,15 @@
   "license": "MIT",
   "dependencies": {
     "accounting": "^0.4.1",
-    "angular": "^1.4.8",
-    "angular-animate": "^1.5.3",
-    "angular-aria": "^1.5.6",
+    "angular": "1.5.8",
+    "angular-animate": "1.5.8",
+    "angular-aria": "1.5.8",
     "angular-gettext": "^2.3.4",
     "angular-gettext-cli": "git+ssh://bitbucket.org/preoday/angular-gettext-cli.git",
     "angular-material": "1.0.9",
     "angular-material-calendar": "^0.2.14",
-    "angular-messages": "^1.5.6",
-    "angular-sanitize": "^1.5.8",
+    "angular-messages": "1.5.8",
+    "angular-sanitize": "1.5.8",
     "angular-scroll": "^1.0.0",
     "angular-sortable-view": "git+ssh://bitbucket.org/preoday/angular-sortable.git",
     "angular-ui-router": "^0.2.15",
@@ -42,7 +43,8 @@
     "tinycolor": "0.0.1"
   },
   "devDependencies": {
-    "angular-mocks": "^1.4.8",
+    "angular-mocks": "1.5.8",
+    "archiver": "^1.2.0",
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.3.15",
     "babel-eslint": "^5.0.0-beta4",
@@ -82,11 +84,11 @@
     "phantomjs-polyfill": "0.0.1",
     "postcss-loader": "^0.7.0",
     "raw-loader": "^0.5.1",
+    "remove-console-logs": "0.0.3",
     "sass-loader": "^3.1.2",
     "sinon": "^1.17.4",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "remove-console-logs": "0.0.3"
+    "webpack-dev-server": "^1.14.0"
   }
 }

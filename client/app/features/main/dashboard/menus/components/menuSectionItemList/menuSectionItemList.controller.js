@@ -31,7 +31,8 @@ export default class menuSectionItemListController {
 
   showCreateItem($event, isImport){
 
-    let newItem = this.ItemService.getNewItemBase(this.$stateParams.venueId);
+    let currentMenu = this.section.getMenu();
+    let newItem = this.ItemService.getNewItemBase(this.$stateParams.venueId, currentMenu.isVoucher());
 
     if(!isImport){
       let isCreating = this.items.filter((s, index) => {
@@ -63,41 +64,62 @@ export default class menuSectionItemListController {
         return;
       }
 
-      let promises = [];
-      this.Spinner.show("item-move");
-      let position = 0;
-      if ($indexTo > 0) {
-        position = $partTo[$indexTo-1].position;
-      } else if ($partTo && $partTo.length) {
-        $partTo[0].position += 1;
+      if ($items.length && $items[0].modifiers && this.section.modifiers && this.section.modifiers.length) {
+        if (this.ModifierService.isModifiersDuplicated($items[0].modifiers, this.section)) {
+          return this.showSectionHasModifierDialog($items, $partFrom, $partTo, $indexFrom, $indexTo);
+        }
       }
 
-      $items.forEach(($item)=>{
-        $item.position = position;
-        let $i = angular.copy($item);
-        //only idd items that are not in the list yet
-        $i.position = position;
-        $i.sectionId = this.section.id;
-        $i.menuId = this.section.menuId;
-        promises.push(this.section.moveItem($i));
-      })
-      this.$q.all(promises).then((items)=>{
-        items.forEach((newItem)=>{
+      return this.moveExternalItem($items, $partFrom, $partTo, $indexFrom, $indexTo);
+  }
 
-          newItem.$show = true;
-          this.cardItemList.onItemCreated(newItem);
-          this.recalculateHeight();
-        });
-        return this.doSimpleSort($partTo);
-      }).then(()=>{
-        this.Snack.show('Items added');
-        this.Spinner.hide("item-move");
-      })
-      .catch((err)=>{
-        console.log("error", err);
-        this.Snack.showError('Error adding item');
-        this.Spinner.hide("item-move");
-      })
+  showSectionHasModifierDialog ($items, $partFrom, $partTo, $indexFrom, $indexTo) {
+
+    this.DialogService.show(this.ErrorService.SECTION_HAS_MODIFIER_ON_MOVE.title, this.ErrorService.SECTION_HAS_MODIFIER_ON_MOVE.message, [{
+        name: this.gettextCatalog.getString('Got it')
+      }]).then(()=>{
+
+        this.moveExternalItem($items, $partFrom, $partTo, $indexFrom, $indexTo);
+      });
+  }
+
+  moveExternalItem ($items, $partFrom, $partTo, $indexFrom, $indexTo) {
+
+    let promises = [];
+    this.Spinner.show("item-move");
+    let position = 0;
+    if ($indexTo > 0) {
+      position = $partTo[$indexTo-1].position;
+    } else if ($partTo && $partTo.length) {
+      $partTo[0].position += 1;
+    }
+
+    $items.forEach(($item)=>{
+      $item.position = position;
+      let $i = angular.copy($item);
+      //only idd items that are not in the list yet
+      $i.position = position;
+      $i.sectionId = this.section.id;
+      $i.menuId = this.section.menuId;
+      promises.push(this.section.moveItem($i));
+    })
+    this.$q.all(promises).then((items)=>{
+      items.forEach((newItem)=>{
+
+        newItem.$show = true;
+        this.cardItemList.onItemCreated(newItem);
+        this.recalculateHeight();
+      });
+      return this.doSimpleSort($partTo);
+    }).then(()=>{
+      this.Snack.show('Items added');
+      this.Spinner.hide("item-move");
+    })
+    .catch((err)=>{
+      console.log("error", err);
+      this.Snack.showError('Error adding item');
+      this.Spinner.hide("item-move");
+    })
   }
 
   onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
@@ -174,7 +196,7 @@ export default class menuSectionItemListController {
       });
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual) {
+  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual, ModifierService, DialogService, ErrorService, gettextCatalog) {
     "ngInject";
 
     this.$scope = $scope;
@@ -186,6 +208,10 @@ export default class menuSectionItemListController {
     this.ItemService = ItemService;
     this.$timeout = $timeout;
     this.contextual = contextual;
+    this.ModifierService = ModifierService;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
+    this.gettextCatalog = gettextCatalog;
 
     this.items.forEach((i)=>i.$show = false);
 

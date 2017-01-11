@@ -17,7 +17,11 @@ export default class UserService {
     this.authDeferred = this.$q.defer();
 
     Preoday.User.auth(data).then((user) => {
-      this.checkAdmin(user);
+      console.log("doing auth", user);
+      if (user){
+        console.log("checking admin")
+        this.checkAdmin(user);
+      }
     }, (error)=>{
       this.authDeferred.reject(error);
 
@@ -82,6 +86,21 @@ export default class UserService {
     this.user = null;
     this.authDeferred = null;
     this.isUserAdmin = false;
+  }
+
+  forgotPassword (data) {
+    const deferred = this.$q.defer();
+    const that = this;
+    Preoday.User.forgotPassword(data).then(
+      function () {
+        deferred.resolve();
+      },
+      function (error) {
+        console.log("rejecting forgotPassword", error)
+        deferred.reject(error);
+      }
+    );
+    return deferred.promise;
   }
 
   constructor($q, $rootScope, BroadcastEvents, UtilsService) {

@@ -3,6 +3,10 @@ export default class taxGroupSelectController {
     return "taxGroupSelectController"
   }
 
+  onChange() {
+
+  	this.ngChange && this.ngChange();
+  }
 
  constructor(TaxesService) {
     "ngInject";

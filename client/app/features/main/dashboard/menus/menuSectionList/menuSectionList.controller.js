@@ -28,12 +28,13 @@ export default class menuSectionListController {
       return;
     }
 
-    let section = {
+    let section = new Preoday.Section({
       menuId:this.menu.id,
       $selected:true,
       visible:1,
+      items: [],
       position: this.sections && this.sections.length ? (this.sections[this.sections.length-1]).position + 1000 : 0
-    };
+    }, this.menu);
 
     this.sections.push(section);
   }

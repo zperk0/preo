@@ -6,7 +6,9 @@ import './promotions.scss';
 import controller from './promotions.controller';
 import routes from './promotions.routes';
 
-angular.module("promotions" , ['ui.router'])
+import promotionsList from './promotionsList'
+
+angular.module("webapp.promotions" , ['ui.router', promotionsList])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

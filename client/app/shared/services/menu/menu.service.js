@@ -20,7 +20,7 @@ export default class MenuService {
 
     this.p = this.$q((resolve, reject)=>{
 
-	    Preoday.Menu.get(data)
+	    Preoday.Menu.getMenusEditor(data)
 	    .then((menus) => {
 
 	    	this.data.menus = menus;
@@ -48,10 +48,22 @@ export default class MenuService {
   	return menu.length && menu[0] || null;
   }
 
+  setCurrentMenu (menu) {
+
+    this.currentMenu = menu;
+  }
+
+  getCurrentMenu () {
+
+    return this.currentMenu;
+  }
+
   constructor($q, $rootScope, $location) {
     "ngInject";
     this.data = {};
     this.$q =$q;
     this.DEBUG = window.DEBUG || $location.search().debug;
+
+    this.currentMenu = null;
   }
 }

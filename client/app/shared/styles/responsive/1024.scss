@@ -34,6 +34,13 @@ html {
       }
   }
 
+  // events schedule form
+  .event-schedule-form {
+    .datepicker-wrapper {
+      width: 140px;
+    }
+  }
+
   .venue-services{
     form  {
       venue-currency {
@@ -42,10 +49,9 @@ html {
     }
   }
 
-  // events schedule form
-  .event-schedule-form {
-    .datepicker-wrapper {
-      width: 140px;
+  .promotion-discount-value {
+    md-input-container {
+      padding: 0px;
     }
   }
 }

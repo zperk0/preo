@@ -1,0 +1,67 @@
+<div class='promotion-dates'>
+<div class='label' translate> Set validity period </div class='label'>
+  <div class='start-wrapper' layout="row" layout-align="start center">
+
+    <div class="datepicker-wrapper date-picker-block">
+      <mdp-date-picker mdp-placeholder="{{ 'Start date' | translate }}"
+            ng-model="$startDate"
+            mdp-open-on-click
+            name="startDate"
+            mdp-max-date="$endDate"
+            ng-change="selectStartDate()"
+            mdp-format="DD/MM/YYYY"></mdp-date-picker>
+
+      <div ng-messages="contextualForm.startDate.$error" ng-show="contextualForm.$submitted">
+        <div ng-message="required" translate ng-class="{'activated': contextualForm.startDate.$error.required}">This is required.</div>
+        <div ng-message="maxDate" translate ng-class="{'activated': contextualForm.startDate.$error.maxdate}">Start date need to be before end date.</div>
+        <div ng-message="format" translate ng-class="{'activated': contextualForm.startDate.$error.valid}">Invalid date.</div>
+      </div>
+    </div>
+
+    <div class="md-block md-block-timepicker">
+      <mdp-time-picker mdp-auto-switch="true"
+            mdp-open-on-click
+            name="startTime"
+            mdp-placeholder="{{ 'Start time' | translate }}"
+            ng-model="$startTime"
+            ng-change="selectStartTime()"
+            mdp-format="LT"></mdp-time-picker>
+
+      <div ng-messages="contextualForm.startTime.$error" ng-show="contextualForm.$submitted">
+        <div ng-message="required" translate ng-class="{'activated': contextualForm.startTime.$error.required}">This is required.</div>
+        <div ng-message="format" translate ng-class="{'activated': contextualForm.startTime.$error.format}">Invalid format.</div>
+      </div>
+    </div>
+  </div>
+  <div class='end-wrapper' layout="row" layout-align="start center">
+    <div class="datepicker-wrapper date-picker-block" >
+      <mdp-date-picker mdp-placeholder="{{ 'End date' | translate }}"
+            ng-model="$endDate"
+            mdp-open-on-click
+            name="endDate"
+            mdp-min-date="$startDate"
+            ng-change="selectEndDate()"
+            mdp-format="DD/MM/YYYY"></mdp-date-picker>
+
+      <div ng-messages="contextualForm.endDate.$error" ng-show="contextualForm.$submitted">
+        <div ng-message="required" translate ng-class="{'activated': contextualForm.endDate.$error.required}">This is required.</div>
+        <div ng-message="minDate" translate ng-class="{'activated': contextualForm.endDate.$error.mindate}">End date need to be after start date.</div>
+        <div ng-message="format" translate ng-class="{'activated': contextualForm.endDate.$error.valid}">Invalid date.</div>
+      </div>
+    </div>
+    <div class="md-block md-block-timepicker">
+    <mdp-time-picker mdp-auto-switch="true"
+          mdp-open-on-click
+          name="endTime"
+          mdp-placeholder="{{ 'End time' | translate }}"
+          ng-model="$endTime"
+          ng-change="selectEndTime()"
+          mdp-format="LT"></mdp-time-picker>
+
+    <div ng-messages="contextualForm.endTime.$error" ng-show="contextualForm.$submitted">
+      <div ng-message="required" translate ng-class="{'activated': contextualForm.endTime.$error.required}">This is required.</div>
+      <div ng-message="format" translate ng-class="{'activated': contextualForm.endTime.$error.format}">Invalid format.</div>
+    </div>
+  </div>
+  </div>
+</div>

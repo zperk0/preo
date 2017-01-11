@@ -3,8 +3,8 @@
       <md-input-container flex>
           <label translate>Option</label>
           <input flex type="text" required name="itemName" ng-model="item.name">
-          <div ng-messages="itemForm.itemName.$error">
-            <div ng-message="required" translate>This is required.</div>
+          <div ng-messages="itemForm.itemName.$error" ng-show="itemForm.itemName.$dirty">
+            <div ng-message="required" translate ng-class="{'activated': itemForm.itemName.$error.required}">This is required.</div>
           </div>
       </md-input-container>
       <md-input-container flex="25">

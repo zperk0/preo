@@ -1,3 +1,10 @@
-<div>
-  promotions
+<div flex class="promotions">
+  <div class='layout-left-right'>
+    <div class='main-content-left'>
+       <promotions-list
+          promotions="promotionsCtrl.promotions">
+       </promotions-list>
+    </div>
+    <div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div>
+  </div>
 </div>

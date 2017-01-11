@@ -1,0 +1,11 @@
+<div class='promotion-payments'>
+   <md-input-container class="md-block">
+      <div class='label' translate> Apply discount to payment methods </div class='label'>
+      <md-checkbox ng-model="isCard" ng-change="onTypeChange()">
+        {{'Card' | translate}}
+      </md-checkbox>
+      <md-checkbox ng-model="isCash" ng-change="onTypeChange()">
+        {{'Cash' | translate}}
+      </md-checkbox>
+    </md-input-container>
+</div>

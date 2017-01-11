@@ -3,13 +3,11 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
   "ngInject";
 
   const notRequiresUser= ['auth.signin','error', 'emailSuccess'];
-  
-  function setupChangeEvent(){}
 
   function redirectSignin(){
     if (notRequiresUser.indexOf($state.current.name) === -1){
       $state.go("auth.signin");
-    }    
+    }
   }
 
   let language = window.localStorage.getItem('preo-webapp-language');
@@ -19,12 +17,12 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
   }
 
   Preoday.Api.headers({
-    'preo-appid': 'weborders'
+    'preo-appid': 'webapp-v2'
   });
 
   $rootScope.previousState = false;
   $rootScope.currentState = false;
   // //Set up the stateChange event only after this first call to prevent multiple redirects to /auth/signup
   UserService.auth()
-   .then(setupChangeEvent,redirectSignin);
+   .then(()=>{},redirectSignin);
 }
