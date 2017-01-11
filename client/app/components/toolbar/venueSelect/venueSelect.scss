@@ -15,11 +15,23 @@ $spanColor: #FAFAFA;
     text-align: left;
 }
 
-
+.searchbox{
+  border-bottom: 1px solid gray;
+  height: 64px;
+  margin-top: -10px;
+  md-input-container{
+    width: 100%;
+  }
+  input{
+    border-bottom: none;
+  }
+}
 .venue-select{
   width:$widthVenueSelect;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
+
+
 
   md-icon{
     position: absolute;

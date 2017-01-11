@@ -10,7 +10,6 @@ export default class VenueService {
     return this.$q((resolve,reject)=>{
       //If i have a list, try to find it in the cached list
       console.log("loading", this.venues, venueId)
-      debugger;
         let filtered = this.venues.filter((v)=>{
           return v.id===Number(venueId);
         });
@@ -20,7 +19,6 @@ export default class VenueService {
         if (this.UserService.isAdmin()){
           Preoday.Venue.getById(venueId)
             .then((newVenue)=>{
-              debugger;
               if (newVenue){
                 resolve(newVenue)
               }
@@ -57,9 +55,7 @@ export default class VenueService {
           let venueId = this.getVenueIdParameter();
 
           if (venueId && Number(venueId) > 0){
-            debugger;
             return this.fetchById(Number(venueId)).then((venue)=>{
-              debugger;
               this.setCurrentVenue(venue)
                 .then(() => {
 
@@ -88,7 +84,6 @@ export default class VenueService {
   }
 
   setCurrentVenue (venue) {
-    debugger;
     let deferred = this.$q.defer();
 
     this.currentVenue = venue;

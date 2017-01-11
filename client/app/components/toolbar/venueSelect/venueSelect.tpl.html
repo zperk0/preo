@@ -7,8 +7,8 @@
       <span flex class='ellipsis' md-menu-origin>{{vm.venue.name}}</span>
       <icon>arrow_drop_down</icon>
     </md-button>
-    <md-menu-content width="4">
-      <md-menu-item ng-if="vm.showSearch()">
+    <md-menu-content width="6">
+      <md-menu-item ng-if="vm.showSearch()" class="searchbox">
       <form ng-submit="vm.doSearch()">
         <md-input-container>
           <icon>search</icon>
@@ -17,7 +17,12 @@
         </md-input-container>
       </form>
       </md-menu-item>
-      <md-menu-item ng-repeat="venue in vm.venues">
+      <md-menu-item ng-repeat="venue in vm.venues" ng-if="vm.showSearch()">
+        <md-button ng-click="vm.switchVenue(venue)">
+          <span>{{venue.id}} - {{venue.name}} </span>
+        </md-button>
+      </md-menu-item>
+      <md-menu-item ng-repeat="venue in vm.venues" ng-if="!vm.showSearch()">
         <md-button ng-click="vm.switchVenue(venue)">
           <span> {{venue.name}} </span>
         </md-button>
