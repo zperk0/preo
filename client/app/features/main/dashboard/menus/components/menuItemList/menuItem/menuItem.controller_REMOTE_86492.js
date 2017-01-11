@@ -5,35 +5,7 @@ export default class menuItemController {
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
 
-    //item has modifier?
-    if (this.ModifierService.isModifiersDuplicated($modifiers, this.item)){
-      return this.Snack.showError("One or more modifiers already in item");
-    }
-
-    if (this.section && this.section.modifiers && this.section.modifiers.length) {
-      if (this.ModifierService.isModifiersDuplicated($modifiers, this.section)){
-        return this.showSameSectionModifierDialog($modifiers);
-      }
-    }
-
-    return this.doAddModifier($modifiers);
-  }
-
-  showSameSectionModifierDialog ($modifiers) {
-
-    this.DialogService.show(this.ErrorService.SECTION_HAS_MODIFIER.title, this.ErrorService.SECTION_HAS_MODIFIER.message, [{
-        name: this.gettextCatalog.getString('Add Modifier')
-      }], {
-        hasCancel: true
-      }).then(() => {
-
-        this.doAddModifier($modifiers);
-      });
-  }
-
-  doAddModifier ($modifiers) {
-
-    function _doAdd(newItem = this.item){
+    function _doAddModifier(newItem = this.item){
       this.Spinner.show("moving-item-modifiers");
       let promise = this.ModifierService.addCustomModifierToParent($modifiers, newItem, this.modifiers);
 
@@ -49,6 +21,11 @@ export default class menuItemController {
       })
     }
 
+    //item has modifier?
+    if (this.ModifierService.isModifiersDuplicated($modifiers, this.item)){
+      return this.Snack.showError("One or more modifiers already in item");
+    }
+
     if (this.item.isVoucher()){
       return this.Snack.showError("You cannot add a modifier to a voucher");
     }
@@ -56,11 +33,11 @@ export default class menuItemController {
     return this.checkMultipleOccurrences(this.item)
     .then((updateAction)=>{
       if (updateAction === 'all'){
-        return _doAdd.call(this);
+        return _doAddModifier.call(this);
       } else {
         let clonePosition = this.menuSectionItemList.getPosition(this.item);
         return this.ItemService.doSingleEdit(this.item, this.sectionId, clonePosition)
-          .then(_doAdd.bind(this))
+          .then(_doAddModifier.bind(this))
           .then((newItem)=>{
             this.cardItemList.onUpdateItem(this.item, newItem);
             if (this.onItemCreated){
@@ -74,6 +51,8 @@ export default class menuItemController {
        console.log("error", err);
         this.Snack.showError("Error adding modifiers to item");
     })
+
+
   }
 
   onClone ($event){
@@ -343,7 +322,7 @@ export default class menuItemController {
     });
   }
 
-  constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService, ErrorService, gettextCatalog) {
+  constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService) {
     "ngInject";
     this.$q =$q;
     this.$scope =$scope;
@@ -359,10 +338,6 @@ export default class menuItemController {
     this.ItemService = ItemService;
     this.BroadcastEvents = BroadcastEvents;
     this.$rootScope =$rootScope;
-    this.ErrorService =ErrorService;
-    this.gettextCatalog =gettextCatalog;
-
-    this.sectionId = this.section && this.section.id;
 
     this.newModifiers = [];
     this.modifiers = [];
