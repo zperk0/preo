@@ -23,7 +23,7 @@
                  item="item"
                  ng-attr-data-id="{{item.id}}"
                  sv-element="item"
-                 section-id="menuSectionItemListCtrl.section && menuSectionItemListCtrl.section.id"
+                 section="menuSectionItemListCtrl.section"
                  on-item-created="menuSectionItemListCtrl.onItemCreated(item)"
                  on-item-updated="menuSectionItemListCtrl.onItemUpdated(item)"
                  on-item-deleted="menuSectionItemListCtrl.onItemDeleted(item)"
@@ -32,7 +32,7 @@
                <div sv-placeholder></div>
            </div>
     </card-item-list>
-    
+
   </div>
   <menu-item-new ng-if="menuSectionItemListCtrl.hasNew" section="menuSectionItemListCtrl.section" on-click="menuSectionItemListCtrl.showCreateItem($event,isImport)"></menu-item-new>
 </div>

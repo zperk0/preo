@@ -8,6 +8,29 @@
       return this.Snack.showError("One or more modifiers already in section");
     }
 
+    if (this.items && this.items.length) {
+      if (this.hasItemWithTheseModifiers($modifiers)) {
+        return this.showSameItemModifierDialog($modifiers);
+      }
+    }
+
+    return this.doAddModifier($modifiers);
+  }
+
+  showSameItemModifierDialog ($modifiers) {
+
+    this.DialogService.show(this.ErrorService.SECTION_ITEM_HAS_MODIFIER.title, this.ErrorService.SECTION_ITEM_HAS_MODIFIER.message, [{
+        name: this.gettextCatalog.getString('Add Modifier')
+      }], {
+        hasCancel: true
+      }).then(() => {
+
+        this.doAddModifier($modifiers);
+      });
+  }
+
+  doAddModifier ($modifiers) {
+
     this.Spinner.show("moving-section-modifiers");
     let promises = this.ModifierService.addModifiersToParent($modifiers, this.section);
 
@@ -19,6 +42,14 @@
     .then(()=>{
       this.Spinner.hide("moving-section-modifiers");
     })
+  }
+
+  hasItemWithTheseModifiers ($modifiers) {
+
+    return this.items.filter((item) => {
+
+      return this.ModifierService.isModifiersDuplicated($modifiers, item);
+    }).length > 0;
   }
 
   isItemDuplicated(items){
@@ -209,7 +240,7 @@
     });
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService) {
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService, ErrorService, gettextCatalog) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
@@ -222,6 +253,9 @@
     this.LabelService = LabelService;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
+    this.ErrorService = ErrorService;
+    this.gettextCatalog = gettextCatalog;
+
     this.type = 'menuSection'; //type for contextual menu
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
