@@ -6,7 +6,7 @@ export default function menuItem($timeout){
     restrict: 'E',
     scope: {
       item:"=",
-      sectionId:"=?",
+      section:"=?",
       hasActions: '=?',
       onItemCreated:"&?",
       onItemDeleted:"&?",

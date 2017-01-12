@@ -111,11 +111,11 @@ export default class venueServicesController {
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue ;
+    this.venue = this.VenueService.currentVenue;
     this.$timeout(()=>{
       console.log(this.venue);
 
-      if (this.hasDeliveryZoneFeature) {
+      if (this.hasDeliveryZoneFeature || this.venue.isEvent()) {
         this.Spinner.hide("venue-details");
       }
     })
