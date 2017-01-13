@@ -22,12 +22,33 @@ export default class venueSelectController {
     });
   }
 
+  showSearch(){
+    return this.UserService.isAdmin();
+  }
 
-  constructor($rootScope, BroadcastEvents, $timeout, VenueService, $stateParams, $state) {
+  doSearch(){
+    this.Spinner.show('venue-search');
+    Preoday.Venue.search(this.searchLabel)
+    .then((result)=>{
+      if (result && result.length){
+        this.venues = result
+      }
+    },()=>{
+      // pass
+    }).then(()=>{
+      this.Spinner.hide('venue-search')
+    })
+  }
+
+
+  constructor($rootScope, BroadcastEvents, $timeout, VenueService, UserService, $stateParams, $state, Spinner) {
     "ngInject";
     this.$timeout = $timeout;
     this.VenueService = VenueService;
     this.$state = $state;
+    this.UserService = UserService;
+    this.Spinner = Spinner;
+
     $rootScope.$on(BroadcastEvents._ON_FETCH_VENUES,(event,venues)=>{
       this.setVenue();
     });

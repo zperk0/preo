@@ -24,7 +24,6 @@ export default class mainController {
   handleFinishLoading(){
     console.log("handle finish loading")
     this.loadPermissions();
-
   }
 
   loadPermissions(){
@@ -46,12 +45,11 @@ export default class mainController {
   }
 
 
-  constructor($rootScope, $stateParams, $state, $timeout, Permissions, PermissionService, ErrorService, BroadcastEvents, UserService, VenueService, Spinner) {
+  constructor($rootScope, $stateParams, $state, $timeout, Permissions,  ErrorService, BroadcastEvents, UserService, VenueService, Spinner) {
     "ngInject";
     this.VenueService=VenueService;
     this.ErrorService = ErrorService;
     this.$state = $state;
-    this.PermissionService = PermissionService;
     this.Permissions = Permissions;
     this.$rootScope = $rootScope;
     this.Spinner = Spinner;
@@ -65,7 +63,7 @@ export default class mainController {
       if (Number($stateParams.venueId) > 0) {
         VenueService.fetchById($stateParams.venueId).then((venue)=>{
           this.setVenue(null,venue.id)
-        });
+        }, this.handleError.bind(this,"VENUE_NOT_FOUND"));
       } else {
         VenueService.selectVenue();
         this.handleFinishLoading();

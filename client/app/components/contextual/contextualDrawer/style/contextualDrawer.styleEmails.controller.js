@@ -49,7 +49,6 @@ export default class contextualDrawerStyleController {
         this.Spinner.show("venue-image-delete");
         let img = this.StyleService.imagesModel[image.type];
         img.delete().then(()=>{
-          debugger;
           this.StyleService.imagesModel[image.type] = new Preoday.VenueImage({type:image.type});
           this.StyleService.imagesModel.$images[key]= [];
           this.originalModel.images[image.type] = new Preoday.VenueImage({type:image.type});

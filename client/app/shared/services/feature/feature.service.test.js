@@ -64,7 +64,7 @@ describe('Feature Service', function () {
       spyOn(FeatureService, 'getLocalFeature').and.callThrough();
       spyOn(UserService, 'isAdmin').and.callThrough();
 
-      UserService.isUserAdmin = true;
+      UserService.user = {$admin:true}
 
       let hasOutletFeature = FeatureService.hasOutletFeature();
 

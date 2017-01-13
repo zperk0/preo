@@ -106,7 +106,6 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
           console.log("coords", coords);
           shape.setPaths(coords);
            if (deliveryZone.editable){
-            // debugger;
               google.maps.event.addListener(shape.getPath(), 'insert_at', function(){
                 console.log("on insert, ", shape.getPath())
                 handlePolygonComplete(shape);

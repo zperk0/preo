@@ -4,6 +4,20 @@ export default class PermissionService {
     return "PermissionService"
   }
 
+  checkSystemPermission(){
+    return this.$q((resolve,reject)=>{
+      Preoday.Permission.check("system_update")
+        .then((perms)=>{
+          if (perms["system_update"]){
+            resolve();
+          }
+          reject();
+        },()=>{
+          reject();
+      })
+    });
+  }
+
   hasPermission(perm){
     return this.permissions && this.permissions[perm];
   }
@@ -27,8 +41,6 @@ export default class PermissionService {
   constructor($q, Permissions) {
     "ngInject";
     this.Permissions = Permissions;
-    console.log("this perms", this.Permissions)
-
     this.$q = $q;
   }
 }

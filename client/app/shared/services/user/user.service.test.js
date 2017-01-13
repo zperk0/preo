@@ -26,7 +26,7 @@ describe('User Service', function () {
 
     it("Should initialize the service", function() {
 
-      expect(UserService.isAdmin()).toBe(false);
+      expect(UserService.isAdmin()).not.toBeDefined();
       expect(UserService.isAuth()).toBe(false);
       expect(UserService.getCurrent()).toBe(null);
     });
@@ -86,11 +86,15 @@ describe('User Service', function () {
         name: 'Tester'
       };
 
+      let perms = {
+        system_update:true
+      }
+
       let urlAuth = '/api/users/auth';
-      let urlAdmin = '/api/users/auth/roles/admin';
+      let urlAdmin = '/api/permissions?permissions=system_update';
 
       server.respondWith('POST', urlAuth, [200, {"Content-Type": "application/json"}, JSON.stringify(userLogged)]);
-      server.respondWith('GET', urlAdmin, [200, {"Content-Type": "application/json"}, '']);
+      server.respondWith('GET', urlAdmin, [200, {"Content-Type": "application/json"}, JSON.stringify(perms)]);
 
       // this is because the auth method is called on main.run
       UserService.restore();

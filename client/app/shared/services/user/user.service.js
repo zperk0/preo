@@ -33,12 +33,12 @@ export default class UserService {
 
   checkAdmin (user) {
 
-    user.isAdmin()
+    this.PermissionService.checkSystemPermission()
       .then(() => {
-        this.isUserAdmin = true;
+        user.$admin = true;
         this.setCurrentUser(user);
       }, () => {
-        this.isUserAdmin = false;
+        user.$admin = false;
         this.setCurrentUser(user);
       });
   }
@@ -77,7 +77,7 @@ export default class UserService {
 
   isAdmin () {
 
-    return this.isUserAdmin;
+    return this.user && this.user.$admin;
   }
 
   restore () {
@@ -85,7 +85,6 @@ export default class UserService {
     Preoday.User.setUser(null);
     this.user = null;
     this.authDeferred = null;
-    this.isUserAdmin = false;
   }
 
   forgotPassword (data) {
@@ -103,15 +102,14 @@ export default class UserService {
     return deferred.promise;
   }
 
-  constructor($q, $rootScope, BroadcastEvents, UtilsService) {
+  constructor($q, $rootScope, BroadcastEvents, UtilsService, PermissionService) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
     this.UtilsService = UtilsService;
+    this.PermissionService = PermissionService;
 
     this.authDeferred = null;
-
-    this.isUserAdmin = false;
   }
 }
