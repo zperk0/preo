@@ -12,8 +12,9 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
 
       attrs.$set('ngTrim', "false");
 
-      var updateView = function(val) {
+      var isOptional = 'optional' in attrs;
 
+      var updateView = function(val) {
         ngModel.$setViewValue(val || '');
         ngModel.$render();
       };
@@ -34,6 +35,9 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
         ngModel.$setValidity('invalidPrice', newVal.split(config.decimal).length <= 2);
         ngModel.$setValidity('maxDecimalValue', numberVal <= MAX_DECIMAL_VALUE);
 
+        if (newVal === '' && isOptional){ //if its blank, keep it blank
+          return null;
+        }
         return numberVal;
       };
 
@@ -62,7 +66,7 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
 
         let value = ngModel.$options && ngModel.$options.updateOn === 'blur' ? ngModel.$viewValue : ngModel.$modelValue;
 
-        if (!value) {
+        if (!value && !isOptional) {
           updateView($filter('currency')(0, true));
         }
       });
