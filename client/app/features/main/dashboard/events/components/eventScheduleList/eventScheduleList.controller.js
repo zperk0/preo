@@ -73,7 +73,8 @@ export default class eventScheduleListController {
     // (button + height + margin-top + margin-bottom)
     maxHeight = maxHeight + (50 + 8 + 32) + "px";
     if (this.el[0].style.maxHeight !== maxHeight) {
-      this.el[0].style.maxHeight = maxHeight;
+      // this.el[0].style.maxHeight = maxHeight;
+      this.el[0].style.maxHeight = '100%';
     } else {
       this.event.$expanding = false;
     }

@@ -36,19 +36,24 @@ export default function inlineCalendar() {
     };
 
     function _storeSelectedDay(scope, day) {
-        _isDayStored(scope, day) ? _deleteSelectedDay(scope, day) : scope.selectedDays.push(day.moment);
+        _isDayStored(scope, day) ? _deleteSelectedDay(scope, day) : scope.selectedDays.push(day);
+        _orderSelectedDays(scope);
     }
 
     function _deleteSelectedDay(scope, day) {
         scope.selectedDays.filter((selectedDay, index) => {
-            if (selectedDay.isSame(day.moment, 'day')) {
+            if (selectedDay.moment.isSame(day.moment, 'day')) {
                 scope.selectedDays.splice(index, 1);
             }
         })
     }
 
+    function _orderSelectedDays(scope) {
+        scope.selectedDays.sort((a, b) => a.moment > b.moment);
+    }
+
     function _isDayStored(scope, day) {
-        return scope.selectedDays.filter(selectedDay => selectedDay.isSame(day.moment, 'day')).length > 0;
+        return scope.selectedDays.filter(selectedDay => selectedDay.moment.isSame(day.moment, 'day')).length > 0;
     }
 
     function _buildMonth(scope, firstDayOfMonth) {

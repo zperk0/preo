@@ -1,24 +1,17 @@
-<div class='event-schedule ng-enter'
-      ng-class="{expanded:scheduleCtrl.schedule.$expanded}"
-      ng-attr-data-id="{{scheduleCtrl.schedule.id}}">
+<div class='event-schedule ng-enter' ng-class="{expanded:scheduleCtrl.schedule.$expanded}" ng-attr-data-id="{{scheduleCtrl.schedule.id}}">
 
-  <card-item  has-actions="true"
-              deleted="scheduleCtrl.schedule.$deleted"
-              selected="scheduleCtrl.schedule.$selected"
-              >
-    <card-item-title ng-click="scheduleCtrl.toggleExpanded($event)"
-                    has-visible="true">
-                      <md-button class="md-icon-button warning-button" ng-if="scheduleCtrl.shouldShowWarningSlots()">
-                        <icon class="warning-icon">report_problem</icon>
-                        <md-tooltip>{{ 'There are no collection slots assigned to this schedule' }}</md-tooltip>
-                      </md-button>
-                      <span class="schedule-name" flex ng-bind-html="scheduleCtrl.getScheduleTitle()"></span>
-                      <span class="schedule-time" ng-bind-html="scheduleCtrl.getScheduleTime()"></span>
-                    </card-item-title>
+  <card-item has-actions="true" deleted="scheduleCtrl.schedule.$deleted" selected="scheduleCtrl.schedule.$selected">
+    <card-item-title ng-click="scheduleCtrl.toggleExpanded($event)" has-visible="true">
+      <md-button class="md-icon-button warning-button" ng-if="scheduleCtrl.shouldShowWarningSlots()">
+        <icon class="warning-icon">report_problem</icon>
+        <md-tooltip>{{ 'There are no collection slots assigned to this schedule' }}</md-tooltip>
+      </md-button>
+      <div class="schedule-name">
+        <span ng-repeat="day in scheduleCtrl.schedule.selectedDays" class="name">{{day.name}}</span>
+      </div>
+      <span class="schedule-time" ng-bind-html="scheduleCtrl.getScheduleTime()"></span>
+    </card-item-title>
 
-    <card-item-actions is-visible="scheduleCtrl.schedule.visible"
-                       on-delete="scheduleCtrl.onDelete(createdOutlet)"
-                       on-edit="scheduleCtrl.onEdit($event)"
-                        ></card-item-actions>
+    <card-item-actions is-visible="scheduleCtrl.schedule.visible" on-delete="scheduleCtrl.onDelete(createdOutlet)" on-edit="scheduleCtrl.onEdit($event)"></card-item-actions>
   </card-item>
 </div>
