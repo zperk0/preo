@@ -19,7 +19,7 @@ export default function inlineCalendar() {
                 if (day.isCurrentMonth) {
                     day.isSelected = !day.isSelected;
                 } else {
-                    day.moment.month() > scope.today.month() ? scope.next() : scope.previous();
+                    day.moment > scope.today ? scope.next() : scope.previous();
                 }
             };
 
