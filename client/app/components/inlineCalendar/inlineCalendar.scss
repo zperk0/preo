@@ -1,0 +1,64 @@
+inline-calendar {
+  width: 100%;
+  display: inline-block;
+  padding: 14px;
+  border: 1px solid #cccccc;
+
+  header {
+    font-weight: bold;
+  }
+
+  .week {
+    .day {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      box-shadow: none !important;
+    }
+
+    &.names {
+      font-size: .75rem;
+      opacity: .6;
+      width: 100%;
+      user-select: none;
+
+      .day {
+        background-color: transparent !important;
+        text-align: center;
+      }
+    }
+
+    &.days {
+      .day {
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: bold;
+        color: rgba(0,0,0,0.87);
+        background-color: rgb(255,255,255) !important;
+
+        &:hover {
+          background-color: rgba(158,158,158,0.2) !important;
+        }
+
+        &.different-month {
+          color: rgba(0,0,0,0.5);
+          font-weight: normal;
+        }
+
+        &.today {
+          background-color: rgba(158,158,158,0.2) !important;
+        }
+
+        &.selected {
+          background-color: rgba(0,0,0,0.65) !important;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

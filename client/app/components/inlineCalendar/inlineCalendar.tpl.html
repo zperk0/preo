@@ -1,0 +1,24 @@
+<header class=" layout-align-space-between-center layout-row">
+    <md-button ng-click="previous()" class="md-icon-button md-mini">
+        <md-icon>chevron_left</md-icon>
+    </md-button>
+    <span>{{today.format("MMMM YYYY")}}</span>
+    <md-button ng-click="next()" class="md-icon-button md-mini">
+        <md-icon>chevron_right</md-icon>
+    </md-button>
+</header>
+<div class="week names layout-align-space-around-center layout-row">
+    <span class="day">Mo</span>
+    <span class="day">Tu</span>
+    <span class="day">We</span>
+    <span class="day">Th</span>
+    <span class="day">Fr</span>
+    <span class="day">Sa</span>
+    <span class="day">Su</span>
+</div>
+<div class="week days layout-align-space-around-center layout-row" ng-repeat="week in currentMonth">
+    <md-button class="md-fab day" type="button" ng-click="select(day)" ng-repeat="day in week" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.isSelected }"
+        ng-repeat="day in week.days">
+        {{day.number}}
+    </md-button>
+</div>
