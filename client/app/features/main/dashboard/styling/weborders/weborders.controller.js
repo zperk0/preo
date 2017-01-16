@@ -21,12 +21,12 @@ export default class webordersController {
   receiveMessage(event){
       var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
       let originToCompare = origin.split("//")[1].split("/")[0]
-      let webordersOrigin = this.$window._PREO_DATA._WEBORDERS.split("//")[1].split("/")[0];
+      let webordersOrigin = this.$window._PREO_DATA._WEBORDERS_EDIT.split("//")[1].split("/")[0];
       console.log("received message from origin", origin, originToCompare, webordersOrigin);
       if (originToCompare !== webordersOrigin){
         return;
       }
-      console.log("got event", event);
+      console.log("wabapp got event", event);
       switch(event.data) {
         case "__LOADED__":
           this.$timeout.cancel(this.iframeError)
@@ -71,7 +71,7 @@ export default class webordersController {
     this.$timeout = $timeout;
     this.$window=$window;
     this.webordersUrl = $window._PREO_DATA._WEBORDERS+'?venueId='+$stateParams.venueId;
-    this.webordersEditUrl = this.webordersUrl+'&editor=true'
+    this.webordersEditUrl = $window._PREO_DATA._WEBORDERS_EDIT+'?venueId='+$stateParams.venueId+'&editor=true'
 
     this.$scope = $scope;
     if (!$window.hasListener){
