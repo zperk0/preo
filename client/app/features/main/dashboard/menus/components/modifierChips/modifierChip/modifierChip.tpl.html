@@ -1,4 +1,11 @@
 <div class='modifier-chip'>
   <icon ng-click="modifierChipCtrl.removeFromParent()">clear</icon>
   <span>{{modifierChipCtrl.modifier.name}}</span>
+
+  <md-tooltip ng-if="modifierChipCtrl.modifier.items.length" class="modifier-chip-tooltip">
+    <div ng-repeat="item in modifierChipCtrl.modifier.items" class="modifierChipItem">
+    	<span class="item-name">{{ item.name }}</span>
+    	<span class="item-price">{{ item.price | currency }}</span>
+    </div>
+  </md-tooltip>
 </div>
