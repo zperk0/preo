@@ -1,8 +1,11 @@
-<div class='signin'>
+<div class='signin' ng-style="{'backgroundImage': 'url(' + signinCtrl.backgroundImage + ')'}">
+
+  <h1 class="preoday-logo" ng-style="{'backgroundImage': 'url(' + signinCtrl.preodayLogo + ')'}"></h1>
+
   <form name='signinCtrl.signinForm' ng-submit='signinCtrl.doSignin()' novalidate ng-if="!signinCtrl.shouldShowForgotPassword">
     <div class='md-title' translate>Sign in</div>
     <md-input-container class="md-block">
-      <label translate>Username</label>
+      <label translate>Email address</label>
       <input type="email" autocomplete="email" required name="username" ng-model="signinCtrl.user.username">
       <div ng-messages="signinCtrl.signinForm.username.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
@@ -15,10 +18,10 @@
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
-    <md-button  type='submit' class='md-raised md-block' translate>
+    <md-button  type='submit' class='md-raised md-block signin-button' translate>
         Sign In
     </md-button>
-    <md-button type="button" ng-click="signinCtrl.onForgotPassword()" class="md-primary" translate>Forgot Password?</md-button>
+    <md-button type="button" ng-click="signinCtrl.onForgotPassword()" class="md-primary" translate>I Forgot My Password</md-button>
   </form>
 
 
@@ -28,12 +31,12 @@
       <label translate>Email address</label>
       <input type="email" autocomplete="email" name="email" ng-model="signinCtrl.forgotPassword.email" class="grey-input" required />
 
-      <div ng-messages="signinCtrl.forgotPasswordForm.email.$error" ng-if="signinCtrl.forgotPasswordForm.$submitted">
+      <div ng-messages="signinCtrl.forgotPasswordForm.email.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
         <div ng-message="email">{{'Invalid email address.' | translate}}</div>
       </div>
     </md-input-container>
-    <md-button  type='submit' class='md-raised md-block' translate>
+    <md-button  type='submit' class='md-raised md-block signin-button' translate>
         Reset password
     </md-button>
     <md-button type="button" ng-click="signinCtrl.onSignIn()" class="md-primary" translate>Sign in?</md-button>
