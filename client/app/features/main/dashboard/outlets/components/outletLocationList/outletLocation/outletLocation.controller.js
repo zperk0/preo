@@ -55,6 +55,11 @@ export default class outletLocationController {
     if (this.outletLocation && entity && entity.name){
       this.outletLocation = entity;
 
+      if (!this.outletLocation.toSeatFlag) {
+        this.outletLocation.seatStart = null;
+        this.outletLocation.seatEnd = null;
+      }
+
       if (!this.outletLocation.id){
         this.outletLocationListCtrl.createOutletLocation(this.outletLocation)
           .then((_outletLocation)=>{
@@ -94,6 +99,10 @@ export default class outletLocationController {
 
 
   onEdit ($event) {
+
+    if (this.outletLocation.isSeat()) {
+      this.outletLocation.toSeatFlag = 1;
+    }
 
     this.originalOutletLocation  = angular.copy(this.outletLocation);
     this.cardItemList.selectItem(this.outletLocation);
