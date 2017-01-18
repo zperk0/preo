@@ -1,14 +1,12 @@
 <div class="event-schedule-form">
   <inline-calendar ng-model="eventScheduleFormCtrl.schedule.selectedDays"></inline-calendar>
+  <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.contextualForm.$submitted && !eventScheduleFormCtrl.schedule.selectedDays.length"
+    translate>You must select at least one date.
+  </div>
 
   <div class="md-block md-block-timepicker">
-    <mdp-time-picker mdp-auto-switch="true"
-          mdp-open-on-click
-          name="timeFormat"
-          mdp-placeholder="{{ 'Start time' | translate }}"
-          ng-model="eventScheduleFormCtrl.schedule.$startTime"
-          mdp-format="LT"
-          required></mdp-time-picker>
+    <mdp-time-picker mdp-auto-switch="true" mdp-open-on-click name="timeFormat" mdp-placeholder="{{ 'Start time' | translate }}"
+      ng-model="eventScheduleFormCtrl.schedule.$startTime" mdp-format="LT" required></mdp-time-picker>
 
     <div ng-messages="eventScheduleFormCtrl.contextualForm.timeFormat.$error" ng-show="eventScheduleFormCtrl.contextualForm.$submitted">
       <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.timeFormat.$error.required}">This is required.</div>
@@ -17,7 +15,8 @@
   </div>
 
   <div class="collection-slots-select-content" ng-if="eventScheduleFormCtrl.contextualMenuCtrl.isShowing('event') || eventScheduleFormCtrl.contextualMenuCtrl.isShowing('eventSchedule')">
-    <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.contextualForm.$submitted && !eventScheduleFormCtrl.schedule.pickupSlots.length" translate>You must select at least one collection slot.</div>
+    <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.contextualForm.$submitted && !eventScheduleFormCtrl.schedule.pickupSlots.length"
+      translate>You must select at least one collection slot.</div>
 
     <label class="label-title" translate>Choose collection slots:</label>
     <collection-slots-select ng-model="eventScheduleFormCtrl.schedule"></collection-slots-select>
