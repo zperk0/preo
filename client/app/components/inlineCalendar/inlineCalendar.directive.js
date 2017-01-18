@@ -4,12 +4,12 @@ export default function inlineCalendar() {
     return {
         restrict: 'E',
         scope: {
-            selectedDays: '=ngModel'
+            schedule: '=ngModel'
         },
         template: require("./inlineCalendar.tpl.html"),
         link: (scope) => {
             scope.today = moment();
-            scope.selectedDays = [];
+            scope.schedule.selectedDays = [];
             scope.daysName = _getWeekDays();
 
             var firstDayOfMonth = scope.today.clone().startOf('month');
@@ -37,24 +37,24 @@ export default function inlineCalendar() {
     };
 
     function _storeSelectedDay(scope, day) {
-        _isDayStored(scope, day) ? _deleteSelectedDay(scope, day) : scope.selectedDays.push(day);
+        _isDayStored(scope, day) ? _deleteSelectedDay(scope, day) : scope.schedule.selectedDays.push(day);
         _orderSelectedDays(scope);
     }
 
     function _deleteSelectedDay(scope, day) {
-        scope.selectedDays.filter((selectedDay, index) => {
+        scope.schedule.selectedDays.filter((selectedDay, index) => {
             if (selectedDay.moment.isSame(day.moment, 'day')) {
-                scope.selectedDays.splice(index, 1);
+                scope.schedule.selectedDays.splice(index, 1);
             }
         })
     }
 
     function _orderSelectedDays(scope) {
-        scope.selectedDays.sort((a, b) => a.moment > b.moment);
+        scope.schedule.selectedDays.sort((a, b) => a.moment > b.moment);
     }
 
     function _isDayStored(scope, day) {
-        return scope.selectedDays.filter(selectedDay => selectedDay.moment.isSame(day.moment, 'day')).length > 0;
+        return scope.schedule.selectedDays.filter(selectedDay => selectedDay.moment.isSame(day.moment, 'day')).length > 0;
     }
 
     function _buildMonth(scope, firstDayOfMonth) {

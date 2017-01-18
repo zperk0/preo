@@ -1,5 +1,5 @@
 <div class="event-schedule-form">
-  <inline-calendar ng-model="eventScheduleFormCtrl.schedule.selectedDays"></inline-calendar>
+  <inline-calendar ng-model="eventScheduleFormCtrl.schedule"></inline-calendar>
   <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.contextualForm.$submitted && !eventScheduleFormCtrl.schedule.selectedDays.length"
     translate>You must select at least one date.
   </div>
