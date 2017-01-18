@@ -9,8 +9,9 @@ export default function inlineCalendar() {
         template: require("./inlineCalendar.tpl.html"),
         link: (scope) => {
             scope.today = moment();
-
             scope.selectedDays = [];
+            scope.daysName = _getWeekDays();
+
             var firstDayOfMonth = scope.today.clone().startOf('month');
             _buildMonth(scope, firstDayOfMonth);
 
@@ -74,6 +75,18 @@ export default function inlineCalendar() {
             currentMonthIndex = currentWeekDay.month();
         }
         return weeks;
+    }
+
+    function _getWeekDays() {
+        var days = [],
+            initialDay = moment().clone().startOf('isoweek');
+
+        for (var i = 0; i < 7; i++) {
+            var day = initialDay.format('dd');
+            days.push(day);
+            initialDay.add(1, 'd');
+        }
+        return days;
     }
 
     function _getWeek(scope, weekDay) {
