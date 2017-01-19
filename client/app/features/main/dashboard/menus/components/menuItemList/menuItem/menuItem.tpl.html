@@ -1,15 +1,17 @@
 <div class='menu-item ng-enter'>
     <card-item has-actions="menuItemCtrl.hasActions"
               selected="menuItemCtrl.item.$selected"
-              deleted="menuItemCtrl.item.$deleted">
+              deleted="menuItemCtrl.item.$deleted"
+              fa-suspendable>
     <card-item-title
                     sv-root="modifier"
                     has-visible="true"
                     show-visible="!menuItemCtrl.item.visible"
-                    ng-attr-data-id="{{menuItemCtrl.item.id}}">
-                    <span class='name' flex>{{menuItemCtrl.item.id + "--" + menuItemCtrl.item.position + "--" | debug}} {{menuItemCtrl.item.name}} </span>
-                    <span class='price'> {{menuItemCtrl.item.price | currency}}</span>
-                    <div class='sv-dropzone sv-dropzone-modifier' sv-part="menuItemCtrl.newModifiers" sv-on-external-sort="menuItemCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                    ng-attr-data-id="{{menuItemCtrl.item.id}}"
+                    fa-suspendable>
+                    <span class='name' flex fa-suspendable>{{menuItemCtrl.item.id + "--" + menuItemCtrl.item.position + "--" | debug}} {{menuItemCtrl.item.name}} </span>
+                    <span class='price' fa-suspendable> {{menuItemCtrl.item.price | currency}}</span>
+                    <div class='sv-dropzone sv-dropzone-modifier' sv-part="menuItemCtrl.newModifiers" sv-on-external-sort="menuItemCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)" fa-suspendable>
                       <div sv-placeholder></div>
                     </div>
                     </card-item-title>
@@ -18,20 +20,24 @@
         ng-if="menuItemCtrl.modifiers.length"
         modifiers="menuItemCtrl.modifiers"
         on-modifier-removed="menuItemCtrl.onModifierRemoved(modifier)"
-        item="menuItemCtrl.item"></modifier-chips>
+        item="menuItemCtrl.item"
+        fa-suspendable></modifier-chips>
 
     <div class='size-wrapper'
-          ng-if="!(menuItemCtrl.item.$size.$isMultiple === false) && menuItemCtrl.item.$size.items.length">
+          ng-if="!(menuItemCtrl.item.$size.$isMultiple === false) && menuItemCtrl.item.$size.items.length"
+          fa-suspendable>
       <card-item-child
           ng-repeat="size in menuItemCtrl.item.$size.items"
           modifier="menuItemCtrl.item.$size"
-          option="size"></card-item-child>
+          option="size"
+          fa-suspendable></card-item-child>
     </div>
 
     <card-item-actions is-visible="menuItemCtrl.item.visible"
                        on-clone="menuItemCtrl.onClone()"
                        on-delete="menuItemCtrl.onDelete()"
                        on-edit="menuItemCtrl.onEdit()"
-                       on-visibility="menuItemCtrl.onVisibility(newStatus)"></card-item-actions>
+                       on-visibility="menuItemCtrl.onVisibility(newStatus)"
+                       fa-suspendable></card-item-actions>
   </card-item>
 </div>

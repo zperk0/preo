@@ -1,7 +1,7 @@
 <div class='card-item-actions'>
-  <md-card-actions ng-animate-children ng-if="cardItem.showCardActions" class="hidden-card-actions" layout="row"  layout-align="end center" ng-click="vm.toggleCardActions($event)">
+  <md-card-actions ng-animate-children ng-if="cardItem.showCardActions" class="hidden-card-actions" layout="row"  layout-align="end center" ng-click="vm.toggleCardActions($event)" fa-suspendable>
     <div class='card-actions-leave-trap' ng-mouseleave="onMouseLeave($event)"  layout="row" layout-align="end center">
-      <md-button ng-if="cardItem.showCardActions && vm.onMove" class="md-icon-button" ng-click="vm.onMove({newStatus:false})">
+      <md-button ng-if="vm.onMove" class="md-icon-button" ng-click="vm.onMove({newStatus:false})">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="#777777" d="M21,11L14,4V8C7,9 4,14 3,19C5.5,15.5 9,13.9 14,13.9V18L21,11Z" />
         </svg>
@@ -9,55 +9,55 @@
           {{ 'Move' | translate }}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItem.showCardActions && vm.onVisibility" ng-show="vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:false})">
+      <md-button ng-if="vm.onVisibility" ng-show="vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:false})">
         <icon>visibility_off</icon> <!-- visibility_off -->
         <md-tooltip md-direction="bottom">
           {{vm.visibleMessage}}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItem.showCardActions && vm.onVisibility" ng-show="!vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:true})">
+      <md-button ng-if="vm.onVisibility" ng-show="!vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:true})">
         <icon>visibility</icon> <!-- visibility_off -->
         <md-tooltip md-direction="bottom">
           {{vm.invisibleMessage}}
         </md-tooltip>
       </md-button>
-       <md-button ng-if="cardItem.showCardActions && vm.onPause" ng-show="!vm.isPaused" class="md-icon-button" ng-click="vm.onPause({newStatus:false})">
+       <md-button ng-if="vm.onPause" ng-show="!vm.isPaused" class="md-icon-button" ng-click="vm.onPause({newStatus:false})">
         <icon>pause_circle_outline</icon> <!-- pause_circle_outline -->
         <md-tooltip md-direction="bottom">
           <span translate>Pause this promotion</span>
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItem.showCardActions && vm.onPause" ng-show="vm.isPaused" class="md-icon-button" ng-click="vm.onPause({newStatus:true})">
+      <md-button ng-if="vm.onPause" ng-show="vm.isPaused" class="md-icon-button" ng-click="vm.onPause({newStatus:true})">
         <icon>play_circle_outline</icon> <!-- visibility_off -->
         <md-tooltip md-direction="bottom">
           <span translate>Resume this promotion</span>
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItem.showCardActions && vm.onClone" class="md-icon-button" ng-click="vm.onClone({$event:$event})">
+      <md-button ng-if="vm.onClone" class="md-icon-button" ng-click="vm.onClone({$event:$event})">
         <icon>content_copy</icon>
         <md-tooltip md-direction="bottom">
           {{'Duplicate' | translate}}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItem.showCardActions && vm.onDelete" class="md-icon-button" ng-click="vm.onDelete({$event:$event})">
+      <md-button ng-if="vm.onDelete" class="md-icon-button" ng-click="vm.onDelete({$event:$event})">
         <icon>delete</icon>
         <md-tooltip md-direction="bottom">
           {{'Delete' | translate}}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItem.showCardActions && vm.onAddLocation" class="md-icon-button" ng-click="vm.onAddLocation({$event:$event})">
+      <md-button ng-if="vm.onAddLocation" class="md-icon-button" ng-click="vm.onAddLocation({$event:$event})">
         <icon>add_location</icon>
         <md-tooltip md-direction="bottom">
           {{ vm.addLocationMessage }}
         </md-tooltip>
       </md-button>
-       <md-button ng-if="cardItem.showCardActions && vm.onEdit" class="md-icon-button" ng-click="vm.onEdit({$event:$event})">
+      <md-button ng-if="vm.onEdit" class="md-icon-button" ng-click="vm.onEdit({$event:$event})">
         <icon>edit</icon>
         <md-tooltip md-direction="bottom">
           {{'Edit' | translate}}
         </md-tooltip>
       </md-button>
-       <md-button ng-if="cardItem.showCardActions && vm.onAdd" class="md-icon-button" ng-click="vm.onAdd({$event:$event})" ng-class="{'disabled': vm.disableAdd}">
+      <md-button ng-if="vm.onAdd" class="md-icon-button" ng-click="vm.onAdd({$event:$event})" ng-class="{'disabled': vm.disableAdd}">
         <icon>add</icon>
         <md-tooltip md-direction="bottom">
           {{ vm.addMessage }}
