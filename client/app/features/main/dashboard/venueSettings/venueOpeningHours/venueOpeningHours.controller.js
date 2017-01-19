@@ -186,8 +186,8 @@ export default class venueOpeningHoursController {
     let hours = [];
 
     hours = hours.concat(this.buildHours(this.openingHours, {
-      pickup: this.collectionSameAsOpening ? 1 : 0,
-      delivery: this.deliverySameAsOpening ? 1 : 0,
+      pickup: this.collectionSameAsOpening || !this.hasCollectionService() ? 1 : 0,
+      delivery: this.deliverySameAsOpening || !this.hasDeliveryService() ? 1 : 0,
       opening: 1,
     }));
 
