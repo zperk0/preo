@@ -237,6 +237,50 @@ export default class venueOpeningHoursController {
     return hours;
   }
 
+  isCollectionSameAsOpening () {
+
+    if (!this.hasCollectionService()) {
+      return false;
+    }
+
+    if (this.collectionHours.length) {
+      return false;
+    }
+
+    let hasOpeningCollection = this.openingHours.filter((hour) => {
+
+      return hour.pickup === 1;
+    }).length;
+
+    if (!hasOpeningCollection) {
+      return false;
+    }
+
+    return true;
+  }
+
+  isDeliverySameAsOpening () {
+
+    if (!this.hasDeliveryService()) {
+      return false;
+    }
+
+    if (this.deliveryHours.length) {
+      return false;
+    }
+
+    let hasOpeningDelivery = this.openingHours.filter((hour) => {
+
+      return hour.delivery === 1;
+    }).length;
+
+    if (!hasOpeningDelivery) {
+      return false;
+    }
+
+    return true;
+  }
+
   constructor($timeout, Spinner, VenueService, DialogService, ErrorService, HoursService, gettextCatalog) {
     "ngInject";
 
@@ -265,8 +309,8 @@ export default class venueOpeningHoursController {
         this.deliveryHours = this.groupHoursByTime(this.filterDeliveryHours(hours));
         this.collectionHours = this.groupHoursByTime(this.filterCollectionHours(hours));
 
-        this.collectionSameAsOpening = this.hasCollectionService() && this.collectionHours.length === 0;
-        this.deliverySameAsOpening = this.hasDeliveryService() && this.deliveryHours.length === 0;
+        this.collectionSameAsOpening = this.isCollectionSameAsOpening();
+        this.deliverySameAsOpening = this.isDeliverySameAsOpening();
 
         Spinner.hide('venue-opening-hours');
         this.loaded = true;
