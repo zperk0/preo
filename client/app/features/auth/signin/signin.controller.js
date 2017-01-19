@@ -91,7 +91,7 @@ export default class signinController {
     this.shouldShowForgotPassword = false;
   }
 
-  constructor($state, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog) {
+  constructor($state, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UtilsService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -103,6 +103,8 @@ export default class signinController {
     this.gettextCatalog = gettextCatalog;
 
     this.shouldShowForgotPassword = false;
+    this.backgroundImage = UtilsService.getImagePath('/images/webapp/sign-in-bg.png');
+    this.preodayLogo = UtilsService.getImagePath('/images/webapp/logo-white.svg');
 
     if (UserService.user){
       UserService.signout();

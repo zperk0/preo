@@ -128,10 +128,10 @@ export default class contextualDrawerStyleController {
   }
 
   dispatchChange(){
-    console.log("dispatching change", this.model,window._PREO_DATA._WEBORDERS);
-    var $iframe = document.querySelector('iframe');
+    console.log("dispatching change", this.model,window._PREO_DATA._WEBORDERS_EDIT);
+    var $iframe = document.getElementById('web-orders-iframe');
     if($iframe){
-      document.querySelector('iframe').contentWindow.postMessage(this.model,window._PREO_DATA._WEBORDERS);
+      $iframe.contentWindow.postMessage(this.model, window._PREO_DATA._WEBORDERS_EDIT);
     }
 
   }

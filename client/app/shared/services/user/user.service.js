@@ -57,7 +57,10 @@ export default class UserService {
 
   signout() {
     Preoday.User.signout();
-    window.location.reload();
+    window.location.replace("#/auth/signin")
+    setTimeout(function(){
+      window.location.reload();
+    },300)
   }
 
   getCurrent () {
