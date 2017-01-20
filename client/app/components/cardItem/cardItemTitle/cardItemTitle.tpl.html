@@ -1,9 +1,9 @@
-<div class='card-title' layout="row" layout-align="start center" ng-class="{invisible:(hasVisible && showVisible()) || (hasPause && showPaused())}">
-    <div flex layout="row"  layout-align="start center">
+<div class='card-title' layout="row" layout-align="start center" ng-class="{invisible:(hasVisible && showVisible()) || (hasPause && showPaused())}" fa-parent-suspendable>
+    <div flex layout="row" layout-align="start center">
       <icon class='visibility' ng-if="hasVisible && showVisible()">visibility_off</icon>
       <icon class='visibility' ng-if="hasPause && showPaused()">pause_circle_outline</icon>
       <a ng-if="href" ng-href='{{href}}' class='card-title-text' flex layout="row" ng-transclude></a>
-      <span ng-if="!href" class='card-title-text' flex ng-transclude layout="row"  layout-align="start center"></span>
+      <span ng-if="!href" class='card-title-text' flex ng-transclude layout="row" layout-align="start center"></span>
     </div>
     <md-button class="md-icon-button item-actions" ng-if="vm.hasActions" ng-mouseenter="vm.toggleCardActions($event)">
       <icon>more_horiz</icon>

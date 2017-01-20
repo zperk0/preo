@@ -1,5 +1,5 @@
 <div class='menu-item ng-enter'>
-    <card-item has-actions="menuItemCtrl.hasActions"
+  <card-item has-actions="menuItemCtrl.hasActions"
               selected="menuItemCtrl.item.$selected"
               deleted="menuItemCtrl.item.$deleted">
     <card-item-title
@@ -7,8 +7,8 @@
                     has-visible="true"
                     show-visible="!menuItemCtrl.item.visible"
                     ng-attr-data-id="{{menuItemCtrl.item.id}}">
-                    <span class='name' flex>{{menuItemCtrl.item.id + "--" + menuItemCtrl.item.position + "--" | debug}} {{menuItemCtrl.item.name}} </span>
-                    <span class='price'> {{menuItemCtrl.item.price | currency}}</span>
+                    <span class='name' flex fa-suspendable>{{menuItemCtrl.item.id + "--" + menuItemCtrl.item.position + "--" | debug}} {{menuItemCtrl.item.name}} </span>
+                    <span class='price' fa-suspendable> {{menuItemCtrl.item.price | currency}}</span>
                     <div class='sv-dropzone sv-dropzone-modifier' sv-part="menuItemCtrl.newModifiers" sv-on-external-sort="menuItemCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                       <div sv-placeholder></div>
                     </div>
@@ -28,10 +28,13 @@
           option="size"></card-item-child>
     </div>
 
-    <card-item-actions is-visible="menuItemCtrl.item.visible"
+    <card-item-actions ng-if="menuItemCtrl.hasActions"
+                       is-visible="menuItemCtrl.item.visible"
                        on-clone="menuItemCtrl.onClone()"
                        on-delete="menuItemCtrl.onDelete()"
                        on-edit="menuItemCtrl.onEdit()"
                        on-visibility="menuItemCtrl.onVisibility(newStatus)"></card-item-actions>
+
+    <fa-parent-suspendable></fa-parent-suspendable>
   </card-item>
 </div>

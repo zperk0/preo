@@ -25,7 +25,7 @@ export default class contextualDrawerItemController {
     }
   }
 
-  constructor($scope, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
+  constructor($scope, $timeout, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
     "ngInject";
     this.data = {items:[]};
     this.$mdSidenav = $mdSidenav;
@@ -40,7 +40,10 @@ export default class contextualDrawerItemController {
     ItemService.getItems($stateParams.venueId)
       .then(() => {
 
-        this.data = ItemService.data;
+        this.data = angular.copy(ItemService.data);
+        $timeout(function() {
+          $scope.$broadcast('suspend');
+        }, 0, false);
       });
 
     let unRegisterWatch = $scope.$watch(() => {

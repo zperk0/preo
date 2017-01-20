@@ -5,17 +5,20 @@
         item="modifierItemCtrl.modifier"
         selected="modifierItemCtrl.modifier.$selected"
         deleted="modifierItemCtrl.modifier.$deleted"
-        sv-element="modifierItemCtrl.modifier">
+        sv-element="modifierItemCtrl.modifier"
+        fa-parent-suspendable>
+        
       <card-item-title>
-        {{modifierItemCtrl.modifier.id +" -- " | debug}}{{ modifierItemCtrl.modifier.name}}
-         <div sv-root="modifier" class='modifier-title-dropzone'>
-           <div class='sv-dropzone sv-dropzone-modifier'
+        <span fa-suspendable>{{modifierItemCtrl.modifier.id +" -- " | debug}}{{ modifierItemCtrl.modifier.name}}</span>
+        <div sv-root="modifier" class='modifier-title-dropzone'>
+          <div class='sv-dropzone sv-dropzone-modifier'
                 sv-part="modifierItemCtrl.newModifiers"
                 sv-on-external-sort="modifierItemCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
             <div sv-placeholder></div>
-           </div>
-         </div>
+          </div>
+        </div>
       </card-item-title>
+
       <modifier-chips ng-if="modifierItemCtrl.modifiers.length"
                       modifiers="modifierItemCtrl.modifiers"
                       on-modifier-removed="modifierItemCtrl.onModifierRemoved(modifier)"
@@ -30,5 +33,7 @@
       <card-item-actions on-clone="modifierItemCtrl.cloneModifier()"
                          on-delete="modifierItemCtrl.deleteModifier()"
                          on-edit="modifierItemCtrl.onEdit()"></card-item-actions>
+
+      <fa-parent-suspendable></fa-parent-suspendable>
     </card-item>
 </div>
