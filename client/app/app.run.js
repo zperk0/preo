@@ -2,7 +2,7 @@
 export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams, Spinner, contextualMenu, contextualDrawer, gettextCatalog){
   "ngInject";
 
-  const notRequiresUser= ['auth.signin','error', 'emailSuccess'];
+  const notRequiresUser= ['auth.signin', 'auth.signup', 'error', 'emailSuccess'];
 
   function redirectSignin(){
     if (notRequiresUser.indexOf($state.current.name) === -1){
