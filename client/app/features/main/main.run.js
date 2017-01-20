@@ -35,10 +35,10 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
     if (notRequiresUser.indexOf($state.current.name) === -1){
       $state.go("auth.signin");
+      Spinner.empty();
     }
 
     setupChangeEvent();
-    Spinner.empty();
   }
 
   $rootScope.$on(BroadcastEvents._ON_USER_AUTH,(event,user)=>{

@@ -11,8 +11,8 @@ export default function routes($stateProvider) {
 
   $stateProvider.state("auth.invite", {
     url: "/invite/:inviteKey",
-    template: "",
+    template: require("./invite.tpl.html"),
     controller: controller.UID,
-    controllerAs: "signupCtrl",
+    controllerAs: "inviteCtrl",
   });
 }

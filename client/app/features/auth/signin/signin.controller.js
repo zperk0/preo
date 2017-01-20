@@ -27,7 +27,6 @@ export default class signinController {
         } else {
           console.log("doing signout")
           Preoday.User.signout();
-        console.log("handle error error else")
 
           this.handleError()
         }
@@ -91,7 +90,7 @@ export default class signinController {
     this.shouldShowForgotPassword = false;
   }
 
-  constructor($state, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UtilsService) {
+  constructor($state, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -103,8 +102,6 @@ export default class signinController {
     this.gettextCatalog = gettextCatalog;
 
     this.shouldShowForgotPassword = false;
-    this.backgroundImage = UtilsService.getImagePath('/images/webapp/sign-in-bg.png');
-    this.preodayLogo = UtilsService.getImagePath('/images/webapp/logo-white.svg');
 
     if (UserService.user){
       UserService.signout();

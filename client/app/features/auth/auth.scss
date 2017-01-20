@@ -1,7 +1,7 @@
 @import "../../shared/styles/variables";
 
 .auth {
-	.signin, .signup {
+	.signin, .signup, .invite {
     position: fixed;
     top: 0;
     left: 0;
@@ -25,7 +25,7 @@
       margin: 172px auto 40px;
     }
 
-    form{
+    form, .auth-card {
       width: 298px;
       margin: 0 auto;
       background-color: #FAFAFA;

@@ -1,0 +1,9 @@
+<div class='invite' ng-style="{'backgroundImage': 'url(' + authCtrl.backgroundImage + ')'}">
+
+  <h1 class="preoday-logo" ng-style="{'backgroundImage': 'url(' + authCtrl.preodayLogo + ')'}" ng-if="inviteCtrl.shouldShowMessage"></h1>
+
+  <div class="content-message auth-card" ng-if="inviteCtrl.shouldShowMessage">
+    <div class="md-title">Sorry</div>
+    <div class="expired-message">That link appears to have expired. Please ask your administrator to send you a new one.</div>
+  </div>
+</div>

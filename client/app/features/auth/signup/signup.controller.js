@@ -4,12 +4,9 @@ export default class signupController {
     return "signupController";
   }
 
-  constructor($state, UtilsService) {
+  constructor($state) {
     "ngInject";
     this.$state = $state;
-
-    this.backgroundImage = UtilsService.getImagePath('/images/webapp/sign-in-bg.png');
-    this.preodayLogo = UtilsService.getImagePath('/images/webapp/logo-white.svg');
 
     this.user = {
 

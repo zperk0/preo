@@ -1,3 +1,6 @@
+// Import Style
+import './invite.scss';
+
 
 // Import internal modules
 import controller from './invite.controller';

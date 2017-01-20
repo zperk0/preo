@@ -12,6 +12,9 @@ export default function routes($stateProvider) {
     url: "/signup",
     template: require("./signup.tpl.html"),
     controller: controller.UID,
-    controllerAs: "signupCtrl"
+    controllerAs: "signupCtrl",
+    params: {
+    	inviteUser: null
+    }
   });
 }

@@ -4,10 +4,60 @@ export default class inviteController {
     return "inviteController";
   }
 
-  constructor($state, $stateParams) {
-    "ngInject";
-    this.$state = $state;
+  goToSign () {
 
-console.log('invite controller', $stateParams);
+    this.hideSpinner();
+
+    this.$state.go('auth.signin', {}, {
+      location: 'replace'
+    });
+  }
+
+  goToDashboard () {
+
+    this.hideSpinner();
+
+    this.$state.go('main.dashboard', {}, {
+      location: 'replace'
+    });
+  }
+
+  showExpiredMessage () {
+
+    this.shouldShowMessage = true;
+  }
+
+  validate(key) {
+
+    this.UserInviteService.getUserByKey(key)
+      .then(() => {
+
+      }, () => {
+
+        // this.goToSign();
+      });
+  }
+
+  hideSpinner () {
+
+    this.Spinner.hide('invite-user');
+  }
+
+  constructor($state, $stateParams, Spinner, UserInviteService) {
+    "ngInject";
+
+    this.$state = $state;
+    this.UserInviteService = UserInviteService;
+    this.Spinner = Spinner;
+
+    Spinner.show('invite-user');
+
+    this.shouldShowMessage = false;
+
+    if (!$stateParams.inviteKey) {
+      return this.goToDashboard();
+    }
+
+    this.validate($stateParams.inviteKey);
   }
 }
