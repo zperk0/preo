@@ -95,7 +95,37 @@ export default class signinController {
     return this.$stateParams.inviteKey;
   }
 
-  constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog) {
+  checkInvitedUser () {
+
+    this.Spinner.show('invite-user');
+
+    this.UserInviteService.getUserByKey(this.$stateParams.inviteKey)
+      .then((invitedUser) => {
+
+        if (this.UserInviteService.isExpired(invitedUser)) {
+          return this.goToSignInWithoutKey();
+        }
+
+        this.user.username = invitedUser.email;
+
+        this.Spinner.hide('invite-user');
+      }, () => {
+
+        this.goToSignInWithoutKey();
+      });
+  }
+
+  goToSignInWithoutKey () {
+
+    this.Spinner.hide('invite-user');
+
+    this.$state.transitionTo('auth.signin', {}, {
+      location: 'replace',
+      reload: true
+    });
+  }
+
+  constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UserInviteService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -106,12 +136,18 @@ export default class signinController {
     this.UserService = UserService;
     this.VenueService = VenueService;
     this.gettextCatalog = gettextCatalog;
+    this.UserInviteService = UserInviteService;
 
     this.shouldShowForgotPassword = false;
 
     if (UserService.user){
       UserService.signout();
     }
+
+    if (this.isInvitedUser()) {
+      this.checkInvitedUser();
+    }
+
     this.user = {
       username:"",
       password:""

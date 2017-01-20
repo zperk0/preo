@@ -56,6 +56,7 @@ export default class UserService {
   }
 
   signout(shouldKeepInScreen) {
+
     return Preoday.User.signout();
 
     if (!shouldKeepInScreen) {
