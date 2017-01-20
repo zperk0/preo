@@ -12,8 +12,10 @@
   			ng-if="cardItemChildCtrl.option.modifiers.length"
   			modifiers="cardItemChildCtrl.option.modifiers"
   			on-modifier-removed="cardItemChildCtrl.onModifierRemoved(modifier)"
-  			modifier-item="cardItemChildCtrl.option"></modifier-chips>
+  			modifier-item="cardItemChildCtrl.option"
+        fa-parent-suspendable></modifier-chips>
   </span>
   <span class='price' fa-suspendable> {{cardItemChildCtrl.option.price | currency}}</span>
 
+  <fa-parent-suspendable></fa-parent-suspendable>
 </div>
