@@ -90,13 +90,19 @@ export default class signinController {
     this.shouldShowForgotPassword = false;
   }
 
-  constructor($state, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog) {
+  isInvitedUser () {
+
+    return this.$stateParams.inviteKey;
+  }
+
+  constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.LabelService = LabelService;
     this.$timeout = $timeout;
     this.$state = $state;
+    this.$stateParams = $stateParams;
     this.UserService = UserService;
     this.VenueService = VenueService;
     this.gettextCatalog = gettextCatalog;

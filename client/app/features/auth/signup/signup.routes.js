@@ -9,7 +9,7 @@ import controller from './signup.controller';
 export default function routes($stateProvider) {
   "ngInject";
   $stateProvider.state("auth.signup", {
-    url: "/signup",
+    url: "/signup?inviteKey",
     template: require("./signup.tpl.html"),
     controller: controller.UID,
     controllerAs: "signupCtrl",
