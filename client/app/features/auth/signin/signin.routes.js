@@ -14,7 +14,8 @@ export default function routes($stateProvider) {
     controller: controller.UID,
     controllerAs: "signinCtrl",
     params: {
-    	inviteUser: null
+      invitedUser: null,
+      inviteKey: null
     }
   });
 }

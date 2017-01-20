@@ -55,12 +55,15 @@ export default class UserService {
     this.unsetAuthDeferred();
   }
 
-  signout() {
-    Preoday.User.signout();
-    window.location.replace("#/auth/signin")
-    setTimeout(function(){
-      window.location.reload();
-    },300)
+  signout(shouldKeepInScreen) {
+    return Preoday.User.signout();
+
+    if (!shouldKeepInScreen) {
+      window.location.replace("#/auth/signin")
+      setTimeout(function(){
+        window.location.reload();
+      },300)
+    }
   }
 
   getCurrent () {

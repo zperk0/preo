@@ -14,6 +14,11 @@ export default class UserInviteService {
     return deferred.promise;
   }
 
+  isExpired(inviteUser) {
+
+    return moment().isAfter(moment(inviteUser.expiryDate));
+  }
+
   constructor($q) {
     "ngInject";
 
