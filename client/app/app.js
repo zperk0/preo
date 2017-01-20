@@ -24,6 +24,7 @@ import itemChips from './components/itemChips';
 import breadcrumb from './components/breadcrumb';
 import validHtml from './components/validHtml';
 import faSuspendable from './components/faSuspendable';
+import faParentSuspendable from './components/faParentSuspendable';
 import autoSave from './components/autoSave';
 import milesOrKms from './components/milesOrKms';
 import mocks from './app.modules.mock';
@@ -62,6 +63,7 @@ require('./components/sticky/sticky.directive.js');
   autoSave,
   validHtml,
   faSuspendable,
+  faParentSuspendable,
   milesOrKms,
   // /* internal */
   constants,

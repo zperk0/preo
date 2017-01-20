@@ -4,6 +4,7 @@ export default function faSuspendable(){
 
   return {
     restrict: 'A',
+    scope: true,
     link: (scope) => {
       // Heads up: this might break is suspend/resume called out of order
       // or if watchers are added while suspended

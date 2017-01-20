@@ -16,7 +16,7 @@ export default class contextualDrawerItemController {
     this.contextualDrawer.close();
   }
 
-  constructor($scope, ModifierService, $stateParams,$mdSidenav, $state, contextualDrawer) {
+  constructor($scope, $timeout, ModifierService, $stateParams, $mdSidenav, $state, contextualDrawer) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.$state = $state;
@@ -24,7 +24,10 @@ export default class contextualDrawerItemController {
 
     this.cancelledModifiers = [];
     ModifierService.getModifiers($stateParams.venueId).then((data)=>{
-      this.data = data;
-    })
+      this.data = angular.copy(data);
+      $timeout(function() {
+        $scope.$broadcast('suspend');
+      }, 0, false);
+    });
   }
 }
