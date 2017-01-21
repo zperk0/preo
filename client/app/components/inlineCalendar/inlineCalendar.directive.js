@@ -9,18 +9,18 @@ export default function inlineCalendar() {
         template: require("./inlineCalendar.tpl.html"),
         link: (scope) => {
             scope.today = moment();
-            scope.schedule.selectedDays = [];
+            scope.schedule.occurrences = [];
             scope.daysName = _getWeekDays();
 
             var firstDayOfMonth = scope.today.clone().startOf('month');
             _buildMonth(scope, firstDayOfMonth);
 
             scope.select = (day) => {
-                _storeSelectedDay(scope, day);
+                _storeOccurrence(scope, day);
                 if (day.isCurrentMonth) {
                     day.isSelected = !day.isSelected;
                 } else {
-                    day.moment > scope.today ? scope.next() : scope.previous();
+                    day.date > scope.today ? scope.next() : scope.previous();
                 }
             };
 
@@ -36,25 +36,25 @@ export default function inlineCalendar() {
         }
     };
 
-    function _storeSelectedDay(scope, day) {
-        _isDayStored(scope, day) ? _deleteSelectedDay(scope, day) : scope.schedule.selectedDays.push(day);
-        _orderSelectedDays(scope);
+    function _storeOccurrence(scope, day) {
+        _isDayStored(scope, day) ? _deleteOccurrence(scope, day) : scope.schedule.occurrences.push(day);
+        _orderOccurrences(scope);
     }
 
-    function _deleteSelectedDay(scope, day) {
-        scope.schedule.selectedDays.filter((selectedDay, index) => {
-            if (selectedDay.moment.isSame(day.moment, 'day')) {
-                scope.schedule.selectedDays.splice(index, 1);
+    function _deleteOccurrence(scope, day) {
+        scope.schedule.occurrences.filter((occurrence, index) => {
+            if (occurrence.date.isSame(day.date, 'day')) {
+                scope.schedule.occurrences.splice(index, 1);
             }
         })
     }
 
-    function _orderSelectedDays(scope) {
-        scope.schedule.selectedDays.sort((a, b) => a.moment > b.moment);
+    function _orderOccurrences(scope) {
+        scope.schedule.occurrences.sort((a, b) => a.date > b.date);
     }
 
     function _isDayStored(scope, day) {
-        return scope.schedule.selectedDays.filter(selectedDay => selectedDay.moment.isSame(day.moment, 'day')).length > 0;
+        return scope.schedule.occurrences.filter(occurrence => occurrence.date.isSame(day.date, 'day')).length > 0;
     }
 
     function _buildMonth(scope, firstDayOfMonth) {
@@ -97,7 +97,7 @@ export default function inlineCalendar() {
                 number: weekDay.date(),
                 isCurrentMonth: weekDay.month() === scope.today.month(),
                 isToday: weekDay.isSame(new Date(), 'day'),
-                moment: weekDay
+                date: weekDay
             };
             day.isSelected = _isDayStored(scope, day);
             days.push(day);

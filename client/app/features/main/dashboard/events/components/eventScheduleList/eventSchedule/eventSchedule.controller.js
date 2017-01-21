@@ -6,7 +6,7 @@ export default class eventScheduleController {
   restoreOriginalValues() {
     if (this.originalSchedule) {
       angular.extend(this.schedule, this.originalSchedule)
-      this.schedule.selectedDays = [];
+      this.schedule.occurrences = [];
       this.originalSchedule = false;
     }
   }
@@ -33,7 +33,7 @@ export default class eventScheduleController {
   }
 
   contextualMenuSuccess(entity) {
-    if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length && entity.selectedDays && entity.selectedDays.length) {
+    if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length && entity.occurrences && entity.occurrences.length) {
       this.buildEntityToSchedule(entity);
 
       if (!this.schedule.id) {

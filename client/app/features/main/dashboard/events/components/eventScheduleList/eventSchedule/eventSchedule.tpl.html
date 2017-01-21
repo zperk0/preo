@@ -7,7 +7,7 @@
         <md-tooltip>{{ 'There are no collection slots assigned to this schedule' }}</md-tooltip>
       </md-button>
       <div class="schedule-name">
-        <span ng-repeat="day in scheduleCtrl.schedule.selectedDays" class="name">{{day.name}}</span>
+        <span ng-repeat="day in scheduleCtrl.schedule.occurrences" class="name">{{day.name}}</span>
       </div>
       <span class="schedule-time" ng-bind-html="scheduleCtrl.getScheduleTime()"></span>
     </card-item-title>
