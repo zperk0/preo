@@ -37,7 +37,7 @@ export default function inlineCalendar() {
     };
 
     function _storeOccurrence(scope, day) {
-        _isDayStored(scope, day) ? _deleteOccurrence(scope, day) : scope.schedule.occurrences.push(day);
+        _isDayStored(scope, day) ? _deleteOccurrence(scope, day) : scope.schedule.occurrences.push({ date: day.date });
         _orderOccurrences(scope);
     }
 
