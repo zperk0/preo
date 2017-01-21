@@ -19,9 +19,24 @@ export default class UserInviteService {
     return moment().isAfter(moment(inviteUser.expiryDate));
   }
 
-  constructor($q) {
+  doInvite (invitedUser, user) {
+
+    let deferred = this.$q.defer();
+
+    invitedUser.accept(user)
+      .then((newUser) => {
+
+        this.UserService.checkAdmin(newUser)
+          .then(deferred.resolve, deferred.resolve);
+      }, deferred.reject);
+
+    return deferred.promise;
+  }
+
+  constructor($q, UserService) {
     "ngInject";
 
     this.$q = $q;
+    this.UserService = UserService;
   }
 }

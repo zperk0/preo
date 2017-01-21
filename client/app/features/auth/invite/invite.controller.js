@@ -98,7 +98,7 @@ export default class inviteController {
 
   doInvite (invitedUser) {
 
-    invitedUser.accept(this.UserService.getCurrent())
+    this.UserInviteService.doInvite(invitedUser, this.UserService.getCurrent())
       .then(this.goToDashboard.bind(this), this.showExpiredMessage.bind(this));
   }
 

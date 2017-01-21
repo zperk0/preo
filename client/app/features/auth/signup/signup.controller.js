@@ -13,7 +13,18 @@ export default class signupController {
     });
   }
 
+  goToDashboard () {
+
+    this.hideSpinner();
+
+    this.$state.go('main.dashboard', {}, {
+      location: 'replace'
+    });
+  }
+
   setInvitedUserData (invitedUser) {
+
+    this.invitedUser = invitedUser;
 
     this.user.email = invitedUser.email;
     this.user.name = invitedUser.name;
@@ -60,16 +71,34 @@ export default class signupController {
     this.Spinner.hide('signup-invite');
   }
 
-  constructor($state, $stateParams, UserService, UserInviteService, Spinner, DialogService, ErrorService, gettextCatalog) {
+  doSignup () {
+
+    if (this.signupForm.$invalid) {
+      return false;
+    }
+
+    this.showSpinner();
+
+    this.UserInviteService.doInvite(this.invitedUser, this.user)
+      .then(this.goToDashboard.bind(this), () => {
+
+        this.hideSpinner();
+        this.Snack.showError(this.gettextCatalog.getString('An error ocurred in your signup, try again later'));
+      });
+  }
+
+  constructor($state, $stateParams, UserService, UserInviteService, Spinner, DialogService, ErrorService, gettextCatalog, Snack) {
     "ngInject";
 
     this.$state = $state;
     this.$stateParams = $stateParams;
+    this.UserService = UserService;
     this.UserInviteService = UserInviteService;
     this.Spinner = Spinner;
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
+    this.Snack = Snack;
 
     this.user = {
 

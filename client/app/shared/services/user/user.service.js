@@ -33,6 +33,10 @@ export default class UserService {
 
   checkAdmin (user) {
 
+    if (!this.authDeferred) {
+      this.authDeferred = this.$q.defer();
+    }
+
     this.PermissionService.checkSystemPermission()
       .then(() => {
         user.$admin = true;
@@ -41,6 +45,8 @@ export default class UserService {
         user.$admin = false;
         this.setCurrentUser(user);
       });
+
+    return this.authDeferred.promise;
   }
 
   setCurrentUser (user) {

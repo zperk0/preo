@@ -2,26 +2,26 @@
 
   <h1 class="preoday-logo" ng-style="{'backgroundImage': 'url(' + authCtrl.preodayLogo + ')'}"></h1>
 
-  <form name='signupCtrl.signinForm' ng-submit='signupCtrl.doSignin()' novalidate>
+  <form name='signupCtrl.signupForm' ng-submit='signupCtrl.doSignup()' novalidate>
     <div class='md-title' translate>Please confirm your details and set a password.</div>
     <md-input-container class="md-block">
       <label translate>Name</label>
       <input type="text" autocomplete="name" required name="name" ng-model="signupCtrl.user.name">
-      <div ng-messages="signupCtrl.signinForm.name.$error">
+      <div ng-messages="signupCtrl.signupForm.name.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
     <md-input-container class="md-block">
       <label translate>Email address</label>
       <input type="email" autocomplete="email" required name="username" ng-model="signupCtrl.user.username">
-      <div ng-messages="signupCtrl.signinForm.username.$error">
+      <div ng-messages="signupCtrl.signupForm.username.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
     <md-input-container class="md-block">
       <label translate>Password</label>
       <input type="password" autocomplete="password" required name="password" ng-model="signupCtrl.user.password">
-      <div ng-messages="signupCtrl.signinForm.password.$error">
+      <div ng-messages="signupCtrl.signupForm.password.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
