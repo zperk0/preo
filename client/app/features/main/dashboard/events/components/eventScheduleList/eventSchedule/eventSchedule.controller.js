@@ -32,22 +32,23 @@ export default class eventScheduleController {
 
   concatStartDateWithTime(entity) {
 
-    var date = moment(entity.$startDate.getTime());
     var dateTimer = moment(entity.$startTime.getTime());
 
-    date.hours(dateTimer.hours());
-    date.minutes(dateTimer.minutes());
+    for (var day of entity.occurrences) {
+      day.date.hours(dateTimer.hours());
+      day.date.minutes(dateTimer.minutes());
+      day.date = day.date.toDate();
+      day.date = this.formatDate(day.date);
+    }
 
-    entity.$startDate = date.toDate();
-
-    return this.formatDate(entity.$startDate);
+    return entity.occurrences;
   }
 
   buildEntityToSchedule(entity) {
 
     this.schedule = entity;
 
-    this.schedule.startDate = this.concatStartDateWithTime(entity);
+    this.schedule.occurrences = this.concatStartDateWithTime(entity);
 
     if (this.schedule.isOnceFrequency()) {
       this.schedule.endDate = this.schedule.startDate;
