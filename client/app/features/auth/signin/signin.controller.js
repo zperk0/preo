@@ -97,6 +97,8 @@ export default class signinController {
 
   showExpiredInviteMessage () {
 
+    this.Spinner.hide('invite-user');
+
     this.DialogService.show(this.ErrorService.INVITE_EXPIRED.title, this.ErrorService.INVITE_EXPIRED.message, [{
         name: this.gettextCatalog.getString('GOT IT')
       }]).then(this.goToSignInWithoutKey.bind(this));
@@ -116,10 +118,7 @@ export default class signinController {
         this.setInvitedUserData(invitedUser);
 
         this.Spinner.hide('invite-user');
-      }, () => {
-
-        this.goToSignInWithoutKey();
-      });
+      }, this.showExpiredInviteMessage.bind(this));
   }
 
   goToSignInWithoutKey () {
@@ -154,6 +153,11 @@ export default class signinController {
 
     this.shouldShowForgotPassword = false;
 
+    this.user = {
+      username:"",
+      password:""
+    };
+
     if (UserService.user){
       UserService.signout();
     }
@@ -165,10 +169,5 @@ export default class signinController {
         this.setInvitedUserData(this.$stateParams.invitedUser);
       }
     }
-
-    this.user = {
-      username:"",
-      password:""
-    };
   }
 }
