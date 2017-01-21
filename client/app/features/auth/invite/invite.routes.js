@@ -14,5 +14,20 @@ export default function routes($stateProvider) {
     template: require("./invite.tpl.html"),
     controller: controller.UID,
     controllerAs: "inviteCtrl",
+    resolve: {
+    	hasKey: function($q, $stateParams, $timeout, $state) {
+
+    		if ($stateParams.inviteKey) {
+    			return $q.resolve();
+    		}
+
+  			$timeout(() => {
+
+  				$state.go('main.dashboard');
+  			});
+
+  			return $q.reject();
+    	}
+    }
   });
 }

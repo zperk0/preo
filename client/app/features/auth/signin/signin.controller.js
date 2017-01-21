@@ -113,7 +113,7 @@ export default class signinController {
           return this.showExpiredInviteMessage();
         }
 
-        this.user.username = invitedUser.email;
+        this.setInvitedUserData(invitedUser);
 
         this.Spinner.hide('invite-user');
       }, () => {
@@ -130,6 +130,11 @@ export default class signinController {
       location: 'replace',
       reload: true
     });
+  }
+
+  setInvitedUserData (invitedUser) {
+
+    this.user.username = invitedUser.email;
   }
 
   constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UserInviteService, DialogService, ErrorService) {
@@ -154,7 +159,11 @@ export default class signinController {
     }
 
     if (this.isInvitedUser()) {
-      this.checkInvitedUser();
+      if (!this.$stateParams.invitedUser) {
+        this.checkInvitedUser();
+      } else {
+        this.setInvitedUserData(this.$stateParams.invitedUser);
+      }
     }
 
     this.user = {

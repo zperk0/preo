@@ -67,7 +67,7 @@ export default class inviteController {
         this.checkInvitedUser(invitedUser);
       }, () => {
 
-        this.goToSignIn();
+        this.showExpiredMessage();
       });
   }
 
@@ -141,10 +141,6 @@ export default class inviteController {
     this.gettextCatalog = gettextCatalog;
 
     Spinner.show('invite-user');
-
-    if (!$stateParams.inviteKey) {
-      return this.goToDashboard();
-    }
 
     this.validate($stateParams.inviteKey);
   }
