@@ -6,6 +6,8 @@ export default class eventScheduleController {
   restoreOriginalValues() {
     if (this.originalSchedule) {
       angular.extend(this.schedule, this.originalSchedule)
+      this.schedule.$startDate = null;
+      this.schedule.$endDate = null;
       this.schedule.occurrences = [];
       this.originalSchedule = false;
     }
@@ -28,8 +30,30 @@ export default class eventScheduleController {
     return date.format('YYYY-MM-DDTHH:mm:00.000');
   }
 
+  concatStartDateWithTime(entity) {
+
+    var date = moment(entity.$startDate.getTime());
+    var dateTimer = moment(entity.$startTime.getTime());
+
+    date.hours(dateTimer.hours());
+    date.minutes(dateTimer.minutes());
+
+    entity.$startDate = date.toDate();
+
+    return this.formatDate(entity.$startDate);
+  }
+
   buildEntityToSchedule(entity) {
+
     this.schedule = entity;
+
+    this.schedule.startDate = this.concatStartDateWithTime(entity);
+
+    if (this.schedule.isOnceFrequency()) {
+      this.schedule.endDate = this.schedule.startDate;
+    } else {
+      this.schedule.endDate = this.formatDate(entity.$endDate);
+    }
   }
 
   contextualMenuSuccess(entity) {
@@ -127,11 +151,38 @@ export default class eventScheduleController {
     }]);
   }
 
+  getScheduleTitle() {
+
+    if (!this.schedule.$startDate && !this.schedule.startDate && !this.schedule.$endDate && !this.schedule.endDate) {
+      return '&nbsp;';
+    }
+
+    let hasStartDate = this.schedule.$startDate || this.schedule.startDate;
+    let hasEndDate = this.schedule.$endDate || this.schedule.endDate;
+
+    switch (this.schedule.freq) {
+      case this.EventScheduleFrequency.ONCE:
+        return moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY');
+
+      default:
+        return [
+          hasStartDate ? moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY') : '',
+          hasEndDate ? moment(this.schedule.$endDate || this.schedule.endDate).format('DD/MM/YYYY') : ''
+        ].join(' - ');
+    }
+  }
+
   getScheduleTime() {
-    return moment(this.schedule.$startTime).format('HH:mm');
+
+    if (!this.schedule.$startTime && !this.schedule.startDate) {
+      return '&nbsp;';
+    }
+
+    return moment(this.schedule.$startTime || this.schedule.startDate).format('HH:mm');
   }
 
   shouldShowWarningSlots() {
+
     return this.schedule.id && !this.schedule.hasSlots();
   }
 
