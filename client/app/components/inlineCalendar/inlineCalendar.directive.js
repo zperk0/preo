@@ -9,7 +9,7 @@ export default function inlineCalendar() {
         template: require("./inlineCalendar.tpl.html"),
         link: (scope) => {
             scope.today = moment();
-            scope.schedule.occurrences = [];
+            scope.schedule.$occurrences = [];
             scope.daysName = _getWeekDays();
 
             var firstDayOfMonth = scope.today.clone().startOf('month');
@@ -37,24 +37,24 @@ export default function inlineCalendar() {
     };
 
     function _storeOccurrence(scope, day) {
-        _isDayStored(scope, day) ? _deleteOccurrence(scope, day) : scope.schedule.occurrences.push({ date: day.date });
+        _isDayStored(scope, day) ? _deleteOccurrence(scope, day) : scope.schedule.$occurrences.push(day);
         _orderOccurrences(scope);
     }
 
     function _deleteOccurrence(scope, day) {
-        scope.schedule.occurrences.filter((occurrence, index) => {
+        scope.schedule.$occurrences.filter((occurrence, index) => {
             if (occurrence.date.isSame(day.date, 'day')) {
-                scope.schedule.occurrences.splice(index, 1);
+                scope.schedule.$occurrences.splice(index, 1);
             }
         })
     }
 
     function _orderOccurrences(scope) {
-        scope.schedule.occurrences.sort((a, b) => a.date > b.date);
+        scope.schedule.$occurrences.sort((a, b) => a.date > b.date);
     }
 
     function _isDayStored(scope, day) {
-        return scope.schedule.occurrences.filter(occurrence => occurrence.date.isSame(day.date, 'day')).length > 0;
+        return scope.schedule.$occurrences.filter(occurrence => occurrence.date.isSame(day.date, 'day')).length > 0;
     }
 
     function _buildMonth(scope, firstDayOfMonth) {

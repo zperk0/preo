@@ -8,7 +8,7 @@ export default class eventScheduleController {
       angular.extend(this.schedule, this.originalSchedule)
       this.schedule.$startDate = null;
       this.schedule.$endDate = null;
-      this.schedule.occurrences = [];
+      this.schedule.$occurrences = [];
       this.originalSchedule = false;
     }
   }
@@ -32,33 +32,28 @@ export default class eventScheduleController {
 
   concatStartDateWithTime(entity) {
 
+    var occurrences = JSON.parse(JSON.stringify(entity.$occurrences));
     var dateTimer = moment(entity.$startTime.getTime());
 
-    for (var day of entity.occurrences) {
+    for (var day of occurrences) {
+      day.date = moment(day.date);
       day.date.hours(dateTimer.hours());
       day.date.minutes(dateTimer.minutes());
       day.date = day.date.toDate();
       day.date = this.formatDate(day.date);
     }
 
-    return entity.occurrences;
+    return occurrences;
   }
 
   buildEntityToSchedule(entity) {
 
     this.schedule = entity;
-
     this.schedule.occurrences = this.concatStartDateWithTime(entity);
-
-    if (this.schedule.isOnceFrequency()) {
-      this.schedule.endDate = this.schedule.startDate;
-    } else {
-      this.schedule.endDate = this.formatDate(entity.$endDate);
-    }
   }
 
   contextualMenuSuccess(entity) {
-    if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length && entity.occurrences && entity.occurrences.length) {
+    if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length && entity.$occurrences && entity.$occurrences.length) {
       this.buildEntityToSchedule(entity);
 
       if (!this.schedule.id) {
