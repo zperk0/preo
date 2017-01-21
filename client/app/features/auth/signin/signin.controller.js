@@ -95,6 +95,13 @@ export default class signinController {
     return this.$stateParams.inviteKey;
   }
 
+  showExpiredInviteMessage () {
+
+    this.DialogService.show(this.ErrorService.INVITE_EXPIRED.title, this.ErrorService.INVITE_EXPIRED.message, [{
+        name: this.gettextCatalog.getString('GOT IT')
+      }]).then(this.goToSignInWithoutKey.bind(this));
+  }
+
   checkInvitedUser () {
 
     this.Spinner.show('invite-user');
@@ -103,7 +110,7 @@ export default class signinController {
       .then((invitedUser) => {
 
         if (this.UserInviteService.isExpired(invitedUser)) {
-          return this.goToSignInWithoutKey();
+          return this.showExpiredInviteMessage();
         }
 
         this.user.username = invitedUser.email;
@@ -125,7 +132,7 @@ export default class signinController {
     });
   }
 
-  constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UserInviteService) {
+  constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UserInviteService, DialogService, ErrorService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -137,6 +144,8 @@ export default class signinController {
     this.VenueService = VenueService;
     this.gettextCatalog = gettextCatalog;
     this.UserInviteService = UserInviteService;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
 
     this.shouldShowForgotPassword = false;
 
