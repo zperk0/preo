@@ -41,7 +41,18 @@ export default class inviteController {
 
     this.hideSpinner();
 
-    this.shouldShowMessage = true;
+    let userIsLogged = this.UserService.isAuth();
+
+    this.DialogService.show(this.ErrorService.INVITE_EXPIRED.title, this.ErrorService.INVITE_EXPIRED.message, [{
+        name: userIsLogged ? this.gettextCatalog.getString('GO TO DASHBOARD') : this.gettextCatalog.getString('GO TO LOGIN')
+      }]).then(() => {
+
+        if (userIsLogged) {
+          return this.goToDashboard();
+        }
+
+        this.goToSignIn();
+      });
   }
 
   validate(key) {
@@ -117,18 +128,19 @@ export default class inviteController {
     this.Spinner.hide('invite-user');
   }
 
-  constructor($state, $stateParams, Spinner, UserInviteService, UserService) {
+  constructor($state, $stateParams, Spinner, UserInviteService, UserService, DialogService, ErrorService, gettextCatalog) {
     "ngInject";
 
     this.$state = $state;
     this.$stateParams = $stateParams;
+    this.Spinner = Spinner;
     this.UserInviteService = UserInviteService;
     this.UserService = UserService;
-    this.Spinner = Spinner;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
+    this.gettextCatalog = gettextCatalog;
 
     Spinner.show('invite-user');
-
-    this.shouldShowMessage = false;
 
     if (!$stateParams.inviteKey) {
       return this.goToDashboard();
