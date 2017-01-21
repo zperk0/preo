@@ -23,7 +23,9 @@ export default class signinController {
         console.log("venue selected",  venues)
         if (venues && venues.length){
           this.hideSpinner(2000);
-          this.$state.go('main.dashboard');
+          this.$state.go('main.dashboard', {}, {
+            location: 'replace'
+          });
         } else {
           console.log("doing signout")
           Preoday.User.signout();
@@ -52,7 +54,22 @@ export default class signinController {
     console.log("showing spinner");
     this.showSpinner();
     this.UserService.auth(this.user)
-    .then(this.handleSuccess.bind(this), this.handleError.bind(this))
+    .then(this.checkDoInvite.bind(this), this.handleError.bind(this))
+  }
+
+  checkDoInvite (user) {
+
+    if (!this.isInvitedUser()) {
+      return this.UserService.checkAdmin(user)
+              .then(this.handleSuccess.bind(this), this.handleError.bind(this));
+    }
+
+    this.UserInviteService.doInvite(this.invitedUser, user)
+      .then(this.handleSuccess.bind(this), () => {
+
+        this.hideSpinner();
+        this.Snack.showError(this.gettextCatalog.getString('An error ocurred in your signup, try again later'));
+      });
   }
 
   doForgotPassword () {
@@ -132,6 +149,8 @@ export default class signinController {
   }
 
   setInvitedUserData (invitedUser) {
+
+    this.invitedUser = invitedUser;
 
     this.user.username = invitedUser.email;
   }

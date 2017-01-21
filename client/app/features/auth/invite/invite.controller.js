@@ -86,7 +86,7 @@ export default class inviteController {
       return this.doInvite(invitedUser);
     }
 
-    this.UserService.logout(true)
+    this.UserService.signout(true)
       .then(() => {
 
         this.checkInviteUserId(invitedUser);

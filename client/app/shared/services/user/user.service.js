@@ -8,7 +8,7 @@ export default class UserService {
     return this.user ? true : false;
   }
 
-  auth (data) {
+  auth (data, skipAdmin) {
 
     if (this.authDeferred) {
       return this.authDeferred.promise;
@@ -18,6 +18,12 @@ export default class UserService {
 
     Preoday.User.auth(data).then((user) => {
       console.log("doing auth", user);
+
+      if (skipAdmin) {
+        this.authDeferred.resolve(user);
+        return this.unsetAuthDeferred();
+      }
+
       if (user){
         console.log("checking admin")
         this.checkAdmin(user);
@@ -63,7 +69,10 @@ export default class UserService {
 
   signout(shouldKeepInScreen) {
 
-    return Preoday.User.signout();
+    let deferred = this.$q.defer();
+
+    Preoday.User.signout()
+      .then(deferred.resolve, deferred.reject);
 
     if (!shouldKeepInScreen) {
       window.location.replace("#/auth/signin")
@@ -71,6 +80,8 @@ export default class UserService {
         window.location.reload();
       },300)
     }
+
+    return deferred.promise;
   }
 
   getCurrent () {
