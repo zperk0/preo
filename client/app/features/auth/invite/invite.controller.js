@@ -20,7 +20,7 @@ export default class inviteController {
 
     this.hideSpinner();
 
-    this.$state.go('auth.signin', {
+    this.$state.go('auth.signup', {
       invitedUser: invitedUser,
       inviteKey: invitedUser && this.$stateParams.inviteKey
     }, {
