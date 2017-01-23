@@ -106,11 +106,9 @@ export default class signupController {
 
     if (UserService.isAuth()) {
       this.showSpinner();
-      return UserService.logout(true)
+      UserService.signout(true)
               .then(this.refreshScreen.bind(this), this.refreshScreen.bind(this));
-    }
-
-    if ($stateParams.invitedUser) {
+    } else if ($stateParams.invitedUser) {
       this.setInvitedUserData($stateParams.invitedUser);
     } else {
       this.checkInvitedUser();
