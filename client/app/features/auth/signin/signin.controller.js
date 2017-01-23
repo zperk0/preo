@@ -53,7 +53,7 @@ export default class signinController {
 
     console.log("showing spinner");
     this.showSpinner();
-    this.UserService.auth(this.user)
+    this.UserService.auth(this.user, true)
     .then(this.checkDoInvite.bind(this), this.handleError.bind(this))
   }
 
@@ -155,6 +155,11 @@ export default class signinController {
     this.user.username = invitedUser.email;
   }
 
+  refreshScreen () {
+
+    window.location.reload();
+  }
+
   constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UserInviteService, DialogService, ErrorService) {
     "ngInject";
     this.Spinner = Spinner;
@@ -177,11 +182,10 @@ export default class signinController {
       password:""
     };
 
-    if (UserService.user){
-      UserService.signout();
-    }
-
-    if (this.isInvitedUser()) {
+    if (UserService.isAuth()){
+      UserService.signout(true)
+        .then(this.refreshScreen.bind(this), this.refreshScreen.bind(this));
+    } else if (this.isInvitedUser()) {
       if (!this.$stateParams.invitedUser) {
         this.checkInvitedUser();
       } else {
