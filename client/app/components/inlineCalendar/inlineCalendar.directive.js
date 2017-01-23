@@ -17,8 +17,8 @@ export default function inlineCalendar() {
 
             scope.select = (day) => {
                 _storeOccurrence(scope, day);
-                if (day.isCurrentMonth) {
-                    day.isSelected = !day.isSelected;
+                if (day.$isCurrentMonth) {
+                    day.$isSelected = !day.$isSelected;
                 } else {
                     day.date > scope.today ? scope.next() : scope.previous();
                 }
@@ -93,13 +93,13 @@ export default function inlineCalendar() {
         var days = [];
         for (var i = 0; i < 7; i++) {
             var day = {
-                name: weekDay.format('ddd DD MMM'),
-                number: weekDay.date(),
-                isCurrentMonth: weekDay.month() === scope.today.month(),
-                isToday: weekDay.isSame(new Date(), 'day'),
+                $name: weekDay.format('ddd DD MMM'),
+                $number: weekDay.date(),
+                $isCurrentMonth: weekDay.month() === scope.today.month(),
+                $isToday: weekDay.isSame(new Date(), 'day'),
                 date: weekDay
             };
-            day.isSelected = _isDayStored(scope, day);
+            day.$isSelected = _isDayStored(scope, day);
             days.push(day);
             weekDay = weekDay.clone();
             weekDay.add(1, 'd');
