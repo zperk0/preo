@@ -149,7 +149,6 @@ describe('User Service', function () {
       }, true);
 
       server.respond();
-      $rootScope.$digest();
 
       setTimeout(() => {
 
