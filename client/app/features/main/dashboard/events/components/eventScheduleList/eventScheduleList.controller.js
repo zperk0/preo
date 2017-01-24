@@ -81,7 +81,7 @@ export default class eventScheduleListController {
   }
 
   buildScheduleTimestamp(schedule) {
-    schedule.$startTimestamp = moment(schedule.startDate).valueOf();
+    schedule.$startTimestamp = moment(schedule.occurrences[0].date).valueOf();
     schedule.$endTimestamp = moment(schedule.endDate).valueOf();
   }
 

@@ -8,7 +8,7 @@ export default class eventScheduleController {
       angular.extend(this.schedule, this.originalSchedule)
       this.schedule.$startDate = null;
       this.schedule.$endDate = null;
-      this.schedule.$occurrences = [];
+      this.schedule.occurrences = [];
       this.originalSchedule = false;
     }
   }
@@ -32,18 +32,17 @@ export default class eventScheduleController {
 
   concatStartDateWithTime(entity) {
 
-    var occurrences = JSON.parse(JSON.stringify(entity.$occurrences));
     var dateTimer = moment(entity.$startTime.getTime());
 
-    for (var day of occurrences) {
-      day.date = moment(day.date);
+    for (var day of entity.occurrences) {
+      day.date = day.$moment.clone();
       day.date.hours(dateTimer.hours());
       day.date.minutes(dateTimer.minutes());
       day.date = day.date.toDate();
       day.date = this.formatDate(day.date);
     }
 
-    return occurrences;
+    return entity.occurrences;
   }
 
   buildEntityToSchedule(entity) {
@@ -52,8 +51,16 @@ export default class eventScheduleController {
     this.schedule.occurrences = this.concatStartDateWithTime(entity);
   }
 
+  buildScheduleOccurrences(schedule) {
+    for (var occurrence of schedule.occurrences) {
+      if (occurrence.date) {
+        occurrence.$moment = moment(occurrence.date);
+      }
+    }
+  }
+
   contextualMenuSuccess(entity) {
-    if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length && entity.$occurrences && entity.$occurrences.length) {
+    if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length && entity.occurrences && entity.occurrences.length) {
       this.buildEntityToSchedule(entity);
 
       if (!this.schedule.id) {
@@ -170,11 +177,11 @@ export default class eventScheduleController {
 
   getScheduleTime() {
 
-    if (!this.schedule.$startTime && !this.schedule.startDate) {
+    if (!this.schedule.occurrences || !this.schedule.occurrences.length) {
       return '&nbsp;';
     }
 
-    return moment(this.schedule.$startTime || this.schedule.startDate).format('HH:mm');
+    return moment(this.schedule.$startTime || this.schedule.occurrences[0].date).format('HH:mm');
   }
 
   shouldShowWarningSlots() {
@@ -196,6 +203,14 @@ export default class eventScheduleController {
     this.gettextCatalog = gettextCatalog;
     this.EventScheduleFrequency = EventScheduleFrequency;
     this.ErrorService = ErrorService;
+
+    if (this.schedule.occurrences) {
+      for (var occurrence of this.schedule.occurrences) {
+        if (occurrence.date) {
+          occurrence.$moment = moment(occurrence.date);
+        }
+      }
+    }
 
     this.type = 'eventSchedule';
 
