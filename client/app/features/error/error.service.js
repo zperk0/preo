@@ -83,5 +83,7 @@ export default class ErrorService {
     this.SECTION_HAS_MODIFIER_ON_MOVE = {code:'SECTION_HAS_MODIFIER_ON_MOVE', message:gettextCatalog.getString("Some modifiers on this item are already applied at section level. Duplicate modifiers will only appear once to the user."), title: gettextCatalog.getString("Duplicate modifier")};
     this.SECTION_ITEM_HAS_MODIFIER = {code:'SECTION_ITEM_HAS_MODIFIER', message:gettextCatalog.getString("Some modifiers are already applied in some items in this section. Duplicate modifiers will only appear once to the user. Do you still want to add?"), title: gettextCatalog.getString("Duplicate modifier")};
 
+    this.INVITE_EXPIRED = {code:'INVITE_EXPIRED', message:gettextCatalog.getString("That link appears to have expired. Please ask your administrator to send you a new one."), title: gettextCatalog.getString("Sorry")};
+
   }
 }

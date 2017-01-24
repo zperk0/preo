@@ -1,9 +1,10 @@
-<div class='signin' ng-style="{'backgroundImage': 'url(' + signinCtrl.backgroundImage + ')'}">
+<div class='signin' ng-style="{'backgroundImage': 'url(' + authCtrl.backgroundImage + ')'}">
 
-  <h1 class="preoday-logo" ng-style="{'backgroundImage': 'url(' + signinCtrl.preodayLogo + ')'}"></h1>
+  <h1 class="preoday-logo" ng-style="{'backgroundImage': 'url(' + authCtrl.preodayLogo + ')'}"></h1>
 
   <form name='signinCtrl.signinForm' ng-submit='signinCtrl.doSignin()' novalidate ng-if="!signinCtrl.shouldShowForgotPassword">
-    <div class='md-title' translate>Sign in</div>
+    <div class='md-title' translate ng-if="!signinCtrl.isInvitedUser()">Sign in</div>
+    <div class='md-title' ng-if="signinCtrl.isInvitedUser()">{{ 'There is already an account with this email address.' | translate }} <br /> {{ 'Please sign in.' | translate }}</div>
     <md-input-container class="md-block">
       <label translate>Email address</label>
       <input type="email" autocomplete="email" required name="username" ng-model="signinCtrl.user.username">

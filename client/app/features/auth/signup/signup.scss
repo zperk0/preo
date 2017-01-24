@@ -1,0 +1,26 @@
+@import "../../../shared/styles/variables";
+
+.signup{
+  .preoday-logo {
+    margin: 80px auto 40px !important;
+  }
+
+  .md-title {
+  	line-height: 1.2;
+  }
+
+  .privacy-and-terms {
+  	font-size: 13px;
+  	line-height: 1.38;
+  	color: rgba(0, 0, 0, 0.38);
+  	text-align: center;
+  	max-width: 184px;
+  	margin: 8px auto 12px;
+
+  	a {
+  		color: #207dbf;
+  		font-size: 13px;
+  		text-decoration: none;
+  	}
+  }
+}

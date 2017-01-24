@@ -8,7 +8,7 @@ export default class UserService {
     return this.user ? true : false;
   }
 
-  auth (data) {
+  auth (data, skipAdmin) {
 
     if (this.authDeferred) {
       return this.authDeferred.promise;
@@ -18,6 +18,12 @@ export default class UserService {
 
     Preoday.User.auth(data).then((user) => {
       console.log("doing auth", user);
+
+      if (skipAdmin) {
+        this.authDeferred.resolve(user);
+        return this.unsetAuthDeferred();
+      }
+
       if (user){
         console.log("checking admin")
         this.checkAdmin(user);
@@ -33,6 +39,10 @@ export default class UserService {
 
   checkAdmin (user) {
 
+    if (!this.authDeferred) {
+      this.authDeferred = this.$q.defer();
+    }
+
     this.PermissionService.checkSystemPermission()
       .then(() => {
         user.$admin = true;
@@ -41,6 +51,8 @@ export default class UserService {
         user.$admin = false;
         this.setCurrentUser(user);
       });
+
+    return this.authDeferred.promise;
   }
 
   setCurrentUser (user) {
@@ -50,17 +62,26 @@ export default class UserService {
 
     this.$rootScope.$broadcast(this.BroadcastEvents._ON_USER_AUTH,user);
 
-    this.authDeferred.resolve(user);
+    this.authDeferred && this.authDeferred.resolve(user);
 
     this.unsetAuthDeferred();
   }
 
-  signout() {
-    Preoday.User.signout();
-    window.location.replace("#/auth/signin")
-    setTimeout(function(){
-      window.location.reload();
-    },300)
+  signout(shouldKeepInScreen) {
+
+    let deferred = this.$q.defer();
+
+    Preoday.User.signout()
+      .then(deferred.resolve, deferred.reject);
+
+    if (!shouldKeepInScreen) {
+      window.location.replace("#/auth/signin")
+      setTimeout(function(){
+        window.location.reload();
+      },300)
+    }
+
+    return deferred.promise;
   }
 
   getCurrent () {

@@ -1,4 +1,5 @@
 import User from './user/user.service';
+import UserInvite from './userInvite/userInvite.service';
 import Venue from './venue/venue.service';
 import Utils from './utils/utils.service';
 import Labels from './label/label.service';
@@ -22,6 +23,7 @@ import Hours from './hours/hours.service';
 
 export default angular.module("Services" , ['ui.router'])
   .service(User.UID, User)
+  .service(UserInvite.UID, UserInvite)
   .service(Venue.UID, Venue)
   .service(Utils.UID, Utils)
   .service(Labels.UID, Labels)

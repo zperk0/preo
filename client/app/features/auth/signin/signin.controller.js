@@ -23,11 +23,12 @@ export default class signinController {
         console.log("venue selected",  venues)
         if (venues && venues.length){
           this.hideSpinner(2000);
-          this.$state.go('main.dashboard');
+          this.$state.go('main.dashboard', {}, {
+            location: 'replace'
+          });
         } else {
           console.log("doing signout")
           Preoday.User.signout();
-        console.log("handle error error else")
 
           this.handleError()
         }
@@ -52,8 +53,23 @@ export default class signinController {
 
     console.log("showing spinner");
     this.showSpinner();
-    this.UserService.auth(this.user)
-    .then(this.handleSuccess.bind(this), this.handleError.bind(this))
+    this.UserService.auth(this.user, true)
+    .then(this.checkDoInvite.bind(this), this.handleError.bind(this))
+  }
+
+  checkDoInvite (user) {
+
+    if (!this.isInvitedUser()) {
+      return this.UserService.checkAdmin(user)
+              .then(this.handleSuccess.bind(this), this.handleError.bind(this));
+    }
+
+    this.UserInviteService.doInvite(this.invitedUser, user)
+      .then(this.handleSuccess.bind(this), () => {
+
+        this.hideSpinner();
+        this.Snack.showError(this.gettextCatalog.getString('An error ocurred in your signup, try again later'));
+      });
   }
 
   doForgotPassword () {
@@ -91,27 +107,90 @@ export default class signinController {
     this.shouldShowForgotPassword = false;
   }
 
-  constructor($state, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UtilsService) {
+  isInvitedUser () {
+
+    return this.$stateParams.inviteKey;
+  }
+
+  showExpiredInviteMessage () {
+
+    this.Spinner.hide('invite-user');
+
+    this.DialogService.show(this.ErrorService.INVITE_EXPIRED.title, this.ErrorService.INVITE_EXPIRED.message, [{
+        name: this.gettextCatalog.getString('GOT IT')
+      }]).then(this.goToSignInWithoutKey.bind(this));
+  }
+
+  checkInvitedUser () {
+
+    this.Spinner.show('invite-user');
+
+    this.UserInviteService.getUserByKey(this.$stateParams.inviteKey)
+      .then((invitedUser) => {
+
+        if (this.UserInviteService.isExpired(invitedUser)) {
+          return this.showExpiredInviteMessage();
+        }
+
+        this.setInvitedUserData(invitedUser);
+
+        this.Spinner.hide('invite-user');
+      }, this.showExpiredInviteMessage.bind(this));
+  }
+
+  goToSignInWithoutKey () {
+
+    this.Spinner.hide('invite-user');
+
+    this.$state.transitionTo('auth.signin', {}, {
+      location: 'replace',
+      reload: true
+    });
+  }
+
+  setInvitedUserData (invitedUser) {
+
+    this.invitedUser = invitedUser;
+
+    this.user.username = invitedUser.email;
+  }
+
+  refreshScreen () {
+
+    window.location.reload();
+  }
+
+  constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UserInviteService, DialogService, ErrorService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.LabelService = LabelService;
     this.$timeout = $timeout;
     this.$state = $state;
+    this.$stateParams = $stateParams;
     this.UserService = UserService;
     this.VenueService = VenueService;
     this.gettextCatalog = gettextCatalog;
+    this.UserInviteService = UserInviteService;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
 
     this.shouldShowForgotPassword = false;
-    this.backgroundImage = UtilsService.getImagePath('/images/webapp/sign-in-bg.png');
-    this.preodayLogo = UtilsService.getImagePath('/images/webapp/logo-white.svg');
 
-    if (UserService.user){
-      UserService.signout();
-    }
     this.user = {
       username:"",
       password:""
     };
+
+    if (UserService.isAuth()){
+      UserService.signout(true)
+        .then(this.refreshScreen.bind(this), this.refreshScreen.bind(this));
+    } else if (this.isInvitedUser()) {
+      if (!this.$stateParams.invitedUser) {
+        this.checkInvitedUser();
+      } else {
+        this.setInvitedUserData(this.$stateParams.invitedUser);
+      }
+    }
   }
 }
