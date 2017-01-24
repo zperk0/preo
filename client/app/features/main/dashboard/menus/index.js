@@ -10,7 +10,7 @@ import v2MenuList from './menuList';
 import v2ItemList from './itemList';
 import v2ModifierList from './modifiers';
 
-import menuItemList from './components/menuItemList'; //required for drawer
+import menuItemList from './components/menuItemList';
 import modifierList from './components/modifierList'; //required for drawer
 
 angular.module("webapp.menus" , ['ui.router', v2Menu, v2MenuList, v2ItemList, v2ModifierList, menuItemList, modifierList])

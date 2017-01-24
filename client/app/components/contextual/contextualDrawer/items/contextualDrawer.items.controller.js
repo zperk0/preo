@@ -25,6 +25,18 @@ export default class contextualDrawerItemController {
     }
   }
 
+  isInFilter (item, filterName) {
+
+    if (this.types) {
+      let validType = this.types.indexOf(item.voucherType) !== -1;
+      if (!validType) {
+        return false;
+      }
+    }
+
+    return !filterName || (item.name && item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
+  }
+
   constructor($scope, $timeout, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
     "ngInject";
     this.data = {items:[]};
@@ -41,9 +53,6 @@ export default class contextualDrawerItemController {
       .then(() => {
 
         this.data = angular.copy(ItemService.data);
-        $timeout(function() {
-          $scope.$broadcast('suspend');
-        }, 0, false);
       });
 
     let unRegisterWatch = $scope.$watch(() => {
