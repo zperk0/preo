@@ -222,7 +222,7 @@ describe('invite Controller', function () {
       expect(InviteCtrl.checkIfIsTheSameUser).toHaveBeenCalled();
     });
 
-    it("checkUserAuth - Should check if is the same user because the user is logged", function() {
+    it("checkUserAuth - Should check if is the same user because the user is logged", function(done) {
 
       let inviteKey = '123';
       let invitedUser = {
@@ -248,11 +248,16 @@ describe('invite Controller', function () {
 
       InviteCtrl.checkUserAuth(invitedUser);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(UserService.auth).toHaveBeenCalled();
-      expect(InviteCtrl.checkIfIsTheSameUser).toHaveBeenCalled();
-      expect(InviteCtrl.checkInviteUserId).not.toHaveBeenCalled();
+        $rootScope.$digest();
+
+        expect(UserService.auth).toHaveBeenCalled();
+        expect(InviteCtrl.checkIfIsTheSameUser).toHaveBeenCalled();
+        expect(InviteCtrl.checkInviteUserId).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
     it("checkUserAuth - Should check if user already exists because user is not logged", function(done) {
