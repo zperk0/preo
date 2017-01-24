@@ -14,21 +14,36 @@ export default function routes($stateProvider) {
     controller: controller.UID,
     controllerAs: "signupCtrl",
     params: {
-    	invitedUser: null
+    	invitedUser: null,
+      isUserAuthChecked: null
     },
     resolve: {
-      hasKey: function($q, $stateParams, $timeout, $state) {
+      hasKey: function($q, $stateParams, $timeout, $state, UserService) {
 
-        if ($stateParams.inviteKey) {
-          return $q.resolve();
+        $state.current.name = 'auth.signup';
+
+        if (!$stateParams.inviteKey) {
+          $timeout(() => {
+
+            $state.go('main.dashboard');
+          });
+
+          return $q.reject();
         }
 
-        $timeout(() => {
+        if ($stateParams.isUserAuthChecked  || UserService.isAuth()) {
+          return $q.when();
+        }
 
-          $state.go('main.dashboard');
-        });
+        var deferred = $q.defer();
+        UserService.auth(null, true)
+          .then((user) => {
 
-        return $q.reject();
+            UserService.user = user;
+            deferred.resolve();
+          }, deferred.resolve);
+
+        return deferred.promise;
       }
     }
   });

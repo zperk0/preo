@@ -10,7 +10,8 @@ export default class inviteController {
 
     this.$state.go('auth.signin', {
       invitedUser: invitedUser,
-      inviteKey: invitedUser && this.$stateParams.inviteKey
+      inviteKey: invitedUser && this.$stateParams.inviteKey,
+      isUserAuthChecked: true
     }, {
       location: 'replace'
     });
@@ -22,7 +23,8 @@ export default class inviteController {
 
     this.$state.go('auth.signup', {
       invitedUser: invitedUser,
-      inviteKey: invitedUser && this.$stateParams.inviteKey
+      inviteKey: invitedUser && this.$stateParams.inviteKey,
+      isUserAuthChecked: true
     }, {
       location: 'replace'
     });

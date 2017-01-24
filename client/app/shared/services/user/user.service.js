@@ -62,7 +62,7 @@ export default class UserService {
 
     this.$rootScope.$broadcast(this.BroadcastEvents._ON_USER_AUTH,user);
 
-    this.authDeferred.resolve(user);
+    this.authDeferred && this.authDeferred.resolve(user);
 
     this.unsetAuthDeferred();
   }
