@@ -63,7 +63,7 @@ describe('signin Controller', function () {
       server = sinon.fakeServer.create();
     }
 
-    it("init - Should initialize the controller and do the signout because the user is logged", function() {
+    it("init - Should initialize the controller and do the signout because the user is logged", function(done) {
 
       let inviteKey = '123';
 
@@ -86,17 +86,22 @@ describe('signin Controller', function () {
 
       SigninCtrl = SigninCtrl();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(UserService.isAuth).toHaveBeenCalled();
-      expect(UserService.signout).toHaveBeenCalledWith(true);
-      expect(SigninCtrl.isInvitedUser).not.toHaveBeenCalled();
-      expect(SigninCtrl.refreshScreen).toHaveBeenCalled();
-      expect(SigninCtrl.checkInvitedUser).not.toHaveBeenCalled();
-      expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(UserService.isAuth).toHaveBeenCalled();
+        expect(UserService.signout).toHaveBeenCalledWith(true);
+        expect(SigninCtrl.isInvitedUser).not.toHaveBeenCalled();
+        expect(SigninCtrl.refreshScreen).toHaveBeenCalled();
+        expect(SigninCtrl.checkInvitedUser).not.toHaveBeenCalled();
+        expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("init - Should initialize and check the invite user because the page was refreshed", function() {
+    it("init - Should initialize and check the invite user because the page was refreshed", function(done) {
 
       let inviteKey = '123';
 
@@ -113,17 +118,22 @@ describe('signin Controller', function () {
 
       SigninCtrl = SigninCtrl();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(UserService.isAuth).toHaveBeenCalled();
-      expect(UserService.signout).not.toHaveBeenCalled();
-      expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
-      expect(SigninCtrl.refreshScreen).not.toHaveBeenCalled();
-      expect(SigninCtrl.checkInvitedUser).toHaveBeenCalled();
-      expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(UserService.isAuth).toHaveBeenCalled();
+        expect(UserService.signout).not.toHaveBeenCalled();
+        expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
+        expect(SigninCtrl.refreshScreen).not.toHaveBeenCalled();
+        expect(SigninCtrl.checkInvitedUser).toHaveBeenCalled();
+        expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("init - Should initialize and set the user data", function() {
+    it("init - Should initialize and set the user data", function(done) {
 
       let inviteKey = '123';
       let invitedUser = {
@@ -144,17 +154,22 @@ describe('signin Controller', function () {
 
       SigninCtrl = SigninCtrl();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(UserService.isAuth).toHaveBeenCalled();
-      expect(UserService.signout).not.toHaveBeenCalled();
-      expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
-      expect(SigninCtrl.refreshScreen).not.toHaveBeenCalled();
-      expect(SigninCtrl.checkInvitedUser).not.toHaveBeenCalled();
-      expect(SigninCtrl.setInvitedUserData).toHaveBeenCalledWith(invitedUser);
+        $scope.$digest();
+
+        expect(UserService.isAuth).toHaveBeenCalled();
+        expect(UserService.signout).not.toHaveBeenCalled();
+        expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
+        expect(SigninCtrl.refreshScreen).not.toHaveBeenCalled();
+        expect(SigninCtrl.checkInvitedUser).not.toHaveBeenCalled();
+        expect(SigninCtrl.setInvitedUserData).toHaveBeenCalledWith(invitedUser);
+
+        done();
+      });
     });
 
-    it("init - Should initialize and do nothing because is a normal login", function() {
+    it("init - Should initialize and do nothing because is a normal login", function(done) {
 
       _startController();
 
@@ -167,17 +182,22 @@ describe('signin Controller', function () {
 
       SigninCtrl = SigninCtrl();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(UserService.isAuth).toHaveBeenCalled();
-      expect(UserService.signout).not.toHaveBeenCalled();
-      expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
-      expect(SigninCtrl.refreshScreen).not.toHaveBeenCalled();
-      expect(SigninCtrl.checkInvitedUser).not.toHaveBeenCalled();
-      expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(UserService.isAuth).toHaveBeenCalled();
+        expect(UserService.signout).not.toHaveBeenCalled();
+        expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
+        expect(SigninCtrl.refreshScreen).not.toHaveBeenCalled();
+        expect(SigninCtrl.checkInvitedUser).not.toHaveBeenCalled();
+        expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("checkInvitedUser - Should show the expired invite message because request returns an error", function() {
+    it("checkInvitedUser - Should show the expired invite message because request returns an error", function(done) {
 
       let inviteKey = '123';
 
@@ -196,17 +216,22 @@ describe('signin Controller', function () {
 
       SigninCtrl.checkInvitedUser();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(Spinner.show).toHaveBeenCalledWith('invite-user');
-      expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.isExpired).not.toHaveBeenCalled();
-      expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
-      expect(Spinner.hide).not.toHaveBeenCalled();
-      expect(SigninCtrl.showExpiredInviteMessage).toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalledWith('invite-user');
+        expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.isExpired).not.toHaveBeenCalled();
+        expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
+        expect(Spinner.hide).not.toHaveBeenCalled();
+        expect(SigninCtrl.showExpiredInviteMessage).toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("checkInvitedUser - Should show the expired invite message because the invited is expired", function() {
+    it("checkInvitedUser - Should show the expired invite message because the invited is expired", function(done) {
 
       let inviteKey = '123';
 
@@ -229,17 +254,22 @@ describe('signin Controller', function () {
 
       SigninCtrl.checkInvitedUser();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(Spinner.show).toHaveBeenCalledWith('invite-user');
-      expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.isExpired).toHaveBeenCalledWith(invitedUser);
-      expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
-      expect(Spinner.hide).not.toHaveBeenCalled();
-      expect(SigninCtrl.showExpiredInviteMessage).toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalledWith('invite-user');
+        expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.isExpired).toHaveBeenCalledWith(invitedUser);
+        expect(SigninCtrl.setInvitedUserData).not.toHaveBeenCalled();
+        expect(Spinner.hide).not.toHaveBeenCalled();
+        expect(SigninCtrl.showExpiredInviteMessage).toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("checkInvitedUser - Should set the invited user in ctrl and hide spinner", function() {
+    it("checkInvitedUser - Should set the invited user in ctrl and hide spinner", function(done) {
 
       let inviteKey = '123';
 
@@ -262,14 +292,19 @@ describe('signin Controller', function () {
 
       SigninCtrl.checkInvitedUser();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(Spinner.show).toHaveBeenCalledWith('invite-user');
-      expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.isExpired).toHaveBeenCalledWith(invitedUser);
-      expect(SigninCtrl.setInvitedUserData).toHaveBeenCalledWith(invitedUser);
-      expect(Spinner.hide).toHaveBeenCalledWith('invite-user');
-      expect(SigninCtrl.showExpiredInviteMessage).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalledWith('invite-user');
+        expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.isExpired).toHaveBeenCalledWith(invitedUser);
+        expect(SigninCtrl.setInvitedUserData).toHaveBeenCalledWith(invitedUser);
+        expect(Spinner.hide).toHaveBeenCalledWith('invite-user');
+        expect(SigninCtrl.showExpiredInviteMessage).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
     it("doSignin - Should do nothing because form is invalid", function() {
@@ -330,7 +365,7 @@ describe('signin Controller', function () {
 
       setTimeout(() => {
 
-        $rootScope.$digest();
+        $scope.$digest();
 
         expect(UserService.auth).toHaveBeenCalledWith(SigninCtrl.user, true);
         expect(SigninCtrl.showSpinner).toHaveBeenCalled();
@@ -372,7 +407,7 @@ describe('signin Controller', function () {
 
       setTimeout(() => {
 
-        $rootScope.$digest();
+        $scope.$digest();
 
         expect(UserService.auth).toHaveBeenCalledWith(SigninCtrl.user, true);
         expect(SigninCtrl.showSpinner).toHaveBeenCalled();
@@ -383,7 +418,7 @@ describe('signin Controller', function () {
       });
     });
 
-    it("checkDoInvite - Should show a snack error because request returns an error", function() {
+    it("checkDoInvite - Should show a snack error because request returns an error", function(done) {
 
       let inviteKey = '123';
 
@@ -412,18 +447,23 @@ describe('signin Controller', function () {
       SigninCtrl.setInvitedUserData(invitedUser);
       SigninCtrl.checkDoInvite(user);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(UserService.checkAdmin).not.toHaveBeenCalled();
-      expect(UserInviteService.doInvite).toHaveBeenCalledWith(invitedUser, user);
-      expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
-      expect(SigninCtrl.handleSuccess).not.toHaveBeenCalled();
-      expect(SigninCtrl.handleError).not.toHaveBeenCalled();
-      expect(SigninCtrl.hideSpinner).toHaveBeenCalled();
-      expect(Snack.showError).toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(UserService.checkAdmin).not.toHaveBeenCalled();
+        expect(UserInviteService.doInvite).toHaveBeenCalledWith(invitedUser, user);
+        expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
+        expect(SigninCtrl.handleSuccess).not.toHaveBeenCalled();
+        expect(SigninCtrl.handleError).not.toHaveBeenCalled();
+        expect(SigninCtrl.hideSpinner).toHaveBeenCalled();
+        expect(Snack.showError).toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("checkDoInvite - Should call handleSuccess because doInvite returned success", function() {
+    it("checkDoInvite - Should call handleSuccess because doInvite returned success", function(done) {
 
       let inviteKey = '123';
 
@@ -452,18 +492,23 @@ describe('signin Controller', function () {
       SigninCtrl.setInvitedUserData(invitedUser);
       SigninCtrl.checkDoInvite(user);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(UserService.checkAdmin).not.toHaveBeenCalled();
-      expect(UserInviteService.doInvite).toHaveBeenCalledWith(invitedUser, user);
-      expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
-      expect(SigninCtrl.handleSuccess).toHaveBeenCalled();
-      expect(SigninCtrl.handleError).not.toHaveBeenCalled();
-      expect(SigninCtrl.hideSpinner).not.toHaveBeenCalled();
-      expect(Snack.showError).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(UserService.checkAdmin).not.toHaveBeenCalled();
+        expect(UserInviteService.doInvite).toHaveBeenCalledWith(invitedUser, user);
+        expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
+        expect(SigninCtrl.handleSuccess).toHaveBeenCalled();
+        expect(SigninCtrl.handleError).not.toHaveBeenCalled();
+        expect(SigninCtrl.hideSpinner).not.toHaveBeenCalled();
+        expect(Snack.showError).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("checkDoInvite - Shouldn't call doInvite and check if is admin because the signin is not an invite", function() {
+    it("checkDoInvite - Shouldn't call doInvite and check if is admin because the signin is not an invite", function(done) {
 
       let user = new Preoday.User({
         id: 1
@@ -483,15 +528,20 @@ describe('signin Controller', function () {
 
       SigninCtrl.checkDoInvite(user);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(UserService.checkAdmin).toHaveBeenCalledWith(user);
-      expect(UserInviteService.doInvite).not.toHaveBeenCalled();
-      expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
-      expect(SigninCtrl.handleSuccess).toHaveBeenCalled();
-      expect(SigninCtrl.handleError).not.toHaveBeenCalled();
-      expect(SigninCtrl.hideSpinner).not.toHaveBeenCalled();
-      expect(Snack.showError).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(UserService.checkAdmin).toHaveBeenCalledWith(user);
+        expect(UserInviteService.doInvite).not.toHaveBeenCalled();
+        expect(SigninCtrl.isInvitedUser).toHaveBeenCalled();
+        expect(SigninCtrl.handleSuccess).toHaveBeenCalled();
+        expect(SigninCtrl.handleError).not.toHaveBeenCalled();
+        expect(SigninCtrl.hideSpinner).not.toHaveBeenCalled();
+        expect(Snack.showError).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
 });

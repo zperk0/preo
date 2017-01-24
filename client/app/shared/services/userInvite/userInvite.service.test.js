@@ -28,7 +28,7 @@ describe('User Invite Service', function () {
       UserService.restore();
     });
 
-    it("doInvite - Should reject the promise because accept request returns an error", function() {
+    it("doInvite - Should reject the promise because accept request returns an error", function(done) {
 
       let invitedUser = new Preoday.Invite({
         userId: 1
@@ -47,14 +47,19 @@ describe('User Invite Service', function () {
       UserInviteService.doInvite(invitedUser, user)
         .then(resolve, reject);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(reject).toHaveBeenCalled();
-      expect(UserService.checkAdmin).not.toHaveBeenCalled();
-      expect(resolve).not.toHaveBeenCalled();
+        $rootScope.$digest();
+
+        expect(reject).toHaveBeenCalled();
+        expect(UserService.checkAdmin).not.toHaveBeenCalled();
+        expect(resolve).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("doInvite - Should resolve the promise because checkAdmin request returns an error", function() {
+    it("doInvite - Should resolve the promise because checkAdmin request returns an error", function(done) {
 
       let invitedUser = new Preoday.Invite({
         userId: 1
@@ -73,14 +78,19 @@ describe('User Invite Service', function () {
       UserInviteService.doInvite(invitedUser, user)
         .then(resolve, reject);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(reject).not.toHaveBeenCalled();
-      expect(UserService.checkAdmin).toHaveBeenCalledWith(user);
-      expect(resolve).toHaveBeenCalled();
+        $rootScope.$digest();
+
+        expect(reject).not.toHaveBeenCalled();
+        expect(UserService.checkAdmin).toHaveBeenCalledWith(user);
+        expect(resolve).toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("doInvite - Should resolve the promise because both requests were success", function() {
+    it("doInvite - Should resolve the promise because both requests were success", function(done) {
 
       let invitedUser = new Preoday.Invite({
         userId: 1
@@ -99,10 +109,15 @@ describe('User Invite Service', function () {
       UserInviteService.doInvite(invitedUser, user)
         .then(resolve, reject);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(reject).not.toHaveBeenCalled();
-      expect(UserService.checkAdmin).toHaveBeenCalledWith(user);
-      expect(resolve).toHaveBeenCalled();
+        $rootScope.$digest();
+
+        expect(reject).not.toHaveBeenCalled();
+        expect(UserService.checkAdmin).toHaveBeenCalledWith(user);
+        expect(resolve).toHaveBeenCalled();
+
+        done();
+      });
     });
 });
