@@ -367,7 +367,7 @@ describe('invite Controller', function () {
       expect(UserService.signout).not.toHaveBeenCalled();
     });
 
-    it("checkIfIsTheSameUser - Should signout and check user id because the logged user is another user", function() {
+    it("checkIfIsTheSameUser - Should signout and check user id because the logged user is another user", function(done) {
 
       let inviteKey = '123';
 
@@ -394,14 +394,19 @@ describe('invite Controller', function () {
 
       InviteCtrl.checkIfIsTheSameUser(invitedUser);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(InviteCtrl.doInvite).not.toHaveBeenCalled();
-      expect(InviteCtrl.checkInviteUserId).toHaveBeenCalledWith(invitedUser);
-      expect(UserService.signout).toHaveBeenCalledWith(true);
+        $scope.$digest();
+
+        expect(InviteCtrl.doInvite).not.toHaveBeenCalled();
+        expect(InviteCtrl.checkInviteUserId).toHaveBeenCalledWith(invitedUser);
+        expect(UserService.signout).toHaveBeenCalledWith(true);
+
+        done();
+      });
     });
 
-    it("doInvite - Should show expired message because request returns an error", function() {
+    it("doInvite - Should show expired message because request returns an error", function(done) {
 
       let inviteKey = '123';
 
@@ -429,15 +434,20 @@ describe('invite Controller', function () {
 
       InviteCtrl.doInvite(invitedUser);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(InviteCtrl.goToDashboard).not.toHaveBeenCalled();
-      expect(InviteCtrl.showExpiredMessage).toHaveBeenCalled();
-      expect(UserInviteService.doInvite).toHaveBeenCalledWith(invitedUser, user);
-      expect(UserService.getCurrent).toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(InviteCtrl.goToDashboard).not.toHaveBeenCalled();
+        expect(InviteCtrl.showExpiredMessage).toHaveBeenCalled();
+        expect(UserInviteService.doInvite).toHaveBeenCalledWith(invitedUser, user);
+        expect(UserService.getCurrent).toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("doInvite - Should redirect to dashboard because request returns success", function() {
+    it("doInvite - Should redirect to dashboard because request returns success", function(done) {
 
       let inviteKey = '123';
 
@@ -465,12 +475,17 @@ describe('invite Controller', function () {
 
       InviteCtrl.doInvite(invitedUser);
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(InviteCtrl.goToDashboard).toHaveBeenCalled();
-      expect(InviteCtrl.showExpiredMessage).not.toHaveBeenCalled();
-      expect(UserInviteService.doInvite).toHaveBeenCalledWith(invitedUser, user);
-      expect(UserService.getCurrent).toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(InviteCtrl.goToDashboard).toHaveBeenCalled();
+        expect(InviteCtrl.showExpiredMessage).not.toHaveBeenCalled();
+        expect(UserInviteService.doInvite).toHaveBeenCalledWith(invitedUser, user);
+        expect(UserService.getCurrent).toHaveBeenCalled();
+
+        done();
+      });
     });
 
     it("goToDashboard - Should redirect to dashboard and replace browser history", function() {
@@ -566,7 +581,7 @@ describe('invite Controller', function () {
       });
     });
 
-    it("showExpiredMessage - Should show correct button title and redirect to dashboard because user is logged", function() {
+    it("showExpiredMessage - Should show correct button title and redirect to dashboard because user is logged", function(done) {
 
       let inviteKey = '123';
 
@@ -591,17 +606,22 @@ describe('invite Controller', function () {
 
       InviteCtrl.showExpiredMessage();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(InviteCtrl.hideSpinner).toHaveBeenCalled();
-      expect(DialogService.show).toHaveBeenCalledWith(ErrorService.INVITE_EXPIRED.title, ErrorService.INVITE_EXPIRED.message, [{
-        name: 'GO TO DASHBOARD'
-      }]);
-      expect(InviteCtrl.goToDashboard).toHaveBeenCalled();
-      expect(InviteCtrl.goToSignIn).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(InviteCtrl.hideSpinner).toHaveBeenCalled();
+        expect(DialogService.show).toHaveBeenCalledWith(ErrorService.INVITE_EXPIRED.title, ErrorService.INVITE_EXPIRED.message, [{
+          name: 'GO TO DASHBOARD'
+        }]);
+        expect(InviteCtrl.goToDashboard).toHaveBeenCalled();
+        expect(InviteCtrl.goToSignIn).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("showExpiredMessage - Should show correct button title and redirect to signin because user is not logged", function() {
+    it("showExpiredMessage - Should show correct button title and redirect to signin because user is not logged", function(done) {
 
       let inviteKey = '123';
 
@@ -619,13 +639,18 @@ describe('invite Controller', function () {
 
       InviteCtrl.showExpiredMessage();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(InviteCtrl.hideSpinner).toHaveBeenCalled();
-      expect(DialogService.show).toHaveBeenCalledWith(ErrorService.INVITE_EXPIRED.title, ErrorService.INVITE_EXPIRED.message, [{
-        name: 'GO TO LOGIN'
-      }]);
-      expect(InviteCtrl.goToDashboard).not.toHaveBeenCalled();
-      expect(InviteCtrl.goToSignIn).toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(InviteCtrl.hideSpinner).toHaveBeenCalled();
+        expect(DialogService.show).toHaveBeenCalledWith(ErrorService.INVITE_EXPIRED.title, ErrorService.INVITE_EXPIRED.message, [{
+          name: 'GO TO LOGIN'
+        }]);
+        expect(InviteCtrl.goToDashboard).not.toHaveBeenCalled();
+        expect(InviteCtrl.goToSignIn).toHaveBeenCalled();
+
+        done();
+      });
     });
 });
