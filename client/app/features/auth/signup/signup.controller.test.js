@@ -361,7 +361,7 @@ describe('signup Controller', function () {
 
       expect(SignupCtrl.invitedUser).toEqual(invitedUser);
       expect(SignupCtrl.user.name).toEqual(invitedUser.name);
-      expect(SignupCtrl.user.email).toEqual(invitedUser.email);
+      expect(SignupCtrl.user.username).toEqual(invitedUser.email);
     });
 
     it("goToSignIn - Should go to signin and replace browser history", function() {

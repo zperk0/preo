@@ -26,7 +26,7 @@ export default class signupController {
 
     this.invitedUser = invitedUser;
 
-    this.user.email = invitedUser.email;
+    this.user.username = invitedUser.email;
     this.user.name = invitedUser.name;
   }
 
@@ -78,6 +78,8 @@ export default class signupController {
     }
 
     this.showSpinner();
+
+    this.user.email = this.user.username;
 
     this.UserInviteService.doInvite(this.invitedUser, this.user)
       .then(this.goToDashboard.bind(this), () => {
