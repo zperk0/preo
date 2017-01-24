@@ -518,7 +518,8 @@ describe('invite Controller', function () {
       expect(InviteCtrl.hideSpinner).toHaveBeenCalled();
       expect($state.go).toHaveBeenCalledWith('auth.signup', {
         invitedUser: invitedUser,
-        inviteKey: inviteKey
+        inviteKey: inviteKey,
+        isUserAuthChecked: true
       }, {
         location: 'replace'
       });
@@ -553,7 +554,8 @@ describe('invite Controller', function () {
       expect(InviteCtrl.hideSpinner).toHaveBeenCalled();
       expect($state.go).toHaveBeenCalledWith('auth.signin', {
         invitedUser: invitedUser,
-        inviteKey: inviteKey
+        inviteKey: inviteKey,
+        isUserAuthChecked: true
       }, {
         location: 'replace'
       });
