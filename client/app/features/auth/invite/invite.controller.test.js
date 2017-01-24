@@ -80,7 +80,7 @@ describe('invite Controller', function () {
       expect(InviteCtrl.validate).toHaveBeenCalledWith(inviteKey);
     });
 
-    it("validate - Should show the expired message because getUserByKey request returns an error", function() {
+    it("validate - Should show the expired message because getUserByKey request returns an error", function(done) {
 
       let inviteKey = '123';
 
@@ -97,17 +97,22 @@ describe('invite Controller', function () {
 
       InviteCtrl = InviteCtrl();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(Spinner.show).toHaveBeenCalled();
-      expect(InviteCtrl.validate).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.isExpired).not.toHaveBeenCalled();
-      expect(InviteCtrl.showExpiredMessage).toHaveBeenCalled();
-      expect(InviteCtrl.checkInvitedUser).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalled();
+        expect(InviteCtrl.validate).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.isExpired).not.toHaveBeenCalled();
+        expect(InviteCtrl.showExpiredMessage).toHaveBeenCalled();
+        expect(InviteCtrl.checkInvitedUser).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("validate - Should show the expired message because the invite is expired", function() {
+    it("validate - Should show the expired message because the invite is expired", function(done) {
 
       let inviteKey = '123';
       let invitedUser = {
@@ -127,17 +132,22 @@ describe('invite Controller', function () {
 
       InviteCtrl = InviteCtrl();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(Spinner.show).toHaveBeenCalled();
-      expect(InviteCtrl.validate).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.isExpired).toHaveBeenCalledWith(invitedUser);
-      expect(InviteCtrl.showExpiredMessage).toHaveBeenCalled();
-      expect(InviteCtrl.checkInvitedUser).not.toHaveBeenCalled();
+        $scope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalled();
+        expect(InviteCtrl.validate).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.isExpired).toHaveBeenCalledWith(invitedUser);
+        expect(InviteCtrl.showExpiredMessage).toHaveBeenCalled();
+        expect(InviteCtrl.checkInvitedUser).not.toHaveBeenCalled();
+
+        done();
+      });
     });
 
-    it("validate - Should check invited user because the invitedUser is valid", function() {
+    it("validate - Should check invited user because the invitedUser is valid", function(done) {
 
       let inviteKey = '123';
       let invitedUser = {
@@ -157,14 +167,19 @@ describe('invite Controller', function () {
 
       InviteCtrl = InviteCtrl();
 
-      $rootScope.$digest();
+      setTimeout(() => {
 
-      expect(Spinner.show).toHaveBeenCalled();
-      expect(InviteCtrl.validate).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
-      expect(UserInviteService.isExpired).toHaveBeenCalledWith(invitedUser);
-      expect(InviteCtrl.showExpiredMessage).not.toHaveBeenCalled();
-      expect(InviteCtrl.checkInvitedUser).toHaveBeenCalledWith(invitedUser);
+        $scope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalled();
+        expect(InviteCtrl.validate).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.getUserByKey).toHaveBeenCalledWith(inviteKey);
+        expect(UserInviteService.isExpired).toHaveBeenCalledWith(invitedUser);
+        expect(InviteCtrl.showExpiredMessage).not.toHaveBeenCalled();
+        expect(InviteCtrl.checkInvitedUser).toHaveBeenCalledWith(invitedUser);
+
+        done();
+      });
     });
 
     it("checkInvitedUser - Should check userAuth because user is not logged locally", function() {
@@ -250,7 +265,7 @@ describe('invite Controller', function () {
 
       setTimeout(() => {
 
-        $rootScope.$digest();
+        $scope.$digest();
 
         expect(UserService.auth).toHaveBeenCalled();
         expect(InviteCtrl.checkIfIsTheSameUser).toHaveBeenCalled();
@@ -281,7 +296,7 @@ describe('invite Controller', function () {
 
       setTimeout(() => {
 
-        $rootScope.$digest();
+        $scope.$digest();
 
         expect(UserService.auth).toHaveBeenCalled();
         expect(InviteCtrl.checkIfIsTheSameUser).not.toHaveBeenCalled();
