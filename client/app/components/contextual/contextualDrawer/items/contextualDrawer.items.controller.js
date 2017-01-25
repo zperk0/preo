@@ -39,7 +39,6 @@ export default class contextualDrawerItemController {
 
   constructor($scope, $timeout, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
     "ngInject";
-    this.data = {items:[]};
     this.$mdSidenav = $mdSidenav;
     this.$scope = $scope;
     this.$state = $state;
@@ -47,6 +46,7 @@ export default class contextualDrawerItemController {
 
     this.cancelledItems = [];
     this.types = ['NONE'];
+
 
 
     ItemService.getItems($stateParams.venueId)

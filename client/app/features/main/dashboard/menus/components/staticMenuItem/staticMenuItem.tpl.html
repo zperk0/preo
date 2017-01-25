@@ -1,0 +1,25 @@
+<div class='menu-item ng-enter'>
+  <card-item>
+    <card-item-title
+                    has-visible="true"
+                    show-visible="::!staticMenuItemCtrl.item.visible"
+                    ng-attr-data-id="{{::staticMenuItemCtrl.item.id}}">
+                    <span class='name' flex>{{::staticMenuItemCtrl.item.name}} </span>
+                    <span class='price'> {{::staticMenuItemCtrl.item.price | currency}}</span>
+                    </card-item-title>
+
+    <modifier-chips
+        ng-if="::staticMenuItemCtrl.modifiers.length"
+        modifiers="::staticMenuItemCtrl.modifiers"
+        item="::staticMenuItemCtrl.item"></modifier-chips>
+
+    <div class='size-wrapper'
+          ng-if="!(staticMenuItemCtrl.item.$size.$isMultiple === false) && staticMenuItemCtrl.item.$size.items.length">
+      <card-item-child
+          ng-repeat="size in ::staticMenuItemCtrl.item.$size.items"
+          modifier="::staticMenuItemCtrl.item.$size"
+          option="size"></card-item-child>
+    </div>
+
+  </card-item>
+</div>

@@ -5,11 +5,10 @@
       </div>
     </div>
 
-    <div class='contextual-list' ng-class="::{empty:!drawerItemsCtrl.data.items || !drawerItemsCtrl.data.items.length}">
+    <div class='contextual-list' ng-class="{empty:!drawerItemsCtrl.data.items || !drawerItemsCtrl.data.items.length}">
 
       <div class='menu-item-list'>
         <div class='sv-root-holder' sv-root='item'>
-
           <card-item-list
                 collection="::drawerItemsCtrl.data.items"
                 search-filter="drawerItemsCtrl.searchText"
@@ -21,14 +20,13 @@
                   sv-keep-in-list='true'
                   sv-is-dropzone='false'>
 
-                  <menu-item
+                  <static-menu-item
                      ng-repeat="item in ::drawerItemsCtrl.data.items | orderBy: 'id' track by item.id"
                      ng-show="drawerItemsCtrl.isInFilter(item, drawerItemsCtrl.searchText.name)"
                      ng-attr-data-id="{{ ::item.id }}"
                      item="item"
-                     has-actions="false"
                      sv-element="item">
-                  </menu-item>
+                  </static-menu-item>
                   <div sv-placeholder></div>
                 </div>
           </card-item-list>
