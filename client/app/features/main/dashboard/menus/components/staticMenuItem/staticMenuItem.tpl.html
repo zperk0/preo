@@ -6,30 +6,30 @@
         <icon class='visibility' ng-if="::!staticMenuItemCtrl.item.visible">visibility_off</icon>
         <span class='card-title-text' flex ayout="row" layout-align="start center">
           <span class='name' flex>{{ ::staticMenuItemCtrl.item.name }} </span>
-          <span class='price'> {{ ::staticMenuItemCtrl.item.price | currency }}</span>
+          <span class='price'> {{ ::staticMenuItemCtrl.item.formattedPrice }}</span>
         </span>
       </div>
     </div>
 
-    <div class='modifier-chips' ng-if="::staticMenuItemCtrl.modifiers.length">
-      <div class='modifier-chip' ng-repeat="modifier in ::staticMenuItemCtrl.modifiers | orderBy: ['!!position', 'position'] | filter:{ variant:0 }">
-        <span>{{ ::modifier.name }}</span>
-
-        <md-tooltip ng-if="::modifier.items.length" class="modifier-chip-tooltip">
-          <div ng-repeat="item in ::modifier.items" class="modifierChipItem">
-            <span class="item-name">{{ ::item.name }}</span>
-            <span class="item-price">{{ ::item.price | currency }}</span>
-          </div>
-        </md-tooltip>
-      </div>
-    </div>
+    <static-modifier-chips
+        ng-if="::staticMenuItemCtrl.modifiers.length"
+        modifiers="::staticMenuItemCtrl.modifiers"></static-modifier-chips>
 
     <div class='size-wrapper'
           ng-if="::(staticMenuItemCtrl.item.$size.$isMultiple !== false && staticMenuItemCtrl.item.$size.items.length)">
-      <card-item-child
-          ng-repeat="size in ::staticMenuItemCtrl.item.$size.items"
-          modifier="::staticMenuItemCtrl.item.$size"
-          option="size"></card-item-child>
+
+      <div class='card-item-child' layout="row" ng-repeat="size in ::staticMenuItemCtrl.item.$size.items">
+        <span class='name-wrapper' layout="row" flex>
+          <span class='name' layout="column" layout-align="center start">{{ ::size.name }} </span>
+
+          <static-modifier-chips flex
+              ng-if="::size.modifiers.length"
+              modifiers="::size.modifiers"></static-modifier-chips>
+              
+        </span>
+        <span class='price'> {{ ::size.formattedPrice }}</span>
+      </div>
+
     </div>
   </md-card>
 </div>
