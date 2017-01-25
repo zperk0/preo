@@ -544,4 +544,43 @@ describe('signin Controller', function () {
       });
     });
 
+    it("doForgotPassword - Should call forgotPassword and send the link", function(done) {
+
+      _startController();
+
+      spyOn(UserService, 'forgotPassword').and.returnValue($q.resolve());
+      spyOn(SigninCtrl.instance, 'showSpinner');
+      spyOn(SigninCtrl.instance, 'buildForgotLink').and.callThrough();
+      spyOn(SigninCtrl.instance, 'hideSpinner');
+      spyOn(Snack, 'show');
+      spyOn(Snack, 'showError');
+
+      SigninCtrl = SigninCtrl();
+
+      SigninCtrl.forgotPasswordForm = {
+        $invalid: false
+      };
+
+      let userEmail = 'test@tester.com';
+
+      SigninCtrl.forgotPassword.email = userEmail;
+
+      SigninCtrl.doForgotPassword();
+
+      setTimeout(() => {
+
+        $scope.$digest();
+
+        expect(UserService.forgotPassword).toHaveBeenCalledWith({
+          email: userEmail,
+          link: 'http://local.app.preoday.com/reset?url=' + window.location.origin + '/&code='
+        });
+        expect(SigninCtrl.hideSpinner).toHaveBeenCalled();
+        expect(Snack.show).toHaveBeenCalled();
+        expect(Snack.showError).not.toHaveBeenCalled();
+
+        done();
+      });
+    });
+
 });

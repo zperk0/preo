@@ -9,6 +9,7 @@ export default function config($mdThemingProvider, $locationProvider, $mdDateLoc
       _WEBORDERS_EDIT : 'http://localhost:3000/',
       _ORDERSAPP : 'http://local.orders.preoday.com/',
       _WEBAPP_V1 : 'http://local.app.preoday.com/',
+      _RESET_PASSWORD : 'http://local.app.preoday.com/reset',
     }
   }
 
