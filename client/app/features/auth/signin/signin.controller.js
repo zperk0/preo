@@ -72,11 +72,27 @@ export default class signinController {
       });
   }
 
+  getCurrentDomain () {
+
+    if (!window.location.origin) {
+      window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+    }
+
+    return window.location.origin;
+  }
+
+  buildForgotLink () {
+
+    return window._PREO_DATA._RESET_PASSWORD + '?url=' + (this.getCurrentDomain() + '/') + '&code=';
+  }
+
   doForgotPassword () {
 
     if (this.forgotPasswordForm.$invalid) {
       return;
     }
+
+    this.forgotPassword.link = this.buildForgotLink();
 
     this.showSpinner();
     this.UserService.forgotPassword(this.forgotPassword)
@@ -177,6 +193,7 @@ export default class signinController {
 
     this.shouldShowForgotPassword = false;
 
+    this.forgotPassword = {};
     this.user = {
       username:"",
       password:""
