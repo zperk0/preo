@@ -1,25 +1,35 @@
 <div class='menu-item ng-enter'>
-  <card-item>
-    <card-item-title
-                    has-visible="true"
-                    show-visible="::!staticMenuItemCtrl.item.visible"
-                    ng-attr-data-id="{{::staticMenuItemCtrl.item.id}}">
-                    <span class='name' flex>{{::staticMenuItemCtrl.item.name}} </span>
-                    <span class='price'> {{::staticMenuItemCtrl.item.price | currency}}</span>
-                    </card-item-title>
+  <md-card class='card-item' flex>
 
-    <modifier-chips
-        ng-if="::staticMenuItemCtrl.modifiers.length"
-        modifiers="::staticMenuItemCtrl.modifiers"
-        item="::staticMenuItemCtrl.item"></modifier-chips>
+    <div class='card-title' layout="row" layout-align="start center" ng-class="::{invisible: !staticMenuItemCtrl.item.visible}">
+      <div flex layout="row" layout-align="start center">
+        <icon class='visibility' ng-if="::!staticMenuItemCtrl.item.visible">visibility_off</icon>
+        <span class='card-title-text' flex ayout="row" layout-align="start center">
+          <span class='name' flex>{{ ::staticMenuItemCtrl.item.name }} </span>
+          <span class='price'> {{ ::staticMenuItemCtrl.item.price | currency }}</span>
+        </span>
+      </div>
+    </div>
+
+    <div class='modifier-chips' ng-if="::staticMenuItemCtrl.modifiers.length">
+      <div class='modifier-chip' ng-repeat="modifier in ::staticMenuItemCtrl.modifiers | orderBy: ['!!position', 'position'] | filter:{ variant:0 }">
+        <span>{{ ::modifier.name }}</span>
+
+        <md-tooltip ng-if="::modifier.items.length" class="modifier-chip-tooltip">
+          <div ng-repeat="item in ::modifier.items" class="modifierChipItem">
+            <span class="item-name">{{ ::item.name }}</span>
+            <span class="item-price">{{ ::item.price | currency }}</span>
+          </div>
+        </md-tooltip>
+      </div>
+    </div>
 
     <div class='size-wrapper'
-          ng-if="!(staticMenuItemCtrl.item.$size.$isMultiple === false) && staticMenuItemCtrl.item.$size.items.length">
+          ng-if="::(staticMenuItemCtrl.item.$size.$isMultiple !== false && staticMenuItemCtrl.item.$size.items.length)">
       <card-item-child
           ng-repeat="size in ::staticMenuItemCtrl.item.$size.items"
           modifier="::staticMenuItemCtrl.item.$size"
           option="size"></card-item-child>
     </div>
-
-  </card-item>
+  </md-card>
 </div>
