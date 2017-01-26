@@ -8,7 +8,6 @@ export default class eventScheduleController {
       angular.extend(this.schedule, this.originalSchedule)
       this.schedule.$startDate = null;
       this.schedule.$endDate = null;
-      this.schedule.occurrences = [];
       this.originalSchedule = false;
     }
   }
@@ -93,7 +92,6 @@ export default class eventScheduleController {
         .then((_schedule) => {
           this.Snack.show(this.gettextCatalog.getString('Schedule updated'));
 
-          this.eventScheduleListCtrl.buildScheduleTimestamp(this.schedule);
           resolve(_schedule);
         }, (err) => {
           reject();
@@ -181,7 +179,7 @@ export default class eventScheduleController {
       return '&nbsp;';
     }
 
-    return moment(this.schedule.$startTime || this.schedule.occurrences[0].date).format('HH:mm');
+    return moment(this.schedule.occurrences[0].date).format('HH:mm');
   }
 
   shouldShowWarningSlots() {
