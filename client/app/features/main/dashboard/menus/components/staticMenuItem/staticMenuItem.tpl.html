@@ -6,7 +6,7 @@
         <icon class='visibility' ng-if="::!staticMenuItemCtrl.item.visible">visibility_off</icon>
         <span class='card-title-text' flex ayout="row" layout-align="start center">
           <span class='name' flex>{{ ::staticMenuItemCtrl.item.name }} </span>
-          <span class='price'> {{ ::staticMenuItemCtrl.item.formattedPrice }}</span>
+          <span class='price'> {{ ::staticMenuItemCtrl.formattedPrice }}</span>
         </span>
       </div>
     </div>
@@ -17,19 +17,8 @@
 
     <div class='size-wrapper'
           ng-if="::(staticMenuItemCtrl.item.$size.$isMultiple !== false && staticMenuItemCtrl.item.$size.items.length)">
-
-      <div class='card-item-child' layout="row" ng-repeat="size in ::staticMenuItemCtrl.item.$size.items">
-        <span class='name-wrapper' layout="row" flex>
-          <span class='name' layout="column" layout-align="center start">{{ ::size.name }} </span>
-
-          <static-modifier-chips flex
-              ng-if="::size.modifiers.length"
-              modifiers="::size.modifiers"></static-modifier-chips>
-              
-        </span>
-        <span class='price'> {{ ::size.formattedPrice }}</span>
-      </div>
-
+      <static-menu-item-child ng-repeat="size in ::staticMenuItemCtrl.item.$size.items"
+                          option="size"></static-menu-item-child>
     </div>
   </md-card>
 </div>

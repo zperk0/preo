@@ -3,11 +3,9 @@
 import controller from './staticMenuItem.controller';
 import directive from './staticMenuItem.directive';
 
-import staticModifierChips from '../staticModifierChips';
 
 
-
-export default angular.module("staticMenuItem", [staticModifierChips])
+export default angular.module("staticMenuItem", [])
 
 
   .controller(controller.UID, controller)

@@ -14,19 +14,8 @@
 
     <div class='size-wrapper'
           ng-if="::staticModifierItemCtrl.modifier.items.length">
-
-      <div class='card-item-child' layout="row" ng-repeat="option in ::staticModifierItemCtrl.modifier.items">
-        <span class='name-wrapper' layout="row" flex>
-          <span class='name' layout="column" layout-align="center start">{{ ::option.name }} </span>
-
-          <static-modifier-chips flex
-              ng-if="::option.modifiers.length"
-              modifiers="::option.modifiers"></static-modifier-chips>
-              
-        </span>
-        <span class='price'> {{ ::option.formattedPrice }}</span>
-      </div>
-
+      <static-menu-item-child ng-repeat="option in ::staticModifierItemCtrl.modifier.items"
+                          option="option"></static-menu-item-child>
     </div>
   </md-card>
 </div>

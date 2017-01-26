@@ -1,0 +1,11 @@
+<div class='card-item-child' layout="row">
+  <span class='name-wrapper' layout="row" flex>
+    <span class='name' layout="column" layout-align="center start">{{ ::staticMenuItemChildCtrl.option.name }} </span>
+
+    <static-modifier-chips flex
+        ng-if="::staticMenuItemChildCtrl.option.modifiers.length"
+        modifiers="::staticMenuItemChildCtrl.option.modifiers"></static-modifier-chips>
+        
+  </span>
+  <span class='price'> {{ ::staticMenuItemChildCtrl.formattedPrice }}</span>
+</div>

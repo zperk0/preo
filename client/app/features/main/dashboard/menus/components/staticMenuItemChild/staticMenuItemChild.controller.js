@@ -1,11 +1,11 @@
-export default class staticModifierItemController {
+export default class staticMenuItemChildController {
   static get UID(){
-    return "staticModifierItemController"
+    return "staticMenuItemChildController";
   }
 
   buildModifiers () {
-    if (this.modifier && this.modifier.modifiers) {
-      this.modifiers = this.modifier.modifiers.map((_modifier, index) => {
+    if (this.option.modifiers) {
+      this.modifiers = this.option.modifiers.map((_modifier, index) => {
 
         return this.ModifierService.getById(_modifier.id);
       });
@@ -14,8 +14,9 @@ export default class staticModifierItemController {
 
   constructor($filter, ModifierService) {
     'ngInject';
-
+    
     this.ModifierService = ModifierService;
+    this.formattedPrice = $filter('currency')(this.option.price);
     this.modifiers = [];
 
     this.buildModifiers();
