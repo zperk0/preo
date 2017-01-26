@@ -74,11 +74,13 @@ describe('EventSchedule Controller', function () {
 
     let startDate = moment().subtract(2, 'day').format('YYYY-MM-DDThh:mm:ss.000');
     let endDate = moment().add(2, 'day').format('YYYY-MM-DDThh:mm:ss.000');
+    let occurrences = [{ date: moment() }];
 
     scheduleMock = new Preoday.EventSchedule(angular.extend({
       id: 1,
       startDate: startDate,
       endDate: endDate,
+      occurrences: occurrences,
       eventId: 1
     }, data));
   }
@@ -368,7 +370,7 @@ describe('EventSchedule Controller', function () {
     _startCardItemListController();
     _startController();
 
-    scheduleMock.$startTime = moment().subtract(2, 'day').hours(4).minutes(5);
+    scheduleMock.occurrences[0].date = moment().subtract(2, 'day').hours(4).minutes(5);
 
     EventScheduleCtrl.instance.schedule = scheduleMock;
     EventScheduleCtrl.instance.cardItemList = CardItemListCtrl();
@@ -377,7 +379,7 @@ describe('EventSchedule Controller', function () {
     expect(EventScheduleCtrl.getScheduleTime()).toEqual('04:05');
   });
 
-  it("Should return ONCE frequency title", function() {
+  it("Should return ONCE frequency title", function () {
 
     _mockSchedule();
     _startCardItemListController();
@@ -393,7 +395,7 @@ describe('EventSchedule Controller', function () {
     expect(EventScheduleCtrl.getScheduleTitle()).toEqual('02/10/2016');
   });
 
-  it("Should return DEFAULT frequency title", function() {
+  it("Should return DEFAULT frequency title", function () {
 
     _mockSchedule();
     _startCardItemListController();
@@ -502,6 +504,71 @@ describe('EventSchedule Controller', function () {
     scheduleMock.$startDate = moment(scheduleMock.startDate).toDate();
     scheduleMock.$startTime = moment(scheduleMock.startDate).toDate();
     scheduleMock.$endDate = moment(scheduleMock.endDate).toDate();
+    scheduleMock.occurrences = [{ date: moment() }];
+
+    spyOn(contextual, 'showMenu').and.returnValue($q.when());
+
+    EventScheduleListCtrl.instance.event = eventMock;
+    EventScheduleListCtrl.instance.schedules = [scheduleMock];
+    CardItemListCtrl.instance.collection = [scheduleMock];
+
+    EventScheduleCtrl.instance.schedule = scheduleMock;
+    EventScheduleCtrl.instance.cardItemList = CardItemListCtrl();
+    EventScheduleCtrl.instance.eventScheduleListCtrl = EventScheduleListCtrl();
+    EventScheduleCtrl = EventScheduleCtrl();
+
+    spyOn(EventScheduleService, 'save').and.callThrough();
+    spyOn(EventScheduleCtrl, 'buildEntityToSchedule').and.callThrough();
+    spyOn(EventScheduleCtrl.Spinner, 'show').and.callThrough();
+    spyOn(EventScheduleCtrl.Spinner, 'hide').and.callThrough();
+    spyOn(EventScheduleCtrl.Snack, 'show').and.callThrough();
+    spyOn(EventScheduleCtrl.Snack, 'showError').and.callThrough();
+    spyOn(EventScheduleCtrl.cardItemList, 'onUpdateItem').and.callThrough();
+    spyOn(EventScheduleCtrl.eventScheduleListCtrl, 'createSchedule').and.callThrough();
+
+    expect(EventScheduleCtrl.cardItemList.collection[0].id).toBe(null);
+
+    EventScheduleCtrl.contextualMenuSuccess(EventScheduleCtrl.schedule);
+
+    setTimeout(function () {
+
+      $rootScope.$digest();
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+        $timeout.flush();
+        $rootScope.$digest();
+
+        expect(EventScheduleService.save).not.toHaveBeenCalled();
+        expect(EventScheduleCtrl.buildEntityToSchedule).not.toHaveBeenCalled();
+        expect(EventScheduleCtrl.eventScheduleListCtrl.createSchedule).not.toHaveBeenCalled();
+        expect(EventScheduleCtrl.Spinner.show).not.toHaveBeenCalled();
+        expect(EventScheduleCtrl.Spinner.hide).not.toHaveBeenCalled();
+        expect(EventScheduleCtrl.Snack.show).not.toHaveBeenCalled();
+        expect(EventScheduleCtrl.cardItemList.onUpdateItem).not.toHaveBeenCalled();
+        expect(EventScheduleCtrl.cardItemList.collection[0].id).toBe(null);
+
+        done();
+      });
+    });
+  });
+
+  it("Shouldn't create a schedule because the occurrences is empty", function (done) {
+
+    _mockEvent();
+    _mockSchedule();
+    _startEventScheduleListController();
+    _startCardItemListController();
+    _startController();
+
+    scheduleMock.id = null;
+
+    scheduleMock.$startDate = moment(scheduleMock.startDate).toDate();
+    scheduleMock.$startTime = moment(scheduleMock.startDate).toDate();
+    scheduleMock.$endDate = moment(scheduleMock.endDate).toDate();
+    scheduleMock.pickupSlots = [new Preoday.PickupSlot()];
+    scheduleMock.occurrences = [];
 
     spyOn(contextual, 'showMenu').and.returnValue($q.when());
 
