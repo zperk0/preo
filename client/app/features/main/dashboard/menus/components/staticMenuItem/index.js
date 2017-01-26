@@ -3,7 +3,7 @@
 import controller from './staticMenuItem.controller';
 import directive from './staticMenuItem.directive';
 
-import staticModifierChips from './staticModifierChips';
+import staticModifierChips from '../staticModifierChips';
 
 
 

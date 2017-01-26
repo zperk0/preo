@@ -3,9 +3,9 @@ export default class staticMenuItemController {
     return "staticMenuItemController";
   }
 
-  constructor($scope, $filter, ModifierService) {
+  constructor($filter, ModifierService) {
     "ngInject";
-    this.$scope = $scope;
+    
     this.ModifierService = ModifierService;
     this.item.formattedPrice = $filter('currency')(this.item.price);
     this.modifiers = [];

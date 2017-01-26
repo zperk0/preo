@@ -9,15 +9,24 @@
       </div>
     </div>
 
-    <modifier-chips ng-if="::staticModifierItemCtrl.modifiers.length"
-                    modifiers="::staticModifierItemCtrl.modifiers"
-                    on-modifier-removed="staticModifierItemCtrl.onModifierRemoved(modifier)"
-                    parent="::staticModifierItemCtrl.modifier"></modifier-chips>
+    <static-modifier-chips ng-if="::staticModifierItemCtrl.modifiers.length"
+                    modifiers="::staticModifierItemCtrl.modifiers"></static-modifier-chips>
 
-    <div class='size-wrapper' ng-if="::staticModifierItemCtrl.modifier.items.length">
-      <card-item-child ng-repeat="option in ::staticModifierItemCtrl.modifier.items"
-                        modifier="::staticModifierItemCtrl.modifier"
-                        option="option"></card-item-child>
+    <div class='size-wrapper'
+          ng-if="::staticModifierItemCtrl.modifier.items.length">
+
+      <div class='card-item-child' layout="row" ng-repeat="option in ::staticModifierItemCtrl.modifier.items">
+        <span class='name-wrapper' layout="row" flex>
+          <span class='name' layout="column" layout-align="center start">{{ ::option.name }} </span>
+
+          <static-modifier-chips flex
+              ng-if="::option.modifiers.length"
+              modifiers="::option.modifiers"></static-modifier-chips>
+              
+        </span>
+        <span class='price'> {{ ::option.formattedPrice }}</span>
+      </div>
+
     </div>
   </md-card>
 </div>

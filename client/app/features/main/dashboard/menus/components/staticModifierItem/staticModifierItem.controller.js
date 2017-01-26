@@ -3,7 +3,7 @@ export default class staticModifierItemController {
     return "staticModifierItemController"
   }
 
-  constructor(ModifierService) {
+  constructor($filter, ModifierService) {
     'ngInject';
 
     this.ModifierService = ModifierService;
@@ -13,6 +13,20 @@ export default class staticModifierItemController {
       this.modifiers = this.modifier.modifiers.map((_modifier, index) => {
 
         return this.ModifierService.getById(_modifier.id);
+      });
+    }
+
+    if (this.modifier && this.modifier.items) {
+      this.modifier.items.forEach((_option) => {
+        _option.formattedPrice = $filter('currency')(_option.price);
+
+        if (!_option.modifiers) {
+          return;
+        }
+
+        _option.modifiers = _option.modifiers.map((_modifier) => {
+          return this.ModifierService.getById(_modifier.id);
+        });
       });
     }
   }
