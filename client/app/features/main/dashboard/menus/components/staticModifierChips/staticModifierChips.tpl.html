@@ -1,6 +1,6 @@
 <div class='modifier-chips'>
 
-  <div class='modifier-chip' ng-repeat="modifier in ::staticModifierChipsCtrl.getModifiers() | orderBy: ['!!position', 'position'] | filter:{ variant:0 }">
+  <div class='modifier-chip' ng-repeat="modifier in ::staticModifierChipsCtrl.myModifiers | orderBy: ['!!position', 'position'] | filter:{ variant:0 }">
     <span>{{ ::modifier.name }}</span>
 
     <md-tooltip ng-if="::modifier.items.length" class="modifier-chip-tooltip">

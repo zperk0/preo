@@ -3,26 +3,30 @@ export default class staticModifierChipsController {
     return "staticModifierChipsController"
   }
 
-  getModifiers(){
+  buildModifiers () {
     // let modifiers = this.ModifierService.getByIds(this.modifiers.map((m)=>m.id));
-    let modifiers = angular.copy(this.modifiers);
 
-    modifiers.forEach((_modifier, index) => {
+    this.myModifiers = this.modifiers.map((_modifier, index) => {
+      let modifier = angular.copy(_modifier);
 
       if(_modifier.items) {
-        _modifier.items.forEach((_item, index) => {
-
-          _item.formmattedPrice = $filter('currency')(_item.price);
-        });
+        modifier.items = _modifier.items.map((_item, index) => {
+          return {
+            name: _item.name,
+            formmattedPrice: this.$filter('currency')(_item.price)
+          }
+        })
       }
 
+      return modifier;
     });
-
-    return modifiers;
   }
 
   constructor($filter, ModifierService) {
     "ngInject";
     this.ModifierService = ModifierService;
+    this.$filter = $filter;
+
+    this.buildModifiers();
   }
 }
