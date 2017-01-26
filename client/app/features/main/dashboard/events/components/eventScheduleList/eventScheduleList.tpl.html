@@ -9,7 +9,7 @@
         >
     <div class='sort-holder'>
       <event-schedule
-        ng-repeat="schedule in eventScheduleListCtrl.schedules | orderBy: ['$startTimestamp', '$endTimestamp']"
+        ng-repeat="schedule in eventScheduleListCtrl.schedules"
         schedule="schedule"
         ng-if="schedule.$show"
         ng-init="$last && eventScheduleListCtrl.recalculateHeight()"

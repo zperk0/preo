@@ -28,6 +28,7 @@ import faParentSuspendable from './components/faParentSuspendable';
 import autoSave from './components/autoSave';
 import milesOrKms from './components/milesOrKms';
 import mocks from './app.modules.mock';
+import inlineCalendar from './components/inlineCalendar';
 
 // Import internal modules
 import v2Main from './features/main';
@@ -65,6 +66,7 @@ require('./components/sticky/sticky.directive.js');
   faSuspendable,
   faParentSuspendable,
   milesOrKms,
+  inlineCalendar,
   // /* internal */
   constants,
   config,

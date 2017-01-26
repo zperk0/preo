@@ -1,5 +1,5 @@
 export default class eventScheduleListController {
-  static get UID(){
+  static get UID() {
     return "eventScheduleListController"
   }
 
@@ -10,7 +10,7 @@ export default class eventScheduleListController {
       return item.id === undefined;
     }).length;
 
-    if (isCreating){
+    if (isCreating) {
       console.log("Not showing schedule new, already showing")
       return;
     }
@@ -18,7 +18,7 @@ export default class eventScheduleListController {
     this.schedules.push(this.EventScheduleService.getNewScheduleModel(this.event.id));
   }
 
-  createSchedule (newData) {
+  createSchedule(newData) {
 
     let deferred = this.$q.defer();
 
@@ -34,9 +34,7 @@ export default class eventScheduleListController {
     } else {
       this.Spinner.show("event-schedule-create");
       this.EventScheduleService.save(newData)
-          .then((schedule)=>{
-
-          this.buildScheduleTimestamp(schedule);
+        .then((schedule) => {
 
           this.Snack.show(this.gettextCatalog.getString('Schedule created'));
 
@@ -50,14 +48,14 @@ export default class eventScheduleListController {
     return deferred.promise;
   }
 
-  cancelSchedule () {
+  cancelSchedule() {
 
     if (!this.event.id) {
       this.eventCtrl.removeEventItem();
     }
   }
 
-  getSchedulesCount () {
+  getSchedulesCount() {
 
     return this.schedules.length;
   }
@@ -66,31 +64,25 @@ export default class eventScheduleListController {
 
     this.event.$expanding = true;
     let maxHeight = 0;
-    this.schedules.forEach((i)=>{
+    this.schedules.forEach((i) => {
       maxHeight += 50 + 16;
     });
 
     // (button + height + margin-top + margin-bottom)
     maxHeight = maxHeight + (50 + 8 + 32) + "px";
     if (this.el[0].style.maxHeight !== maxHeight) {
-      this.el[0].style.maxHeight = maxHeight;
+      // this.el[0].style.maxHeight = maxHeight;
+      this.el[0].style.maxHeight = '100%';
     } else {
       this.event.$expanding = false;
     }
   }
 
-  buildScheduleTimestamp(schedule) {
+  buildSchedules(shouldShow) {
 
-    schedule.$startTimestamp = moment(schedule.startDate).valueOf();
-    schedule.$endTimestamp = moment(schedule.endDate).valueOf();
-  }
-
-  buildSchedules (shouldShow) {
-
-    this.schedules.forEach((schedule)=> {
+    this.schedules.forEach((schedule) => {
 
       schedule.$show = !!shouldShow;
-      this.buildScheduleTimestamp(schedule);
     });
   }
 
@@ -113,18 +105,18 @@ export default class eventScheduleListController {
     $scope.$watch(() => {
 
       return this.event.$expanded;
-    },(newVal, oldVal)=>{
+    }, (newVal, oldVal) => {
 
-      if(newVal){ // if expanded = true;
-        this.schedules.forEach((i)=>i.$show = true)
-        if (this.schedules.length === 0){
+      if (newVal) { // if expanded = true;
+        this.schedules.forEach((i) => i.$show = true)
+        if (this.schedules.length === 0) {
           this.recalculateHeight();
         }
-      } else if (oldVal){ //if expanded = false and it was true
+      } else if (oldVal) { //if expanded = false and it was true
         this.el[0].style.maxHeight = 0;
         this.event.$expanding = true;
-        $timeout(()=>{
-          this.schedules.forEach((i)=>i.$show = false)
+        $timeout(() => {
+          this.schedules.forEach((i) => i.$show = false)
           this.event.$expanding = false;
         }, 1000)
 
