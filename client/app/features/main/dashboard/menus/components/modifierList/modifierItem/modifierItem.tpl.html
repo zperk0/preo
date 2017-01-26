@@ -5,11 +5,10 @@
         item="modifierItemCtrl.modifier"
         selected="modifierItemCtrl.modifier.$selected"
         deleted="modifierItemCtrl.modifier.$deleted"
-        sv-element="modifierItemCtrl.modifier"
-        fa-parent-suspendable>
+        sv-element="modifierItemCtrl.modifier">
         
       <card-item-title>
-        <span fa-suspendable>{{modifierItemCtrl.modifier.id +" -- " | debug}}{{ modifierItemCtrl.modifier.name}}</span>
+        <span>{{modifierItemCtrl.modifier.id +" -- " | debug}}{{ modifierItemCtrl.modifier.name}}</span>
         <div sv-root="modifier" class='modifier-title-dropzone'>
           <div class='sv-dropzone sv-dropzone-modifier'
                 sv-part="modifierItemCtrl.newModifiers"
@@ -33,7 +32,5 @@
       <card-item-actions on-clone="modifierItemCtrl.cloneModifier()"
                          on-delete="modifierItemCtrl.deleteModifier()"
                          on-edit="modifierItemCtrl.onEdit()"></card-item-actions>
-
-      <fa-parent-suspendable></fa-parent-suspendable>
     </card-item>
 </div>
