@@ -1,0 +1,23 @@
+<div class='modifier-item'>
+  <md-card class='card-item' flex>
+
+    <div class='card-title' layout="row" layout-align="start center">
+      <div flex layout="row" layout-align="start center">
+        <span class='card-title-text' flex layout="row" layout-align="start center">
+          <span>{{ ::staticModifierItemCtrl.modifier.name }}</span>
+        </span>
+      </div>
+    </div>
+
+    <modifier-chips ng-if="::staticModifierItemCtrl.modifiers.length"
+                    modifiers="::staticModifierItemCtrl.modifiers"
+                    on-modifier-removed="staticModifierItemCtrl.onModifierRemoved(modifier)"
+                    parent="::staticModifierItemCtrl.modifier"></modifier-chips>
+
+    <div class='size-wrapper' ng-if="::staticModifierItemCtrl.modifier.items.length">
+      <card-item-child ng-repeat="option in ::staticModifierItemCtrl.modifier.items"
+                        modifier="::staticModifierItemCtrl.modifier"
+                        option="option"></card-item-child>
+    </div>
+  </md-card>
+</div>
