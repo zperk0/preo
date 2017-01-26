@@ -50,7 +50,9 @@ export default function inlineCalendar() {
     }
 
     function _orderOccurrences(scope) {
-        scope.schedule.occurrences.sort((a, b) => a.$moment > b.$moment);
+        scope.schedule.occurrences.sort((a, b) => {
+            return a.$moment.isAfter(b.$moment) ? 1 : -1;
+        });
     }
 
     function _isDayStored(scope, day) {
