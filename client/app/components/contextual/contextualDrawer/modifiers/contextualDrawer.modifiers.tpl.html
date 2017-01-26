@@ -1,23 +1,45 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="modifiers">
-       <div sv-root="modifier" sv-part="drawerModifiersCtrl.cancelledModifiers">
+    <div sv-root="modifier" sv-part="drawerModifiersCtrl.cancelledModifiers">
         <div class='sv-dropzone sv-dropzone-modifier' sv-part="drawerModifiersCtrl.cancelledModifiers" sv-on-sort="drawerModifiersCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
         <div sv-placeholder></div>
       </div>
-     </div>
-    <div class='contextual-list' ng-class="{empty:!drawerModifiersCtrl.data.modifiers || !drawerModifiersCtrl.data.modifiers.length}">
-      <modifier-list has-search="true"
-         sv-multi-select="true"
-         sv-keep-in-list="true"
-         sv-is-dropzone="false"
-         has-new="false"
-         ng-if="drawerModifiersCtrl.data.modifiers && drawerModifiersCtrl.data.modifiers.length"
-         modifiers="drawerModifiersCtrl.data.modifiers"></modifier-list>
-        <div class='contextual-empty'>
-          <img src='/images/emptydrawer.png'>
-          <div class='header' translate> This drawer is empty </div>
-          <div class='content'> <span class='fake-link' ng-click="drawerModifiersCtrl.navigateToPage()">Click here</span> to create some modifiers first </div>
-        </div>
     </div>
+
+    <div class='contextual-list' ng-class="{empty:!drawerModifiersCtrl.data.modifiers || !drawerModifiersCtrl.data.modifiers.length}">
+
+      <div class='modifier-list'>
+        <div class='sv-root-holder' sv-root='modifier'>
+          <card-item-list
+                collection="::drawerModifiersCtrl.data.modifiers"
+                search-filter="drawerModifiersCtrl.searchText"
+                search-label="modifiers">
+                <div class='sort-holder'
+                  sv-part="::drawerModifiersCtrl.data.modifiers"
+                  sv-part-origin="::drawerModifiersCtrl.data.modifiers"
+                  sv-multi-select='true'
+                  sv-keep-in-list='true'
+                  sv-is-dropzone='false'>
+
+                  <modifier-item
+                     ng-repeat="modifier in ::drawerModifiersCtrl.data.modifiers | orderBy:'id' track by $index"
+                     ng-show="drawerModifiersCtrl.isInFilter(modifier, drawerModifiersCtrl.searchText.name)"
+                     ng-attr-data-id="{{ ::modifier.id }}"
+                     modifier="modifier"
+                     sv-element="modifier">
+                  </modifier-item>
+                  <div sv-placeholder></div>
+                </div>
+          </card-item-list>
+        </div>
+      </div>
+
+      <div class='contextual-empty'>
+        <img src='/images/emptydrawer.png'>
+        <div class='header' translate> This drawer is empty </div>
+        <div class='content'> <span class='fake-link' ng-click="drawerModifiersCtrl.navigateToPage()">Click here</span> to create some modifiers first </div>
+      </div>
+    </div>
+
     <md-card-actions layout="row" layout-align="end center">
       <md-button ng-click="drawerModifiersCtrl.close()" class='md-raised' translate>
           Done

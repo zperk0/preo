@@ -8,7 +8,7 @@ export default class contextualDrawerItemController {
   }
 
   navigateToPage(){
-      this.$state.go("main.dashboard.menus.itemList")
+    this.$state.go("main.dashboard.menus.itemList")
   }
 
   checkTypes () {
@@ -37,7 +37,7 @@ export default class contextualDrawerItemController {
     return !filterName || (item.name && item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
   }
 
-  constructor($scope, $timeout, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
+  constructor($scope, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.$scope = $scope;
