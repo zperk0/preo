@@ -1,4 +1,4 @@
-<div class='menu-item menu-item--static ng-enter'>
+<div class='menu-item ng-enter'>
   <md-card class='card-item' flex>
 
     <div class='card-title' layout="row" layout-align="start center" ng-class="::{invisible: !staticMenuItemCtrl.item.visible}">
@@ -21,8 +21,7 @@
           ng-if="::(staticMenuItemCtrl.item.$size.$isMultiple !== false && staticMenuItemCtrl.item.$size.items.length)">
       <static-menu-item-child ng-repeat="size in ::staticMenuItemCtrl.item.$size.items"
             modifier="::staticMenuItemCtrl.item.$size"
-            option="::size"
-            ng-attr-data-id="{{::size.id}}"></static-menu-item-child>
+            option="::size"></static-menu-item-child>
     </div>
   </md-card>
 </div>

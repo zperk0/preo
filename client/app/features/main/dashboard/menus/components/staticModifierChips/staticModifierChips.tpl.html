@@ -1,10 +1,14 @@
-<div class='modifier-chips modifier-chips--static'>
+<div class='modifier-chips modifier-chips--static'
+      ng-attr-data-item-id="{{::staticModifierChipsCtrl.item.id}}"
+      ng-attr-data-parent-id="{{::staticModifierChipsCtrl.parent.id}}"
+      ng-attr-data-modifier-item-id="{{::staticModifierChipsCtrl.modifierItem.id}}"
+      ng-attr-data-section-id="{{::staticModifierChipsCtrl.section.id}}">
   <static-modifier-chip modifier="modifier"
           ng-repeat="modifier in ::staticModifierChipsCtrl.myModifiers | orderBy: ['!!position', 'position'] | filter:{ variant:0 }"
+          item="::staticModifierChipsCtrl.item"
           parent="::staticModifierChipsCtrl.parent"
           modifier-item="::staticModifierChipsCtrl.modifierItem"
-          item="::staticModifierChipsCtrl.item"
-          section="::modifierChipsCtrl.section"
+          section="::staticModifierChipsCtrl.section"
           on-modifier-removed="staticModifierChipsCtrl.onModifierRemoved({modifier: modifier})"
           ng-attr-data-id="{{::modifier.id}}"></static-modifier-chip>
 </div>
