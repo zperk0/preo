@@ -16,6 +16,7 @@ export default function staticModifierChip(){
     controller: controller.UID,
     controllerAs: "staticModifierChipCtrl",
     bindToController: true,
+    replace: true,
     require:["^^staticModifierChips","staticModifierChip"],
     link: (scope, el, attr, ctrl) => {
     }

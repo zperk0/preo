@@ -181,7 +181,13 @@ export default class ModifierService {
 
 
   removeFromItem(modifier, item){
-    return modifier.delete({itemId:item.id});
+    return modifier.delete({itemId:item.id}).then(function(data) {
+      let elements = document.querySelectorAll(".menu-item--static[data-id='" + item.id + "'] .modifier-chip--static[data-id='" + modifier.id + "']");
+      elements.forEach(function(element) {
+        angular.element(element).remove();
+      });
+      return data;
+    });
   }
 
   removeFromModifierItem(modifier, modifierItem){

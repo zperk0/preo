@@ -1,3 +1,7 @@
+// Import Style
+import './staticModifierChips.scss';
+
+
 // Import internal modules
 import controller from './staticModifierChips.controller';
 import directive from './staticModifierChips.directive';

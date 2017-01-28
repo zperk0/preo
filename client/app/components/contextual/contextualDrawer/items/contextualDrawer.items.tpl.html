@@ -24,7 +24,7 @@
                      ng-repeat="item in ::drawerItemsCtrl.data.items | orderBy: 'id' track by item.id"
                      ng-show="drawerItemsCtrl.isInFilter(item, drawerItemsCtrl.searchText.name)"
                      ng-attr-data-id="{{ ::item.id }}"
-                     item="item"
+                     item="::item"
                      sv-element="item">
                   </static-menu-item>
                   <div sv-placeholder></div>

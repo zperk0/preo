@@ -1,3 +1,7 @@
-static-modifier-chip {
-	padding-right: 4px;
+.modifier-chip--static {
+	margin-right: 4px;
+	margin-bottom: 8px;
+	&:last-child {
+		margin-bottom: 16px;
+	}
 }
