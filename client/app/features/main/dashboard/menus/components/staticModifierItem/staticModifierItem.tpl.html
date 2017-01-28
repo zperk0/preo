@@ -10,12 +10,15 @@
     </div>
 
     <static-modifier-chips ng-if="::staticModifierItemCtrl.modifiers.length"
-                    modifiers="::staticModifierItemCtrl.modifiers"></static-modifier-chips>
+                    modifiers="::staticModifierItemCtrl.modifiers"
+                    on-modifier-removed="staticModifierItemCtrl.onModifierRemoved(modifier)"
+                    parent="::staticModifierItemCtrl.modifier"></static-modifier-chips>
 
     <div class='size-wrapper'
           ng-if="::staticModifierItemCtrl.modifier.items.length">
       <static-menu-item-child ng-repeat="option in ::staticModifierItemCtrl.modifier.items"
-                          option="option"></static-menu-item-child>
+                          modifier="::staticModifierItemCtrl.modifier"
+                          option="::option"></static-menu-item-child>
     </div>
   </md-card>
 </div>

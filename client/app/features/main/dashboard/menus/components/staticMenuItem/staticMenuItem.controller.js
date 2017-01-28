@@ -3,6 +3,11 @@ export default class staticMenuItemController {
     return "staticMenuItemController";
   }
 
+  onModifierRemoved (modifier) {
+
+    this.ItemService.removeModifierFromItem(this.item.id, modifier);
+  }
+
   buildModifiers () {
     if (this.item && this.item.modifiers){
       this.modifiers = this.item.modifiers.map((_modifier) => {
@@ -15,9 +20,10 @@ export default class staticMenuItemController {
     }
   }
 
-  constructor($filter, ModifierService) {
+  constructor($filter, ItemService, ModifierService) {
     "ngInject";
     
+    this.ItemService = ItemService;
     this.ModifierService = ModifierService;
     this.formattedPrice = $filter('currency')(this.item.price);
     this.modifiers = [];

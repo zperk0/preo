@@ -5,7 +5,12 @@ export default function staticModifierChips(){
   return {
     restrict: 'E',
     scope: {
-      modifiers:"="
+      modifiers:"=",
+      item:'=?',
+      parent:'=?',
+      modifierItem:'=?',
+      section:'=?',
+      onModifierRemoved: '&?'
     },
     template: require("./staticModifierChips.tpl.html"),
     controller: controller.UID,

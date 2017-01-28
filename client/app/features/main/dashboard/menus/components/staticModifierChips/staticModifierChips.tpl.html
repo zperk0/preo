@@ -1,14 +1,9 @@
 <div class='modifier-chips'>
-
-  <div class='modifier-chip' ng-repeat="modifier in ::staticModifierChipsCtrl.myModifiers | orderBy: ['!!position', 'position'] | filter:{ variant:0 }">
-    <span>{{ ::modifier.name }}</span>
-
-    <md-tooltip ng-if="::modifier.items.length" class="modifier-chip-tooltip">
-      <div ng-repeat="item in ::modifier.items" class="modifierChipItem">
-        <span class="item-name">{{ ::item.name }}</span>
-        <span class="item-price">{{ ::item.formmattedPrice }}</span>
-      </div>
-    </md-tooltip>
-  </div>
-
+  <static-modifier-chip modifier="modifier"
+          ng-repeat="modifier in ::staticModifierChipsCtrl.myModifiers | orderBy: ['!!position', 'position'] | filter:{ variant:0 }"
+          parent="::staticModifierChipsCtrl.parent"
+          modifier-item="::staticModifierChipsCtrl.modifierItem"
+          item="::staticModifierChipsCtrl.item"
+          on-modifier-removed="staticModifierChipsCtrl.onModifierRemoved({modifier: modifier})"
+          section="::modifierChipsCtrl.section"></static-modifier-chip>
 </div>

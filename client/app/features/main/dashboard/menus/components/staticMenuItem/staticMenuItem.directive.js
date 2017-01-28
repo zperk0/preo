@@ -1,6 +1,6 @@
 import controller from './staticMenuItem.controller';
 
-export default function staticMenuItem($timeout){
+export default function staticMenuItem(){
   "ngInject";
   return {
     restrict: 'E',

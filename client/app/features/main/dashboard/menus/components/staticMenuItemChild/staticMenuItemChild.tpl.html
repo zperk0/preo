@@ -4,7 +4,9 @@
 
     <static-modifier-chips flex
         ng-if="::staticMenuItemChildCtrl.option.modifiers.length"
-        modifiers="::staticMenuItemChildCtrl.option.modifiers"></static-modifier-chips>
+        modifiers="::staticMenuItemChildCtrl.option.modifiers"
+        on-modifier-removed="staticMenuItemChildCtrl.onModifierRemoved(modifier)"
+        modifier-item="::staticMenuItemChildCtrl.option"></static-modifier-chips>
         
   </span>
   <span class='price'> {{ ::staticMenuItemChildCtrl.formattedPrice }}</span>
