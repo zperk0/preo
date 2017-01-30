@@ -1,31 +1,35 @@
-$heightMenuItemCard:48px;
+$heightMenuItemCard: 48px;
 
 .event-schedule {
-	margin: 0px;
-	padding: 0px;
-	position: relative;
+  margin: 0;
+  padding: 0;
+  position: relative;
 
   .card-item {
-  	margin: 0;
+    margin: 0;
 
-    .hidden-card-actions{
+    .hidden-card-actions {
       align-items: flex-start;
       padding-top: 6px;
     }
 
-    .card-title{
-      max-height: $heightMenuItemCard;
+    .card-title {
+      // max-height: $heightMenuItemCard;
       min-height: auto;
       padding: 0 14px;
 
-      .card-title-text{
-        font-size:13px;
-        align-items: center;
+      .card-title-text {
+        font-size: 13px;
+        align-items: flex-start;
       }
 
       .schedule-name {
         flex: 1;
         display: inline-block;
+
+        .name {
+          display: block;
+        }
       }
 
       .schedule-time {
@@ -35,8 +39,8 @@ $heightMenuItemCard:48px;
 
       .warning-button {
         margin-right: 12px;
-        margin-left: 0px;
-        padding: 0px;
+        margin-left: 0;
+        padding: 0;
         width: 24px;
         height: 24px;
 
@@ -44,9 +48,17 @@ $heightMenuItemCard:48px;
           color: #d0021b;
         }
       }
+
+      .md-icon-button {
+        &.item-actions {
+          align-self: flex-start;
+          margin-top: 5px;
+          margin-right: -10px;
+        }
+      }
     }
 
-    .size-wrapper{
+    .size-wrapper {
       padding-bottom: 5px;
     }
   }
