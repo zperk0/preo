@@ -167,6 +167,7 @@
         el = el.parent();
       }
     }
+
     this.cardItemList.expandItem(this.section);
     this.contextualMenu.close();
   }
@@ -240,7 +241,32 @@
     });
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService, ErrorService, gettextCatalog) {
+  checkUpdatedItem (event, updatedItem) {
+
+    if (updatedItem.sectionId === this.section.id) {
+      return;
+    }
+
+    let items = this.items.filter((item) => {
+
+      return item.id === updatedItem.id;
+    });
+
+    if (items.length) {
+      for (let len = items.length; len--;) {
+        let current = items[len];
+
+        let newItem = angular.copy(this.ItemService.getById(current.id));
+        newItem.position = current.position;
+        newItem.sectionId = current.sectionId;
+        newItem.menuId = current.menuId;
+
+        this.items.splice(this.items.indexOf(current), 1, newItem);
+      }
+    }
+  }
+
+  constructor($scope, $rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService, ErrorService, gettextCatalog) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
@@ -272,6 +298,8 @@
       this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
     } else {
       this.buildItems();
+
+      $scope.$on(BroadcastEvents.ON_ITEM_UPDATED, this.checkUpdatedItem.bind(this));
     }
   }
 }
