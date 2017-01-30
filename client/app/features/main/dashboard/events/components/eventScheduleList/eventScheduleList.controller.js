@@ -19,7 +19,9 @@ export default class eventScheduleListController {
   }
 
    buildScheduleTimestamp(schedule) {
-    schedule.$startTimestamp = moment(schedule.occurrences[0].date).valueOf();
+    if(schedule.occurrences && schedule.occurrences.length){
+      schedule.$startTimestamp = moment(schedule.occurrences[0].date).valueOf();
+    }
   }
 
   createSchedule(newData) {
