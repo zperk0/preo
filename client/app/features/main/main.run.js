@@ -2,7 +2,7 @@
 export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, Spinner, contextualMenu, contextualDrawer, PermissionService){
   "ngInject";
 
-  const notRequiresUser= ['auth.signin','error', 'emailSuccess'];
+  const notRequiresUser= ['auth.signin', 'auth.signup', 'auth.invite', 'error', 'emailSuccess'];
 
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
@@ -35,10 +35,10 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
     if (notRequiresUser.indexOf($state.current.name) === -1){
       $state.go("auth.signin");
+      Spinner.empty();
     }
 
     setupChangeEvent();
-    Spinner.empty();
   }
 
   $rootScope.$on(BroadcastEvents._ON_USER_AUTH,(event,user)=>{
