@@ -1,19 +1,39 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="items">
-    <div  sv-root="item">
-        <div class='sv-dropzone sv-dropzone-item' sv-part="drawerItemsCtrl.cancelledItems" sv-on-sort="drawerItemsCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+    <div sv-root="item">
+      <div class='sv-dropzone sv-dropzone-item' sv-part="drawerItemsCtrl.cancelledItems" sv-on-sort="drawerItemsCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
         <div sv-placeholder></div>
       </div>
-     </div>
+    </div>
+
     <div class='contextual-list' ng-class="{empty:!drawerItemsCtrl.data.items || !drawerItemsCtrl.data.items.length}">
 
-      <menu-item-list has-search="true"
-                      sv-multi-select="true"
-                      sv-keep-in-list="true"
-                      sv-is-dropzone="false"
-                      has-actions="false"
-                      types="drawerItemsCtrl.types"
-                      items="drawerItemsCtrl.data.items">
-                      </menu-item-list>
+      <div class='menu-item-list'>
+        <div class='sv-root-holder' sv-root='item'>
+          <card-item-list
+                collection="::drawerItemsCtrl.data.items"
+                search-filter="drawerItemsCtrl.searchText"
+                search-label="items">
+                <div class='sort-holder'
+                  sv-part="::drawerItemsCtrl.data.items"
+                  sv-part-origin="::drawerItemsCtrl.data.items"
+                  sv-multi-select='true'
+                  sv-keep-in-list='true'
+                  sv-is-dropzone='false'>
+
+                  <static-menu-item
+                     ng-repeat="item in ::drawerItemsCtrl.data.items | orderBy: 'id' track by item.id"
+                     ng-show="drawerItemsCtrl.isInFilter(item, drawerItemsCtrl.searchText.name)"
+                     ng-attr-data-id="{{ ::item.id }}"
+                     item="::item"
+                     sv-element="item">
+                  </static-menu-item>
+                  <div sv-placeholder></div>
+                </div>
+          </card-item-list>
+
+        </div>
+      </div>
+
       <div class='contextual-empty'>
         <img src='/images/emptydrawer.png'>
         <div class='header' translate> This drawer is empty </div>

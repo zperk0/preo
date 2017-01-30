@@ -7,15 +7,12 @@
     </div>
   </div>
   <span class='name-wrapper' layout="row" flex>
-  	<span class='name' layout="column" layout-align="center start" fa-suspendable>{{cardItemChildCtrl.option.name}} </span>
+  	<span class='name' layout="column" layout-align="center start">{{cardItemChildCtrl.option.name}} </span>
   	<modifier-chips flex
   			ng-if="cardItemChildCtrl.option.modifiers.length"
   			modifiers="cardItemChildCtrl.option.modifiers"
   			on-modifier-removed="cardItemChildCtrl.onModifierRemoved(modifier)"
-  			modifier-item="cardItemChildCtrl.option"
-        fa-parent-suspendable></modifier-chips>
+  			modifier-item="cardItemChildCtrl.option"></modifier-chips>
   </span>
-  <span class='price' fa-suspendable> {{cardItemChildCtrl.option.price | currency}}</span>
-
-  <fa-parent-suspendable></fa-parent-suspendable>
+  <span class='price'> {{cardItemChildCtrl.option.price | currency}}</span>
 </div>

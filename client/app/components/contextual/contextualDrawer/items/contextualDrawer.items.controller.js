@@ -8,7 +8,7 @@ export default class contextualDrawerItemController {
   }
 
   navigateToPage(){
-      this.$state.go("main.dashboard.menus.itemList")
+    this.$state.go("main.dashboard.menus.itemList")
   }
 
   checkTypes () {
@@ -25,9 +25,20 @@ export default class contextualDrawerItemController {
     }
   }
 
-  constructor($scope, $timeout, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
+  isInFilter (item, filterName) {
+
+    if (this.types) {
+      let validType = this.types.indexOf(item.voucherType) !== -1;
+      if (!validType) {
+        return false;
+      }
+    }
+
+    return !filterName || (item.name && item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
+  }
+
+  constructor($scope, ItemService, $stateParams,$mdSidenav, $state, MenuService) {
     "ngInject";
-    this.data = {items:[]};
     this.$mdSidenav = $mdSidenav;
     this.$scope = $scope;
     this.$state = $state;
@@ -37,13 +48,11 @@ export default class contextualDrawerItemController {
     this.types = ['NONE'];
 
 
+
     ItemService.getItems($stateParams.venueId)
       .then(() => {
 
         this.data = angular.copy(ItemService.data);
-        $timeout(function() {
-          $scope.$broadcast('suspend');
-        }, 0, false);
       });
 
     let unRegisterWatch = $scope.$watch(() => {
