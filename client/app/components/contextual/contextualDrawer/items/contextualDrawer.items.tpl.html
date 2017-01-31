@@ -1,4 +1,5 @@
- <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="items">
+<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="items">
+  <refresher condition="drawerItemsCtrl.lastUpdate">
     <div sv-root="item">
       <div class='sv-dropzone sv-dropzone-item' sv-part="drawerItemsCtrl.cancelledItems" sv-on-sort="drawerItemsCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
         <div sv-placeholder></div>
@@ -46,4 +47,5 @@
           Done
       </md-button>
     </md-card-actions>
+  </refresher>
 </md-sidenav>
