@@ -22,6 +22,7 @@ describe('menuSection Controller', function () {
       contextualMenu,
       ModifierService,
       DialogService,
+      BroadcastEvents,
       mockSection;
 
     beforeEach(angular.mock.module('webapp'));
@@ -41,6 +42,7 @@ describe('menuSection Controller', function () {
       contextualMenu = $injector.get('contextualMenu');
       ModifierService = $injector.get('ModifierService');
       DialogService = $injector.get('DialogService');
+      BroadcastEvents = $injector.get('BroadcastEvents');
 
       $scope = $rootScope.$new();
 
@@ -417,6 +419,35 @@ describe('menuSection Controller', function () {
           });
         });
       });
+    });
+
+    it("Should call the check updated item function", function() {
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockSection();
+      _startController();
+
+      let mockItem = new Preoday.Item({
+        id: 1,
+        name: 'Test item',
+        venueId: venueId,
+        images: [],
+        position: 0,
+        tags: []
+      });
+
+      spyOn(MenuSectionCtrl.instance, 'checkUpdatedItem');
+
+      MenuSectionCtrl.instance.section = mockSection;
+      MenuSectionCtrl = MenuSectionCtrl();
+
+      $rootScope.$broadcast(BroadcastEvents.ON_ITEM_UPDATED, mockItem);
+
+      expect(MenuSectionCtrl.checkUpdatedItem).toHaveBeenCalled();
+
     });
 
 
