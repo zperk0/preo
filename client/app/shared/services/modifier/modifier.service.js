@@ -181,51 +181,21 @@ export default class ModifierService {
 
 
   removeFromItem(modifier, item){
-    return modifier.delete({itemId:item.id})
-      .then((data)=>{
-        // Remove modifierChip from contextualDrawers
-        let elements = document.querySelectorAll(".modifier-chips--static[data-item-id='" + item.id + "'] .modifier-chip--static[data-id='" + modifier.id + "']");
-        elements.forEach((element)=>{
-          angular.element(element).remove();
-        });
-        return data;
-      })
+    return modifier.delete({itemId:item.id});
   }
 
   removeFromModifierItem(modifier, modifierItem){
-    return modifier.delete({modifierItemId:modifierItem.id})
-      .then((data)=>{
-        // Remove modifierChip from contextualDrawers
-        let elements = document.querySelectorAll(".modifier-chips--static[data-modifier-item-id='" + modifierItem.id + "'] .modifier-chip--static[data-id='" + modifier.id + "']");
-        elements.forEach((element)=>{
-          angular.element(element).remove();
-        });
-        return data;
-      })
+    return modifier.delete({modifierItemId:modifierItem.id});
   }
 
   removeFromParent(modifier, parent){
-    return modifier.delete({parentId:parent.id})
-      .then((data)=>{
-        // Remove modifierChip from contextualDrawers
-        let elements = document.querySelectorAll(".modifier-chips--static[data-parent-id='" + parent.id + "'] .modifier-chip--static[data-id='" + modifier.id + "']");
-        elements.forEach((element)=>{
-          angular.element(element).remove();
-        });
-        return data;
-      })
+    return modifier.delete({parentId:parent.id});
   }
 
   removeFromSection(modifier, section){
     return modifier.delete({sectionId:section.id})
       .then((data)=>{
         section.modifiers = section.modifiers.filter((m)=>modifier.id !== m.id);
-
-        // Remove modifierChip from contextualDrawers
-        let elements = document.querySelectorAll(".modifier-chips--static[data-section-id='" + section.id + "'] .modifier-chip--static[data-id='" + modifier.id + "']");
-        elements.forEach((element)=>{
-          angular.element(element).remove();
-        });
         return data;
       })
   }
