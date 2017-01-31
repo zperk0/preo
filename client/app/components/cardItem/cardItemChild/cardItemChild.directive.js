@@ -6,6 +6,8 @@ export default function cardItemChild(){
     scope: {
       option:"=",
       modifier:"=",
+      svDisabled: "=?",
+      svIsDropzoneDisabled:"=?",
     },
     template: require("./cardItemChild.tpl.html"),
     controller: controller.UID,

@@ -217,6 +217,12 @@ export default class ItemService {
     })
   }
 
+  setItemsSizes () {
+
+    for (let i = this.data.items.length; i--;) {
+      this.data.items[i].setSize();
+    }
+  }
 
   getItems(venueId, expand='images,tags,modifiers'){
     return this.$q((resolve, reject)=>{
@@ -226,6 +232,9 @@ export default class ItemService {
         Preoday.Item.getAll({venueId:venueId, expand:expand})
         .then((items)=>{
           this.data.items = items || [];
+
+          this.setItemsSizes();
+
           return this.ModifierService.getModifiers(venueId)
         })
         .then((modifiers)=>{
