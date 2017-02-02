@@ -148,6 +148,7 @@ describe('menuItem Controller', function () {
       _startController();
 
       mockItem.venueId = venueId;
+      mockItem.price = 2;
 
       CardItemListCtrl.instance.collection = [];
 
@@ -180,6 +181,7 @@ describe('menuItem Controller', function () {
           expect(Spinner.hide).toHaveBeenCalled();
           expect(Snack.show).toHaveBeenCalled();
           expect(CardItemListCtrl.collection.length).toBe(1);
+          expect(mockItem.price).toBe(2);
 
           done();
         });
@@ -751,6 +753,141 @@ describe('menuItem Controller', function () {
 
           expect(MenuItemCtrl.modifiers.length).toBe(0);
           expect(MenuItemCtrl.item.modifiers.length).toBe(0);
+
+          done();
+        });
+      });
+    });
+
+    it("createItem - Create create an item with modifiers", function(done) {
+
+      spyOn(ItemService, 'createItem').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(Snack, 'show').and.callThrough();
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockItem();
+      _startCardItemListController();
+      _startController();
+
+      mockItem.venueId = venueId;
+      mockItem.price = 2;
+      mockItem.$size = {
+        $isMultiple: true,
+        items: [{
+          visible: 1,
+          position: 1
+        }]
+      };
+
+      CardItemListCtrl.instance.collection = [];
+
+      CardItemListCtrl = CardItemListCtrl();
+
+      MenuItemCtrl.instance.item = mockItem;
+      MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuItemCtrl = MenuItemCtrl();
+
+      spyOn(CardItemListCtrl, 'onUpdateItem').and.callThrough();
+
+      expect(CardItemListCtrl.collection.length).toBe(0);
+
+      server.respondWith('POST', '/api/items', [200, {"Content-Type": "application/json"}, JSON.stringify(mockItem)]);
+
+      MenuItemCtrl.createItem();
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+        server.respond();
+
+        setTimeout(() => {
+
+          $rootScope.$digest();
+
+          expect(ItemService.createItem).toHaveBeenCalledWith(MenuItemCtrl.item, MenuItemCtrl.sectionId);
+          expect(CardItemListCtrl.onUpdateItem).toHaveBeenCalledWith(mockItem, jasmine.any(Preoday.Item));
+          expect(contextualMenu.hide).toHaveBeenCalled();
+          expect(Spinner.hide).toHaveBeenCalled();
+          expect(Snack.show).toHaveBeenCalled();
+          expect(CardItemListCtrl.collection.length).toBe(1);
+          expect(mockItem.price).toBe(0);
+
+          done();
+        });
+      });
+    });
+
+    it("updateItem - Should update an item to be multi size", function(done) {
+
+      spyOn(ItemService, 'updateItem').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(Snack, 'show').and.callThrough();
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockItem();
+      _startCardItemListController();
+      _startController();
+
+      mockItem.venueId = venueId;
+      mockItem.images = [];
+      mockItem.price = 2;
+      mockItem.$size = {
+        $isMultiple: true,
+        items: [{
+          visible: 1,
+          position: 1
+        }]
+      };
+
+
+      ItemService.data.items = [mockItem];
+
+      CardItemListCtrl.instance.collection = [mockItem];
+
+      CardItemListCtrl = CardItemListCtrl();
+
+      MenuItemCtrl.instance.item = mockItem;
+      MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuItemCtrl = MenuItemCtrl();
+
+      spyOn(CardItemListCtrl, 'onItemUpdated').and.callThrough();
+      spyOn(ItemService, '_saveItemSize').and.returnValue(mockItem);
+
+      expect(CardItemListCtrl.collection.length).toBe(1);
+
+      server.respondWith('PUT', '/api/items/' + mockItem.id, [200, {"Content-Type": "application/json"}, JSON.stringify(mockItem)]);
+
+      MenuItemCtrl.updateItem(mockItem);
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalled();
+        expect(ItemService.updateItem).toHaveBeenCalledWith(jasmine.any(Preoday.Item), false);
+
+        server.respond();
+
+        setTimeout(() => {
+
+          $rootScope.$digest();
+
+          expect(CardItemListCtrl.onItemUpdated).toHaveBeenCalledWith(mockItem);
+          expect(contextualMenu.hide).toHaveBeenCalled();
+          expect(Spinner.hide).toHaveBeenCalled();
+          expect(Snack.show).toHaveBeenCalled();
+          expect(CardItemListCtrl.collection.length).toBe(1);
+          expect(mockItem.price).toBe(0);
 
           done();
         });

@@ -155,6 +155,10 @@ export default class ItemService {
   updateItem(item, skipExtensions = false){
     this.DEBUG && console.log("updating item", item, skipExtensions);
 
+    if (item.$size && item.$size.$isMultiple && item.$size.items.length) {
+      item.price = 0;
+    }
+
     return (skipExtensions ? this.$q.when() : this._parseImages(item))
       .then(item.update.bind(item))
       .then((updatedItem)=>{
@@ -179,10 +183,11 @@ export default class ItemService {
       });
   }
 
-  createItem(item, sectionId) {
+  createItem(item, sectionId){
 
     if (item.$size && item.$size.items.length) {
       item.modifiers = [item.$size];
+      item.price = 0;
     }
 
     this.DEBUG && console.log("creating item", item, sectionId);
