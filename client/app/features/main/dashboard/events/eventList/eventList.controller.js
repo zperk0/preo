@@ -43,13 +43,44 @@ export default class eventListViewController {
     return html;
   }
 
+  orderDayEvents (events) {
+    return events.sort((a, b) => {
+        return a.moment.isAfter(b.moment) ? 1 : -1;
+    });
+  }
+
+  getDayEvents (date) {
+    let events = [];
+    for (let event of this.data.events) {
+      for (let schedule of event.schedules) {
+        for (let occurrence of schedule.occurrences) {
+          let occurrenceMoment = moment(occurrence.date);
+          if (occurrenceMoment.isSame(moment(date), 'day')) {
+            events.push({ time: occurrenceMoment.format('HH:mm'), name: event.name, moment: occurrenceMoment.clone() });
+          }
+        }
+      }
+    }
+    return this.orderDayEvents(events);
+  }
+
+  getEventsName (events) {
+    let html = [];
+    if (events && events.length) {
+      for (let event of events) {
+        html.push('<div class="event-calendar-item">' + event.time + ' - ' + event.name + '</div>');
+      }
+    }
+    return html.join('');
+  }
+
   setDayContent (date) {
 
-    let eventsName = this.getDayEventsName(date);
+    let events = this.getDayEvents(date);
+    let eventsName = this.getEventsName(events);
 
-    if (eventsName) {
-      eventsName = this.$compile(eventsName)(this.$scope);
-      eventsName = this.$sce.trustAsHtml(eventsName[0].innerHTML);
+    if (eventsName.length) {
+      eventsName = this.$sce.trustAsHtml(eventsName);
     }
 
     this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] = eventsName || "";
