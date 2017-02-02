@@ -125,21 +125,24 @@
         }
     }
 
-    // calendar-md {
-    //     md-content{
-    //         & > md-content {
-    //             &.calendar {
-    //                 & > :not(:first-child) {
-    //                     & > * {
-    //                         :last-child {
-    //                             overflow: visible;
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+    calendar-md {
+        md-content{
+            & > md-content {
+                &.calendar {
+                    > div {
+                        > div {
+                            flex-direction: column;
+
+                            > div {
+                                margin-top: 5px;
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
   }
 
   .event-calendar-item {
@@ -148,6 +151,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     color: #009ff5;
+    font-size: 13px;
     
     &.remaining {
         margin-top: 10px;
