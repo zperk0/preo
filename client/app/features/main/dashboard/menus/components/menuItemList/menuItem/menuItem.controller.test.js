@@ -132,7 +132,7 @@ describe('menuItem Controller', function () {
       expect(MenuItemCtrl.modifiers.length).toBe(0);
     });
 
-    it("Should create an item", function(done) {
+    it("createItem - Should create an item", function(done) {
 
       spyOn(ItemService, 'createItem').and.callThrough();
       spyOn(contextualMenu, 'hide').and.callThrough();
