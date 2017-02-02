@@ -36,6 +36,8 @@ export default class menuItemSizeController {
           $isMultiple:true,
           position:0,
           variant:1,
+          maxChoices: 1,
+          minChoices: 1,
           venueId:this.$stateParams.venueId,
           name:"Choose a size",
           items:[

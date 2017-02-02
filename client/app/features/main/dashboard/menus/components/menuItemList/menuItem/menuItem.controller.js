@@ -42,6 +42,8 @@ export default class menuItemController {
         this.ItemService.addModifiersToItem(this.item.id, modifiers);
 
         this.Snack.show("Added modifiers to item");
+
+        this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_UPDATED, this.item);
       })
       .then(()=>{
         this.Spinner.hide("moving-item-modifiers");
@@ -102,6 +104,8 @@ export default class menuItemController {
           this.originalItem.images.splice(imageIndex, 1);
           this.Snack.show('Image deleted');
           this.Spinner.hide("item-image-delete");
+
+          this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_UPDATED, this.item);
         })
         .catch((err)=>{
           console.log("Failed deleting item image", err)
@@ -146,6 +150,9 @@ export default class menuItemController {
 
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
+
+        createdItem.setSize();
+
         this.cardItemList.onUpdateItem(this.item, createdItem);
 
         this.contextualMenu.hide();
@@ -178,12 +185,18 @@ export default class menuItemController {
       if (updateAction === 'all') {
         return this.ItemService.updateItem(updates, skipExtensions)
           .then((updatedItem)=>{
+
+            updatedItem.setSize();
+
+            this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_UPDATED, updatedItem);
             this.restoreValues(updatedItem);
           })
       }
       let clonePosition = this.menuSectionItemList.getPosition(this.item);
       return this.ItemService.doSingleEdit(updates, this.sectionId, clonePosition)
         .then((newItem)=> {
+
+          newItem.setSize();
           this.cardItemList.onUpdateItem(this.item, newItem);
           if (this.onItemCreated){
             this.onItemCreated({item:newItem});
@@ -312,6 +325,8 @@ export default class menuItemController {
   onModifierRemoved (modifier) {
 
     this.ItemService.removeModifierFromItem(this.item.id, modifier);
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_UPDATED, this.item);
   }
 
   buildModifiers () {

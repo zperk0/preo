@@ -169,8 +169,16 @@ export default class menuSectionItemListController {
     let maxHeight = 0;
     this.items.forEach((i)=>{
      maxHeight += 48 + 42 + 16 + (i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
-    })
-    this.el[0].style.maxHeight = maxHeight + (80 + 35*5) + "px";
+    });
+
+    let totalHeight = maxHeight + (80 + 35*5) + 'px';
+
+    if (this.el[0].style.maxHeight === totalHeight) {
+      this.section.$expanding = false;
+    } else {
+      this.el[0].style.maxHeight = totalHeight;
+    }
+
   }
 
   onClone (item, sectionId) {
