@@ -67,8 +67,11 @@ export default class eventListViewController {
   getEventsName (events) {
     let html = [];
     if (events && events.length) {
-      for (let event of events) {
+      for (let event of events.slice(0, 2)) {
         html.push('<div class="event-calendar-item">' + event.time + ' - ' + event.name + '</div>');
+      }
+      if (events.slice(2).length) {
+        html.push('<div class="event-calendar-item remaining"> + ' + events.slice(2).length + ' more</div>');
       }
     }
     return html.join('');
