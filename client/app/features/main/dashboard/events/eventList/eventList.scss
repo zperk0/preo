@@ -125,25 +125,33 @@
         }
     }
 
-    calendar-md {
-        md-content{
-            & > md-content {
-                &.calendar {
-                    & > :not(:first-child) {
-                        & > * {
-                            :last-child {
-                                overflow: visible;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // calendar-md {
+    //     md-content{
+    //         & > md-content {
+    //             &.calendar {
+    //                 & > :not(:first-child) {
+    //                     & > * {
+    //                         :last-child {
+    //                             overflow: visible;
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
   }
 
   .event-calendar-item {
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #009ff5;
+    
+    &.remaining {
+        margin-top: 10px;
+    }
 
     &:hover {
         .event-tooltip {

@@ -1,10 +1,9 @@
 <div class='event-schedule ng-enter' ng-class="{expanded:scheduleCtrl.schedule.$expanded}" ng-attr-data-id="{{scheduleCtrl.schedule.id}}">
-
   <card-item has-actions="true" deleted="scheduleCtrl.schedule.$deleted" selected="scheduleCtrl.schedule.$selected">
     <card-item-title ng-click="scheduleCtrl.toggleExpanded($event)" has-visible="true">
       <md-button class="md-icon-button warning-button" ng-if="scheduleCtrl.shouldShowWarningSlots()">
         <icon class="warning-icon">report_problem</icon>
-        <md-tooltip>{{ 'There are no collection slots assigned to this schedule' }}</md-tooltip>
+        <md-tooltip>{{ 'There are no collection slots assigned to this schedule' | translate }}</md-tooltip>
       </md-button>
       <div class="schedule-name">
         <span ng-repeat="day in scheduleCtrl.schedule.occurrences" class="name">{{day.$moment.format('ddd DD MMM')}}</span>

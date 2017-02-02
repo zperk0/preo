@@ -18,6 +18,12 @@ export default class eventScheduleListController {
     this.schedules.push(this.EventScheduleService.getNewScheduleModel(this.event.id));
   }
 
+   buildScheduleTimestamp(schedule) {
+    if(schedule.occurrences && schedule.occurrences.length){
+      schedule.$startTimestamp = moment(schedule.occurrences[0].date).valueOf();
+    }
+  }
+
   createSchedule(newData) {
 
     let deferred = this.$q.defer();
@@ -35,7 +41,7 @@ export default class eventScheduleListController {
       this.Spinner.show("event-schedule-create");
       this.EventScheduleService.save(newData)
         .then((schedule) => {
-
+          this.buildScheduleTimestamp(schedule)
           this.Snack.show(this.gettextCatalog.getString('Schedule created'));
 
           deferred.resolve(schedule);
@@ -83,6 +89,7 @@ export default class eventScheduleListController {
     this.schedules.forEach((schedule) => {
 
       schedule.$show = !!shouldShow;
+      this.buildScheduleTimestamp(schedule)
     });
   }
 
