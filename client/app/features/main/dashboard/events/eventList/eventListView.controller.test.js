@@ -75,6 +75,8 @@ describe('EventList View Controller', function () {
       expect($scope.eventListViewCtrl.getDayEventsName).toEqual(jasmine.any(Function));
       expect($scope.eventListViewCtrl.setDayContent).toEqual(jasmine.any(Function));
       expect($scope.eventListViewCtrl.getEventByDate).toEqual(jasmine.any(Function));
+      expect($scope.eventListViewCtrl.getDayEvents).toEqual(jasmine.any(Function));
+      expect($scope.eventListViewCtrl.getEventsName).toEqual(jasmine.any(Function));
       expect($scope.eventListViewCtrl.hideSpinner).toEqual(jasmine.any(Function));
       expect($scope.eventListViewCtrl.loaded).toBe(false);
       expect($scope.eventListViewCtrl.isCalendarMode()).toBe(false);
@@ -215,6 +217,9 @@ describe('EventList View Controller', function () {
         name: 'test',
         schedules: [{
           startDate: moment(),
+          occurrences: [{
+            date: moment()
+          }],
           freq: EventScheduleFrequency.ONCE
         }]
       }, {
@@ -222,6 +227,9 @@ describe('EventList View Controller', function () {
         name: 'test 2',
         schedules: [{
           startDate: moment(),
+          occurrences: [{
+            date: moment()
+          }],
           freq: EventScheduleFrequency.ONCE
         }]
       }];
@@ -253,21 +261,33 @@ describe('EventList View Controller', function () {
 
           $scope.eventListViewCtrl.expandSchedules();
 
-          let eventsName = events.map((event) => {
+          var rawEvents = [];
 
-            return '<span>' + event.name + '</span>';
-          }).join('');
+          for (let event of events) {
+            for (let schedule of event.schedules) {
+              for (let occurrence of schedule.occurrences) {
+                let occurrenceMoment = moment(occurrence.date);
+                if (occurrenceMoment.isSame(moment(), 'day')) {
+                  rawEvents.push({ time: occurrenceMoment.format('HH:mm'), name: event.name, moment: occurrenceMoment.clone() });
+                }
+              }
+            }
+          }
 
+          rawEvents = $scope.eventListViewCtrl.orderDayEvents(rawEvents);
 
-          let htmlResult = [
-                '<div>',
-                  '<div class="event-calendar-item">',
-                    '<a ng-href>' + events.length + ' ' + 'events' + '</a>',
-                    '<div class="event-tooltip">' + eventsName + '</div>',
-                  '</div>',
-                '</div>'
-              ].join('');
+          var eventsName = [];
 
+          if (rawEvents && rawEvents.length) {
+            for (var event of rawEvents.slice(0, 2)) {
+              eventsName.push('<div class="event-calendar-item">' + event.time + ' - ' + event.name + '</div>');
+            }
+            if (rawEvents.slice(2).length) {
+              eventsName.push('<div class="event-calendar-item remaining"> + ' + rawEvents.slice(2).length + ' more</div>');
+            }
+          }
+
+          eventsName = eventsName.join('');
 
           expect($scope.eventListViewCtrl.loaded).toBe(true);
           expect(Spinner.show).toHaveBeenCalledWith('events');
@@ -278,7 +298,7 @@ describe('EventList View Controller', function () {
           expect(OutletLocationService.getOutletLocations).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.hideSpinner).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.data.events.length).toBe(events.length);
-          expect($scope.eventListViewCtrl.getDayEventsName(moment()).trim()).toEqual(htmlResult.trim());
+          expect($scope.eventListViewCtrl.getEventsName(rawEvents)).toEqual(eventsName);
           done();
         });
       });
