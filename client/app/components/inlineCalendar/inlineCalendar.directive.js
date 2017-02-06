@@ -4,7 +4,8 @@ export default function inlineCalendar() {
     return {
         restrict: 'E',
         scope: {
-            schedule: '=ngModel'
+            schedule: '=ngModel',
+            allowPastDates: "=?"
         },
         template: require("./inlineCalendar.tpl.html"),
         link: (scope) => {
@@ -98,6 +99,7 @@ export default function inlineCalendar() {
                 $number: weekDay.date(),
                 $isCurrentMonth: weekDay.month() === scope.today.month(),
                 $isToday: weekDay.isSame(new Date(), 'day'),
+                $isPast: weekDay.isBefore(moment(), 'day'),
                 $moment: weekDay
             };
             day.$isSelected = _isDayStored(scope, day);
