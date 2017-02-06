@@ -58,8 +58,25 @@ export default class eventScheduleController {
     }
   }
 
+  checkPastDates(entity) {
+    for (var occurrence of entity.occurrences) {
+      if (occurrence.$moment.isBefore(moment(), 'day')) {
+        entity.$validation.past = true;
+      }
+    }
+  }
+
+  occurrencesValidation(entity) {
+    entity.$validation = {
+      past: null
+    };
+    this.checkPastDates(entity);
+  }
+
   contextualMenuSuccess(entity) {
     if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length && entity.occurrences && entity.occurrences.length) {
+
+      this.occurrencesValidation(entity);
 
       for (let validation in entity.$validation) {
         if (entity.$validation[validation] === true) {
