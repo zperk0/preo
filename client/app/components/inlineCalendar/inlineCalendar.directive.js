@@ -11,6 +11,7 @@ export default function inlineCalendar() {
             scope.today = moment();
             scope.schedule.occurrences = scope.schedule.occurrences || [];
             scope.daysName = _getWeekDays();
+            _occurrencesValidation(scope);
 
             var firstDayOfMonth = scope.today.clone().startOf('month');
             _buildMonth(scope, firstDayOfMonth);
@@ -36,9 +37,25 @@ export default function inlineCalendar() {
         }
     };
 
+    function _checkPastDates(scope) {
+        for (var occurrence of scope.schedule.occurrences) {
+            if (occurrence.$moment.isBefore(moment(), 'day')) {
+                scope.schedule.$validation.past = true;
+            }
+        }
+    }
+
+    function _occurrencesValidation(scope) {
+        scope.schedule.$validation = {
+            past: null
+        };
+        _checkPastDates(scope);
+    }
+
     function _storeOccurrence(scope, day) {
         _isDayStored(scope, day) ? _deleteOccurrence(scope, day) : scope.schedule.occurrences.push(day);
         _orderOccurrences(scope);
+        _occurrencesValidation(scope);
     }
 
     function _deleteOccurrence(scope, day) {
@@ -47,6 +64,7 @@ export default function inlineCalendar() {
                 scope.schedule.occurrences.splice(index, 1);
             }
         })
+        _occurrencesValidation(scope);
     }
 
     function _orderOccurrences(scope) {
