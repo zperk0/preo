@@ -60,7 +60,7 @@ export default class eventScheduleController {
 
   checkPastDates(entity) {
     for (var occurrence of entity.occurrences) {
-      if (occurrence.$moment.isBefore(moment(), 'day')) {
+      if (!occurrence.id && occurrence.$moment.isBefore(moment(), 'day')) {
         entity.$validation.past = true;
       }
     }
