@@ -3,6 +3,9 @@
   <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.contextualForm.$submitted && !eventScheduleFormCtrl.schedule.occurrences.length"
     translate>You must select at least one date.
   </div>
+  <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.schedule.$validation.past"
+    translate>You shouldn't select dates in the past.
+  </div>
 
   <div class="md-block md-block-timepicker">
     <mdp-time-picker mdp-auto-switch="true" mdp-open-on-click name="timeFormat" mdp-placeholder="{{ 'Start time' | translate }}"

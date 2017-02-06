@@ -33,7 +33,7 @@ export default class eventScheduleController {
 
     var dateTimer = moment(entity.$startTime.getTime());
 
-    for (var day of entity.occurrences) {
+    for (let day of entity.occurrences) {
       day.date = day.$moment.clone();
       day.date.hours(dateTimer.hours());
       day.date.minutes(dateTimer.minutes());
@@ -51,15 +51,39 @@ export default class eventScheduleController {
   }
 
   buildScheduleOccurrences(schedule) {
-    for (var occurrence of schedule.occurrences) {
+    for (let occurrence of schedule.occurrences) {
       if (occurrence.date) {
         occurrence.$moment = moment(occurrence.date);
       }
     }
   }
 
+  checkPastDates(entity) {
+    for (var occurrence of entity.occurrences) {
+      if (occurrence.$moment.isBefore(moment(), 'day')) {
+        entity.$validation.past = true;
+      }
+    }
+  }
+
+  occurrencesValidation(entity) {
+    entity.$validation = {
+      past: null
+    };
+    this.checkPastDates(entity);
+  }
+
   contextualMenuSuccess(entity) {
     if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length && entity.occurrences && entity.occurrences.length) {
+
+      this.occurrencesValidation(entity);
+
+      for (let validation in entity.$validation) {
+        if (entity.$validation[validation] === true) {
+          return false;
+        }
+      }
+
       this.buildEntityToSchedule(entity);
 
       if (!this.schedule.id) {
