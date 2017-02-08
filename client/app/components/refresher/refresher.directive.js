@@ -1,10 +1,11 @@
 
-export default function refresher(){
-  "ngInject";
+export default function refresher() {
 
   return {
     transclude: true,
     controller: ($scope, $transclude, $attrs, $element) => {
+      "ngInject";
+
       let childScope;
 
       $scope.$watch($attrs.condition, (value) => {
