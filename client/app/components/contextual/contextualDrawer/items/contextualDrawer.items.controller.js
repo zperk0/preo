@@ -46,26 +46,33 @@ export default class contextualDrawerItemController {
 
     this.cancelledItems = [];
     this.types = ['NONE'];
+    this.lastUpdate = 0;
 
 
 
     ItemService.getItems($stateParams.venueId)
       .then(() => {
-
-        this.data = angular.copy(ItemService.data);
+        this.data = ItemService.data;
       });
 
-    let unRegisterWatch = $scope.$watch(() => {
 
+    let unRegisterWatchData = $scope.$watch(() => {
+      return this.data.items;
+    }, () => {
+      this.lastUpdate ++;
+    }, true);
+
+
+    let unRegisterWatch = $scope.$watch(() => {
       return MenuService.getCurrentMenu();
     }, () => {
-
       this.checkTypes();
     });
 
-    $scope.$on('$destroy', () => {
 
+    $scope.$on('$destroy', () => {
       unRegisterWatch && unRegisterWatch();
+      unRegisterWatchData && unRegisterWatchData();
     });
   }
 }
