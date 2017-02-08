@@ -31,7 +31,7 @@ describe('User Service', function () {
       expect(UserService.getCurrent()).toBe(null);
     });
 
-    it("Should auth the user and shouldn't be an admin", function(done) {
+    it("auth - Should auth the user and shouldn't be an admin", function(done) {
 
       spyOn(UserService, 'checkAdmin').and.callThrough();
 
@@ -77,7 +77,7 @@ describe('User Service', function () {
       });
     });
 
-    it("Should auth the user and should be an admin", function(done) {
+    it("auth - Should auth the user and should be an admin", function(done) {
 
       spyOn(UserService, 'checkAdmin').and.callThrough();
 
@@ -124,6 +124,42 @@ describe('User Service', function () {
 
           done();
         });
+      });
+    });
+
+    it("auth - Should auth the user and skip checkAdmin", function(done) {
+
+      spyOn(UserService, 'checkAdmin').and.callThrough();
+
+      let userLogged = {
+        id: 1,
+        name: 'Tester'
+      };
+
+      let urlAuth = '/api/users/auth';
+
+      server.respondWith('POST', urlAuth, [200, {"Content-Type": "application/json"}, JSON.stringify(userLogged)]);
+
+      // this is because the auth method is called on main.run
+      UserService.restore();
+
+      UserService.auth({
+        username: 'tester@test.com',
+        password: '123'
+      }, true);
+
+      server.respond();
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        expect(UserService.isAuth()).toBe(false);
+        expect(UserService.checkAdmin).not.toHaveBeenCalled();
+        expect(UserService.getCurrent()).toBeDefined();
+        expect(UserService.getCurrent().id).toBe(userLogged.id);
+
+        done();
       });
     });
 });

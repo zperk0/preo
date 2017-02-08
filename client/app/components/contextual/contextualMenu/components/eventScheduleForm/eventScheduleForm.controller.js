@@ -1,14 +1,14 @@
 export default class eventScheduleFormController {
-  static get UID(){
+  static get UID() {
     return "eventScheduleFormController"
   }
 
-  isOnceFrequency () {
+  isOnceFrequency() {
 
-  	return this.schedule.isOnceFrequency();
+    return this.schedule.isOnceFrequency();
   }
 
-  resetDateTime (date) {
+  resetDateTime(date) {
 
     date.setHours(0);
     date.setMinutes(0);
@@ -21,7 +21,10 @@ export default class eventScheduleFormController {
 
     this.EventScheduleFrequency = EventScheduleFrequency;
 
-    this.schedule.$startDate = this.schedule.startDate ? moment(this.schedule.startDate).toDate() : null;
+    this.schedule.startDate = null;
+    this.schedule.endDate = null;
+
+    this.schedule.$startDate = this.schedule.occurrences && this.schedule.occurrences[0] ? moment(this.schedule.occurrences[0].date).toDate() : null;
     this.schedule.$endDate = this.schedule.endDate ? moment(this.schedule.endDate).toDate() : null;
 
     if (this.schedule.isOnceFrequency()) {
@@ -38,14 +41,14 @@ export default class eventScheduleFormController {
     }
 
     this.schedules = [{
-    	value: EventScheduleFrequency.ONCE,
-    	title: gettextCatalog.getString('One off')
-    },{
-    	value: EventScheduleFrequency.DAILY,
-    	title: gettextCatalog.getString('Repeat daily')
-    },{
-    	value: EventScheduleFrequency.WEEKLY,
-    	title: gettextCatalog.getString('Repeat weekly')
+      value: EventScheduleFrequency.ONCE,
+      title: gettextCatalog.getString('One off')
+    }, {
+      value: EventScheduleFrequency.DAILY,
+      title: gettextCatalog.getString('Repeat daily')
+    }, {
+      value: EventScheduleFrequency.WEEKLY,
+      title: gettextCatalog.getString('Repeat weekly')
     }];
   }
 }

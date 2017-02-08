@@ -6,6 +6,7 @@ $ordersapp = "https://orders-demo.preoday.com/";
 $weborders = "https://menus-v2-demo.preoday.com/";
 $webordersEdit = "https://menus-v2-demo.preoday.com/";
 $webappV1 = "https://app-demo.preoday.com/";
+$resetPasswordLink = "https://app-demo.preoday.com/reset";
 $analytics = '';
 $sessionId = session_id();
 
@@ -33,6 +34,11 @@ if(isset($_SERVER["PREO_WEBAPP_V1"]))
     $webappV1 = $_SERVER["PREO_WEBAPP_V1"];
 }
 
+if(isset($_SERVER["PREO_RESET_PASSWORD"]))
+{
+    $resetPasswordLink = $_SERVER["PREO_RESET_PASSWORD"];
+}
+
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .=" <script>";
     $analytics .="   window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;";
@@ -56,6 +62,7 @@ $overrides .= "window._PREO_DATA._ORDERSAPP='$ordersapp';";
 $overrides .= "window._PREO_DATA._WEBORDERS='$weborders';";
 $overrides .= "window._PREO_DATA._WEBORDERS_EDIT='$webordersEdit';";
 $overrides .= "window._PREO_DATA._WEBAPP_V1='$webappV1';";
+$overrides .= "window._PREO_DATA._RESET_PASSWORD='$resetPasswordLink';";
 $overrides .= "window._PREO_DATA._SESSION='$sessionId';";
 $overrides .= "</script>";
 
