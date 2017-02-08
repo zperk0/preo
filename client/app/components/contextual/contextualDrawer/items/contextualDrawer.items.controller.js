@@ -57,7 +57,9 @@ export default class contextualDrawerItemController {
 
 
     let unRegisterWatchData = $scope.$watch(() => {
-      return this.data.items;
+      if (this.data) {
+        return this.data.items;
+      }
     }, () => {
       this.lastUpdate ++;
     }, true);
