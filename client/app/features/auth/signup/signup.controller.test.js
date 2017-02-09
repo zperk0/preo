@@ -431,7 +431,7 @@ describe('signup Controller', function () {
       SignupCtrl.goToDashboard();
 
       expect(SignupCtrl.hideSpinner).toHaveBeenCalled();
-      expect($state.go).toHaveBeenCalledWith('main.dashboard', {}, {
+      expect($state.go).toHaveBeenCalledWith('main.dashboard.analytics', {}, {
         location: 'replace'
       });
     });

@@ -23,7 +23,7 @@ export default class signinController {
         console.log("venue selected",  venues)
         if (venues && venues.length){
           this.hideSpinner(2000);
-          this.$state.go('main.dashboard', {}, {
+          this.$state.go('main.dashboard.analytics', {}, {
             location: 'replace'
           });
         } else {

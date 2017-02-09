@@ -26,7 +26,7 @@ export default function routes($stateProvider) {
 
         $timeout(() => {
 
-          $state.go('main.dashboard');
+          $state.go('main.dashboard.analytics');
         });
 
         return $q.reject();

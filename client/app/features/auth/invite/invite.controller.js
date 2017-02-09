@@ -34,7 +34,7 @@ export default class inviteController {
 
     this.hideSpinner();
 
-    this.$state.go('main.dashboard', {}, {
+    this.$state.go('main.dashboard.analytics', {}, {
       location: 'replace'
     });
   }
