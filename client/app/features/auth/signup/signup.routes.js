@@ -25,7 +25,7 @@ export default function routes($stateProvider) {
         if (!$stateParams.inviteKey) {
           $timeout(() => {
 
-            $state.go('main.dashboard');
+            $state.go('main.dashboard.analytics');
           });
 
           return $q.reject();
