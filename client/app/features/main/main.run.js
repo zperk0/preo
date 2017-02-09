@@ -1,5 +1,5 @@
 
-export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, Spinner, contextualMenu, contextualDrawer, PermissionService){
+export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, Spinner, contextualMenu, contextualDrawer, PermissionService, $timeout){
   "ngInject";
 
   const notRequiresUser= ['auth.signin', 'auth.signup', 'auth.invite', 'error', 'emailSuccess'];
@@ -18,9 +18,11 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
       if (toState.requiresPermission){
         if (!PermissionService.hasPermission(toState.requiresPermission)){
-          $state.go("main.dashboard");
-          event.preventDefault();
-          return false;
+          if (toState.name !== 'main.dashboard.analytics') {
+            $state.go("main.dashboard.analytics");
+            event.preventDefault();
+            return false;
+          }
         }
       }
       return true;
