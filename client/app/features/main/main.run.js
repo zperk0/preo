@@ -6,7 +6,11 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
-
+      if (toState.redirectTo) {
+        $state.transitionTo(toState.redirectTo);
+        event.preventDefault();
+        return false;
+      }
 
       contextualDrawer.close();
       contextualMenu.close();
