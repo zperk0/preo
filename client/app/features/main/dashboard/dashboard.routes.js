@@ -12,6 +12,7 @@ export default function routes($stateProvider) {
     url: "/dashboard",
     template: require("./dashboard.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm"
+    controllerAs: "vm",
+    redirectTo: 'main.dashboard.analytics'
   });
 }

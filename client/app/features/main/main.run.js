@@ -6,7 +6,11 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
-
+      if (toState.redirectTo) {
+        $state.transitionTo(toState.redirectTo);
+        event.preventDefault();
+        return false;
+      }
 
       contextualDrawer.close();
       contextualMenu.close();
@@ -18,11 +22,9 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
       if (toState.requiresPermission){
         if (!PermissionService.hasPermission(toState.requiresPermission)){
-          if (toState.name !== 'main.dashboard.analytics') {
-            $state.go("main.dashboard.analytics");
-            event.preventDefault();
-            return false;
-          }
+          $state.go("main.dashboard");
+          event.preventDefault();
+          return false;
         }
       }
       return true;

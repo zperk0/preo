@@ -519,7 +519,7 @@ describe('invite Controller', function () {
       InviteCtrl.goToDashboard();
 
       expect(InviteCtrl.hideSpinner).toHaveBeenCalled();
-      expect($state.go).toHaveBeenCalledWith('main.dashboard.analytics', {}, {
+      expect($state.go).toHaveBeenCalledWith('main.dashboard', {}, {
         location: 'replace'
       });
     });
