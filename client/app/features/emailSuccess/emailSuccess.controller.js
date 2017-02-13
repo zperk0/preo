@@ -25,7 +25,7 @@ export default class emailSuccessController {
 				venueId = this.VenueService.venues[0].id;
 			}
 
-  		return this.$state.href("main.dashboard", {
+  		return this.$state.href("main.dashboard.anaylitcs", {
   			venueId: venueId
   		});
   	}
