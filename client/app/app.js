@@ -23,6 +23,9 @@ import tagList from './components/tagList';
 import itemChips from './components/itemChips';
 import breadcrumb from './components/breadcrumb';
 import validHtml from './components/validHtml';
+import faSuspendable from './components/faSuspendable';
+import faParentSuspendable from './components/faParentSuspendable';
+import refresher from './components/refresher';
 import autoSave from './components/autoSave';
 import milesOrKms from './components/milesOrKms';
 import mocks from './app.modules.mock';
@@ -61,6 +64,9 @@ require('./components/sticky/sticky.directive.js');
   breadcrumb,
   autoSave,
   validHtml,
+  faSuspendable,
+  faParentSuspendable,
+  refresher,
   milesOrKms,
   inlineCalendar,
   // /* internal */
