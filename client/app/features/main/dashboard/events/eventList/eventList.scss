@@ -129,10 +129,13 @@
         md-content{
             & > md-content {
                 &.calendar {
-                    & > :not(:first-child) {
-                        & > * {
-                            :last-child {
-                                overflow: visible;
+                    > div {
+                        > div {
+                            flex-direction: column;
+
+                            > div {
+                                margin-top: 5px;
+                                padding: 0;
                             }
                         }
                     }
@@ -144,6 +147,15 @@
 
   .event-calendar-item {
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #009ff5;
+    font-size: 13px;
+    
+    &.remaining {
+        margin-top: 10px;
+    }
 
     &:hover {
         .event-tooltip {
