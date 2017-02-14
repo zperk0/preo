@@ -426,7 +426,7 @@ describe('EventSchedule Controller', function () {
     scheduleMock.$startTime = moment(scheduleMock.startDate).toDate();
     scheduleMock.$endDate = moment(scheduleMock.endDate).toDate();
     scheduleMock.pickupSlots = [new Preoday.PickupSlot()];
-    scheduleMock.occurrences = [{ date: moment() }];
+    scheduleMock.occurrences = [{ $moment: moment() }];
 
     spyOn(contextual, 'showMenu').and.returnValue($q.when());
 

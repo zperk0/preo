@@ -194,8 +194,9 @@ export default class ModifierService {
 
   removeFromSection(modifier, section){
     return modifier.delete({sectionId:section.id})
-      .then(()=>{
+      .then((data)=>{
         section.modifiers = section.modifiers.filter((m)=>modifier.id !== m.id);
+        return data;
       })
   }
 

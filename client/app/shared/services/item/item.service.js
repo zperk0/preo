@@ -155,6 +155,10 @@ export default class ItemService {
   updateItem(item, skipExtensions = false){
     this.DEBUG && console.log("updating item", item, skipExtensions);
 
+    if (item.$size && item.$size.$isMultiple && item.$size.items.length) {
+      item.price = 0;
+    }
+
     return (skipExtensions ? this.$q.when() : this._parseImages(item))
       .then(item.update.bind(item))
       .then((updatedItem)=>{
@@ -179,10 +183,11 @@ export default class ItemService {
       });
   }
 
-  createItem(item, sectionId) {
+  createItem(item, sectionId){
 
     if (item.$size && item.$size.items.length) {
       item.modifiers = [item.$size];
+      item.price = 0;
     }
 
     this.DEBUG && console.log("creating item", item, sectionId);
@@ -217,6 +222,12 @@ export default class ItemService {
     })
   }
 
+  setItemsSizes () {
+
+    for (let i = this.data.items.length; i--;) {
+      this.data.items[i].setSize();
+    }
+  }
 
   getItems(venueId, expand='images,tags,modifiers'){
     return this.$q((resolve, reject)=>{
@@ -226,6 +237,9 @@ export default class ItemService {
         Preoday.Item.getAll({venueId:venueId, expand:expand})
         .then((items)=>{
           this.data.items = items || [];
+
+          this.setItemsSizes();
+
           return this.ModifierService.getModifiers(venueId)
         })
         .then((modifiers)=>{

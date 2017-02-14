@@ -16,17 +16,17 @@
             sv-is-dropzone='menuItemListCtrl.svIsDropzone'
             sv-is-dropzone-disabled='menuItemListCtrl.svIsDropzoneDisabled'>
 
-             <menu-item
-                 ng-repeat="item in menuItemListCtrl.items | orderBy: 'id' track by item.id"
-                 ng-show="menuItemListCtrl.isInFilter(item, menuItemListCtrl.searchText.name)"
-                 item="item"
-                 has-actions="hasActions"
-                 ng-attr-data-id="{{item.id}}"
-                 sv-element="item"
-                 on-clone="menuItemListCtrl.onClone(item, sectionId)">
-               </menu-item>
-               <div sv-placeholder></div>
-           </div>
+            <menu-item
+               ng-repeat="item in menuItemListCtrl.items | orderBy: 'id' track by item.id"
+               ng-show="menuItemListCtrl.isInFilter(item, menuItemListCtrl.searchText.name)"
+               item="item"
+               has-actions="hasActions"
+               ng-attr-data-id="{{item.id}}"
+               sv-element="item"
+               on-clone="menuItemListCtrl.onClone(item, sectionId)">
+            </menu-item>
+            <div sv-placeholder></div>
+          </div>
     </card-item-list>
 
   </div>

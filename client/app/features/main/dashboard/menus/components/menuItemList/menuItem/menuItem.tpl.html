@@ -1,5 +1,5 @@
 <div class='menu-item ng-enter'>
-    <card-item has-actions="menuItemCtrl.hasActions"
+  <card-item has-actions="menuItemCtrl.hasActions"
               selected="menuItemCtrl.item.$selected"
               deleted="menuItemCtrl.item.$deleted">
     <card-item-title
@@ -25,10 +25,13 @@
       <card-item-child
           ng-repeat="size in menuItemCtrl.item.$size.items"
           modifier="menuItemCtrl.item.$size"
+          sv-disabled="true"
+          sv-is-dropzone-disabled="true"
           option="size"></card-item-child>
     </div>
 
-    <card-item-actions is-visible="menuItemCtrl.item.visible"
+    <card-item-actions ng-if="menuItemCtrl.hasActions"
+                       is-visible="menuItemCtrl.item.visible"
                        on-clone="menuItemCtrl.onClone()"
                        on-delete="menuItemCtrl.onDelete()"
                        on-edit="menuItemCtrl.onEdit()"

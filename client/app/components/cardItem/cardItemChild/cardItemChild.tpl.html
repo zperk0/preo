@@ -1,7 +1,9 @@
 <div class='card-item-child' layout="row">
-  <div  sv-root="modifier">
+  <div sv-root="modifier"
+       sv-disabled="cardItemChildCtrl.svDisabled">
     <div class='sv-dropzone sv-dropzone-modifier'
-    		 sv-part="cardItemChildCtrl.newModifiers"
+         sv-part="cardItemChildCtrl.newModifiers"
+         sv-is-dropzone-disabled='cardItemChildCtrl.svIsDropzoneDisabled'
     		 sv-on-external-sort="cardItemChildCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
       <div sv-placeholder></div>
     </div>
@@ -15,5 +17,4 @@
   			modifier-item="cardItemChildCtrl.option"></modifier-chips>
   </span>
   <span class='price'> {{cardItemChildCtrl.option.price | currency}}</span>
-
 </div>

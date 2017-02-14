@@ -11,7 +11,7 @@
     <span ng-repeat="day in daysName" class="day">{{day}}</span>
 </div>
 <div class="week days layout-align-space-around-center layout-row" ng-repeat="week in currentMonth">
-    <md-button class="md-fab day" type="button" ng-click="select(day)" ng-repeat="day in week" ng-class="{ today: day.$isToday, 'different-month': !day.$isCurrentMonth, selected: day.$isSelected }"
+    <md-button ng-repeat="day in week" ng-disabled="!allowPastDates && day.$isPast" class="md-fab day" type="button" ng-click="select(day)" ng-class="{ today: day.$isToday, 'different-month': !day.$isCurrentMonth, selected: day.$isSelected }"
         ng-repeat="day in week.days">
         {{day.$number}}
     </md-button>

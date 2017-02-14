@@ -31,6 +31,9 @@ export default class menuItemListController {
 
     this.ItemService.cloneItem(item, null, null)
       .then((createdItem)=>{
+
+        createdItem.setSize();
+
         createdItem.$show = true; //need show for animation
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
