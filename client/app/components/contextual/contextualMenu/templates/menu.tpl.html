@@ -1,13 +1,18 @@
 <md-card-content>
   {{vm.entity | debug}}
-   <md-input-container class="md-block no-spacer">
-      <label translate>Menu name</label>
-      <input type="text" required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
+  <md-input-container class="md-block no-spacer">
+    <label translate>Menu name</label>
+    <input type="text" required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
 
-      <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
-        <div ng-message="required" translate>This is required.</div>
-        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
-      </div>
+    <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
+      <div ng-message="required" translate>This is required.</div>
+      <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+    </div>
+  </md-input-container>
+  <md-input-container>
+    <md-checkbox aria-label="{{'Collapse menu sections' | translate}}" ng-model="contextualMenuCtrl.entity.collapse" ng-true-value="1" ng-false-value="0">
+      {{'Collapse menu sections' | translate}}
+    </md-checkbox>
   </md-input-container>
 </md-card-content>
 
