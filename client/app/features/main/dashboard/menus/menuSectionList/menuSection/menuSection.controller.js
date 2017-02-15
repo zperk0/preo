@@ -205,9 +205,12 @@
     if (this.section && entity){
       this.section = entity;
 
+      var menu = this.section.getMenu();
+      this.section.collapse = menu.collapse;
+
       if (!this.section.id){
         this.Spinner.show("section-create");
-        Preoday.Section.save(this.section, this.section.getMenu())
+        Preoday.Section.save(this.section, menu)
         .then((section) => {
 
             this.cardItemList.onUpdateItem(this.section, section);
