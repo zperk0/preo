@@ -206,7 +206,7 @@
       this.section = entity;
 
       var menu = this.section.getMenu();
-      this.section.collapse = menu.collapse;
+      this.section.collapse = menu ? menu.collapse : 0;
 
       if (!this.section.id){
         this.Spinner.show("section-create");
