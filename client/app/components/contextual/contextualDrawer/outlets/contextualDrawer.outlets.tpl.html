@@ -1,21 +1,23 @@
- <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-outlets md-whiteframe-4dp" md-component-id="outlets">
-    <div sv-root="outlet" sv-part="drawerOutletsCtrl.cancelledOutlets">
-        <div class='sv-dropzone sv-dropzone-outlet' sv-part="drawerOutletsCtrl.cancelledOutlets" >
-        <div sv-placeholder></div>
-      </div>
-    </div>
-    <div class='contextual-list'>
-      <outlet-list has-search="true"
-         sv-multi-select="false"
-         sv-keep-in-list="true"
-         sv-is-dropzone="false"
-         has-new="false"
-         ng-if="drawerOutletsCtrl.data.outlets && drawerOutletsCtrl.data.outlets.length"
-         outlets="drawerOutletsCtrl.data.outlets"></outlet-list>
-    </div>
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="drawerOutletsCtrl.close()" class='md-raised' translate>
-          Done
-      </md-button>
-    </md-card-actions>
-</md-sidenav>
+ <div class="sidenav-wrapper">
+    <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-outlets md-whiteframe-4dp" md-component-id="outlets">
+        <div sv-root="outlet" sv-part="drawerOutletsCtrl.cancelledOutlets">
+            <div class='sv-dropzone sv-dropzone-outlet' sv-part="drawerOutletsCtrl.cancelledOutlets" >
+            <div sv-placeholder></div>
+          </div>
+        </div>
+        <div class='contextual-list'>
+          <outlet-list has-search="true"
+            sv-multi-select="false"
+            sv-keep-in-list="true"
+            sv-is-dropzone="false"
+            has-new="false"
+            ng-if="drawerOutletsCtrl.data.outlets && drawerOutletsCtrl.data.outlets.length"
+            outlets="drawerOutletsCtrl.data.outlets"></outlet-list>
+        </div>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="drawerOutletsCtrl.close()" class='md-raised' translate>
+              Done
+          </md-button>
+        </md-card-actions>
+    </md-sidenav>
+</div>

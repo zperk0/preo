@@ -1,15 +1,17 @@
- <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="style-emails">
-  <div class='contextual-list'>
+ <div class="sidenav-wrapper">
+    <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="style-emails">
+        <div class='contextual-list'>
 
-    <drawer-style-row ng-if="drawerStyleEmailsCtrl.model" ng-repeat="style in drawerStyleEmailsCtrl.styles" model="drawerStyleEmailsCtrl.model" entity="style"></drawer-style-row>
+            <drawer-style-row ng-if="drawerStyleEmailsCtrl.model" ng-repeat="style in drawerStyleEmailsCtrl.styles" model="drawerStyleEmailsCtrl.model" entity="style"></drawer-style-row>
 
-  </div>
-  <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="drawerStyleEmailsCtrl.close()" class="md-primary" translate>
-          Cancel
-      </md-button>
-      <md-button ng-click="drawerStyleEmailsCtrl.saveAndClose()" class='md-raised' translate>
-          Done
-      </md-button>
-  </md-card-actions>
-</md-sidenav>
+        </div>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="drawerStyleEmailsCtrl.close()" class="md-primary" translate>
+                Cancel
+            </md-button>
+            <md-button ng-click="drawerStyleEmailsCtrl.saveAndClose()" class='md-raised' translate>
+                Done
+            </md-button>
+        </md-card-actions>
+    </md-sidenav>
+</div>
