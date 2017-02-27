@@ -58,7 +58,8 @@ describe('menuSectionList Controller', function () {
     function _mockMenu() {
 
       mockMenu = new Preoday.Menu({
-        id: 1
+        id: 1,
+        collapse: 0
       });
     }
 
