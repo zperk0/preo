@@ -83,6 +83,7 @@ describe('menuSection Controller', function () {
 
       mockSection = new Preoday.Section({
         id: 1,
+        collapse: 0,
         name: 'Test item',
         menuId: 1,
         items: [],
