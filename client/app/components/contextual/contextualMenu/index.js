@@ -28,6 +28,7 @@ import validNumber from '../../../components/validNumber';
 import validPrice from '../../../components/validPrice';
 import validPercentage from '../../../components/validPercentage';
 import maxIntegerValue from '../../../components/maxIntegerValue';
+import minIntegerValue from '../../../components/minIntegerValue';
 import compareNumber from '../../../components/compareNumber';
 import venueCurrency from '../../../components/venueCurrency';
 
@@ -51,6 +52,7 @@ export default angular.module("contextualMenu" , [
   validPrice,
 	validPercentage,
 	maxIntegerValue,
+	minIntegerValue,
 	compareNumber,
   promotionComponents,
 	venueCurrency
