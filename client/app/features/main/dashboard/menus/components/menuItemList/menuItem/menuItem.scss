@@ -20,11 +20,19 @@ $heightMenuItemCard:48px;
 
       .name {
         display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       .price {
         padding-top:2px;
         float: right;
+
+        &.from {
+          opacity: 0.5;
+          margin: 0 5px;
+        }
       }
 
       .name, .price{
