@@ -9,6 +9,7 @@ describe('deliveryZoneList Controller', function () {
       CardItemListCtrl,
       MenuSectionItemListCtrl,
       VenueService,
+      DeliveryZoneService,
       $rootScope,
       $scope,
       $stateParams,
@@ -33,6 +34,7 @@ describe('deliveryZoneList Controller', function () {
       $stateParams = $injector.get('$stateParams');
       ItemService = $injector.get('ItemService');
       VenueService = $injector.get('VenueService');
+      DeliveryZoneService = $injector.get('DeliveryZoneService');
       Snack = $injector.get('Snack');
       Spinner = $injector.get('Spinner');
       $timeout = $injector.get('$timeout');
@@ -58,6 +60,15 @@ describe('deliveryZoneList Controller', function () {
         '$scope': $scope
       }, true);
 
+      deliveryZoneListCtrl.maxItems = DeliveryZoneService.getMaxDeliveryZones();
+
       server = sinon.fakeServer.create();
     }
+
+    it("Should get the right delivery zones limit", function() {
+      
+      _startController();
+      $rootScope.$digest();
+      expect(deliveryZoneListCtrl.maxItems).toEqual(DeliveryZoneService.colors.length);
+    });
 });
