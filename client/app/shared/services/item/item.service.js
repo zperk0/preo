@@ -134,6 +134,10 @@ export default class ItemService {
     const newItemData = angular.copy(item);
     newItemData.position = position;
     //remove ids from all necesasry entities to duplicate them. We'll not clone Modifiers but will clone sizes. Images are handled below
+    for (let image of newItemData.images) {
+      // remove image id to duplicate the image path
+      image.id = null;
+    }
     if (newItemData.$size){
       //if we explicitly marked this item as single before cloning, we don't clone sizes;
       if (newItemData.$size.$isMultiple === false){
