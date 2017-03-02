@@ -174,6 +174,10 @@ export default class DeliveryZoneService {
     // })
   }
 
+  getMaxDeliveryZones() {
+    return this.colors.length;
+  }
+
   constructor($q, VenueService, Spinner, Snack, LabelService, gettextCatalog, contextual) {
     "ngInject";
     this.$q = $q;
