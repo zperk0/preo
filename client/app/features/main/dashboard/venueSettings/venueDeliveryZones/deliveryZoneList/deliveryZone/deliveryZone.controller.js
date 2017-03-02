@@ -42,6 +42,9 @@ export default class deliveryZoneController {
     this.Spinner.show("dz-update");
     dz.update()
       .then((newDz)=>{
+        if (newDz.polygon && typeof newDz.polygon !== 'Array') {
+          newDz.polygon = JSON.parse('[' + newDz.polygon + ']');
+        }
         angular.extend(this.deliveryZone,newDz);
         this.Spinner.hide("dz-update");
         this.Snack.show('Delivery zone visibility updated');
