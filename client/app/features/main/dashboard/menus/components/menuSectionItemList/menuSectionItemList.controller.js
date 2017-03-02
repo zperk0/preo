@@ -194,7 +194,7 @@ export default class menuSectionItemListController {
         this.Snack.show('Item duplicated');
         console.log("cloned", createdItem, this.item);
 
-        this.cardItemList.insert(item, createdItem);
+        this.cardItemList.insert(item, createdItem, this.section);
         this.addToOriginalList(createdItem);
 
       }, (err)=>{
