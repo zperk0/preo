@@ -18,9 +18,11 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
       var distanceMultiplier =  VenueService.getKmOrMiles() && VenueService.getKmOrMiles()=="miles"?  1.6 : 1;
       var deliveryZoneDrawingPolygon = false;
       var shapes = {};
+      var polygonDrawer = {};
 
       function init(){
-        if(scope.venue){
+
+        if(scope.venue){          
           if (!scope.venue.latitude && !scope.venue.longitude){
             MapsService.getGeoLocationByAddress(scope.venue)
               .then((location)=>{
@@ -40,7 +42,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
 
       function drawDeliveryZones(deliveryZonesToSkip){
         console.log("drawing deliveryZones", deliveryZonesToSkip, scope.deliveryZones)
-        scope.drawingManager.setDrawingMode(null)
+       
         if (scope.deliveryZones){
           for (let i=0;i<scope.deliveryZones.length;i++){
             let dz = scope.deliveryZones[i];
@@ -56,46 +58,56 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
 
       function getNewShape(deliveryZone){
         if(deliveryZone.type === 'DISTANCE'){
-          return new google.maps.Circle({
+          return new L.circle(
+            [scope.centerPos.lat, scope.centerPos.lng]
+            , 1000,
+            {  
+            stroke: true,
+            color: deliveryZone.$color.border,
+            weight: 3,
+            opacity: 0.5,
+            fill: true,
+            fillColor: deliveryZone.$color.center, //same as color by default
             fillOpacity: 1,
-            strokeWeight: 3,
-            clickable: false,
-            editable: false,
-            center: {lat:scope.centerPos.lat, lng: scope.centerPos.lng},
-          });
+            clickable: false   });
         }
-        else if(deliveryZone.type === 'CUSTOM'){
-          var polygonShape =  new google.maps.Polygon({
-            strokeOpacity: 1,
-            strokeWeight: 3,
-            clickable: false,
-            editable: false,
-            fillOpacity: 1
-          });
-
-          // google.maps.event.addListener(polygonShape, 'dragend', function(){
-          //   handlePolygonComplete(polygonShape);
-          // });
-            return polygonShape;
-
-        }
-      }
+        else if(deliveryZone.type=== 'CUSTOM'){
+          return new L.polygon(            
+            {
+              stroke: true,
+              color: deliveryZone.$color.border,
+              weight: 3,
+              opacity: 0.5,
+              fill: true,
+              fillColor: deliveryZone.$color.center, //same as color by default
+              fillOpacity: 1,
+              clickable: false
+            });
+        }       
+      }    
 
       function updateShape(deliveryZone, shape){
-        if(deliveryZone.type === 'DISTANCE'){
-          var radius =  deliveryZone.distance * 1000 * distanceMultiplier;
-          shape.setRadius(radius)
-        } else if (deliveryZone.type === 'CUSTOM') {
-          shape.setOptions({editable:deliveryZone.editable});
+        if(deliveryZone.type === 'DISTANCE'){        
+          var radius =  deliveryZone.distance * 1000 * distanceMultiplier;         
+          shape.setRadius(radius);
+        }else if(deliveryZone.type === 'CUSTOM') {
+
+          shape.setStyle({editable:deliveryZone.editable});
+
           if (deliveryZone.editable) {
             deliveryZoneDrawingPolygon = deliveryZone;
           }
+
           if (!deliveryZone.polygon || !deliveryZone.polygon.length){
-            shape.setMap(null);
-            scope.drawingManager.setOptions({polygonOptions:{fillColor:deliveryZone.$color.center, editable:true, fillOpacity:1, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id}});
-            angular.element(document.body).addClass("map-drawing-polygon")
-            return scope.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON)
+            scope.map.removeLayer(shape);
+            angular.element(document.body).addClass("map-drawing-polygon");
+
+            polygonDrawer = new L.Draw.Polygon(scope.map);
+            polygonDrawer.setOptions({fillColor:deliveryZone.$color.center, editable:true, fillOpacity:1, stroke:true, color:deliveryZone.$color.border,zIndex:deliveryZone.id});
+            
+            return polygonDrawer.enable(); //new L.Draw.Polygon(scope.map).enable();
           }
+
           var coords = [];
           for (var i=0;i<deliveryZone.polygon.length;i+=2){
             var lat = Number(deliveryZone.polygon[i]);
@@ -105,31 +117,22 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
               lng:lng
             })
           }
-          console.log("coords", coords);
-          shape.setPaths(coords);
-           if (deliveryZone.editable){
-              google.maps.event.addListener(shape.getPath(), 'insert_at', function(){
-                console.log("on insert, ", shape.getPath())
-                handlePolygonComplete(shape);
-              });
 
-              google.maps.event.addListener(shape.getPath(), 'remove_at', function(){
-                console.log("on remove, ",shape.getPath())
-                handlePolygonComplete(shape);
-              });
+          shape.setLatLngs(coords);
 
-              google.maps.event.addListener(shape.getPath(), 'set_at', function(){
-                console.log("on set, ", shape.getPath())
-                handlePolygonComplete(shape);
-              });
+          if(deliveryZone.editable){
+              scope.map.on('editable:drawing:end', function (e) {             
+              handlePolygonComplete(shape);
+            });
           }
         }
-        shape.setOptions({fillColor:deliveryZone.$color.center, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id});
+
+        shape.setStyle({fillColor:deliveryZone.$color.center, stroke: true, color:deliveryZone.$color.border,zIndex:deliveryZone.id});
 
         if (deliveryZone.visible){
-          shape.setMap(scope.map)
-        } else {
-          shape.setMap(null)
+          shape.addTo(scope.map);
+        } else {      
+          scope.map.removeLayer(shape);
         }
       }
 
@@ -143,21 +146,25 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
         }
 
         function removeFromMap(deliveryZone){
-          var shape = shapes[deliveryZone.id];
-          shape.setMap(null);
+         
+          var shape = shapes[deliveryZone.id];         
+          scope.map.removeLayer(shape);   
+
           delete shapes[deliveryZone.id];
         }
 
         function preparePolygonArray(polygon){
-          var coordinates = (polygon.getPath().getArray());
+          
+          var coordinates = (polygon.getLatLngs());         
           var arr = [];
-          for (var i=0;i<coordinates.length;i++){
-            var c = coordinates[i];
-            var lat = c.lat().toFixed(5);
-            var lng = c.lng().toFixed(5);
+          for (var i=0;i<coordinates[0].length;i++){
+            var c = coordinates[0][i];                    
+            var lat = c.lat.toFixed(5);
+            var lng = c.lng.toFixed(5);
             arr.push(lat);
             arr.push(lng);
           }
+
           return arr;
         }
 
@@ -165,46 +172,48 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
           $timeout(()=>{
             shapes[deliveryZoneDrawingPolygon.id] = polygon;
             deliveryZoneDrawingPolygon.polygon = preparePolygonArray(polygon);
-            polygon.setOptions({editable:false});
-            scope.drawingManager.setOptions({polygonOptions:{editable:false}});
-            scope.drawingManager.setDrawingMode(null)
+            polygon.setStyle({editable:false});          
             deliveryZoneDrawingPolygon = false;
-          })
+          })         
         }
 
         // draggable marker
-         function handleDrop(event){
-          var latLng = {lat:event.latLng.lat(), lng:event.latLng.lng()};
+         function handleDrop(event){          
+  
+          var latLng = {lat:event.target._latlng.lat , lng:event.target._latlng.lng};
+      
           if (scope.onMarkerDrop){
             scope.onMarkerDrop(latLng);
           }
         }
 
         function addMarker (pos) {
-           var myLatlng = new google.maps.LatLng(pos.lat,pos.lng);
-           var marker = new google.maps.Marker({
-                position: myLatlng,
-                map: scope.map,
-                draggable:!!(scope.onMarkerDrop),
-                icon: '/images/map-pin.png'
-            });
-           marker.addListener('dragend', handleDrop);
+           
+          var myIcon = L.icon({
+                iconUrl: '/images/map-pin.png',
+                iconSize: [28, 40],
+                iconAnchor: [15, 39]         
+          });
+          var marker = L.marker([pos.lat, pos.lng] , {draggable: !!(scope.onMarkerDrop), icon: myIcon}).addTo(scope.map);   
+          
+          marker.addEventListener('dragend', handleDrop);
+          scope.markerPos = {
+              lat: pos.lat, 
+              lng: pos.lng
+          };
         } //end addMarker
 
 
         //resize when size of things change to prevent map from becoming grayed out
         function handleResize(){
-          $timeout(function(){
-            var center = scope.map.getCenter();
-            google.maps.event.trigger(scope.map, "resize");
-            scope.map.setCenter(center);
+          $timeout(function(){                   
+            var center = scope.map.getCenter();      
+            scope.map.invalidateSize();
+            scope.map.panTo(scope.markerPos);
           })
         }
 
-
-
         //InitMap & set center & Pin
-
         function placeCenterAndPin(){
         if (scope.venue){
           scope.centerPos = {
@@ -225,38 +234,73 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
 
       function initMap(){
         const myOptions = {
-            zoom: 13,
-            center: new google.maps.LatLng(scope.centerPos.lat, scope.centerPos.lng),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        scope.map = new google.maps.Map(document.getElementById(attr.id), myOptions);
-        scope.drawingManager = new google.maps.drawing.DrawingManager({
-          drawingControl: false,
-          polygonOptions: {
-            clickable: false,
-            editable: false,
-          }
-        });
-        scope.drawingManager.setMap(scope.map);
+            zoom: 13
+        };   
+       
+        var myMap = L.map(attr.id);
+        var mapLayer = MQ.mapLayer(), myMap;            
+        
+        myMap.addLayer(mapLayer); 
 
+        /*
+         Leaflet has no idle event. The most cleanest way to achieve this is testing when map finishs load tiles (load)
+        OR if necessary test when you finish interact over the map (moveend)
+         */
+       myMap.once('load' , loadDeliveryZones);    
+                   
+       myMap.setView([scope.centerPos.lat, scope.centerPos.lng], myOptions.zoom);
 
-        google.maps.event.addDomListener(window, "resize", handleResize);
-        google.maps.event.addListener(scope.drawingManager, 'polygoncomplete', (polygon)=>{
-          angular.element(document.body).removeClass("map-drawing-polygon")
-          handlePolygonComplete(polygon)
-        });
-        $rootScope.$on(BroadcastEvents._ON_NAVBAR_TOGGLE,handleResize);
+       /*
+          User OpenStreeMaps its possible, but its necessary approval from adminsitrators
+          https://operations.osmfoundation.org/policies/tiles/
+        */
+        /*L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(myMap);*/
 
+       var tileLayer = L.control.layers({
+          'Map': mapLayer,
+          //'Hybrid': MQ.hybridLayer(),
+          'Satellite': MQ.satelliteLayer()
+          //'Dark': MQ.darkLayer(),
+          //'Light': MQ.lightLayer()
+        }).addTo(myMap);
+
+        scope.map = myMap;
         if (scope.markerPos){
           addMarker(scope.markerPos)
-        }
+        }        
 
-        google.maps.event.addListenerOnce(scope.map, 'idle', function(){
+        L.DomEvent.addListener(window, 'resize', handleResize);
+
+        var drawnItems = new L.FeatureGroup();
+              scope.map.addLayer(drawnItems); 
+        
+        scope.map.on('draw:created', function (e) {
+              var type = e.layerType,
+                  layer = e.layer;
+              drawnItems.addLayer(layer);
+            if(type == 'polygon'){
+              
+              angular.element(document.body).removeClass("map-drawing-polygon");
+              
+              handlePolygonComplete(layer);
+            }
+              //layer.completeShape();            
+        });    
+      }
+
+      function loadDeliveryZones() {
+          
           $timeout(function () {
             scope.onLoad && scope.onLoad();
+        
             handleResize();
+        
             var firstLoad = true;
              scope.$watch("deliveryZones", function (newDeliveryZones, oldDeliveryZones) {
+            
               var deliveryZonesToSkip = [];
               var propsToCompare = ['polygon', 'distance', '$color', 'editable'];
 
@@ -295,7 +339,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
                           }
                         }
                         break;
-                      }
+                      } 
                     }
                   }
                 }
@@ -306,10 +350,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
               drawDeliveryZones(deliveryZonesToSkip);
             }, true);
           });
-        });
-
-
-      }
+        }
 
 
       init();
