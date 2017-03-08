@@ -893,4 +893,135 @@ describe('menuItem Controller', function () {
         });
       });
     });
+
+  it("Should get the right fromPrice when item and section has modifiers", function() {
+
+    let venueId = 5;
+
+    $stateParams.venueId = venueId;
+
+    _mockItem();
+    _startController();
+
+    let modifier = new Preoday.Modifier({
+      id: 1,
+      name: 'test',
+      venueId: venueId,
+      items: [{
+        price: Math.random()
+      }]
+    });
+
+    let mockSection = new Preoday.Section({
+      id: 1,
+      items: [],
+      modifiers: [modifier]
+    });
+
+    mockItem.venueId = venueId;
+    mockItem.sectionId = mockSection.id;
+    mockItem.images = [];
+    mockItem.position = 0;
+    mockItem.modifiers = [modifier];
+    mockItem.price = Math.random();
+
+    ModifierService.data.modifiers = [modifier];
+
+    MenuItemCtrl.instance.item = mockItem;
+    MenuItemCtrl.instance.section = mockSection;
+    MenuItemCtrl = MenuItemCtrl();
+
+    expect(MenuItemCtrl.item.modifiers.length).toBe(1);
+    expect(MenuItemCtrl.section.modifiers.length).toBe(1);
+    expect(MenuItemCtrl.item.hasFromPrice()).toBe(true);
+    expect(MenuItemCtrl.section.hasFromPrice()).toBe(true);
+    expect(MenuItemCtrl.getFromPrice()).toEqual(MenuItemCtrl.item.getFromPrice() + MenuItemCtrl.section.getFromPrice());
+  });
+
+  it("Should get the right fromPrice when only section has modifiers", function() {
+
+    let venueId = 5;
+
+    $stateParams.venueId = venueId;
+
+    _mockItem();
+    _startController();
+
+    let modifier = new Preoday.Modifier({
+      id: 1,
+      name: 'test',
+      venueId: venueId,
+      items: [{
+        price: Math.random()
+      }]
+    });
+
+    let mockSection = new Preoday.Section({
+      id: 1,
+      items: [],
+      modifiers: [modifier]
+    });
+
+    mockItem.venueId = venueId;
+    mockItem.sectionId = mockSection.id;
+    mockItem.images = [];
+    mockItem.position = 0;
+    mockItem.modifiers = [];
+    mockItem.price = Math.random();
+
+    ModifierService.data.modifiers = [modifier];
+
+    MenuItemCtrl.instance.item = mockItem;
+    MenuItemCtrl.instance.section = mockSection;
+    MenuItemCtrl = MenuItemCtrl();
+
+    expect(MenuItemCtrl.item.modifiers.length).toBe(0);
+    expect(MenuItemCtrl.section.modifiers.length).toBe(1);
+    expect(MenuItemCtrl.item.hasFromPrice()).toBeUndefined();
+    expect(MenuItemCtrl.section.hasFromPrice()).toBe(true);
+    expect(MenuItemCtrl.getFromPrice()).toEqual(MenuItemCtrl.section.getFromPrice() + MenuItemCtrl.item.price);
+  });
+
+  it("Should get the right fromPrice when only item has modifiers", function() {
+
+    let venueId = 5;
+
+    $stateParams.venueId = venueId;
+
+    _mockItem();
+    _startController();
+
+    let modifier = new Preoday.Modifier({
+      id: 1,
+      name: 'test',
+      venueId: venueId,
+      items: [{
+        price: Math.random()
+      }]
+    });
+
+    let mockSection = new Preoday.Section({
+      id: 1,
+      items: [],
+      modifiers: []
+    });
+
+    mockItem.venueId = venueId;
+    mockItem.sectionId = mockSection.id;
+    mockItem.images = [];
+    mockItem.position = 0;
+    mockItem.modifiers = [modifier];
+    mockItem.price = Math.random();
+
+    ModifierService.data.modifiers = [modifier];
+
+    MenuItemCtrl.instance.item = mockItem;
+    MenuItemCtrl.instance.section = mockSection;
+    MenuItemCtrl = MenuItemCtrl();
+
+    expect(MenuItemCtrl.item.modifiers.length).toBe(1);
+    expect(MenuItemCtrl.section.modifiers.length).toBe(0);
+    expect(MenuItemCtrl.section.hasFromPrice()).toBeUndefined();
+    expect(MenuItemCtrl.getFromPrice()).toEqual(MenuItemCtrl.item.getFromPrice());
+  });
 });

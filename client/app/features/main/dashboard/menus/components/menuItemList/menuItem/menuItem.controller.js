@@ -341,6 +341,27 @@ export default class menuItemController {
     }
   }
 
+  hasFromPrice () {
+    return this.item.hasFromPrice() || this.section.hasFromPrice();
+  }
+
+  getFromPrice() {
+    let fromPrice = 0;
+
+    if (this.item.hasFromPrice()) {
+      fromPrice += this.item.getFromPrice();
+    }
+    if (this.section.hasFromPrice(this.item)) {
+      fromPrice += this.section.getFromPrice(this.item);
+
+      if (!this.item.hasFromPrice()) {
+        fromPrice += this.item.price;
+      }
+    }
+
+    return fromPrice;
+  }
+
   watchModifiers () {
 
     this.$scope.$on(this.BroadcastEvents.ON_ITEM_ADD_MODIFIER + this.item.id, (event, item) => {
