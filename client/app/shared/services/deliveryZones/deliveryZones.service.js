@@ -161,8 +161,10 @@ export default class DeliveryZoneService {
 
   delete(dz){
     //TODO return dz.delete().then(()=>{this.data.deliveryZones = this.data.deliveryZones.filter((i)=>i.id!=dz.id); this.prepareZones();});
+    console.log('SERVIC DELETE - ', dz);
      return dz.remove().then(()=>{
         this.data.deliveryZones = this.data.deliveryZones.filter((i)=>i.id!=dz.id)
+        console.log('ZONES AFTER DELETE - ', this.data.deliveryZones);
         this.prepareZones();
      })
 
@@ -172,6 +174,10 @@ export default class DeliveryZoneService {
         // resolve();
       // },500)
     // })
+  }
+
+  getMaxDeliveryZones() {
+    return this.colors.length;
   }
 
   constructor($q, VenueService, Spinner, Snack, LabelService, gettextCatalog, contextual) {

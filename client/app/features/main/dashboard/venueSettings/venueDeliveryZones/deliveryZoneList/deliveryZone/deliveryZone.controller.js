@@ -16,8 +16,9 @@ export default class deliveryZoneController {
     const msg = this.DialogService.delete(this.LabelService.TITLE_DELETE_DELIVERY_ZONE, this.LabelService.CONTENT_DELETE_DELIVERY_ZONE)
         .then(()=>{
             this.Spinner.show("item-delete");
-
+console.log('DELETE OK - sTEP 0');
             this.DeliveryZoneService.delete(this.deliveryZone).then(()=>{
+              console.log('DELETE OK - sTEP 1');
                 this.cardItemList.onItemDeleted(this.deliveryZone);
                 if (this.onItemDeleted){
                   this.onItemDeleted({item:this.deliveryZone});
