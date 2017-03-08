@@ -342,7 +342,7 @@ export default class menuItemController {
   }
 
   hasFromPrice () {
-    return this.item.hasFromPrice() || this.section.hasFromPrice();
+    return this.item.hasFromPrice() || (this.section && this.section.hasFromPrice());
   }
 
   getFromPrice() {
@@ -351,7 +351,7 @@ export default class menuItemController {
     if (this.item.hasFromPrice()) {
       fromPrice += this.item.getFromPrice();
     }
-    if (this.section.hasFromPrice(this.item)) {
+    if (this.section && this.section.hasFromPrice(this.item)) {
       fromPrice += this.section.getFromPrice(this.item);
 
       if (!this.item.hasFromPrice()) {
