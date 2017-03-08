@@ -6,10 +6,11 @@
     <md-input-container class="md-block md-input-container-with-no-float md-input-container-seat-number" md-no-float ng-if="!modifierSelectionCtrl.modifier.$isOptional">
 
       <span class="input-label" for="minChoices" translate>Minimum Selection</span>
-      <input type="text" id="minChoices" name="minChoices" ng-model="modifierSelectionCtrl.modifier.minChoices" valid-number max-integer-value="modifierSelectionCtrl.maxIntegerValue" compare-number="modifierSelectionCtrl.modifier.maxChoices" allow-zero allow-equals />
+      <input type="text" id="minChoices" name="minChoices" ng-model="modifierSelectionCtrl.modifier.minChoices" valid-number min-integer-value="modifierSelectionCtrl.minIntegerValue" max-integer-value="modifierSelectionCtrl.maxIntegerValue" compare-number="modifierSelectionCtrl.modifier.maxChoices" allow-zero allow-equals />
 
       <div ng-messages="modifierSelectionCtrl.contextualForm.minChoices.$error" ng-show="modifierSelectionCtrl.contextualForm.minChoices.$dirty">
         <div ng-message="maxIntegerValue" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.minChoices.$error.maxIntegerValue}">Max value is {{ modifierSelectionCtrl.maxIntegerValue }}.</div>
+        <div ng-message="minIntegerValue" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.minChoices.$error.minIntegerValue}">Value must be at least 1.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.minChoices.$error.compareNumber}">Minimum selection needs to be equal or smaller than maximum selection</div>
       </div>
     </md-input-container>
