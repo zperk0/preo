@@ -87,7 +87,9 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
           shape.setRadius(radius)
         } else if (deliveryZone.type === 'CUSTOM') {
           shape.setOptions({editable:deliveryZone.editable});
-          deliveryZoneDrawingPolygon = deliveryZone;
+          if (deliveryZone.editable) {
+            deliveryZoneDrawingPolygon = deliveryZone;
+          }
           if (!deliveryZone.polygon || !deliveryZone.polygon.length){
             shape.setMap(null);
             scope.drawingManager.setOptions({polygonOptions:{fillColor:deliveryZone.$color.center, editable:true, fillOpacity:1, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id}});
