@@ -353,6 +353,10 @@ export default class menuItemController {
     }
     if (this.section.hasFromPrice(this.item)) {
       fromPrice += this.section.getFromPrice(this.item);
+
+      if (!this.item.hasFromPrice()) {
+        fromPrice += this.item.price;
+      }
     }
 
     return fromPrice;
