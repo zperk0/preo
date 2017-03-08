@@ -59,6 +59,7 @@ export default class venueLocationController {
     this.$timeout(()=>{
       this.Spinner.hide("venue-location");
     })
+    console.log('location controller init');
   }
 
 

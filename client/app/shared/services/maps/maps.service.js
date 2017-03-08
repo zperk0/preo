@@ -6,12 +6,10 @@ export default class MapsService {
   }
 
   load(){
-    if (window.google && window.google.maps){
-      return this.$q.resolve();
-    }
     var deferred = this.$q.defer();
-    $script("https://maps.googleapis.com/maps/api/js?libraries=drawing", ()=>{
-      console.log("loaded map, reoslving");
+
+    $script('https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=7uAxmlh9EbgY5HC1mmJyMMMLB8pkF8Ap', () => {
+   // $script('https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=7uAxmlh9EbgY5HC1mmJyMMMLB8pkF8Ap', ()=>{      
       deferred.resolve();
     });
     return deferred.promise;
