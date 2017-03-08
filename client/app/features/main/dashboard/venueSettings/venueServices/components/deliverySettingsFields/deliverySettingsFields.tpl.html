@@ -17,7 +17,7 @@
 				  <div class='input-wrapper' flex="grow">
 				    <label translate>In case of customer queries contact</label>
 
-				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" name="deliveryPhone" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryPhone">
+				    <input ng-model-options="{updateOn: 'blur'}" maxlength="45" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" name="deliveryPhone" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryPhone">
 				  </div>
 				</div>
 				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryPhone.$error">
@@ -68,7 +68,7 @@
 				  <div class='input-wrapper' flex="grow">
 				    <label translate>Default delivery time <small>(minutes)</small></label>
 
-				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-number max-integer-value name="deliveryLeadTime" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryLeadTime">
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-number numbers-only="true" max-integer-value name="deliveryLeadTime" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryLeadTime">
 				  </div>
 				</div>
 				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryLeadTime.$error">
