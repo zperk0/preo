@@ -104,6 +104,7 @@ export default class modifierItemController {
       return this.ModifierService.updateModifier(modifier)
         .then((updatedModifier)=>{
           this.restoreValues(updatedModifier);
+          this.$rootScope.$broadcast(this.BroadcastEvents.ON_UPDATE_MODIFIER, updatedModifier);
         })
       .then(()=>{
           this.Spinner.hide("modifier-update")
@@ -193,10 +194,11 @@ export default class modifierItemController {
     });
   }
 
-  constructor($scope, $q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService, BroadcastEvents) {
+  constructor($scope, $rootScope, $q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService, BroadcastEvents) {
     'ngInject';
 
     this.Spinner = Spinner;
+    this.$rootScope = $rootScope;
     this.$q = $q;
     this.Snack = Snack;
     this.contextualMenu = contextualMenu;
