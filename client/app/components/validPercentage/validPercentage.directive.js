@@ -11,6 +11,16 @@ export default function validPercentage($timeout){
 
       attrs.$set('ngTrim', "false");
 
+      var keyValidation = attrs.hasOwnProperty('keyValidation');
+
+      if (keyValidation) {
+        element.on('keypress', (ev) => {
+          if ((ev.keyCode < 48 || ev.keyCode > 57) && ev.keyCode !== 46 && ev.keyCode !== 44) {
+            ev.preventDefault();
+          }
+        });
+      }
+
       // "0.1234" -> "12.34"
       // "0.12345678" -> 123456.78
       var formatPercentToFloat = function(str) {
