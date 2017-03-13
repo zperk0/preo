@@ -87,5 +87,6 @@ export default class menuItemListController {
 
       return itemTypes.indexOf(item.voucherType) !== -1;
     });
+
   }
 }
