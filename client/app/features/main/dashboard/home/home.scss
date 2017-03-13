@@ -1,0 +1,17 @@
+.home-view{
+	  background: url('/images/signin-bg-gray.jpg') no-repeat center center;
+    background-size:cover;
+
+    svg{
+      color: #424242;
+      margin-bottom:32px;
+    }
+    .title{
+      font-size: 20px;
+      color: rgba(0, 0, 0, 0.87);
+      margin-bottom:8px;
+    }
+    .subtitle{
+      color: #333333;
+    }
+}
