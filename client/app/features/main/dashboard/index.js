@@ -4,6 +4,7 @@ import './dashboard.scss';
 // Import internal modules
 import controller from './dashboard.controller';
 import routes from './dashboard.routes';
+import home from './home'; //Home is part of the main bundle, no need to load it separately.
 
 //Directives
 
@@ -20,7 +21,8 @@ angular.module("dashboard" , ['ui.router',
     'webapp.manageUsers',
     'webapp.taxes',
     'webapp.analytics',
-    'webapp.outlets'
+    'webapp.outlets',
+    home
     ])
     .config(routes)
     .controller(controller.UID, controller)
