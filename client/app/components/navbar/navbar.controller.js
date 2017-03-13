@@ -46,6 +46,7 @@ export default class navbarController {
     //is also used for path-select to decide if .selected should be added or not to that particular item for dynamic class
     //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
     this.menu=[
+    {name: gettextCatalog.getString("Home"), icon:"home", id:"home"},
       {name: gettextCatalog.getString("Analytics"), icon:"equalizer", id:"analytics", shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ANALYTICS)
       }},
