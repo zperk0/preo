@@ -246,7 +246,7 @@ export default class VenueService {
 
   getKmOrMiles(){
     var milesLocale =['en-US', 'en-GB']
-    if (milesLocale.indexOf(this.currentVenue.locale) !== -1)
+    if (this.currentVenue && milesLocale.indexOf(this.currentVenue.locale) !== -1)
       return "miles"
     return "kms"
   }

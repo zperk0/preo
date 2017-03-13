@@ -18,6 +18,6 @@ export default class deliveryZoneListController {
     this.Spinner = Spinner;
     this.DeliveryZoneService = DeliveryZoneService;
     this.Snack = Snack;
-
+    this.maxItems = this.DeliveryZoneService.getMaxDeliveryZones();
   }
 }
