@@ -61,14 +61,12 @@ export default class menuItemListController {
     return !filterName || (item.name && item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
   }
 
-  constructor($scope, $rootScope, BroadcastEvents, $stateParams, Spinner, Snack, ItemService, FeatureService) {
+  constructor($scope, $stateParams, Spinner, Snack, ItemService, FeatureService) {
     "ngInject";
 
     $scope.results = this.items;
 
     this.$scope = $scope;
-    this.$rootScope = $rootScope;
-    this.BroadcastEvents = BroadcastEvents;
     this.$stateParams = $stateParams;
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -90,10 +88,5 @@ export default class menuItemListController {
       return itemTypes.indexOf(item.voucherType) !== -1;
     });
 
-    this.$rootScope.$on(this.BroadcastEvents.ON_UPDATE_MODIFIER, (event, modifier) => {
-      for(var x in this.items) {
-        console.info(this.items);
-      }
-    });
   }
 }
