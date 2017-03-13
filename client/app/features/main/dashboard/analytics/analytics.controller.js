@@ -14,7 +14,15 @@ export default class analyticsController {
 
     Spinner.show('analytics');
 
-    this.analyticsUrl = $window._PREO_DATA._WEBAPP_V1 + 'kyc?noFooter=true&noHeader=true#/dashboard';
+    var locale = [];
+    if (UserService.getCurrent().locale) {
+      locale = UserService.getCurrent().locale.split('-');
+    } else {
+      locale = VenueService.currentVenue.locale.split('-');
+    }
+
+    this.analyticsUrl = $window._PREO_DATA._WEBAPP_V1 + 'kyc?noFooter=true&noHeader=true&lang=' + (locale[0] || 'en') + '#/dashboard';
+
     this.iframeFailed = false;
 
     this.onIframeLoad = (status) => {
