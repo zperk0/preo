@@ -36,9 +36,9 @@ export default class mainController {
         }
         this.$timeout(()=>{
           this.hideSpinner();
-          if (this.$state.current.name === 'main.dashboard' && permissions[this.Permissions.ANALYTICS]) {
-            this.$state.go('main.dashboard.analytics');
-          }
+        //   if (this.$state.current.name === 'main.dashboard' && permissions[this.Permissions.ANALYTICS]) {
+        //     this.$state.go('main.dashboard.analytics');
+        //   }
         })
       }, ()=>{
         console.log("Error fetching permissions, redirecting to signin");
