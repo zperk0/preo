@@ -50,8 +50,7 @@ export default class navbarController {
         return PermissionService.hasPermission(Permissions.ANALYTICS)
       }},
       {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings", children:[
-        {name: gettextCatalog.getString("Details"), id:"venueDetails"},
-        {name: gettextCatalog.getString("Location"), id:"venueLocation"},
+        {name: gettextCatalog.getString("Details"), id:"venueDetails"},       
         {name: gettextCatalog.getString("Services"), id:"venueServices"},
         {name: gettextCatalog.getString("Delivery Zones"), id:"venueDeliveryZones", shouldShow:function(){
           return FeatureService.hasDeliveryZoneFeature();

@@ -1,4 +1,4 @@
-export default function mdMap(MapsService, UtilsService, VenueService, $timeout, $q, $rootScope, BroadcastEvents){
+export default function mdMap(MapsService, UtilsService, VenueService, $timeout, $q, $rootScope, BroadcastEvents, $state){
   'ngInject';
   return {
     restrict: 'E',
@@ -19,15 +19,17 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
       var deliveryZoneDrawingPolygon = false;
       var shapes = {};
       var polygonDrawer = {};
+      var auxGeocoding = {}; // USed to Store lat/lng values coming from Geocode when venue has no lat/lng yet.
+      var marker = null;
+      var shouldCallClickEvent = true;
+      var lastClick = {};
+      var updateMap = false; //Used to know if map should be updated when a venue change address/city/country
 
       function init(){
 
         if(scope.venue){          
           if (!scope.venue.latitude && !scope.venue.longitude){
-            MapsService.getGeoLocationByAddress(scope.venue)
-              .then((location)=>{
-                scope.venue.latitude = location.lat();
-                scope.venue.longitude = location.lng();
+            searchGeocode().then(()=>{             
                 placeCenterAndPin();
               },()=>{
                 placeCenterAndPin();
@@ -38,6 +40,28 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
             placeCenterAndPin();
           }
         }
+      }
+
+      function searchGeocode(){
+        var deferred = $q.defer();
+        if(scope.venue.address1 && scope.venue.address1.length > 0){
+          MapsService.getGeoLocationByAddress(scope.venue)
+              .then((location)=>{
+                auxGeocoding.lat = location.lat;
+                auxGeocoding.lng = location.lng;            
+                deferred.resolve(auxGeocoding);           
+              },()=>{               
+                deferred.reject();
+              }).catch(()=>{          
+                
+              })          
+        }
+        else{
+           deferred.resolve();
+        }
+
+        return deferred.promise;
+          
       }
 
       function drawDeliveryZones(deliveryZonesToSkip){
@@ -60,35 +84,20 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
         if(deliveryZone.type === 'DISTANCE'){
           return new L.circle(
             [scope.centerPos.lat, scope.centerPos.lng]
-            , 1000,
-            {  
-            stroke: true,
-            color: deliveryZone.$color.border,
-            weight: 3,
-            opacity: 0.5,
-            fill: true,
-            fillColor: deliveryZone.$color.center, //same as color by default
-            fillOpacity: 1,
-            clickable: false   });
+            , 1000, { });
         }
         else if(deliveryZone.type=== 'CUSTOM'){
-          return new L.polygon(            
-            {
-              stroke: true,
-              color: deliveryZone.$color.border,
-              weight: 3,
-              opacity: 0.5,
-              fill: true,
-              fillColor: deliveryZone.$color.center, //same as color by default
-              fillOpacity: 1,
-              clickable: false
-            });
+          return new L.polygon({});
         }       
       }    
 
       function updateShape(deliveryZone, shape){
-        if(deliveryZone.type === 'DISTANCE'){        
-          var radius =  deliveryZone.distance * 1000 * distanceMultiplier;         
+        if(deliveryZone.type === 'DISTANCE'){   
+          console.log('DISTANCE --', deliveryZone.distance );
+
+          console.log('distanceMultiplier -', distanceMultiplier); 
+          var radius =  deliveryZone.distance * 1000 * distanceMultiplier;    
+          console.log('RADIUS - ', radius);     
           shape.setRadius(radius);
         }else if(deliveryZone.type === 'CUSTOM') {
 
@@ -103,7 +112,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
             angular.element(document.body).addClass("map-drawing-polygon");
 
             polygonDrawer = new L.Draw.Polygon(scope.map);
-            polygonDrawer.setOptions({fillColor:deliveryZone.$color.center, editable:true, fillOpacity:1, stroke:true, color:deliveryZone.$color.border,zIndex:deliveryZone.id});
+            polygonDrawer.setOptions({fillColor:deliveryZone.$color.border, editable:true, fillOpacity:1, stroke:true, color:deliveryZone.$color.border,zIndex:deliveryZone.id});
             
             return polygonDrawer.enable(); //new L.Draw.Polygon(scope.map).enable();
           }
@@ -118,8 +127,8 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
             })
           }
 
-          shape.setLatLngs(coords);
-
+          shape.setLatLngs(coords);         
+          
           if(deliveryZone.editable){
               scope.map.on('editable:drawing:end', function (e) {             
               handlePolygonComplete(shape);
@@ -127,7 +136,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
           }
         }
 
-        shape.setStyle({fillColor:deliveryZone.$color.center, stroke: true, color:deliveryZone.$color.border,zIndex:deliveryZone.id});
+        shape.setStyle({fillColor:deliveryZone.$color.border, editable:true, fillOpacity:0.3, opacity: 0.5,stroke:true, color:deliveryZone.$color.border,zIndex:deliveryZone.id});
 
         if (deliveryZone.visible){
           shape.addTo(scope.map);
@@ -194,7 +203,8 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
                 iconSize: [28, 40],
                 iconAnchor: [15, 39]         
           });
-          var marker = L.marker([pos.lat, pos.lng] , {draggable: !!(scope.onMarkerDrop), icon: myIcon}).addTo(scope.map);   
+          
+          marker = L.marker([pos.lat, pos.lng] , {draggable: !!(scope.onMarkerDrop), icon: myIcon}).addTo(scope.map);   
           
           marker.addEventListener('dragend', handleDrop);
           scope.markerPos = {
@@ -209,86 +219,175 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
           $timeout(function(){                   
             var center = scope.map.getCenter();      
             scope.map.invalidateSize();
-            scope.map.panTo(scope.markerPos);
+            
+            if(scope.markerPos)
+              scope.map.panTo(scope.markerPos);
+            else
+              scope.map.panTo(scope.centerPos);
           })
         }
 
         //InitMap & set center & Pin
         function placeCenterAndPin(){
-        if (scope.venue){
-          scope.centerPos = {
-              lat:scope.venue.latitude,
-              lng:scope.venue.longitude
-            }
-           scope.markerPos = scope.centerPos;
+          setCenterAndMarker();         
+          initMap();
         }
-        if (!scope.centerPos){
-          scope.centerPos = {
-            lat:51.5285582,
-            lng:-0.2416802
+
+        function setCenterAndMarker(){
+          if (scope.venue){     
+            if(!updateMap && scope.venue.latitude && scope.venue.longitude){
+              scope.centerPos = {
+                  lat:scope.venue.latitude,
+                  lng:scope.venue.longitude
+              }
+              scope.markerPos = scope.centerPos;
+            }            
+            else if(updateMap && auxGeocoding.lat && auxGeocoding.lng){
+              scope.centerPos = {
+                  lat:auxGeocoding.lat,
+                  lng:auxGeocoding.lng
+              }
+            }
+          }
+
+          if (!scope.centerPos){          
+            scope.centerPos = {
+              lat:51.5285582,
+              lng:-0.2416802
+            } 
           }
         }
-        initMap();
-      }
 
 
-      function initMap(){
-        const myOptions = {
-            zoom: 13
-        };   
-       
-        var myMap = L.map(attr.id);
-        var mapLayer = MQ.mapLayer(), myMap;            
-        
-        myMap.addLayer(mapLayer); 
+        function initMap(){
+          const myOptions = {
+              zoom: 16
+          };   
+         
+          var myMap = L.map(attr.id);
+          // MapqQuest Plugin
+         /* var mapLayer = MQ.mapLayer(), myMap;            
+          
+          myMap.addLayer(mapLayer); 
+          var tileLayer = L.control.layers({
+            'Map': mapLayer,
+            //'Hybrid': MQ.hybridLayer(),
+            'Satellite': MQ.satelliteLayer()
+            //'Dark': MQ.darkLayer(),
+            //'Light': MQ.lightLayer()
+          }).addTo(myMap);*/
 
-        /*
-         Leaflet has no idle event. The most cleanest way to achieve this is testing when map finishs load tiles (load)
-        OR if necessary test when you finish interact over the map (moveend)
-         */
-       myMap.once('load' , loadDeliveryZones);    
-                   
-       myMap.setView([scope.centerPos.lat, scope.centerPos.lng], myOptions.zoom);
+          /*
+           Leaflet has no idle event. The most cleanest way to achieve this is testing when map finishs load tiles (load)
+          OR if necessary test when you finish interact over the map (moveend)
+           */
+          myMap.once('load' , loadDeliveryZones);    
+                     
+          myMap.setView([scope.centerPos.lat, scope.centerPos.lng], myOptions.zoom);
 
-       /*
-          User OpenStreeMaps its possible, but its necessary approval from adminsitrators
-          https://operations.osmfoundation.org/policies/tiles/
-        */
-        /*L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18,
-          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(myMap);*/
+         /*
+            User OpenStreeMaps its possible, but its necessary approval from adminsitrators
+            https://operations.osmfoundation.org/policies/tiles/
+          */
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          }).addTo(myMap);
 
-       var tileLayer = L.control.layers({
-          'Map': mapLayer,
-          //'Hybrid': MQ.hybridLayer(),
-          'Satellite': MQ.satelliteLayer()
-          //'Dark': MQ.darkLayer(),
-          //'Light': MQ.lightLayer()
-        }).addTo(myMap);
+          scope.map = myMap;
+          if (scope.markerPos){
+            addMarker(scope.markerPos)
+          }        
 
-        scope.map = myMap;
-        if (scope.markerPos){
-          addMarker(scope.markerPos)
-        }        
+          L.DomEvent.addListener(window, 'resize', handleResize);
 
-        L.DomEvent.addListener(window, 'resize', handleResize);
+          addMapEvents();        
+       }
 
+      function addMapEvents(){
         var drawnItems = new L.FeatureGroup();
-              scope.map.addLayer(drawnItems); 
-        
+          
+        scope.map.addLayer(drawnItems);
+
         scope.map.on('draw:created', function (e) {
               var type = e.layerType,
-                  layer = e.layer;
-              drawnItems.addLayer(layer);
-            if(type == 'polygon'){
+                  layer = e.layer;             
               
+              drawnItems.addLayer(layer);
+       
+            if(type == 'polygon'){
+             
               angular.element(document.body).removeClass("map-drawing-polygon");
               
               handlePolygonComplete(layer);
-            }
-              //layer.completeShape();            
-        });    
+            }                      
+        });
+
+        if (!scope.deliveryZones){
+          scope.map.on('click', function(e){          
+
+            var currentClick = {
+                              lat: (e.latlng.lat).toFixed(5),
+                              lng: (e.latlng.lng).toFixed(5)
+            };
+
+            setTimeout(function(){
+              if(shouldCallClickEvent && currentClick !== scope.markerPos && lastClick !== currentClick){                          
+
+                if(marker){                
+                  scope.map.removeLayer(marker);
+                }
+                
+                scope.markerPos = {
+                    lat: e.latlng.lat, 
+                    lng: e.latlng.lng
+                };
+
+                addMarker(scope.markerPos);
+                marker.fireEvent('dragend');
+
+                lastClick = { lat: (e.latlng.lat).toFixed(5),
+                              lng: (e.latlng.lng).toFixed(5)
+                };
+              }
+            }, 200);
+
+            shouldCallClickEvent = true;
+            
+          });
+
+          /*
+            There is a problem with LEafLet that doesnt allow differ single click from double click. So everytime you double click, fires click event too.
+            A way to fix it is controlling a local variable (shouldCallClickEvent) and setting a TimeOut to click event, so dblclick event can fire before
+            click event get executed.
+           */
+          scope.map.on('dblclick', function(e){          
+            shouldCallClickEvent = false;         
+          });
+
+          scope.$watch("venue", function(newValue, oldValue){
+              // prevent to call searchGeocode service without need
+              if(newValue.address1 !== oldValue.address1 
+                 || newValue.address2 !== oldValue.address2 
+                 || newValue.address3 !== oldValue.address3 
+                 || newValue.city !== oldValue.city 
+                 || newValue.country !== oldValue.country)
+              {                
+                  updateMap = true;
+                  scope.map.setZoom(18);
+                  searchGeocode().then(function (){
+                    setCenterAndMarker(); 
+                  
+                    scope.map.setView([scope.centerPos.lat, scope.centerPos.lng], 18);
+                  
+                  }, () => {
+
+                  }).finally(function() {
+                    updateMap = false;
+                  });
+              }                            
+          },true);
+        }
       }
 
       function loadDeliveryZones() {
@@ -298,7 +397,8 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
         
             handleResize();
         
-            var firstLoad = true;
+            var firstLoad = true;            
+
              scope.$watch("deliveryZones", function (newDeliveryZones, oldDeliveryZones) {
             
               var deliveryZonesToSkip = [];

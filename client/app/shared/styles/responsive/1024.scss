@@ -34,6 +34,12 @@ html {
       }
   }
 
+  .venue-details{
+    #venue-map{
+        width: calc(100% - 334px);
+      }
+  }
+
   // events schedule form
   .event-schedule-form {
     .datepicker-wrapper {
