@@ -41,7 +41,7 @@ export default class staticModifierChipController {
 
     if(this.modifier.items) {
       this.modifier.items.forEach((_item, index) => {
-        _item.formmattedPrice = $filter('currency')(_item.price);
+        _item.$formmattedPrice = $filter('currency')(_item.price);
       });
     }
   }
