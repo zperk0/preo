@@ -23,6 +23,9 @@ import eventOutletLocationsDirective from './eventOutletLocations/contextualDraw
 import deliveryZonesController from './deliveryZones/contextualDrawer.deliveryZones.controller';
 import deliveryZonesDirective from './deliveryZones/contextualDrawer.deliveryZones.directive';
 
+import venueDetailsController from './venueDetails/contextualDrawer.venueDetails.controller';
+import venueDetailsDirective from './venueDetails/contextualDrawer.venueDetails.directive';
+
 import deliveryZonesEditController from './deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.controller';
 import deliveryZonesEditDirective from './deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.directive';
 
@@ -55,6 +58,9 @@ export default angular.module("contextualDrawer" , [cardItemList])
 
   .controller(deliveryZonesController.UID, deliveryZonesController)
   .directive("contextualDrawerDeliveryZones", deliveryZonesDirective)
+
+  .controller(venueDetailsController.UID, venueDetailsController)
+  .directive("contextualDrawerVenueDetails", venueDetailsDirective)
 
   .controller(deliveryZonesEditController.UID, deliveryZonesEditController)
   .directive("contextualDrawerDeliveryZonesEdit", deliveryZonesEditDirective)

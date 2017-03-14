@@ -1,88 +1,11 @@
-<div class='venue-details layout-left-right'>
-  <div class='main-content-left'>
-    <md-card >
-      <md-card-title>
-        <md-card-title-text>
-          <h2 class="md-title" translate> Venue Details </h2>
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-content>
-        <form name="venueDetailsCtrl.venueDetailsForm" ng-submit="venueDetailsCtrl.submit()" novalidate>
-            <div class='form-content'>
-                 <md-input-container class="md-block no-spacer">
-                    <label translate>Venue name</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate()" type="text" required name="venueName" ng-model="venueDetailsCtrl.venue.name" ng-maxlength="100">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.venueName.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueName.$error.maxlength}">Max length is 100.</div>
-                    </div>
-                </md-input-container>
-                  <md-input-container class="md-block no-spacer">
-                    <label translate>Description</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate()"  type="text" required name="description" ng-model="venueDetailsCtrl.venue.description"  ng-maxlength="100">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.description.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.description.$error.maxlength}">Max length is 100.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block no-spacer">
-                    <label translate>Address line 1</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate(true)"  type="text" required name="venueAddress1" ng-model="venueDetailsCtrl.venue.address1"  ng-maxlength="256">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.venueAddress1.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueAddress1.$error.maxlength}">Max length is 256.</div>
-                      <div ng-message="required" translate>This is required.</div>
-                    </div>
-                </md-input-container>
-                  <md-input-container class="md-block no-spacer">
-                    <label translate>Address line 2</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate(true)"  type="text" name="venueAddress2" ng-model="venueDetailsCtrl.venue.address2"  ng-maxlength="256">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.venueAddress2.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueAddress2.$error.maxlength}">Max length is 256.</div>
-                    </div>
-                </md-input-container>
-                  <md-input-container class="md-block no-spacer">
-                    <label translate>Address line 3</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate(true)"  type="text" name="venueAddress3" ng-model="venueDetailsCtrl.venue.address3"  ng-maxlength="256">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.venueAddress3.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueAddress3.$error.maxlength}">Max length is 256.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block no-spacer">
-                    <label translate>Town/City</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate()"  type="text" required name="city" ng-model="venueDetailsCtrl.venue.city"  ng-maxlength="100">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.city.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.city.$error.maxlength}">Max length is 100.</div>
-                      <div ng-message="required" translate>This is required.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block no-spacer">
-                    <label translate>Postcode/ZIP</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate()"  type="text" required name="postcode" ng-model="venueDetailsCtrl.venue.postcode"  ng-maxlength="100">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.postcode.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.postcode.$error.maxlength}">Max length is 100.</div>
-                      <div ng-message="required" translate>This is required.</div>
 
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block no-spacer">
-                    <label translate>Phone number</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate()"  type="text" required name="phone" ng-model="venueDetailsCtrl.venue.settings.deliveryPhone"  ng-maxlength="100">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.phone.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.phone.$error.maxlength}">Max length is 100.</div>
-                      <div ng-message="required" translate>This is required.</div>
-
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block no-spacer">
-                    <label translate>Email Address</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate()"  type="email" name="venueEmail" ng-model="venueDetailsCtrl.venue.notificationEmailAddress"  ng-maxlength="100">
-                    <div ng-messages="venueDetailsCtrl.venueDetailsForm.venueEmail.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueEmail.$error.maxlength}">Max length is 100.</div>
-                      <div ng-message="email" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueEmail.$error.email}">Invalid email</div>
-                    </div>
-                </md-input-container>
-            </div>
-          <auto-save is-saving="venueDetailsCtrl.isSaving" is-error="venueDetailsCtrl.isError" retry="venueDetailsCtrl.debounceUpdate()"></auto-save>
-        </form>
-      </md-card-content>
-    </md-card>
+<div flex class='venue-details layout-left-right with-toolbar' >
+ <div class="sub-toolbar menu-toolbar" layout="row" layout-align="start center">
+    <span translate> <icon>info</icon> Click on map to drop a pin or drag and drop the pin to set the exact location of your venue</span>
   </div>
+  <md-map ng-if="venueDetailsCtrl.showMap" flex on-marker-drop="venueDetailsCtrl.onMarkerDrop(lat,lng)" on-load="venueDetailsCtrl.mapLoaded()" id="venue-map" venue="venueDetailsCtrl.venue" update-map="venueDetailsCtrl.scope.map.addressUpdated"></md-map>
+  <div class="content-spinner" ng-if="!venueDetailsCtrl.isMapLoaded">
+    <spinner></spinner>
+  </div> 
+  <contextual-drawer-venue-details>   </contextual-drawer-venue-details>    
 </div>

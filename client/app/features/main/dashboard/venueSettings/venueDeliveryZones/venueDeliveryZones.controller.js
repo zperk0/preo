@@ -23,7 +23,7 @@ export default class venueDeliveryZonesController {
           name: this.gettextCatalog.getString('Got it')
         }])
         .then(()=>{
-        this.$state.go('main.dashboard.venueSettings.venueLocation');
+        this.$state.go('main.dashboard.venueSettings.venueDetails');
       });
     }
      else {

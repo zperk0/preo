@@ -69,7 +69,7 @@ export default class ErrorService {
     this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: gettextCatalog.getString('Sorry')};
     // EVENT OUTLET LOCATION
     this.VENUE_WITHOUT_ADDRESS = {code:'VENUE_WITHOUT_ADDRESS', message:gettextCatalog.getString("You need to set up your address before selecting your location.  You'll be redirected to your Details page to configure your address."), title: gettextCatalog.getString('Address not found')};
-    this.VENUE_WITHOUT_LOCATION = {code:'VENUE_WITHOUT_LOCATION', message:gettextCatalog.getString("You need to set up your location before creating delivery zones.  You'll be redirected to your Location page to configure your location."), title: gettextCatalog.getString('Location not found')};
+    this.VENUE_WITHOUT_LOCATION = {code:'VENUE_WITHOUT_LOCATION', message:gettextCatalog.getString("You need to set up your location before creating delivery zones.  You'll be redirected to your Details page to configure your location."), title: gettextCatalog.getString('Location not found')};
 
     this.STRIPE_ERROR = {code:'STRIPE_ERROR', message:gettextCatalog.getString("We could not connect to your Stripe account. Please try again."), title: gettextCatalog.getString('Connection failed')};
     this.ONE_PAYMENT_METHOD = {code:'ONE_PAYMENT_METHOD', message:gettextCatalog.getString("You must have at least one active payment method."), title: gettextCatalog.getString('Invalid configuration')};

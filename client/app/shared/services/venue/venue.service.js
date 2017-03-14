@@ -211,6 +211,7 @@ export default class VenueService {
 
   updateVenue(){
     var venueCopy = angular.copy(this.currentVenue);
+    
     delete venueCopy.ccySymbol;
     return venueCopy.update()
   }
