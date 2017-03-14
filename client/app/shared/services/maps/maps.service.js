@@ -32,9 +32,9 @@ export default class MapsService {
         //address.push(venue.city);
         let deferred = this.$q.defer();
         
-       // let UrlGeo = 'http://open.mapquestapi.com/geocoding/v1/address?key='+this.geoKey()+'&location=';
-       // let UrlGeo = 'http://open.mapquestapi.com/geocoding/v1/address?key='+this.geoKey();
-        let UrlGeo = 'http://www.mapquestapi.com/geocoding/v1/address?key='+this.geoKey();        
+       // let UrlGeo = 'https://open.mapquestapi.com/geocoding/v1/address?key='+this.geoKey()+'&location=';
+       // let UrlGeo = 'https://open.mapquestapi.com/geocoding/v1/address?key='+this.geoKey();
+        let UrlGeo = 'https://www.mapquestapi.com/geocoding/v1/address?key='+this.geoKey();        
         let geocoder = new XMLHttpRequest();
 
         let geoParams = '&street=' + address.join(', ')
