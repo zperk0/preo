@@ -281,7 +281,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
            Leaflet has no idle event. The most cleanest way to achieve this is testing when map finishs load tiles (load)
           OR if necessary test when you finish interact over the map (moveend)
            */
-          myMap.once('load' , loadDeliveryZones);    
+          myMap.once('load' , loadDeliveryZones);         
                      
           myMap.setView([scope.centerPos.lat, scope.centerPos.lng], myOptions.zoom);
 
@@ -289,10 +289,10 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
             User OpenStreeMaps its possible, but its necessary approval from adminsitrators
             https://operations.osmfoundation.org/policies/tiles/
           */
-          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          }).addTo(myMap);
+          L.tileLayer('https://tiles-dev.preoday.com/osm/{z}/{x}/{y}.png', {      
+                       maxZoom: 18,
+                       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }).addTo(myMap);
 
           scope.map = myMap;
           if (scope.markerPos){
@@ -301,7 +301,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
 
           L.DomEvent.addListener(window, 'resize', handleResize);
 
-          addMapEvents();        
+          addMapEvents();            
        }
 
       function addMapEvents(){
