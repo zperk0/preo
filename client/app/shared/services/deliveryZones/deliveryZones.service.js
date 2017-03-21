@@ -161,8 +161,10 @@ export default class DeliveryZoneService {
 
   delete(dz){
     //TODO return dz.delete().then(()=>{this.data.deliveryZones = this.data.deliveryZones.filter((i)=>i.id!=dz.id); this.prepareZones();});
+    console.log('SERVIC DELETE - ', dz);
      return dz.remove().then(()=>{
         this.data.deliveryZones = this.data.deliveryZones.filter((i)=>i.id!=dz.id)
+        console.log('ZONES AFTER DELETE - ', this.data.deliveryZones);
         this.prepareZones();
      })
 
@@ -172,6 +174,10 @@ export default class DeliveryZoneService {
         // resolve();
       // },500)
     // })
+  }
+
+  getMaxDeliveryZones() {
+    return this.colors.length;
   }
 
   constructor($q, VenueService, Spinner, Snack, LabelService, gettextCatalog, contextual) {
@@ -188,7 +194,18 @@ export default class DeliveryZoneService {
     this.data = {
       deliveryZones:[]
     }
-    this.colors =[ {border:'#FFAB00', center:'rgba(255, 171, 0, 0.15)'},{border:"#F8A787", center:'rgba(248, 167, 135, 0.15)'},{border:"#C0ADD4", center:'rgba(193, 173, 212, 0.15)'},{border:"#9DD7D0", center:'rgba(157, 215, 208, 0.15)'},{border:"#98C6FE", center:'rgba(152, 198, 254, 0.15)'}];
+    this.colors =[ 
+      {border:'#FFAB00', center:'rgba(255, 171, 0, 0.15)'},
+      {border:"#F8A787", center:'rgba(248, 167, 135, 0.15)'},
+      {border:"#C0ADD4", center:'rgba(193, 173, 212, 0.15)'},
+      {border:"#9DD7D0", center:'rgba(157, 215, 208, 0.15)'},
+      {border:"#98C6FE", center:'rgba(152, 198, 254, 0.15)'},
+      {border:'#9098C3', center:'rgba(144, 152, 195, 0.15)'},
+      {border:'#E66969', center:'rgba(230, 105, 105, 0.15)'},
+      {border:'#54AD20', center:'rgba(84, 173, 32, 0.15)'},
+      {border:'#9F7C60', center:'rgba(159, 124, 96, 0.15)'},
+      {border:'#FFA1E9', center:'rgba(255, 161, 233, 0.15)'}
+      ];
     this.cancelEditing();
   }
 }

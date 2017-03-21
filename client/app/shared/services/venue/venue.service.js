@@ -211,6 +211,7 @@ export default class VenueService {
 
   updateVenue(){
     var venueCopy = angular.copy(this.currentVenue);
+    
     delete venueCopy.ccySymbol;
     return venueCopy.update()
   }
@@ -246,7 +247,7 @@ export default class VenueService {
 
   getKmOrMiles(){
     var milesLocale =['en-US', 'en-GB']
-    if (milesLocale.indexOf(this.currentVenue.locale) !== -1)
+    if (this.currentVenue && milesLocale.indexOf(this.currentVenue.locale) !== -1)
       return "miles"
     return "kms"
   }

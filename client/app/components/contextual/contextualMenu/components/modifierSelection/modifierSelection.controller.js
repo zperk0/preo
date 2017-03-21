@@ -5,6 +5,7 @@ export default class modifierSelectionController {
 
   onSelectionSelect(){
     this.modifier.minChoices = this.modifier.$isOptional ? 0 : 1;
+    this.minIntegerValue = this.modifier.$isOptional ? 0 : 1;
   }
 
   constructor(Spinner) {
@@ -19,5 +20,6 @@ export default class modifierSelectionController {
     }
 
     this.maxIntegerValue = 32766;
+    this.minIntegerValue = this.modifier.$isOptional ? 0 : 1;
   }
 }

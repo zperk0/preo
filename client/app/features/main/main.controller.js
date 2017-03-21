@@ -33,13 +33,15 @@ export default class mainController {
         console.log("got permissions", permissions, permissions[this.Permissions.DASHBOARD]);
         if (!permissions[this.Permissions.DASHBOARD]){
           this.$state.go("main.account");
-        }
-        this.$timeout(()=>{
           this.hideSpinner();
-          if (this.$state.current.name === 'main.dashboard' && permissions[this.Permissions.ANALYTICS]) {
-            this.$state.go('main.dashboard.analytics');
-          }
-        })
+        } else {
+          this.$timeout(()=>{
+            this.hideSpinner();
+            if (this.$state.current.name === 'main.dashboard') {
+              this.$state.go('main.dashboard.home');
+            }
+          })
+        }
       }, ()=>{
         console.log("Error fetching permissions, redirecting to signin");
         this.hideSpinner();
