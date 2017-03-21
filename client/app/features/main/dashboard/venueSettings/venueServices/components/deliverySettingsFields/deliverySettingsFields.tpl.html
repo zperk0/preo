@@ -17,7 +17,7 @@
 				  <div class='input-wrapper' flex="grow">
 				    <label translate>In case of customer queries contact</label>
 
-				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" name="deliveryPhone" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryPhone">
+				    <input ng-model-options="{updateOn: 'blur'}" maxlength="45" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" name="deliveryPhone" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryPhone">
 				  </div>
 				</div>
 				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryPhone.$error">
@@ -29,7 +29,7 @@
 				  <div class='input-wrapper' flex="grow">
 				    <label translate>Minimum order value</label>
 
-				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price name="deliveryOrderMin" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryOrderMin">
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price key-validation name="deliveryOrderMin" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryOrderMin">
 				  </div>
 				</div>
 				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryOrderMin.$error">
@@ -42,7 +42,7 @@
 				  <div class='input-wrapper' flex="grow">
 				    <label translate>Delivery charge</label>
 
-				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price optional name="amount" ng-model="deliverySettingsFieldsCtrl.deliveryFee.amount">
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price key-validation optional name="amount" ng-model="deliverySettingsFieldsCtrl.deliveryFee.amount">
 				  </div>
 				</div>
 				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.amount.$error">
@@ -55,7 +55,7 @@
 				  <div class='input-wrapper' flex="grow">
 				    <label translate>Free delivery for orders above</label>
 
-				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price optional name="maxBasket" ng-model="deliverySettingsFieldsCtrl.deliveryFee.maxBasket">
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-price key-validation optional name="maxBasket" ng-model="deliverySettingsFieldsCtrl.deliveryFee.maxBasket">
 				  </div>
 				</div>
 				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.maxBasket.$error">
@@ -68,7 +68,7 @@
 				  <div class='input-wrapper' flex="grow">
 				    <label translate>Default delivery time <small>(minutes)</small></label>
 
-				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-number max-integer-value name="deliveryLeadTime" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryLeadTime">
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" valid-number key-validation numbers-only="true" max-integer-value name="deliveryLeadTime" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryLeadTime">
 				  </div>
 				</div>
 				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryLeadTime.$error">
@@ -80,7 +80,7 @@
 				  <div class='input-wrapper' flex="grow">
 				    <label translate>Discount for delivery orders (%)</label>
 
-				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" min=0 max=100  valid-percentage name="deliveryDiscount" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryDiscount">
+				    <input ng-model-options="{updateOn: 'blur'}" ng-change="deliverySettingsFieldsCtrl.debounceUpdate()" type="text" min=0 max=100  valid-percentage key-validation name="deliveryDiscount" ng-model="deliverySettingsFieldsCtrl.venue.settings.deliveryDiscount">
 				  </div>
 				</div>
 				<div ng-messages="deliverySettingsFieldsCtrl.deliveryForm.deliveryDiscount.$error">

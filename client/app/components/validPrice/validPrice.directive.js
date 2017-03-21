@@ -12,6 +12,8 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
 
       attrs.$set('ngTrim', "false");
 
+      var keyValidation = attrs.hasOwnProperty('keyValidation');
+
       var isOptional = 'optional' in attrs;
 
       var updateView = function(val) {
@@ -70,6 +72,14 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
           updateView($filter('currency')(0, true));
         }
       });
+
+      if (keyValidation) {
+        element.on('keypress', (ev) => {
+          if ((ev.keyCode < 48 || ev.keyCode > 57) && ev.keyCode !== 46 && ev.keyCode !== 44) {
+            ev.preventDefault();
+          }
+        });
+      }
 
       $timeout(() => {
 

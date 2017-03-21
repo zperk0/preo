@@ -8,6 +8,7 @@
                     show-visible="!menuItemCtrl.item.visible"
                     ng-attr-data-id="{{menuItemCtrl.item.id}}">
                     <span class='name' flex>{{menuItemCtrl.item.id + "--" + menuItemCtrl.item.position + "--" | debug}} {{menuItemCtrl.item.name}} </span>
+                    <span ng-show="menuItemCtrl.hasFromPrice()" class='price from'> (from {{menuItemCtrl.getFromPrice() | currency}})</span>
                     <span class='price'> {{menuItemCtrl.item.price | currency}}</span>
                     <div class='sv-dropzone sv-dropzone-modifier' sv-part="menuItemCtrl.newModifiers" sv-on-external-sort="menuItemCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                       <div sv-placeholder></div>

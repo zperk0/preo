@@ -6,6 +6,8 @@ export default function validNumber(){
     require: '?ngModel',
     link: (scope, element, attr, ngModelCtrl) => {
 
+      var keyValidation = attr.hasOwnProperty('keyValidation');
+
       if(!ngModelCtrl) {
         return; 
       }
@@ -26,6 +28,11 @@ export default function validNumber(){
       element.bind('keypress', function(event) {
         if(event.keyCode === 32) {
           event.preventDefault();
+        }
+        if (keyValidation) {
+          if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 46 && event.keyCode !== 44) {
+            event.preventDefault();
+          }
         }
       });
     }
