@@ -85,5 +85,8 @@ export default class ErrorService {
 
     this.INVITE_EXPIRED = {code:'INVITE_EXPIRED', message:gettextCatalog.getString("That link appears to have expired. Please ask your administrator to send you a new one."), title: gettextCatalog.getString("Sorry")};
 
+    // MANAGE USERS
+    this.DELETE_CURRENT_USER = {code:'DELETE_CURRENT_USER', message:gettextCatalog.getString("It is not possible to delete your own user."), title: ''};
+    
   }
 }

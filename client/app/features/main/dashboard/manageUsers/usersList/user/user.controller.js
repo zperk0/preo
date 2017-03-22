@@ -40,6 +40,12 @@ export default class userController {
   }
 
   onDelete(){
+    var currentUser = this.UserService.getCurrent();
+    if (this.user.id === currentUser.id) {
+      return this.DialogService.show(this.ErrorService.DELETE_CURRENT_USER.title, this.ErrorService.DELETE_CURRENT_USER.message, [{
+        name: this.gettextCatalog.getString('Got it')
+      }]);
+    }
     this.DialogService.delete(this.LabelService.TITLE_DELETE_USER, this.LabelService.CONTENT_DELETE_USER)
       .then(()=>{
           this.Spinner.show("user-role-delete");
@@ -86,7 +92,7 @@ export default class userController {
   }
 
    /* @ngInject */
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, VenueService) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, VenueService, UserService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
     this.$timeout = $timeout;
@@ -98,6 +104,8 @@ export default class userController {
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
+    this.UserService = UserService;
+    this.gettextCatalog = gettextCatalog;
     this.type = 'user';
      if (this.user && !this.user.id) {
       this.showContextual();
