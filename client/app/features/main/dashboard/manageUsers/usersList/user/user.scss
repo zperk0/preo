@@ -15,3 +15,11 @@
       }
     }
 }
+
+.user {
+  &.current {
+    .delete {
+      display: none;
+    }
+  }
+}

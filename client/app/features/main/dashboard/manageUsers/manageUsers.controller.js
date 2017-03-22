@@ -7,9 +7,11 @@ export default class manageUsersController {
    init(){
     this.Spinner.show("fetch-users");
     console.log("initing");
+    var currentUser = this.UserService.getCurrent();
     this.account.getUsers()
     .then((users)=>{
       users.forEach((u)=>{
+        u.$current = u.id === currentUser.id;
         if (u.role === 'OWNER'){
           u.role = "ADMIN";
         }
@@ -38,12 +40,13 @@ export default class manageUsersController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack,ErrorService, VenueService, LabelService, $timeout) {
+  constructor(Spinner, Snack,ErrorService, VenueService, LabelService, UserService, $timeout) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
+    this.UserService = UserService;
     this.users = [];
     this.invites = [];
     this.account = VenueService.account;
