@@ -190,8 +190,8 @@ export default class ItemService {
   }
 
   createItem(item, sectionId){
-
-    if (item.$size && item.$size.items.length) {
+    
+    if (item.$size && item.$size.$isMultiple && item.$size.items.length) {
       item.modifiers = [item.$size];
       item.price = 0;
     }
