@@ -196,6 +196,7 @@ export default class menuSectionItemListController {
 
         this.cardItemList.insert(item, createdItem, this.section);
         this.addToOriginalList(createdItem);
+        this.doSimpleSort(this.items);
 
       }, (err)=>{
         console.log("failed creating item", err)
