@@ -26,20 +26,28 @@ export default function promotionDates(){
                time.getHours(), time.getMinutes(), time.getSeconds());
       }
       scope.selectStartDate = function(){
-        setStartDate(scope.$startDate, scope.$startTime)
+        if (scope.$startDate) {
+          setStartDate(scope.$startDate, scope.$startTime)
+        }
       }
       scope.selectStartTime = function(){
-        setStartDate(scope.$startDate, scope.$startTime)
+        if (scope.$startTime) {
+          setStartDate(scope.$startDate, scope.$startTime)
+        }
       }
       function setEndDate(date = new Date(), time = new Date()){
         scope.promotion.endDate =  new Date(date.getFullYear(), date.getMonth(), date.getDate(),
                time.getHours(), time.getMinutes(), time.getSeconds());
       }
       scope.selectEndDate = function(){
-        setEndDate(scope.$endDate, scope.$endTime)
+        if (scope.$endDate) {
+          setEndDate(scope.$endDate, scope.$endTime)
+        }
       }
       scope.selectEndTime = function(){
-        setEndDate(scope.$endDate, scope.$endTime)
+        if (scope.$endTime) {
+          setEndDate(scope.$endDate, scope.$endTime)
+        }
       }
 
     }
