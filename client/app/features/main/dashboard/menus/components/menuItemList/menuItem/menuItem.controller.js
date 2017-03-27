@@ -333,7 +333,7 @@ export default class menuItemController {
     if (this.item && this.item.modifiers){
       this.modifiers = this.item.modifiers.map((_modifier) => {
 
-        let modifier = angular.copy(this.ModifierService.getById(_modifier.id));
+        let modifier = angular.copy(this.ModifierService.getById(_modifier.id)) || angular.copy(_modifier);
         modifier.position = _modifier.position;
 
         return modifier;
