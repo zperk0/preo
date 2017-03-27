@@ -71,6 +71,7 @@ export default class modifierItemController {
           let promise = this.ModifierService.deleteModifier(this.modifier)
           promise.then(()=>{
               // this.cardItemList.onItemDeleted(this.modifier);
+              this.ItemService.populateModifiers();
               this.Snack.show('Item deleted');
               this.Spinner.hide("modifier-delete");
           })
@@ -104,6 +105,7 @@ export default class modifierItemController {
       return this.ModifierService.updateModifier(modifier)
         .then((updatedModifier)=>{
           this.restoreValues(updatedModifier);
+          this.ItemService.populateModifiers();
         })
       .then(()=>{
           this.Spinner.hide("modifier-update")
@@ -193,7 +195,7 @@ export default class modifierItemController {
     });
   }
 
-  constructor($scope, $q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService, BroadcastEvents) {
+  constructor($scope, $q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService, BroadcastEvents, ItemService) {
     'ngInject';
 
     this.Spinner = Spinner;
@@ -201,10 +203,11 @@ export default class modifierItemController {
     this.Snack = Snack;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
-    this.LabelService = LabelService
-    this.DialogService = DialogService
+    this.LabelService = LabelService;
+    this.DialogService = DialogService;
     this.ModifierService = ModifierService;
     this.BroadcastEvents = BroadcastEvents;
+    this.ItemService = ItemService;
 
     this.showCardActions = false;
     this.type = "modifier";

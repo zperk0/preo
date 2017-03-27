@@ -72,7 +72,7 @@ export default class menuItemSizeController {
       }
     }
 
-    if (this.ngModel.$isMultiple && (!this.hasNestedModifierFeature() || this.item.isVoucher())) {
+    if (this.ngModel.$isMultiple && this.item.isVoucher()) {
       this.ngModel.$isMultiple = false;
     }
   }
