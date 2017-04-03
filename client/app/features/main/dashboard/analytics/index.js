@@ -1,15 +1,21 @@
 // Import Style
 import './analytics.scss';
 
-
 // Import internal modules
 import controller from './analytics.controller';
 import routes from './analytics.routes';
 
+import barChart from '../../../../components/analyticsCharts/barChart';
+import doughnutChart from '../../../../components/analyticsCharts/doughnutChart';
 import iframeLoad from '../../../../components/iframeLoad';
+import Customers from './customers';
+import Summary from './summary';
+import Orders from './orders';
+import Stock from './stock';
 
+import chartjs from '../../../../../../node_modules/chart.js/dist/Chart.min.js';
 
-export default angular.module("webapp.analytics" , ['ui.router', iframeLoad])
+angular.module("webapp.analytics" , ['ui.router', barChart,doughnutChart, iframeLoad, Customers, Summary, Orders, Stock])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

@@ -4,15 +4,15 @@ export default class analyticsController {
     return "analyticsController";
   }
 
-  reload() {
+  /*reload() {
 
     window.location.reload();
-  }
+  }*/
 
-  constructor($timeout, $window, VenueService, UserService, Spinner, UtilsService) {
+  constructor(){ //$timeout, $window, VenueService, UserService, Spinner, UtilsService) {
     "ngInject";
 
-    Spinner.show('analytics');
+    /*Spinner.show('analytics');
 
     var locale = [];
     if (UserService.getCurrent().locale) {
@@ -70,6 +70,6 @@ export default class analyticsController {
 
     	this.iframeFailed = true;
         Spinner.hide('analytics');
-    }
+    }*/
   }
 }

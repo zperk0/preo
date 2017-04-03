@@ -47,7 +47,13 @@ export default class navbarController {
     //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
     this.menu=[
     {name: gettextCatalog.getString("Home"), icon:"home", id:"home"},
-      {name: gettextCatalog.getString("Analytics"), icon:"equalizer", id:"analytics", shouldShow:function(){
+      {name: gettextCatalog.getString("Analytics"), icon:"equalizer", id:"analytics", children: [
+        {name: gettextCatalog.getString("Summary"), id:"analyticsSummary"},
+        {name: gettextCatalog.getString("Stock"), id:"analyticsStock"}, 
+        {name: gettextCatalog.getString("Customers"), id:"analyticsCustomers"},
+        {name: gettextCatalog.getString("Orders"), id:"analyticsOrders"}
+      ],
+      shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ANALYTICS)
       }},
       {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings", children:[
