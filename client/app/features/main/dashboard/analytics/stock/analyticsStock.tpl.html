@@ -1,4 +1,16 @@
-<div>
-	
-	
+<div class='stock-view layout-left-right' flex layout-align="stretch stretch">
+	<div class='main-content-full' flex layout="row" layout-align="start start">
+<!-- <div class="content-table"> -->
+<md-card>
+    <md-card-title>
+        <md-card-title-text flex layout="row" layout-align="center start">
+        <h2 class="md-title" flex  translate> All items sold </h2>
+         <div class="align-action-top" flex layout-align="end">
+            <dropdown-actions actions-list="analyticsStockCtrl.actions" on-actions="analyticsStockCtrl.onActions(item)"> </dropdown-actions>
+        </div>
+        </md-card-title-text>
+    </md-card-title>
+	<md-table data="analyticsStockCtrl.tableData"> </md-table>
+</md-card>
+</div>
 </div>

@@ -1,0 +1,27 @@
+<div class='md-table-view layout-left-right' flex layout-align="stretch stretch">
+	<div class='main-content-full' flex layout="row" layout-align="start start">
+    <!-- <md-card class="full-card"> -->
+    <table>
+        <thead>
+            <tr>
+                <th ng-repeat="trHeader in vm.data.header"> {{ trHeader }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="trRow in vm.data.body | orderBy: 'id' track by trRow.id"> 
+                <td ng-repeat="trCol in trRow.columns track by $index"> {{trCol}} </td>
+            </tr>
+        </tbody>
+    </table>
+   
+   <!--  <md-card-title>
+        <md-card-title-text flex layout="row" layout-align="center start">
+        <h2 class="md-title" flex  translate> Teste da parada </h2>
+         <div class="align-action-top" flex layout-align="end">
+            <dropdown-actions actions-list="vm.actions" on-actions="vm.onActions(item)"> </dropdown-actions>
+        </div>
+        </md-card-title-text>
+    </md-card-title> -->
+   <!--  </md-card> -->
+</div>
+</div>

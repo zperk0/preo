@@ -2,6 +2,7 @@ import BroadcastEvents from './app.broadcastEvents.constants';
 import EventScheduleFrequency from './shared/constants/app.eventScheduleFrequency.constant';
 import APIErrorCode from './shared/constants/app.apiErrorCode.constants';
 import AnalyticsChartsCodes from './shared/constants/app.analyticsCharts.constants';
+import CardActionsCodes from './shared/constants/app.cardActions.constants';
 
 export default angular.module('webapp.constants', [])
 
@@ -9,4 +10,5 @@ export default angular.module('webapp.constants', [])
   .constant('EventScheduleFrequency', EventScheduleFrequency)
   .constant('APIErrorCode', APIErrorCode)
   .constant('AnalyticsChartsCodes', AnalyticsChartsCodes)
+  .constant('CardActionsCodes', CardActionsCodes)
   .name;
