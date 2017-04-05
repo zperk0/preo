@@ -4,7 +4,7 @@ export default class CroppieDialogController {
   }
 
   onUpdate(img){
-    this.output = img;
+    this.outputImg = img;
   }
 
   cancel(){
@@ -12,12 +12,13 @@ export default class CroppieDialogController {
   }
 
   confirm(){
-    this.$mdDialog.hide(this.output);
+    this.$mdDialog.hide(this.outputImg);
   }
 
   constructor($mdDialog) {
     'ngInject';
-    this.output = false;
+    this.outputImg = false;
+    this.output = this.output || false;
     this.$mdDialog = $mdDialog;
 
   }
