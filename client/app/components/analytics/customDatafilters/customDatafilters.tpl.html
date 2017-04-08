@@ -1,0 +1,50 @@
+   <div class="data-filters-view">
+   <md-card md-theme="default">
+   <md-card-title>
+      <md-card-title-text flex layout="row" layout-align="center start">
+      <h2 class="md-title" flex  translate> Data filters </h2>
+      </md-card-title-text>
+    </md-card-title>
+          <md-card-content layout="row" layout-align="space-between">
+         <md-input-container class="md-flex venue-select">
+            <label translate>Venue</label>
+            <md-select ng-model="vm.selectedVenues" ng-model-options="{trackBy: '$value.id'}" multiple md-selected-text="vm.getSelectedVenuesNames()" md-container-class="md-customfix-container" ng-change="vm.onVenue({items: vm.selectedVenues})">
+              <md-option ng-repeat="venue in vm.venues | orderBy: 'name'" ng-value="venue" >
+                {{ venue.name }}
+              </md-option>
+            </md-select>
+        </md-input-container>
+      <md-input-container class="md-flex" ng-if="vm.shouldShowDaterange">
+          <label translate>Date range</label>
+        <md-select ng-model="vm.selectedDaterange" ng-model-options="{trackBy: '$value.id'}" ng-change="vm.onDaterangeChange()">
+              <md-option ng-repeat="option in vm.dateRangeOptions | orderBy: 'id'" ng-value="option" ng-selected="option.name == vm.defaultDaterange">
+                {{ option.name }}
+              </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-flex" ng-if="vm.shouldShowEventfilter">
+          <label translate>Event</label>
+        <md-select ng-model="vm.selectedEvent" ng-model-options="{trackBy: '$value.id'}" ng-change="vm.onEvent({item: vm.selectedEvent})">
+              <md-option ng-repeat="event in vm.events | orderBy: 'name'" ng-value="event" >
+                {{ event.name }}
+              </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container class="md-block" ng-if="vm.shouldShowReportfilter">
+          <label translate>Report</label>
+        <md-select ng-model="vm.selectedReport" ng-model-options="{trackBy: '$value.id'}" ng-change="vm.onReportChange()">
+              <md-option ng-repeat="report in vm.reports | orderBy: 'name'" ng-value="report" >
+                {{ report.name }}
+              </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container class="md-block input-label md-checkbox-market" ng-if="vm.shouldShowMarketingCheck">
+      <md-checkbox aria-label="{{'Only display customers who have opted in to marketing' | translate}}" ng-model="vm.customersMarketing" ng-if="vm.shouldShowMarketingCheck" ng-change="vm.onCustomermarketing({item: vm.customersMarketing})">
+        {{'Only display customers who have opted in to marketing' | translate}}
+      </md-checkbox>
+    </md-input-container>
+      </md-card-content>
+ </md-card>
+ </div>

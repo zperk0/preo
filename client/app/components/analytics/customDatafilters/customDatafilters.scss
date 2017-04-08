@@ -1,0 +1,83 @@
+
+.data-filters-view{
+	width: 100%;
+
+	md-select{
+		height: 48px;
+		width: 100%;
+	}
+
+	md-checkbox .md-icon:after{
+		border-color: white;
+	}
+
+	md-input-container{
+		width: 100%;
+	    margin: 0;
+
+	    .input-label {
+	    	left: 0;
+	    	padding-left: 2px !important;
+    	}
+
+	    flex: 0 0 100%;
+		max-width: 100%;
+
+		&.with-icon {
+			padding-left: 0px;
+		}
+
+		md-select-menu{
+			display: flex;
+		}
+
+		&.md-flex{
+			display: flex;
+			flex: 1 1;
+
+			&:not(:first-of-type){
+				margin-left: 15px;
+			}
+		}
+	}
+
+	md-card-content {
+	    display: flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    padding-left: 24px;
+	    padding-right: 24px;
+	    padding-top: 0px;
+	    padding-bottom: 24px;
+	}
+
+	.venue-select{
+		min-width: 50%;
+	}
+
+	.md-checkbox-market md-checkbox{
+		margin-bottom: 0;
+		margin-top: 16px;
+	}
+
+}
+
+// Overwrite Angular Materials < 1.1.1 Bug with select-menu
+.md-checkbox-enabled.md-default-theme[selected] .md-icon:after, .md-checkbox-enabled[selected] .md-icon:after{
+	border-color: white;
+}
+
+.md-checkbox-enabled[selected] .md-icon{	
+	background-color: #0288D1;
+}
+	
+//.md-select-menu-container.md-active{
+	//background-color: rgba(0,0,0,0) transparent;	
+	//margin-left: 25px;
+	//padding-right: 52px;
+//}
+
+.md-customfix-container{
+	margin-left: 25px;
+	padding-right: 52px;
+}

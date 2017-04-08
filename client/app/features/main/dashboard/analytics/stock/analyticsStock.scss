@@ -1,7 +1,55 @@
 .stock-view{
 	width: 100%;
 
-	md-card{
-		width: 100%;
+
+	.main-content-full {
+		flex-flow: row wrap;
+
+		md-card {
+			&.full-card {
+				flex: 1 100%;
+				overflow-x: auto;
+			}
+		}
+
+		md-card-title{
+			height: 60px;			
+			padding: 20px;
+		}
+	}
+
+	.stock-table{
+		//width: 100%;
+	}
+
+	.align-action-top{
+		margin-top: -15px;
+	}
+
+	//md-card{
+	//	width: 100%;
+	//}
+
+	table.md-table{
+		
+		color: rgba(0, 0, 0, 0.87);
+	}
+
+	table.md-table.md-row-select th.md-column:nth-child(2){
+		//width: 60%;
+	}
+
+	table.md-table thead.md-head>tr.md-row{
+		height: 54px;
+		border-top: 1px solid rgba(0,0,0,.12);
+	}
+
+	table.md-table tbody.md-body>tr.md-row{
+		height: 49px;
+	}
+
+	table.md-table.md-row-select td.md-cell:nth-child(n+3):nth-last-child(n+2), 
+	table.md-table.md-row-select th.md-column:nth-child(n+3):nth-last-child(n+2){
+		padding: 0 39px 0 0;
 	}
 }

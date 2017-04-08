@@ -1,16 +1,51 @@
 <div class='stock-view layout-left-right' flex layout-align="stretch stretch">
-	<div class='main-content-full' flex layout="row" layout-align="start start">
-<!-- <div class="content-table"> -->
-<md-card>
-    <md-card-title>
-        <md-card-title-text flex layout="row" layout-align="center start">
-        <h2 class="md-title" flex  translate> All items sold </h2>
-         <div class="align-action-top" flex layout-align="end">
-            <dropdown-actions actions-list="analyticsStockCtrl.actions" on-actions="analyticsStockCtrl.onActions(item)"> </dropdown-actions>
-        </div>
-        </md-card-title-text>
-    </md-card-title>
-	<md-table data="analyticsStockCtrl.tableData"> </md-table>
-</md-card>
+  <div class='main-content-full' flex layout="row" layout-align="start start">
+<!-- <md-card class="full-card"> -->
+  <custom-datafilters on-daterange="analyticsStockCtrl.onDaterangeChange(item)" 
+                      on-report="analyticsStockCtrl.onReportChange(item)" 
+                      on-event="analyticsStockCtrl.onEventChange(item)" 
+                      on-customermarketing="analyticsStockCtrl.onCustomerMarketingChange(item)" 
+                      on-venue="analyticsStockCtrl.onVenueChange(items)">
+  </custom-datafilters>
+<!-- </md-card> -->
+<!-- <div class="stock-table"> -->
+  <md-card class="full-card" ng-if="analyticsStockCtrl.shouldShowdatatable">
+      <md-card-title>
+          <md-card-title-text flex layout="row" layout-align="center start">
+          <h2 class="md-title" flex  translate> {{analyticsStockCtrl.visibleReportTitle}}</h2>
+           <div class="align-action-top" flex layout-align="end" ng-if="analyticsStockCtrl.shouldShowActions">
+              <dropdown-actions actions-list="analyticsStockCtrl.actions" on-actions="analyticsStockCtrl.onActions(item)"> </dropdown-actions>
+          </div>
+          </md-card-title-text>
+      </md-card-title>
+<!-- <md-content layout="column" flex> -->
+  <md-table-container layout-fill flex>
+    <table md-table md-row-select multiple ng-model="analyticsStockCtrl.selected"> <!-- md-progress="analyticsStockCtrl.promise" -->
+      <thead md-head md-order="analyticsStockCtrl.query.order">  <!-- md-on-reorder="analyticsStockCtrl.getDesserts" -->
+        <tr md-row>
+          <th md-column ng-repeat="(key , value) in analyticsStockCtrl.tableData.header" md-order-by="{{key}}"><span>{{value}}</span></th>
+     <!--      <th md-column md-order-by="name"><span>Name</span></th>
+          <th md-column md-numeric md-order-by="quantity"><span>Quantity</span></th>
+          <th md-column md-numeric md-order-by="revenue">Revenue</th> -->
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsStockCtrl.tableData.body | orderBy:analyticsStockCtrl.query.order | filter:{'customerMarketing': analyticsStockCtrl.filterCustomerMarketing}">  <!-- md-on-select= -->
+          <td md-cell ng-if="key !== 'id'" ng-repeat="(key, value) in row">
+             <span ng-if="value === true"><icon>add</icon></span>
+             <span ng-if="value === false"><icon>info</icon></span>
+             <span ng-if="value !== true && value !== false">{{value}}</span>
+          </td> <!-- $index > 0 -->
+        <!--   <td md-cell>{{row.name}}</td>
+          <td md-cell>{{row.quantity}}</td>
+          <td md-cell>{{row.revenue}}</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+ <!--  </md-content> -->
+  <!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->
+  </md-card>
+<!-- </div> -->
 </div>
 </div>

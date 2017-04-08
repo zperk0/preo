@@ -16,9 +16,10 @@
 	//width: 100%; 
 	width: 195px;
 	max-width: 195px;
-	position: relative;
+	position: absolute;
 	display: inline-flex;
-	//right: 21%;
+	//margin-top: -21px;
+	right: 21px;
 	md-card-actions{
 		margin: 0;
 		padding-top: 20px;

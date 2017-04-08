@@ -9,6 +9,11 @@ $userSetttingsPadding: 24px;
 		}
 	}
 
+	.md-select-menu-container{
+		left: calc(100% - 24px);
+		width: calc(100% - 24px);
+	}
+
 	md-input-container {
 		margin-top: 0px;
 

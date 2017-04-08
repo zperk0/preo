@@ -27,6 +27,7 @@
     "angular-gettext-cli": "git+ssh://bitbucket.org/preoday/angular-gettext-cli.git",
     "angular-material": "1.0.9",
     "angular-material-calendar": "^0.2.14",
+    "angular-material-data-table": "^0.10.10",
     "angular-messages": "1.5.8",
     "angular-sanitize": "1.5.8",
     "angular-scroll": "^1.0.0",
