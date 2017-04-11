@@ -11,7 +11,7 @@ export default class CroppieService {
       boundry= {w: 700, h:500};
     }
     if (!vp){
-      vp={w: 590, h:333};
+      vp={w: 590, h:393};
     }
 
     return this.$mdDialog.show({
