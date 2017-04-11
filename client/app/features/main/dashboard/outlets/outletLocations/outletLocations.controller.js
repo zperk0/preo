@@ -43,19 +43,23 @@ export default class outletLocationsController {
   }
 
   getBreadcumbTitle (breadcumb) {
-    if (!breadcumb.group.id) {
-      if (breadcumb.group.label) {
-        return breadcumb.group.label;
+    if (breadcumb.group) {
+      if (!breadcumb.group.id) {
+        if (breadcumb.group.label) {
+          return breadcumb.group.label;
+        }
+
+        return this.gettextCatalog.getString('Outlet configuration');
       }
 
+      if (breadcumb.group.owner) {
+        return breadcumb.group.owner.name;
+      }
+
+      return breadcumb.group.label || this.gettextCatalog.getString('Location label');
+    } else {
       return this.gettextCatalog.getString('Outlet configuration');
     }
-
-    if (breadcumb.group.owner) {
-      return breadcumb.group.owner.name;
-    }
-
-    return breadcumb.group.label || this.gettextCatalog.getString('Location label');
   }
 
   buildUri () {
@@ -90,7 +94,10 @@ export default class outletLocationsController {
 
     console.log('breadcumbs', breadcumbs);
 
-    this.outletGroup = Preoday.OutletLocationGroup.getGroupById(breadcumbs[breadcumbs.length - 1].group.id);
+    let breadcumbLastGroup = breadcumbs[breadcumbs.length - 1].group;
+    if (breadcumbLastGroup) {
+      this.outletGroup = Preoday.OutletLocationGroup.getGroupById(breadcumbLastGroup.id);
+    }
 
     if (!this.outletGroup) {
       if (this.data.rootGroup && this.data.rootGroup.outletLocations.length) {
