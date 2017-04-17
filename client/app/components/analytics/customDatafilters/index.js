@@ -6,7 +6,10 @@ import './customDatafilters.scss';
 import directive from './customDatafilters.directive';
 import controller from './customDatafilters.controller';
 
-export default angular.module("customDatafilters" , [])
+import customDatePicker from '../../customDatePicker';
+
+
+export default angular.module("customDatafilters" , [customDatePicker])
 
   .directive("customDatafilters", directive)
   .controller(controller.UID, controller)

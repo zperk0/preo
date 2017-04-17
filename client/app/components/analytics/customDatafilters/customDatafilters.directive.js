@@ -17,8 +17,11 @@ export default function customDatafilters(){
     controllerAs: "vm",
     bindToController: true,
     //require:["dropdownAction"],
-    link: (scope, el, attr, ctrl) => {
-      console.log('dffffffffdfdfsdfsdfsdfsdfsdfsdf');
+    link: (scope, el, attr, ctrl) => {  
+
+    //  scope.$watch("vm.datesRange", function(newValue, oldValue){
+    //  console.log('watch datesrange', newValue, oldValue);
+    //  });
     //  scope.cardItem = ctrls[0];
     //  scope.onMouseLeave = ($event)=>{
     //    ctrls[0].toggleCardActions($event, false);

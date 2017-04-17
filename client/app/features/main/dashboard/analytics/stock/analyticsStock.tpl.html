@@ -1,14 +1,14 @@
 <div class='stock-view layout-left-right' flex layout-align="stretch stretch">
   <div class='main-content-full' flex layout="row" layout-align="start start">
 <!-- <md-card class="full-card"> -->
-  <custom-datafilters on-daterange="analyticsStockCtrl.onDaterangeChange(item)" 
-                      on-report="analyticsStockCtrl.onReportChange(item)" 
-                      on-event="analyticsStockCtrl.onEventChange(item)" 
-                      on-customermarketing="analyticsStockCtrl.onCustomerMarketingChange(item)" 
-                      on-venue="analyticsStockCtrl.onVenueChange(items)">
+  <custom-datafilters on-daterange="analyticsStockCtrl.onDaterangeChange(filters)" 
+                      on-report="analyticsStockCtrl.onReportChange(filters)" 
+                      on-event="analyticsStockCtrl.onEventChange(filters)" 
+                      on-customermarketing="analyticsStockCtrl.onCustomerMarketingChange(filters)" 
+                      on-venue="analyticsStockCtrl.onVenueChange(filters)">
   </custom-datafilters>
 <!-- </md-card> -->
-<!-- <div class="stock-table"> -->
+
   <md-card class="full-card" ng-if="analyticsStockCtrl.shouldShowdatatable">
       <md-card-title>
           <md-card-title-text flex layout="row" layout-align="center start">
@@ -18,7 +18,7 @@
           </div>
           </md-card-title-text>
       </md-card-title>
-<!-- <md-content layout="column" flex> -->
+
   <md-table-container layout-fill flex>
     <table md-table md-row-select multiple ng-model="analyticsStockCtrl.selected"> <!-- md-progress="analyticsStockCtrl.promise" -->
       <thead md-head md-order="analyticsStockCtrl.query.order">  <!-- md-on-reorder="analyticsStockCtrl.getDesserts" -->
@@ -32,8 +32,18 @@
       <tbody md-body>
         <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsStockCtrl.tableData.body | orderBy:analyticsStockCtrl.query.order | filter:{'customerMarketing': analyticsStockCtrl.filterCustomerMarketing}">  <!-- md-on-select= -->
           <td md-cell ng-if="key !== 'id'" ng-repeat="(key, value) in row">
-             <span ng-if="value === true"><icon>add</icon></span>
-             <span ng-if="value === false"><icon>info</icon></span>
+             <span ng-if="value === true">
+              <svg fill="#1c9c18" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+              </svg>
+             </span>
+             <span ng-if="value === false">               
+              <svg fill="#e02c00" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+             </span>
              <span ng-if="value !== true && value !== false">{{value}}</span>
           </td> <!-- $index > 0 -->
         <!--   <td md-cell>{{row.name}}</td>
@@ -43,9 +53,7 @@
       </tbody>
     </table>
   </md-table-container>
- <!--  </md-content> -->
   <!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->
   </md-card>
-<!-- </div> -->
 </div>
 </div>

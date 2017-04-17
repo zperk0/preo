@@ -17,14 +17,7 @@ export default class analyticsStockController {
     }else {
       this.actions = [];
       this.shouldShowActions = false;
-    }
-    // this.actions = [
-    //   this.CardActionsCodes.EXPORT_CSV,
-    //   this.CardActionsCodes.EXPORT_PDF,
-    //   this.CardActionsCodes.DAILY_ORDERS,
-    //   this.CardActionsCodes.WEEKLY_ORDERS,
-    //   this.CardActionsCodes.MONTHLY_ORDERS
-    // ];
+    }   
   
   }
 
@@ -55,10 +48,10 @@ export default class analyticsStockController {
     else if (report.id === 3){
       obj = {
           header: {name: "Name", orders:"Orders", spend:"Spend", email:"Email", tel:"Tel", customerMarketing:"Marketing"},        
-          body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeee…1111', orders:  1, spend:formatMoney(29), email:'ops@preoday.com', tel:'93551334', customerMarketing: true},
-                {id:2, name:'general', orders: 9999999, spend: formatMoney(9999999.99), email: 'ops2@preoday.com', tel:'88881334', customerMarketing: false}, 
-                {id:3, name:'jason', orders: 30.45, spend: formatMoney(888888), email:'ops3@preoday.com', tel:'91251334', customerMarketing: false},
-                {id:4, name:'victort', orders: 545, spend: formatMoney(54562), email:'ops4@preoday.com', tel:'444451334', customerMarketing: true}
+          body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeee…1111', orders:  1, spend:formatMoney(29), email:'0ops@preoday.com', tel:'93551334', customerMarketing: true},
+                {id:2, name:'general', orders: 9999999, spend: formatMoney(9999999.99), email: '1ops2@preoday.com', tel:'88881334', customerMarketing: false}, 
+                {id:3, name:'jason', orders: 30.45, spend: formatMoney(888888), email:'2ops3@preoday.com', tel:'91251334', customerMarketing: false},
+                {id:4, name:'victort', orders: 545, spend: formatMoney(54562), email:'3ops4@preoday.com', tel:'44451334', customerMarketing: true}
           ]};
     }
     
@@ -73,52 +66,72 @@ export default class analyticsStockController {
     return obj;
   }
 
-  filtertableData(value){
+  onDaterangeChange(filters){
+    console.log(' DATE RANGE CHANGE ->', filters);
 
-    var dataFiltered = [];
-
-    function filterBycustomerMarketing(obj){
-        console.log('filter -> ', obj);
-    }
-
-    dataFiltered = this.tableData.filter((s) => s.customerMarketing === value);
-console.log('filter -> ', dataFiltered);
-    return dataFiltered;
-
+    this.dataFilters.datarange = filters.datesRange;
+    this.dataFilters.event = null;
   }
 
-  onDaterangeChange(value){
-    console.log(' DATE RANGE CHANGE ->', value);
-  }
+  onReportChange(filters){
+    console.log(' REPORT ->', filters);
+    this.visibleReportTitle = filters.report.name;
 
-  onReportChange(value){
-    console.log(' REPORT ->', value);
-    this.visibleReportTitle = value.name;
-
-    if(value.customerMarketing)
-      this.filterCustomerMarketing = '!!';
+    // IF report HAS NO customermarketing checkbox, set the filter in md-data-table to DO NOT filter for this field
+    // IF report HAS customermarketing checkbox, set the filter to 'empty' value
+    if(filters.report.hasCustomerMarketing)
+      this.filterCustomerMarketing = '!!'; //empty
     else
       this.filterCustomerMarketing = '!';
 
-    this.tableData = this.getTableData(value);
-    this.getTitleActionList(value.actions);
+    this.dataFilters.report = filters.report;
+
+    this.tableData = this.getTableData(filters.report);
+    this.getTitleActionList(filters.report.actions);
   }
 
-  onVenueChange(value){
-    console.log('VENUE->', value);
+  onVenueChange(filters){
+    console.log('VENUE->', filters);
   }
 
-  onCustomerMarketingChange(value){
-    console.log(' MARKET ->', value);
-    if(value)
-      this.filterCustomerMarketing = value;
+  onCustomerMarketingChange(filters){
+    console.log(' MARKET ->', filters);
+    if(filters.customerMarketing)
+      this.filterCustomerMarketing = filters.customerMarketing;
     else
-      this.filterCustomerMarketing = '!!';
+      this.filterCustomerMarketing = '!!'; //empty
+    
     //this.tableData = this.filtertableData(value);
   }
 
-  onEventChange(value){
-    console.log(' EVENT CHANGE ->', value);
+  onEventChange(filters){
+    console.log(' EVENT CHANGE ->', filters);
+
+    this.dataFilters.event = filters.event;
+  }
+
+  initDatatable(){
+    this.shouldShowActions = false;
+    this.shouldShowdatatable = false;   
+
+    this.tableData = {};
+
+    this.dataFilters = {
+      venue: null,
+      report: null,
+      daterange: null,
+      event: null
+    };
+
+    this.selected = [];
+   
+    this.visibleReportTitle = "";
+
+    this.query = {
+      order: '',
+    //  limit: 5,
+     // page: 1
+    };
   }
 
   constructor($filter, $state, $timeout, $window, Spinner, CardActionsCodes) {
@@ -128,32 +141,10 @@ console.log('filter -> ', dataFiltered);
 
     this.CardActionsCodes = CardActionsCodes;
 
-    this.shouldShowActions = false;
-    this.shouldShowdatatable = false;   
-
-    this.tableData = {};
-
-    this.selected = [];
-    this.promise = "";
-    this.visibleReportTitle = "";
-
-    this.query = {
-      order: '',
-    //  limit: 5,
-     // page: 1
-    };
+    this.initDatatable();
 
    // this.tableData = this.getTableData({id:1}); this.shouldShowdatatable = true;
-  }
-
-  
-  //getDesserts(order) {
-  //  console.log('order: ', order);
-   // function success(desserts) {
-   //   this.tableData = desserts;
-    //}
-   // this.promise = this.tableData.body.get(this.query, success).$promise;
- // }  
+  } 
  
 }
 

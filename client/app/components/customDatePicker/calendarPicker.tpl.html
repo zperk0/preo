@@ -1,0 +1,18 @@
+<div class="mighty-picker__month" bindonce ng-repeat="month in months track by $index">
+ <header class=" layout-align-space-between-center layout-row ">
+ <button id="previousmonthBtn" class="md-icon-button md-mini" ng-click="moveMonth(-1)">
+ 	<md-icon>chevron_left</md-icon>
+ </button>
+ <span ng-bind="month.name"> </span>
+  <button id="nextmonthBtn" class="md-icon-button md-mini" ng-click="moveMonth(1)">
+  	<md-icon>chevron_right</md-icon>
+  </button>
+ </header>
+<div class="week names layout-align-space-around-center layout-row">
+     <span ng-repeat="day in month.weeks[1]" class="day" bo-text="day.date.format('dd')"></span>
+</div>
+<div bindonce class="week days layout-align-space-around-center layout-row" ng-repeat="week in month.weeks">
+    <button id="dayBtn" aria-label="day.date.date()" ng-repeat="day in week track by $index" class="md-fab day" type="button" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: month.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
+    </button> 
+</div> 
+</div>

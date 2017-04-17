@@ -5,6 +5,7 @@
 	md-select{
 		height: 48px;
 		width: 100%;
+		//padding-top: 18px;
 	}
 
 	md-checkbox .md-icon:after{
@@ -15,12 +16,16 @@
 		width: 100%;
 	    margin: 0;
 
+	     label{
+	    	top: 0;
+	    }
+
 	    .input-label {
 	    	left: 0;
 	    	padding-left: 2px !important;
     	}
 
-	    flex: 0 0 100%;
+	   // flex: 0 0 100%;
 		max-width: 100%;
 
 		&.with-icon {
