@@ -7,6 +7,7 @@ export default function customDatafilters(){
     scope: {
       onDaterange: '&?',
       onReport: '&?',
+      reportTypes: '=?',
       onEvent: '&?',
       onVenue: '&',
       onCustomermarketing: '&?'

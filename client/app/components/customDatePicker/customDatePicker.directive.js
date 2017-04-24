@@ -12,8 +12,13 @@ export default function customDatePicker(){
     controllerAs: "vm",
     bindToController: true,
     replace:true,
-    link: (scope, el, attr, ctrl) => {
-    
+    link: (scope, elem, attr, ctrl) => {
+
+      scope.getDirectiveElement = function() {
+        return elem;
+      };
+
+    //  ctrl.initCalendar();    
     }
   };
 }

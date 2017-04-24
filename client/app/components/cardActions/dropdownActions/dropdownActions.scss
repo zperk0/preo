@@ -3,6 +3,7 @@
 	
 	text-align: end;
 	display: block;
+	position:  relative;
 
 	.md-button.md-icon-button{
 	 padding: 0;
@@ -19,7 +20,9 @@
 	position: absolute;
 	display: inline-flex;
 	//margin-top: -21px;
-	right: 21px;
+	//right: 21px;
+	right: -5px;
+    top: 0;
 	md-card-actions{
 		margin: 0;
 		padding-top: 20px;

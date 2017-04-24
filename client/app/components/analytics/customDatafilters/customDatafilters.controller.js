@@ -59,6 +59,9 @@ export default class customDatafiltersController {
     
     if(this.selectedDaterange.name == 'By event'){
       this.shouldShowEventfilter = true;
+      this.dateRangeChanged = false;      
+      
+      this.events = this.getEvents();    
     }
     else{
       this.shouldShowEventfilter = false;
@@ -117,6 +120,21 @@ export default class customDatafiltersController {
   }
 
   getVenues(){
+    console.log('venue -> ', this.VenueService.venues); 
+
+    // this.OutletService.getOutlets({
+    //   venueId: this.VenueService.venues[0].id
+    // }).then((data)=>{
+
+    //   this.outlets = data;     
+    //   console.log('outlets _> ', this.outlets);
+
+    //   this.hideSpinner();
+    // }, () => {
+
+    //   this.hideSpinner();
+    // });
+
     return [{id:1 , name: 'Victory Park'}, 
     {id: 2, name: 'Jasons cafe Long name'}, 
     {id:3 , name: 'General task name name name'}, 
@@ -128,17 +146,42 @@ export default class customDatafiltersController {
     {id:9, name: 'random5'}];
   }
 
-  getDateRangeOptions(){
-    return [{id: 1, name: 'Today'},
-    {id: 2, name: 'Yesterday'},
-    {id: 3, name: 'Last 7 days'},
-    {id: 4, name: 'Last 30 days', default: true},
-    {id: 5, name: '1 year'},
-    {id: 6, name: 'Custom'},
-    {id: 7, name: 'By event'}];
+  getDateRange(){
+    
+    var ranges =[
+      {id: 1, name: 'Today'},
+      {id: 2, name: 'Yesterday'},
+      {id: 3, name: 'Last 7 days'},
+      {id: 4, name: 'Last 30 days', default: true},
+      {id: 5, name: '1 year'},
+      {id: 6, name: 'Custom'}
+    ];
+
+    //do not allow this option if directive has no onEvent attr
+    if(this.onEvent){     
+      ranges.push({id: 7, name: 'By event'});
+    }
+
+    return ranges;
   }
 
   getEvents(){
+
+    // this.$q.all([   
+    //   ]).then((results) => {
+    //     this.hideSpinner();
+    //   }, (err) => {
+    //     this.hideSpinner();
+    //   });
+
+    this.EventService.getEvents(this.VenueService.currentVenue.id)
+    .then((data) => {
+      this.eventstest = data;
+      console.log(' event foi -> ', data);
+    }, (err) => {
+      console.log('erro _event ->', err);
+    });    
+
     return [{id: 1, name: 'Event 1'},
     {id: 2, name: 'Opera' },
     {id: 3, name: 'The Beauty and the Beast'},
@@ -147,25 +190,16 @@ export default class customDatafiltersController {
     {id: 6, name: 'No idea'}];
   }
 
-  getReports(){ // Falar com caio....trazer tudo isso do BD...inclusive os actions q ele permite ja
-    return[{id: 1, name:'All items sold' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF], hasCustomerMarketing: false},
-    {id: 2, name:'Items increasing in popularity' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF], hasCustomerMarketing: false},
-    {id: 3, name:'All paying Customers' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF , this.cardActionsCodes.PUSH_NOTIFICATION], hasCustomerMarketing: true},
-    {id: 4, name:'1Report 4' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF], hasCustomerMarketing: true},
-    {id: 5, name:'Report 5' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF], hasCustomerMarketing: true},
-    {id: 6, name:'Report 6' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF], hasCustomerMarketing: true}];
+  getReports(){
+    return this.reportTypes;    
   }
 
   initFilters(){
 
     this.venues = this.getVenues();
-
-    if(this.onEvent){
-      this.shouldShowEventfilter = true;
-      this.events = this.getEvents();
-    } else {
-      this.shouldShowEventfilter = false;
-    }
+    
+    //Events will be load only if when user select this option
+    this.shouldShowEventfilter = false;   
 
     if(this.onReport){
       this.shouldShowReportfilter = true;
@@ -175,10 +209,8 @@ export default class customDatafiltersController {
     }
 
     if(this.onDaterange){
-      this.shouldShowDaterange = true;
-      //this.datesRange = {};
-      this.dateRangeOptions = this.getDateRangeOptions();
-     // this.defaultDaterange = 'Last 30 days';
+      this.shouldShowDaterange = true;    
+      this.dateRangeOptions = this.getDateRange();    
     } else {
       this.shouldShowDaterange = false;
     }
@@ -202,24 +234,35 @@ export default class customDatafiltersController {
     
   }
 
+  hideSpinner(){
+    this.Spinner.hide('data-filters');
+  }
+
   /* @ngInject */
-  constructor($scope, Spinner, Snack, $timeout, CardActionsCodes ) {
+  constructor($q , $scope, Spinner, Snack, $timeout, CardActionsCodes, VenueService , OutletService, EventService) {
   	'ngInject';
    
     this.Spinner = Spinner;
     this.Snack = Snack; 
     this.$timeout = $timeout;  
-    this.cardActionsCodes = CardActionsCodes;  
+    this.cardActionsCodes = CardActionsCodes;
+    this.VenueService = VenueService;
+    this.Spinner = Spinner;
+    this.OutletService = OutletService;
+    this.EventService = EventService;
+    this.$q = $q;
+  
+    this.Spinner.show('data-filters');   
+
     //this.$scope = $scope;
     this.initFilters(); 
-    
+   
     $scope.$watch(
       () => { return this.filters.datesRange; }, 
       function(newValue, oldValue){
         
-        if(this.dateRangeChanged === true){
-       
-          this.dateRangeChanged = false;
+        if(this.dateRangeChanged === true){          
+          
           this.onDaterange({filters: this.filters});        
         }
       }.bind(this),

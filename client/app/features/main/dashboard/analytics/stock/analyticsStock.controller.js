@@ -7,9 +7,22 @@ export default class analyticsStockController {
     console.log('evento -> ', item);
     console.log('exported -->> ', this.selected);
     alert('clicked');
-  } 
+  }
 
-  getTitleActionList(actions){
+  getReportTypes(){
+    var stocks = [{id: 1, type:'report', name:'All items sold' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+                  {id: 2, type:'report', name:'Items increasing in popularity' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+                  {id: 3, type:'report', name:'Items descreasing in popularity' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+                  {id: 4, type:'report', name:'Items increasing in revenue' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+                  {id: 5, type:'report', name:'Items decreasing in revenue' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+                  {id: 6, type:'chart', name:'Individual item data (number sold)' , valueType: this.ChartsValueTypes.NUMBER ,  actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF,  this.cardActionsCodes.MONTHLY_ORDERS, this.cardActionsCodes.WEEKLY_ORDERS, this.cardActionsCodes.DAILY_ORDERS]},
+                  {id: 7, type:'chart', name:'Individual item data (revenue)' , valueType: this.ChartsValueTypes.NUMBER ,actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_ORDERS, this.cardActionsCodes.WEEKLY_ORDERS, this.cardActionsCodes.DAILY_ORDERS]},
+               ];  
+
+    return stocks;
+  }
+
+  getTableActionList(actions){
    
     if(actions && actions.length > 0){
       this.actions = actions;
@@ -21,6 +34,18 @@ export default class analyticsStockController {
   
   }
 
+  getChartData(report){
+
+    var obj = {
+            chartTitle: report.name,
+            data: { x:['2017-05-01', '2017-01-01', '2017-02-02', '2017-03-03', '2016-03-04', '2016-05-07', '2017-01-30'] , y:[10, 15, 20 ,25 , 30 , 35 , 40]},
+            actions: report.actions,
+            type: report.valueType
+          };
+
+    return obj;
+  }
+
   getTableData(report){
 
     function formatMoney(number){
@@ -28,15 +53,8 @@ export default class analyticsStockController {
     return number.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' , currencyDisplay:'symbol'});
     }
     var obj = {};
-    // obj ={ 
-    //   body: [
-    //     {id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee…', quantity:1, revenue: formatMoney(29)}, 
-    //     {id:2, name:'general', quantity:9999999, revenue: formatMoney(9999999.99)}, 
-    //     {id:3, name:'jason',   quantity:30.45, revenue: formatMoney(888888)},
-    //     {id:4, name:'victort', quantity:30.47, revenue: formatMoney(54562)}
-    // ]};  
-
-    if(report.id === 1){
+    
+    if(report.name === 'All items sold'){
         obj = {
          header: {name:"Name", quantity:"Quantity", revenue:"Revenue"},        
          body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee…',quantity: 1,revenue: formatMoney(29)},
@@ -45,7 +63,7 @@ export default class analyticsStockController {
                 {id:4, name:'victort',quantity: 545,revenue: formatMoney(54562)}
          ]};
     }
-    else if (report.id === 3){
+    else if (report.id === ''){
       obj = {
           header: {name: "Name", orders:"Orders", spend:"Spend", email:"Email", tel:"Tel", customerMarketing:"Marketing"},        
           body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeee…1111', orders:  1, spend:formatMoney(29), email:'0ops@preoday.com', tel:'93551334', customerMarketing: true},
@@ -56,11 +74,11 @@ export default class analyticsStockController {
     }
     
     if(Object.keys(obj).length !== 0){
-      this.shouldShowdatatable = true; console.log('QUERY ORDER -> ', Object.keys(obj.body[0])[1]);
+      this.shouldShowdatatable = true;
       this.query.order = Object.keys(obj.body[0])[1];
     } else{
       this.shouldShowdatatable = false;
-      // exibir algum div de EMpty data
+      // TO DO - create empty data div
     }
 
     return obj;
@@ -69,13 +87,12 @@ export default class analyticsStockController {
   onDaterangeChange(filters){
     console.log(' DATE RANGE CHANGE ->', filters);
 
-    this.dataFilters.datarange = filters.datesRange;
+    this.dataFilters.daterange = filters.datesRange;
     this.dataFilters.event = null;
   }
 
   onReportChange(filters){
-    console.log(' REPORT ->', filters);
-    this.visibleReportTitle = filters.report.name;
+    console.log(' REPORT ->', filters);    
 
     // IF report HAS NO customermarketing checkbox, set the filter in md-data-table to DO NOT filter for this field
     // IF report HAS customermarketing checkbox, set the filter to 'empty' value
@@ -86,8 +103,22 @@ export default class analyticsStockController {
 
     this.dataFilters.report = filters.report;
 
-    this.tableData = this.getTableData(filters.report);
-    this.getTitleActionList(filters.report.actions);
+    if(filters.report.type === 'report'){
+      this.shouldShowChart = false;
+      this.visibleReportTitle = filters.report.name;
+     
+      this.tableData = this.getTableData(filters.report);
+
+      this.getTableActionList(filters.report.actions);
+    }
+    else if(filters.report.type === 'chart'){
+
+      this.charts = this.getChartData(filters.report);
+
+      this.shouldShowdatatable = false;
+      this.shouldShowChart = true;
+    }
+    
   }
 
   onVenueChange(filters){
@@ -110,9 +141,23 @@ export default class analyticsStockController {
     this.dataFilters.event = filters.event;
   }
 
-  initDatatable(){
+  init(){
+   
+  }
+
+  constructor($filter, $state, $timeout, $window, Spinner, CardActionsCodes, ChartsValueTypes) {
+    "ngInject";
+
+    this.spinner = Spinner;
+
+    this.cardActionsCodes = CardActionsCodes;
+    this.ChartsValueTypes = ChartsValueTypes;
+
+    this.reportTypes = this.getReportTypes();
+
     this.shouldShowActions = false;
     this.shouldShowdatatable = false;   
+    this.shouldShowChart = false;
 
     this.tableData = {};
 
@@ -132,16 +177,8 @@ export default class analyticsStockController {
     //  limit: 5,
      // page: 1
     };
-  }
 
-  constructor($filter, $state, $timeout, $window, Spinner, CardActionsCodes) {
-    "ngInject";
-
-    this.spinner = Spinner;
-
-    this.CardActionsCodes = CardActionsCodes;
-
-    this.initDatatable();
+    //this.init();
 
    // this.tableData = this.getTableData({id:1}); this.shouldShowdatatable = true;
   } 

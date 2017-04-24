@@ -1,17 +1,16 @@
-<!-- <div class=""> 
-<div class="canvas-title">
-	<span>{{ analyticsSummaryCtrl.getCanvasTitle() | translate }}</span>
-</div>
-<canvas id="summaryChart" width="400" height="400"></canvas>
-</div> -->
-<div class='layout-left-right' flex layout-align="stretch stretch">
-	<div class='main-content-full' flex layout="row" layout-align="start start">
-<div class="daily-chart">
-	<bar-chart canvas-title="analyticsSummaryCtrl.titleDailyrevenue" data="analyticsSummaryCtrl.dataDailyrevenue"></bar-chart>
-</div>
-<div class="doughnuts-charts">
-	<doughnut-chart canvas-id="{{analyticsSummaryCtrl.IdRevenuechannel}}" canvas-title="analyticsSummaryCtrl.titleRevenuechannel" data="analyticsSummaryCtrl.dataRevenuechannel"></doughnut-chart>
- <!-- 	<doughnut-chart canvas-id="{{analyticsSummaryCtrl.IdOrderchannel}}" canvas-title="analyticsSummaryCtrl.titleOrderchannel" data="analyticsSummaryCtrl.dataOrderchannel"></doughnut-chart> -->
-</div>
+<div class='summary-view layout-left-right' flex layout-align="stretch stretch">
+	<div class='main-content-full' flex layout="column" layout-align="start start">
+
+    <custom-datafilters on-daterange="analyticsSummaryCtrl.onDaterangeChange(filters)"                      
+                        on-event="analyticsSummaryCtrl.onEventChange(filters)"                    
+                        on-venue="analyticsSummaryCtrl.onVenueChange(filters)">
+    </custom-datafilters>
+
+    <div class="bar-chart" layout-wrap layout="row">
+    	<bar-chart flex="100" ng-repeat="bar in analyticsSummaryCtrl.bars" config="bar" ></bar-chart>
+    </div>
+    <div class="doughnut-chart" layout-wrap layout="row">
+       <doughnut-chart flex="50" ng-repeat="doughnut in analyticsSummaryCtrl.doughnuts" config="doughnut"></doughnut-chart> 
+    </div> 
 </div>
 </div>

@@ -1,27 +1,31 @@
 <div class='stock-view layout-left-right' flex layout-align="stretch stretch">
-  <div class='main-content-full' flex layout="row" layout-align="start start">
-<!-- <md-card class="full-card"> -->
+  <div class='main-content-full' flex layout="column" layout-align="start start">
+
   <custom-datafilters on-daterange="analyticsStockCtrl.onDaterangeChange(filters)" 
                       on-report="analyticsStockCtrl.onReportChange(filters)" 
+                      report-types="analyticsStockCtrl.reportTypes"
                       on-event="analyticsStockCtrl.onEventChange(filters)" 
                       on-customermarketing="analyticsStockCtrl.onCustomerMarketingChange(filters)" 
                       on-venue="analyticsStockCtrl.onVenueChange(filters)">
   </custom-datafilters>
-<!-- </md-card> -->
+
+  <div class="stock-charts" layout="row" ng-if="analyticsStockCtrl.shouldShowChart">
+    <bar-chart flex="100" config="analyticsStockCtrl.charts" ></bar-chart>
+  </div>
 
   <md-card class="full-card" ng-if="analyticsStockCtrl.shouldShowdatatable">
       <md-card-title>
-          <md-card-title-text flex layout="row" layout-align="center start">
-          <h2 class="md-title" flex  translate> {{analyticsStockCtrl.visibleReportTitle}}</h2>
-           <div class="align-action-top" flex layout-align="end" ng-if="analyticsStockCtrl.shouldShowActions">
+          <md-card-title-text flex layout="row" layout-align="space-between start">
+          <h2 class="md-title" translate> {{analyticsStockCtrl.visibleReportTitle}}</h2>
+           <div class="align-action-top" ng-if="analyticsStockCtrl.shouldShowActions">
               <dropdown-actions actions-list="analyticsStockCtrl.actions" on-actions="analyticsStockCtrl.onActions(item)"> </dropdown-actions>
           </div>
           </md-card-title-text>
       </md-card-title>
 
   <md-table-container layout-fill flex>
-    <table md-table md-row-select multiple ng-model="analyticsStockCtrl.selected"> <!-- md-progress="analyticsStockCtrl.promise" -->
-      <thead md-head md-order="analyticsStockCtrl.query.order">  <!-- md-on-reorder="analyticsStockCtrl.getDesserts" -->
+    <table md-table md-row-select multiple ng-model="analyticsStockCtrl.selected">
+      <thead md-head md-order="analyticsStockCtrl.query.order">  
         <tr md-row>
           <th md-column ng-repeat="(key , value) in analyticsStockCtrl.tableData.header" md-order-by="{{key}}"><span>{{value}}</span></th>
      <!--      <th md-column md-order-by="name"><span>Name</span></th>

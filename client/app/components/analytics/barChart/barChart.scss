@@ -1,59 +1,30 @@
 
 .bar-chart-view {
-	md-card-title {
-		padding: 20px;
-	}
 
-	md-card-content {
-		padding: 0px 24px 24px 24px;
-	}	
+/* calc is a work aroud to canvas that do not fills width correctly when container has padding attribute. So calc - padding */
+	> md-card {			
+	//	width: 100%; 
 
-	.main-content-full {
-		flex-flow: row wrap;
+		md-card-title {
+			padding: 20px;	
+		}
 
-		md-card {
-			&.full-card {
-				flex: 1 100%;
+		> md-card-content {
+			padding: 0px 20px 20px 20px;
+		
+			> div {			
+					width:  100%;					
 			}
-		}
-	}
+		}	
+	} 
 
-	.canvas-holder{
-		padding-left: 20px;
-		padding-right: 20px;
-		padding-bottom: 20px;
-	}
-}
-.canvas-title{
-	width: 97px;
-  height: 20px;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: left;
-  color: rgba(0, 0, 0, 0.87);
-  margin-bottom: 30px;
-}
-
-.canvas-chart{
-	width: 100%;
-}
-
-.bar-chart{
-	width: 100%
-}
-
-	canvas{
-			-moz-user-select: none;
-			-webkit-user-select: none;
-			-ms-user-select: none;
+		.align-action-top{
+			margin-top: -15px;
+			max-width: 40px;
 		}
 
-#chartjs-tooltip {
+
+		#chartjs-tooltip {
 			opacity: 1;
 			position: absolute;
 			background: rgba(255, 255, 255, 1);
@@ -66,39 +37,58 @@
 			-webkit-transform: translate(-50%, 0);
 			transform: translate(-50%, 0);
 			min-width: 122px;		
-}
+		}
 
-#chartjs-tooltip.below {
-  -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
-}
+		#chartjs-tooltip.below {
+			-webkit-transform: translate(-50%, 0);
+			transform: translate(-50%, 0);
+		}
 
-#chartjs-tooltip.above:before , #chartjs-tooltip.above:after {
-  top: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
+		#chartjs-tooltip.above:before , #chartjs-tooltip.above:after {
+			top: 100%;
+			left: 50%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
 
-#chartjs-tooltip.above {
-  -webkit-transform: translate(-50%, -100%);
-  transform: translate(-50%, -100%);
-}
+		#chartjs-tooltip.above {
+			-webkit-transform: translate(-50%, -100%);
+			transform: translate(-50%, -100%);
+		}
 
-#chartjs-tooltip.above:after{
-	border-color: rgba(255, 255, 255, 0);
-	border-top-color: #ffffff;
-	border-width: 9px;
-	margin-left: -9px;
-}
+		#chartjs-tooltip.above:after{
+			border-color: rgba(255, 255, 255, 0);
+			border-top-color: #ffffff;
+			border-width: 9px;
+			margin-left: -9px;
+		}
 
-#chartjs-tooltip.above:before {
-  border-color: rgba(209, 209, 209, 0);
-	border-top-color: #d1d1d1;
-	border-width: 13px;
-	margin-left: -13px;
-}
+		#chartjs-tooltip.above:before {
+			border-color: rgba(209, 209, 209, 0);
+			border-top-color: #d1d1d1;
+			border-width: 13px;
+			margin-left: -13px;
+		}
+
+		.chartjs-tooltip-title{
+			font-weight: bold; 
+			font-family: Roboto; 
+			font-size: 11px; 
+			line-height: 0.91; 
+			text-align: center; 
+			margin-bottom: 6px;
+		}
+
+		.chartjs-tooltip-body{
+			font-weight: normal; 
+			font-family: Roboto; 
+			font-size: 11px; 
+			line-height: 0.91; 
+			text-align: center; 
+			color: #131313;
+		}
+	}

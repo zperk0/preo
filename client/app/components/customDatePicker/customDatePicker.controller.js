@@ -3,37 +3,45 @@ export default class customDatePickerController {
     return "customDatePickerController";
   }
 
-  onEnterinputs(event){    	
+  onEnterinputs(event){    
+
+    var divRoot = this.scope.getDirectiveElement()[0];
+
   	var elemId = event.srcElement.id;
-  	var elementFocused = document.getElementById(elemId);
+  	var elementFocused = divRoot.querySelector('#' + elemId);
+
   	elementFocused.setSelectionRange(0, elementFocused.value.length);
-  	this.shouldShowCalendar = true;		
+  	this.shouldShowCalendar = true;	
   }
 
   onBlurinputs(event){
+
+    var divRoot = this.scope.getDirectiveElement()[0];
   	
-	var elemId = event.srcElement.id;
-  	var elem = document.getElementById(elemId);
+  	var elemId = event.srcElement.id;
+    var elem = divRoot.querySelector('#' + elemId);
 
-	var dateInputed = moment(elem.value, 'DD/MM/YYYY', true);
+  	var dateInputed = moment(elem.value, 'DD/MM/YYYY', true);
 
-	if(dateInputed == null || !dateInputed.isValid()){
-		if(elemId === 'fromDate'){
-			elem.value = this.calendarDateFrom.format('DD/MM/YYYY');
-		}else if(elemId === 'endDate'){
-			elem.value = this.calendarDateEnd.format('DD/MM/YYYY');
-		}
-	}
+  	if(dateInputed == null || !dateInputed.isValid()){
+  		if(elemId === 'fromDate'){
+  			elem.value = this.calendarDateFrom.format('DD/MM/YYYY');
+  		}else if(elemId === 'endDate'){
+  			elem.value = this.calendarDateEnd.format('DD/MM/YYYY');
+  		}
+  	}
 
  }
 
   // Trap Div will hide calendar, and automatically fire events: focus & click from element at position X,Y where user clicked
   // This is a workaround to prevent user to click 2 times ( 1 to close trapDiv and 1 to open wanted element)
   clickTrapDiv(e){
-  
-  	this.shouldShowCalendar = false;	
 
-  	var trapDiv = document.getElementById('trapDiv');
+    var divRoot = this.scope.getDirectiveElement()[0];
+  
+  	this.shouldShowCalendar = false;
+
+  	var trapDiv = divRoot.querySelector('#trapDiv');
   	trapDiv.style.display = 'none';
 
   	var elemClicked = document.elementFromPoint(e.clientX, e.clientY);
@@ -43,15 +51,18 @@ export default class customDatePickerController {
   }
 
   onKeyDown(e){
-  	// Allow DEL and Backspace and Arrows
-	if(isNaN(e.key) && (e.keyCode !== 8 && e.keyCode !== 46 && e.keyCode !== 37 && e.keyCode !== 39)){
-	    e.preventDefault();	    
-	}
+    	// Allow DEL and Backspace and Arrows
+  	if(isNaN(e.key) && (e.keyCode !== 8 && e.keyCode !== 46 && e.keyCode !== 37 && e.keyCode !== 39)){
+  	    e.preventDefault();	    
+  	}
   }
 
   onKeyUp(e){
+
+    var divRoot = this.scope.getDirectiveElement()[0];
+
   	var elementId = e.target.id;
-  	var elem = document.getElementById(elementId);
+  	var elem = divRoot.querySelector('#' + elementId);
   	var val = elem.value;
   	
   	// Allow DEL and Backspace and Arrows
@@ -61,9 +72,9 @@ export default class customDatePickerController {
   	
     if (val.match(/^\d{2}$/) !== null) {
 	    elem.value = val + '/';
-	} else if (val.match(/^\d{2}\/\d{2}$/) !== null) {
-	    elem.value = val + '/';
-	}   
+  	} else if (val.match(/^\d{2}\/\d{2}$/) !== null) {
+  	    elem.value = val + '/';
+  	}   
   
   	// Only set datesRange back to parent when data is completed and validated
     if(elem.value.length ==10 && moment(elem.value , 'DD/MM/YYYY', true).isValid()){
@@ -95,6 +106,7 @@ export default class customDatePickerController {
   }  
 
   initCalendar(){
+    
   	var startDate, endDate = moment();  	
 
   	// input texts are only texts formatted as dd/mm/yyyy
@@ -103,53 +115,54 @@ export default class customDatePickerController {
   		startDate = moment(this.datesRange.startDate, 'DD/MM/YYYY', true).format();  
   		this.inputDateFrom = this.datesRange.startDate;
   		this.calendarDateFrom = moment(startDate);
-	}
-	else{
-		this.inputDateFrom = startDate.format('DD/MM/YYYY');
-		this.calendarDateFrom = startDate;
-	}
+  	}
+  	else{
+  		this.inputDateFrom = startDate.format('DD/MM/YYYY');
+  		this.calendarDateFrom = startDate;
+  	}
 
-  	if(this.datesRange.endDate){
-	    endDate = moment(this.datesRange.endDate, 'DD/MM/YYYY', true).format();		
-	    this.inputDateEnd = this.datesRange.endDate;
-	    this.calendarDateEnd = moment(endDate);
-	}
-	else{
-		this.calendarDateEnd = endDate;
-		this.inputDateEnd = endDate.format('DD/MM/YYYY');
-	}    
+    	if(this.datesRange.endDate){
+  	    endDate = moment(this.datesRange.endDate, 'DD/MM/YYYY', true).format();		
+  	    this.inputDateEnd = this.datesRange.endDate;
+  	    this.calendarDateEnd = moment(endDate);
+  	}
+  	else{
+  		this.calendarDateEnd = endDate;
+  		this.inputDateEnd = endDate.format('DD/MM/YYYY');
+  	}    
 
-	var startCallback = function(day){
-		this.inputDateFrom= day.format('DD/MM/YYYY');
-		this.datesRange.startDate = day.format('DD/MM/YYYY');		
-	}.bind(this);
+  	var startCallback = function(day){
+  		this.inputDateFrom= day.format('DD/MM/YYYY');
+  		this.datesRange.startDate = day.format('DD/MM/YYYY');		
+  	}.bind(this);
 
-	this.optionsStartDate = {
-	    start: this.calendarDateFrom.add('month'),
-	    months: 1,	
-	    template: require('./calendarPicker.tpl.html'),	   
-	    callback: startCallback
-	}
+  	this.optionsStartDate = {
+  	    start: this.calendarDateFrom.add('month'),
+  	    months: 1,	
+  	    template: require('./calendarPicker.tpl.html'),	   
+  	    callback: startCallback
+  	}
 
-	var endCallback = function(day){
-		this.inputDateEnd= day.format('DD/MM/YYYY');
-		this.datesRange.endDate = day.format('DD/MM/YYYY');	
-	}.bind(this);
+  	var endCallback = function(day){
+  		this.inputDateEnd= day.format('DD/MM/YYYY');
+  		this.datesRange.endDate = day.format('DD/MM/YYYY');	
+  	}.bind(this);
 
-	this.optionsEndDate = {
-	    start: this.calendarDateEnd.add('month'),	   
-	    months: 1,
-	    template: require('./calendarPicker.tpl.html'),	   
-	    callback: endCallback
-	}
+  	this.optionsEndDate = {
+  	    start: this.calendarDateEnd.add('month'),	   
+  	    months: 1,
+  	    template: require('./calendarPicker.tpl.html'),	   
+  	    callback: endCallback
+  	}
   }
 
-  constructor($timeout, Spinner, Snack) {
+  constructor($scope, $timeout, Spinner, Snack) {
     "ngInject";
     
-    this.shouldShowCalendar =false;   
-   
-	this.initCalendar();
+    this.shouldShowCalendar =false; 
+    this.scope = $scope;
+
+	  this.initCalendar();
   }
 
 }
