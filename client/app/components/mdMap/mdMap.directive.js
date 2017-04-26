@@ -24,6 +24,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
       var shouldCallClickEvent = true;
       var lastClick = {};
       var updateMap = false; //Used to know if map should be updated when a venue change address/city/country
+      var lastActiveElement = null;
 
       function init(){
 
@@ -65,6 +66,8 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
       }
 
       function drawDeliveryZones(deliveryZonesToSkip){
+
+        lastActiveElement = document.activeElement;
         console.log("drawing deliveryZones", deliveryZonesToSkip, scope.deliveryZones)
 
         if (scope.deliveryZones){
@@ -344,6 +347,12 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
               angular.element(document.body).removeClass("map-drawing-polygon");
 
               handlePolygonCancelled(layer);
+
+              if (lastActiveElement) {
+                lastActiveElement.focus()
+              }
+
+              lastActiveElement = null;
             }
         });
 
@@ -428,7 +437,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
               var deliveryZonesToSkip = [];
               var propsToCompare = ['polygon', 'distance', '$color', 'editable'];
 
-              console.log("comparing", newDeliveryZones, oldDeliveryZones)
+              // console.log("comparing", newDeliveryZones, oldDeliveryZones)
               //Diff delivery zones, remove the shapes that are not in new array
               if (!firstLoad){
                 for (let i=0;i<oldDeliveryZones.length;i++){
@@ -437,22 +446,22 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
                     removeFromMap(oldDeliveryZone)
                   }
                   else { //do a diff and only draw changes
-                    console.log("in else")
+                    // console.log("in else")
                     for (let j=0;j<newDeliveryZones.length;j++){ // find matches in old/new delivery zones
-                      console.log("searching for matches")
+                      // console.log("searching for matches")
                       let newDeliveryZone = newDeliveryZones[j];
                       if (newDeliveryZone.id === oldDeliveryZone.id){   //if we find a match
-                        console.log("found a match", newDeliveryZone, oldDeliveryZone)
+                        // console.log("found a match", newDeliveryZone, oldDeliveryZone)
                         if (newDeliveryZone.type !== oldDeliveryZone.type){ //and type is different
-                          console.log("type is different", newDeliveryZone, oldDeliveryZone)
+                          // console.log("type is different", newDeliveryZone, oldDeliveryZone)
                           removeFromMap(oldDeliveryZone); //remove old drawing to craete space for a new one
                         } else {
                           let shouldSkip = true; //if type is the same check if there's any changes
                           for (let k=0;k<propsToCompare.length;k++){
                             let prop = propsToCompare[k];
-                            console.log("comparing prop", newDeliveryZone[prop], oldDeliveryZone[prop])
+                            // console.log("comparing prop", newDeliveryZone[prop], oldDeliveryZone[prop])
                             if (newDeliveryZone[prop] != oldDeliveryZone[prop]){ //compare relevant properties
-                              console.log("pro is different", newDeliveryZone, oldDeliveryZone, prop)
+                              // console.log("pro is different", newDeliveryZone, oldDeliveryZone, prop)
                               shouldSkip= false
                               break;
                             }

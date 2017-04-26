@@ -50,6 +50,9 @@ export default class contextualDrawerService {
     this.deferred = this.$q.defer();
 
     this.id = id;
+
+    this.parentElement = angular.element(document.querySelectorAll("md-sidenav[md-component-id='" + this.id + "']")).parent();
+
     this.$mdSidenav(id)
       .toggle()
       .then(function (argument) {
@@ -65,12 +68,20 @@ export default class contextualDrawerService {
 
   watchEspaceKey () {
 
-    this.body['on']('keydown', this.onKeyDown.bind(this));
+    if (!this.parentElement) {
+      return;
+    }
+
+    this.parentElement['on']('keydown', this.onKeyDown.bind(this));
   }
 
   offWatchEspaceKey () {
 
-    this.body['off']('keydown', this.onKeyDown.bind(this));
+    if (!this.parentElement) {
+      return;
+    }
+
+    this.parentElement['off']('keydown', this.onKeyDown.bind(this));
   }
 
   onKeyDown (ev) {
@@ -92,8 +103,6 @@ export default class contextualDrawerService {
     this.$mdConstant =$mdConstant;
 
     this.deferred = null;
-
-    this.body = angular.element(document.getElementsByTagName('body')[0]);
 
   }
 }
