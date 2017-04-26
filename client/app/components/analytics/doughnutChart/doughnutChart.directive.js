@@ -1,6 +1,6 @@
-import controller from './doughnutChart.controller'
+//import controller from './doughnutChart.controller'
 
-export default function doughnutChart(VenueService, ChartsValueTypes){
+export default function doughnutChart(VenueService, ChartsValueTypes, CardActionsCodes){
   'ngInject';
   return {
     restrict: 'E',
@@ -8,18 +8,34 @@ export default function doughnutChart(VenueService, ChartsValueTypes){
       config:"="      
     },
     template: require("./doughnutChart.tpl.html"),
-    controller: controller.UID,
-    controllerAs: "doughnutChartCtrl",
+    //controller: controller.UID,
+   // controllerAs: "doughnutChartCtrl",
     replace: true,
-    bindToController: true, 
+   // bindToController: true, 
     link: (scope, elem, attr, ctrl) => {
 
-    var canvas = elem[0].querySelector('#doughnutchart');
-    var chartValues = ctrl.config.data;
-    var currencySymbol = VenueService.currentVenue.ccySymbol;
-    var isCurrency = ctrl.config.type === ChartsValueTypes.CURRENCY ? true : false;
+    scope.onActions = _onAction;
+    scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;
 
-     _initChart();
+    var canvas = elem[0].querySelector('#doughnutchart');
+    var chartValues = scope.config.data;
+    var currencySymbol = VenueService.currentVenue.ccySymbol;
+    var isCurrency = scope.config.type === ChartsValueTypes.CURRENCY ? true : false;
+    var legendDone = false;
+
+    var doughnutChart = _initChart();
+
+    function _onAction(option){      
+
+        if(option === CardActionsCodes.EXPORT_CSV){
+
+        }
+
+        if(option === CardActionsCodes.EXPORT_PDF){
+
+        }
+       
+    }
      
     function _initChart(){
 
@@ -30,7 +46,8 @@ export default function doughnutChart(VenueService, ChartsValueTypes){
       var gradient2 = ctx.createLinearGradient(0, 0, 0, 400);
           gradient2.addColorStop(1, '#0288d1'); // start
           gradient2.addColorStop(0, '#7247b0'); // end
-          var doughnutChart = new Chart(ctx, {
+     
+      return new Chart(ctx, {
             type: 'doughnut',
             data: {
               labels: chartValues.labels,
@@ -69,11 +86,11 @@ export default function doughnutChart(VenueService, ChartsValueTypes){
     function _customLegend(chart){
 
       // This is a workaround. When using Custom Legend, chart is recreating the same legend multiple times.
-      if(ctrl.legendDone){    
+      if(legendDone){    
         return;
       }
 
-      ctrl.legendDone = true;
+      legendDone = true;
       
        var tooltipEl = elem[0].querySelector('#doughnut-legend');
         tooltipEl.innerHTML = '<table></table>';

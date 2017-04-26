@@ -4,5 +4,5 @@ export default {
   DAILY_ORDERS: { id: "3", name: 'Daily orders'},
   WEEKLY_ORDERS: { id: "4", name: 'Weekly orders'},
   MONTHLY_ORDERS: { id: "5", name: 'Monthly orders'},
-  PUSH_NOTIFICATION: { id: "6", name: 'Send push notification'}
+  NOTIFICATION: { id: "6", name: 'Send push notification'}
 };

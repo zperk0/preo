@@ -1,6 +1,6 @@
-import controller from './barChart.controller'
+//import controller from './barChart.controller'
 
-export default function barChart(VenueService, ChartsValueTypes){
+export default function barChart(VenueService, ChartsValueTypes, CardActionsCodes){
   'ngInject';
   return {
     restrict: 'E',
@@ -8,20 +8,64 @@ export default function barChart(VenueService, ChartsValueTypes){
       config:"="  
     },
     template: require("./barChart.tpl.html"),
-    controller: controller.UID,
-    controllerAs: "barChartCtrl",
-    bindToController: true,
+    //controller: controller.UID,
+    //controllerAs: "barChartCtrl",
+   // bindToController: true,
     replace:true,
     link: (scope, elem, attr, ctrl) => {
 
      // ctrl.initCanvas(elem); 
-   
+ 
+      scope.onActions = _onAction;
+      scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;
+
       var currencySymbol = VenueService.currentVenue.ccySymbol;
       var canvas = elem[0].querySelector('#barchart');
-      var chartValues = ctrl.config.data;
-      var isCurrency = ctrl.config.type === ChartsValueTypes.CURRENCY ? true : false;
+      var chartValues = scope.config.data;
+      var isCurrency = scope.config.type === ChartsValueTypes.CURRENCY ? true : false;
+      
+      //always init with Daily view
+      var currentDataVisualization = CardActionsCodes.DAILY_ORDERS;
 
-      _initChart();
+      var barChart = _initChart();
+
+      function _onAction(option){
+
+        if(currentDataVisualization === option)
+          return;        
+
+        if(option === CardActionsCodes.EXPORT_CSV){
+
+        }
+
+        if(option === CardActionsCodes.EXPORT_PDF){
+
+        }
+
+        if(option === CardActionsCodes.MONTHLY_ORDERS){
+              
+          var oldData = [];
+          chartValues.y.forEach((i) => { oldData.push(i/2)});
+          var oldLabel = [];
+          chartValues.x.forEach((z) => {oldLabel.push('-'+z+'-')});
+
+          barChart.data.datasets[0].data = oldData;
+          barChart.data.labels = oldLabel;
+          barChart.update();
+
+          currentDataVisualization = option;
+        }
+
+        if(option === CardActionsCodes.WEEKLY_ORDERS){
+
+          currentDataVisualization = option;
+        }
+
+        if(option === CardActionsCodes.DAILY_ORDERS){
+
+          currentDataVisualization = option;
+        }
+      }
 
       function _calcYaxisLegend(){
         var maxValue = Math.max(...chartValues.y);        
@@ -132,7 +176,7 @@ export default function barChart(VenueService, ChartsValueTypes){
         
         var chartOptions = _customOptions();
 
-        var myChart = new Chart(ctx, {
+        return new Chart(ctx, {
           type: 'bar',
           data: {
             labels: chartValues.x,

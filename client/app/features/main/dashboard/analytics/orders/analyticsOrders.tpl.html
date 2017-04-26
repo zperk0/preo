@@ -1,1 +1,39 @@
-<div></div>
+<div class='orders-analytics-view layout-left-right' flex layout-align="stretch stretch">
+  <div class='main-content-full' flex layout="column" layout-align="start start">
+
+  <custom-datafilters has-daterange="true" 
+                      has-report="true"   
+                      report-types="analyticsOrdersCtrl.reportTypes"                    
+                      on-filter="analyticsOrdersCtrl.onFilter(filters, typeChanged)">
+  </custom-datafilters>
+
+  <md-card class="full-card" ng-if="analyticsOrdersCtrl.shouldShowdatatable">
+      <md-card-title>
+          <md-card-title-text flex layout="row" layout-align="space-between start">
+          <h2 class="md-title" translate> {{analyticsOrdersCtrl.visibleReportTitle}}</h2>
+           <div class="align-action-top" ng-if="analyticsOrdersCtrl.shouldShowActions">
+              <dropdown-actions actions-list="analyticsOrdersCtrl.actions" on-actions="analyticsOrdersCtrl.onActions(item)"> </dropdown-actions>
+          </div>
+          </md-card-title-text>
+      </md-card-title>
+
+  <md-table-container layout-fill flex>
+    <table md-table md-row-select multiple ng-model="analyticsOrdersCtrl.selected">
+      <thead md-head md-order="analyticsOrdersCtrl.query.order">  
+        <tr md-row>
+          <th md-column ng-repeat="(key , value) in analyticsOrdersCtrl.tableData.header" md-order-by="{{key}}"><span>{{value}}</span></th>     
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsOrdersCtrl.tableData.body | orderBy:analyticsOrdersCtrl.query.order">  <!-- md-on-select= -->
+          <td md-cell ng-if="key !== 'id'" ng-repeat="(key, value) in row">             
+             <span>{{value}}</span>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->
+  </md-card>
+</div>
+</div>

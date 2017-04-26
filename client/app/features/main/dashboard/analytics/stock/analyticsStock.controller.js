@@ -84,36 +84,48 @@ export default class analyticsStockController {
     return obj;
   }
 
-  onDaterangeChange(filters){
-    console.log(' DATE RANGE CHANGE ->', filters);
+  onFilter(filters , typeChanged){ console.log('filters coming -> ', filters);
+    if(typeChanged == 'Report'){
+      this.onReportChange(filters.report);
+    }
 
-    this.dataFilters.daterange = filters.datesRange;
+    if(typeChanged == 'Venue'){
+      this.onVenueChange(filters.venues);
+    }
+
+    if(typeChanged == 'DateRange'){
+      this.onDaterangeChange(filters.datesRange);
+    }
+    
+    if(typeChanged == 'Event'){
+      this.onEventChange(filters.event);
+    }
+
+  }
+
+  onDaterangeChange(datesRange){
+    console.log(' DATE RANGE CHANGE ->', datesRange);
+
+    this.dataFilters.daterange = datesRange;
     this.dataFilters.event = null;
   }
 
-  onReportChange(filters){
-    console.log(' REPORT ->', filters);    
+  onReportChange(report){
+    console.log(' REPORT ->', report);    
 
-    // IF report HAS NO customermarketing checkbox, set the filter in md-data-table to DO NOT filter for this field
-    // IF report HAS customermarketing checkbox, set the filter to 'empty' value
-    if(filters.report.hasCustomerMarketing)
-      this.filterCustomerMarketing = '!!'; //empty
-    else
-      this.filterCustomerMarketing = '!';
+    this.dataFilters.report = report;
 
-    this.dataFilters.report = filters.report;
-
-    if(filters.report.type === 'report'){
+    if(report.type === 'report'){
       this.shouldShowChart = false;
-      this.visibleReportTitle = filters.report.name;
+      this.visibleReportTitle = report.name;
      
-      this.tableData = this.getTableData(filters.report);
+      this.tableData = this.getTableData(report);
 
-      this.getTableActionList(filters.report.actions);
+      this.getTableActionList(report.actions);
     }
-    else if(filters.report.type === 'chart'){
+    else if(report.type === 'chart'){
 
-      this.charts = this.getChartData(filters.report);
+      this.charts = this.getChartData(report);
 
       this.shouldShowdatatable = false;
       this.shouldShowChart = true;
@@ -121,24 +133,14 @@ export default class analyticsStockController {
     
   }
 
-  onVenueChange(filters){
-    console.log('VENUE->', filters);
-  }
+  onVenueChange(venues){
+    console.log('VENUE->', venues);
+  }  
 
-  onCustomerMarketingChange(filters){
-    console.log(' MARKET ->', filters);
-    if(filters.customerMarketing)
-      this.filterCustomerMarketing = filters.customerMarketing;
-    else
-      this.filterCustomerMarketing = '!!'; //empty
-    
-    //this.tableData = this.filtertableData(value);
-  }
+  onEventChange(event){
+    console.log(' EVENT CHANGE ->', event);
 
-  onEventChange(filters){
-    console.log(' EVENT CHANGE ->', filters);
-
-    this.dataFilters.event = filters.event;
+    this.dataFilters.event = event;
   }
 
   init(){

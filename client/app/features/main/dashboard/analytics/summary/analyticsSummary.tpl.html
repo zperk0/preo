@@ -1,11 +1,14 @@
 <div class='summary-view layout-left-right' flex layout-align="stretch stretch">
 	<div class='main-content-full' flex layout="column" layout-align="start start">
 
-    <custom-datafilters on-daterange="analyticsSummaryCtrl.onDaterangeChange(filters)"                      
+   <!--  <custom-datafilters on-daterange="analyticsSummaryCtrl.onDaterangeChange(filters)"                      
                         on-event="analyticsSummaryCtrl.onEventChange(filters)"                    
                         on-venue="analyticsSummaryCtrl.onVenueChange(filters)">
-    </custom-datafilters>
+    </custom-datafilters> -->
 
+  <custom-datafilters has-daterange="true"                                          
+                      on-filter="analyticsSummaryCtrl.onFilter(filters, typeChanged)">
+  </custom-datafilters>
     <div class="bar-chart" layout-wrap layout="row">
     	<bar-chart flex="100" ng-repeat="bar in analyticsSummaryCtrl.bars" config="bar" ></bar-chart>
     </div>

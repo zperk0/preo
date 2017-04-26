@@ -3,21 +3,37 @@ export default class analyticsSummaryController {
     return "analyticsSummaryController";
   }
 
-   onDaterangeChange(filters){
-    console.log(' DATE RANGE CHANGE ->', filters);
+  onFilter(filters , typeChanged){
+    
+    if(typeChanged == 'Venue'){
+      this.onVenueChange(filters.venues);
+    }
 
-    this.dataFilters.daterange = filters.datesRange;
+    if(typeChanged == 'DateRange'){
+      this.onDaterangeChange(filters.datesRange);
+    }    
+
+    if(typeChanged == 'Event'){
+      this.onEventChange(filters.event);
+    }
+
+  }
+
+  onDaterangeChange(datesRange){
+    console.log(' DATE RANGE CHANGE ->', datesRange);
+
+    this.dataFilters.daterange = datesRange;
     this.dataFilters.event = null;
   }  
 
-  onVenueChange(filters){
-    console.log('VENUE->', filters);
+  onVenueChange(venues){
+    console.log('VENUE->', venues);
   }  
 
-  onEventChange(filters){
-    console.log(' EVENT CHANGE ->', filters);
+  onEventChange(event){
+    console.log(' EVENT CHANGE ->', event);
 
-    this.dataFilters.event = filters.event;
+    this.dataFilters.event = event;
   }
 
   constructor($state, $timeout, $window, Spinner,  ChartsValueTypes, CardActionsCodes) {
@@ -55,21 +71,21 @@ export default class analyticsSummaryController {
     [{
       chartTitle: 'Daily Revenue',
       data: { x:['2017-05-01', '2017-01-01', '2017-02-02', '2017-03-03', '2016-03-04', '2016-05-07', '2017-01-30'] , y:[10, 15, 20 ,25 , 30 , 35 , 40]},
-      actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF],
+      actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_ORDERS, this.cardActionsCodes.WEEKLY_ORDERS, this.cardActionsCodes.DAILY_ORDERS],
       type: this.ChartsValueTypes.CURRENCY
     },
 
      {
       chartTitle: 'Daily Orders',
       data: { x:['2017-05-01', '2017-01-01', '2017-02-02', '2017-03-03', '2016-03-04', '2016-05-07', '2017-01-30'] , y:[1, 15, 20 ,255 , 456 , 358.65 , 856.5]},
-      actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF],
+      actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_ORDERS, this.cardActionsCodes.WEEKLY_ORDERS, this.cardActionsCodes.DAILY_ORDERS],
       type: this.ChartsValueTypes.NUMBER
     },
 
     {
       chartTitle: 'Daily Customers',
       data: { x:['2017-05-01', '2017-01-01', '2017-02-02', '2017-03-03', '2016-03-04', '2016-05-07', '2017-01-30'] , y:[100, 200, 2000 ,5654 , 10123.12 , 15435 , 18435.76]},
-      actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF],
+      actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_ORDERS, this.cardActionsCodes.WEEKLY_ORDERS, this.cardActionsCodes.DAILY_ORDERS],
       type: this.ChartsValueTypes.NUMBER
     }];
 
