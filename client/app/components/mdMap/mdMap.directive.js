@@ -25,6 +25,16 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
       var lastClick = {};
       var updateMap = false; //Used to know if map should be updated when a venue change address/city/country
 
+      // This is a hack to prevent LeafLet Polygon to add a new vertex when mouse drag event is fired
+      function disableMouseTouch() {
+        var originalOnTouch = L.Draw.Polyline.prototype._onTouch;
+        L.Draw.Polyline.prototype._onTouch = e => {
+          if( e.originalEvent.pointerType != 'mouse' ) {
+            return originalOnTouch.call(this, e);
+          }
+        }
+      }
+
       function init(){
 
         if(scope.venue){          
@@ -40,6 +50,8 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
             placeCenterAndPin();
           }
         }
+
+        disableMouseTouch();
       }
 
       function searchGeocode(){
@@ -113,7 +125,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
 
             polygonDrawer = new L.Draw.Polygon(scope.map);
             polygonDrawer.setOptions({fillColor:deliveryZone.$color.border, editable:true, fillOpacity:1, stroke:true, color:deliveryZone.$color.border,zIndex:deliveryZone.id});
-            
+
             return polygonDrawer.enable(); //new L.Draw.Polygon(scope.map).enable();
           }
 
