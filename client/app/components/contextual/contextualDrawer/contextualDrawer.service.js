@@ -26,6 +26,7 @@ export default class contextualDrawerService {
       this.id = false;
     }
     this.clearLocationParam();
+    this.offWatchEspaceKey();
   }
 
   cancel(err){
@@ -54,21 +55,45 @@ export default class contextualDrawerService {
       .then(function (argument) {
 
         console.log(arguments);
-      })
+      });
+
+    this.watchEspaceKey();
 
     return this.deferred.promise
 
   }
 
-  constructor($compile, $rootScope, $q, $mdSidenav, $location) {
+  watchEspaceKey () {
+
+    this.body['on']('keydown', this.onKeyDown.bind(this));
+  }
+
+  offWatchEspaceKey () {
+
+    this.body['off']('keydown', this.onKeyDown.bind(this));
+  }
+
+  onKeyDown (ev) {
+
+    var isEscape = (ev.keyCode === this.$mdConstant.KEY_CODE.ESCAPE);
+
+    if (isEscape) {
+      this.cancel();
+    }
+  }
+
+  constructor($compile, $rootScope, $q, $mdSidenav, $mdConstant, $location) {
     "ngInject";
     this.$location = $location;
     this.$compile = $compile;
     this.$rootScope = $rootScope;
     this.$q = $q;
     this.$mdSidenav =$mdSidenav;
+    this.$mdConstant =$mdConstant;
 
     this.deferred = null;
+
+    this.body = angular.element(document.getElementsByTagName('body')[0]);
 
   }
 }

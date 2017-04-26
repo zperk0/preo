@@ -7,8 +7,19 @@ export default class deliveryZoneController {
 
   onEdit ($event){
     this.originalItem  = angular.copy(this.deliveryZone);
-    this.DeliveryZoneService.setEditableDeliveryZone(this.deliveryZone);
-    this.contextual.showDrawer('deliveryZonesEdit');
+
+    this.contextual.showDrawer('deliveryZonesEdit')
+      .then(() => {
+
+      }, () => {
+
+        this.DeliveryZoneService.cancelEditing();
+      });
+
+    this.$timeout(() => {
+
+      this.DeliveryZoneService.setEditableDeliveryZone(this.deliveryZone);
+    });
 
   }
 
@@ -66,6 +77,7 @@ console.log('DELETE OK - sTEP 0');
     this.LabelService = LabelService;
     this.contextual = contextual;
     this.DeliveryZoneService = DeliveryZoneService;
+    this.$timeout = $timeout;
     this.newModifiers = [];
   }
 }
