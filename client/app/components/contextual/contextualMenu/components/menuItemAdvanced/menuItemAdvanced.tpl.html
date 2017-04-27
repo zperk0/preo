@@ -26,6 +26,17 @@
   </div>
   <div class="checkbox-row" layout="row" layout-align="start center">
     <md-input-container flex>
+        <span class="label-text" translate>Assign code:</span>
+        <md-checkbox aria-label="E-voucher" ng-model="menuItemAdvancedCtrl.item.$assignCodeEmail" ng-disabled="!menuItemAdvancedCtrl.item.$voucherTypeEmail">
+          {{'E-voucher' | translate}}
+        </md-checkbox>
+        <md-checkbox aria-label="Post voucher" ng-model="menuItemAdvancedCtrl.item.$assignCodePost" ng-disabled="!menuItemAdvancedCtrl.item.$voucherTypePost">
+          {{'Post voucher' | translate}}
+        </md-checkbox>
+    </md-input-container>
+  </div>
+  <div class="checkbox-row" layout="row" layout-align="start center">
+    <md-input-container flex>
         <span class="label-text" translate>Allow custom messages:</span>
         <md-checkbox aria-label="Only e-voucher" ng-model="menuItemAdvancedCtrl.item.$hasMessageOnlyEmail" ng-change="menuItemAdvancedCtrl.changeOnlyEmailMessage()">
           {{'Only e-voucher' | translate}}
