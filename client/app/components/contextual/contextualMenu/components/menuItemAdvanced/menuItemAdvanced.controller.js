@@ -34,8 +34,10 @@ export default class menuItemAdvancedController {
   }
 
   /* @ngInject */
-  constructor($scope) {
+  constructor($scope, FeatureService) {
     'ngInject';
+
+    this.hasExternalVoucherCodes = FeatureService.hasExternalVoucherCodesFeature();
 
     switch (this.item.voucherType) {
       case Preoday.constants.VoucherType.ALL:

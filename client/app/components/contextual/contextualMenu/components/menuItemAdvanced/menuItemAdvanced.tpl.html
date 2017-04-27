@@ -24,7 +24,7 @@
         <div class="error" ng-if="menuItemAdvancedCtrl.contextualForm.$submitted && !menuItemAdvancedCtrl.item.$voucherTypeEmail && !menuItemAdvancedCtrl.item.$voucherTypePost" translate>You need to select at least one voucher type.</div>
     </md-input-container>
   </div>
-  <div class="checkbox-row" layout="row" layout-align="start center">
+  <div ng-if="menuItemAdvancedCtrl.hasExternalVoucherCodes" class="checkbox-row" layout="row" layout-align="start center">
     <md-input-container flex>
         <span class="label-text" translate>Assign code:</span>
         <md-checkbox aria-label="E-voucher" ng-model="menuItemAdvancedCtrl.item.$assignCodeEmail" ng-disabled="!menuItemAdvancedCtrl.item.$voucherTypeEmail">
