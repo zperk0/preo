@@ -51,14 +51,13 @@ export default class mainController {
 
   logout() {
 
-    this.showSpinner();
     this.UserService.signout()
-      .then(() => {
+      .then(success => {
 
-        this.hideSpinner();
-      }, () => {
+        this.UserService.restore();
+      }, error => {
 
-        this.hideSpinner();
+        this.handleError(error);
       });
   }
 
