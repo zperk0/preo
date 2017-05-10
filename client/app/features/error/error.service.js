@@ -89,6 +89,6 @@ export default class ErrorService {
     this.DELETE_CURRENT_USER = {code:'DELETE_CURRENT_USER', message:gettextCatalog.getString("It is not possible to delete your own user."), title: ''};
     
     // EXPIRED SESSION
-    this.EXPIRED_SESSION = {code:'EXPIRED_SESSION', message:gettextCatalog.getString("Your session has expired. Please login again."), title: 'Timeout'};
+    this.EXPIRED_SESSION = {code:'EXPIRED_SESSION', message:gettextCatalog.getString("Your session has expired. Please login again."), title:gettextCatalog.getString('Timeout')};
   }
 }
