@@ -1,13 +1,11 @@
 <div class='promotion-services'>
-  <md-input-container class="md-block">
-    <div class='label' translate> Apply discount to service methods </div class='label'>
-    <md-radio-group class='type' ng-model="promotion.orderType">
-      <div class="service-group">
-        <md-radio-button ng-value="null" class="md-primary">{{'All' | translate}} </md-radio-button>
-        <md-radio-button value="PICKUP" class="md-primary"> {{'Collection' | translate}} </md-radio-button>
-        <md-radio-button value="DELIVERY" class="md-primary">{{'Delivery' | translate}} </md-radio-button>
-        <md-radio-button value="VOUCHER" class="md-primary"> {{'Voucher' | translate}} </md-radio-button>
-      </div>
-    </md-radio-group>
-  </md-input-container>
+   <md-input-container class="md-block">
+      <div class='label' translate> Apply discount to service methods </div class='label'>
+      <md-checkbox ng-model="isCollection" ng-change="onTypeChange()">
+        {{'Collection' | translate}}
+      </md-checkbox>
+      <md-checkbox ng-model="isDelivery" ng-change="onTypeChange()">
+        {{'Delivery' | translate}}
+      </md-checkbox>
+    </md-input-container>
 </div>
