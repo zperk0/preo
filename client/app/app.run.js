@@ -17,7 +17,7 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
   }
 
   Preoday.Api.headers({
-    'preo-appid': 'webapp-v2 1.0.14'
+    'preo-appid': 'webapp-v2 1.0.15'
   });
 
   $rootScope.previousState = false;
