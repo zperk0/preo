@@ -4,9 +4,8 @@ export default class ContextualDrawerDeliveryZonesEditController {
   }
 
   onCancel(){
-    this.DeliveryZoneService.cancelEditing()
-    this.$mdSidenav('deliveryZonesEdit').close()
-    console.log("close deliveryZonesEdit is done", this.deliveryZoneForm);
+
+    this.contextualDrawer.cancel();
   }
 
   submit(){
@@ -25,10 +24,11 @@ export default class ContextualDrawerDeliveryZonesEditController {
     this.editableDeliveryZone.polygon = [];
   }
 
-  constructor($scope, $stateParams, gettextCatalog, $mdSidenav, DeliveryZoneService, VenueService) {
+  constructor($scope, $stateParams, gettextCatalog, $mdSidenav, DeliveryZoneService, contextualDrawer, VenueService) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.DeliveryZoneService=DeliveryZoneService;
+    this.contextualDrawer=contextualDrawer;
     this.editableData = DeliveryZoneService.editableData;
     this.distanceUnit = VenueService.getKmOrMiles();
     this.translatedDistanceUnit = "kms";

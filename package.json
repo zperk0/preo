@@ -1,6 +1,6 @@
 {
   "name": "webapp-v2",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "",
   "scripts": {
     "build-debug": "webpack --bail --type build  --env prod --progress",

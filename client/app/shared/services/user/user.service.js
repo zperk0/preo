@@ -72,14 +72,15 @@ export default class UserService {
     let deferred = this.$q.defer();
 
     Preoday.User.signout()
-      .then(deferred.resolve, deferred.reject);
+      .then(success => {
+        deferred.resolve(success);
 
-    if (!shouldKeepInScreen) {
-      window.location.replace("#/auth/signin")
-      setTimeout(function(){
-        window.location.reload();
-      },300)
-    }
+        if (!shouldKeepInScreen) {
+          this.$state.go('redirect', { destination: 'auth.signin', timeout: 1000, refresh: true });
+        }
+      }, error => {
+        deferred.reject(error);
+      });
 
     return deferred.promise;
   }
@@ -126,13 +127,14 @@ export default class UserService {
     return deferred.promise;
   }
 
-  constructor($q, $rootScope, BroadcastEvents, UtilsService, PermissionService) {
+  constructor($q, $rootScope, BroadcastEvents, UtilsService, PermissionService, $state) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
     this.UtilsService = UtilsService;
     this.PermissionService = PermissionService;
+    this.$state = $state;
 
     this.authDeferred = null;
   }

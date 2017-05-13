@@ -16,7 +16,7 @@ export default class venueModeSelectController {
     function handleError(error){
       console.log("handling error", error);
       this.Spinner.hide("venue-mode");
-      if (error && error.status == 403){
+      if (error){
         if (error.message && error.message.indexOf("one payment type")>-1){
            this.DialogService.show(this.ErrorService.VENUE_MODE_PAYMENT.title, this.ErrorService.VENUE_MODE_PAYMENT.message, [{
              name: this.LabelService.CONFIRMATION

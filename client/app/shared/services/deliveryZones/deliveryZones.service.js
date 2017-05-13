@@ -154,8 +154,8 @@ export default class DeliveryZoneService {
         description:'',
       },
       $color:this.colors[index]
-    })
-    this.contextual.showDrawer('deliveryZonesEdit');
+    });
+
     this.data.deliveryZones.push(this.editableDeliveryZone);
   }
 
@@ -194,7 +194,7 @@ export default class DeliveryZoneService {
     this.data = {
       deliveryZones:[]
     }
-    this.colors =[ 
+    this.colors =[
       {border:'#FFAB00', center:'rgba(255, 171, 0, 0.15)'},
       {border:"#F8A787", center:'rgba(248, 167, 135, 0.15)'},
       {border:"#C0ADD4", center:'rgba(193, 173, 212, 0.15)'},

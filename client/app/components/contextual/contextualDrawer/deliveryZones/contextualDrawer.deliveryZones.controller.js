@@ -3,14 +3,6 @@ export default class contextualDrawerOutletsController {
     return "ContextualDrawerDeliveryZones";
   }
 
-  close(){
-    this.$mdSidenav('outlets').close()
-      .then(function () {
-        console.log("close Modifiers is done");
-      });
-
-  }
-
   constructor($scope, $stateParams, $mdSidenav, DeliveryZoneService) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;

@@ -231,6 +231,16 @@ export default class menuItemController {
         this.item.voucherType = Preoday.constants.VoucherType.POST;
       }
 
+      if (entity.$assignCodeEmail && entity.$assignCodePost) {
+        this.item.assignCode = Preoday.constants.VoucherType.ALL;
+      } else if (entity.$assignCodeEmail) {
+        this.item.assignCode = Preoday.constants.VoucherType.EMAIL;
+      } else if (entity.$assignCodePost) {
+        this.item.assignCode = Preoday.constants.VoucherType.POST;
+      } else {
+        this.item.assignCode = Preoday.constants.VoucherType.NONE;
+      }
+
       if (entity.$hasMessageAnyVoucher) {
         this.item.hasMessage = 1;
       } else if (entity.$hasMessageOnlyEmail) {
