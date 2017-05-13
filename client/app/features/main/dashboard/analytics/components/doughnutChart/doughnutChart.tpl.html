@@ -1,0 +1,22 @@
+<div flex layout="column" class="doughnut-chart-view ">
+	<md-card flex layout="column" md-theme="default">
+		<md-card-title >
+			<md-card-title-text flex layout="row" layout-align="space-between start">
+				<h2 class="md-title" translate> {{ config.name}}</h2>
+				<form action={{exportDataUrl}} method='POST' ng-submit='getExportData()'>
+				  <input name='data' value='{{exportData}}' type='hidden'/>
+					<div class="align-action-top" ng-if="shouldShowActions">
+						<dropdown-actions actions-list="config.actions" on-actions="onActions(item)"> </dropdown-actions>
+					</div>
+				  <button id="postData" class="btn-form-analytics" ng-click=""></button>
+				</form> 				
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-content flex layout="column">
+			<div flex>
+				<canvas id="doughnutchart" ></canvas>
+			</div>
+			<div id="doughnut-legend" class="chart-legend"></div>
+		</md-card-content>
+	</md-card>
+</div>

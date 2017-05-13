@@ -1,49 +1,80 @@
 <div class='stock-analytics-view layout-left-right' flex layout-align="stretch stretch">
   <div class='main-content-full' flex layout="column" layout-align="start start">
 
-  <custom-datafilters has-daterange="true" 
-                      has-report="true"   
-                      report-types="analyticsStockCtrl.reportTypes"                    
-                      on-filter="analyticsStockCtrl.onFilter(filters, typeChanged)">
+  <custom-datafilters has-daterange="true"
+    has-report="true"
+    report-types="analyticsStockCtrl.reportTypes"
+    on-filter="analyticsStockCtrl.onFilter(filters, typeChanged)">
   </custom-datafilters>
+  
+  <!-- <md-card class="item-filter" flex ng-if="analyticsStockCtrl.shouldShowItemFilter">
+    <md-card-content flex layout="column">
+      <md-input-container flex>
+        <label translate>Item name</label>
+        <md-select flex ng-model="analyticsStockCtrl.dataFilters.item" ng-model-options="{trackBy: '$value.id'}" ng-change="analyticsStockCtrl.onFilter(analyticsStockCtrl.dataFilters,'Item')">
+          <md-option ng-repeat="item in analyticsStockCtrl.reportItems | orderBy: 'name' track by item.menuItemId" ng-value="item">
+            {{ item.name }}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </md-card-content>
+  </md-card> -->
 
-  <div class="stock-charts" layout="row" ng-if="analyticsStockCtrl.shouldShowChart">
-    <bar-chart flex="100" config="analyticsStockCtrl.charts" ></bar-chart>
+  <div class="stock-charts" layout="column" ng-if="analyticsStockCtrl.shouldShowChart">    
+    <bar-chart flex="100" config="analyticsStockCtrl.chartData" ></bar-chart>
   </div>
 
-  <md-card class="full-card" ng-if="analyticsStockCtrl.shouldShowdatatable">
-      <md-card-title>
-          <md-card-title-text flex layout="row" layout-align="space-between start">
-          <h2 class="md-title" translate> {{analyticsStockCtrl.visibleReportTitle}}</h2>
-           <div class="align-action-top" ng-if="analyticsStockCtrl.shouldShowActions">
+  <md-card flex layout="column" ng-if="analyticsStockCtrl.shouldShowdatatable">
+    <md-card-title>
+      <md-card-title-text flex layout="row" layout-align="space-between start">
+        <h2 class="md-title" translate> {{analyticsStockCtrl.reportTitle}}</h2>
+        <form action={{analyticsStockCtrl.exportDataUrl}} method='POST' ng-submit='analyticsStockCtrl.getExportData()'>
+          <input name='data' value='{{analyticsStockCtrl.exportData}}' type='hidden'/>
+            <div class="align-action-top" ng-if="analyticsStockCtrl.shouldShowActions">
               <dropdown-actions actions-list="analyticsStockCtrl.actions" on-actions="analyticsStockCtrl.onActions(item)"> </dropdown-actions>
-          </div>
-          </md-card-title-text>
-      </md-card-title>
+            </div>
+            <button id="postData" class="btn-form-analytics" ng-click=""></button>
+        </form>
+      </md-card-title-text>
+    </md-card-title>
 
-  <md-table-container layout-fill flex>
-    <table md-table md-row-select multiple ng-model="analyticsStockCtrl.selected">
-      <thead md-head md-order="analyticsStockCtrl.query.order">  
-        <tr md-row>
-          <th md-column ng-repeat="(key , value) in analyticsStockCtrl.tableData.header" md-order-by="{{key}}"><span>{{value}}</span></th>
-     <!--      <th md-column md-order-by="name"><span>Name</span></th>
-          <th md-column md-numeric md-order-by="quantity"><span>Quantity</span></th>
-          <th md-column md-numeric md-order-by="revenue">Revenue</th> -->
+    <md-table-container layout-fill flex>
+      <table md-table md-row-select multiple ng-model="analyticsStockCtrl.linesSelected">
+        <thead md-head md-order="analyticsStockCtrl.query.order">
+         <tr md-row>
+          <th md-column ng-repeat="col in analyticsStockCtrl.tableData.header" md-order-by="{{col.key}}">
+            <span>{{col.text}}</span>
+          </th>     
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsStockCtrl.tableData.body | orderBy:analyticsStockCtrl.query.order">  <!-- md-on-select= -->
-          <td md-cell ng-if="key !== 'id'" ng-repeat="(key, value) in row">            
-             <span>{{value}}</span>
-          </td> <!-- $index > 0 -->
-        <!--   <td md-cell>{{row.name}}</td>
-          <td md-cell>{{row.quantity}}</td>
-          <td md-cell>{{row.revenue}}</td> -->
+         <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsStockCtrl.tableData.body | orderObj:analyticsStockCtrl.query.order:'value' track by $index">          
+           <td md-cell ng-repeat="col in row" ng-switch="col.fieldType">                  
+            <span ng-switch-when="date">{{col.value | datelocale}}</span>
+            <span ng-switch-when="currency">{{col.value | currency}}</span>
+            <span ng-switch-when="number">{{col.value | currency:true:0}}</span>
+            <span ng-switch-when="percent">{{col.value | percent}}</span>
+            <span ng-switch-default>{{col.value}}</span>                  
+          </td>
         </tr>
       </tbody>
-    </table>
-  </md-table-container>
-  <!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->
+       <!--  <thead md-head md-order="analyticsStockCtrl.query.order">
+          <tr md-row>
+            <th md-column ng-repeat="(key , value) in analyticsStockCtrl.tableData.header" md-order-by="{{key}}"><span>{{value}}</span></th>     
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsStockCtrl.tableData.body | orderBy:analyticsStockCtrl.query.order track by $index">
+            <td md-cell ng-repeat="(key, value) in row">
+              <span ng-if="key == 'date'">{{value | datelocale}}</span>
+              <span ng-if="key == 'revenue'">{{value | currency}}</span>
+              <span ng-if="key != 'revenue' && key != 'date'">{{value}}</span>
+            </td>
+          </tr>
+        </tbody> -->
+      </table>
+    </md-table-container>
+    <!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->
   </md-card>
 </div>
 </div>

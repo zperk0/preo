@@ -5,12 +5,12 @@
 	.main-content-full {
 		flex-flow: row wrap;
 
-		md-card {
-			&.full-card {
-				flex: 1 100%;
-				//overflow-x: auto;
-			}
-		}
+		// md-card {
+		// 	&.full-card {
+		// 		flex: 1 100%;
+		// 		//overflow-x: auto;
+		// 	}
+		// }
 
 		md-card-title{
 			max-height: 60px;			
@@ -18,8 +18,29 @@
 		}
 	}
 
-	.stock-table{
-		//width: 100%;
+	.item-filter{
+		height: 70px;
+
+		md-select{
+			height: 48px;	
+		}
+
+		md-card-content{
+			padding-top: 10px;
+			padding-bottom: 12px;
+		}
+
+		md-input-container{		
+			margin:  0;			 	 
+
+			 label{
+				top: 0;
+			 }
+		}	
+	}
+
+	.btn-form-analytics{
+		display: none;
 	}
 
 	.align-action-top{

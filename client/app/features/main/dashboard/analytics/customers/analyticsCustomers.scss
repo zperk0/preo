@@ -5,12 +5,12 @@
   .main-content-full {
     flex-flow: row wrap;
 
-    md-card {
-      &.full-card {
-        flex: 1 100%;
-        //overflow-x: auto;
-      }
-    }
+    // md-card {
+    //   &.full-card {
+    //     flex: 1 100%;
+    //     //overflow-x: auto;
+    //   }
+    // }
 
     md-card-title{
       max-height: 60px;     
@@ -20,6 +20,10 @@
 
   .stock-table{
     //width: 100%;
+  }
+
+  .btn-form-analytics{
+    display: none;
   }
 
   .align-action-top{

@@ -3,19 +3,23 @@
 
   .main-content-full {
     flex-flow: row wrap;
-    // overflow-x: hidden;
-    // overflow-y: auto;
 
-    md-card {
+    /* md-card {
       &.full-card {
         flex: 1 100%;
        
       }
-    }
+    } */
 
     md-card-title{
-      max-height: 60px;     
+     // max-height: 60px;     
       padding: 20px;
+    }
+
+    > md-card-content{
+      padding-left: 20px;
+      padding-bottom: 20px;
+      padding-right: 20px;
     }
   }
 
@@ -37,5 +41,32 @@
     margin-top: -15px;
     max-width: 40px;
   }
+
+  .card-chart{
+
+    span{
+      color: #0288d1;
+      font-weight: bold;
+      font-family: Roboto;
+    }
+
+    .card-col2{
+      height: 131px;
+
+      .card-span{
+        font-size: 55px;
+      }
+    }
+
+    .card-col4{
+      height: 126px;
+
+      .card-span{
+        font-size: 26px;
+      }
+    }
+    
+  }
+  
   
 }

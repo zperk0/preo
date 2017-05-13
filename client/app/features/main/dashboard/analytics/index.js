@@ -6,22 +6,24 @@ import '../../../../../../node_modules/angular-material-data-table/dist/md-data-
 import controller from './analytics.controller';
 import routes from './analytics.routes';
 
-import customDatafilters from '../../../../components/analytics/customDatafilters';
-import barChart from '../../../../components/analytics/barChart';
-//import mdTable from '../../../../components/mdTable';
-import dropdownActions from '../../../../components/cardActions/dropdownActions';
-import doughnutChart from '../../../../components/analytics/doughnutChart';
-import iframeLoad from '../../../../components/iframeLoad';
+import customDatafilters from './components/customDatafilters';
+import barChart from './components/barChart';
+import dropdownActions from './components/cardActions/dropdownActions';
+import doughnutChart from './components/doughnutChart';
+
 import Customers from './customers';
 import Summary from './summary';
 import Orders from './orders';
 import Stock from './stock';
 
-//import '../../../../../../node_modules/angular-material-data-table/dist/md-data-table.min.js';
+import ReportsService from './components/reports';
+import analyticsFilters from './filters';
+
+//import datatables from '../../../../../../node_modules/angular-datatables/bundles/angular-datatables.umd.js';
 
 import chartjs from '../../../../../../node_modules/chart.js/dist/Chart.min.js';
 
-angular.module("webapp.analytics" , ['ui.router', customDatafilters, barChart,dropdownActions,doughnutChart, iframeLoad, Customers, Summary, Orders, Stock, require('angular-material-data-table')])
+angular.module("webapp.analytics" , ['ui.router', customDatafilters, barChart,dropdownActions,doughnutChart, Customers, Summary, Orders, Stock, ReportsService, analyticsFilters, require('angular-material-data-table')])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

@@ -3,189 +3,298 @@ export default class analyticsCustomersController {
     return "analyticsCustomersController";
   }
 
- onActions(item){
-    console.log('evento -> ', item);
-    console.log('exported -->> ', this.selected);
-    alert('clicked');
+  debounce(func, wait, immediate) {
+    console.log("debouncing");
+    return () => {
+      var context = this, args = arguments;
+      var later = function() {
+        context.debounceTimeout = null;
+        console.log("in later", immediate)
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !context.debounceTimeout;
+      clearTimeout(context.debounceTimeout);
+      context.debounceTimeout = setTimeout(later, wait);
+      console.log("if call now", callNow);
+      if (callNow) func.apply(context, args);
+    };
   }
 
-  getReportTypes(){
-    var customers = [{id: 1, type:'report', name:'All paying customers' , hasCustomerMarketing: true, actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.NOTIFICATION]},
-                  {id: 2, type:'report', name:'New customers' ,hasCustomerMarketing: true, actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.NOTIFICATION]},
-                  {id: 3, type:'report', name:"Customers who signed up but haven't ordered" ,hasCustomerMarketing: true, actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.NOTIFICATION]},
-                  {id: 4, type:'report', name:'Customers who have only ordered once' ,hasCustomerMarketing: true, actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.NOTIFICATION]},
-                  {id: 5, type:'report', name:'Sleeping customers' , hasCustomerMarketing: true, actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.NOTIFICATION]},
-                  {id: 6, type:'report', name:'Customers requesting delivery to a new area' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF ]}
-                
-               ];  
+  debounceFetch(){
 
-    return customers;
+    this.debounce(this.updateReportData.bind(this), 1000)();
+  }
+
+  updateReportData(){
+
+    if(!this.spinnerRunning())
+      this.showSpinner();
+
+    this.ReportsService.getReportData(this.dataFilters)
+    .then((data) => {
+      console.log('resolve reportserivde data -> ', data);
+      this.reportsData = data;
+
+      this.updateView();
+
+      this.hideSpinner();
+
+    }, (err) => {
+      console.log('erro reportserive ', err);
+      this.hideSpinner();
+    });
+
+  }
+
+  getExportData(){
+    this.exportData = this.exportAction.data;
+    this.exportDataUrl = this.exportAction.url;
+    console.log('Exporting data...');
+  }
+
+  onSubmit(){
+    console.log('on submit');
+  }
+  onActions(item){
+
+    var rowsSelected = null;
+    var rowsHeader = this.tableData.header;
+    if(this.linesSelected.length > 0){
+      rowsSelected = this.linesSelected;
+    }
+    else{
+      rowsSelected = this.tableData.body;
+    }
+
+    console.log('lines selected -> ', this.linesSelected);
+    if(item == this.cardActionsCodes.EXPORT_CSV){
+
+      this.exportAction = this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected);
+      var formSubmit = document.getElementById('postData');
+      this.$timeout(() =>{
+          formSubmit.click();
+        }
+      );
+    }
+    else if(item == this.cardActionsCodes.EXPORT_PDF){
+
+      this.exportAction = this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected);
+      var formSubmit = document.getElementById('postData');
+
+      this.$timeout(() =>{
+          formSubmit.click();
+        }
+      );
+    }
+    else if(item == this.cardActionsCodes.NOTIFICATION){
+      var modal = {
+        title: this.gettextCatalog.getString('Send a push notification...'),
+        placeholder: this.gettextCatalog.getString('Write here your message'),
+        titleMessage: this.gettextCatalog.getString('Please note, push notifications will only be received by users who have your mobile app installed.'),
+        buttons: [{name:this.gettextCatalog.getString('Send')}]
+      };
+
+      this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
+      .then(() => {
+        
+        var usersSelected = [];
+        var textToPush = this.$scope.diagCtrl.textArea;
+        
+        if(this.linesSelected.length > 0){
+          usersSelected = this.linesSelected;
+        }
+        else{
+          usersSelected = this.tableData.body;
+        }
+
+        this.ReportsService.sendPushNotification( usersSelected,textToPush)
+        .then((data) => {
+          console.log('response push notif', data);
+        }, (err) => {
+          console.log('erro push nootif', err);
+        });
+
+      }, () => {
+        console.log('cancel dialog');
+      });
+    }
+  }
+
+  getReportTypes(){    
+    
+    var types = [this.ReportTypes.PAYINGCUSTOMERS,this.ReportTypes.NEWCUSTOMERS,this.ReportTypes.CUSTOMERS, this.ReportTypes.NEWAREADELIVERY];
+    return types;
   }
 
   getTableActionList(actions){
-   
+
     if(actions && actions.length > 0){
       this.actions = actions;
       this.shouldShowActions = true;
     }else {
       this.actions = [];
       this.shouldShowActions = false;
-    }   
-  
+    }
+
   }
 
-  getTableData(report){
+  getTableData(){
 
-    function formatMoney(number){
-      //return '$'+number.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-    return number.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' , currencyDisplay:'symbol'});
-    }
-    var obj = {};
-    
-    if(report.name === 'All paying customers'){
-        obj = {
-         header: {name:"Name", quantity:"Quantity", revenue:"Revenue",  customerMarketing:"Marketing"},        
-         body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee…',quantity: 1,revenue: formatMoney(29),  customerMarketing: true},
-                {id:2, name: 'general',quantity: 9999999, revenue:formatMoney(9999999.99), customerMarketing: false}, 
-                {id:3, name:'jason', quantity:30,revenue: formatMoney(888888),  customerMarketing: false},
-                {id:4, name:'victort',quantity: 545,revenue: formatMoney(54562),  customerMarketing: false}
-         ]};
-    }
-    else if (report.name === 'Sleeping customers'){
-      obj = {
-          header: {name: "Name", orders:"Orders", spend:"Spend", email:"Email", tel:"Tel", customerMarketing:"Marketing"},        
-          body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeee…1111', orders:  1, spend:formatMoney(29), email:'0ops@preoday.com', tel:'93551334', customerMarketing: true},
-                {id:2, name:'general', orders: 9999999, spend: formatMoney(9999999.99), email: '1ops2@preoday.com', tel:'88881334', customerMarketing: false}, 
-                {id:3, name:'jason', orders: 30.45, spend: formatMoney(888888), email:'2ops3@preoday.com', tel:'91251334', customerMarketing: false},
-                {id:4, name:'victort', orders: 545, spend: formatMoney(54562), email:'3ops4@preoday.com', tel:'44451334', customerMarketing: true}
-          ]};
-    }
-    
-    console.log('obj table ', obj);
-    if(Object.keys(obj).length !== 0){
+    var report = this.dataFilters.report;
+
+    // var viewTable = {
+    //   header: this.ReportsService.getReportHeader(report.id),
+    //   body: []
+    // };
+
+    var viewTable = this.ReportsService.prepareDataToTable(report.id);
+
+    //var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : [];
+    //var testdata = [{name: 'Renan', email:'dfdf@fdfd', phone:'343524', customerMarketing: false}];
+
+    // data.forEach((row) => {
+
+    //   let rowObj = [];
+    //   viewTable.header.forEach((head) => {
+    //     let colObj = {};
+    //     if(row.hasOwnProperty(head.key)){
+    //       colObj.value = row[head.key];
+    //       colObj.fieldType = head.fieldType;
+    //      // colObj[head.key] = row[head.key];
+    //       colObj.key = head.key;
+    //     }
+    //     else{
+    //       colObj.value = "-";
+    //      // colObj[head.key] = "-";
+    //       colObj.key = head.key;
+    //     }
+
+    //     rowObj.push(colObj);
+    //   });
+
+    //   viewTable.body.push(rowObj);
+    // });   
+
+    // the first item in table will be the Order selector
+    if(viewTable.body.length > 0){
       this.shouldShowdatatable = true;
-      this.query.order = Object.keys(obj.body[0])[1];
+      this.query.order = viewTable.header[0].key;     
     } else{
       this.shouldShowdatatable = false;
       // TO DO - create empty data div
     }
 
-    return obj;
+    this.linesSelected = [];
+
+    return viewTable;
   }
 
-  onFilter(filters , typeChanged){ console.log('filters coming -> ', filters);
+  onFilter(filters , typeChanged){
+
+    this.dataFilters = filters;
+
+    // view is loaded with empty report fitler, no search at first time
+    if(!this.dataFilters.report)
+      return;
+
+    var isReportUpdated = false;
+
     if(typeChanged == 'Report'){
-      this.onReportChange(filters.report);
+     // this.dataFilters.report = filters.report;
+      isReportUpdated = true;
     }
 
-    if(typeChanged == 'Venue'){
-      this.onVenueChange(filters.venues);
-    }
-
-    if(typeChanged == 'DateRange'){
-      this.onDaterangeChange(filters.datesRange);
-    }
-
+    // If typeChanged = customermarketing means that Report has this property
+    // So if value comes = TRUE filter table, ELSE do not filter (empty filter)
     if(typeChanged == 'CustomerMarketing'){
-      this.onCustomerMarketingChange(filters.customerMarketing);
+      if(filters.customerMarketing)
+        this.filterCustomerMarketing = true;
+      else
+        this.filterCustomerMarketing = false;// '!!'; //empty value
     }
 
-    if(typeChanged == 'Event'){
-      this.onEventChange(filters.event);
+    //CustomerMarketing its only a filter, no need new search
+    //Fetch from Api when any filter, except Report is changed, or if report changed but has not data to show on it.
+    if( (!isReportUpdated && typeChanged != 'CustomerMarketing') || (isReportUpdated && !this.reportsData.hasOwnProperty(filters.report.id)) ){
+
+      this.debounceFetch();
+    }
+    else{
+      this.updateView();
     }
 
   }
 
-  onDaterangeChange(datesRange){
-    console.log(' DATE RANGE CHANGE ->', datesRange);
+  updateView(){
 
-    this.dataFilters.daterange = datesRange;
-    this.dataFilters.event = null;
+    this.reportTitle = this.dataFilters.report.name;
+
+    this.tableData = this.getTableData();
+
+    this.getTableActionList(this.dataFilters.report.actions);
+
   }
 
-  onReportChange(reportFilter){
-    console.log(' REPORT ->', reportFilter);    
-
-    // IF report HAS NO customermarketing checkbox, set the filter in md-data-table to DO NOT filter for this field
-    // IF report HAS customermarketing checkbox, set the filter to 'empty' value
-    if(reportFilter.hasCustomerMarketing)
-      this.filterCustomerMarketing = '!!'; //empty
-    else
-      this.filterCustomerMarketing = '!';
-
-    this.dataFilters.report = reportFilter;
-
-    if(reportFilter.type === 'report'){     
-      this.visibleReportTitle = reportFilter.name;
-     
-      this.tableData = this.getTableData(reportFilter);
-
-      this.getTableActionList(reportFilter.actions);
-    }
-    else if(reportFilter.type === 'chart'){
-      //no charts at this view
-    }
-    
+  hideSpinner(){
+    this.spinner.hide('customers-parameter change');
   }
 
-  onVenueChange(venues){
-    console.log('VENUE->', venues);
+  spinnerRunning(){
+    return this.spinner.isCodeVisible('customers-parameter change');
   }
 
-  onCustomerMarketingChange(customerMarketing){
-    console.log(' MARKET ->', customerMarketing);
-    if(customerMarketing)
-      this.filterCustomerMarketing = customerMarketing;
-    else
-      this.filterCustomerMarketing = '!!'; //empty
-    
-    //this.tableData = this.filtertableData(value);
+  showSpinner(){
+    this.spinner.show('customers-parameter change');
   }
 
-  onEventChange(event){
-    console.log(' EVENT CHANGE ->', event);
-
-    this.dataFilters.event = event;
-  }
-
-  init(){
-   
-  }
-
-  constructor($filter, $state, $timeout, $window, Spinner, CardActionsCodes, ChartsValueTypes) {
+  constructor($filter, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, CardActionsCodes) {
     "ngInject";
 
     this.spinner = Spinner;
+    this.$scope = $scope;
 
     this.cardActionsCodes = CardActionsCodes;
-    this.ChartsValueTypes = ChartsValueTypes;
+    this.ReportTypes = ReportTypes;
+    this.gettextCatalog = gettextCatalog;
+    this.ReportsService = ReportsService;
+    this.DialogService = DialogService;
 
     this.reportTypes = this.getReportTypes();
+    this.fieldToFilter = 'customerMarketing';
 
     this.shouldShowActions = false;
-    this.shouldShowdatatable = false; 
+    this.shouldShowdatatable = false;
 
+    this.linesSelected = [];
     this.tableData = {};
+    this.reportsData = {};
 
     this.dataFilters = {
       venue: null,
       report: null,
-      daterange: null,
-      event: null
+      datesRange: null,
+      events: null
     };
 
-    this.selected = [];
-   
-    this.visibleReportTitle = "";
+    this.reportTitle = "";
 
     this.query = {
       order: '',
-    //  limit: 5,
-     // page: 1
-    };
+      //  limit: 5,
+       // page: 1
+     };
 
-    //this.init();
+     if($stateParams.reportName){
 
-   // this.tableData = this.getTableData({id:1}); this.shouldShowdatatable = true;
-  } 
+      this.showSpinner();
+
+      this.reportTypes.forEach((x) => {
+        if(x.name === $stateParams.reportName){
+          x.default = true;
+        }
+      });
+
+    }
+
+  }
 }

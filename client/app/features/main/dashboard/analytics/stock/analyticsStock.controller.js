@@ -3,188 +3,304 @@ export default class analyticsStockController {
     return "analyticsStockController";
   }
 
+  debounce(func, wait, immediate) {
+    console.log("debouncing");
+    return () => {
+      var context = this, args = arguments;
+      var later = function() {
+        context.debounceTimeout = null;
+        console.log("in later", immediate)
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !context.debounceTimeout;
+      clearTimeout(context.debounceTimeout);
+      context.debounceTimeout = setTimeout(later, wait);
+      console.log("if call now", callNow);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
+  debounceFetch(){
+
+    this.debounce(this.updateReportData.bind(this), 1000)();
+  }
+
+  updateReportData(){
+
+    if(!this.spinnerRunning())
+      this.showSpinner();
+
+    this.ReportsService.getReportData(this.dataFilters)
+    .then((data) => {
+      console.log('resolve reportserivde data -> ', data);
+     this.reportsData = data;
+
+      this.updateView();
+
+      this.hideSpinner();
+
+    }, (err) => {
+     console.log('erro reportserive ', err);
+     this.hideSpinner();
+    });
+
+  }
+
+  getExportData(){
+    this.exportData = this.exportAction.data;
+    this.exportDataUrl = this.exportAction.url;
+    console.log('Exporting data...');
+  }
+
+  onSubmit(){
+    console.log('on submit');
+  }
   onActions(item){
-    console.log('evento -> ', item);
-    console.log('exported -->> ', this.selected);
-    alert('clicked');
+
+    var rowsSelected = null;
+    var rowsHeader = this.tableData.header;
+    if(this.linesSelected.length > 0){
+      rowsSelected = this.linesSelected;
+    }
+    else{
+      rowsSelected = this.tableData.body;
+    }
+
+    console.log('lines selected -> ', this.linesSelected);
+    if(item == this.cardActionsCodes.EXPORT_CSV){
+
+      this.exportAction = this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected);
+      var formSubmit = document.getElementById('postData');
+      this.$timeout(() =>{
+          formSubmit.click();
+        }
+      );
+    }
+    else if(item == this.cardActionsCodes.EXPORT_PDF){
+
+      this.exportAction = this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected);
+      var formSubmit = document.getElementById('postData');
+
+      this.$timeout(() =>{
+          formSubmit.click();
+        }
+      );
+    }
   }
 
   getReportTypes(){
-    var stocks = [{id: 1, type:'report', name:'All items sold' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
-                  {id: 2, type:'report', name:'Items increasing in popularity' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
-                  {id: 3, type:'report', name:'Items descreasing in popularity' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
-                  {id: 4, type:'report', name:'Items increasing in revenue' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
-                  {id: 5, type:'report', name:'Items decreasing in revenue' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
-                  {id: 6, type:'chart', name:'Individual item data (number sold)' , valueType: this.ChartsValueTypes.NUMBER ,  actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF,  this.cardActionsCodes.MONTHLY_ORDERS, this.cardActionsCodes.WEEKLY_ORDERS, this.cardActionsCodes.DAILY_ORDERS]},
-                  {id: 7, type:'chart', name:'Individual item data (revenue)' , valueType: this.ChartsValueTypes.NUMBER ,actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_ORDERS, this.cardActionsCodes.WEEKLY_ORDERS, this.cardActionsCodes.DAILY_ORDERS]},
-               ];  
 
-    return stocks;
+    var types = [this.ReportTypes.STOCK, this.ReportTypes.STOCKITEMDATA];
+    return types;
   }
 
   getTableActionList(actions){
-   
+
     if(actions && actions.length > 0){
       this.actions = actions;
       this.shouldShowActions = true;
     }else {
       this.actions = [];
       this.shouldShowActions = false;
-    }   
-  
+    }
+
   }
 
-  getChartData(report){
+  getChartData(){
+
+    var report = this.dataFilters.report;
+    var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : {keys: [], values: []};
 
     var obj = {
-            chartTitle: report.name,
-            data: { x:['2017-05-01', '2017-01-01', '2017-02-02', '2017-03-03', '2016-03-04', '2016-05-07', '2017-01-30'] , y:[10, 15, 20 ,25 , 30 , 35 , 40]},
-            actions: report.actions,
-            type: report.valueType
-          };
+      name: report.name,
+     // data: { x:['2017-05-01', '2017-01-01', '2017-02-02', '2017-03-03', '2016-03-04', '2016-05-07', '2017-01-30'] , y:[10, 15, 20 ,25 , 30 , 35 , 40]},
+      data: {x: data.keys, y: data.values},
+      actions: report.actions,
+      //type: 'currency',
+      startDate: this.dataFilters.datesRange.startDate,
+      endDate: this.dataFilters.datesRange.endDate
+    };
+
+    this.shouldShowChart = true;
 
     return obj;
   }
 
-  getTableData(report){
+  getTableData(){
 
-    function formatMoney(number){
-      //return '$'+number.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-    return number.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' , currencyDisplay:'symbol'});
-    }
-    var obj = {};
-    
-    if(report.name === 'All items sold'){
-        obj = {
-         header: {name:"Name", quantity:"Quantity", revenue:"Revenue"},        
-         body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee…',quantity: 1,revenue: formatMoney(29)},
-                {id:2, name: 'general',quantity: 9999999, revenue:formatMoney(9999999.99)}, 
-                {id:3, name:'jason', quantity:30,revenue: formatMoney(888888)},
-                {id:4, name:'victort',quantity: 545,revenue: formatMoney(54562)}
-         ]};
-    }
-    else if (report.id === ''){
-      obj = {
-          header: {name: "Name", orders:"Orders", spend:"Spend", email:"Email", tel:"Tel", customerMarketing:"Marketing"},        
-          body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeee…1111', orders:  1, spend:formatMoney(29), email:'0ops@preoday.com', tel:'93551334', customerMarketing: true},
-                {id:2, name:'general', orders: 9999999, spend: formatMoney(9999999.99), email: '1ops2@preoday.com', tel:'88881334', customerMarketing: false}, 
-                {id:3, name:'jason', orders: 30.45, spend: formatMoney(888888), email:'2ops3@preoday.com', tel:'91251334', customerMarketing: false},
-                {id:4, name:'victort', orders: 545, spend: formatMoney(54562), email:'3ops4@preoday.com', tel:'44451334', customerMarketing: true}
-          ]};
-    }
-    
-    if(Object.keys(obj).length !== 0){
+    var report = this.dataFilters.report;
+
+    var viewTable = this.ReportsService.prepareDataToTable(report.id);
+
+   //  var viewTable = {
+   //    header: this.ReportsService.getReportHeader(report.id),
+   //    body: []
+   //  };
+
+   //  var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : [];
+
+   // // var testdata = [{ name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee1…',itemcount: 1, itemtotal: 29},
+   // //    { name: 'general',itemcount: 9999999,itemtotal:9999999.99},
+   // //    { name:'jason', itemcount:30,itemtotal: 888888},
+   // //    { name:'victort',itemcount: 545, itemtotal: 54562.1}];
+
+   //  data.forEach((row) => {
+
+   //    let rowObj = [];
+   //    viewTable.header.forEach((head) => {
+   //      let colObj = {};
+   //      if(row.hasOwnProperty(head.key)){
+   //        colObj.value = row[head.key];
+   //        colObj.fieldType = head.fieldType;
+   //       // colObj[head.key] = row[head.key];
+   //        colObj.key = head.key;
+   //      }
+   //      else{
+   //        colObj.value = "-";
+   //       // colObj[head.key] = "-";
+   //        colObj.key = head.key;
+   //      }
+
+   //      rowObj.push(colObj);
+   //    });
+
+   //    viewTable.body.push(rowObj);
+   //  });
+
+    // the first item in table will be the Order selector
+    if(viewTable.body.length > 0){
       this.shouldShowdatatable = true;
-      this.query.order = Object.keys(obj.body[0])[1];
+      this.query.order = viewTable.header[0].key;
     } else{
       this.shouldShowdatatable = false;
       // TO DO - create empty data div
     }
 
-    return obj;
+    return viewTable;
   }
 
-  onFilter(filters , typeChanged){ console.log('filters coming -> ', filters);
+  onFilter(filters , typeChanged){
+
+    this.dataFilters = filters;
+
+    // view is loaded with empty report fitler, no search at first time
+    if(!this.dataFilters.report)
+      return;
+
+    var isReportUpdated = false;
+    var isChartReport = this.dataFilters.report.isChartType;
+
     if(typeChanged == 'Report'){
-      this.onReportChange(filters.report);
+
+      isReportUpdated = true;
+
+      if(isChartReport){
+        this.shouldShowdatatable = false;
+      }
+      else{
+        this.shouldShowChart = false;
+      }
     }
 
-    if(typeChanged == 'Venue'){
-      this.onVenueChange(filters.venues);
-    }
-
-    if(typeChanged == 'DateRange'){
-      this.onDaterangeChange(filters.datesRange);
-    }
-    
-    if(typeChanged == 'Event'){
-      this.onEventChange(filters.event);
-    }
-
-  }
-
-  onDaterangeChange(datesRange){
-    console.log(' DATE RANGE CHANGE ->', datesRange);
-
-    this.dataFilters.daterange = datesRange;
-    this.dataFilters.event = null;
-  }
-
-  onReportChange(report){
-    console.log(' REPORT ->', report);    
-
-    this.dataFilters.report = report;
-
-    if(report.type === 'report'){
+    // If none item selected, do nothing.
+    if(isChartReport && !this.dataFilters.item){
       this.shouldShowChart = false;
-      this.visibleReportTitle = report.name;
-     
-      this.tableData = this.getTableData(report);
-
-      this.getTableActionList(report.actions);
+      return;
     }
-    else if(report.type === 'chart'){
 
-      this.charts = this.getChartData(report);
-
-      this.shouldShowdatatable = false;
-      this.shouldShowChart = true;
+    //Fetch from Api when any filter, except Report is changed, or if report changed but has no data to show for it.
+    if(!isReportUpdated || (isReportUpdated && this.reportsData && !this.reportsData.hasOwnProperty(filters.report.id)) ){
+      this.debounceFetch();
     }
-    
+    else{
+      this.updateView();
+    }
+
   }
 
-  onVenueChange(venues){
-    console.log('VENUE->', venues);
-  }  
+  updateView(){
 
-  onEventChange(event){
-    console.log(' EVENT CHANGE ->', event);
+    if(this.dataFilters.report.isChartType == true){
 
-    this.dataFilters.event = event;
+      this.chartData = this.getChartData();
+    }
+    else{
+
+      this.reportTitle = this.dataFilters.report.name;
+
+      this.tableData = this.getTableData();
+
+      this.getTableActionList(this.dataFilters.report.actions);
+    }
+
   }
 
-  init(){
-   
+  hideSpinner(){
+    this.spinner.hide('stock-parameter change');
   }
 
-  constructor($filter, $state, $timeout, $window, Spinner, CardActionsCodes, ChartsValueTypes) {
+  spinnerRunning(){
+    return this.spinner.isCodeVisible('stock-parameter change');
+  }
+
+  showSpinner(){
+    this.spinner.show('stock-parameter change');
+  }
+
+  constructor($stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, CardActionsCodes, ReportTypes) {
     "ngInject";
 
     this.spinner = Spinner;
+    this.$scope = $scope;
+    this.$timeout = $timeout;
+
+    this.ReportsService = ReportsService;
 
     this.cardActionsCodes = CardActionsCodes;
-    this.ChartsValueTypes = ChartsValueTypes;
+    this.ReportTypes = ReportTypes;
 
     this.reportTypes = this.getReportTypes();
 
     this.shouldShowActions = false;
-    this.shouldShowdatatable = false;   
+    this.shouldShowdatatable = false;
     this.shouldShowChart = false;
+    this.shouldShowItemFilter = false;
 
+    this.linesSelected = [];
     this.tableData = {};
+    this.reportsData = [];
+    this.reportItems = null;
 
     this.dataFilters = {
-      venue: null,
+      venues: null,
       report: null,
-      daterange: null,
-      event: null
+      datesRange: null,
+      events: null,
+      item: null
     };
 
-    this.selected = [];
-   
-    this.visibleReportTitle = "";
+    this.reportTitle = "";
 
     this.query = {
       order: '',
     //  limit: 5,
      // page: 1
-    };
+   };
 
-    //this.init();
+   if($stateParams.reportName){
 
-   // this.tableData = this.getTableData({id:1}); this.shouldShowdatatable = true;
-  } 
- 
+    this.showSpinner();
+
+    this.reportTypes.forEach((x) => {
+      if(x.name === $stateParams.reportName){
+        x.default = true;
+      }
+    });
+
+  }
+
+}
+
 }
 
 

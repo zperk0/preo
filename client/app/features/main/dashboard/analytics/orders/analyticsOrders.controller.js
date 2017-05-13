@@ -3,162 +3,260 @@ export default class analyticsOrdersController {
     return "analyticsOrdersController";
   }
 
+  debounce(func, wait, immediate) {
+    console.log("debouncing");
+    return () => {
+      var context = this, args = arguments;
+      var later = function() {
+        context.debounceTimeout = null;
+        console.log("in later", immediate)
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !context.debounceTimeout;
+      clearTimeout(context.debounceTimeout);
+      context.debounceTimeout = setTimeout(later, wait);
+      console.log("if call now", callNow);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
+  debounceFetch(){
+
+    this.debounce(this.updateReportData.bind(this), 1000)();
+  }
+
+  updateReportData(){
+
+    if(!this.spinnerRunning())
+      this.showSpinner();
+
+    this.ReportsService.getReportData(this.dataFilters)
+    .then((data) => {
+      console.log('resolve reportserivde data -> ', data);
+      this.reportsData = data;
+
+      this.updateView();
+
+      this.hideSpinner();
+
+    }, (err) => {
+      console.log('erro reportserive ', err);
+      this.hideSpinner();
+    });
+
+  }
+
+  getExportData(){
+    this.exportData = this.exportAction.data;
+    this.exportDataUrl = this.exportAction.url;
+    console.log('Exporting data...');
+  }
+
+  onSubmit(){
+    console.log('on submit');
+  }
   onActions(item){
-    console.log('evento -> ', item);
-    console.log('exported -->> ', this.selected);
-    alert('clicked');
+
+    var rowsSelected = null;
+    var rowsHeader = this.tableData.header;
+    if(this.linesSelected.length > 0){
+      rowsSelected = this.linesSelected;
+    }
+    else{
+      rowsSelected = this.tableData.body;
+    }
+
+    console.log('lines selected -> ', this.linesSelected);
+    if(item == this.cardActionsCodes.EXPORT_CSV){
+     
+      this.exportAction = this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected);
+      var formSubmit = document.getElementById('postData');
+      this.$timeout(() =>{
+          formSubmit.click();
+        }
+      );
+    }
+    else if(item == this.cardActionsCodes.EXPORT_PDF){
+
+      this.exportAction = this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected);
+      var formSubmit = document.getElementById('postData');
+
+      this.$timeout(() =>{
+          formSubmit.click();
+        }
+      );
+    }
+    else if(item == this.cardActionsCodes.NOTIFICATION){
+      var modal = {
+        title: this.gettextCatalog.getString('Send a push notification...'),
+        placeholder: this.gettextCatalog.getString('Write here your message'),
+        titleMessage: this.gettextCatalog.getString('Please note, push notifications will only be received by users who have your mobile app installed.'),
+        buttons: [{name:this.gettextCatalog.getString('Send')}]
+      };
+
+      this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
+      .then(() => {
+
+        var venueId = "";
+        var usersSelected = [];
+        var textToPush = this.$scope.diagCtrl.textArea;        
+
+        this.ReportsService.sendPushNotification( venueId, usersSelected,textToPush)
+        .then(() => {
+   
+        }, (err) => {
+          console.log('Error pushing notify - ', err);
+        });
+
+      }, () => {
+        console.log('Cancel dialog');
+      });
+    }
   }
 
   getReportTypes(){
-    var orders = [{id: 1, type:'report', name:'All orders' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.NOTIFICATION]},
-                  {id: 2, type:'report', name:'Busiest days' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},                  
-                  {id: 4, type:'report', name:'Tax report' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},                  
-               ];  
 
-    if(this.isEventVenue)
-      orders.push({id: 5, type:'report', name:'Busiest events' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]});
-    else
-      orders.push({id: 3, type:'report', name:'Busiest time of day' , actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]});
-
-    return orders;
+     var types = [this.ReportTypes.ORDERS,this.ReportTypes.BUSIESTDAYS,this.ReportTypes.BUSIESTEVENTS];     
+     return types;
   }
 
   getTableActionList(actions){
-   
+
     if(actions && actions.length > 0){
       this.actions = actions;
       this.shouldShowActions = true;
     }else {
       this.actions = [];
       this.shouldShowActions = false;
-    }   
-  
-  }  
+    }
 
-  getTableData(report){
+  }
 
-    function formatMoney(number){
-      //return '$'+number.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-    return number.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' , currencyDisplay:'symbol'});
-    }
-    var obj = {};
-    
-    if(report.name === 'All items sold'){
-        obj = {
-         header: {name:"Name", quantity:"Quantity", revenue:"Revenue"},        
-         body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee…',quantity: 1,revenue: formatMoney(29)},
-                {id:2, name: 'general',quantity: 9999999, revenue:formatMoney(9999999.99)}, 
-                {id:3, name:'jason', quantity:30,revenue: formatMoney(888888)},
-                {id:4, name:'victort',quantity: 545,revenue: formatMoney(54562)}
-         ]};
-    }
-    else if (report.id === ''){
-      obj = {
-          header: {name: "Name", orders:"Orders", spend:"Spend", email:"Email", tel:"Tel", customerMarketing:"Marketing"},        
-          body:[{id:1, name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeee…1111', orders:  1, spend:formatMoney(29), email:'0ops@preoday.com', tel:'93551334', customerMarketing: true},
-                {id:2, name:'general', orders: 9999999, spend: formatMoney(9999999.99), email: '1ops2@preoday.com', tel:'88881334', customerMarketing: false}, 
-                {id:3, name:'jason', orders: 30.45, spend: formatMoney(888888), email:'2ops3@preoday.com', tel:'91251334', customerMarketing: false},
-                {id:4, name:'victort', orders: 545, spend: formatMoney(54562), email:'3ops4@preoday.com', tel:'44451334', customerMarketing: true}
-          ]};
-    }
-    
-    if(Object.keys(obj).length !== 0){
+  getTableData(){
+
+    var report = this.dataFilters.report;
+
+    var viewTable = this.ReportsService.prepareDataToTable(report.id);
+
+    // var viewTable = {
+    //   header: this.ReportsService.getReportHeader(report.id),
+    //   body: []
+    // };
+
+    // var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : [];
+
+    // data.forEach((row) => {
+
+    //   let rowObj = [];
+    //   viewTable.header.forEach((head) => {
+    //     let colObj = {};
+    //     if(row.hasOwnProperty(head.key)){
+    //       colObj.value = row[head.key];
+    //       colObj.fieldType = head.fieldType;
+    //      // colObj[head.key] = row[head.key];
+    //       colObj.key = head.key;
+    //     }
+    //     else{
+    //       colObj.value = "-";
+    //      // colObj[head.key] = "-";
+    //       colObj.key = head.key;
+    //     }
+
+    //     rowObj.push(colObj);
+    //   });
+
+    //   viewTable.body.push(rowObj);
+    // });   
+   
+      // the first item in table will be the Order selector
+    if(viewTable.body.length > 0){
       this.shouldShowdatatable = true;
-      this.query.order = Object.keys(obj.body[0])[1];
+      this.query.order = viewTable.header[0].key;     
     } else{
       this.shouldShowdatatable = false;
       // TO DO - create empty data div
     }
 
-    return obj;
+    return viewTable;
   }
 
-  onFilter(filters , typeChanged){ console.log('filters coming -> ', filters);
+  onFilter(filters , typeChanged){
+
+    this.dataFilters = filters;
+
+    // view is loaded with empty report fitler, no search at first time
+    if(!this.dataFilters.report)
+      return;
+
+    var isReportUpdated = false;
+
     if(typeChanged == 'Report'){
-      this.onReportChange(filters.report);
+      isReportUpdated = true;
+      //this.dataFilters.report = filters.report;
     }
 
-    if(typeChanged == 'Venue'){
-      this.onVenueChange(filters.venues);
+    //Fetch from Api when any filter, except Report is changed, or if report changed but has not data to show on it.
+    if(!isReportUpdated || (isReportUpdated && !this.reportsData.hasOwnProperty(filters.report.id)) ){
+      this.debounceFetch();
     }
-
-    if(typeChanged == 'DateRange'){
-      this.onDaterangeChange(filters.datesRange);
-    }    
-
-    if(typeChanged == 'Event'){
-      this.onEventChange(filters.event);
+    else{
+      this.updateView();
     }
 
   }
 
-  onDaterangeChange(datesRange){
-    console.log(' DATE RANGE CHANGE ->', datesRange);
+  updateView(){    
 
-    this.dataFilters.daterange = datesRange;
-    this.dataFilters.event = null;
+    this.reportTitle = this.dataFilters.report.name;
+
+    this.tableData = this.getTableData();
+
+    this.getTableActionList(this.dataFilters.report.actions);
+
   }
 
-  onReportChange(report){
-    console.log(' REPORT ->', report);   
-
-    this.dataFilters.report = report;
-
-    if(report.type === 'report'){
-      this.shouldShowChart = false;
-      this.visibleReportTitle = report.name;
-     
-      this.tableData = this.getTableData(report);
-
-      this.getTableActionList(report.actions);
-    }
-    else if(report.type === 'chart'){
-      // there is no chart reports at this view
-    }
-    
+  hideSpinner(){
+    this.spinner.hide('orders-parameter change');
   }
 
-  onVenueChange(venues){
-    console.log('VENUE->', venues);
-  }  
-
-  onEventChange(event){
-    console.log(' EVENT CHANGE ->', event);
-
-    this.dataFilters.event = event;
+  spinnerRunning(){
+    return this.spinner.isCodeVisible('orders-parameter change');
   }
 
-  init(){
-   
+  showSpinner(){
+    this.spinner.show('orders-parameter change');
   }
 
-  constructor($filter, $state, $timeout, $window, Spinner, CardActionsCodes, ChartsValueTypes, VenueService) {
+  constructor($filter, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, CardActionsCodes) {
     "ngInject";
 
     this.spinner = Spinner;
 
     this.cardActionsCodes = CardActionsCodes;
-    this.ChartsValueTypes = ChartsValueTypes;
+    this.ReportTypes = ReportTypes;
+   // this.gettextCatalog = gettextCatalog;
+    this.ReportsService = ReportsService;
 
     this.reportTypes = this.getReportTypes();
 
+
     this.shouldShowActions = false;
-    this.shouldShowdatatable = false;       
+    this.shouldShowdatatable = false;
 
+    this.linesSelected = [];
     this.tableData = {};
-
-    this.isEventVenue = VenueService.currentVenue.eventFlag == 1 ? true : false;
+    this.reportsData = {};
 
     this.dataFilters = {
       venue: null,
       report: null,
-      daterange: null,
-      event: null
+      datesRange: null,
+      events: null
     };
 
     this.selected = [];
-   
-    this.visibleReportTitle = "";
+
+    this.reportTitle = "";
 
     this.query = {
       order: '',
@@ -166,7 +264,18 @@ export default class analyticsOrdersController {
      // page: 1
     };
 
-    //this.init();
-  } 
+    if($stateParams.reportName){
+
+      this.showSpinner();
+
+      this.reportTypes.forEach((x) => {
+        if(x.name === $stateParams.reportName){
+          x.default = true;
+        }
+      });
+
+    }
+
+  }
 
 }
