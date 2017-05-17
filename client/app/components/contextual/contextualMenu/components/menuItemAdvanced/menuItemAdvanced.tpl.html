@@ -39,11 +39,14 @@
     <md-input-container ng-if="menuItemAdvancedCtrl.hasExternalVoucherCodes && (menuItemAdvancedCtrl.item.$assignCodeEmail || menuItemAdvancedCtrl.item.$assignCodePost)"
       class='md-block'>
       <label translate>Assign code type</label>
-      <md-select aria-required="true" required ng-model="menuItemAdvancedCtrl.item.assignCodeType">
+      <md-select aria-required="true" required name="entityAssignCodeType" ng-model="menuItemAdvancedCtrl.item.assignCodeType">
         <md-option ng-repeat="assignCodeType in menuItemAdvancedCtrl.assignCodeTypes" ng-value="assignCodeType.name">
           {{assignCodeType.name}}
         </md-option>
       </md-select>
+      <div ng-messages="menuItemAdvancedCtrl.contextualForm.entityAssignCodeType.$error" ng-show="menuItemAdvancedCtrl.contextualForm.$submitted">
+         <div ng-message="required" translate>This is required.</div> 
+      </div>
     </md-input-container>
     <div class="checkbox-row" layout="row" layout-align="start center">
       <md-input-container flex>
