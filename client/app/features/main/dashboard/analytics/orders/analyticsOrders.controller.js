@@ -56,15 +56,24 @@ export default class analyticsOrdersController {
     console.log('on submit');
   }
 
-  exportCsv(){
-    var rowsSelected = null;
-    var rowsHeader = this.tableData.header;
+  getRowsToExport(){
+    var data = [];    
+
     if(this.linesSelected.length > 0){
-      rowsSelected = this.linesSelected;
+      data = this.linesSelected;
     }
-    else{
-      rowsSelected = this.tableData.body;
+    else{     
+      data = this.tableData.body;      
     }
+
+    data = this.$filter('orderObj')( data, this.query.order ,'value');
+
+    return data;
+  }
+
+  exportCsv(){
+    var rowsSelected = this.getRowsToExport();
+    var rowsHeader = this.tableData.header;    
     
     this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected)
     .then((data) => {
@@ -77,14 +86,8 @@ export default class analyticsOrdersController {
   }
 
   exportPdf(){
-    var rowsSelected = null;
-    var rowsHeader = this.tableData.header;
-    if(this.linesSelected.length > 0){
-      rowsSelected = this.linesSelected;
-    }
-    else{
-      rowsSelected = this.tableData.body;
-    }
+    var rowsSelected = this.getRowsToExport();
+    var rowsHeader = this.tableData.header;    
 
     this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected)
     .then((data) => {
@@ -237,6 +240,7 @@ export default class analyticsOrdersController {
 
     this.spinner = Spinner;
     this.$timeout = $timeout;
+    this.$filter = $filter;
 
     this.cardActionsCodes = CardActionsCodes;
     this.ReportTypes = ReportTypes;

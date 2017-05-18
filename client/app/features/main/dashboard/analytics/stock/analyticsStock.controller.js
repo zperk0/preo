@@ -56,15 +56,24 @@ export default class analyticsStockController {
     console.log('on submit');
   }
 
-  exportCsv(){
-    var rowsSelected = null;
-    var rowsHeader = this.tableData.header;
+  getRowsToExport(){
+    var data = [];    
+
     if(this.linesSelected.length > 0){
-      rowsSelected = this.linesSelected;
+      data = this.linesSelected;
     }
-    else{
-      rowsSelected = this.tableData.body;
+    else{     
+      data = this.tableData.body;      
     }
+
+    data = this.$filter('orderObj')( data, this.query.order ,'value');
+
+    return data;
+  }
+
+  exportCsv(){
+    var rowsSelected = this.getRowsToExport();
+    var rowsHeader = this.tableData.header;    
 
     this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected)
     .then((data) => {
@@ -77,14 +86,8 @@ export default class analyticsStockController {
   }
 
   exportPdf(){
-    var rowsSelected = null;
-    var rowsHeader = this.tableData.header;
-    if(this.linesSelected.length > 0){
-      rowsSelected = this.linesSelected;
-    }
-    else{
-      rowsSelected = this.tableData.body;
-    }
+    var rowsSelected = this.getRowsToExport();
+    var rowsHeader = this.tableData.header;    
 
     this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected)
     .then((data) => {
@@ -238,12 +241,13 @@ export default class analyticsStockController {
     this.spinner.show('analytics-stock');
   }
 
-  constructor($stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, CardActionsCodes, ReportTypes) {
+  constructor($filter, $stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, CardActionsCodes, ReportTypes) {
     "ngInject";
    
     this.spinner = Spinner;
     this.$scope = $scope;
     this.$timeout = $timeout;
+    this.$filter = $filter;
 
     this.ReportsService = ReportsService;
 

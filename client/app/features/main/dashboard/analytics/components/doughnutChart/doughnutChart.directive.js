@@ -14,6 +14,8 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
    // bindToController: true,
    link: (scope, elem, attr, ctrl) => {
 
+    var chartColors = ['#0388d1', '#5e52b6'];
+
     scope.onActions = _onAction;
     scope.getExportData = _getExportData;
     scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;
@@ -94,13 +96,15 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
 
       if(moment(scope.config.endDate,"L").isValid())
         maxDate = moment(scope.config.endDate,"L").format("L");
-     // var minDate = moment(scope.config.startDate, "DD/MM/YYYY").format("DD-MMM-YYYY");
-     // var maxDate = moment(scope.config.endDate,"DD/MM/YYYY").format("DD-MMM-YYYY");
+
       var data = [[minDate + ' - ' + maxDate], [scope.config.name]];
 
-      chartValues.values.forEach((x, index) => {
+      chartValues.values.forEach((x, index) => {       
 
-        data.push([x , chartValues.labels[index]]);
+        if(isCurrency)
+          data.push([$filter('currency')(x) , chartValues.labels[index]]);
+        else
+          data.push([$filter('currency')(x,true) , chartValues.labels[index]]);
       });
 
       return {data: data};
@@ -110,20 +114,29 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
       var minDate = "-";
       var maxDate = "-";
 
+      var data = [];
+      chartValues.values.forEach((value, index) => {
+        let obj = {
+          name: chartValues.labels[index],
+          y: value, //$filter('currency')(value,true) ,
+          color: chartColors[index]
+        }
+
+        data.push(obj);
+      });
+
       if(moment(scope.config.startDate,"L").isValid())
         minDate = moment(scope.config.startDate, "L").valueOf();
 
       if(moment(scope.config.endDate,"L").isValid())
         maxDate = moment(scope.config.endDate,"L").valueOf();
-     // var minDate = moment(scope.config.startDate, "DD/MM/YYYY").valueOf();
-     // var maxDate = moment(scope.config.endDate,"DD/MM/YYYY").valueOf();
 
       return  {
           type:'PIE',
           title: scope.config.name,
           startDate: minDate,
           endDate: maxDate,
-          dataJson: JSON.stringify(chartValues.values),
+          dataJson: JSON.stringify(data),
           categories: chartValues.labels
       }
     }
@@ -144,17 +157,13 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
 
       var ctx = canvas.getContext("2d");
 
-      var gradient2 = ctx.createLinearGradient(0, 0, 0, 400);
-        gradient2.addColorStop(1, '#0288d1'); // start
-        gradient2.addColorStop(0, '#7247b0'); // end
-
         return new Chart(ctx, {
           type: 'doughnut',
           data: {
             labels: chartValues.labels,
             datasets: [{
-             backgroundColor: ['#0388d1', '#5e52b6'],
-             hoverBackgroundColor: ['#0388d1', '#5e52b6'],
+             backgroundColor: chartColors,
+             hoverBackgroundColor: chartColors,
              data: chartValues.values,
              borderWidth: 1
            }]

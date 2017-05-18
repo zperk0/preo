@@ -83,7 +83,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
         case CardActionsCodes.DAILY_MODE.id:
         _showDailyMode(option);
         break;
-      }    
+      }
     }
 
     function _exportPdf(){
@@ -103,7 +103,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       scope.exportDataUrl = ReportsService.getChartExportCsvUrl();        
 
       var formSubmit = elem[0].querySelector('#postData');
-      console.log(' button - ', formSubmit);
+      
       $timeout(() =>{
           formSubmit.click();
         }
@@ -124,7 +124,11 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
       chartValues.x.forEach((x, index) => {
 
-        data.push([x , chartValues.y[index]]);
+        if(isCurrency)
+          data.push([x , $filter('currency')(chartValues.y[index])]);
+          
+        else
+          data.push([x , $filter('currency')(chartValues.y[index],true)]);         
       });
 
       return {data: data};
@@ -139,6 +143,16 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
       if(moment(scope.config.endDate,"L").isValid())
         maxDate = moment(scope.config.endDate,"L").valueOf();
+      
+      var data = [];
+
+      // chartValues.x.forEach((x, index) => {
+
+      //   //if(isCurrency)
+      //  //   data.push($filter('currency')(chartValues.y[index]));          
+      //  // else      
+      //     data.push($filter('currency')(chartValues.y[index],true));         
+      // });
 
       return  {
           type:'COLUMN',
@@ -202,8 +216,8 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
         //if KEY already exists in array, just Sum Y value to previous value
         if(i > -1){
-        let sumValue = parseFloat(monthY[i]) + parseFloat(dayValues.y[index]);
-        monthY[i] = sumValue.toFixed(2);
+        let sumValue = (monthY[i]) + (dayValues.y[index]);
+        monthY[i] = sumValue;
         }
         else{
         monthX.push(key);
@@ -235,8 +249,8 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
         //if KEY already exists in array, just Sum Y value to previous value
         if(i > -1){
-        let sumValue = parseFloat(weekY[i]) + parseFloat(dayValues.y[index]);
-        weekY[i] = sumValue.toFixed(2);
+        let sumValue = (weekY[i]) + (dayValues.y[index]);
+        weekY[i] = sumValue;
         }
         else{
         weekX.push(key);
