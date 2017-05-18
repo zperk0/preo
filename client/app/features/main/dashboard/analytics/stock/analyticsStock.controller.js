@@ -32,7 +32,7 @@ export default class analyticsStockController {
 
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
-      console.log('resolve reportserivde data -> ', data);
+
      this.reportsData = data;
 
       this.updateView();
@@ -40,7 +40,7 @@ export default class analyticsStockController {
       this.hideSpinner();
 
     }, (err) => {
-     console.log('erro reportserive ', err);
+     console.log('ReportService fetch Stock Error - ', err);
      this.hideSpinner();
     });
 
@@ -55,8 +55,8 @@ export default class analyticsStockController {
   onSubmit(){
     console.log('on submit');
   }
-  onActions(item){
 
+  exportCsv(){
     var rowsSelected = null;
     var rowsHeader = this.tableData.header;
     if(this.linesSelected.length > 0){
@@ -66,26 +66,48 @@ export default class analyticsStockController {
       rowsSelected = this.tableData.body;
     }
 
-    console.log('lines selected -> ', this.linesSelected);
-    if(item == this.cardActionsCodes.EXPORT_CSV){
-
-      this.exportAction = this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected);
+    this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected)
+    .then((data) => {
+      this.exportAction = data;
       var formSubmit = document.getElementById('postData');
       this.$timeout(() =>{
-          formSubmit.click();
-        }
-      );
-    }
-    else if(item == this.cardActionsCodes.EXPORT_PDF){
+        formSubmit.click();
+      });
+    });
+  }
 
-      this.exportAction = this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected);
+  exportPdf(){
+    var rowsSelected = null;
+    var rowsHeader = this.tableData.header;
+    if(this.linesSelected.length > 0){
+      rowsSelected = this.linesSelected;
+    }
+    else{
+      rowsSelected = this.tableData.body;
+    }
+
+    this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected)
+    .then((data) => {
+      this.exportAction = data;
       var formSubmit = document.getElementById('postData');
-
       this.$timeout(() =>{
-          formSubmit.click();
-        }
-      );
+        formSubmit.click();
+      });
+    });
+  }
+
+  onActions(item){
+
+    switch(item.id){
+      case this.cardActionsCodes.EXPORT_CSV.id:
+      this.exportCsv();
+      break;
+
+      case this.cardActionsCodes.EXPORT_PDF.id:
+      this.exportPdf();
+      break;
     }
+
   }
 
   getReportTypes(){
@@ -107,7 +129,7 @@ export default class analyticsStockController {
   }
 
   getChartData(){
-
+  
     var report = this.dataFilters.report;
     var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : {keys: [], values: []};
 
@@ -116,14 +138,14 @@ export default class analyticsStockController {
      // data: { x:['2017-05-01', '2017-01-01', '2017-02-02', '2017-03-03', '2016-03-04', '2016-05-07', '2017-01-30'] , y:[10, 15, 20 ,25 , 30 , 35 , 40]},
       data: {x: data.keys, y: data.values},
       actions: report.actions,
-      //type: 'currency',
       startDate: this.dataFilters.datesRange.startDate,
       endDate: this.dataFilters.datesRange.endDate
     };
 
-    this.shouldShowChart = true;
+    if(report.type)
+      obj.type = report.type;
 
-    return obj;
+    return obj;    
   }
 
   getTableData(){
@@ -131,41 +153,6 @@ export default class analyticsStockController {
     var report = this.dataFilters.report;
 
     var viewTable = this.ReportsService.prepareDataToTable(report.id);
-
-   //  var viewTable = {
-   //    header: this.ReportsService.getReportHeader(report.id),
-   //    body: []
-   //  };
-
-   //  var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : [];
-
-   // // var testdata = [{ name:'Item name goes hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee1…',itemcount: 1, itemtotal: 29},
-   // //    { name: 'general',itemcount: 9999999,itemtotal:9999999.99},
-   // //    { name:'jason', itemcount:30,itemtotal: 888888},
-   // //    { name:'victort',itemcount: 545, itemtotal: 54562.1}];
-
-   //  data.forEach((row) => {
-
-   //    let rowObj = [];
-   //    viewTable.header.forEach((head) => {
-   //      let colObj = {};
-   //      if(row.hasOwnProperty(head.key)){
-   //        colObj.value = row[head.key];
-   //        colObj.fieldType = head.fieldType;
-   //       // colObj[head.key] = row[head.key];
-   //        colObj.key = head.key;
-   //      }
-   //      else{
-   //        colObj.value = "-";
-   //       // colObj[head.key] = "-";
-   //        colObj.key = head.key;
-   //      }
-
-   //      rowObj.push(colObj);
-   //    });
-
-   //    viewTable.body.push(rowObj);
-   //  });
 
     // the first item in table will be the Order selector
     if(viewTable.body.length > 0){
@@ -182,30 +169,31 @@ export default class analyticsStockController {
   onFilter(filters , typeChanged){
 
     this.dataFilters = filters;
+    var isReportUpdated = false;
 
     // view is loaded with empty report fitler, no search at first time
-    if(!this.dataFilters.report)
+    if(!this.dataFilters.report){
+      this.shouldShowdatatable = false;
       return;
+    }
 
-    var isReportUpdated = false;
     var isChartReport = this.dataFilters.report.isChartType;
+
+    // If none item selected, do nothing.
+    if(isChartReport && !this.dataFilters.item){
+      this.$timeout(() => {
+        this.shouldShowChart = false;
+        this.shouldShowdatatable = false;
+      });
+      return;
+    }
 
     if(typeChanged == 'Report'){
 
       isReportUpdated = true;
 
-      if(isChartReport){
-        this.shouldShowdatatable = false;
-      }
-      else{
-        this.shouldShowChart = false;
-      }
-    }
-
-    // If none item selected, do nothing.
-    if(isChartReport && !this.dataFilters.item){
+      this.shouldShowdatatable = false;
       this.shouldShowChart = false;
-      return;
     }
 
     //Fetch from Api when any filter, except Report is changed, or if report changed but has no data to show for it.
@@ -220,9 +208,12 @@ export default class analyticsStockController {
 
   updateView(){
 
-    if(this.dataFilters.report.isChartType == true){
+    if(this.dataFilters.report.isChartType == true){     
 
-      this.chartData = this.getChartData();
+      this.$timeout(() => {                
+        this.chartData = this.getChartData();
+        this.shouldShowChart = true;          
+      });
     }
     else{
 
@@ -236,20 +227,20 @@ export default class analyticsStockController {
   }
 
   hideSpinner(){
-    this.spinner.hide('stock-parameter change');
+    this.spinner.hide('analytics-stock');
   }
 
   spinnerRunning(){
-    return this.spinner.isCodeVisible('stock-parameter change');
+    return this.spinner.isCodeVisible('analytics-stock');
   }
 
   showSpinner(){
-    this.spinner.show('stock-parameter change');
+    this.spinner.show('analytics-stock');
   }
 
   constructor($stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, CardActionsCodes, ReportTypes) {
     "ngInject";
-
+   
     this.spinner = Spinner;
     this.$scope = $scope;
     this.$timeout = $timeout;
@@ -264,12 +255,10 @@ export default class analyticsStockController {
     this.shouldShowActions = false;
     this.shouldShowdatatable = false;
     this.shouldShowChart = false;
-    this.shouldShowItemFilter = false;
 
     this.linesSelected = [];
     this.tableData = {};
     this.reportsData = [];
-    this.reportItems = null;
 
     this.dataFilters = {
       venues: null,

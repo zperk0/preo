@@ -51,36 +51,38 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
 
     function _onAction(option){
 
-      if(option === CardActionsCodes.EXPORT_CSV){
-        var data = _prepareDataToCsv();
-        console.log(' csv data chart -> ', data);
-        scope.exportData = _prepareDataToCsv();
-        scope.exportDataUrl = ReportsService.getChartExportCsvUrl();
-        console.log(' csv data chart -> ', data);
+      switch(option.id){
+        case CardActionsCodes.EXPORT_CSV.id:
+        _exportCsv();
+        break;
 
-        var formSubmit = elem[0].querySelector('#postData');
-        console.log(' button - ', formSubmit);
-        $timeout(() =>{
-            formSubmit.click();
-          }
-        );
+        case CardActionsCodes.EXPORT_PDF.id:
+        _exportPdf();
+        break;
       }
 
-      if(option === CardActionsCodes.EXPORT_PDF){
-        var data = _prepareDataToPdf();
-        console.log(' pdf data chart -> ', data);
-        scope.exportData = _prepareDataToPdf();
-        scope.exportDataUrl = ReportsService.getChartExportPdfUrl();
-        console.log(' pdf data chart -> ', data);
+    }
 
-        var formSubmit = elem[0].querySelector('#postData');
+    function _exportPdf(){
+      scope.exportData = _prepareDataToPdf();
+      scope.exportDataUrl = ReportsService.getChartExportPdfUrl();        
 
-        $timeout(() =>{
-            formSubmit.click();
-          }
-        );
-      }
+      var formSubmit = elem[0].querySelector('#postData');
 
+      $timeout(() =>{
+          formSubmit.click();
+      });
+    }
+
+    function _exportCsv(){
+      scope.exportData = _prepareDataToCsv();
+      scope.exportDataUrl = ReportsService.getChartExportCsvUrl();        
+
+      var formSubmit = elem[0].querySelector('#postData');
+      
+      $timeout(() =>{
+          formSubmit.click();
+      });
     }
 
     function _prepareDataToCsv(){

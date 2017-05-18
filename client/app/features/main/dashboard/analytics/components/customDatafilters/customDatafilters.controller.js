@@ -24,15 +24,12 @@ export default class customDatafiltersController {
     this.debounce(this.getEvents.bind(this), 400)();
   }
 
-  debounceUpdate(debounce, typeFilter){
+  debounceUpdate(typeFilter, debounce){
 
     this.typeChanged = typeFilter;
 
-    // Debounce only for Venues and Events (multiselects)
     if(debounce)
-      this.debounce(
-        this.updateFiltersToController.bind(this)
-      , 800)();
+      this.debounce(this.updateFiltersToController.bind(this) ,200)();
     else
       this.updateFiltersToController();
   }
@@ -102,9 +99,9 @@ export default class customDatafiltersController {
     }
 
     if(venueNames.length > 0)
-      return venueNames;
+      return venueNames;    
     else
-      return "Venue"; // Fix for an bug with md-selected-text in Angular material < 1.1.1
+      return this.getTextCatalog.getString("Venue"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
   }
 
   getSelectedEventsNames(){
@@ -124,7 +121,7 @@ export default class customDatafiltersController {
     if(eventsNames.length > 0)
       return eventsNames;
     else
-      return "Event"; // Fix for an bug with md-selected-text in Angular material < 1.1.1
+      return this.getTextCatalog.getString("Event"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
   }
 
   // Format Venue array to be returned to the Controller as an Object 
@@ -218,16 +215,20 @@ export default class customDatafiltersController {
       return;
 
     if(this.filters.report && this.filters.report.hasItemFilter){
-      this.filters.item = null;
+    //  this.filters.item = null;
       this.getItemsFilter();
     }
     else{
       this.reportItems = null;
     }
 
-    this.getReports();
-    this.getDateRange();
-    this.debounceUpdate(false, 'Venue');
+    if(this.hasReport)
+      this.getReports();
+
+    if(this.hasDaterange)
+      this.getDateRange();
+    
+    this.debounceUpdate('Venue', true);
   }
 
   onOpenEvent(){
@@ -244,7 +245,7 @@ export default class customDatafiltersController {
     if(!this.checkIfEventChanged())
       return;
 
-    this.debounceUpdate(false, 'Event');   
+    this.debounceUpdate('Event', true);   
   }
 
   eventSearchUp(){
@@ -361,7 +362,7 @@ export default class customDatafiltersController {
 
   onCustomermarketingChange(){
 
-    this.debounceUpdate(false,'CustomerMarketing');
+    this.debounceUpdate('CustomerMarketing');
   }
 
   onEventChange(){
@@ -394,7 +395,7 @@ export default class customDatafiltersController {
       this.filters.item = null;
     }
 
-    this.debounceUpdate(false,'Report');
+    this.debounceUpdate('Report');
   }
 
   onDaterangeChange(){
@@ -437,7 +438,7 @@ export default class customDatafiltersController {
 
   onItemChange(){
 
-    this.debounceUpdate(false, 'Item');
+    this.debounceUpdate('Item');
   }
 
   compareObjectVenue(obj1, obj2){
@@ -483,8 +484,8 @@ export default class customDatafiltersController {
           });
 
         });
+
         resolve();
-        this.selectedVenues = angular.copy(this.venues);
       }, (err) => {
         console.log('Error fetching venue application', err);
         reject();
@@ -515,10 +516,28 @@ export default class customDatafiltersController {
 
     var params = { venues: this.filters.venues}
 
+    let oldItem = null;
+    if(this.filters.item)
+      oldItem = angular.copy(this.filters.item);    
+
     this.ReportsService.getMenuItemsByVenues(params)
     .then((data) => {
 
       this.reportItems = data;
+
+      let matchItem = false;
+      if(oldItem){
+        data.forEach((x) => {
+          if(x.menuItemId == oldItem.menuItemId){
+            matchItem = true;
+          }
+        });
+      }
+    
+      if(matchItem)
+        this.filters.item = oldItem;
+      else if(oldItem)
+        this.filters.item = null;
 
       this.hideSpinner();
 
@@ -531,7 +550,7 @@ export default class customDatafiltersController {
 // To make Venues and Outlets selectable on the same MD-SELECT, the same array will contain venues + outlets
 // Fields: group -> to keep venues and it owns outlets grouped
 //         type -> to know which object in array is an outlet / venue
-//         selected -> default always come all selected
+//         selected -> default always come all selected. used to control Parent <-> child relation on VenueChange event
   getVenues(){
 
     var localVenue = {};
@@ -580,26 +599,39 @@ export default class customDatafiltersController {
       {id: 2, type: 'minus1day',  name: this.getTextCatalog.getString('Yesterday'),
        start: moment().subtract(1, 'year').format('L'), end: today},
       {id: 3, type: 'minus7days', name: this.getTextCatalog.getString('Last 7 days'),
-       start: moment().subtract(7, 'days').format('L'), end: today},
-      {id: 4, type: 'minus30days',name: this.getTextCatalog.getString('Last 30 days'),  default: true,
-       start: moment().subtract(30, 'days').format('L'), end: today},
+       start: moment().subtract(7, 'days').format('L'), end: today},      
       {id: 5, type: 'minus1year', name: this.getTextCatalog.getString('1 year'),
        start: moment().subtract(1, 'year').format('L'), end: today},
       {id: 6, type: 'custom',     name: this.getTextCatalog.getString('Custom')}
     ];
+
+    var defaultOpt = {id: 4, type: 'minus30days',name: this.getTextCatalog.getString('Last 30 days'),
+                      start: moment().subtract(30, 'days').format('L'), end: today};
+    
+    ranges.push(defaultOpt);
 
     //do not allow this option if has no Event venue selected
     if(venueTypes.hasEvent){
       ranges.push({id: 7, type:'event', name: this.getTextCatalog.getString('By event')});
     }
 
-    //will only update dateOptions array, if it had event selected before, and now has no more this options available
-    // OR its init page
-    if( !this.dateRangeOptions || (this.selectedDaterange.type == 'event' && !venueTypes.hasEvent))
-      this.dateRangeOptions = ranges;
+    this.dateRangeOptions = ranges;
+
+
     // if event is selected, update Events
-    else if(this.selectedDaterange.type == 'event' && venueTypes.hasEvent)
+    if(this.selectedDaterange.type == 'event' && venueTypes.hasEvent)
       this.getEvents();
+
+    // set default option only at init page OR if Event was selected and now Event option its not available aynmore.
+    if(!this.selectedDaterange.type || (this.selectedDaterange.type == 'event' && !venueTypes.hasEvent)){
+      
+      if((this.selectedDaterange.type == 'event' && !venueTypes.hasEvent)){
+        this.events = []; 
+      }
+
+      this.selectedDaterange = defaultOpt;
+      this.onDaterangeChange();      
+    }
   }
 
   getEvents(){
@@ -624,27 +656,25 @@ export default class customDatafiltersController {
     //this.EventService.getEvents(this.VenueService.currentVenue.id)
     .then((data) => {
 
+      var uniqueID = 1; // genetared to control 'track by' and checkIfEventChanged() function
       data.forEach((event, i)=> {
         let objEvent = {};
         objEvent.id = event.id;
         objEvent.name = event.name;
 
-        let currentSchedules = event.schedules;
-        currentSchedules.forEach((schedule, j) => {
-          let currentOccur = schedule.occurrences;
-          currentOccur.forEach((occur) => {
+        let currentTimes = event.times;
+        currentTimes.forEach((time) => {
+          let objTime ={};
+            objTime.id = objEvent.id;
+            objTime.name = objEvent.name;
+            objTime.startDate = time;
+            objTime.occurId = uniqueID;
+            objTime.showName = moment(time).format('L') +" "+moment(time).format('LT') +' - ' + objEvent.name;
 
-            let objOccur = {};
-            objOccur.id = objEvent.id;
-            objOccur.name = objEvent.name;
-            objOccur.startDate = occur.date;
-            objOccur.occurId = occur.id;
-            objOccur.showName = moment(occur.date).format('L') +" "+moment(occur.date).format('LT') +' - ' + objEvent.name;
-
-            eventsFetched.push(objOccur);
-          });
-
-        });
+            eventsFetched.push(objTime);
+            uniqueID++;
+        }); 
+           
 
       });
       
@@ -663,6 +693,9 @@ export default class customDatafiltersController {
 
   getReports(){
 
+    if(!this.spinnerRunning())
+      this.showSpinner();
+
     var venueTypes = this.getVenueSelectedTypes();
 
     var venueWithAppId = false;
@@ -679,32 +712,36 @@ export default class customDatafiltersController {
       hasApplicationId: venueWithAppId
     };
 
-    // let oldReport = null;
-    // if(this.filters.report)
-    //   oldReport = angular.copy(this.filters.report);
-    // else // clean service data when init page.
-    //   this.ReportsService.clearData();
+    let oldReport = null;
+    if(this.filters.report)
+      oldReport = angular.copy(this.filters.report);
+    else // clean service data when init page.
+      this.ReportsService.clearData();
 
     //clean data at first time 
-    if(!this.fitlers.report)
+    if(!this.filters.report)
       this.ReportsService.clearData();
 
     this.ReportsService.getReports(this.reportTypes, options)
     .then((newReports) => {
       this.reports = newReports;
 
-      // let matchReport = false;
-      // if(oldReport){
-      //   newReports.forEach((x) => {
-      //     if(x.id == oldReport.id){
-      //       matchReport = true;
-      //     }
-      //   });
-      // }
+      let matchReport = false;
+      if(oldReport){
+        newReports.forEach((x) => {
+          if(x.id == oldReport.id){
+            matchReport = true;
+          }
+        });
+      }
 
-      // if(matchReport)
-      //   this.filters.report = oldReport;
+      if(matchReport)
+        this.filters.report = oldReport;
+      else if(oldReport)
+        this.filters.report = this.reports[0]; // set the first option
 
+      
+      this.hideSpinner();
     });
   }
 
@@ -739,9 +776,14 @@ export default class customDatafiltersController {
     this.shouldShowMarketingCheck = false;
     this.shouldShowEventfilter = false;
 
+    this.showSpinner();
+
     this.getVenues()
     .then(() => {
 
+      // always start with all venues selected
+      this.selectedVenues = angular.copy(this.venues);
+      
       if(this.hasDaterange){
         this.shouldShowDaterange = true;
         this.getDateRange();
@@ -754,6 +796,8 @@ export default class customDatafiltersController {
         this.getReports();
       } else {
         this.shouldShowReportfilter = false;
+
+        this.hideSpinner();
       }
 
     }, () => {
@@ -799,7 +843,7 @@ export default class customDatafiltersController {
 
         if(this.dateRangeChanged === true){
 
-          this.debounceUpdate(false,'DateRange');
+          this.debounceUpdate('DateRange');
         }
       }.bind(this),
       true

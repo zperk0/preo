@@ -1,5 +1,4 @@
 .summary-view{
-  width: 100%;
 
   .main-content-full {
     flex-flow: row wrap;
@@ -21,6 +20,12 @@
       padding-bottom: 20px;
       padding-right: 20px;
     }
+  }
+
+  .summary-filters{
+     width: 100%;
+     display: table;
+     table-layout: fixed; 
   }
 
   .bar-chart{

@@ -7,8 +7,9 @@ export default class customDatePickerController {
 
     var divRoot = this.scope.getDirectiveElement()[0];
 
-    var elemId = event.srcElement.id;
-    var elementFocused = divRoot.querySelector('#' + elemId);
+    var dateInput = event.target || event.srcElement;
+
+    var elementFocused = divRoot.querySelector('#' + dateInput.id);
 
     elementFocused.setSelectionRange(0, elementFocused.value.length);
     this.shouldShowCalendar = true;
@@ -18,15 +19,16 @@ export default class customDatePickerController {
 
     var divRoot = this.scope.getDirectiveElement()[0];
 
-    var elemId = event.srcElement.id;
-    var elem = divRoot.querySelector('#' + elemId);
+    var dateInput = event.target || event.srcElement;
+
+    var elem = divRoot.querySelector('#' + dateInput.id);
 
     var dateInputed = moment(elem.value, 'L', true);
 
     if(dateInputed == null || !dateInputed.isValid()){
-      if(elemId === 'fromDate'){
+      if(dateInput.id === 'fromDate'){
         elem.value = this.calendarDateFrom.format('L');// this.calendarDateFrom.format('DD/MM/YYYY');
-      }else if(elemId === 'endDate'){
+      }else if(dateInput.id === 'endDate'){
         elem.value = this.calendarDateEnd.format('L'); //this.calendarDateEnd.format('DD/MM/YYYY');
       }
     }

@@ -25,69 +25,79 @@ export default class analyticsSummaryController {
     this.debounce(this.updateCharts.bind(this), 1000)();
   }
 
+  updateBars(data){
+    this.bars.forEach((bar) => {
+
+      bar.startDate = this.dataFilters.datesRange.startDate;
+      bar.endDate = this.dataFilters.datesRange.endDate;
+
+      if(data.hasOwnProperty(bar.id)){
+
+        bar.data = {
+          x: data[bar.id].keys,
+          y: data[bar.id].values
+        }
+      }
+      else{
+        bar.data = {
+         x: [],
+         y: []
+        }
+     }
+    });
+  }
+
+  updateDoughnuts(data){
+    this.doughnuts.forEach((doughnut) => {
+
+      doughnut.startDate = this.dataFilters.datesRange.startDate;
+      doughnut.endDate = this.dataFilters.datesRange.endDate;
+
+     if(data.hasOwnProperty(doughnut.id)){
+
+       doughnut.data = {
+         labels: data[doughnut.id].keys,
+         values: data[doughnut.id].values
+       }
+     }
+     else{
+        doughnut.data = {
+          labels: [],
+          values: []
+        }
+     }
+
+    });
+  }
+
+  updateCards(data){
+    this.cards.forEach((card) => {
+      let newData = "";
+      let value = data[card.id];
+
+      if(data.hasOwnProperty(card.id)){
+
+        card.data = data[card.id];
+      }
+
+    });
+  }
+
   updateCharts(){
 
     if(!this.spinnerRunning())
       this.showSpinner();
 
    this.dataFilters.report = { reportType: this.ReportTypes.SUMMARY };
-   // this.ReportService.getReports(parameters)
+   
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
-      console.log('report resolv', data);
-      this.chartsData = data;
-
-      this.bars.forEach((bar) => {
-
-        bar.startDate = this.dataFilters.datesRange.startDate;
-        bar.endDate = this.dataFilters.datesRange.endDate;
-
-        if(data.hasOwnProperty(bar.id)){
-
-          bar.data = {
-            x: data[bar.id].keys,
-            y: data[bar.id].values
-          }
-        }
-        else{
-          bar.data = {
-            x: [],
-            y: []
-          }
-        }
-      });
-
-      this.doughnuts.forEach((doughnut) => {
-
-        doughnut.startDate = this.dataFilters.datesRange.startDate;
-        doughnut.endDate = this.dataFilters.datesRange.endDate;
-
-        if(data.hasOwnProperty(doughnut.id)){
-
-          doughnut.data = {
-            labels: data[doughnut.id].keys,
-            values: data[doughnut.id].values
-          }
-        }
-        else{
-          doughnut.data = {
-            labels: [],
-            values: []
-          }
-        }
-
-      });
-
-      this.cards.forEach((card) => {
-        let newData = "";
-        let value = data[card.id];
-
-        if(data.hasOwnProperty(card.id)){
-
-          card.data = data[card.id];
-        }
-
-      });
+      
+      this.chartsData = data;   
+      
+      this.updateBars(data);
+      this.updateDoughnuts(data);
+      this.updateCards(data);
 
       this.dataLoaded = true;
 
@@ -96,7 +106,7 @@ export default class analyticsSummaryController {
       });
 
     }, (err) => {
-      console.log('ReportService error', err);
+      console.log('ReportService fetch Summary Error - ', err);
       this.hideSpinner();
     });
   }
@@ -109,15 +119,15 @@ export default class analyticsSummaryController {
   }
 
   hideSpinner(){
-    this.spinner.hide('summary-parameter change');
+    this.spinner.hide('analytics-summary');
   }
 
   showSpinner(){
-    this.spinner.show('summary-parameter change');
+    this.spinner.show('analytics-summary');
   }
 
   spinnerRunning(){
-    return this.spinner.isCodeVisible('summary-parameter change');
+    return this.spinner.isCodeVisible('analytics-summary');
   }
 
   constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes) {
@@ -137,22 +147,21 @@ export default class analyticsSummaryController {
 
     this.dataLoaded = false;
     this.showSpinner();
-
-   // $timeout(() => {
+   
     this._init();
-  //});
-
   }
 
   _init(){
 
     var types = [this.ReportTypes.SUMMARY];
     this.ReportsService.clearData();
-    var charts = this.ReportsService.getReports(types);
+    this.ReportsService.getReports(types)
+    .then((data) => {
+        this.cards = data[0].cards;
+        this.bars = data[0].bars;
+        this.doughnuts = data[0].doughnuts;
+    });
 
-    this.cards = charts[0].cards;
-    this.bars = charts[0].bars;
-    this.doughnuts = charts[0].doughnuts;
   }
 }
 

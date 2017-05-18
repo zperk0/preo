@@ -1,9 +1,11 @@
 <div class='summary-view layout-left-right' flex layout-align="stretch stretch">
   <div class='main-content-full' flex layout="column" layout-align="start start">
-
+  
+  <div class="summary-filters">
   <custom-datafilters has-daterange="true"
       on-filter="analyticsSummaryCtrl.onFilter(filters, typeChanged)">
   </custom-datafilters>
+  </div>
 
   <div layout="row" class="card-chart" layout-wrap ng-if="analyticsSummaryCtrl.dataLoaded">
     <div flex="{{::card.flexWidth}}" ng-repeat="card in analyticsSummaryCtrl.cards" ng-switch="card.type">

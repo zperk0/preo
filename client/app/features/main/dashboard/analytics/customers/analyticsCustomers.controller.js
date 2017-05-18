@@ -32,7 +32,7 @@ export default class analyticsCustomersController {
 
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
-      console.log('resolve reportserivde data -> ', data);
+      
       this.reportsData = data;
 
       this.updateView();
@@ -40,7 +40,7 @@ export default class analyticsCustomersController {
       this.hideSpinner();
 
     }, (err) => {
-      console.log('erro reportserive ', err);
+      console.log('ReportService fetch Customers Error - ', err);
       this.hideSpinner();
     });
 
@@ -55,8 +55,8 @@ export default class analyticsCustomersController {
   onSubmit(){
     console.log('on submit');
   }
-  onActions(item){
 
+  exportCsv(){
     var rowsSelected = null;
     var rowsHeader = this.tableData.header;
     if(this.linesSelected.length > 0){
@@ -66,58 +66,85 @@ export default class analyticsCustomersController {
       rowsSelected = this.tableData.body;
     }
 
-    console.log('lines selected -> ', this.linesSelected);
-    if(item == this.cardActionsCodes.EXPORT_CSV){
-
-      this.exportAction = this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected);
+    this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected)
+    .then((data) => {
+      this.exportAction = data;
       var formSubmit = document.getElementById('postData');
       this.$timeout(() =>{
-          formSubmit.click();
-        }
-      );
-    }
-    else if(item == this.cardActionsCodes.EXPORT_PDF){
-
-      this.exportAction = this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected);
-      var formSubmit = document.getElementById('postData');
-
-      this.$timeout(() =>{
-          formSubmit.click();
-        }
-      );
-    }
-    else if(item == this.cardActionsCodes.NOTIFICATION){
-      var modal = {
-        title: this.gettextCatalog.getString('Send a push notification...'),
-        placeholder: this.gettextCatalog.getString('Write here your message'),
-        titleMessage: this.gettextCatalog.getString('Please note, push notifications will only be received by users who have your mobile app installed.'),
-        buttons: [{name:this.gettextCatalog.getString('Send')}]
-      };
-
-      this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
-      .then(() => {
-        
-        var usersSelected = [];
-        var textToPush = this.$scope.diagCtrl.textArea;
-        
-        if(this.linesSelected.length > 0){
-          usersSelected = this.linesSelected;
-        }
-        else{
-          usersSelected = this.tableData.body;
-        }
-
-        this.ReportsService.sendPushNotification( usersSelected,textToPush)
-        .then((data) => {
-          console.log('response push notif', data);
-        }, (err) => {
-          console.log('erro push nootif', err);
-        });
-
-      }, () => {
-        console.log('cancel dialog');
+        formSubmit.click();
       });
+    });
+  }
+
+  exportPdf(){
+    var rowsSelected = null;
+    var rowsHeader = this.tableData.header;
+    if(this.linesSelected.length > 0){
+      rowsSelected = this.linesSelected;
     }
+    else{
+      rowsSelected = this.tableData.body;
+    }
+
+    this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected)
+    .then((data) => {
+      this.exportAction = data;
+      var formSubmit = document.getElementById('postData');
+      this.$timeout(() =>{
+        formSubmit.click();
+      });
+    });
+  }
+
+  sendNotification(){
+    var modal = {
+      title: this.gettextCatalog.getString('Send a push notification...'),
+      placeholder: this.gettextCatalog.getString('Write here your message'),
+      titleMessage: this.gettextCatalog.getString('Please note, push notifications will only be received by users who have your mobile app installed.'),
+      buttons: [{name:this.gettextCatalog.getString('Send')}]
+    };
+
+    this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
+    .then(() => {
+      
+      var usersSelected = [];
+      var textToPush = this.$scope.diagCtrl.textArea;
+      
+      if(this.linesSelected.length > 0){
+        usersSelected = this.linesSelected;
+      }
+      else{
+        usersSelected = this.tableData.body;
+      }
+
+      this.ReportsService.sendPushNotification( usersSelected,textToPush)
+      .then((data) => {
+        console.log('response push notif', data);
+      }, (err) => {
+        console.log('erro push nootif', err);
+      });
+
+    }, () => {
+      console.log('cancel dialog');
+    });
+  }
+
+  onActions(item){
+
+    switch(item.id){
+      case this.cardActionsCodes.EXPORT_CSV.id:
+      this.exportCsv();
+      break;
+
+      case this.cardActionsCodes.EXPORT_PDF.id:
+      this.exportPdf();
+      break;
+
+      case this.cardActionsCodes.NOTIFICATION.id:
+      this.sendNotification()
+      break;
+    }
+
   }
 
   getReportTypes(){    
@@ -142,38 +169,7 @@ export default class analyticsCustomersController {
 
     var report = this.dataFilters.report;
 
-    // var viewTable = {
-    //   header: this.ReportsService.getReportHeader(report.id),
-    //   body: []
-    // };
-
-    var viewTable = this.ReportsService.prepareDataToTable(report.id);
-
-    //var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : [];
-    //var testdata = [{name: 'Renan', email:'dfdf@fdfd', phone:'343524', customerMarketing: false}];
-
-    // data.forEach((row) => {
-
-    //   let rowObj = [];
-    //   viewTable.header.forEach((head) => {
-    //     let colObj = {};
-    //     if(row.hasOwnProperty(head.key)){
-    //       colObj.value = row[head.key];
-    //       colObj.fieldType = head.fieldType;
-    //      // colObj[head.key] = row[head.key];
-    //       colObj.key = head.key;
-    //     }
-    //     else{
-    //       colObj.value = "-";
-    //      // colObj[head.key] = "-";
-    //       colObj.key = head.key;
-    //     }
-
-    //     rowObj.push(colObj);
-    //   });
-
-    //   viewTable.body.push(rowObj);
-    // });   
+    var viewTable = this.ReportsService.prepareDataToTable(report.id); 
 
     // the first item in table will be the Order selector
     if(viewTable.body.length > 0){
@@ -194,13 +190,15 @@ export default class analyticsCustomersController {
     this.dataFilters = filters;
 
     // view is loaded with empty report fitler, no search at first time
-    if(!this.dataFilters.report)
+    if(!this.dataFilters.report){
+      this.shouldShowdatatable = false;     
       return;
+    }
 
     var isReportUpdated = false;
 
     if(typeChanged == 'Report'){
-     // this.dataFilters.report = filters.report;
+     
       isReportUpdated = true;
     }
 
@@ -236,15 +234,15 @@ export default class analyticsCustomersController {
   }
 
   hideSpinner(){
-    this.spinner.hide('customers-parameter change');
+    this.spinner.hide('analytics-cutomer');
   }
 
   spinnerRunning(){
-    return this.spinner.isCodeVisible('customers-parameter change');
+    return this.spinner.isCodeVisible('analytics-cutomer');
   }
 
   showSpinner(){
-    this.spinner.show('customers-parameter change');
+    this.spinner.show('analytics-cutomer');
   }
 
   constructor($filter, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, CardActionsCodes) {
@@ -252,6 +250,7 @@ export default class analyticsCustomersController {
 
     this.spinner = Spinner;
     this.$scope = $scope;
+    this.$timeout = $timeout;
 
     this.cardActionsCodes = CardActionsCodes;
     this.ReportTypes = ReportTypes;

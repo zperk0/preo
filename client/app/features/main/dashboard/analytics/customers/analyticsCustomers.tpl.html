@@ -1,16 +1,18 @@
 <div class='customers-analytics-view layout-left-right' flex layout-align="stretch stretch">
   <div class='main-content-full' flex layout="column" layout-align="start start">
 
+  <div class="customers-filters">
   <custom-datafilters has-daterange="true"
     has-report="true"
     report-types="analyticsCustomersCtrl.reportTypes"
     on-filter="analyticsCustomersCtrl.onFilter(filters, typeChanged)">
   </custom-datafilters>
+  </div>
 
-  <md-card flex layout="column" ng-if="analyticsCustomersCtrl.shouldShowdatatable">
+  <md-card class="full-card" layout-wrap layout="column" ng-if="analyticsCustomersCtrl.shouldShowdatatable">
     <md-card-title>
-      <md-card-title-text flex layout="row" layout-align="space-between start">
-        <h2 class="md-title" translate> {{analyticsCustomersCtrl.reportTitle}}</h2>
+      <md-card-title-text layout="row" layout-align="space-between start">
+        <h2 class="md-title"> {{analyticsCustomersCtrl.reportTitle}}</h2>
         <form action={{analyticsCustomersCtrl.exportDataUrl}} method='POST' ng-submit='analyticsCustomersCtrl.getExportData()'>
           <input name='data' value='{{analyticsCustomersCtrl.exportData}}' type='hidden'/>
             <div class="align-action-top" ng-if="analyticsCustomersCtrl.shouldShowActions">
@@ -21,18 +23,18 @@
       </md-card-title-text>
     </md-card-title>
 
-    <md-table-container layout-fill flex>
+    <md-table-container layout-fill flex layout-wrap>
       <table md-table md-row-select multiple ng-model="analyticsCustomersCtrl.linesSelected">
         <thead md-head md-order="analyticsCustomersCtrl.query.order">
          <tr md-row>
-          <th md-column ng-repeat="col in analyticsCustomersCtrl.tableData.header" md-order-by="{{col.key}}">
+          <th md-column ng-repeat="col in analyticsCustomersCtrl.tableData.header" md-order-by="{{col.key}}" ng-if="!col.isHidden">
             <span>{{col.text}}</span>
           </th>
         </tr>
       </thead>
-      <tbody md-body>
+      <tbody md-body layout-wrap>
          <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsCustomersCtrl.tableData.body | orderObj:analyticsCustomersCtrl.query.order:'value' | marketingFilter:analyticsCustomersCtrl.fieldToFilter:analyticsCustomersCtrl.filterCustomerMarketing track by $index">
-           <td md-cell ng-repeat="col in row" ng-switch="col.fieldType">
+           <td md-cell ng-repeat="col in row" ng-switch="col.fieldType" ng-if="!col.isHidden">
             <span ng-switch-when="date">{{col.value | datelocale}}</span>
             <span ng-switch-when="currency">{{col.value | currency}}</span>
             <span ng-switch-when="number">{{col.value | currency:true}}</span>
@@ -50,31 +52,7 @@
             </span>
           </td>
         </tr>
-      </tbody>
-       <!--  <thead md-head md-order="analyticsCustomersCtrl.query.order">
-          <tr md-row>
-            <th md-column ng-repeat="(key , value) in analyticsCustomersCtrl.tableData.header" md-order-by="{{key}}"><span>{{value}}</span></th>
-          </tr>
-        </thead>
-        <tbody md-body>
-          <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsCustomersCtrl.tableData.body | orderBy:analyticsCustomersCtrl.query.order | filter:{'customerMarketing': analyticsCustomersCtrl.filterCustomerMarketing} track by $index">
-            <td md-cell ng-repeat="(key, value) in row">
-              <span ng-if="value === true">
-                <svg fill="#1c9c18" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                </svg>
-              </span>
-              <span ng-if="value === false">
-                <svg fill="#e02c00" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                  <path d="M0 0h24v24H0z" fill="none"/>
-                </svg>
-              </span>
-              <span ng-if="value !== true && value !== false">{{value}}</span>
-            </td>
-          </tr>
-        </tbody> -->
+      </tbody>       
       </table>
     </md-table-container>
   <!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->

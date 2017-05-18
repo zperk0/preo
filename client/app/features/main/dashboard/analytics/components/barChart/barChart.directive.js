@@ -12,18 +12,17 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
   link: (scope, elem, attr, ctrl) => {
 
     scope.onActions = _onAction;
-    scope.getExportData = _getExportData;
-    scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;
+    scope.getExportData = _getExportData;   
+    scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false; 
 
     // ONLY when use DAILY, MONTHLY, WEEKLY modes
     // array with Data may always come with Days, formated as YYYY-MM-DD.
 
     var chartValues = angular.copy(scope.config.data);
 
-    var canvas = elem[0].querySelector('#barchart');
+    var canvas = elem[0].querySelector('#barchart');   
 
     var isCurrency = scope.config.type == 'currency' ? true : false;
-    //var currencySymbol = scope.config.currencySymbol ? scope.config.currencySymbol : "";
 
     //always init with Daily view if not setted. Or if will not use these modes
     var currentDataVisualization = (scope.config.defaultMode) ? scope.config.defaultMode : CardActionsCodes.DAILY_MODE;
@@ -34,21 +33,21 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
     // update chartView before initChart
     if(currentDataVisualization != CardActionsCodes.DAILY_MODE){
-      _onAction(currentDataVisualization);
+      _onAction(currentDataVisualization, true);
     }
-
-    var barChart = _initChart();
-
+     
+    var barChart = _initChart();    
+    
     scope.$watch(
       () => { return scope.config.data; },
       function(newValue, oldValue){
 
         if(typeof oldValue === 'undefined' || (oldValue.x.length <= 0 && newValue.x.length <= 0 && oldValue.y.length <= 0 && newValue.y.length <= 0))
         return;
-        Spinner.show('barchart-directive');
-
-        chartValues = angular.copy(scope.config.data);
-        _updateChart();
+        Spinner.show('barchart-directive');        
+       
+       // update current chart with the same visualization it had before. 
+        _onAction(currentDataVisualization, true);              
 
         Spinner.hide('barchart-directive');
       },
@@ -59,67 +58,56 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       console.log('Exporting data...');
     }
 
-    function _onAction(option){
+    function _onAction(option,isWatchUpdate){
 
-      if(currentDataVisualization == option)
+      if(currentDataVisualization.id == option.id && !isWatchUpdate)
         return;
 
-      if(option == CardActionsCodes.EXPORT_CSV){
-        var data = _prepareDataToCsv();
-        scope.exportData = _prepareDataToCsv();
-        scope.exportDataUrl = ReportsService.getChartExportCsvUrl();
-        console.log(' csv data chart -> ', data);
+      switch(option.id){
+        case CardActionsCodes.EXPORT_CSV.id:
+        _exportCsv(option);
+        break;
 
-        var formSubmit = elem[0].querySelector('#postData');
-        console.log(' button - ', formSubmit);
-        $timeout(() =>{
-            formSubmit.click();
-          }
-        );
-      }
+        case CardActionsCodes.EXPORT_PDF.id:
+        _exportPdf(option);
+        break;
 
-      if(option == CardActionsCodes.EXPORT_PDF){
-        var data = _prepareDataToPdf();
-        scope.exportData = _prepareDataToPdf();
-        scope.exportDataUrl = ReportsService.getChartExportPdfUrl();
-        console.log(' pdf data chart -> ', data);
+        case CardActionsCodes.MONTHLY_MODE.id:
+        _showMonthlyMode(option);
+        break;
 
-        var formSubmit = elem[0].querySelector('#postData');
+        case CardActionsCodes.WEEKLY_MODE.id:
+        _showWeeklyMode(option);
+        break;
 
-        $timeout(() =>{
-            formSubmit.click();
-          }
-        );
-      }
+        case CardActionsCodes.DAILY_MODE.id:
+        _showDailyMode(option);
+        break;
+      }    
+    }
 
-      if(option == CardActionsCodes.MONTHLY_MODE){
+    function _exportPdf(){
+      scope.exportData = _prepareDataToPdf();
+      scope.exportDataUrl = ReportsService.getChartExportPdfUrl();        
 
-        currentDataVisualization = option;
-        var propTitle = scope.config.name[option.type];
-        scope.title = propTitle ? propTitle : scope.config.name;
+      var formSubmit = elem[0].querySelector('#postData');
 
-        _groupByMonth();
-      }
+      $timeout(() =>{
+          formSubmit.click();
+        }
+      );
+    }
 
-      if(option == CardActionsCodes.WEEKLY_MODE){
+    function _exportCsv(){
+      scope.exportData = _prepareDataToCsv();
+      scope.exportDataUrl = ReportsService.getChartExportCsvUrl();        
 
-        currentDataVisualization = option;
-        var propTitle = scope.config.name[option.type];
-        scope.title = propTitle ? propTitle : scope.config.name;
-
-        _groupByWeek();
-      }
-
-      if(option == CardActionsCodes.DAILY_MODE){
-
-        currentDataVisualization = option;
-        var propTitle = scope.config.name[option.type];
-        scope.title = propTitle ? propTitle : scope.config.name;
-
-        chartValues = angular.copy(scope.config.data);
-
-        _updateChart();
-      }
+      var formSubmit = elem[0].querySelector('#postData');
+      console.log(' button - ', formSubmit);
+      $timeout(() =>{
+          formSubmit.click();
+        }
+      );
     }
 
     function _prepareDataToCsv(){
@@ -131,8 +119,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
       if(moment(scope.config.endDate,"L").isValid())
         maxDate = moment(scope.config.endDate,"L").format("L");
-      //var minDate = moment(scope.config.startDate, "L").format("L");
-     // var maxDate = moment(scope.config.endDate,"L").format("L");
+
       var data = [[minDate + ' - ' + maxDate], [scope.title]];
 
       chartValues.x.forEach((x, index) => {
@@ -152,8 +139,6 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
       if(moment(scope.config.endDate,"L").isValid())
         maxDate = moment(scope.config.endDate,"L").valueOf();
-      //var minDate = moment(scope.config.startDate, "L").valueOf();
-     // var maxDate = moment(scope.config.endDate,"L").valueOf();
 
       return  {
           type:'COLUMN',
@@ -164,6 +149,39 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
           categories: chartValues.x
       }
     }
+
+    function _showDailyMode(actionSelected){
+      currentDataVisualization = actionSelected;
+
+      var propTitle = scope.config.name[actionSelected.type];
+      scope.title = propTitle ? propTitle : scope.config.name;
+
+      chartValues = angular.copy(scope.config.data);
+
+      _updateChart();
+    }
+
+    function _showWeeklyMode(actionSelected){
+      currentDataVisualization = actionSelected;
+
+      var propTitle = scope.config.name[actionSelected.type];
+      scope.title = propTitle ? propTitle : scope.config.name;
+
+      _groupByWeek();
+
+      _updateChart();
+    }
+
+    function _showMonthlyMode(actionSelected){
+      currentDataVisualization = actionSelected;
+
+      var propTitle = scope.config.name[actionSelected.type];
+      scope.title = propTitle ? propTitle : scope.config.name;
+
+      _groupByMonth();
+
+      _updateChart();
+    }    
 
     function _groupByMonth(){
       var monthX = [];
@@ -194,8 +212,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       });
 
       chartValues.x = monthX;
-      chartValues.y = monthY;
-      _updateChart();
+      chartValues.y = monthY;      
     }
 
     function _groupByWeek(){
@@ -228,8 +245,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       });
 
       chartValues.x = weekX;
-      chartValues.y = weekY;
-      _updateChart();
+      chartValues.y = weekY;      
     }
 
     function _updateChart(){
@@ -288,6 +304,41 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       }
 
       return ticks;
+    }
+
+    function _newPlugin(){
+      // Define a plugin to provide data labels
+      Chart.plugins.register({
+        afterDatasetsDraw: function(chart, easing) {
+        // To only draw at the end of animation, check for easing === 1
+          var mychart = chart;
+          var ctx = mychart.chart.ctx;
+          chart.data.datasets.forEach(function (dataset, i) {
+            var meta = chart.getDatasetMeta(i);
+            if (!meta.hidden) {
+              meta.data.forEach(function(element, index) {
+                //console.log('chart', mychart);
+                //console.log('ctx', ctx);
+                //mychart.scales['y-axis-0'].minHeight = 15;
+                // Draw the text in black, with the specified font
+                // ctx.fillStyle = 'rgb(0, 0, 0)';
+                // var fontSize = 16;
+                // var fontStyle = 'normal';
+                // var fontFamily = 'Helvetica Neue';
+                // ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+                // // Just naively convert to string for now
+                // var dataString = dataset.data[index].toString();
+                // // Make sure alignment settings are correct
+                // ctx.textAlign = 'center';
+                // ctx.textBaseline = 'middle';
+                // var padding = 5;
+                // var position = element.tooltipPosition();
+                // ctx.fillText(dataString, position.x, position.y - (fontSize / 2) - padding);
+              });
+            }
+          });
+        }
+      });
     }
 
     function _customTooltips(tooltip) {
@@ -361,7 +412,6 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       gradient2.addColorStop(1, '#0288d1'); // start
       gradient2.addColorStop(0, '#7247b0'); // end
 
-      Chart.defaults.global.pointHitDetectionRadius = 1;
       Chart.defaults.global.tooltips.backgroundColor= 'rgba(255,255,255,0.8)';
       Chart.defaults.global.tooltips.bodyFontColor= '#000000';
       Chart.defaults.global.tooltips.bodyFontFamily= "Roboto";
@@ -373,24 +423,23 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       Chart.defaults.global.tooltips.displayColors= false;
       Chart.defaults.global.tooltips.caretSize= 7;
       Chart.defaults.global.tooltips.footerFontSize = 0;
-      Chart.defaults.global.hover.mode = 'single';
 
       var chartOptions = _customOptions();
 
       return new Chart(ctx, {
         type: 'bar',
         data: {
-        labels: chartValues.x,
-        datasets: [{
-           backgroundColor: gradient2,
-           hoverBackgroundColor: gradient,
-           data: chartValues.y,
-           borderColor: "rgba(151,187,205,1)",
-           borderWidth: 1
-         }]
-         },
-         options: chartOptions
-        });
+          labels: chartValues.x,
+          datasets: [{
+            borderColor: "rgba(151,187,205,1)",
+            borderWidth: 2,  
+            backgroundColor: gradient2,
+            hoverBackgroundColor: gradient,
+            data: chartValues.y,                   
+          }]
+        },
+        options: chartOptions
+      });
     }
 
     function _customOptions(){
@@ -400,15 +449,16 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       var opts = {
         responsive: true,
         maintainAspectRatio: false,
-        scales: {
+        scales: {          
           yAxes: [{
             ticks: {
               display: newY.display,
               max: newY.max,
+              beginAtZero: true,
               min: 0,
               stepSize: newY.stepSize,
               callback: function(value,index,values) {
-                var label = 0;
+               
                 if(isCurrency)
                   return $filter('currency')(value,false, 0);
                 else
@@ -430,38 +480,39 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
           }]
         },
         title: {
-        display: false
+          display: false
         },
         legend: {
-        display: false
+          display: false
         },
 
         tooltips: {
          // position: 'nearest',
-        mode: 'index',
-        yPadding: 15.5,
-        xPadding: 15.5,
-         // yAlign: 'bottom',
-         // xAlign: 'center',
-        caretSize: 8,
-        backgroundColor: 'rgba(200, 200, 200, 1)',
-        borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 4,
-        enabled: false,
-        custom: _customTooltips,
-        callbacks: {
-          title: function(tooltipItem){
+         // mode: 'index',
+          mode: 'x',
+          intersect: false,
+          yPadding: 15.5,
+          xPadding: 15.5,
+          caretSize: 8,
+          backgroundColor: 'rgba(200, 200, 200, 1)',
+          borderColor: 'rgba(0,0,0,1)',
+          borderWidth: 4,
+          enabled: false,
+          custom: _customTooltips,
+          callbacks: {
+            title: function(tooltipItem){
 
-            return tooltipItem[0].xLabel;
-          },
-          label: function(tooltipItem) {
-            if(isCurrency)
-              return $filter('currency')(tooltipItem.yLabel);
-            else
-              return $filter('currency')(tooltipItem.yLabel,true);
-          },
-          footer: function() { return ' '; }
-        }
+              return tooltipItem[0].xLabel;
+            },
+            label: function(tooltipItem) {
+
+              if(isCurrency)
+                return $filter('currency')(tooltipItem.yLabel);
+              else
+                return $filter('currency')(tooltipItem.yLabel,true);
+            },
+            footer: function() { return ' '; }
+          }
         }
       }
 

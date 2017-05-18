@@ -1,13 +1,12 @@
 
 .data-filters-view{
-	width: 100%;
 
 	md-select{
-		height: 48px;	
-	}	
+		height: 48px;
+  }	
 	
 	md-card-content{
-
+    
 		&:not(:last-of-type){
 			padding-bottom: 0;
 		}
@@ -15,7 +14,7 @@
 		  margin:  0;
 			&:not(:first-of-type):not(.md-checkbox-market){
 				margin-left: 15px;
-			}		 
+			}	
 				
 			label{
 				top: 0;
@@ -27,6 +26,16 @@
 		margin-bottom: 0;
 		margin-top: 16px;	 
 	}
+
+  .item-filter{
+    height: 70px;
+
+    md-card-content{
+      padding-top: 10px;
+      padding-bottom: 12px;
+    }
+
+  }
 
 }
 
@@ -51,10 +60,9 @@
     max-height: 240px; 
   }
 
-/* md-truncate does not work inside md-optgroup */
 .md-customfix-container{
 
-	/* Overwrite Angular Materials < 1.1.1 Bug with select-menu */
+  /* Overwrite Angular Materials < 1.1.1 Bug with select-menu */
 	md-select-menu .md-checkbox-enabled.md-default-theme[selected] .md-icon:after ,
 	md-select-menu .md-checkbox-enabled[selected] .md-icon:after {
 		border-color: white;

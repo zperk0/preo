@@ -8,6 +8,9 @@ export default class ReportsService {
 
   clearData(){
     this.data = {};
+    this.params = null;
+    this.hasTakeawayVenue = null;
+    this.hasEventVenue = null;
   }
 
   saveDataReport(data){
@@ -43,10 +46,11 @@ export default class ReportsService {
     return data;
   }
 
+  // HIDDEN Columns are used in eexport PDF/CSV only. They are not printed in screen.
   prepareDataToTable(reportId){
 
     var data = this.data && this.data[reportId] ? this.data[reportId] : [];
-    
+    //var data = [{"menuitemid":8965,"name":"Rabbit Terrine","itemcount":5,"itemtotal":311.85},{"menuitemid":8966,"name":"Pumpkin Soup","itemcount":2,"itemtotal":90},{"menuitemid":8972,"name":"Roast Beef","itemcount":48,"itemtotal":1035},{"menuitemid":11354,"name":"Douwe Egberts Coffee","itemcount":1,"itemtotal":2},{"menuitemid":11356,"name":"Gourmet Hot Chocolate","itemcount":1,"itemtotal":2},{"menuitemid":12354,"name":"Full Time Deal","itemcount":2,"itemtotal":11},{"menuitemid":12359,"name":"Half Price Pie Offer","itemcount":1,"itemtotal":3},{"menuitemid":922200,"name":"Roast Lamb","itemcount":8,"itemtotal":360},{"menuitemid":922201,"name":"Roast Chicken","itemcount":13,"itemtotal":600},{"menuitemid":922202,"name":"Nut Roast","itemcount":11,"itemtotal":221},{"menuitemid":922203,"name":"Christmas Pudding","itemcount":3,"itemtotal":70},{"menuitemid":922204,"name":"Treacle Tart","itemcount":1,"itemtotal":8},{"menuitemid":922205,"name":"Apple Pie","itemcount":3,"itemtotal":4.95},{"menuitemid":924238,"name":"£10 Jason's Cafe Voucher","itemcount":3,"itemtotal":30},{"menuitemid":980744,"name":"12 Glazed Doughnuts","itemcount":2,"itemtotal":20},{"menuitemid":980745,"name":"12 Ring Doughnuts","itemcount":2,"itemtotal":10},{"menuitemid":980746,"name":"4 Milk Chocolate Cookies","itemcount":2,"itemtotal":202},{"menuitemid":980747,"name":"4 White Chocolate Cookies","itemcount":2,"itemtotal":4},{"menuitemid":980759,"name":"Meal deal","itemcount":15,"itemtotal":400},{"menuitemid":980771,"name":"Tuna Sandwich","itemcount":1,"itemtotal":2.75},{"menuitemid":980772,"name":"Chicken Wrap","itemcount":1,"itemtotal":2.5},{"menuitemid":980773,"name":"Mature cheddar cheese","itemcount":1,"itemtotal":2.1},{"menuitemid":980774,"name":"Coke Cola","itemcount":1,"itemtotal":2},{"menuitemid":980775,"name":"Diet Coke","itemcount":1,"itemtotal":2},{"menuitemid":980776,"name":"Fanta","itemcount":2,"itemtotal":3},{"menuitemid":980777,"name":"£3 Sandwich Deal","itemcount":5,"itemtotal":36},{"menuitemid":981063,"name":"dasdasdasd","itemcount":35,"itemtotal":393},{"menuitemid":981064,"name":"HUEE","itemcount":8,"itemtotal":660},{"menuitemid":981065,"name":"MY TEST ITEM","itemcount":16,"itemtotal":1705},{"menuitemid":981880,"name":"MY TEST ITEM","itemcount":14,"itemtotal":832},{"menuitemid":981887,"name":"New Item Single Size","itemcount":7,"itemtotal":149.08},{"menuitemid":981888,"name":"New item Multiple Sized","itemcount":10,"itemtotal":29.79},{"menuitemid":981892,"name":"test mult size","itemcount":1,"itemtotal":2},{"menuitemid":981900,"name":"test item on menu 12345","itemcount":5,"itemtotal":133}];
     var viewTable = {
       header: this.getReportHeader(reportId),
       body: []
@@ -58,16 +62,23 @@ export default class ReportsService {
       viewTable.header.forEach((head) => {
         let colObj = {};
         if(row.hasOwnProperty(head.key)){
-          colObj.value = row[head.key];
-          colObj.fieldType = head.fieldType;         
-          colObj.key = head.key;
+
+          // Events are exported to pdf/csv as Date Time - Event name, so need treat it here.
+          if(head.key == 'eventName' && row['eventTime'])
+            colObj.value = moment(row['eventTime']).format('L') +" "+moment(row['eventTime']).format('LT') +' - ' + row[head.key];
+          else
+            colObj.value = row[head.key];
+
         }
         else{
-          colObj.value = "-";        
-          colObj.key = head.key;
+          colObj.value = "-";
         }
 
-        //aux properties
+        colObj.fieldType = head.fieldType;
+        colObj.key = head.key;
+        colObj.isHidden = head.isHidden ? head.isHidden : false;
+
+        // AUX properties that are used to Push Notification
         if(row['userid'])
           colObj.userid = row['userid'];
 
@@ -80,6 +91,7 @@ export default class ReportsService {
     return viewTable;
   }
 
+  // need to show/ hide some fields based on Events/Takeaway properties from header. AND based on Filters used to search
   prepareDataToCsv(report, dataSelected){
     var minDate = moment(this.params.minCreated).format("L");
     var maxDate = moment(this.params.maxCreated).format("L");
@@ -87,57 +99,113 @@ export default class ReportsService {
     var header = this.getReportHeader(report.id);
     var reportTitle = report.name;
 
-    var data = [[minDate +' - '+ maxDate],[reportTitle]];
+    var response = [[minDate +' - '+ maxDate],[reportTitle]];
 
     var itemData = [];
     header.forEach((col) => {
-      itemData.push(col.text);
-    });
-   
-    data.push(itemData);
 
-    
+      if((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue))
+        itemData.push(col.text);
+    });
+
+    response.push(itemData);
+
     dataSelected.forEach((row) => {
+
       itemData = [];
       row.forEach((col) => {
-        itemData.push(col.value);
-      });
 
-      data.push(itemData);
-    });
-
-    return {data: data }; //JSON.stringify({data: data });
-  }
-
-  prepareDataToPdf(report, dataSelected){
-    var header = this.getReportHeader(report.id);
-    var reportTitle = report.name;
-
-    var data = {};
-
-    header.forEach((col) => {
-      data[col.text] = [];
-    });
-
-    dataSelected.forEach((row) => {
-
-      row.forEach((col) => {
         let headerCol = header.filter((x) => {
           if(x.key == col.key)
             return x;
         })[0];
 
-        data[headerCol.text].push(col.value);
-      });     
+        if((!headerCol.showToEventsOnly && !headerCol.showToTakeawaysOnly) || (headerCol.showToEventsOnly && this.hasEventVenue) || (headerCol.showToTakeawaysOnly && this.hasTakeawayVenue)){
+
+          if(col.value === true)
+            itemData.push(this.gettextCatalog.getString('Yes'));
+          else if(col.value === false)
+            itemData.push(this.gettextCatalog.getString('No'));
+          else if(col.fieldType == 'currency')
+            itemData.push(this.$filter('currency')(col.value));
+          else if(col.fieldType == 'number')
+            itemData.push(this.$filter('currency')(col.value,true,0));
+          else if(col.fieldType == 'percent')
+            itemData.push(this.$filter('percent')(col.value));
+          else if(col.fieldType == 'date')
+            itemData.push(this.$filter('datelocale')(col.value));
+          else if(col.fieldType == 'dayOfWeek')
+            itemData.push(this.$filter('datelocale')(col.value, 'dayOfWeek'));
+          else if(col.fieldType == 'timeOfDay')
+            itemData.push(this.$filter('datelocale')(col.value, 'timeOfDay'));
+          else
+            itemData.push(col.value);
+        }
+      });
+
+      response.push(itemData);
+    });
+
+    return {data: response };
+  }
+
+  // need to show/ hide some fields based on Events/Takeaway properties from header. AND based on Filters used to search
+  prepareDataToPdf(report, dataSelected){
+    var header = this.getReportHeader(report.id);
+    var reportTitle = report.name;
+
+    var response = {};
+
+    header.forEach((col) => {
+      if((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue))
+        response[col.text] = [];
+    });
+
+    dataSelected.forEach((row) => {
+
+      row.forEach((col) => {
+
+        let headerCol = header.filter((x) => {
+          if(x.key == col.key)
+            return x;
+        })[0];
+
+        if((!headerCol.showToEventsOnly && !headerCol.showToTakeawaysOnly) || (headerCol.showToEventsOnly && this.hasEventVenue) || (headerCol.showToTakeawaysOnly && this.hasTakeawayVenue)){
+
+          if(col.value === true)
+            response[headerCol.text].push(this.gettextCatalog.getString('Yes'));
+          else if(col.value === false)
+            response[headerCol.text].push(this.gettextCatalog.getString('No'));
+          else if(col.fieldType == 'currency')
+            response[headerCol.text].push(this.$filter('currency')(col.value));
+          else if(col.fieldType == 'number')
+            response[headerCol.text].push(this.$filter('currency')(col.value,true,0));
+          else if(col.fieldType == 'percent')
+            response[headerCol.text].push(this.$filter('percent')(col.value));
+          else if(col.fieldType == 'date')
+            response[headerCol.text].push(this.$filter('datelocale')(col.value));
+          else if(col.fieldType == 'dayOfWeek')
+            response[headerCol.text].push(this.$filter('datelocale')(col.value, 'dayOfWeek'));
+          else if(col.fieldType == 'timeOfDay')
+            response[headerCol.text].push(this.$filter('datelocale')(col.value, 'timeOfDay'));
+          else
+            response[headerCol.text].push(col.value);
+        }
+      });
 
     });
 
-    return {
+    var pdfObj = {
         title: reportTitle,
         startDate:moment( this.params.minCreated).valueOf(),
         endDate:moment( this.params.maxCreated).valueOf(),
-        dataJson:JSON.stringify(data)
-    }
+        dataJson:JSON.stringify(response)
+    };
+
+    if(report.orientation)
+      pdfObj.orientation = report.orientation;
+
+    return pdfObj;
   }
 
   getChartExportCsvUrl(){
@@ -150,36 +218,43 @@ export default class ReportsService {
 
   exportReportToPdf(report, dataSelected){
 
-    let udata = this.prepareDataToPdf(report, dataSelected); 
-     //console.log('data -> ', udata);
-    var exportUrl = '/api/accounts/'+ this.accountId + '/exports/pdfs/report';
+    return this.$q((resolve, reject) => {
+      let udata = this.prepareDataToPdf(report, dataSelected);
+
+      var exportUrl = '/api/accounts/'+ this.accountId + '/exports/pdfs/report';
       // ..
-     // TO DO - Create a post method to dont need to Use Form request on Controller.
-     // ..
-    return {data: udata, url: exportUrl};
+      // TO DO - Create a post method to dont need to Use Form request on Controller.
+      // ..    
+
+      resolve({data: udata, url: exportUrl});
+    });
+
   }
 
-  exportReportToCsv(report, dataSelected){  
+  exportReportToCsv(report, dataSelected){
 
-    let udata = this.prepareDataToCsv(report, dataSelected);  
-    //console.log('data -> ', udata);
-    var exportUrl = '/api/accounts/' + this.accountId + '/exports/csv/report';    
-     // ..
-    // TO DO - Create a post method to dont need to Use Form request on Controller.
-    // ..
-    return {data: udata, url: exportUrl};
+    return this.$q((resolve, reject) => {
+
+      let udata = this.prepareDataToCsv(report, dataSelected);
+
+      var exportUrl = '/api/accounts/' + this.accountId + '/exports/csv/report';
+      // ..
+      // TO DO - Create a post method to dont need to Use Form request on Controller.
+      // ..   
+      resolve({data: udata, url: exportUrl});
+    });
   }
 
   sendPushNotification( rowsSelected ,textMessage){
-   
+
     var params = this.prepareDataToNotification(rowsSelected);
 
     params.message = textMessage;
 
     return this.$q((resolve,reject)=>{
-      
+
       Preoday.Report.sendNotifyCustomers(params)
-        .then((data)=>{              
+        .then((data)=>{
 
           resolve(data);
         }, (err)=>{
@@ -189,14 +264,14 @@ export default class ReportsService {
         console.error("Pushing notification Error : ", err)
         reject();
       })
-     })    
+     })
   }
 
   getVenuesApplications(venuesIds){
     return this.$q((resolve,reject)=>{
       //  resolve([]);
       Preoday.Report.getVenuesApplications(venuesIds)
-        .then((data)=>{                  
+        .then((data)=>{
 
           resolve(data);
         }, (err)=>{
@@ -212,20 +287,20 @@ export default class ReportsService {
   getReportData(parameters){
 
    this.formatDataFilters(parameters);
-    
+
     return this.$q((resolve,reject)=>{
       //  resolve([]);
       Preoday.Report.getReports(this.params)
         .then((data)=>{
-        
+
           this.saveDataReport(data);
 
           resolve(this.data);
         }, (err)=>{
-          console.error("ReportService - Error fetching data : ", err)
+          console.error("ReportService - Error fetching reportdata : ", err)
           reject();
       }).catch((err)=>{
-        console.error("ReportService - Error fetching data : ", err)
+        console.error("ReportService - Error fetching reportdata : ", err)
         reject();
       })
       })
@@ -235,11 +310,11 @@ export default class ReportsService {
   getMenuItemsByVenues(venues){
 
     this.formatDataFilters(venues);
-   
+
     return this.$q((resolve,reject)=>{
         // resolve([]);
       Preoday.Report.getMenuItemsByVenues(this.params)
-        .then((data)=>{          
+        .then((data)=>{
 
           resolve(data);
         }, (err)=>{
@@ -257,12 +332,11 @@ export default class ReportsService {
     var response = {};
 
     if(parameters.report)
-      response.reportType = parameters.report.reportType;
-    //response.ccySymbol = this.currentCcySymbol ? this.currentCcySymbol : "";
+      response.reportType = parameters.report.reportType;  
 
     if(parameters.datesRange && parameters.datesRange.endDate && parameters.datesRange.startDate){
       response.minCreated = moment(parameters.datesRange.startDate, "L").valueOf();
-      response.maxCreated = moment(parameters.datesRange.endDate, "L").valueOf();
+      response.maxCreated = moment(parameters.datesRange.endDate, "L").endOf('day').valueOf();
     }
 
     if(parameters.events && parameters.events.length > 0){
@@ -287,7 +361,16 @@ export default class ReportsService {
       response.venueIds = [];
       response.outletIds = [];
 
+      var isEventVenue = null;
+      var isTakeaway = null;
       parameters.venues.forEach((x) => {
+
+        if(x.isEventVenue == 1)
+          isEventVenue = true;
+
+        if(x.isEventVenue == 0)
+          isTakeaway = true;
+
         response.venueIds.push(x.id);
 
          if(x.outlets){
@@ -300,6 +383,8 @@ export default class ReportsService {
     }
 
     this.params = response;
+    this.hasTakeawayVenue = isTakeaway ? true : false;
+    this.hasEventVenue = isEventVenue ? true : false;
 
     return this.params;
   }
@@ -316,18 +401,26 @@ export default class ReportsService {
       //return response;
       resolve(response);
     });
-   
+
   }
 
-  constructor($q , ReportTypes, gettextCatalog, CardActionsCodes, VenueService) {
+  // Everytime a search is done, this service keeps the last Param and Data returned.
+  constructor($q , ReportTypes, $filter, gettextCatalog, CardActionsCodes, VenueService) {
     "ngInject";
     this.$q = $q;
+    this.$filter = $filter;
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
-    this.cardActionsCodes = CardActionsCodes;    
+    this.cardActionsCodes = CardActionsCodes;
     this.accountId = VenueService.currentVenue.accountId;
   }
 
+  // Object Properties:
+  //  - key -> its the exactly object key coming from API
+  //  - text -> text to be show in Header
+  //  - fieldType -> some specific types to format fields correctly to be show (like currency, percent, number, etc)
+  //  - isHidden -> when exporting to PDF/CSV there are some fields that are not displayed on the screen. So i add these fields to the table, but hide them
+  //  - showToEventsOnly/showToTakeawaysOnly -> these fields are used in export PDF/CSV only if ther are any field that should be visible for Events or Takeaway venue only..
   getReportHeader(reportId){
     var response = [];
 
@@ -374,19 +467,25 @@ export default class ReportsService {
     //ORDERS
     else if(reportId== 'orders'){
       response = [
-        {key:'id' ,text:this.gettextCatalog.getString('#')},
+        {key:'id' ,text:this.gettextCatalog.getString('#') },
+        {key:'eventName' ,text:this.gettextCatalog.getString('Event'), isHidden: true , showToEventsOnly: true},
+        {key:'outletName' ,text:this.gettextCatalog.getString('Outlet'), isHidden: true},
+        {key:'pickupSlot' ,text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
-        {key:'username', text:this.gettextCatalog.getString('Customer')},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+       // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'items', text:this.gettextCatalog.getString('Items')},
+        //{key:'subtotal' ,text:this.gettextCatalog.getString('Subtotal'),fieldType: 'currency', isHidden: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
         {key:'fee', text:this.gettextCatalog.getString('Fees'), fieldType: 'currency'},
         {key:'total', text:this.gettextCatalog.getString('Total'), fieldType: 'currency'},
+        //{key:'orderStatus' ,text:this.gettextCatalog.getString('Status'), isHidden: true , showToTakeawaysOnly: true},
       ];
     }
     else if(reportId== 'taxReport'){
       response = [
         {key:'orderId' ,text:this.gettextCatalog.getString('#')},
-        {key:'taxRate', text:this.gettextCatalog.getString('Tax rate'), fieldType: 'number'},
+        {key:'taxRate', text:this.gettextCatalog.getString('Tax rate'), fieldType: 'percent'},
         {key:'total', text:this.gettextCatalog.getString('Price (inc. tax)'), fieldType: 'currency'},
         {key:'net', text:this.gettextCatalog.getString('Price (ex. tax)'), fieldType: 'currency'},
         {key:'tax', text:this.gettextCatalog.getString('Tax paid'), fieldType: 'currency'},
@@ -413,7 +512,7 @@ export default class ReportsService {
     else if(reportId== 'busiestEvents'){
       response = [
         {key:'eventname' ,text:this.gettextCatalog.getString('Name')},
-        {key:'eventdate' ,text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        {key:'eventDate' ,text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
         {key:'eventtime', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
         {key:'orderCount', text:this.gettextCatalog.getString('Orders')},
         {key:'customerCount', text:this.gettextCatalog.getString('Customers')},
@@ -430,7 +529,8 @@ export default class ReportsService {
     }
     else if(reportId== 'newCustomers'){
       response = [
-        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
+        //{key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'signindate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
         {key:'orderCount', text:this.gettextCatalog.getString('Orders')},
         {key:'orderTotal', text:this.gettextCatalog.getString('Spend'), fieldType: 'currency'},
@@ -441,7 +541,8 @@ export default class ReportsService {
     }
     else if(reportId== 'customerWithoutOrder'){
       response = [
-        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
+        //{key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'signindate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
         {key:'email', text:this.gettextCatalog.getString('Email')},
         {key:'phone', text:this.gettextCatalog.getString('Tel')},
@@ -450,7 +551,8 @@ export default class ReportsService {
     }
     else if(reportId== 'allPayingCustomers'){
       response = [
-        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
+       // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'orderCount', text:this.gettextCatalog.getString('Orders')},
         {key:'orderTotal', text:this.gettextCatalog.getString('Spend'), fieldType: 'currency'},
         {key:'email', text:this.gettextCatalog.getString('Email')},
@@ -460,7 +562,8 @@ export default class ReportsService {
     }
     else if(reportId== 'customersOrderedOnce'){
       response = [
-        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
+        //{key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'signindate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
         {key:'orderTotal', text:this.gettextCatalog.getString('Spend'), fieldType: 'currency'},
         {key:'email', text:this.gettextCatalog.getString('Email')},
@@ -470,7 +573,8 @@ export default class ReportsService {
     }
     else if(reportId== 'sleepingCustomers'){
       response = [
-        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
+       // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'lastOrder', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
         {key:'email', text:this.gettextCatalog.getString('Email')},
         {key:'phone', text:this.gettextCatalog.getString('Tel')},
@@ -481,17 +585,23 @@ export default class ReportsService {
     return response;
   }
 
+  // Object Properties:
+  //  - id -> is the exactly object key coming from API that contains the report data
+  //  - name -> name to be displayed to the user
+  //  - reportType -> this type is used when fetching data from API only.
+  //  - orientation -> used to export PDF.
+  //  - actions -> actions that will be available for each report.
   getReportsPerType(type){
 
     var response = [];
 
     //default actions for all reports
-    var defaultActions = [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF];    
+    var defaultActions = [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF];
     var chartActions = defaultActions.concat([this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]);
     var actionNotify = null;
 
     //only allow Notify option if Venues has an App
-    if(this.reportsOptions.hasApplicationId)
+    if(this.reportsOptions && this.reportsOptions.hasApplicationId)
       actionNotify = defaultActions.concat([this.cardActionsCodes.NOTIFICATION]);
     else
       actionNotify = defaultActions;
@@ -507,10 +617,10 @@ export default class ReportsService {
       ];
     }
     else if(type == this.ReportTypes.STOCKITEMDATA){
-     
+
       response = [
         {id: 'individualItemDataNumberSold', name:this.gettextCatalog.getString('Individual item data (number sold)'), isChartType: true, hasItemFilter: true, reportType: this.ReportTypes.STOCKITEMDATA,  actions: chartActions},
-        {id: 'individualItemDataRevenue', name:this.gettextCatalog.getString('Individual item data (revenue)'), isChartType: true, hasItemFilter: true, reportType: this.ReportTypes.STOCKITEMDATA, actions: chartActions}
+        {id: 'individualItemDataRevenue', name:this.gettextCatalog.getString('Individual item data (revenue)'), type:'currency', isChartType: true, hasItemFilter: true, reportType: this.ReportTypes.STOCKITEMDATA, actions: chartActions}
       ];
     }
     else if(type == this.ReportTypes.BUSIESTEVENTS){
@@ -525,8 +635,8 @@ export default class ReportsService {
         {id: 'busiestDays', name:this.gettextCatalog.getString('Busiest days'), reportType: this.ReportTypes.BUSIESTDAYS, actions: defaultActions}
       ];
     }
-    else if(type == this.ReportTypes.CUSTOMERS){ 
-      
+    else if(type == this.ReportTypes.CUSTOMERS){
+
       response = [
         {id: 'customerWithoutOrder', name:this.gettextCatalog.getString("Customers who signed up but haven't ordered"), reportType: this.ReportTypes.CUSTOMERS, hasCustomerMarketing: true, actions: actionNotify},
         {id: 'customersOrderedOnce', name:this.gettextCatalog.getString('Customers who have only ordered once'), reportType: this.ReportTypes.CUSTOMERS, hasCustomerMarketing: true, actions: actionNotify},
@@ -538,7 +648,7 @@ export default class ReportsService {
         {id: 'newAreas', name:this.gettextCatalog.getString('Customers requesting delivery to a new area'), reportType: this.ReportTypes.NEWAREADELIVERY, actions: defaultActions}
       ];
     }
-    else if(type == this.ReportTypes.NEWCUSTOMERS){   
+    else if(type == this.ReportTypes.NEWCUSTOMERS){
 
       response = [
         {id: 'newCustomers', name:this.gettextCatalog.getString('New customers'), reportType: this.ReportTypes.NEWCUSTOMERS, hasCustomerMarketing: true, actions: actionNotify}
@@ -547,7 +657,7 @@ export default class ReportsService {
     else if(type == this.ReportTypes.ORDERS){
 
       response = [
-        {id: 'orders', name:this.gettextCatalog.getString('All orders'), reportType: this.ReportTypes.ORDERS, actions: actionNotify},
+        {id: 'orders', name:this.gettextCatalog.getString('All orders'), orientation: 'LANDSCAPE', reportType: this.ReportTypes.ORDERS, actions: actionNotify},
         {id: 'taxReport', name:this.gettextCatalog.getString('Tax report'), reportType: this.ReportTypes.ORDERS, actions: defaultActions},
       ];
 
@@ -555,7 +665,7 @@ export default class ReportsService {
         response.push({id: 'busiestHours', name:this.gettextCatalog.getString('Busiest time of day'), reportType: this.ReportTypes.ORDERS, actions: defaultActions});
       }
     }
-    else if(type == this.ReportTypes.PAYINGCUSTOMERS){  
+    else if(type == this.ReportTypes.PAYINGCUSTOMERS){
 
       response = [
         {id: 'allPayingCustomers', name:this.gettextCatalog.getString('All paying customers'), reportType: this.ReportTypes.PAYINGCUSTOMERS, hasCustomerMarketing: true, actions: actionNotify}
@@ -569,16 +679,22 @@ export default class ReportsService {
     return response;
   }
 
+  // Object Properties
+  //  - id -> is the exactly object key coming from API that contains the report data
+  //  - name -> name to be displayed to the user on Chart. For BAR Charts only, name can goes as an object containing texts for mode types used (daily, monthly, weekly) OR just a normal string that will be show for any mode
+  //  - flexWidth -> specific property used by 'Cards' directives (Summary only). Used to format how many cards you want per row.
+  //  - type -> data type to be formated by charts directive. Now is only prepared to accept 'currency' filter
+  //  - actions -> actions that will be available for each report.
   getSummaryReports(){
     var response = [];
     var objCharts = {};
     objCharts.cards = [
-      {id: 'revenue', name: this.gettextCatalog.getString('Total revenue'), type: 'currency',  flexWidth: 50 },
+      {id: 'totalRevenue', name: this.gettextCatalog.getString('Total revenue'), type: 'currency',  flexWidth: 50 },
       {id: 'totalOrders', name: this.gettextCatalog.getString('Total number of orders'), flexWidth: 50 },
       {id: 'totalPayingCustomers', name: this.gettextCatalog.getString('Total number of customers'), flexWidth: 25 },
-      {id: 'averageOrderValue', name: this.gettextCatalog.getString('Average order value'), type: 'currency', flexWidth: 25 },
-      {id: 'averageOrdersCustomer', name: this.gettextCatalog.getString('Average orders per customer'), flexWidth: 25 },
-      {id: 'averageRevenueCustomer', name: this.gettextCatalog.getString('Average revenue per customer'), type:'currency', flexWidth: 25 }
+      {id: 'avgOrderValue', name: this.gettextCatalog.getString('Average order value'), type: 'currency', flexWidth: 25 },
+      {id: 'avgOrdersCustomer', name: this.gettextCatalog.getString('Average orders per customer'), flexWidth: 25 },
+      {id: 'avgRevenueCustomer', name: this.gettextCatalog.getString('Average revenue per customer'), type:'currency', flexWidth: 25 }
     ];
 
     objCharts.bars = [

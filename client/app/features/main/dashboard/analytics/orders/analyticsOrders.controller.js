@@ -32,7 +32,7 @@ export default class analyticsOrdersController {
 
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
-      console.log('resolve reportserivde data -> ', data);
+    
       this.reportsData = data;
 
       this.updateView();
@@ -40,7 +40,7 @@ export default class analyticsOrdersController {
       this.hideSpinner();
 
     }, (err) => {
-      console.log('erro reportserive ', err);
+      console.log('ReportService fetch Orders Error - ', err);
       this.hideSpinner();
     });
 
@@ -55,8 +55,28 @@ export default class analyticsOrdersController {
   onSubmit(){
     console.log('on submit');
   }
-  onActions(item){
 
+  exportCsv(){
+    var rowsSelected = null;
+    var rowsHeader = this.tableData.header;
+    if(this.linesSelected.length > 0){
+      rowsSelected = this.linesSelected;
+    }
+    else{
+      rowsSelected = this.tableData.body;
+    }
+    
+    this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected)
+    .then((data) => {
+      this.exportAction = data;
+      var formSubmit = document.getElementById('postData');
+      this.$timeout(() =>{
+        formSubmit.click();
+      });
+    });
+  }
+
+  exportPdf(){
     var rowsSelected = null;
     var rowsHeader = this.tableData.header;
     if(this.linesSelected.length > 0){
@@ -66,58 +86,71 @@ export default class analyticsOrdersController {
       rowsSelected = this.tableData.body;
     }
 
-    console.log('lines selected -> ', this.linesSelected);
-    if(item == this.cardActionsCodes.EXPORT_CSV){
-     
-      this.exportAction = this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected);
+    this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected)
+    .then((data) => {
+      this.exportAction = data;
       var formSubmit = document.getElementById('postData');
       this.$timeout(() =>{
-          formSubmit.click();
-        }
-      );
-    }
-    else if(item == this.cardActionsCodes.EXPORT_PDF){
-
-      this.exportAction = this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected);
-      var formSubmit = document.getElementById('postData');
-
-      this.$timeout(() =>{
-          formSubmit.click();
-        }
-      );
-    }
-    else if(item == this.cardActionsCodes.NOTIFICATION){
-      var modal = {
-        title: this.gettextCatalog.getString('Send a push notification...'),
-        placeholder: this.gettextCatalog.getString('Write here your message'),
-        titleMessage: this.gettextCatalog.getString('Please note, push notifications will only be received by users who have your mobile app installed.'),
-        buttons: [{name:this.gettextCatalog.getString('Send')}]
-      };
-
-      this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
-      .then(() => {
-
-        var venueId = "";
-        var usersSelected = [];
-        var textToPush = this.$scope.diagCtrl.textArea;        
-
-        this.ReportsService.sendPushNotification( venueId, usersSelected,textToPush)
-        .then(() => {
-   
-        }, (err) => {
-          console.log('Error pushing notify - ', err);
-        });
-
-      }, () => {
-        console.log('Cancel dialog');
+        formSubmit.click();
       });
+    });
+  }
+
+  sendNotification(){
+    var modal = {
+      title: this.gettextCatalog.getString('Send a push notification...'),
+      placeholder: this.gettextCatalog.getString('Write here your message'),
+      titleMessage: this.gettextCatalog.getString('Please note, push notifications will only be received by users who have your mobile app installed.'),
+      buttons: [{name:this.gettextCatalog.getString('Send')}]
+    };
+
+    this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
+    .then(() => {
+      
+      var usersSelected = [];
+      var textToPush = this.$scope.diagCtrl.textArea;
+      
+      if(this.linesSelected.length > 0){
+        usersSelected = this.linesSelected;
+      }
+      else{
+        usersSelected = this.tableData.body;
+      }
+
+      this.ReportsService.sendPushNotification( usersSelected,textToPush)
+      .then((data) => {
+        console.log('response push notif', data);
+      }, (err) => {
+        console.log('erro push nootif', err);
+      });
+
+    }, () => {
+      console.log('cancel dialog');
+    });
+  }
+
+  onActions(item){
+
+    switch(item.id){
+      case this.cardActionsCodes.EXPORT_CSV.id:
+      this.exportCsv();
+      break;
+
+      case this.cardActionsCodes.EXPORT_PDF.id:
+      this.exportPdf();
+      break;
+
+      case this.cardActionsCodes.NOTIFICATION.id:
+      this.sendNotification()
+      break;
     }
+
   }
 
   getReportTypes(){
 
-     var types = [this.ReportTypes.ORDERS,this.ReportTypes.BUSIESTDAYS,this.ReportTypes.BUSIESTEVENTS];     
-     return types;
+    var types = [this.ReportTypes.ORDERS,this.ReportTypes.BUSIESTDAYS,this.ReportTypes.BUSIESTEVENTS];
+    return types;
   }
 
   getTableActionList(actions){
@@ -138,40 +171,10 @@ export default class analyticsOrdersController {
 
     var viewTable = this.ReportsService.prepareDataToTable(report.id);
 
-    // var viewTable = {
-    //   header: this.ReportsService.getReportHeader(report.id),
-    //   body: []
-    // };
-
-    // var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : [];
-
-    // data.forEach((row) => {
-
-    //   let rowObj = [];
-    //   viewTable.header.forEach((head) => {
-    //     let colObj = {};
-    //     if(row.hasOwnProperty(head.key)){
-    //       colObj.value = row[head.key];
-    //       colObj.fieldType = head.fieldType;
-    //      // colObj[head.key] = row[head.key];
-    //       colObj.key = head.key;
-    //     }
-    //     else{
-    //       colObj.value = "-";
-    //      // colObj[head.key] = "-";
-    //       colObj.key = head.key;
-    //     }
-
-    //     rowObj.push(colObj);
-    //   });
-
-    //   viewTable.body.push(rowObj);
-    // });   
-   
-      // the first item in table will be the Order selector
+    // the first item in table will be the Order selector
     if(viewTable.body.length > 0){
       this.shouldShowdatatable = true;
-      this.query.order = viewTable.header[0].key;     
+      this.query.order = viewTable.header[0].key;
     } else{
       this.shouldShowdatatable = false;
       // TO DO - create empty data div
@@ -185,14 +188,16 @@ export default class analyticsOrdersController {
     this.dataFilters = filters;
 
     // view is loaded with empty report fitler, no search at first time
-    if(!this.dataFilters.report)
+    if(!this.dataFilters.report){
+      this.shouldShowdatatable = false; 
       return;
+    }
 
     var isReportUpdated = false;
 
     if(typeChanged == 'Report'){
-      isReportUpdated = true;
-      //this.dataFilters.report = filters.report;
+
+      isReportUpdated = true;    
     }
 
     //Fetch from Api when any filter, except Report is changed, or if report changed but has not data to show on it.
@@ -205,7 +210,7 @@ export default class analyticsOrdersController {
 
   }
 
-  updateView(){    
+  updateView(){
 
     this.reportTitle = this.dataFilters.report.name;
 
@@ -216,21 +221,22 @@ export default class analyticsOrdersController {
   }
 
   hideSpinner(){
-    this.spinner.hide('orders-parameter change');
+    this.spinner.hide('analytics-orders');
   }
 
   spinnerRunning(){
-    return this.spinner.isCodeVisible('orders-parameter change');
+    return this.spinner.isCodeVisible('analytics-orders');
   }
 
   showSpinner(){
-    this.spinner.show('orders-parameter change');
+    this.spinner.show('analytics-orders');
   }
 
   constructor($filter, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, CardActionsCodes) {
     "ngInject";
 
     this.spinner = Spinner;
+    this.$timeout = $timeout;
 
     this.cardActionsCodes = CardActionsCodes;
     this.ReportTypes = ReportTypes;
