@@ -57,13 +57,13 @@ export default class analyticsStockController {
   }
 
   getRowsToExport(){
-    var data = [];    
+    var data = [];
 
     if(this.linesSelected.length > 0){
       data = this.linesSelected;
     }
-    else{     
-      data = this.tableData.body;      
+    else{
+      data = this.tableData.body;
     }
 
     data = this.$filter('orderObj')( data, this.query.order ,'value');
@@ -73,7 +73,7 @@ export default class analyticsStockController {
 
   exportCsv(){
     var rowsSelected = this.getRowsToExport();
-    var rowsHeader = this.tableData.header;    
+    var rowsHeader = this.tableData.header;
 
     this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected)
     .then((data) => {
@@ -87,7 +87,7 @@ export default class analyticsStockController {
 
   exportPdf(){
     var rowsSelected = this.getRowsToExport();
-    var rowsHeader = this.tableData.header;    
+    var rowsHeader = this.tableData.header;
 
     this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected)
     .then((data) => {
@@ -132,7 +132,7 @@ export default class analyticsStockController {
   }
 
   getChartData(){
-  
+
     var report = this.dataFilters.report;
     var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : {keys: [], values: []};
 
@@ -148,7 +148,7 @@ export default class analyticsStockController {
     if(report.type)
       obj.type = report.type;
 
-    return obj;    
+    return obj;
   }
 
   getTableData(){
@@ -170,7 +170,7 @@ export default class analyticsStockController {
   }
 
   onFilter(filters , typeChanged){
-
+    
     this.dataFilters = filters;
     var isReportUpdated = false;
 
@@ -199,8 +199,10 @@ export default class analyticsStockController {
       this.shouldShowChart = false;
     }
 
+    var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);   
+
     //Fetch from Api when any filter, except Report is changed, or if report changed but has no data to show for it.
-    if(!isReportUpdated || (isReportUpdated && this.reportsData && !this.reportsData.hasOwnProperty(filters.report.id)) ){
+    if(!isReportUpdated ||(isReportUpdated && paramsChanged)){
       this.debounceFetch();
     }
     else{
@@ -211,11 +213,11 @@ export default class analyticsStockController {
 
   updateView(){
 
-    if(this.dataFilters.report.isChartType == true){     
+    if(this.dataFilters.report.isChartType == true){
 
-      this.$timeout(() => {                
+      this.$timeout(() => {
         this.chartData = this.getChartData();
-        this.shouldShowChart = true;          
+        this.shouldShowChart = true;
       });
     }
     else{
@@ -227,6 +229,8 @@ export default class analyticsStockController {
       this.getTableActionList(this.dataFilters.report.actions);
     }
 
+    if(this.spinnerRunning())
+      this.hideSpinner();
   }
 
   hideSpinner(){
@@ -241,15 +245,42 @@ export default class analyticsStockController {
     this.spinner.show('analytics-stock');
   }
 
+  setInitialFilterValues(){
+    if(this.ReportsService.data){
+      let params = this.ReportsService.data;
+
+      this.dataFilters.venues = params.venueIds;
+      this.dataFilters.outlets = params.outletIds;
+
+      if(params.maxCreated && params.minCreated){
+        this.dataFilters.datesRange = {
+          startDate: params.minCreated,
+          endDate: params.maxCreated
+        };
+      }
+
+      if(params.events){
+        this.dataFilters.events = params.events.map((event) => {
+          return event.eventid
+        });
+      }
+    }
+
+    if(this.reportNameSelected){
+      this.dataFilters.report = this.reportNameSelected;
+    }
+  }
+
   constructor($filter, $stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, CardActionsCodes, ReportTypes) {
     "ngInject";
-   
+
     this.spinner = Spinner;
     this.$scope = $scope;
     this.$timeout = $timeout;
     this.$filter = $filter;
 
     this.ReportsService = ReportsService;
+    this.reportsData = ReportsService.data;
 
     this.cardActionsCodes = CardActionsCodes;
     this.ReportTypes = ReportTypes;
@@ -262,7 +293,13 @@ export default class analyticsStockController {
 
     this.linesSelected = [];
     this.tableData = {};
-    this.reportsData = [];
+
+    if($stateParams.reportName){
+
+     this.reportNameSelected = $stateParams.reportName;
+    }
+
+    this.showSpinner();
 
     this.dataFilters = {
       venues: null,
@@ -272,6 +309,8 @@ export default class analyticsStockController {
       item: null
     };
 
+    this.setInitialFilterValues();
+
     this.reportTitle = "";
 
     this.query = {
@@ -279,18 +318,6 @@ export default class analyticsStockController {
     //  limit: 5,
      // page: 1
    };
-
-   if($stateParams.reportName){
-
-    this.showSpinner();
-
-    this.reportTypes.forEach((x) => {
-      if(x.name === $stateParams.reportName){
-        x.default = true;
-      }
-    });
-
-  }
 
 }
 

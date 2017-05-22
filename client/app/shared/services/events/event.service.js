@@ -12,7 +12,7 @@ export default class EventService {
     return this.getEvents(venueId, filter);
   }
 
-  getByVenuesIdsAndName(venueIds, searchName){
+  getByVenuesIdsAndName(venueIds, searchName, offset, limit){
 
     var params = {
       venueIds: venueIds      
@@ -20,6 +20,12 @@ export default class EventService {
 
     if(searchName)
       params.eventName = searchName;
+
+    if(offset && !isNaN(offset))
+      params.offset = offset;
+
+    if(limit && !isNaN(limit))
+      params.limit = limit;
 
     return this.$q((resolve, reject)=>{
 

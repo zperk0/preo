@@ -32,7 +32,7 @@ export default class analyticsOrdersController {
 
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
-    
+
       this.reportsData = data;
 
       this.updateView();
@@ -57,13 +57,13 @@ export default class analyticsOrdersController {
   }
 
   getRowsToExport(){
-    var data = [];    
+    var data = [];
 
     if(this.linesSelected.length > 0){
       data = this.linesSelected;
     }
-    else{     
-      data = this.tableData.body;      
+    else{
+      data = this.tableData.body;
     }
 
     data = this.$filter('orderObj')( data, this.query.order ,'value');
@@ -73,8 +73,8 @@ export default class analyticsOrdersController {
 
   exportCsv(){
     var rowsSelected = this.getRowsToExport();
-    var rowsHeader = this.tableData.header;    
-    
+    var rowsHeader = this.tableData.header;
+
     this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected)
     .then((data) => {
       this.exportAction = data;
@@ -87,7 +87,7 @@ export default class analyticsOrdersController {
 
   exportPdf(){
     var rowsSelected = this.getRowsToExport();
-    var rowsHeader = this.tableData.header;    
+    var rowsHeader = this.tableData.header;
 
     this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected)
     .then((data) => {
@@ -109,10 +109,10 @@ export default class analyticsOrdersController {
 
     this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
     .then(() => {
-      
+
       var usersSelected = [];
       var textToPush = this.$scope.diagCtrl.textArea;
-      
+
       if(this.linesSelected.length > 0){
         usersSelected = this.linesSelected;
       }
@@ -122,9 +122,9 @@ export default class analyticsOrdersController {
 
       this.ReportsService.sendPushNotification( usersSelected,textToPush)
       .then((data) => {
-        console.log('response push notif', data);
+
       }, (err) => {
-        console.log('erro push nootif', err);
+        console.log('Error pushing notify -', err);
       });
 
     }, () => {
@@ -192,7 +192,7 @@ export default class analyticsOrdersController {
 
     // view is loaded with empty report fitler, no search at first time
     if(!this.dataFilters.report){
-      this.shouldShowdatatable = false; 
+      this.shouldShowdatatable = false;
       return;
     }
 
@@ -200,14 +200,16 @@ export default class analyticsOrdersController {
 
     if(typeChanged == 'Report'){
 
-      isReportUpdated = true;    
+      isReportUpdated = true;
     }
 
+    var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
+
     //Fetch from Api when any filter, except Report is changed, or if report changed but has not data to show on it.
-    if(!isReportUpdated || (isReportUpdated && !this.reportsData.hasOwnProperty(filters.report.id)) ){
+    if(!isReportUpdated ||(isReportUpdated && paramsChanged)){
       this.debounceFetch();
     }
-    else{
+    else{ console.log('vindo pro update ----');
       this.updateView();
     }
 
@@ -221,6 +223,8 @@ export default class analyticsOrdersController {
 
     this.getTableActionList(this.dataFilters.report.actions);
 
+    if(this.spinnerRunning())
+      this.hideSpinner();
   }
 
   hideSpinner(){
@@ -235,6 +239,32 @@ export default class analyticsOrdersController {
     this.spinner.show('analytics-orders');
   }
 
+  setInitialFilterValues(){
+    if(this.ReportsService.data){
+      let params = this.ReportsService.data;
+
+      this.dataFilters.venues = params.venueIds;
+      this.dataFilters.outlets = params.outletIds;
+
+      if(params.maxCreated && params.minCreated){
+        this.dataFilters.datesRange = {
+          startDate: params.minCreated,
+          endDate: params.maxCreated
+        };
+      }
+
+      if(params.events){
+        this.dataFilters.events = params.events.map((event) => {
+          return event.eventid
+        });
+      }
+    }
+
+    if(this.reportNameSelected){
+      this.dataFilters.report = this.reportNameSelected;
+    }
+  }
+
   constructor($filter, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, CardActionsCodes) {
     "ngInject";
 
@@ -246,6 +276,7 @@ export default class analyticsOrdersController {
     this.ReportTypes = ReportTypes;
    // this.gettextCatalog = gettextCatalog;
     this.ReportsService = ReportsService;
+    this.reportsData = ReportsService.data;
 
     this.reportTypes = this.getReportTypes();
 
@@ -255,14 +286,22 @@ export default class analyticsOrdersController {
 
     this.linesSelected = [];
     this.tableData = {};
-    this.reportsData = {};
+
+    if($stateParams.reportName){
+
+     this.reportNameSelected = $stateParams.reportName;
+    }
+
+    this.showSpinner();
 
     this.dataFilters = {
-      venue: null,
+      venues: null,
       report: null,
       datesRange: null,
       events: null
     };
+
+    this.setInitialFilterValues();
 
     this.selected = [];
 
@@ -273,18 +312,6 @@ export default class analyticsOrdersController {
     //  limit: 5,
      // page: 1
     };
-
-    if($stateParams.reportName){
-
-      this.showSpinner();
-
-      this.reportTypes.forEach((x) => {
-        if(x.name === $stateParams.reportName){
-          x.default = true;
-        }
-      });
-
-    }
 
   }
 

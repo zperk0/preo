@@ -13,9 +13,23 @@ export default class ReportsService {
     this.hasEventVenue = null;
   }
 
+  sendGAExportEvent(type, page) {
+    if (this.$window.ga && typeof this.$window.ga === 'function') {
+      this.$window.ga('send', 'event', 'export', type, page ? page : 'no-title');
+    }
+  }
+
   saveDataReport(data){
 
-    if(!this.data ){
+    var params = {
+      venueIds: data.venueIds,
+      outletIds: data.outletIds,
+      events: data.events,
+      minCreated: data.minCreated,
+      maxCreated: data.maxCreated
+    }
+
+    if(this.checkIfParamsChanged(params, false)){
       this.data = data;
       return;
     }
@@ -25,6 +39,11 @@ export default class ReportsService {
     });
 
     return this.data;
+  }
+
+  setEventSearched(termSearched){
+    if(this.data)
+      this.data.eventSearched = termSearched;
   }
 
   prepareDataToNotification(rowsSelected){
@@ -219,6 +238,8 @@ export default class ReportsService {
   exportReportToPdf(report, dataSelected){
 
     return this.$q((resolve, reject) => {
+
+      this.sendGAExportEvent('pdf', report.name);
       let udata = this.prepareDataToPdf(report, dataSelected);
 
       var exportUrl = '/api/accounts/'+ this.accountId + '/exports/pdfs/report';
@@ -235,6 +256,7 @@ export default class ReportsService {
 
     return this.$q((resolve, reject) => {
 
+      this.sendGAExportEvent('csv', report.name);
       let udata = this.prepareDataToCsv(report, dataSelected);
 
       var exportUrl = '/api/accounts/' + this.accountId + '/exports/csv/report';
@@ -286,7 +308,7 @@ export default class ReportsService {
 
   getReportData(parameters){
 
-   this.formatDataFilters(parameters);
+   this.formatDataFilters(parameters, true);
 
     return this.$q((resolve,reject)=>{
       //  resolve([]);
@@ -309,7 +331,7 @@ export default class ReportsService {
 
   getMenuItemsByVenues(venues){
 
-    this.formatDataFilters(venues);
+    this.formatDataFilters(venues, true);
 
     return this.$q((resolve,reject)=>{
         // resolve([]);
@@ -327,7 +349,112 @@ export default class ReportsService {
     })
   }
 
-  formatDataFilters(parameters){
+  checkIfParamsChanged(parameters, format ,reportsIds){
+    var params = null;
+    var paramChanged = false;
+
+    if(format){
+      params = this.formatDataFilters(parameters);
+    params.maxCreated = moment(params.maxCreated).format('L');
+    }
+    else{
+      params = parameters;
+      params.maxCreated = moment(params.maxCreated).subtract(1, 'days').format('L');     
+    }
+
+    if(!this.data){      
+      return true;
+    }
+
+    if(reportsIds){
+      for(var i=0; i < reportsIds.length; i++){
+        let reportId = reportsIds[i];
+        if(!this.data.hasOwnProperty(reportId) || !this.data[reportId]){          
+          paramChanged = true;
+          break;          
+        }
+      }
+    }
+
+    params.minCreated = moment(params.minCreated).format('L');
+     
+    var dataMin = moment(this.data.minCreated).format('L');
+    var dataMax = moment(this.data.maxCreated).subtract(1, 'days').format('L');
+    if(params.minCreated != dataMin || params.maxCreated != dataMax){           
+      return true;
+    }
+
+    if(!paramChanged && params.events){
+      let arrayCombined = this.data.events.concat(params.events);
+      arrayCombined.sort((a, b) => {
+        if(a.occurrenceid > b.occurrenceid) return 1;
+        if(a.occurrenceid < b.occurrenceid) return -1;
+        return 0;
+      });
+
+      paramChanged = arrayCombined.length > 1 ? false : true;
+      if(!paramChanged)
+      for(var i=0; i < arrayCombined.length - 1; i+=2){
+        if(arrayCombined[i].occurrenceid != arrayCombined[i+1].occurrenceid){
+
+          paramChanged = true;
+          break;
+        }
+      }
+
+      // for(var i=0; i < params.events.length; i++){
+      //   let event = params.events[i];
+      //   if(this.data.events.indexOf(event) < 0){
+      //     paramChanged = true;
+      //     console.log('params check - EVENT');
+      //     break;
+      //   }
+      // }
+    }
+
+    if(!paramChanged){
+      let arrayCombined = this.data.venueIds.concat(params.venueIds);
+      arrayCombined.sort((a, b) => {
+        if(a > b) return 1;
+        if(a < b) return -1;
+        return 0;
+      });
+
+      paramChanged = arrayCombined.length > 1 ? false : true;
+      if(!paramChanged)
+      for(var i=0; i < arrayCombined.length - 1; i+=2){
+        if(arrayCombined[i] != arrayCombined[i+1]){
+
+          paramChanged = true;
+          break;
+        }
+      }
+    }
+
+    if(!paramChanged){
+      let arrayCombined = this.data.outletIds.concat(params.outletIds);
+     
+      arrayCombined.sort((a, b) => {
+        if(a > b) return 1;
+        if(a < b) return -1;
+        return 0;
+      });
+    
+      paramChanged = arrayCombined.length > 1 ? false : true;
+      if(!paramChanged)
+      for(var i=0; i < arrayCombined.length - 1; i+=2){
+        if(arrayCombined[i] != arrayCombined[i+1]){
+
+          paramChanged = true;
+          break;
+        }
+      }
+    }
+
+    return paramChanged;
+  }
+
+  formatDataFilters(parameters, saveParams){
 
     var response = {};
 
@@ -347,7 +474,7 @@ export default class ReportsService {
         event.eventid = ev.id;
         event.eventname = ev.name;
         event.eventtime = ev.startDate;
-
+        event.occurrenceid = ev.occurId;
         response.events.push(event);
       });
     }
@@ -382,11 +509,13 @@ export default class ReportsService {
       });
     }
 
-    this.params = response;
-    this.hasTakeawayVenue = isTakeaway ? true : false;
-    this.hasEventVenue = isEventVenue ? true : false;
+    if(saveParams){
+      this.params = response;
+      this.hasTakeawayVenue = isTakeaway ? true : false;
+      this.hasEventVenue = isEventVenue ? true : false;
+    }
 
-    return this.params;
+    return response;
   }
 
   getReports(reportTypes, options){
@@ -405,9 +534,10 @@ export default class ReportsService {
   }
 
   // Everytime a search is done, this service keeps the last Param and Data returned.
-  constructor($q , ReportTypes, $filter, gettextCatalog, CardActionsCodes, VenueService) {
+  constructor($q , ReportTypes, $filter, gettextCatalog, CardActionsCodes, $window, VenueService) {
     "ngInject";
     this.$q = $q;
+    this.$window = $window;
     this.$filter = $filter;
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
@@ -690,8 +820,8 @@ export default class ReportsService {
     var objCharts = {};
     objCharts.cards = [
       {id: 'totalRevenue', name: this.gettextCatalog.getString('Total revenue'), type: 'currency',  flexWidth: 50 },
-      {id: 'totalOrders', name: this.gettextCatalog.getString('Total number of orders'), flexWidth: 50 },
-      {id: 'totalPayingCustomers', name: this.gettextCatalog.getString('Total number of customers'), flexWidth: 25 },
+      {id: 'totalOrders', name: this.gettextCatalog.getString('Total number of orders'), type:'integer' ,flexWidth: 50 },
+      {id: 'totalPayingCustomers', name: this.gettextCatalog.getString('Total number of customers'), type:'integer', flexWidth: 25 },
       {id: 'avgOrderValue', name: this.gettextCatalog.getString('Average order value'), type: 'currency', flexWidth: 25 },
       {id: 'avgOrdersCustomer', name: this.gettextCatalog.getString('Average orders per customer'), flexWidth: 25 },
       {id: 'avgRevenueCustomer', name: this.gettextCatalog.getString('Average revenue per customer'), type:'currency', flexWidth: 25 }
@@ -703,11 +833,11 @@ export default class ReportsService {
        // data: {x: [], y: []},
       },
       {id: 'ordersByDay', name: {daily: this.gettextCatalog.getString('Daily Orders'), monthly: this.gettextCatalog.getString('Monthly Orders'), weekly: this.gettextCatalog.getString('Weekly Orders')},
-        defaultMode: this.cardActionsCodes.DAILY_MODE, actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]
+        defaultMode: this.cardActionsCodes.DAILY_MODE, type:'integer', actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]
        // data: {x: [], y: []},
       },
       {id: 'customersByDay', name: {daily: this.gettextCatalog.getString('Daily Customers'), monthly: this.gettextCatalog.getString('Monthly Customers'), weekly: this.gettextCatalog.getString('Weekly Customers')},
-        defaultMode: this.cardActionsCodes.DAILY_MODE,actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]
+        defaultMode: this.cardActionsCodes.DAILY_MODE, type:'integer',actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]
        // data: {x: [], y: []},
       }
     ];
@@ -715,11 +845,11 @@ export default class ReportsService {
     objCharts.doughnuts = [
       {id: 'revenueByChannel', name: this.gettextCatalog.getString('Revenue by channel'),type: 'currency',actions: [this.cardActionsCodes.EXPORT_CSV,this.cardActionsCodes.EXPORT_PDF]},
         //data: {labels: [], values: []},
-      {id: 'ordersByChannel', name: this.gettextCatalog.getString('Orders by channel'),actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+      {id: 'ordersByChannel', name: this.gettextCatalog.getString('Orders by channel'),type:'integer' ,actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
       //data: {labels: [], values: []},
-      {id: 'customersNewReturning', name: this.gettextCatalog.getString('New vs Returning customers'),actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+      {id: 'customersNewReturning', name: this.gettextCatalog.getString('New vs Returning customers'),type:'integer', actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
        //data: {labels: [], values: []},
-      {id: 'customersHowSignedup', name: this.gettextCatalog.getString('How customers signed up'),actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]}
+      {id: 'customersHowSignedup', name: this.gettextCatalog.getString('How customers signed up'),type:'integer', actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]}
        // data: {labels: [], values: []},
     ];
 

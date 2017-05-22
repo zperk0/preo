@@ -89,21 +89,21 @@ export default class analyticsSummaryController {
       this.showSpinner();
 
    this.dataFilters.report = { reportType: this.ReportTypes.SUMMARY };
-   
+
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
-      
-      this.chartsData = data;   
-      
+
+      this.chartsData = data;
+
       this.updateBars(data);
       this.updateDoughnuts(data);
       this.updateCards(data);
 
       this.dataLoaded = true;
 
-      this.$timeout(() => {
+      //this.$timeout(() => {
         this.hideSpinner();
-      });
+      //});
 
     }, (err) => {
       console.log('ReportService fetch Summary Error - ', err);
@@ -111,11 +111,38 @@ export default class analyticsSummaryController {
     });
   }
 
+  updateView(){
+
+    if(!this.spinnerRunning())
+      this.showSpinner();
+
+    var data = this.chartsData;
+
+    this.updateBars(data);
+    this.updateDoughnuts(data);
+    this.updateCards(data);
+
+    if(this.spinnerRunning())
+      this.hideSpinner();
+
+    this.dataLoaded = true;
+  }
+
   onFilter(filters , typeChanged){
 
     this.dataFilters = filters;
 
-    this.debounceFetch();
+    var doughnutsIds = this.doughnuts.map((x) => {return x.id});
+    var cardsIds = this.cards.map((x) => {return x.id});
+    var barIds = this.bars.map((x) => {return x.id});
+    var reportsIds = doughnutsIds.concat(barIds).concat(cardsIds);
+
+    var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, reportsIds);
+
+    if(paramsChanged)
+      this.debounceFetch();
+    else
+      this.updateView();
   }
 
   hideSpinner(){
@@ -130,11 +157,34 @@ export default class analyticsSummaryController {
     return this.spinner.isCodeVisible('analytics-summary');
   }
 
+  setInitialFilterValues(){
+    if(this.ReportsService.data){
+      let params = this.ReportsService.data;
+
+      this.dataFilters.venues = params.venueIds;
+      this.dataFilters.outlets = params.outletIds;
+
+      if(params.maxCreated && params.minCreated){
+        this.dataFilters.datesRange = {
+          startDate: params.minCreated,
+          endDate: params.maxCreated
+        };
+      }
+
+      if(params.events){
+        this.dataFilters.events = params.events.map((event) => {
+          return event.eventid
+        });
+      }
+    }
+  }
+
   constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes) {
     "ngInject";
 
     this.spinner = Spinner;
     this.ReportsService = ReportsService;
+    this.reportsData = ReportsService.data;
 
     this.dataFilters = {
       venues: null,
@@ -144,22 +194,25 @@ export default class analyticsSummaryController {
     };
     this.$timeout = $timeout;
     this.ReportTypes = ReportTypes;
+    this.chartsData = ReportsService.data;
 
     this.dataLoaded = false;
     this.showSpinner();
-   
+
     this._init();
   }
 
   _init(){
 
     var types = [this.ReportTypes.SUMMARY];
-    this.ReportsService.clearData();
+   // this.ReportsService.clearData();
     this.ReportsService.getReports(types)
     .then((data) => {
         this.cards = data[0].cards;
         this.bars = data[0].bars;
         this.doughnuts = data[0].doughnuts;
+
+        this.setInitialFilterValues();
     });
 
   }

@@ -23,7 +23,7 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
     var canvas = elem[0].querySelector('#doughnutchart');
     var chartValues = angular.copy(scope.config.data);
 
-    var isCurrency = scope.config.type == 'currency' ? true : false;
+    var formatType = scope.config.type;
 
     var legendDone = false;
 
@@ -66,6 +66,7 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
     }
 
     function _exportPdf(){
+      ReportsService.sendGAExportEvent('pdf' , scope.config.name);
       scope.exportData = _prepareDataToPdf();
       scope.exportDataUrl = ReportsService.getChartExportPdfUrl();        
 
@@ -77,6 +78,7 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
     }
 
     function _exportCsv(){
+      ReportsService.sendGAExportEvent('csv' , scope.config.name);
       scope.exportData = _prepareDataToCsv();
       scope.exportDataUrl = ReportsService.getChartExportCsvUrl();        
 
@@ -101,8 +103,10 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
 
       chartValues.values.forEach((x, index) => {       
 
-        if(isCurrency)
+        if(formatType == 'currency')
           data.push([$filter('currency')(x) , chartValues.labels[index]]);
+        else if(formatType == 'integer')
+          data.push([$filter('currency')(x,true,0) , chartValues.labels[index]]);
         else
           data.push([$filter('currency')(x,true) , chartValues.labels[index]]);
       });
@@ -224,8 +228,10 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
         var valPercent = totalValue <= 0 ? '0%' : ((value/totalValue)*100).toFixed(0) + '%';
 
         var valueToString = 0;
-        if(isCurrency)
+        if(formatType == 'currency')
           valueToString = $filter('currency')(value);// currencySymbol + value.toLocaleString();
+        else if(formatType == 'integer')
+          valueToString = $filter('currency')(value, true,0);
         else
           valueToString = $filter('currency')(value, true);
         var divColor = "<td><div style ='background-color:" + color + "' class='" + circleCss + "'> </div></td>";

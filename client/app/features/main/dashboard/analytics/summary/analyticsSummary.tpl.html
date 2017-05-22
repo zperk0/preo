@@ -3,7 +3,8 @@
   
   <div class="summary-filters">
   <custom-datafilters has-daterange="true"
-      on-filter="analyticsSummaryCtrl.onFilter(filters, typeChanged)">
+      on-filter="analyticsSummaryCtrl.onFilter(filters, typeChanged)"
+      initial-values="analyticsSummaryCtrl.dataFilters">
   </custom-datafilters>
   </div>
 
@@ -17,6 +18,7 @@
         </md-card-title>
         <md-card-content flex >
           <span class="card-span" ng-switch-when="currency"> {{card.data | currency}}</span>
+          <span class="card-span" ng-switch-when="integer"> {{card.data | currency:true:0}}</span>
           <span class="card-span" ng-switch-default> {{card.data | currency:true}}</span>
         </md-card-content>
       </md-card>

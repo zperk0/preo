@@ -4,11 +4,12 @@ export default function customDatafilters(){
 
   return {
     restrict: 'E',
-    scope: {     
+    scope: {
       hasDaterange: '=?',
       hasReport: '=?',
       reportTypes: '=?',
-      onFilter: '&'     
+      onFilter: '&',
+      initialValues: '=?'
     },
     template: require("./customDatafilters.tpl.html"),
     replace:true,

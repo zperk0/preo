@@ -22,7 +22,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
     var canvas = elem[0].querySelector('#barchart');   
 
-    var isCurrency = scope.config.type == 'currency' ? true : false;
+    var formatType = scope.config.type;
 
     //always init with Daily view if not setted. Or if will not use these modes
     var currentDataVisualization = (scope.config.defaultMode) ? scope.config.defaultMode : CardActionsCodes.DAILY_MODE;
@@ -87,6 +87,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
     }
 
     function _exportPdf(){
+      ReportsService.sendGAExportEvent('pdf' , scope.title);
       scope.exportData = _prepareDataToPdf();
       scope.exportDataUrl = ReportsService.getChartExportPdfUrl();        
 
@@ -99,6 +100,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
     }
 
     function _exportCsv(){
+      ReportsService.sendGAExportEvent('csv' , scope.title);
       scope.exportData = _prepareDataToCsv();
       scope.exportDataUrl = ReportsService.getChartExportCsvUrl();        
 
@@ -124,9 +126,10 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
       chartValues.x.forEach((x, index) => {
 
-        if(isCurrency)
+        if(formatType == 'currency')
           data.push([x , $filter('currency')(chartValues.y[index])]);
-          
+        else if(formatType == 'integer')
+          data.push([x , $filter('currency')(chartValues.y[index],true,0)]);
         else
           data.push([x , $filter('currency')(chartValues.y[index],true)]);         
       });
@@ -473,7 +476,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
               stepSize: newY.stepSize,
               callback: function(value,index,values) {
                
-                if(isCurrency)
+                if(formatType == 'currency')
                   return $filter('currency')(value,false, 0);
                 else
                   return $filter('currency')(value,true, 0);
@@ -520,8 +523,10 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
             },
             label: function(tooltipItem) {
 
-              if(isCurrency)
+              if(formatType == 'currency')
                 return $filter('currency')(tooltipItem.yLabel);
+              else if(formatType == 'integer')
+                return $filter('currency')(tooltipItem.yLabel,true,0);
               else
                 return $filter('currency')(tooltipItem.yLabel,true);
             },

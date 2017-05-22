@@ -1,6 +1,6 @@
 
-import service from './reports.service';
+import reports from './reports.service';
 
 export default angular.module("analytics.reports", [])
-  .service(service.UID, service)
+  .service(reports.UID, reports)
   .name;

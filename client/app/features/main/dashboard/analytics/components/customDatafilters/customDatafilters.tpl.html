@@ -27,14 +27,16 @@
       <md-input-container flex ng-show="vm.shouldShowEventfilter" class="select-event">
         <label >{{'Event' | translate }}</label>
         <md-select ng-model="vm.filters.events" ng-model-options="{trackBy: '$value.occurId'}" multiple md-selected-text="vm.getSelectedEventsNames()"  ng-change="vm.onEventChange()" md-container-class="md-customfix-container eventselect " md-on-open="vm.onOpenEvent()" md-on-close="vm.onEventClose()">
-          <md-select-header class="eventselect-header">
+          <md-select-header layout="column" class="eventselect-header">
                 <input ng-model="vm.eventSearchTerm"
                        type="text"
                        placeholder="Search for an event..."
                        class="eventselect-searchbox md-text" ng-keyup="vm.eventSearchUp()" ng-keydown="vm.eventSearchDown($event)">
-                </md-select-header>
+                <label>{{'** Showing the next 100 events available. Events not displayed can be searched using field above.' | translate }}</label>               
+          </md-select-header>
+          <div flex class="no-events" ng-show="vm.noEventsFound"><span> {{'No results found...' | translate}} </span></div>
           <md-optgroup>
-          <md-option md-truncate ng-repeat="event in vm.filteredEvents | orderBy: 'startDate' track by event.occurId" ng-value="event" >
+          <md-option md-truncate ng-repeat="event in vm.events | orderBy: 'startDate' track by event.occurId" ng-value="event" >
             {{ event.showName }}
           </md-option>
           </md-optgroup>

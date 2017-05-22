@@ -32,7 +32,7 @@ export default class analyticsCustomersController {
 
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
-      console.log('data - ', data);
+
       this.reportsData = data;
 
       this.updateView();
@@ -57,7 +57,7 @@ export default class analyticsCustomersController {
   }
 
   getRowsToExport(){
-    var data = [];   
+    var data = [];
 
     if(this.linesSelected.length > 0){
       data = this.linesSelected;
@@ -78,8 +78,8 @@ export default class analyticsCustomersController {
 
   exportCsv(){
     var rowsSelected = this.getRowsToExport();
-    var rowsHeader = this.tableData.header;    
-    
+    var rowsHeader = this.tableData.header;
+
     this.ReportsService.exportReportToCsv(this.dataFilters.report, rowsSelected)
     .then((data) => {
       this.exportAction = data;
@@ -92,7 +92,7 @@ export default class analyticsCustomersController {
 
   exportPdf(){
     var rowsSelected = this.getRowsToExport();
-    var rowsHeader = this.tableData.header;    
+    var rowsHeader = this.tableData.header;
 
     this.ReportsService.exportReportToPdf(this.dataFilters.report, rowsSelected)
     .then((data) => {
@@ -114,10 +114,10 @@ export default class analyticsCustomersController {
 
     this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
     .then(() => {
-      
+
       var usersSelected = [];
       var textToPush = this.$scope.diagCtrl.textArea;
-      
+
       if(this.linesSelected.length > 0){
         usersSelected = this.linesSelected;
       }
@@ -127,9 +127,9 @@ export default class analyticsCustomersController {
 
       this.ReportsService.sendPushNotification( usersSelected,textToPush)
       .then((data) => {
-        console.log('response push notif', data);
+
       }, (err) => {
-        console.log('erro push nootif', err);
+        console.log('Error pushing notify -', err);
       });
 
     }, () => {
@@ -155,8 +155,8 @@ export default class analyticsCustomersController {
 
   }
 
-  getReportTypes(){    
-    
+  getReportTypes(){
+
     var types = [this.ReportTypes.PAYINGCUSTOMERS,this.ReportTypes.NEWCUSTOMERS,this.ReportTypes.CUSTOMERS, this.ReportTypes.NEWAREADELIVERY];
     return types;
   }
@@ -177,12 +177,12 @@ export default class analyticsCustomersController {
 
     var report = this.dataFilters.report;
 
-    var viewTable = this.ReportsService.prepareDataToTable(report.id); 
+    var viewTable = this.ReportsService.prepareDataToTable(report.id);
 
     // the first item in table will be the Order selector
     if(viewTable.body.length > 0){
       this.shouldShowdatatable = true;
-      this.query.order = viewTable.header[0].key;     
+      this.query.order = viewTable.header[0].key;
     } else{
       this.shouldShowdatatable = false;
       // TO DO - create empty data div
@@ -199,29 +199,32 @@ export default class analyticsCustomersController {
 
     // view is loaded with empty report fitler, no search at first time
     if(!this.dataFilters.report){
-      this.shouldShowdatatable = false;     
+      this.shouldShowdatatable = false;
       return;
     }
 
     var isReportUpdated = false;
+    var isFilterCustomer = false;
 
     if(typeChanged == 'Report'){
-     
+
       isReportUpdated = true;
     }
 
     // If typeChanged = customermarketing means that Report has this property
     // So if value comes = TRUE filter table, ELSE do not filter (empty filter)
     if(typeChanged == 'CustomerMarketing'){
+      isFilterCustomer = true;
       if(filters.customerMarketing)
         this.filterCustomerMarketing = true;
       else
         this.filterCustomerMarketing = false;// '!!'; //empty value
     }
 
+    var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
     //CustomerMarketing its only a filter, no need new search
     //Fetch from Api when any filter, except Report is changed, or if report changed but has not data to show on it.
-    if( (!isReportUpdated && typeChanged != 'CustomerMarketing') || (isReportUpdated && !this.reportsData.hasOwnProperty(filters.report.id)) ){
+    if((!isReportUpdated && !isFilterCustomer) || (isReportUpdated && paramsChanged) ){
 
       this.debounceFetch();
     }
@@ -239,6 +242,8 @@ export default class analyticsCustomersController {
 
     this.getTableActionList(this.dataFilters.report.actions);
 
+    if(this.spinnerRunning())
+      this.hideSpinner();
   }
 
   hideSpinner(){
@@ -253,6 +258,32 @@ export default class analyticsCustomersController {
     this.spinner.show('analytics-cutomer');
   }
 
+  setInitialFilterValues(){
+    if(this.ReportsService.data){
+      let params = this.ReportsService.data;
+
+      this.dataFilters.venues = params.venueIds;
+      this.dataFilters.outlets = params.outletIds;
+
+      if(params.maxCreated && params.minCreated){
+        this.dataFilters.datesRange = {
+          startDate: params.minCreated,
+          endDate: params.maxCreated
+        };
+      }
+
+      if(params.events){
+        this.dataFilters.events = params.events.map((event) => {
+          return event.eventid
+        });
+      }
+    }
+
+    if(this.reportNameSelected){
+      this.dataFilters.report = this.reportNameSelected;
+    }
+  }
+
   constructor($filter, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, CardActionsCodes) {
     "ngInject";
 
@@ -265,6 +296,7 @@ export default class analyticsCustomersController {
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.ReportsService = ReportsService;
+    this.reportsData = ReportsService.data;
     this.DialogService = DialogService;
 
     this.reportTypes = this.getReportTypes();
@@ -273,16 +305,24 @@ export default class analyticsCustomersController {
     this.shouldShowActions = false;
     this.shouldShowdatatable = false;
 
+    if($stateParams.reportName){
+
+     this.reportNameSelected = $stateParams.reportName;
+    }
+
+    this.showSpinner();
+
     this.linesSelected = [];
     this.tableData = {};
-    this.reportsData = {};
 
     this.dataFilters = {
-      venue: null,
+      venues: null,
       report: null,
       datesRange: null,
       events: null
     };
+
+    this.setInitialFilterValues();
 
     this.reportTitle = "";
 
@@ -291,18 +331,5 @@ export default class analyticsCustomersController {
       //  limit: 5,
        // page: 1
      };
-
-     if($stateParams.reportName){
-
-      this.showSpinner();
-
-      this.reportTypes.forEach((x) => {
-        if(x.name === $stateParams.reportName){
-          x.default = true;
-        }
-      });
-
-    }
-
   }
 }
