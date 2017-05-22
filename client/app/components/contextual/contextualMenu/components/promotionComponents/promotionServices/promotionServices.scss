@@ -20,3 +20,17 @@
     line-height: 16px;
   }
 }
+  
+.service-group {
+  display: flex;
+  flex-wrap: wrap;
+
+  md-radio-button {
+    flex: 1;
+    flex-basis: 50%;
+
+    &:first-of-type {
+      margin-top: 16px;
+    }
+  }
+}
