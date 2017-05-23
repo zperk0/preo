@@ -86,7 +86,6 @@ export default class VenueService {
   setCurrentVenue (venue) {
     let deferred = this.$q.defer();
 
-    this.setDefaultLeadTime(venue);
     this.currentVenue = venue;
     venue.setAsCurrent();
 
@@ -169,7 +168,6 @@ export default class VenueService {
       .then((venues)=>{
 
         this.venues = venues;
-        
         this.goToVenue();
       }, (err)=>{
 
@@ -255,17 +253,6 @@ export default class VenueService {
 
   getPermissions(){
     return this.PermissionService.loadPermissions(this.currentVenue);
-  }
-
-  setDefaultLeadTime(venue){
-    if (venue.settings) {
-      if (!venue.settings.leadTime) {
-        venue.settings.leadTime = 0;
-      }
-      if (!venue.settings.deliveryLeadTime) {
-        venue.settings.deliveryLeadTime = 0;
-      }
-    }
   }
 
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, PermissionService, gettextCatalog, UserService, ErrorService, UtilsService) {
