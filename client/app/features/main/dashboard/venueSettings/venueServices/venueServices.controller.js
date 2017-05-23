@@ -85,6 +85,7 @@ export default class venueServicesController {
         return;
       }
 
+      this.setDefaultLeadTime();
 
       this.Spinner.show("venue-services-save");
       try {
@@ -121,7 +122,17 @@ export default class venueServicesController {
     })
   }
 
-
+  setDefaultLeadTime() {
+    console.info(this.venue.settings);
+    if (this.venue.settings) {
+      if (!this.venue.settings.leadTime) {
+        this.venue.settings.leadTime = 0;
+      }
+      if (!this.venue.settings.deliveryLeadTime) {
+        this.venue.settings.deliveryLeadTime = 0;
+      }
+    }
+  }
 
   /* @ngInject */
   constructor($q, Spinner, $state, Snack, ErrorService, FeatureService, LabelService, $timeout, VenueService) {
