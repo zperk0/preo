@@ -3,6 +3,16 @@ export default class cardItemActionsController {
     return "cardItemActionsController";
   }
 
+  shouldShowOnAdd () {
+
+  	return typeof this.isAdd === 'undefined' || this.isAdd;
+  }
+
+  shouldShowOnAddCustomField () {
+
+  	return typeof this.isAddCustomField === 'undefined' || this.isAddCustomField;
+  }
+
   constructor($scope, gettextCatalog) {
     'ngInject';
     this.visibleMessage =  this.visibleMessage || gettextCatalog.getString('Hide from menu');

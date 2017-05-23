@@ -16,7 +16,7 @@
       <div class='sv-dropzone sv-dropzone-outlet' sv-part="outletLocationCtrl.newModifiers" sv-on-external-sort="outletLocationCtrl.onNewOutletMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
         <div sv-placeholder></div>
       </div>
-    </div>    
+    </div>
 
     <item-chips ng-if="outletLocationCtrl.outletLocation.outletId && outletLocationCtrl.outlets.length" items="outletLocationCtrl.outlets" on-remove="outletLocationCtrl.removeOutlet(item)"></item-chips>
 
@@ -26,13 +26,16 @@
                        on-delete="outletLocationCtrl.onDelete(createdOutlet)"
                        on-edit="outletLocationCtrl.onEdit($event)"
                        on-add="outletLocationCtrl.onAddSubGroup($event)"
+                       on-add-custom-field="outletLocationCtrl.onAddCustomField($event)"
+                       is-add="!outletLocationCtrl.outletLocation.outletId"
+                       is-add-custom-field="outletLocationCtrl.outletLocation.outletId"
                        disable-add="outletLocationCtrl.outletLocation.isSeat() || outletLocationCtrl.outletLocation.hasChildren() || outletLocationCtrl.outletLocation.outletId"
                        add-message="outletLocationCtrl.getAddSubGroupMessage()"
                         ></card-item-actions>
   </card-item>
-  
+
 
   <md-button ng-if="!outletLocationCtrl.outletLocation.isSeat() && outletLocationCtrl.outletLocation.hasChildren()" class="md-icon-button btn-view-sub-group" ng-click="outletLocationCtrl.showSubGroup()">
     <icon>keyboard_arrow_right</icon>
-  </md-button>  
+  </md-button>
 </div>

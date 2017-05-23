@@ -1,5 +1,5 @@
 import controller from './cardItemActions.controller';
-export default function cardItemActions(){
+export default function cardItemActions($parse){
   "ngInject";
 
   //will display item actions based on the callbacks set in cardItem.cardItemActions
@@ -9,6 +9,8 @@ export default function cardItemActions(){
     scope: {
       isVisible:"=",
       isPaused:"=?",
+      isAdd:"=?",
+      isAddCustomField:"=?",
       onClone:'&?',
       onDelete:'&?',
       onEdit:'&?',
@@ -16,6 +18,7 @@ export default function cardItemActions(){
       onPause:'&?',
       onMove:'&?',
       onAdd:'&?',
+      onAddCustomField:'&?',
       onAddLocation:'&?',
       disableAdd:'=?',
       visibleMessage:'@',
@@ -26,10 +29,11 @@ export default function cardItemActions(){
     template: require("./cardItemActions.tpl.html"),
     replace:true,
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "cardItemActionsCtrl",
     bindToController: true,
     require:["^cardItem", "cardItemActions"],
-    link: (scope, el, attr, ctrls) => {
+    link: (scope, el, attrs, ctrls) => {
+
       scope.cardItem = ctrls[0];
       scope.onMouseLeave = ($event)=>{
         ctrls[0].toggleCardActions($event, false);

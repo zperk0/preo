@@ -124,6 +124,10 @@ export default class outletLocationController {
     $event.stopPropagation();
   }
 
+  onAddCustomField ($event) {
+
+  }
+
   onClone($event){
 
     this.Spinner.show("outlet-location-clone")
