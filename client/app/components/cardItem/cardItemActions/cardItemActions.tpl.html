@@ -63,6 +63,12 @@
           {{ vm.addMessage }}
         </md-tooltip>
       </md-button>
+      <md-button ng-if="vm.onAdd" class="md-icon-button" ng-click="vm.onAdd({$event:$event})" ng-class="{'disabled': vm.disableAdd}">
+        <icon>text_fields</icon>
+        <md-tooltip md-direction="bottom">
+          {{ 'Add custom fields at checkout' | translate }}
+        </md-tooltip>
+      </md-button>
     </div>
   </md-card-actions>
 </div>
