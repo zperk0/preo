@@ -168,7 +168,6 @@ export default class VenueService {
       .then((venues)=>{
 
         this.venues = venues;
-
         this.goToVenue();
       }, (err)=>{
 

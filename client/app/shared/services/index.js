@@ -20,6 +20,7 @@ import Maps from './maps/maps.service';
 import PermissionService from './permission/permission.service';
 import Permissions from './permission/permission.constants';
 import Hours from './hours/hours.service';
+import Voucher from './voucher/voucher.service';
 
 export default angular.module("Services" , ['ui.router'])
   .service(User.UID, User)
@@ -44,4 +45,5 @@ export default angular.module("Services" , ['ui.router'])
   .service(DateUtils.UID, DateUtils)
   .constant('Permissions', Permissions)
   .service(Hours.UID, Hours)
+  .service(Voucher.UID, Voucher)
   .name;
