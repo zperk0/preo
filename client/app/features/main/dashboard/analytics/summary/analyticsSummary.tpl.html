@@ -1,4 +1,4 @@
-<div class='summary-view layout-left-right' flex layout-align="stretch stretch">
+<div class='summary-view layout-left-right' flex layout="column" layout-align="stretch stretch">
   <div class='main-content-full' flex layout="column" layout-align="start start">
   
   <div class="summary-filters">
@@ -9,8 +9,8 @@
   </div>
 
   <div layout="row" class="card-chart" layout-wrap ng-if="analyticsSummaryCtrl.dataLoaded">
-    <div flex="{{::card.flexWidth}}" ng-repeat="card in analyticsSummaryCtrl.cards" ng-switch="card.type">
-      <md-card md-theme="default" ng-class="{'card-col2': card.flexWidth == 50, 'card-col4': card.flexWidth == 25}">
+    <div flex="{{::card.flexWidth}}" ng-repeat="card in analyticsSummaryCtrl.cards" layout="row" ng-switch="card.type">
+      <md-card md-theme="default" flex ng-class="{'card-col2': card.flexWidth == 50, 'card-col4': card.flexWidth == 25}">
         <md-card-title >
           <md-card-title-text flex layout-align="space-between start">
             <h2 class="md-title"> {{ card.name }}</h2>

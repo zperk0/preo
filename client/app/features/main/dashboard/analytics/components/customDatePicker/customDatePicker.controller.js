@@ -45,8 +45,9 @@ export default class customDatePickerController {
 
     var trapDiv = divRoot.querySelector('#trapDiv');
     trapDiv.style.display = 'none';
-
+    
     var elemClicked = document.elementFromPoint(e.clientX, e.clientY);
+    
     trapDiv.style.display = 'block';
     elemClicked.focus();
     elemClicked.click();

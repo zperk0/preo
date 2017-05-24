@@ -4,6 +4,17 @@
 	md-select{
 		height: 48px;
   }	
+
+   &.main-content-full {
+    flex-flow: row wrap;
+    padding: 0;
+
+    md-card {
+      &.full-card {
+        flex: 1 100%;
+      }
+    }    
+  }
 	
 	md-card-content{
     

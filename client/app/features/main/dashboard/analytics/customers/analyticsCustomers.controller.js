@@ -125,11 +125,16 @@ export default class analyticsCustomersController {
         usersSelected = this.tableData.body;
       }
 
+      this.showSpinner();
+
       this.ReportsService.sendPushNotification( usersSelected,textToPush)
       .then((data) => {
-
+        this.Snack.show(this.gettextCatalog.getString('The message was sent successfully.'));
+        this.hideSpinner();
       }, (err) => {
+        this.Snack.showError(this.gettextCatalog.getString('An error occurred sending your message. Please try again later.'));
         console.log('Error pushing notify -', err);
+        this.hideSpinner();
       });
 
     }, () => {
@@ -175,6 +180,8 @@ export default class analyticsCustomersController {
 
   getTableData(){
 
+    this.linesSelected = [];
+
     var report = this.dataFilters.report;
 
     var viewTable = this.ReportsService.prepareDataToTable(report.id);
@@ -188,9 +195,14 @@ export default class analyticsCustomersController {
       // TO DO - create empty data div
     }
 
-    this.linesSelected = [];
+    this.currentReport = this.$filter('orderObj')( angular.copy(viewTable.body), this.query.order ,'value');
 
-    return viewTable;
+    this.tableData = {
+      header: viewTable.header,
+      body: this.currentReport.slice(0, this.valuesPerScrollPage)
+    };
+
+    this.infiniteScrollIndex = this.valuesPerScrollPage;
   }
 
   onFilter(filters , typeChanged){
@@ -203,13 +215,7 @@ export default class analyticsCustomersController {
       return;
     }
 
-    var isReportUpdated = false;
     var isFilterCustomer = false;
-
-    if(typeChanged == 'Report'){
-
-      isReportUpdated = true;
-    }
 
     // If typeChanged = customermarketing means that Report has this property
     // So if value comes = TRUE filter table, ELSE do not filter (empty filter)
@@ -222,10 +228,9 @@ export default class analyticsCustomersController {
     }
 
     var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
-    //CustomerMarketing its only a filter, no need new search
-    //Fetch from Api when any filter, except Report is changed, or if report changed but has not data to show on it.
-    if((!isReportUpdated && !isFilterCustomer) || (isReportUpdated && paramsChanged) ){
 
+    //CustomerMarketing its only a filter, no need new search    
+    if(!isFilterCustomer && paramsChanged){
       this.debounceFetch();
     }
     else{
@@ -234,11 +239,39 @@ export default class analyticsCustomersController {
 
   }
 
+  onInfiniteScroll(){
+
+    if(this.shouldShowdatatable && !this.loadingMoreData){
+
+      if(this.tableData.body.length !== this.currentReport.length){
+        this.loadingMoreData = true;
+
+          //before return it, order by the CURRENT order ...
+          var itemsLeft = this.currentReport.length - this.infiniteScrollIndex;
+          var newPossibleValues = this.currentReport.slice(this.infiniteScrollIndex);
+          var reportOrdered = this.$filter('orderObj')( newPossibleValues, this.query.order ,'value');
+
+          var newValues =[];
+          if(itemsLeft < this.valuesPerScrollPage)
+            newValues = reportOrdered.slice(0, itemsLeft);
+          else
+            newValues = reportOrdered.slice(0, this.valuesPerScrollPage);
+
+          this.$timeout(() => {
+            this.tableData.body = this.tableData.body.concat(newValues);
+            this.loadingMoreData = false;
+
+            this.infiniteScrollIndex += this.valuesPerScrollPage;
+          },200);
+      }
+    }
+  }
+
   updateView(){
 
     this.reportTitle = this.dataFilters.report.name;
 
-    this.tableData = this.getTableData();
+    this.getTableData();
 
     this.getTableActionList(this.dataFilters.report.actions);
 
@@ -260,7 +293,8 @@ export default class analyticsCustomersController {
 
   setInitialFilterValues(){
     if(this.ReportsService.data){
-      let params = this.ReportsService.data;
+     // let params = this.ReportsService.data;
+      let params = this.ReportsService.getParamsFromData();
 
       this.dataFilters.venues = params.venueIds;
       this.dataFilters.outlets = params.outletIds;
@@ -272,10 +306,8 @@ export default class analyticsCustomersController {
         };
       }
 
-      if(params.events){
-        this.dataFilters.events = params.events.map((event) => {
-          return event.eventid
-        });
+      if(params.eventIds){
+        this.dataFilters.events = params.eventIds;       
       }
     }
 
@@ -284,13 +316,14 @@ export default class analyticsCustomersController {
     }
   }
 
-  constructor($filter, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, CardActionsCodes) {
+  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, CardActionsCodes) {
     "ngInject";
 
     this.spinner = Spinner;
     this.$scope = $scope;
     this.$timeout = $timeout;
     this.$filter = $filter;
+    this.Snack = Snack;
 
     this.cardActionsCodes = CardActionsCodes;
     this.ReportTypes = ReportTypes;
@@ -305,12 +338,19 @@ export default class analyticsCustomersController {
     this.shouldShowActions = false;
     this.shouldShowdatatable = false;
 
+    this.infiniteScrollIndex = 0;
+    this.valuesPerScrollPage = 20;
+
+    this.loadingMoreData = false;
+
     if($stateParams.reportName){
 
      this.reportNameSelected = $stateParams.reportName;
     }
 
     this.showSpinner();
+
+    $scope.$on('$scrollToEndOfPage', this.onInfiniteScroll.bind(this));
 
     this.linesSelected = [];
     this.tableData = {};

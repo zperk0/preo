@@ -148,10 +148,12 @@ export default class analyticsStockController {
     if(report.type)
       obj.type = report.type;
 
-    return obj;
+    this.chartData = obj;
   }
 
   getTableData(){
+
+    this.linesSelected = [];
 
     var report = this.dataFilters.report;
 
@@ -166,11 +168,18 @@ export default class analyticsStockController {
       // TO DO - create empty data div
     }
 
-    return viewTable;
+    this.currentReport = this.$filter('orderObj')( angular.copy(viewTable.body), this.query.order ,'value');
+
+    this.tableData = {
+      header: viewTable.header,
+      body: this.currentReport.slice(0, this.valuesPerScrollPage)
+    };
+
+    this.infiniteScrollIndex = this.valuesPerScrollPage;
   }
 
   onFilter(filters , typeChanged){
-    
+
     this.dataFilters = filters;
     var isReportUpdated = false;
 
@@ -199,7 +208,7 @@ export default class analyticsStockController {
       this.shouldShowChart = false;
     }
 
-    var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);   
+    var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
 
     //Fetch from Api when any filter, except Report is changed, or if report changed but has no data to show for it.
     if(!isReportUpdated ||(isReportUpdated && paramsChanged)){
@@ -216,7 +225,7 @@ export default class analyticsStockController {
     if(this.dataFilters.report.isChartType == true){
 
       this.$timeout(() => {
-        this.chartData = this.getChartData();
+        this.getChartData();
         this.shouldShowChart = true;
       });
     }
@@ -224,13 +233,41 @@ export default class analyticsStockController {
 
       this.reportTitle = this.dataFilters.report.name;
 
-      this.tableData = this.getTableData();
+      this.getTableData();
 
       this.getTableActionList(this.dataFilters.report.actions);
     }
 
     if(this.spinnerRunning())
       this.hideSpinner();
+  }
+
+  onInfiniteScroll(){
+
+    if(this.shouldShowdatatable && !this.loadingMoreData){
+
+      if(this.tableData.body.length !== this.currentReport.length){
+        this.loadingMoreData = true;
+
+          //before return it, order by the CURRENT order ...
+          var itemsLeft = this.currentReport.length - this.infiniteScrollIndex;
+          var newPossibleValues = this.currentReport.slice(this.infiniteScrollIndex);
+          var reportOrdered = this.$filter('orderObj')( newPossibleValues, this.query.order ,'value');
+
+          var newValues =[];
+          if(itemsLeft < this.valuesPerScrollPage)
+            newValues = reportOrdered.slice(0, itemsLeft);
+          else
+            newValues = reportOrdered.slice(0, this.valuesPerScrollPage);
+
+          this.$timeout(() => {
+            this.tableData.body = this.tableData.body.concat(newValues);
+            this.loadingMoreData = false;
+
+            this.infiniteScrollIndex += this.valuesPerScrollPage;
+          },200);
+      }
+    }
   }
 
   hideSpinner(){
@@ -261,7 +298,7 @@ export default class analyticsStockController {
 
       if(params.events){
         this.dataFilters.events = params.events.map((event) => {
-          return event.eventid
+          return event.occurrenceId;
         });
       }
     }
@@ -291,6 +328,11 @@ export default class analyticsStockController {
     this.shouldShowdatatable = false;
     this.shouldShowChart = false;
 
+    this.infiniteScrollIndex = 0;
+    this.valuesPerScrollPage = 20;
+
+    this.loadingMoreData = false;
+
     this.linesSelected = [];
     this.tableData = {};
 
@@ -310,6 +352,8 @@ export default class analyticsStockController {
     };
 
     this.setInitialFilterValues();
+
+    $scope.$on('$scrollToEndOfPage', this.onInfiniteScroll.bind(this));
 
     this.reportTitle = "";
 

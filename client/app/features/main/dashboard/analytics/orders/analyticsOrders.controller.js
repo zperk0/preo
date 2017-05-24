@@ -120,11 +120,16 @@ export default class analyticsOrdersController {
         usersSelected = this.tableData.body;
       }
 
+      this.showSpinner();
+
       this.ReportsService.sendPushNotification( usersSelected,textToPush)
       .then((data) => {
-
+        this.Snack.show(this.gettextCatalog.getString('The message was sent successfully.'));
+        this.hideSpinner();
       }, (err) => {
+        this.Snack.showError(this.gettextCatalog.getString('An error occurred sending your message. Please try again later.'));
         console.log('Error pushing notify -', err);
+        this.hideSpinner();
       });
 
     }, () => {
@@ -170,6 +175,8 @@ export default class analyticsOrdersController {
 
   getTableData(){
 
+    this.linesSelected = [];
+
     var report = this.dataFilters.report;
 
     var viewTable = this.ReportsService.prepareDataToTable(report.id);
@@ -183,7 +190,14 @@ export default class analyticsOrdersController {
       // TO DO - create empty data div
     }
 
-    return viewTable;
+    this.currentReport = this.$filter('orderObj')( angular.copy(viewTable.body), this.query.order ,'value');
+
+    this.tableData = {
+      header: viewTable.header,
+      body: this.currentReport.slice(0, this.valuesPerScrollPage)
+    };
+
+    this.infiniteScrollIndex = this.valuesPerScrollPage;
   }
 
   onFilter(filters , typeChanged){
@@ -196,32 +210,52 @@ export default class analyticsOrdersController {
       return;
     }
 
-    var isReportUpdated = false;
-
-    if(typeChanged == 'Report'){
-
-      isReportUpdated = true;
-    }
-
     var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
 
-    //Fetch from Api when any filter, except Report is changed, or if report changed but has not data to show on it.
-    if(!isReportUpdated ||(isReportUpdated && paramsChanged)){
+    if(paramsChanged){
       this.debounceFetch();
     }
-    else{ console.log('vindo pro update ----');
+    else{
       this.updateView();
     }
 
+  }
+
+  onInfiniteScroll(){
+
+    if(this.shouldShowdatatable && !this.loadingMoreData){
+
+      if(this.tableData.body.length !== this.currentReport.length){
+        this.loadingMoreData = true;
+
+          //before return it, order by the CURRENT order ...
+          var itemsLeft = this.currentReport.length - this.infiniteScrollIndex;
+          var newPossibleValues = this.currentReport.slice(this.infiniteScrollIndex);
+          var reportOrdered = this.$filter('orderObj')( newPossibleValues, this.query.order ,'value');
+
+          var newValues =[];
+          if(itemsLeft < this.valuesPerScrollPage)
+            newValues = reportOrdered.slice(0, itemsLeft);
+          else
+            newValues = reportOrdered.slice(0, this.valuesPerScrollPage);
+
+          this.$timeout(() => {
+            this.tableData.body = this.tableData.body.concat(newValues);
+            this.loadingMoreData = false;
+
+            this.infiniteScrollIndex += this.valuesPerScrollPage;
+          },200);
+      }
+    }
   }
 
   updateView(){
 
     this.reportTitle = this.dataFilters.report.name;
 
-    this.tableData = this.getTableData();
-
     this.getTableActionList(this.dataFilters.report.actions);
+
+    this.getTableData();
 
     if(this.spinnerRunning())
       this.hideSpinner();
@@ -241,7 +275,8 @@ export default class analyticsOrdersController {
 
   setInitialFilterValues(){
     if(this.ReportsService.data){
-      let params = this.ReportsService.data;
+
+      let params = this.ReportsService.getParamsFromData();
 
       this.dataFilters.venues = params.venueIds;
       this.dataFilters.outlets = params.outletIds;
@@ -253,10 +288,8 @@ export default class analyticsOrdersController {
         };
       }
 
-      if(params.events){
-        this.dataFilters.events = params.events.map((event) => {
-          return event.eventid
-        });
+      if(params.eventIds){
+        this.dataFilters.events = params.eventIds;      
       }
     }
 
@@ -265,24 +298,32 @@ export default class analyticsOrdersController {
     }
   }
 
-  constructor($filter, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, CardActionsCodes) {
+  constructor($filter, Snack, $q, $scope, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, CardActionsCodes, gettextCatalog, DialogService) {
     "ngInject";
 
     this.spinner = Spinner;
     this.$timeout = $timeout;
     this.$filter = $filter;
+    this.Snack = Snack;
+    this.$q = $q;
+    this.$scope = $scope;
+
+    this.loadingMoreData = false;
 
     this.cardActionsCodes = CardActionsCodes;
     this.ReportTypes = ReportTypes;
-   // this.gettextCatalog = gettextCatalog;
+    this.gettextCatalog = gettextCatalog;
     this.ReportsService = ReportsService;
     this.reportsData = ReportsService.data;
+    this.DialogService = DialogService;
 
     this.reportTypes = this.getReportTypes();
 
-
     this.shouldShowActions = false;
     this.shouldShowdatatable = false;
+
+    this.infiniteScrollIndex = 0;
+    this.valuesPerScrollPage = 20;
 
     this.linesSelected = [];
     this.tableData = {};
@@ -293,6 +334,8 @@ export default class analyticsOrdersController {
     }
 
     this.showSpinner();
+
+    $scope.$on('$scrollToEndOfPage', this.onInfiniteScroll.bind(this));
 
     this.dataFilters = {
       venues: null,

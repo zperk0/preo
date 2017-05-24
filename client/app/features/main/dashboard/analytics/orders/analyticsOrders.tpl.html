@@ -1,54 +1,54 @@
-<div class='orders-analytics-view layout-left-right' flex layout-align="stretch stretch">
-  <div class='main-content-full' flex layout="column" layout-align="start start">
+<div class='orders-analytics-view layout-left-right' flex layout="column" layout-align="stretch stretch">
+  <div flex layout="column" layout-align="start start">
 
-  <div class="orders-filters">
-  <custom-datafilters has-daterange="true"
-    has-report="true"
-    report-types="analyticsOrdersCtrl.reportTypes"
-    on-filter="analyticsOrdersCtrl.onFilter(filters, typeChanged)"
-    initial-values="analyticsOrdersCtrl.dataFilters">
-  </custom-datafilters>
+    <div class="orders-filters">
+    <custom-datafilters has-daterange="true"
+      has-report="true"
+      report-types="analyticsOrdersCtrl.reportTypes"
+      on-filter="analyticsOrdersCtrl.onFilter(filters, typeChanged)"
+      initial-values="analyticsOrdersCtrl.dataFilters">
+    </custom-datafilters>
+    </div>
+
+    <div class="orders-table" layout="row" ng-if="analyticsOrdersCtrl.shouldShowdatatable">
+    <md-card flex layout-fill>
+      <md-card-title>
+        <md-card-title-text layout="row" layout-align="space-between start">
+          <h2 class="md-title"> {{analyticsOrdersCtrl.reportTitle}}</h2>
+          <form action={{analyticsOrdersCtrl.exportDataUrl}} method='POST' ng-submit='analyticsOrdersCtrl.getExportData()'>
+            <input name='data' value='{{analyticsOrdersCtrl.exportData}}' type='hidden'/>
+              <div class="align-action-top" ng-if="analyticsOrdersCtrl.shouldShowActions">
+                <dropdown-actions actions-list="analyticsOrdersCtrl.actions" on-actions="analyticsOrdersCtrl.onActions(item)"> </dropdown-actions>
+              </div>
+              <button id="postData" class="btn-form-analytics" ng-click=""></button>
+          </form>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-table-container>
+        <table md-table md-row-select multiple ng-model="analyticsOrdersCtrl.linesSelected">
+          <thead md-head md-order="analyticsOrdersCtrl.query.order" >
+           <tr md-row>
+            <th md-column ng-repeat="col in analyticsOrdersCtrl.tableData.header" md-order-by="{{col.key}}" ng-if="!col.isHidden">
+              <span>{{col.text}}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsOrdersCtrl.tableData.body | orderObj:analyticsOrdersCtrl.query.order:'value' track by $index">
+             <td md-cell ng-repeat="col in row track by $index" ng-if="!col.isHidden">
+              <span >{{col.displayValue}}</span>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+      </md-table-container>
+    </md-card>
+    </div>
+
+    <div class="content-spinner" ng-if="analyticsOrdersCtrl.loadingMoreData">
+      <spinner></spinner>
+    </div>
+
   </div>
-
-  <md-card class="full-card" layout="column" ng-if="analyticsOrdersCtrl.shouldShowdatatable">
-    <md-card-title>
-      <md-card-title-text layout="row" layout-align="space-between start">
-        <h2 class="md-title"> {{analyticsOrdersCtrl.reportTitle}}</h2>
-        <form action={{analyticsOrdersCtrl.exportDataUrl}} method='POST' ng-submit='analyticsOrdersCtrl.getExportData()'>
-          <input name='data' value='{{analyticsOrdersCtrl.exportData}}' type='hidden'/>
-            <div class="align-action-top" ng-if="analyticsOrdersCtrl.shouldShowActions">
-              <dropdown-actions actions-list="analyticsOrdersCtrl.actions" on-actions="analyticsOrdersCtrl.onActions(item)"> </dropdown-actions>
-            </div>
-            <button id="postData" class="btn-form-analytics" ng-click=""></button>
-        </form>        
-      </md-card-title-text>
-    </md-card-title>
-
-    <md-table-container layout-fill flex>
-      <table md-table md-row-select multiple ng-model="analyticsOrdersCtrl.linesSelected">
-        <thead md-head md-order="analyticsOrdersCtrl.query.order">
-         <tr md-row>
-          <th md-column ng-repeat="col in analyticsOrdersCtrl.tableData.header" md-order-by="{{col.key}}" ng-if="!col.isHidden">
-            <span>{{col.text}}</span>
-          </th>     
-        </tr>
-      </thead>
-      <tbody md-body>
-         <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsOrdersCtrl.tableData.body | orderObj:analyticsOrdersCtrl.query.order:'value' track by $index">          
-           <td md-cell ng-repeat="col in row" ng-switch="col.fieldType" ng-if="!col.isHidden">                  
-            <span ng-switch-when="date">{{col.value | datelocale}}</span>
-            <span ng-switch-when="dayOfWeek">{{col.value | datelocale:'dayOfWeek'}}</span>
-            <span ng-switch-when="timeOfDay">{{col.value | datelocale:'timeOfDay'}}</span>
-            <span ng-switch-when="currency">{{col.value | currency}}</span>
-            <span ng-switch-when="number">{{col.value | currency:true}}</span>
-            <span ng-switch-when="percent">{{col.value | percent}}</span>
-            <span ng-switch-default>{{col.value}}</span>                  
-          </td>
-        </tr>
-      </tbody>       
-      </table>
-    </md-table-container>
-   <!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->
-  </md-card>
-</div>
 </div>

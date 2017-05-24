@@ -1,5 +1,5 @@
-<div flex layout="column" class="data-filters-view" >
-  <md-card flex layout="column" md-theme="default" >
+<div layout="row" class="main-content-full data-filters-view" >
+  <md-card flex layout="column" class="full-card" md-theme="default" >
     <md-card-title>
       <md-card-title-text >
         <h2 class="md-title"> {{'Data filters' | translate}}</h2>
@@ -7,7 +7,7 @@
     </md-card-title>
     <md-card-content layout="row">
     
-      <md-input-container flex="50" class="select-venue">
+      <md-input-container flex="50" layout-wrap class="select-venue">
         <label>{{'Venue' | translate }}</label>
         <md-select ng-model="vm.selectedVenues" ng-model-options="{trackBy: '$value.id'}" multiple md-selected-text="vm.getSelectedVenuesNames()" md-container-class="md-customfix-container venueselect" ng-change="vm.onVenueChange()" md-on-open="vm.onOpenVenue()" md-on-close="vm.onVenueClose()" >
           <md-option md-truncate ng-repeat="venue in vm.venues" ng-selected="venue.selected" ng-class="{'childmargin': (venue.type === 'outlet')}" ng-value="venue" >
@@ -42,8 +42,10 @@
           </md-optgroup>
         </md-select>
       </md-input-container>
-
-      <custom-date-picker dates-range="vm.filters.datesRange" ng-if="vm.shouldShowCustomDate"> </custom-date-picker>
+      
+      <div flex="30" ng-if="vm.shouldShowCustomDate">
+        <custom-date-picker dates-range="vm.filters.datesRange"> </custom-date-picker>
+      </div>
     </md-card-content>
     <md-card-content layout="column" ng-if="vm.shouldShowReportfilter">
       <md-input-container class="md-block">
@@ -62,7 +64,7 @@
       </md-input-container>
     </md-card-content>
   </md-card>
-  <md-card flex layout="column" class="item-filter" md-theme="default" ng-show="vm.shouldShowItemFilter">
+  <md-card class="full-card item-filter" md-theme="default" ng-show="vm.shouldShowItemFilter">
     <md-card-content layout="column">
       <md-input-container flex>
         <label>{{ 'Item name' | translate }}</label>

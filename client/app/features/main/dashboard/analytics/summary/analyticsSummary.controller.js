@@ -173,7 +173,7 @@ export default class analyticsSummaryController {
 
       if(params.events){
         this.dataFilters.events = params.events.map((event) => {
-          return event.eventid
+          return event.occurrenceId;
         });
       }
     }

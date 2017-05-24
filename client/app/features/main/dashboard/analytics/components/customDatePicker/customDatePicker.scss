@@ -1,23 +1,17 @@
 .custom-date-picker{
 	width: 100%;
-	display: flex;
-	flex: 1 1;
-
 	.trap-div{
 		height: 100%;
 		width: 100%;
 		background-color: transparent;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: 3;
 	}
 
-	.inputs-dates{
-		display: flex;
-		flex: 1 1;
+	.inputs-dates{	
 		position: relative;
-
 
 		md-input-container{
 			width: 100%;
@@ -28,8 +22,7 @@
 			input{
 				left: 0;
 				height: 48px;
-				padding-left: 2px !important;
-				//padding-top: 18px;
+				padding-left: 2px !important;		
 			}
 
 			&.with-icon {
@@ -42,18 +35,14 @@
 
 		}
 
-		.calendar-picker{
+		.calendar-picker{		
 			top: auto;
 			position: absolute;
 			background-color: white;
 			margin-top: 60px;
 			right: 0;
 			z-index: 4;
-			box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.24), 0 0 8px 0 rgba(0, 0, 0, 0.12);
-			padding-left: 14px;
-			padding-right: 14px;
-			padding-bottom: 14px;
-			flex-direction: row;
+			box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.24), 0 0 8px 0 rgba(0, 0, 0, 0.12);		
 
 			header {
 				font-weight: bold;

@@ -44,10 +44,12 @@ export default class customDatafiltersController {
       return 0;
     });
 
-    let changed = arrayCombined.length > 1 ? false : true;
+    let changed = false;
+    if(arrayCombined.length <= 1 || arrayCombined.length % 2 > 0)
+      return true;
+
     for(var i=0; i < arrayCombined.length - 1; i+=2){
       if(arrayCombined[i].id != arrayCombined[i+1].id){
-
         changed = true;
         break;
       }
@@ -66,7 +68,10 @@ export default class customDatafiltersController {
       return 0;
     });
 
-    let changed = arrayCombined.length > 1 ? false : true;
+    let changed = false;
+    if(arrayCombined.length <= 1 || arrayCombined.length % 2 > 0)
+      return true;
+
     for(var i=0; i < arrayCombined.length - 1; i+=2){
 
       if(arrayCombined[i].occurId != arrayCombined[i+1].occurId){
@@ -99,36 +104,24 @@ export default class customDatafiltersController {
     }
 
     if(venueNames.length > 0)
-      return venueNames;    
+      return venueNames;
     else
       return this.getTextCatalog.getString("Venue"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
   }
 
   getSelectedEventsNames(){
-    //var eventsNames = "";
+
     var eventsCount = this.filters.events.length;
-    // var events = angular.copy(this.filters.events);
-    // events.sort(this.compareObjectEvent);
 
-    // for(var i = 0; i < events.length; i++){
-    //   eventsNames = eventsNames + events[i].showName;
-      
-    //   if(events[i+1]){
-    //     eventsNames += ', ';
-    //   }
-    // }
-
-    //if(eventsNames.length > 0)
     if(eventsCount > 0 && eventsCount <= 1)
       return this.filters.events[0].showName;
     if(eventsCount > 1)
       return this.getTextCatalog.getString( eventsCount + " events selected");
-    //  return eventsNames;
     else
       return this.getTextCatalog.getString("Event"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
   }
 
-  // Format Venue array to be returned to the Controller as an Object 
+  // Format Venue array to be returned to the Controller as an Object
   // venue: { id: ...., outlets:[]}
   formatVenuesValues(){
     var venues = this.selectedVenues.filter((v) => {
@@ -218,7 +211,7 @@ export default class customDatafiltersController {
     if(!this.checkIfVenueChanged())
       return;
 
-    if(this.filters.report && this.filters.report.hasItemFilter){    
+    if(this.filters.report && this.filters.report.hasItemFilter){
       this.getItemsFilter();
     }
     else{
@@ -226,13 +219,13 @@ export default class customDatafiltersController {
     }
 
     if(this.hasReport){
-      this.getReports();      
+      this.getReports();
     }
 
     if(this.hasDaterange){
       this.getDateRange();
     }
-    
+
     this.debounceUpdate('Venue', true);
   }
 
@@ -250,7 +243,7 @@ export default class customDatafiltersController {
     if(!this.checkIfEventChanged())
       return;
 
-    this.debounceUpdate('Event', true);   
+    this.debounceUpdate('Event', true);
   }
 
   eventSearchUp(){
@@ -267,10 +260,6 @@ export default class customDatafiltersController {
           selectedEvents = this.filters.events;
           this.checktoSetEvents(selectedEvents);
         }
-        // selectedEvents.array.forEach( (e, index) => {
-        //   if(!this.findElementById(e.id , this.events))
-        //     this.filters.events.splice(index, 1);
-        // });
 
         this.ReportsService.setEventSearched(null);
       }
@@ -278,7 +267,7 @@ export default class customDatafiltersController {
       return;
     }
 
-    this.debounceSearchEvent();    
+    this.debounceSearchEvent();
   }
 
   // fix bug with event keyDown of md-header input
@@ -387,12 +376,11 @@ export default class customDatafiltersController {
   onEventChange(){
     this.filters.datesRange.startDate = null;
     this.filters.datesRange.endDate = null;
-
-    // multivalue select, will debounce at close event
+   // multivalue select, will debounce at close event
   }
 
   onReportChange(){
-console.log('entrou no report');
+
     if(!this.filters.report)
       return;
 
@@ -419,7 +407,7 @@ console.log('entrou no report');
   }
 
   onDaterangeChange(){
-console.log('entrou no daterangfe', this.selectedDaterange);
+
     //save last option selected to use with Custom type
     if(this.selectedDaterange.start && this.selectedDaterange.end){
 
@@ -432,7 +420,7 @@ console.log('entrou no daterangfe', this.selectedDaterange);
       this.dateRangeChanged = false;
 
       if(this.events.length <= 0)
-        this.getEvents();
+        this.getEvents(true);
     }
     else{
       this.shouldShowEventfilter = false;
@@ -442,6 +430,9 @@ console.log('entrou no daterangfe', this.selectedDaterange);
 
       //only trigger watch if daterange is not Event
       this.dateRangeChanged = true;
+
+      this.filters.datesRange.startDate = this.lastDataSelected.start;
+      this.filters.datesRange.endDate = this.lastDataSelected.end;
     }
 
     //Will show From/Until fields displaying datesRange equals to the last option selected before Custom
@@ -450,10 +441,6 @@ console.log('entrou no daterangfe', this.selectedDaterange);
     }
     else
       this.shouldShowCustomDate = false;
-
-    this.filters.datesRange.startDate = this.lastDataSelected.start;
-    this.filters.datesRange.endDate = this.lastDataSelected.end;
-
   }
 
   onItemChange(){
@@ -505,6 +492,9 @@ console.log('entrou no daterangfe', this.selectedDaterange);
 
         });
 
+        //init venues after hasApplication
+        this.initVenues();
+
         resolve();
       }, (err) => {
         console.log('Error fetching venue application', err);
@@ -519,10 +509,10 @@ console.log('entrou no daterangfe', this.selectedDaterange);
     var takeaway = false;
     var event = false;
 
-    var hasEventVenue = this.selectedVenues.forEach((venue) => {
-      if(venue.type=='venue' && venue.isEventVenue)
+    var hasEventVenue = this.filters.venues.forEach((venue) => {
+      if(venue.isEventVenue)
         event = true;
-      else if(venue.type=='venue' && !venue.isEventVenue)
+      else
         takeaway = true;
     });
 
@@ -530,14 +520,14 @@ console.log('entrou no daterangfe', this.selectedDaterange);
   }
 
   getItemsFilter(){
-    //this.reportItems = [{menuItemId:8972, name:'Item1'}, {menuItemId:922201, name:'Item7'}, {menuItemId:922229, name:'Item2'}, {menuItemId:922228, name:'Item3'}, {menuItemId:922235, name:'Item4'}, {menuItemId:980758, name:'Item5'}];
+
     this.showSpinner();
 
     var params = { venues: this.filters.venues}
 
     let oldItem = null;
     if(this.filters.item)
-      oldItem = angular.copy(this.filters.item);    
+      oldItem = angular.copy(this.filters.item);
 
     this.ReportsService.getMenuItemsByVenues(params)
     .then((data) => {
@@ -552,7 +542,7 @@ console.log('entrou no daterangfe', this.selectedDaterange);
           }
         });
       }
-    
+
       if(matchItem)
         this.filters.item = oldItem;
       else if(oldItem)
@@ -611,18 +601,17 @@ console.log('entrou no daterangfe', this.selectedDaterange);
     return this.getVenuesApplications(venuesIds);
   }
 
-  setDateRange(defaultOpt, initialValue){
-
+  setDateRange(defaultOpt){
     var venueTypes = this.getVenueSelectedTypes();
     var setDefault = false;
-    // if event is selected, update Events
+    // if event is selected, update Events (called when VenueClose has event venue)
     if(this.selectedDaterange.type == 'event'){
       if(venueTypes.hasEvent)
-        this.getEvents();
+        this.getEvents(true);
       else{
         this.events = [];
         this.allEvents = [];
-        setDefault = true;        
+        setDefault = true;
       }
     }
     else if(!this.selectedDaterange.type ){
@@ -630,7 +619,7 @@ console.log('entrou no daterangfe', this.selectedDaterange);
     }
 
     // set default option only at init page OR if Event was selected and now Event option its not available aynmore.
-    if((setDefault && defaultOpt) || (defaultOpt && initialValue)){
+    if(setDefault){
       this.selectedDaterange = defaultOpt;
       this.onDaterangeChange();
     }
@@ -648,7 +637,7 @@ console.log('entrou no daterangfe', this.selectedDaterange);
         {id: 2, type: 'minus1day',  name: this.getTextCatalog.getString('Yesterday'),
          start: moment().subtract(1, 'days').format('L'), end: today},
         {id: 3, type: 'minus7days', name: this.getTextCatalog.getString('Last 7 days'),
-         start: moment().subtract(7, 'days').format('L'), end: today},      
+         start: moment().subtract(7, 'days').format('L'), end: today},
         {id: 5, type: 'minus1year', name: this.getTextCatalog.getString('1 year'),
          start: moment().subtract(1, 'year').format('L'), end: today},
         {id: 6, type: 'custom',     name: this.getTextCatalog.getString('Custom')}
@@ -656,7 +645,7 @@ console.log('entrou no daterangfe', this.selectedDaterange);
 
       var defaultOpt = {id: 4, type: 'minus30days',name: this.getTextCatalog.getString('Last 30 days'),
                         start: moment().subtract(30, 'days').format('L'), end: today};
-      
+
       ranges.push(defaultOpt);
 
       //do not allow this option if has no Event venue selected
@@ -665,29 +654,35 @@ console.log('entrou no daterangfe', this.selectedDaterange);
       }
 
       this.dateRangeOptions = ranges;
+      this.lastDataSelected.start = defaultOpt.start;
+      this.lastDataSelected.end = defaultOpt.end;
 
-      this.setDateRange(defaultOpt);
+      this.initDatesAndEvents();
+      //this.setDateRange(defaultOpt);
 
       resolve();
     });
   }
 
-  setEvents(eventsIds){
+  setEvents(occurIds){
 
     let eventsSelected = [];
-    eventsIds.forEach((id) => {
-     
+    occurIds.forEach((id) => {
+
       let event = this.events.filter((e) => {
-        if(e.id = id)
-          return id;
+        if(e.occurId === id){
+          return e;
+        }
       });
 
       if(event && event.length > 0)
         eventsSelected.push(event[0]);
-      
+
     });
 
     this.filters.events = eventsSelected;
+
+    this.onEventChange();
   }
 
   checktoSetEvents(oldEvents){
@@ -695,95 +690,99 @@ console.log('entrou no daterangfe', this.selectedDaterange);
     if(oldEvents){
       oldEvents.forEach( (x) => {
         let event = this.events.filter((e) => {
-          if(e.id == x.id)
+          if(e.occurId == x.occurId)
             return e;
         });
 
-        if(event && event.length > 0)
-          eventsSelected.push(event);
+        if(event.length > 0){
+         eventsSelected = eventsSelected.concat(event);
+        }
       });
 
       this.filters.events = eventsSelected;
     }
   }
 
-  getEvents(){
+  getEvents(firstTimeLoad){
 
-    return this.$q((resolve,reject) => {  
+    return this.$q((resolve,reject) => {
 
-    this.showSpinner();  
+      this.showSpinner();
 
-    var eventsFetched = [];
+      var eventsFetched = [];
 
-    var paramNameSearch = null;
+      var paramNameSearch = null;
 
-    if(this.eventSearchTerm && this.eventSearchTerm.length > 0 ){
-      paramNameSearch = this.eventSearchTerm;
-      this.ReportsService.setEventSearched(paramNameSearch);
-    }
-    else
-      this.ReportsService.setEventSearched(null);
-
-    var venueIds=[];
-    for(var i=0;i<this.filters.venues.length;i++){  
-   
-      if(this.filters.venues[i].isEventVenue)   
-        venueIds.push(this.filters.venues[i].id);
-    }
-
-    var oldEvents = null;
-    if(this.filters.events && this.filters.events.length > 0)
-      oldEvents = this.filters.events;
-
-    var offset = 0;
-    var limit = 100;
-
-    var events = this.EventService.getByVenuesIdsAndName(venueIds, paramNameSearch, offset, limit)    
-    .then((data) => {
-
-      if(data.length <= 0)
-        this.noEventsFound = true;
+      if(this.eventSearchTerm && this.eventSearchTerm.length > 0 ){
+        paramNameSearch = this.eventSearchTerm;
+        this.ReportsService.setEventSearched(paramNameSearch);
+      }
       else
-        this.noEventsFound = false;
+        this.ReportsService.setEventSearched(null);
 
-      var uniqueID = 1; // genetared to control 'track by' and checkIfEventChanged() function
-      data.forEach((event, i)=> {
-        let objEvent = {};
-        objEvent.id = event.id;
-        objEvent.name = event.name;
+      var venueIds=[];
+      for(var i=0;i<this.filters.venues.length;i++){
 
-        let currentTimes = event.times;
-        currentTimes.forEach((time) => {
-          let objTime ={};
-          objTime.id = objEvent.id;
-          objTime.name = objEvent.name;
-          objTime.startDate = time;
-          objTime.occurId = uniqueID;
-          objTime.showName = moment(time).format('L') +" "+moment(time).format('LT') +' - ' + objEvent.name;
-
-          eventsFetched.push(objTime);
-          uniqueID++;
-        }); 
-           
-
-      });
-      
-      // lets keep a copy of all events. So its not necessary search everytime that user clean search
-      if(!paramNameSearch){
-        this.allEvents = eventsFetched;
+        if(this.filters.venues[i].isEventVenue)
+          venueIds.push(this.filters.venues[i].id);
       }
 
-      this.events = eventsFetched;
+      var oldEvents = null;
+      if(this.filters.events && this.filters.events.length > 0)
+        oldEvents = this.filters.events;
 
-      this.checktoSetEvents(oldEvents);
-      this.hideSpinner();
-    }, (err) => {
-      console.log('Error fetching Events', err);
-      this.hideSpinner();
-    });
+      var offset = 0;
+      var limit = 100;
 
-    resolve(events); 
-  }, (err) => { reject(); });
+      var events = this.EventService.getByVenuesIdsAndName(venueIds, paramNameSearch, offset, limit)
+      .then((data) => {
+
+        if(data.length <= 0)
+          this.noEventsFound = true;
+        else
+          this.noEventsFound = false;
+
+        data.forEach((event, i)=> {
+          let objEvent = {};
+          objEvent.id = event.id;
+          objEvent.name = event.name;
+
+
+          let schedules = event.schedules;
+          schedules.forEach((sched) => {
+            let occurrences = sched.occurrences;
+
+            occurrences.forEach((occur) => {
+              let objTime = {};
+
+              objTime.id = objEvent.id;
+              objTime.name = objEvent.name;
+              objTime.startDate = occur.date;
+              objTime.occurId = occur.id;
+              objTime.showName = moment(occur.date).format('L') +" "+moment(occur.date).format('LT') +' - ' + objEvent.name;
+
+              eventsFetched.push(objTime);
+            });
+          });
+
+        });
+
+        // lets keep a copy of all events. So its not necessary search everytime that user clean search
+        if(firstTimeLoad === true){
+          this.allEvents = eventsFetched;
+        }
+
+        this.events = eventsFetched;
+
+        this.checktoSetEvents(oldEvents);
+        this.hideSpinner();
+      }, (err) => {
+        console.log('Error fetching Events', err);
+        this.hideSpinner();
+      });
+
+      resolve(events);
+    }, (err) => { reject(); });
   }
 
   setReport(report){
@@ -791,14 +790,14 @@ console.log('entrou no daterangfe', this.selectedDaterange);
   }
 
   getReports(){
-  return this.$q((resolve,reject) => {    
+  return this.$q((resolve,reject) => {
 
     this.showSpinner();
     var venueTypes = this.getVenueSelectedTypes();
 
     var venueWithAppId = false;
-    for(var i=0; i < this.selectedVenues.length; i++ ){
-      if(this.selectedVenues[i].hasApplication){
+    for(var i=0; i < this.filters.venues.length; i++ ){
+      if(this.filters.venues[i].hasApplication){
         venueWithAppId = true;
         break;
       }
@@ -813,13 +812,7 @@ console.log('entrou no daterangfe', this.selectedDaterange);
     let oldReport = null;
     if(this.filters.report)
       oldReport = angular.copy(this.filters.report);
-   // else // clean service data when init page.
-    //  this.ReportsService.clearData();
 
-    //clean data at first time 
-   // if(!this.filters.report)
-    //  this.ReportsService.clearData();
-    
      var reports = this.ReportsService.getReports(this.reportTypes, options)
       .then((newReports) => {
         this.reports = newReports;
@@ -836,51 +829,51 @@ console.log('entrou no daterangfe', this.selectedDaterange);
         if(matchReport)
           this.setReport(oldReport);
         else if(oldReport)
-          this.setReport(this.reports[0]); // set the first option IF old report selected is not available anymore.        
-     
+          this.setReport(this.reports[0]); // set the first option IF old report selected is not available anymore.
+
       });
       this.hideSpinner();
       resolve(reports);
    });
   }
 
-  setInitialValues(){
-    console.log('initi VALUES - ', this.initialValues);
-    console.log('THIS VENUS ', this.venues);
-    if(this.initialValues){
-      if(this.initialValues.venues){ console.log('entrando for VENUES');
-        let venuesSelected = [];
-        this.venues.forEach((v) => {
-          if(v.type== 'venue'){
-            if(this.initialValues.venues.indexOf(v.id) > -1)
-              venuesSelected.push(v);
-            else
-              v.selected = false;            
-          }
-          else if(v.type == 'outlet' && this.initialValues.outlets){
-            if(this.initialValues.outlets.indexOf(v.id) > -1)
-              venuesSelected.push(v);
-            else
-              v.selected = false;
-          }
+  initReports(){
+    if(this.hasReport && this.reports && this.reports.length > 0){
+      if(this.init && this.init.report){
+        let reportName = this.init.report;
+        let reportSelected = this.reports.filter((x) => {
+          if(x.name == reportName)
+            return x;
         });
-    
-        this.setVenues(venuesSelected);
+
+        if(reportSelected && reportSelected.length > 0)
+          this.setReport(reportSelected[0]);
+        else
+          this.setReport(this.reports[0]);
       }
       else
-        this.setVenues(angular.copy(this.venues));
-    
-      if(this.initialValues.datesRange){
-        let minDate = moment(this.initialValues.datesRange.startDate).format('L');
-        let maxDate = moment(this.initialValues.datesRange.endDate).subtract(1,'days').format('L');
+        this.setReport(this.reports[0]);
+
+     // this.$timeout(() => {
+        this.onReportChange();//, 200});
+    }
+  }
+
+  initDatesAndEvents(){
+
+    if(this.init){
+
+      if(this.init.datesRange && this.init.datesRange.startDate && this.init.datesRange.endDate){
+        let minDate = moment(this.init.datesRange.startDate).format('L');
+        let maxDate = moment(this.init.datesRange.endDate).format('L');
 
         let dateRangeSelected = this.dateRangeOptions.filter((x) => {
           if(x.start == minDate && x.end == maxDate)
             return x;
         });
-        
+
         if(dateRangeSelected && dateRangeSelected.length > 0){
-          this.setDateRange(dateRangeSelected[0], true);
+          this.setDateRange(dateRangeSelected[0]);
         }
         else {
           let dateRangeSelected = this.dateRangeOptions.filter((x) => {
@@ -890,28 +883,44 @@ console.log('entrou no daterangfe', this.selectedDaterange);
 
           this.lastDataSelected.start = minDate;
           this.lastDataSelected.end = maxDate;
-          this.setDateRange(dateRangeSelected, true);
+          this.setDateRange(dateRangeSelected);
 
         }
       }
-      else if(this.initialValues.events){
-        if(this.ReportsService.data.eventSearched)
-          this.eventSearchTerm = angular.copy(this.ReportsService.data.eventSearched);
-          
-        var initialEvents = this.initialValues.events;
-        this.getEvents()
-        .then(() => {
-            
-          let dateRangeSelected = this.dateRangeOptions.filter((x) => {
-            if(x.type == 'event')
-              return x;
-          })[0];
+      else if(this.init.events){
+        // if user searched for events on last controller...
+        var isEventSearched = this.ReportsService.getEventSearched();
 
-          this.setEvents(initialEvents);
-          this.setDateRange(dateRangeSelected, true);
-            
+        var initialEvents = this.init.events;
+        this.getEvents(true)
+        .then(() => {
+
+          if(isEventSearched){
+            this.eventSearchTerm = isEventSearched;
+
+            this.getEvents()
+            .then(() => {
+
+              let dateRangeSelected = this.dateRangeOptions.filter((x) => {
+                if(x.type == 'event')
+                  return x;
+              })[0];
+              this.setDateRange(dateRangeSelected);
+              this.setEvents(initialEvents);
+
+            });
+          }
+          else{
+            let dateRangeSelected = this.dateRangeOptions.filter((x) => {
+              if(x.type == 'event')
+                return x;
+            })[0];
+            this.setDateRange(dateRangeSelected);
+            this.setEvents(initialEvents);
+
+          }
         });
-               
+
       }
       else{ // default Option if none selected
         let dateRangeSelected = this.dateRangeOptions.filter((x) => {
@@ -919,34 +928,45 @@ console.log('entrou no daterangfe', this.selectedDaterange);
             return x;
         })[0];
 
-        this.setDateRange(dateRangeSelected, true);
+        this.setDateRange(dateRangeSelected);
       }
-    
+
     }
+    else{ // default Option if none selected
+      let dateRangeSelected = this.dateRangeOptions.filter((x) => {
+        if(x.type == 'minus30days')
+          return x;
+      })[0];
 
-    if(this.hasReport && this.reports && this.reports.length > 0){
-      if(this.initialValues && this.initialValues.report){
-        let reportName = this.initialValues.report;
-        let reportSelected = this.reports.filter((x) => {
-          if(x.name == reportName)
-            return x;
-        });
-
-        if(reportSelected && reportSelected.length > 0)
-          this.setReport(reportSelected[0]);
-        else
-          this.setReport(this.reports[0]); 
-      }
-      else
-        this.setReport(this.reports[0]); 
-
-      this.$timeout(() => {
-        this.onReportChange(), 200});             
+      this.setDateRange(dateRangeSelected);
     }
-    
   }
 
-  initReports(){
+  initVenues(){
+    if(this.init && this.init.venues){
+      let venuesSelected = [];
+      this.venues.forEach((v) => {
+        if(v.type== 'venue'){
+          if(this.init.venues.indexOf(v.id) > -1)
+            venuesSelected.push(v);
+          else
+            v.selected = false;
+        }
+        else if(v.type == 'outlet' && this.init.outlets){
+          if(this.init.outlets.indexOf(v.id) > -1)
+            venuesSelected.push(v);
+          else
+            v.selected = false;
+        }
+      });
+
+      this.setVenues(venuesSelected);
+    }
+    else
+      this.setVenues(angular.copy(this.venues));
+  }
+
+  loadReports(){
 
     if(this.hasReport){
       this.shouldShowReportfilter = true;
@@ -954,18 +974,18 @@ console.log('entrou no daterangfe', this.selectedDaterange);
     } else {
       this.shouldShowReportfilter = false;
       return this.$q.resolve();
-    }   
+    }
   }
 
-  initDateRange(){
- 
+  loadDateRange(){
+
     if(this.hasDaterange){
       this.shouldShowDaterange = true;
       return this.getDateRange();
     } else {
       this.shouldShowDaterange = false;
       return this.$q.resolve();
-    }   
+    }
   }
 
   initFilters(){
@@ -1001,12 +1021,13 @@ console.log('entrou no daterangfe', this.selectedDaterange);
 
     this.spinner.show('init-datafilters');
 
-    this.getVenues()    
-    .then(this.initReports.bind(this))
-    .then(this.initDateRange.bind(this))
+    this.getVenues()
+    .then(this.loadReports.bind(this))
+    .then(this.loadDateRange.bind(this))
     .then(() => {
-      this.setInitialValues();  
-console.log('fim do init do data');
+      //last thing loaded
+      this.initReports();
+      this.init = null;
       this.spinner.hide('init-datafilters');
     })
     .catch((err) => {
@@ -1043,6 +1064,7 @@ console.log('fim do init do data');
     this.scope = $scope;
     this.getTextCatalog = gettextCatalog;
     this.ReportsService = ReportsService;
+    this.init = angular.copy(this.initialValues);
 
     this.initFilters();
 

@@ -19,6 +19,29 @@ export default class ReportsService {
     }
   }
 
+  getParamsFromData(){
+
+    if(!this.data)
+      return null;
+
+    var response = {
+      venueIds: this.data.venueIds,
+      outletIds: this.data.outletIds
+    }
+
+    if(this.data.maxCreated && this.data.minCreated){
+      response.maxCreated= this.data.maxCreated;
+      response.minCreated= this.data.minCreated;
+    }
+
+    if(this.data.events && this.data.events.length > 0)
+      response.eventIds =  this.data.events.map((event) => {
+        return event.occurrenceId;
+      });
+
+    return response;
+  }
+
   saveDataReport(data){
 
     var params = {
@@ -27,6 +50,14 @@ export default class ReportsService {
       events: data.events,
       minCreated: data.minCreated,
       maxCreated: data.maxCreated
+    }
+
+    if(data.events && data.events.length > 0)
+      params.events = data.events;
+
+    if(data.minCreated && data.maxCreated){
+      params.minCreated= data.minCreated;
+      params.maxCreated= data.maxCreated;
     }
 
     if(this.checkIfParamsChanged(params, false)){
@@ -42,8 +73,13 @@ export default class ReportsService {
   }
 
   setEventSearched(termSearched){
-    if(this.data)
-      this.data.eventSearched = termSearched;
+    this.eventSearched = termSearched;
+  }
+
+  getEventSearched(){
+    var response = this.eventSearched ? this.eventSearched : null;
+
+    return response;
   }
 
   prepareDataToNotification(rowsSelected){
@@ -54,12 +90,12 @@ export default class ReportsService {
 
     rowsSelected.forEach((row) => {
       let colCustomer = row.filter((col) => {
-        if( col.key == 'customerName' && col.userid)
+        if( col.key == 'customerName' && col.userId)
           return col;
       });
 
       if(colCustomer[0])
-        data.users.push(colCustomer[0].userid);
+        data.users.push(colCustomer[0].userId);
     });
 
     return data;
@@ -97,9 +133,33 @@ export default class ReportsService {
         colObj.key = head.key;
         colObj.isHidden = head.isHidden ? head.isHidden : false;
 
+        switch(colObj.fieldType){
+          case "currency":
+            colObj.displayValue = this.$filter('currency')(colObj.value);
+            break;
+          case "number":
+            colObj.displayValue = this.$filter('currency')(colObj.value,true,0);
+            break;
+          case "percent":
+            colObj.displayValue = this.$filter('percent')(colObj.value);
+            break;
+          case "date":
+            colObj.displayValue = this.$filter('datelocale')(colObj.value);
+            break;
+          case "dayOfWeek":
+            colObj.displayValue = this.$filter('datelocale')(colObj.value, 'dayOfWeek');
+            break;
+          case "timeOfDay":
+            colObj.displayValue = this.$filter('datelocale')(colObj.value, 'timeOfDay');
+            break;
+          default:
+            colObj.displayValue = colObj.value;
+            break;
+        }
+
         // AUX properties that are used to Push Notification
-        if(row['userid'])
-          colObj.userid = row['userid'];
+        if(row['userId'])
+          colObj.userId = row['userId'];
 
         rowObj.push(colObj);
       });
@@ -145,20 +205,8 @@ export default class ReportsService {
             itemData.push(this.gettextCatalog.getString('Yes'));
           else if(col.value === false)
             itemData.push(this.gettextCatalog.getString('No'));
-          else if(col.fieldType == 'currency')
-            itemData.push(this.$filter('currency')(col.value));
-          else if(col.fieldType == 'number')
-            itemData.push(this.$filter('currency')(col.value,true,0));
-          else if(col.fieldType == 'percent')
-            itemData.push(this.$filter('percent')(col.value));
-          else if(col.fieldType == 'date')
-            itemData.push(this.$filter('datelocale')(col.value));
-          else if(col.fieldType == 'dayOfWeek')
-            itemData.push(this.$filter('datelocale')(col.value, 'dayOfWeek'));
-          else if(col.fieldType == 'timeOfDay')
-            itemData.push(this.$filter('datelocale')(col.value, 'timeOfDay'));
           else
-            itemData.push(col.value);
+            itemData.push(col.displayValue);
         }
       });
 
@@ -195,20 +243,8 @@ export default class ReportsService {
             response[headerCol.text].push(this.gettextCatalog.getString('Yes'));
           else if(col.value === false)
             response[headerCol.text].push(this.gettextCatalog.getString('No'));
-          else if(col.fieldType == 'currency')
-            response[headerCol.text].push(this.$filter('currency')(col.value));
-          else if(col.fieldType == 'number')
-            response[headerCol.text].push(this.$filter('currency')(col.value,true,0));
-          else if(col.fieldType == 'percent')
-            response[headerCol.text].push(this.$filter('percent')(col.value));
-          else if(col.fieldType == 'date')
-            response[headerCol.text].push(this.$filter('datelocale')(col.value));
-          else if(col.fieldType == 'dayOfWeek')
-            response[headerCol.text].push(this.$filter('datelocale')(col.value, 'dayOfWeek'));
-          else if(col.fieldType == 'timeOfDay')
-            response[headerCol.text].push(this.$filter('datelocale')(col.value, 'timeOfDay'));
           else
-            response[headerCol.text].push(col.value);
+            response[headerCol.text].push(col.displayValue);
         }
       });
 
@@ -245,7 +281,7 @@ export default class ReportsService {
       var exportUrl = '/api/accounts/'+ this.accountId + '/exports/pdfs/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
-      // ..    
+      // ..
 
       resolve({data: udata, url: exportUrl});
     });
@@ -262,7 +298,7 @@ export default class ReportsService {
       var exportUrl = '/api/accounts/' + this.accountId + '/exports/csv/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
-      // ..   
+      // ..
       resolve({data: udata, url: exportUrl});
     });
   }
@@ -291,7 +327,6 @@ export default class ReportsService {
 
   getVenuesApplications(venuesIds){
     return this.$q((resolve,reject)=>{
-      //  resolve([]);
       Preoday.Report.getVenuesApplications(venuesIds)
         .then((data)=>{
 
@@ -350,66 +385,58 @@ export default class ReportsService {
   }
 
   checkIfParamsChanged(parameters, format ,reportsIds){
-    var params = null;
+    var params = format ? this.formatDataFilters(parameters) : parameters;
     var paramChanged = false;
 
-    if(format){
-      params = this.formatDataFilters(parameters);
-    params.maxCreated = moment(params.maxCreated).format('L');
-    }
-    else{
-      params = parameters;
-      params.maxCreated = moment(params.maxCreated).subtract(1, 'days').format('L');     
-    }
-
-    if(!this.data){      
+    if(!this.data){
       return true;
     }
 
     if(reportsIds){
       for(var i=0; i < reportsIds.length; i++){
         let reportId = reportsIds[i];
-        if(!this.data.hasOwnProperty(reportId) || !this.data[reportId]){          
-          paramChanged = true;
-          break;          
-        }
-      }
-    }
-
-    params.minCreated = moment(params.minCreated).format('L');
-     
-    var dataMin = moment(this.data.minCreated).format('L');
-    var dataMax = moment(this.data.maxCreated).subtract(1, 'days').format('L');
-    if(params.minCreated != dataMin || params.maxCreated != dataMax){           
-      return true;
-    }
-
-    if(!paramChanged && params.events){
-      let arrayCombined = this.data.events.concat(params.events);
-      arrayCombined.sort((a, b) => {
-        if(a.occurrenceid > b.occurrenceid) return 1;
-        if(a.occurrenceid < b.occurrenceid) return -1;
-        return 0;
-      });
-
-      paramChanged = arrayCombined.length > 1 ? false : true;
-      if(!paramChanged)
-      for(var i=0; i < arrayCombined.length - 1; i+=2){
-        if(arrayCombined[i].occurrenceid != arrayCombined[i+1].occurrenceid){
-
+        if(!this.data.hasOwnProperty(reportId) || !this.data[reportId]){
           paramChanged = true;
           break;
         }
       }
+    }
 
-      // for(var i=0; i < params.events.length; i++){
-      //   let event = params.events[i];
-      //   if(this.data.events.indexOf(event) < 0){
-      //     paramChanged = true;
-      //     console.log('params check - EVENT');
-      //     break;
-      //   }
-      // }
+    if(params.minCreated && params.maxCreated){
+      if(!this.data.minCreated || !this.data.maxCreated)
+        return true;
+
+      params.minCreated = moment(params.minCreated).format('L');
+      params.maxCreated = moment(params.maxCreated).format('L');
+      var dataMin = moment(this.data.minCreated).format('L');
+      var dataMax = moment(this.data.maxCreated).format('L');
+      if(params.minCreated != dataMin || params.maxCreated != dataMax){
+        return true;
+      }
+    }
+
+    if(!paramChanged && params.events){
+      if(!this.data.events)
+        return true;
+
+      let arrayCombined = this.data.events.concat(params.events);
+      arrayCombined.sort((a, b) => {
+        if(a.occurrenceId > b.occurrenceId) return 1;
+        if(a.occurrenceId < b.occurrenceId) return -1;
+        return 0;
+      });
+
+      if(arrayCombined.length <= 1 || arrayCombined.length % 2 > 0)
+        paramChanged =  true;
+
+      if(!paramChanged)
+      for(var i=0; i < arrayCombined.length - 1; i+=2){
+        if(arrayCombined[i].occurrenceId != arrayCombined[i+1].occurrenceId){
+          
+          paramChanged = true;
+          break;
+        }
+      }
     }
 
     if(!paramChanged){
@@ -420,11 +447,13 @@ export default class ReportsService {
         return 0;
       });
 
-      paramChanged = arrayCombined.length > 1 ? false : true;
+      if(arrayCombined.length <= 1 || arrayCombined.length % 2 > 0)
+        paramChanged =  true;
+
       if(!paramChanged)
       for(var i=0; i < arrayCombined.length - 1; i+=2){
         if(arrayCombined[i] != arrayCombined[i+1]){
-
+          
           paramChanged = true;
           break;
         }
@@ -433,18 +462,20 @@ export default class ReportsService {
 
     if(!paramChanged){
       let arrayCombined = this.data.outletIds.concat(params.outletIds);
-     
+
       arrayCombined.sort((a, b) => {
         if(a > b) return 1;
         if(a < b) return -1;
         return 0;
       });
-    
-      paramChanged = arrayCombined.length > 1 ? false : true;
+
+     if(arrayCombined.length <= 1 || arrayCombined.length % 2 > 0)
+       paramChanged =  true;
+
       if(!paramChanged)
       for(var i=0; i < arrayCombined.length - 1; i+=2){
         if(arrayCombined[i] != arrayCombined[i+1]){
-
+          
           paramChanged = true;
           break;
         }
@@ -459,11 +490,15 @@ export default class ReportsService {
     var response = {};
 
     if(parameters.report)
-      response.reportType = parameters.report.reportType;  
+      response.reportType = parameters.report.reportType;
 
     if(parameters.datesRange && parameters.datesRange.endDate && parameters.datesRange.startDate){
-      response.minCreated = moment(parameters.datesRange.startDate, "L").valueOf();
-      response.maxCreated = moment(parameters.datesRange.endDate, "L").endOf('day').valueOf();
+      response.minCreated = moment(parameters.datesRange.startDate, "L").startOf('day').format('YYYY-MM-DD[T]HH:mm:ss');
+      response.maxCreated = moment(parameters.datesRange.endDate, "L").endOf('day').format('YYYY-MM-DD[T]HH:mm:ss');
+    }
+    else{
+      response.minCreated = null;
+      response.maxCreated = null;
     }
 
     if(parameters.events && parameters.events.length > 0){
@@ -471,10 +506,10 @@ export default class ReportsService {
 
       parameters.events.forEach((ev) => {
         let event = {};
-        event.eventid = ev.id;
-        event.eventname = ev.name;
-        event.eventtime = ev.startDate;
-        event.occurrenceid = ev.occurId;
+        event.eventId = ev.id;
+        event.eventName = ev.name;
+        event.eventTime = ev.startDate;
+        event.occurrenceId = ev.occurId;
         response.events.push(event);
       });
     }
@@ -558,8 +593,8 @@ export default class ReportsService {
     if(reportId== 'allItemsSold'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
-        {key:'itemcount', text:this.gettextCatalog.getString('Quantity'), fieldType: 'number'},
-        {key:'itemtotal', text:this.gettextCatalog.getString('Revenue'), fieldType: 'currency'}
+        {key:'itemCount', text:this.gettextCatalog.getString('Quantity'), fieldType: 'number'},
+        {key:'itemTotal', text:this.gettextCatalog.getString('Revenue'), fieldType: 'currency'}
       ];
     }
     else if(reportId== 'popularityIncreasing'){
@@ -641,9 +676,9 @@ export default class ReportsService {
     }
     else if(reportId== 'busiestEvents'){
       response = [
-        {key:'eventname' ,text:this.gettextCatalog.getString('Name')},
+        {key:'eventName' ,text:this.gettextCatalog.getString('Name')},
         {key:'eventDate' ,text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
-        {key:'eventtime', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
+        {key:'eventTime', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
         {key:'orderCount', text:this.gettextCatalog.getString('Orders')},
         {key:'customerCount', text:this.gettextCatalog.getString('Customers')},
         {key:'orderTotal', text:this.gettextCatalog.getString('Revenue'), fieldType: 'currency'}
@@ -661,7 +696,7 @@ export default class ReportsService {
       response = [
         {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
         //{key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
-        {key:'signindate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
+        {key:'signinDate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
         {key:'orderCount', text:this.gettextCatalog.getString('Orders')},
         {key:'orderTotal', text:this.gettextCatalog.getString('Spend'), fieldType: 'currency'},
         {key:'email', text:this.gettextCatalog.getString('Email')},
@@ -673,7 +708,7 @@ export default class ReportsService {
       response = [
         {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
         //{key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
-        {key:'signindate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
+        {key:'signinDate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
         {key:'email', text:this.gettextCatalog.getString('Email')},
         {key:'phone', text:this.gettextCatalog.getString('Tel')},
         {key:'customerMarketing', text:this.gettextCatalog.getString('Marketing'), fieldType:'icon'}
@@ -694,7 +729,7 @@ export default class ReportsService {
       response = [
         {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
         //{key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
-        {key:'signindate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
+        {key:'signinDate', text:this.gettextCatalog.getString('Date joined'), fieldType: 'date'},
         {key:'orderTotal', text:this.gettextCatalog.getString('Spend'), fieldType: 'currency'},
         {key:'email', text:this.gettextCatalog.getString('Email')},
         {key:'phone', text:this.gettextCatalog.getString('Tel')},
