@@ -126,6 +126,14 @@ export default class outletLocationController {
 
   onAddCustomField ($event) {
 
+    if (!this.outletLocation.outletId) {
+
+      return;
+    }
+
+    this.outletLocationGroupCtrl.changeGroup(this.outletLocation.createGroup(true));
+
+    $event.stopPropagation();
   }
 
   onClone($event){

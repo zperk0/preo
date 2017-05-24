@@ -1,6 +1,6 @@
 <md-card-content>
    <md-input-container class="md-block">
-      <label translate>Group label</label>
+      <label>{{ (contextualMenuCtrl.entity.isCustomField() ? 'Additional info' : 'Group label') | translate }}</label>
       <input type="text" required name="entityName" ng-model="contextualMenuCtrl.entity.label" ng-maxlength="100">
 
       <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error" ng-show="contextualMenuCtrl.contextualForm.entityName.$dirty">
