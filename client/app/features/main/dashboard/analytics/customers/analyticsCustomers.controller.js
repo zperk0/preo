@@ -319,9 +319,9 @@ export default class analyticsCustomersController {
 
           var newValues =[];
           if(itemsLeft < this.valuesPerScrollPage)
-            newValues = reportOrdered.slice(0, itemsLeft);
+            newValues = newPossibleValues.slice(0, itemsLeft);
           else
-            newValues = reportOrdered.slice(0, this.valuesPerScrollPage);
+            newValues = newPossibleValues.slice(0, this.valuesPerScrollPage);
 
           this.$timeout(() => {
             this.tableData.body = this.tableData.body.concat(newValues);
