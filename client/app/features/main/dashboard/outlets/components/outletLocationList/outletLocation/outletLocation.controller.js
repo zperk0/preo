@@ -275,6 +275,10 @@ export default class outletLocationController {
     this.type = 'outletLocation'; //type for contextual menu
     this.outlets = [];
 
+    if (this.outletLocation && this.outletLocation.isCustom()) {
+      this.type = 'customField';
+    }
+
     this.newModifiers = [];
 
     if (this.outletLocation && this.outletLocation.outletId) {

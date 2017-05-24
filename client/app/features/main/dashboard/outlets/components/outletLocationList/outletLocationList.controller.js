@@ -64,6 +64,7 @@ export default class outletLocationListController {
       parent: this.outletLocationGroup.id,
       label: this.outletLocationGroup.label,
       path: this.outletLocationGroup.path,
+      isCustomField: this.outletLocationGroup.isCustomField(),
       $selected:true,
     });
   }
