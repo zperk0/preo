@@ -159,7 +159,15 @@ export default class outletLocationController {
 
   onDelete(){
 
-    this.DialogService.delete(this.LabelService.TITLE_DELETE_OUTLET_LOCATION, this.LabelService.CONTENT_DELETE_OUTLET_LOCATION)
+    let title = this.LabelService.TITLE_DELETE_OUTLET_LOCATION;
+    let message = this.LabelService.CONTENT_DELETE_OUTLET_LOCATION;
+
+    if (this.outletLocation.isCustom()) {
+      title = this.LabelService.TITLE_DELETE_CUSTOM_FIELD;
+      message = this.LabelService.CONTENT_DELETE_CUSTOM_FIELD;
+    }
+
+    this.DialogService.delete(title, message)
       .then(()=>{
         this.contextual.hide();
         this.outletLocationListCtrl.deleteOutletLocation(this.outletLocation);
