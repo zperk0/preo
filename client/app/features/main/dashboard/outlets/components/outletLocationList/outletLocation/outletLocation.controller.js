@@ -126,7 +126,8 @@ export default class outletLocationController {
 
   onAddCustomField ($event) {
 
-    if (!this.outletLocation.outletId) {
+    if (!this.outletLocation.outletId
+        || this.outletLocation.hasCustomChildren()) {
 
       return;
     }

@@ -21,6 +21,7 @@ export default function cardItemActions($parse){
       onAddCustomField:'&?',
       onAddLocation:'&?',
       disableAdd:'=?',
+      disableAddCustomField:'=?',
       visibleMessage:'@',
       invisibleMessage:'@',
       addMessage: '=?',

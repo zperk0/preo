@@ -93,6 +93,13 @@ export default class outletLocationListController {
     return Math.max.apply(Math, this.outletLocations.map(function(o){return o.position || 0;})) + 1000;
   }
 
+  getOutletLocationTootip () {
+
+    return this.outletLocationGroup.isCustomField()
+          ? this.gettextCatalog.getString('Add new custom field')
+          : this.gettextCatalog.getString('Add new outlet location');
+  }
+
   /* @ngInject */
   constructor($timeout, $stateParams, $q, Spinner, Snack, OutletLocationService, gettextCatalog) {
     "ngInject";

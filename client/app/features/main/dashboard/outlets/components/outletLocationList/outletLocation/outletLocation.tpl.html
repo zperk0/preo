@@ -33,6 +33,7 @@
                        is-add="!outletLocationCtrl.outletLocation.outletId"
                        is-add-custom-field="outletLocationCtrl.outletLocation.outletId"
                        disable-add="outletLocationCtrl.outletLocation.isSeat() || outletLocationCtrl.outletLocation.hasChildren() || outletLocationCtrl.outletLocation.outletId"
+                       disable-add-custom-field="outletLocationCtrl.outletLocation.hasCustomChildren()"
                        add-message="outletLocationCtrl.getAddSubGroupMessage()"
                         ></card-item-actions>
 
@@ -43,7 +44,9 @@
   </card-item>
 
 
-  <md-button ng-if="!outletLocationCtrl.outletLocation.isSeat() && outletLocationCtrl.outletLocation.hasChildren()" class="md-icon-button btn-view-sub-group" ng-click="outletLocationCtrl.showSubGroup()">
+  <md-button ng-if="(!outletLocationCtrl.outletLocation.isSeat() && outletLocationCtrl.outletLocation.hasChildren()) || outletLocationCtrl.outletLocation.hasCustomChildren()"
+             class="md-icon-button btn-view-sub-group"
+             ng-click="outletLocationCtrl.showSubGroup()">
     <icon>keyboard_arrow_right</icon>
   </md-button>
 </div>
