@@ -25,11 +25,40 @@ export default class analyticsSummaryController {
     this.debounce(this.updateCharts.bind(this), 1000)();
   }
 
+  getParamsDate(){
+    var response = {};
+    if(this.dataFilters.datesRange.startDate && this.dataFilters.datesRange.endDate){
+      response.start = this.dataFilters.datesRange.startDate;
+      response.end = this.dataFilters.datesRange.endDate;
+    }
+    else{
+      var events = [];
+
+      this.dataFilters.events.forEach((row) => {
+        events.push(row.startDate);
+      });
+
+      events.sort((a , b) => {
+        if(a > b) return 1;
+        if(a < b) return -1;
+
+        return 0;
+      });
+
+      response.start = moment(events[0]).format('L');
+      response.end = moment(events[events.length-1]).format('L');
+    }
+
+    return response;
+  }
+
   updateBars(data){
     this.bars.forEach((bar) => {
 
-      bar.startDate = this.dataFilters.datesRange.startDate;
-      bar.endDate = this.dataFilters.datesRange.endDate;
+      var dates = this.getParamsDate();
+
+      bar.startDate = dates.start;
+      bar.endDate = dates.end;
 
       if(data.hasOwnProperty(bar.id)){
 
@@ -50,8 +79,10 @@ export default class analyticsSummaryController {
   updateDoughnuts(data){
     this.doughnuts.forEach((doughnut) => {
 
-      doughnut.startDate = this.dataFilters.datesRange.startDate;
-      doughnut.endDate = this.dataFilters.datesRange.endDate;
+      var dates = this.getParamsDate();
+
+      doughnut.startDate = dates.start;
+      doughnut.endDate = dates.end;
 
      if(data.hasOwnProperty(doughnut.id)){
 
@@ -159,7 +190,7 @@ export default class analyticsSummaryController {
 
   setInitialFilterValues(){
     if(this.ReportsService.data){
-      let params = this.ReportsService.data;
+      let params = this.ReportsService.getParamsFromData();
 
       this.dataFilters.venues = params.venueIds;
       this.dataFilters.outlets = params.outletIds;
@@ -171,10 +202,8 @@ export default class analyticsSummaryController {
         };
       }
 
-      if(params.events){
-        this.dataFilters.events = params.events.map((event) => {
-          return event.occurrenceId;
-        });
+      if(params.eventIds){
+        this.dataFilters.events = params.eventIds;      
       }
     }
   }

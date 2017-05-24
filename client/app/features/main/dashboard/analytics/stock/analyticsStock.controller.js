@@ -33,7 +33,7 @@ export default class analyticsStockController {
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
 
-     this.reportsData = data;
+     //this.reportsData = data;
 
       this.updateView();
 
@@ -44,6 +44,33 @@ export default class analyticsStockController {
      this.hideSpinner();
     });
 
+  }
+
+  getParamsDate(){
+    var response = {};
+    if(this.dataFilters.datesRange.startDate && this.dataFilters.datesRange.endDate){
+      response.start = this.dataFilters.datesRange.startDate;
+      response.end = this.dataFilters.datesRange.endDate;
+    }
+    else{
+      var events = [];
+
+      this.dataFilters.events.forEach((row) => {
+        events.push(row.startDate);
+      });
+
+      events.sort((a , b) => {
+        if(a > b) return 1;
+        if(a < b) return -1;
+
+        return 0;
+      });
+
+      response.start = moment(events[0]).format('L');
+      response.end = moment(events[events.length-1]).format('L');
+    }
+
+    return response;
   }
 
   getExportData(){
@@ -134,15 +161,15 @@ export default class analyticsStockController {
   getChartData(){
 
     var report = this.dataFilters.report;
-    var data = this.reportsData && this.reportsData[report.id] ? this.reportsData[report.id] : {keys: [], values: []};
+    var data = this.ReportsService.getDataFromReport(report.id) ? this.ReportsService.getDataFromReport(report.id) : {keys: [], values: []};
+    var dates = this.getParamsDate();
 
     var obj = {
       name: report.name,
-     // data: { x:['2017-05-01', '2017-01-01', '2017-02-02', '2017-03-03', '2016-03-04', '2016-05-07', '2017-01-30'] , y:[10, 15, 20 ,25 , 30 , 35 , 40]},
       data: {x: data.keys, y: data.values},
       actions: report.actions,
-      startDate: this.dataFilters.datesRange.startDate,
-      endDate: this.dataFilters.datesRange.endDate
+      startDate: dates.start,
+      endDate: dates.end
     };
 
     if(report.type)
@@ -242,23 +269,89 @@ export default class analyticsStockController {
       this.hideSpinner();
   }
 
+  // on Click is fired before query.order is changed by the lib. So cant use it here. AND cant change his value here..
+  onReorder(orderBy){
+
+    var currentOrder = null;
+    var direction = true;
+    var sortBy = orderBy;
+
+    //look at this.query.order to check the last orderBy selected.
+    // if its the same column, just change direction, if its another column, just change sortBy with direction = true
+    if(this.query.order.substring(0,1) == '-'){
+      currentOrder = this.query.order.substr(1);
+      direction = false;
+    }
+    else
+      currentOrder = this.query.order;
+
+    if(currentOrder == orderBy){
+      if(direction)
+        sortBy = "-" + orderBy;
+      else
+        sortBy = orderBy;
+    }
+    else{
+      sortBy = orderBy;
+    }
+      
+    this.currentReport = this.$filter('orderObj')( this.currentReport, sortBy ,'value');
+    let newValues = this.currentReport.slice(0, this.infiniteScrollIndex);
+
+    this.tableData.body = newValues;
+    this.checkLinesSelected();
+  }
+
+  checkLinesSelected(){
+      //if table is showing all results, no need to check linesSelected
+    if(this.tableData.body.length !== this.currentReport.length && this.linesSelected.length > 0){
+
+      let selected = angular.copy(this.linesSelected);
+      for(var i=0; i <this.tableData.body.length; i++){
+
+        let foundRow = -1;
+        for(var j=0; j < selected.length; j++) {
+          if(this.compareRowAsJson(this.tableData.body[i], selected[j])){
+            foundRow = j;
+            break;
+          }
+        }
+
+        if(foundRow >= 0)
+          selected.splice(foundRow, 1);
+        if(selected.length == 0)
+          break;
+      }
+
+      selected.forEach((rowNotFound) => {
+        for(var i=0; i < this.linesSelected.length; i++){
+          if(this.compareRowAsJson(this.linesSelected[i], rowNotFound)){
+            this.linesSelected.splice(i, 1);
+          }
+        }
+      });      
+    }
+  }
+
+  compareRowAsJson(a, b){
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+
   onInfiniteScroll(){
 
     if(this.shouldShowdatatable && !this.loadingMoreData){
 
       if(this.tableData.body.length !== this.currentReport.length){
         this.loadingMoreData = true;
-
-          //before return it, order by the CURRENT order ...
+          
           var itemsLeft = this.currentReport.length - this.infiniteScrollIndex;
           var newPossibleValues = this.currentReport.slice(this.infiniteScrollIndex);
-          var reportOrdered = this.$filter('orderObj')( newPossibleValues, this.query.order ,'value');
 
           var newValues =[];
           if(itemsLeft < this.valuesPerScrollPage)
-            newValues = reportOrdered.slice(0, itemsLeft);
+            newValues = newPossibleValues.slice(0, itemsLeft);
           else
-            newValues = reportOrdered.slice(0, this.valuesPerScrollPage);
+            newValues = newPossibleValues.slice(0, this.valuesPerScrollPage);
 
           this.$timeout(() => {
             this.tableData.body = this.tableData.body.concat(newValues);
@@ -284,7 +377,7 @@ export default class analyticsStockController {
 
   setInitialFilterValues(){
     if(this.ReportsService.data){
-      let params = this.ReportsService.data;
+      let params = this.ReportsService.getParamsFromData();
 
       this.dataFilters.venues = params.venueIds;
       this.dataFilters.outlets = params.outletIds;
@@ -296,10 +389,8 @@ export default class analyticsStockController {
         };
       }
 
-      if(params.events){
-        this.dataFilters.events = params.events.map((event) => {
-          return event.occurrenceId;
-        });
+      if(params.eventIds){
+        this.dataFilters.events = params.eventIds;      
       }
     }
 
@@ -317,7 +408,7 @@ export default class analyticsStockController {
     this.$filter = $filter;
 
     this.ReportsService = ReportsService;
-    this.reportsData = ReportsService.data;
+   // this.reportsData = ReportsService.data;
 
     this.cardActionsCodes = CardActionsCodes;
     this.ReportTypes = ReportTypes;

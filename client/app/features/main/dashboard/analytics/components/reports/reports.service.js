@@ -101,10 +101,19 @@ export default class ReportsService {
     return data;
   }
 
+  getDataFromReport(reportId){
+    var response = null;
+
+    if(this.data && this.data[reportId])
+      response = this.data[reportId];
+
+    return response;
+  }
+
   // HIDDEN Columns are used in eexport PDF/CSV only. They are not printed in screen.
   prepareDataToTable(reportId){
 
-    var data = this.data && this.data[reportId] ? this.data[reportId] : [];
+    var data = this.getDataFromReport(reportId) ? this.getDataFromReport(reportId) : [];
     //var data = [{"menuitemid":8965,"name":"Rabbit Terrine","itemcount":5,"itemtotal":311.85},{"menuitemid":8966,"name":"Pumpkin Soup","itemcount":2,"itemtotal":90},{"menuitemid":8972,"name":"Roast Beef","itemcount":48,"itemtotal":1035},{"menuitemid":11354,"name":"Douwe Egberts Coffee","itemcount":1,"itemtotal":2},{"menuitemid":11356,"name":"Gourmet Hot Chocolate","itemcount":1,"itemtotal":2},{"menuitemid":12354,"name":"Full Time Deal","itemcount":2,"itemtotal":11},{"menuitemid":12359,"name":"Half Price Pie Offer","itemcount":1,"itemtotal":3},{"menuitemid":922200,"name":"Roast Lamb","itemcount":8,"itemtotal":360},{"menuitemid":922201,"name":"Roast Chicken","itemcount":13,"itemtotal":600},{"menuitemid":922202,"name":"Nut Roast","itemcount":11,"itemtotal":221},{"menuitemid":922203,"name":"Christmas Pudding","itemcount":3,"itemtotal":70},{"menuitemid":922204,"name":"Treacle Tart","itemcount":1,"itemtotal":8},{"menuitemid":922205,"name":"Apple Pie","itemcount":3,"itemtotal":4.95},{"menuitemid":924238,"name":"£10 Jason's Cafe Voucher","itemcount":3,"itemtotal":30},{"menuitemid":980744,"name":"12 Glazed Doughnuts","itemcount":2,"itemtotal":20},{"menuitemid":980745,"name":"12 Ring Doughnuts","itemcount":2,"itemtotal":10},{"menuitemid":980746,"name":"4 Milk Chocolate Cookies","itemcount":2,"itemtotal":202},{"menuitemid":980747,"name":"4 White Chocolate Cookies","itemcount":2,"itemtotal":4},{"menuitemid":980759,"name":"Meal deal","itemcount":15,"itemtotal":400},{"menuitemid":980771,"name":"Tuna Sandwich","itemcount":1,"itemtotal":2.75},{"menuitemid":980772,"name":"Chicken Wrap","itemcount":1,"itemtotal":2.5},{"menuitemid":980773,"name":"Mature cheddar cheese","itemcount":1,"itemtotal":2.1},{"menuitemid":980774,"name":"Coke Cola","itemcount":1,"itemtotal":2},{"menuitemid":980775,"name":"Diet Coke","itemcount":1,"itemtotal":2},{"menuitemid":980776,"name":"Fanta","itemcount":2,"itemtotal":3},{"menuitemid":980777,"name":"£3 Sandwich Deal","itemcount":5,"itemtotal":36},{"menuitemid":981063,"name":"dasdasdasd","itemcount":35,"itemtotal":393},{"menuitemid":981064,"name":"HUEE","itemcount":8,"itemtotal":660},{"menuitemid":981065,"name":"MY TEST ITEM","itemcount":16,"itemtotal":1705},{"menuitemid":981880,"name":"MY TEST ITEM","itemcount":14,"itemtotal":832},{"menuitemid":981887,"name":"New Item Single Size","itemcount":7,"itemtotal":149.08},{"menuitemid":981888,"name":"New item Multiple Sized","itemcount":10,"itemtotal":29.79},{"menuitemid":981892,"name":"test mult size","itemcount":1,"itemtotal":2},{"menuitemid":981900,"name":"test item on menu 12345","itemcount":5,"itemtotal":133}];
     var viewTable = {
       header: this.getReportHeader(reportId),

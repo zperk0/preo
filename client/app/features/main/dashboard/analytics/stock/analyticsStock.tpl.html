@@ -33,13 +33,13 @@
         <table md-table md-row-select multiple ng-model="analyticsStockCtrl.linesSelected">
           <thead md-head md-order="analyticsStockCtrl.query.order">
            <tr md-row>
-            <th md-column ng-repeat="col in analyticsStockCtrl.tableData.header" md-order-by="{{col.key}}" ng-if="!col.isHidden">
+            <th md-column ng-repeat="col in analyticsStockCtrl.tableData.header" ng-click="analyticsStockCtrl.onReorder(col.key)" md-order-by="{{col.key}}" ng-if="!col.isHidden">
               <span>{{col.text}}</span>
             </th>
           </tr>
         </thead>
         <tbody md-body>
-           <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsStockCtrl.tableData.body | orderObj:analyticsStockCtrl.query.order:'value' track by $index">
+           <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsStockCtrl.tableData.body track by $index">
              <td md-cell ng-repeat="col in row track by $index" ng-if="!col.isHidden">
               <span>{{col.displayValue}}</span>
             </td>
@@ -48,10 +48,6 @@
         </table>
       </md-table-container>
     </md-card>
-    </div>
-
-    <div class="content-spinner" ng-if="analyticsStockCtrl.loadingMoreData">
-      <spinner></spinner>
     </div>
 
   </div>

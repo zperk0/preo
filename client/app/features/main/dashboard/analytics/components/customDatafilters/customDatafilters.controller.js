@@ -611,6 +611,7 @@ export default class customDatafiltersController {
       else{
         this.events = [];
         this.allEvents = [];
+        this.eventSearchTerm = "";
         setDefault = true;
       }
     }

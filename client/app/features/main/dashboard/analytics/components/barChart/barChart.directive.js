@@ -12,15 +12,15 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
   link: (scope, elem, attr, ctrl) => {
 
     scope.onActions = _onAction;
-    scope.getExportData = _getExportData;   
-    scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false; 
+    scope.getExportData = _getExportData;
+    scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;
 
     // ONLY when use DAILY, MONTHLY, WEEKLY modes
     // array with Data may always come with Days, formated as YYYY-MM-DD.
 
     var chartValues = angular.copy(scope.config.data);
 
-    var canvas = elem[0].querySelector('#barchart');   
+    var canvas = elem[0].querySelector('#barchart');
 
     var formatType = scope.config.type;
 
@@ -35,19 +35,25 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
     if(currentDataVisualization != CardActionsCodes.DAILY_MODE){
       _onAction(currentDataVisualization, true);
     }
-     
-    var barChart = _initChart();    
-    
+
+    var barChart = _initChart();
+
     scope.$watch(
       () => { return scope.config.data; },
       function(newValue, oldValue){
 
         if(typeof oldValue === 'undefined' || (oldValue.x.length <= 0 && newValue.x.length <= 0 && oldValue.y.length <= 0 && newValue.y.length <= 0))
         return;
-        Spinner.show('barchart-directive');        
-       
-       // update current chart with the same visualization it had before. 
-        _onAction(currentDataVisualization, true);              
+        Spinner.show('barchart-directive');
+
+        if(newValue.x.length <= 0 && newValue.y.length <= 0)
+          scope.shouldShowActions = false;
+        else{
+          scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;                   
+        }
+
+        // update current chart with the same visualization it had before. 
+        _onAction(currentDataVisualization, true);
 
         Spinner.hide('barchart-directive');
       },
@@ -89,7 +95,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
     function _exportPdf(){
       ReportsService.sendGAExportEvent('pdf' , scope.title);
       scope.exportData = _prepareDataToPdf();
-      scope.exportDataUrl = ReportsService.getChartExportPdfUrl();        
+      scope.exportDataUrl = ReportsService.getChartExportPdfUrl();
 
       var formSubmit = elem[0].querySelector('#postData');
 
@@ -102,10 +108,10 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
     function _exportCsv(){
       ReportsService.sendGAExportEvent('csv' , scope.title);
       scope.exportData = _prepareDataToCsv();
-      scope.exportDataUrl = ReportsService.getChartExportCsvUrl();        
+      scope.exportDataUrl = ReportsService.getChartExportCsvUrl();
 
       var formSubmit = elem[0].querySelector('#postData');
-      
+
       $timeout(() =>{
           formSubmit.click();
         }
@@ -116,8 +122,10 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       var minDate = "-";
       var maxDate = "-";
 
-      if(moment(scope.config.startDate,"L").isValid())
+      if(moment(scope.config.startDate,"L").isValid()){
+
         minDate = moment(scope.config.startDate, "L").format("L");
+      }
 
       if(moment(scope.config.endDate,"L").isValid())
         maxDate = moment(scope.config.endDate,"L").format("L");
@@ -131,30 +139,32 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
         else if(formatType == 'integer')
           data.push([x , $filter('currency')(chartValues.y[index],true,0)]);
         else
-          data.push([x , $filter('currency')(chartValues.y[index],true)]);         
+          data.push([x , $filter('currency')(chartValues.y[index],true)]);
       });
 
       return {data: data};
     }
 
     function _prepareDataToPdf(){
-      var minDate = "-";
-      var maxDate = "-";
+      var minDate = moment().valueOf();
+      var maxDate = moment().valueOf()
 
-      if(moment(scope.config.startDate,"L").isValid())
+      if(moment(scope.config.startDate,"L").isValid()){
         minDate = moment(scope.config.startDate, "L").valueOf();
+      }
 
-      if(moment(scope.config.endDate,"L").isValid())
+      if(moment(scope.config.endDate,"L").isValid()){
         maxDate = moment(scope.config.endDate,"L").valueOf();
-      
+      }
+
       var data = [];
 
       // chartValues.x.forEach((x, index) => {
 
       //   //if(isCurrency)
-      //  //   data.push($filter('currency')(chartValues.y[index]));          
-      //  // else      
-      //     data.push($filter('currency')(chartValues.y[index],true));         
+      //  //   data.push($filter('currency')(chartValues.y[index]));
+      //  // else
+      //     data.push($filter('currency')(chartValues.y[index],true));
       // });
 
       return  {
@@ -198,7 +208,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       _groupByMonth();
 
       _updateChart();
-    }    
+    }
 
     function _groupByMonth(){
       var monthX = [];
@@ -229,7 +239,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       });
 
       chartValues.x = monthX;
-      chartValues.y = monthY;      
+      chartValues.y = monthY;
     }
 
     function _groupByWeek(){
@@ -262,7 +272,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       });
 
       chartValues.x = weekX;
-      chartValues.y = weekY;      
+      chartValues.y = weekY;
     }
 
     function _updateChart(){
@@ -449,10 +459,10 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
           labels: chartValues.x,
           datasets: [{
             borderColor: "rgba(151,187,205,1)",
-            borderWidth: 2,  
+            borderWidth: 2,
             backgroundColor: gradient2,
             hoverBackgroundColor: gradient,
-            data: chartValues.y,                   
+            data: chartValues.y,
           }]
         },
         options: chartOptions
@@ -466,7 +476,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       var opts = {
         responsive: true,
         maintainAspectRatio: false,
-        scales: {          
+        scales: {
           yAxes: [{
             ticks: {
               display: newY.display,
@@ -475,7 +485,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
               min: 0,
               stepSize: newY.stepSize,
               callback: function(value,index,values) {
-               
+
                 if(formatType == 'currency')
                   return $filter('currency')(value,false, 0);
                 else

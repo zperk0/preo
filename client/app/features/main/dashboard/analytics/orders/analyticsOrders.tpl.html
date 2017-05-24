@@ -29,13 +29,13 @@
         <table md-table md-row-select multiple ng-model="analyticsOrdersCtrl.linesSelected">
           <thead md-head md-order="analyticsOrdersCtrl.query.order" >
            <tr md-row>
-            <th md-column ng-repeat="col in analyticsOrdersCtrl.tableData.header" md-order-by="{{col.key}}" ng-if="!col.isHidden">
+            <th md-column ng-repeat="col in analyticsOrdersCtrl.tableData.header" ng-click="analyticsOrdersCtrl.onReorder(col.key)" md-order-by="{{col.key}}" ng-if="!col.isHidden">
               <span>{{col.text}}</span>
             </th>
           </tr>
         </thead>
         <tbody md-body>
-          <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsOrdersCtrl.tableData.body | orderObj:analyticsOrdersCtrl.query.order:'value' track by $index">
+          <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsOrdersCtrl.tableData.body track by $index">
              <td md-cell ng-repeat="col in row track by $index" ng-if="!col.isHidden">
               <span >{{col.displayValue}}</span>
             </td>
@@ -44,10 +44,6 @@
         </table>
       </md-table-container>
     </md-card>
-    </div>
-
-    <div class="content-spinner" ng-if="analyticsOrdersCtrl.loadingMoreData">
-      <spinner></spinner>
     </div>
 
   </div>

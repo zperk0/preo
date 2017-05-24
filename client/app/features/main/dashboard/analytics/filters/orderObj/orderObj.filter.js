@@ -16,10 +16,10 @@ export default function orderObj(){
     }
 
     var sorted = [];
-    angular.forEach(body, function(row) {     
-      sorted.push(row);     
+    angular.forEach(body, function(row) {
+      sorted.push(row);
     });
-    
+
     sorted.sort(function (a, b) {
       var aColumn = a.filter((x) => {
         if(x.key == property)
@@ -35,22 +35,22 @@ export default function orderObj(){
 
       if(typeof(valueA) ==='string')
         valueA = valueA.toLowerCase();
-      
+
       if(typeof(valueB) ==='string')
-        valueB = valueB.toLowerCase();      
+        valueB = valueB.toLowerCase();
 
       if(valueA > valueB)
         return 1
 
-      if(valueA < valueB) 
+      if(valueA < valueB)
         return -1;
-      
-      return 0; 
+
+      return 0;
     });
 
-    if(!direction) 
+    if(!direction)
       sorted.reverse();
-    
+
     return sorted;
   };
 }

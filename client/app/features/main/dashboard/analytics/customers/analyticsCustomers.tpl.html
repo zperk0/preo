@@ -29,13 +29,13 @@
         <table md-table md-row-select multiple ng-model="analyticsCustomersCtrl.linesSelected">
           <thead md-head md-order="analyticsCustomersCtrl.query.order">
            <tr md-row>
-            <th md-column ng-repeat="col in analyticsCustomersCtrl.tableData.header" md-order-by="{{col.key}}" ng-if="!col.isHidden">
+            <th md-column ng-repeat="col in analyticsCustomersCtrl.tableData.header" md-order-by="{{col.key}}" ng-click="analyticsCustomersCtrl.onReorder(col.key)" ng-if="!col.isHidden">
               <span>{{col.text}}</span>
             </th>
           </tr>
         </thead>
         <tbody md-body layout-wrap>
-           <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsCustomersCtrl.tableData.body | orderObj:analyticsCustomersCtrl.query.order:'value' | marketingFilter:analyticsCustomersCtrl.fieldToFilter:analyticsCustomersCtrl.filterCustomerMarketing track by $index">
+           <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsCustomersCtrl.tableData.body | marketingFilter:analyticsCustomersCtrl.fieldToFilter:analyticsCustomersCtrl.filterCustomerMarketing track by $index">
              <td md-cell ng-repeat="col in row track by $index" ng-switch="col.fieldType" ng-if="!col.isHidden">
               <span ng-switch-default>{{col.displayValue}}</span>
               <span ng-switch-when="icon">
@@ -54,10 +54,6 @@
         </table>
       </md-table-container>
     </md-card>
-    </div>
-
-    <div class="content-spinner" ng-if="analyticsCustomersCtrl.loadingMoreData">
-      <spinner></spinner>
     </div>
 
   </div>
