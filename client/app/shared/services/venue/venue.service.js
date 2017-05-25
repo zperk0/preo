@@ -46,7 +46,7 @@ export default class VenueService {
 
       Preoday.Venue.fetch({
         adminId: user.id,
-        expand: 'features'
+        expand: 'features,outlets'
       }).then((venues)=>{
 
         if (venues && venues.length){

@@ -41,7 +41,7 @@
       <label translate>Assign code type</label>
       <md-select aria-required="true" required name="entityAssignCodeType" ng-model="menuItemAdvancedCtrl.item.assignCodeType">
         <md-option ng-repeat="assignCodeType in menuItemAdvancedCtrl.assignCodeTypes" ng-value="assignCodeType.name">
-          {{assignCodeType.name}}
+          {{assignCodeType.description}}
         </md-option>
       </md-select>
       <div ng-messages="menuItemAdvancedCtrl.contextualForm.entityAssignCodeType.$error" ng-show="menuItemAdvancedCtrl.contextualForm.$submitted">

@@ -60,7 +60,7 @@ describe('Venue Service', function () {
         id: 1
       });
 
-      server.respondWith('GET', '/api/venues?expand=settings,hours,features&adminId=1', [200, {"Content-Type": "application/json"}, JSON.stringify(venues)]);
+      server.respondWith('GET', '/api/venues?expand=settings,hours,features,outlets&adminId=1', [200, {"Content-Type": "application/json"}, JSON.stringify(venues)]);
 
       VenueService.fetchUserVenues(user)
         .then(resolve, reject);
