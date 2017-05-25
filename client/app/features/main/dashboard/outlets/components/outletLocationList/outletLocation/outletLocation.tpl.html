@@ -30,8 +30,8 @@
                        on-edit="outletLocationCtrl.onEdit($event)"
                        on-add="outletLocationCtrl.onAddSubGroup($event)"
                        on-add-custom-field="outletLocationCtrl.onAddCustomField($event)"
-                       is-add="!outletLocationCtrl.outletLocation.outletId"
-                       is-add-custom-field="outletLocationCtrl.outletLocation.outletId"
+                       is-add="!outletLocationCtrl.outletLocation.outletId || !outletLocationCtrl.hasCustomOutletLocationFieldsFeature()"
+                       is-add-custom-field="outletLocationCtrl.outletLocation.outletId && outletLocationCtrl.hasCustomOutletLocationFieldsFeature()"
                        disable-add="outletLocationCtrl.outletLocation.isSeat() || outletLocationCtrl.outletLocation.hasChildren() || outletLocationCtrl.outletLocation.outletId"
                        disable-add-custom-field="outletLocationCtrl.outletLocation.hasCustomChildren()"
                        add-message="outletLocationCtrl.getAddSubGroupMessage()"
@@ -44,7 +44,7 @@
   </card-item>
 
 
-  <md-button ng-if="(!outletLocationCtrl.outletLocation.isSeat() && outletLocationCtrl.outletLocation.hasChildren()) || outletLocationCtrl.outletLocation.hasCustomChildren()"
+  <md-button ng-if="(!outletLocationCtrl.outletLocation.isSeat() && outletLocationCtrl.outletLocation.hasChildren()) || (outletLocationCtrl.outletLocation.hasCustomChildren() && outletLocationCtrl.hasCustomOutletLocationFieldsFeature())"
              class="md-icon-button btn-view-sub-group"
              ng-click="outletLocationCtrl.showSubGroup()">
     <icon>keyboard_arrow_right</icon>

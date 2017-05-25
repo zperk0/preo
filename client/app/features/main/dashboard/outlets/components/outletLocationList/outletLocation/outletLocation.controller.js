@@ -337,7 +337,12 @@ export default class outletLocationController {
     return this.gettextCatalog.getString('Add sub group');
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, gettextCatalog, OutletLocationService, OutletService) {
+  hasCustomOutletLocationFieldsFeature () {
+
+    return this.FeatureService.hasCustomOutletLocationFieldsFeature();
+  }
+
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, gettextCatalog, OutletLocationService, OutletService, FeatureService) {
     "ngInject";
 
     this.$q =$q;
@@ -352,10 +357,11 @@ export default class outletLocationController {
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.gettextCatalog = gettextCatalog;
+    this.FeatureService = FeatureService;
     this.type = 'outletLocation'; //type for contextual menu
     this.outlets = [];
 
-    if (this.outletLocation && this.outletLocation.isCustom()) {
+    if (this.outletLocation && this.outletLocation.isCustom() && this.hasCustomOutletLocationFieldsFeature()) {
       this.type = 'customField';
     }
 
