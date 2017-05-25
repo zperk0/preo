@@ -46,7 +46,6 @@ export default class ErrorService {
     this.OUTLET_LOCATION_SUB_GROUP_SEAT = {code:'OUTLET_LOCATION_SUB_GROUP_SEAT', message:gettextCatalog.getString("You cannot add a sub group because this outlet location is for seat")};
     this.OUTLET_LOCATION_ALREADY_OUTLET = {code:'OUTLET_LOCATION_ALREADY_OUTLET', message:gettextCatalog.getString("This outlet location already has an outlet")};
     this.OUTLET_LOCATION_LAST_CHILD = {code:'OUTLET_LOCATION_LAST_CHILD', message:gettextCatalog.getString("You only can add an outlet for the last child")};
-    this.OUTLET_LOCATION_OUTLET_CUSTOM = {code:'OUTLET_LOCATION_OUTLET_CUSTOM', message:gettextCatalog.getString("You can't delete this outlet because the outlet location has custom fields")};
 
     //TAXES
     this.TAXES_ERROR = {code:'FAILED_LOADING_TAXES', message:gettextCatalog.getString("Error loading tax settings")}

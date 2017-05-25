@@ -7,13 +7,13 @@ export default class outletLocationController {
 
     if ($outlets && $outlets.length) {
 
-      if (this.outletLocation.outletId) {
-        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_ALREADY_OUTLET.message);
+      if (!this.outletLocation.isSeat() && this.outletLocation.hasChildren() && !this.outletLocation.hasCustomChildren()) {
+        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_LAST_CHILD.message);
         return;
       }
 
-      if (!this.outletLocation.isSeat() && this.outletLocation.hasChildren()) {
-        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_LAST_CHILD.message);
+      if (this.outletLocation.outletId) {
+        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_ALREADY_OUTLET.message);
         return;
       }
 
@@ -183,21 +183,67 @@ export default class outletLocationController {
   removeOutlet () {
 
     if (this.outletLocation.hasCustomChildren()) {
-      return this.Snack.showError(this.ErrorService.OUTLET_LOCATION_OUTLET_CUSTOM.message);
+
+      this.DialogService.delete(this.LabelService.TITLE_DELETE_OUTLET_CUSTOM_FIELD, this.LabelService.CONTENT_DELETE_OUTLET_CUSTOM_FIELD)
+        .then(()=>{
+
+          this.deleteOutletAndCustomFields();
+        });
+    } else {
+
+      this.Spinner.show("outlet-location-remove-outlet");
+      this.deleteOutlet()
+        .then(() => {
+
+          this.Spinner.hide("outlet-location-remove-outlet");
+        }, () => {
+
+          this.Spinner.hide("outlet-location-remove-outlet");
+          this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
+        });
     }
 
-    this.Spinner.show("outlet-location-remove-outlet")
+  }
+
+  deleteOutletAndCustomFields () {
+
+    this.Spinner.show("outlet-location-remove-outlet-custom-fields");
+
+    this.outletLocation.deleteCustomFields()
+      .then(() => {
+
+        this.deleteOutlet()
+          .then(() => {
+
+            this.Spinner.hide("outlet-location-remove-outlet-custom-fields");
+          }, () => {
+            this.Spinner.hide("outlet-location-remove-outlet-custom-fields");
+            this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
+          });
+      }, () => {
+
+        this.Spinner.hide("outlet-location-remove-outlet-custom-fields");
+        this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
+      });
+  }
+
+  deleteOutlet () {
+
+    let deferred = this.$q.defer();
 
     this.outletLocation.outletId = null;
     this.outletLocation.update()
       .then(()=>{
+
         this.outlets = [];
-        this.Spinner.hide("outlet-location-remove-outlet")
+        deferred.resolve();
       }, (err)=>{
-        this.Spinner.hide("outlet-location-remove-outlet")
-        this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
+
         console.log(err);
+        deferred.reject();
     });
+
+    return deferred.promise;
   }
 
   onMove () {
