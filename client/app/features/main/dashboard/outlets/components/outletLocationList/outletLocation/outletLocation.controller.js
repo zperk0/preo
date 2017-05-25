@@ -182,6 +182,10 @@ export default class outletLocationController {
 
   removeOutlet () {
 
+    if (this.outletLocation.hasCustomChildren()) {
+      return this.Snack.showError(this.ErrorService.OUTLET_LOCATION_OUTLET_CUSTOM.message);
+    }
+
     this.Spinner.show("outlet-location-remove-outlet")
 
     this.outletLocation.outletId = null;
