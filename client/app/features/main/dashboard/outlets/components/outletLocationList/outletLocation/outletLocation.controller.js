@@ -66,10 +66,21 @@ export default class outletLocationController {
 
             this.outletLocation.$selected = false;
             this.contextualMenu.hide();
-            this.Snack.show(this.gettextCatalog.getString('Outlet location created'));
+
+            if (this.outletLocation.isCustom()) {
+              this.Snack.show(this.gettextCatalog.getString('Custom field created'));
+            } else {
+              this.Snack.show(this.gettextCatalog.getString('Outlet location created'));
+            }
           }, (err)=>{
             console.log('error on save outlet location', err);
-            this.Snack.showError(this.gettextCatalog.getString('Error saving outlet location'));
+
+            if (this.outletLocation.isCustom()) {
+              this.Snack.showError(this.gettextCatalog.getString('Error saving custom field'));
+            } else {
+              this.Snack.showError(this.gettextCatalog.getString('Error saving outlet location'));
+            }
+
           })
 
       } else {
@@ -86,11 +97,21 @@ export default class outletLocationController {
     return this.$q((resolve, reject)=>{
       this.outletLocation.update()
         .then((o)=>{
-          this.Snack.show(this.gettextCatalog.getString('Outlet location updated'));
+
+          if (this.outletLocation.isCustom()) {
+            this.Snack.show(this.gettextCatalog.getString('Custom field updated'));
+          } else {
+            this.Snack.show(this.gettextCatalog.getString('Outlet location updated'));
+          }
           resolve(o);
       },()=>{
         reject();
-        this.Snack.showError(this.gettextCatalog.getString('Error saving outlet location'));
+
+        if (this.outletLocation.isCustom()) {
+          this.Snack.showError(this.gettextCatalog.getString('Error updating custom field'));
+        } else {
+          this.Snack.showError(this.gettextCatalog.getString('Error updating outlet location'));
+        }
       }).then(()=>{
         this.Spinner.hide("outlet-location-update");
       })

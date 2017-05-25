@@ -74,11 +74,21 @@ export default class outletLocationListController {
     this.Spinner.show("outlet-location-delete");
     outletLocation.delete()
       .then(()=>{
-        this.Snack.show(this.gettextCatalog.getString('Outlet location deleted'));
+
+        if (outletLocation.isCustom()) {
+          this.Snack.show(this.gettextCatalog.getString('Custom field deleted'));
+        } else {
+          this.Snack.show(this.gettextCatalog.getString('Outlet location deleted'));
+        }
+
         this.Spinner.hide("outlet-location-delete");
       }).catch((err) => {
 
-        this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this outlet, please contact the support team'));
+        if (outletLocation.isCustom()) {
+          this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this custom field, please contact the support team'));
+        } else {
+          this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this outlet, please contact the support team'));
+        }
 
         this.Spinner.hide("outlet-location-delete");
       })
