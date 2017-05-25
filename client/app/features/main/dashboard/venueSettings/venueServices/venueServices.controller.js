@@ -10,6 +10,7 @@ export default class venueServicesController {
 
   doUpdate(){
     var promises = [];
+    this.setDefaultLeadTime();
     promises.push(this.VenueService.updateVenue())
     promises.push(this.venue.settings.update())
     this.$q.all(promises).then((results)=>{
@@ -85,7 +86,6 @@ export default class venueServicesController {
         return;
       }
 
-
       this.Spinner.show("venue-services-save");
       try {
         this.venue.settings.update()
@@ -121,7 +121,16 @@ export default class venueServicesController {
     })
   }
 
-
+  setDefaultLeadTime() {
+    if (this.venue.settings) {
+      if (!this.venue.settings.leadTime) {
+        this.venue.settings.leadTime = 0;
+      }
+      if (!this.venue.settings.deliveryLeadTime) {
+        this.venue.settings.deliveryLeadTime = 0;
+      }
+    }
+  }
 
   /* @ngInject */
   constructor($q, Spinner, $state, Snack, ErrorService, FeatureService, LabelService, $timeout, VenueService) {
