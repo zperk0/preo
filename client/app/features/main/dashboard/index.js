@@ -22,7 +22,8 @@ angular.module("dashboard" , ['ui.router',
     'webapp.taxes',
     'webapp.analytics',
     'webapp.outlets',
-    home
+    'webapp.customTags',
+    home,
     ])
     .config(routes)
     .controller(controller.UID, controller)

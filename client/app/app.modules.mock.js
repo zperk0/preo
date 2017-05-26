@@ -13,6 +13,7 @@
   'webapp.styling',
   'webapp.users',
   'webapp.taxes',
+  'webapp.customTags',
 ].forEach(function (item) {
 
   try {

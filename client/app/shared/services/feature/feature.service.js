@@ -42,6 +42,10 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.EXTERNAL_VOUCHER_CODES);
   }
 
+  hasItemTagsFeature () {
+    return this.getLocalFeature(Preoday.constants.Feature.ITEM_TAGS);
+  }
+
   getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
         return +item.id;
