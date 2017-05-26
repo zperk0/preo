@@ -85,6 +85,11 @@ export default class navbarController {
       ],shouldShow:function(){
         return PermissionService.hasPermission(Permissions.MENUS)
       }},
+      {name: gettextCatalog.getString("Tags"), icon:"label", id:"customTags", children:[
+        {name: gettextCatalog.getString("My tags"), id:"customTagList"}
+      ],shouldShow:function(){
+        return FeatureService.hasItemTagsFeature() && PermissionService.hasPermission(Permissions.MENUS)
+      }},
       {name: gettextCatalog.getString("Events"), icon:"event", id:"events", children: [
         {name: gettextCatalog.getString("My Events"), id:"eventList"},
         {name: gettextCatalog.getString("Collection Slots"), id:"collectionSlots"},
