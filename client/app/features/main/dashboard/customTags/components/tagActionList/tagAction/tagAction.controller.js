@@ -77,7 +77,7 @@ export default class tagActionController {
           resolve(o);
       },()=>{
         reject();
-        this.Snack.showError(this.LabelService.SNACK_TAG_UPDATED_ACTION_ERROR);
+        this.Snack.showError(this.LabelService.SNACK_TAG_ACTION_UPDATED_ERROR);
       }).then(()=>{
         this.Spinner.hide("custom-tag-update");
       })
