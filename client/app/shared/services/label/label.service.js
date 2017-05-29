@@ -52,6 +52,9 @@ export default class LabelService {
     this.TITLE_DELETE_TAG = gettextCatalog.getString("Delete tag?");
     this.CONTENT_DELETE_TAG = gettextCatalog.getString("Are you sure you want to delete this tag?");
 
+    this.TITLE_DUPLICATED_TAG_NAME = gettextCatalog.getString("Warning");
+    this.CONTENT_DUPLICATED_TAG_NAME = gettextCatalog.getString("There is already another tag with the same name, are you sure you want to create this new tag?");
+
     //TAXES
     this.SNACK_SELLER_SUCCESS = gettextCatalog.getString("Seller details saved");
     this.SNACK_SELLER_ERROR = gettextCatalog.getString("Seller details not saved");

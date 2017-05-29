@@ -24,26 +24,18 @@ export default class customTagController {
       this.customTag = entity;
 
       if (!this.customTag.id){
-        this.Spinner.show("custom-tag-create");
-        this.customTagListCtrl.createCustomTag(this.customTag)
-          .then((_customTag)=>{
-
-            this.customTag.$deleted = false;
-            this.customTag.$selected = false;
-            
-            this.$timeout(() => {
-
-              this.cardItemList.onItemCreated(_customTag);
-              this.contextualMenu.hide();
-              this.Spinner.hide("custom-tag-create");
-              this.Snack.show(this.gettextCatalog.getString('Tag created'));              
+        if (this.customTagListCtrl.checkExistentName(entity.name)) {
+          this.DialogService.show(this.LabelService.TITLE_DUPLICATED_TAG_NAME, this.LabelService.CONTENT_DUPLICATED_TAG_NAME, [{
+              name: this.gettextCatalog.getString('Create')
+            }], {
+              hasCancel: true
+            })
+            .then(()=>{
+              this.createCustomTag();
             });
-          }, (err)=>{
-            console.log('error on save custom tag', err);
-            this.Spinner.hide("custom-tag-create");
-            this.Snack.showError(this.gettextCatalog.getString('Error saving tag'));
-          })
-
+        } else {
+          this.createCustomTag();
+        }
       } else {
         this.updateCustomTag().then(()=>{
           this.contextualMenu.hide();
@@ -52,6 +44,28 @@ export default class customTagController {
       }
     }
   }  
+
+  createCustomTag(){
+    this.Spinner.show("custom-tag-create");
+    this.customTagListCtrl.createCustomTag(this.customTag)
+      .then((_customTag)=>{
+
+        this.customTag.$deleted = false;
+        this.customTag.$selected = false;
+        
+        this.$timeout(() => {
+
+          this.cardItemList.onItemCreated(_customTag);
+          this.contextualMenu.hide();
+          this.Spinner.hide("custom-tag-create");
+          this.Snack.show(this.gettextCatalog.getString('Tag created'));              
+        });
+      }, (err)=>{
+        console.log('error on save custom tag', err);
+        this.Spinner.hide("custom-tag-create");
+        this.Snack.showError(this.gettextCatalog.getString('Error saving tag'));
+      });
+  }
 
   updateCustomTag(){
 

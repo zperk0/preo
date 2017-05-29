@@ -54,6 +54,14 @@ export default class customTagListController {
       });
   }
 
+  checkExistentName(name) {
+    let findName = this.customTags.filter(tag => {
+      return tag.name.trim() == name.trim();
+    });
+
+    return findName.length > 1;
+  }
+
   /* @ngInject */
   constructor($timeout, $q, Spinner, Snack, gettextCatalog) {
     "ngInject";
