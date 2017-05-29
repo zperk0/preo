@@ -44,7 +44,7 @@ export default class customTagListController {
     this.Spinner.show("custom-tag-delete");
     customTag.remove()
       .then(()=>{
-        this.Snack.show(this.gettextCatalog.getString('Tag deleted'));
+        this.Snack.show(this.LabelService.SNACK_TAG_DELETED);
 
         return this.cardItemList.deleteItem(customTag);
       }).then(()=>{
@@ -63,12 +63,12 @@ export default class customTagListController {
   }
 
   /* @ngInject */
-  constructor($timeout, $q, Spinner, Snack, gettextCatalog) {
+  constructor($timeout, $q, Spinner, Snack, LabelService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
     this.$timeout = $timeout;
-    this.gettextCatalog = gettextCatalog;
+    this.LabelService = LabelService;
   }
 }

@@ -9,6 +9,8 @@ export default class LabelService {
 
     this.CONFIRMATION = gettextCatalog.getString("Got it");
 
+    this.CREATE = gettextCatalog.getString("Create");
+
     this.SNACK_WRONG_CREDENTIALS = gettextCatalog.getString("Invalid username and/or password");
 
     this.SNACK_WEBSETTINGS_ERROR = gettextCatalog.getString("Could not save weborders style");
@@ -48,15 +50,6 @@ export default class LabelService {
 
     this.TITLE_DELETE_OUTLET = gettextCatalog.getString("Delete outlet?");
     this.CONTENT_DELETE_OUTLET = gettextCatalog.getString("Are you sure you want to delete this outlet?");
-
-    this.TITLE_DELETE_TAG = gettextCatalog.getString("Delete tag?");
-    this.CONTENT_DELETE_TAG = gettextCatalog.getString("Are you sure you want to delete this tag?");
-
-    this.TITLE_DELETE_TAG_IN_USE = gettextCatalog.getString("This tag is in use");
-    this.CONTENT_DELETE_TAG_IN_USE = gettextCatalog.getString("Deleting this tag will remove it from all items and tag actions. Are you sure?");
-
-    this.TITLE_DUPLICATED_TAG_NAME = gettextCatalog.getString("Warning");
-    this.CONTENT_DUPLICATED_TAG_NAME = gettextCatalog.getString("There is already another tag with the same name, are you sure you want to create this new tag?");
 
     //TAXES
     this.SNACK_SELLER_SUCCESS = gettextCatalog.getString("Seller details saved");
@@ -124,5 +117,22 @@ export default class LabelService {
 
     this.SNACK_ERROR_FETCHING_FEES = gettextCatalog.getString("An error ocurred to fetch the fees. Try again later.");
 
+    // CUSTOM TAGS
+    this.TITLE_DELETE_TAG = gettextCatalog.getString("Delete tag?");
+    this.CONTENT_DELETE_TAG = gettextCatalog.getString("Are you sure you want to delete this tag?");
+
+    this.TITLE_DELETE_TAG_IN_USE = gettextCatalog.getString("This tag is in use");
+    this.CONTENT_DELETE_TAG_IN_USE = gettextCatalog.getString("Deleting this tag will remove it from all items and tag actions. Are you sure?");
+
+    this.TITLE_DUPLICATED_TAG_NAME = gettextCatalog.getString("Warning");
+    this.CONTENT_DUPLICATED_TAG_NAME = gettextCatalog.getString("There is already another tag with the same name, are you sure you want to create this new tag?");
+  
+    this.SNACK_TAG_CREATED = gettextCatalog.getString('Tag created');
+    this.SNACK_TAG_CREATED_ERROR = gettextCatalog.getString('Error creating tag');
+    
+    this.SNACK_TAG_UPDATED = gettextCatalog.getString('Tag updated');
+    this.SNACK_TAG_UPDATED_ERROR = gettextCatalog.getString('Error updating tag');
+    
+    this.SNACK_TAG_DELETED = gettextCatalog.getString('Tag deleted');
   }
 }

@@ -26,7 +26,7 @@ export default class customTagController {
       if (!this.customTag.id){
         if (this.customTagListCtrl.checkExistentName(entity.name)) {
           this.DialogService.show(this.LabelService.TITLE_DUPLICATED_TAG_NAME, this.LabelService.CONTENT_DUPLICATED_TAG_NAME, [{
-              name: this.gettextCatalog.getString('Create')
+              name: this.LabelService.CREATE
             }], {
               hasCancel: true
             })
@@ -58,12 +58,12 @@ export default class customTagController {
           this.cardItemList.onItemCreated(_customTag);
           this.contextualMenu.hide();
           this.Spinner.hide("custom-tag-create");
-          this.Snack.show(this.gettextCatalog.getString('Tag created'));              
+          this.Snack.show(this.LabelService.SNACK_TAG_CREATED);
         });
       }, (err)=>{
         console.log('error on save custom tag', err);
         this.Spinner.hide("custom-tag-create");
-        this.Snack.showError(this.gettextCatalog.getString('Error saving tag'));
+        this.Snack.showError(this.LabelService.SNACK_TAG_CREATED_ERROR);
       });
   }
 
@@ -73,11 +73,11 @@ export default class customTagController {
     return this.$q((resolve, reject)=>{
       this.customTag.update()
         .then((o)=>{
-          this.Snack.show(this.gettextCatalog.getString('Custom tag updated'));
+          this.Snack.show(this.LabelService.SNACK_TAG_UPDATED);
           resolve(o);
       },()=>{
         reject();
-        this.Snack.showError(this.gettextCatalog.getString('Error updating custom tag'));
+        this.Snack.showError(this.LabelService.SNACK_TAG_UPDATED_ERROR);
       }).then(()=>{
         this.Spinner.hide("custom-tag-update");
       })
@@ -115,7 +115,7 @@ export default class customTagController {
       });
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, ErrorService, gettextCatalog) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, ErrorService) {
   	"ngInject";
 
     this.$q = $q;
@@ -128,7 +128,6 @@ export default class customTagController {
   	this.LabelService = LabelService;
     this.MenuService = MenuService;
     this.ErrorService = ErrorService;
-  	this.gettextCatalog = gettextCatalog;
 
   	this.type = 'customTag';
 
