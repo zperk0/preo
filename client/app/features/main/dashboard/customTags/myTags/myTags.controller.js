@@ -7,6 +7,6 @@ export default class myTagsController {
   constructor(tags) {
     'ngInject';
 
-    this.tags = tags;
+    this.customTags = tags;
   }
 }

@@ -1,3 +1,14 @@
-<div>
-  {{vm.title}}
+<div class='custom-tag-view' layout='column'>
+  <div flex class="layout-left-right">
+    <div class='main-content-left'>
+      <custom-tag-list has-search="true"
+         sv-multi-select="false"
+         sv-keep-in-list="false"
+         sv-is-dropzone="true"
+         has-new="true"
+         has-actions="true"
+         custom-tags="myTagsCtrl.customTags"></custom-tag-list>
+     </div>
+  	<div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div>
+  </div>
 </div>

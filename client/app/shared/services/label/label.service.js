@@ -49,6 +49,9 @@ export default class LabelService {
     this.TITLE_DELETE_OUTLET = gettextCatalog.getString("Delete outlet?");
     this.CONTENT_DELETE_OUTLET = gettextCatalog.getString("Are you sure you want to delete this outlet?");
 
+    this.TITLE_DELETE_TAG = gettextCatalog.getString("Delete tag?");
+    this.CONTENT_DELETE_TAG = gettextCatalog.getString("Are you sure you want to delete this tag?");
+
     //TAXES
     this.SNACK_SELLER_SUCCESS = gettextCatalog.getString("Seller details saved");
     this.SNACK_SELLER_ERROR = gettextCatalog.getString("Seller details not saved");
