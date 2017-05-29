@@ -86,7 +86,8 @@ export default class navbarController {
         return PermissionService.hasPermission(Permissions.MENUS)
       }},
       {name: gettextCatalog.getString("Tags"), icon:"label", id:"customTags", children:[
-        {name: gettextCatalog.getString("My tags"), id:"myTags"}
+        {name: gettextCatalog.getString("My Tags"), id:"myTags"},
+        {name: gettextCatalog.getString("Tag Actions"), id:"tagActions"},
       ],shouldShow:function(){
         return FeatureService.hasItemTagsFeature() && PermissionService.hasPermission(Permissions.MENUS)
       }},

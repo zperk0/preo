@@ -1,6 +1,3 @@
-// Import Style
-import './myTags.scss';
-
 import uirouter from 'angular-ui-router';
 
 // Import internal modules

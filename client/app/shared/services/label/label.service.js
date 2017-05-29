@@ -121,12 +121,18 @@ export default class LabelService {
     this.TITLE_DELETE_TAG = gettextCatalog.getString("Delete tag?");
     this.CONTENT_DELETE_TAG = gettextCatalog.getString("Are you sure you want to delete this tag?");
 
+    this.TITLE_DELETE_TAG_ACTION = gettextCatalog.getString("Delete tag action?");
+    this.CONTENT_DELETE_TAG_ACTION = gettextCatalog.getString("Are you sure you want to delete this tag action?");
+
     this.TITLE_DELETE_TAG_IN_USE = gettextCatalog.getString("This tag is in use");
     this.CONTENT_DELETE_TAG_IN_USE = gettextCatalog.getString("Deleting this tag will remove it from all items and tag actions. Are you sure?");
 
     this.TITLE_DUPLICATED_TAG_NAME = gettextCatalog.getString("Warning");
     this.CONTENT_DUPLICATED_TAG_NAME = gettextCatalog.getString("There is already another tag with the same name, are you sure you want to create this new tag?");
   
+    this.TITLE_DUPLICATED_TAG_ACTION_NAME = gettextCatalog.getString("Warning");
+    this.CONTENT_DUPLICATED_TAG_ACTION_NAME = gettextCatalog.getString("There is already another tag action with the same name, are you sure you want to create this new tag action?");
+ 
     this.SNACK_TAG_CREATED = gettextCatalog.getString('Tag created');
     this.SNACK_TAG_CREATED_ERROR = gettextCatalog.getString('Error creating tag');
     
@@ -134,5 +140,13 @@ export default class LabelService {
     this.SNACK_TAG_UPDATED_ERROR = gettextCatalog.getString('Error updating tag');
     
     this.SNACK_TAG_DELETED = gettextCatalog.getString('Tag deleted');
+
+    this.SNACK_TAG_ACTION_CREATED = gettextCatalog.getString('Tag action created');
+    this.SNACK_TAG_ACTION_CREATED_ERROR = gettextCatalog.getString('Error creating tag action');
+    
+    this.SNACK_TAG_ACTION_UPDATED = gettextCatalog.getString('Tag action updated');
+    this.SNACK_TAG_ACTION_UPDATED_ERROR = gettextCatalog.getString('Error updating tag action');
+    
+    this.SNACK_TAG_ACTION_DELETED = gettextCatalog.getString('Tag action deleted');
   }
 }
