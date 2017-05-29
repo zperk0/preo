@@ -2,11 +2,11 @@
 import controller from './customTags.controller';
 import routes from './customTags.routes';
 
-import customTagListView from './customTagList';
+import myTags from './myTags';
 
 angular.module("webapp.customTags" , [
   'ui.router',
-  customTagListView,
+  myTags,
   ])
   .config(routes)
   .controller(controller.UID, controller)

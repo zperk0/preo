@@ -1,5 +1,5 @@
 
-import controller from './customTagList.controller'
+import controller from './myTags.controller'
 
 /**
  * Routing function for eventList
@@ -7,14 +7,14 @@ import controller from './customTagList.controller'
  */
 /* @ngInject */
 export default function routes($stateProvider) {
-  $stateProvider.state("main.dashboard.customTags.customTagList", {
-    url: "/list",
+  $stateProvider.state("main.dashboard.customTags.myTags", {
+    url: "/myTags",
     requiresPermission:Permissions.MENUS,
     views: {
     	customTagContent: {
-		    template: require("./customTagList.tpl.html"),
+		    template: require("./myTags.tpl.html"),
 		    controller: controller.UID,
-		    controllerAs: "customTagListViewCtrl"
+		    controllerAs: "myTagsCtrl"
     	}
     }
   });

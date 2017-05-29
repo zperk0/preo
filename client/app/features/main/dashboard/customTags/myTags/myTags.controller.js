@@ -1,6 +1,6 @@
-export default class customTagListViewController {
+export default class myTagsController {
   static get UID(){
-    return "customTagListViewController"
+    return "myTagsController"
   }
 
   /* @ngInject */
