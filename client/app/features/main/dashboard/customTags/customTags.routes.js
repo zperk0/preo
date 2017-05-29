@@ -46,7 +46,7 @@ export default function routes($stateProvider, Permissions) {
           });
         });
       },
-      tagGroups:function ($q, venueId, Spinner) {
+      tagGroups:function($q, venueId, Spinner) {
         return $q((resolve, reject) => {
           Spinner.show('fetch-tag-groups');
           Preoday.CustomTagGroup.getByVenueId(venueId)
@@ -61,10 +61,10 @@ export default function routes($stateProvider, Permissions) {
           });
         });
       },
-      tagActions:function ($q, venueId, Spinner) {
+      tagActions:function($q, venueId, Spinner) {
         return $q((resolve, reject) => {
           Spinner.show('fetch-tag-actions');
-          Preoday.CustomTagGroup.getByVenueId(venueId)
+          Preoday.CustomTagAction.getByVenueId(venueId)
           .then(tagActions => {
             resolve(tagActions);
             Spinner.hide('fetch-tag-actions');
