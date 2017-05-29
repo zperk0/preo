@@ -42,7 +42,7 @@ export default class customTagListController {
   deleteCustomTag(customTag){
 
     this.Spinner.show("custom-tag-delete");
-    customTag.delete()
+    customTag.remove()
       .then(()=>{
         this.Snack.show(this.gettextCatalog.getString('Tag deleted'));
 

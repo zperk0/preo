@@ -101,18 +101,13 @@ export default class customTagController {
     this.Spinner.show("custom-tag-delete");
     
     this.customTag.canDelete()
-      .then(response => {
-        if (response) {
-          this.DialogService.delete(this.LabelService.TITLE_DELETE_TAG, this.LabelService.CONTENT_DELETE_TAG)
-            .then(()=>{
-              this.contextual.hide();
-              this.customTagListCtrl.deleteCustomTag(this.customTag);
-            });
-        } else {
-          this.DialogService.show(this.ErrorService.TAG_IN_USE.title, this.ErrorService.TAG_IN_USE.message, [{
-              name: this.LabelService.CONFIRMATION
-            }]);
-        }
+      .then(canDelete => {
+        this.DialogService.delete(canDelete ? this.LabelService.TITLE_DELETE_TAG : this.LabelService.TITLE_DELETE_TAG_IN_USE, 
+                                  canDelete ? this.LabelService.CONTENT_DELETE_TAG : this.LabelService.CONTENT_DELETE_TAG_IN_USE)
+          .then(()=>{
+            this.contextual.hide();
+            this.customTagListCtrl.deleteCustomTag(this.customTag);
+          });
         this.Spinner.hide("custom-tag-delete");
       }, err => {
         console.log('error fetching tag /candelete', err);
