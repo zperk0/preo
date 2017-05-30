@@ -1,0 +1,47 @@
+.md-chips {
+  padding: 0;
+  margin-top: -9px;
+  
+  .md-chip {
+    padding: 0 32px;
+    height: 25px;
+    line-height: 24px;
+    background-color: #eeeeee;
+    border: solid 1px #e0e0e0;
+    border-radius: 0;
+
+    .md-chip-remove-container {
+      left: 0;
+      width: 32px;
+
+      .md-chip-remove {
+        height: 24px;
+      }
+    }
+
+    md-chip-template {
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &:not(.md-readonly) {
+    .md-chip {
+      &:not(.md-readonly) {
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+md-autocomplete {
+  input {
+    &::-webkit-input-placeholder,
+    &:-moz-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder { 
+      color:red !important;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div class='tag-select'>
+  <md-chips ng-model="tagSelectCtrl.ngModel" md-autocomplete-snap>
+    <md-autocomplete md-selected-item="tagSelectCtrl.selectedItem" md-search-text="tagSelectCtrl.searchText" md-items="item in tagSelectCtrl.querySearch(tagSelectCtrl.searchText)"
+      md-item-text="item.name" placeholder="Tags">
+      <span md-highlight-text="tagSelectCtrl.searchText">{{item.name}}</span>
+    </md-autocomplete>
+    <md-chip-template>
+      <span>{{$chip.name}}</span>
+    </md-chip-template>
+  </md-chips>
+</div>
