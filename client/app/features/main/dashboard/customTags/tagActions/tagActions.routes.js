@@ -10,6 +10,7 @@ export default function routes($stateProvider) {
   $stateProvider.state("main.dashboard.customTags.tagActions", {
     url: "/tagActions",
     requiresPermission:Permissions.MENUS,
+    requiresFeature:Preoday.constants.Feature.ITEM_TAGS,
     views: {
     	customTagContent: {
 		    template: require("./tagActions.tpl.html"),

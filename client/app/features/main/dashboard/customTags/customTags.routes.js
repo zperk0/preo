@@ -15,6 +15,7 @@ export default function routes($stateProvider, Permissions) {
     controllerAs: "customTagsCtrl",
     abstract: true,
     requiresPermission:Permissions.MENUS,
+    requiresFeature:Preoday.constants.Feature.ITEM_TAGS,
     resolve: {
     	venueId: function ($q, $timeout, $state, VenueService) {
 
