@@ -16,7 +16,7 @@ export default class tagActionController {
 
     if (this.tagAction && !this.tagAction.id) {
       this.cardItemList.deleteItem(this.tagAction);
-    }    
+    }
   }
 
   contextualMenuSuccess(entity){
@@ -24,18 +24,7 @@ export default class tagActionController {
       this.tagAction = entity;
 
       if (!this.tagAction.id){
-        if (this.tagActionListCtrl.checkExistentName(entity.name)) {
-          this.DialogService.show(this.LabelService.TITLE_DUPLICATED_TAG_ACTION_NAME, this.LabelService.CONTENT_DUPLICATED_TAG_ACTION_NAME, [{
-              name: this.LabelService.CREATE
-            }], {
-              hasCancel: true
-            })
-            .then(()=>{
-              this.createTagAction();
-            });
-        } else {
-          this.createTagAction();
-        }
+        this.createTagAction();
       } else {
         this.updateTagAction().then(()=>{
           this.contextualMenu.hide();
@@ -86,10 +75,6 @@ export default class tagActionController {
 
   onEdit ($event) {
 
-    if (this.tagAction.menus && this.tagAction.menus.length) {
-      this.tagAction.$menuId = this.tagAction.menus[0].id;
-    }
-
     this.originalTagAction  = angular.copy(this.tagAction);
     this.cardItemList.selectItem(this.tagAction);
     this.contextual.showMenu(this.type, this.tagAction, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
@@ -108,7 +93,7 @@ export default class tagActionController {
     this.Spinner.hide("custom-tag-delete");
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, ErrorService) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService) {
   	"ngInject";
 
     this.$q = $q;
@@ -119,7 +104,6 @@ export default class tagActionController {
   	this.contextual = contextual;
   	this.DialogService = DialogService;
   	this.LabelService = LabelService;
-    this.MenuService = MenuService;
     this.ErrorService = ErrorService;
 
   	this.type = 'tagAction';

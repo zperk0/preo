@@ -130,9 +130,6 @@ export default class LabelService {
     this.TITLE_DUPLICATED_TAG_NAME = gettextCatalog.getString("Warning");
     this.CONTENT_DUPLICATED_TAG_NAME = gettextCatalog.getString("There is already another tag with the same name, are you sure you want to create this new tag?");
   
-    this.TITLE_DUPLICATED_TAG_ACTION_NAME = gettextCatalog.getString("Warning");
-    this.CONTENT_DUPLICATED_TAG_ACTION_NAME = gettextCatalog.getString("There is already another tag action with the same name, are you sure you want to create this new tag action?");
- 
     this.SNACK_TAG_CREATED = gettextCatalog.getString('Tag created');
     this.SNACK_TAG_CREATED_ERROR = gettextCatalog.getString('Error creating tag');
     

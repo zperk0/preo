@@ -15,10 +15,10 @@ export default class customTagListController {
       return;
     }
     
-    let customTag = {
+    let customTag = new Preoday.CustomTag({
       venueId: this.venueId,
       $selected:true,
-    };
+    });
 
     this.customTags.push(customTag);
   }  

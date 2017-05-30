@@ -1,23 +1,16 @@
-<div class='tag-action-item'
-      ng-class="{expanded:vm.tagAction.$expanded}"
-      ng-attr-data-id="{{vm.tagAction.id}}">
+<div class='tag-action-item' 
+    ng-attr-data-id="{{vm.tagAction.id}}">
 
-  <card-item  has-actions="vm.hasActions"
+  <card-item  has-actions="true"
               deleted="vm.tagAction.$deleted"
               selected="vm.tagAction.$selected"
-              expanded="vm.tagAction.$expanded"
               >
-    <card-item-title ng-click="vm.toggleExpanded($event)"
-                    has-visible="true"
-                    sv-root="item">
-                      <div ng-if="!vm.tagAction.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
-                        <div sv-placeholder></div>
-                      </div>
-                      <span>{{vm.tagAction.name}} </span>
-                    </card-item-title>
 
-    <card-item-actions is-visible="vm.tagAction.visible"
-                       on-delete="vm.onDelete()"
+    <card-item-title>
+      <span>{{vm.tagAction.name}} </span>
+    </card-item-title>
+
+    <card-item-actions on-delete="vm.onDelete()"
                        on-edit="vm.onEdit($event)"
                         ></card-item-actions>
   </card-item>

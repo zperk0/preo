@@ -1,13 +1,13 @@
 <div class="tag-action-advanced">
   <md-input-container class="md-block input-label">
-    <md-checkbox aria-label="{{'Link to external URL' | translate}}" ng-model="tagActionBasicCtrl.tagAction.$activateLink">
+    <md-checkbox aria-label="{{'Link to external URL' | translate}}" ng-model="tagActionAdvancedCtrl.tagAction.$activateLink">
       {{'Link to external URL' | translate}}
     </md-checkbox>
   </md-input-container>
-  <div ng-if="tagActionBasicCtrl.tagAction.$activateLink">
+  <div ng-if="tagActionAdvancedCtrl.tagAction.$activateLink">
     <md-input-container class="md-block no-spacer">
       <label translate>Button label</label>
-      <input type="text" required name="entityName" ng-model="tagActionBasicCtrl.tagAction.buttonLabel" ng-maxlength="100">
+      <input type="text" required name="entityName" ng-model="tagActionAdvancedCtrl.tagAction.buttonLabel" ng-maxlength="100">
 
       <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
         <div ng-message="required" translate>This is required.</div>
@@ -16,7 +16,7 @@
     </md-input-container>
     <md-input-container class="md-block no-spacer">
       <label translate>URL</label>
-      <input type="text" required name="entityName" ng-model="tagActionBasicCtrl.tagAction.externalUrl" ng-maxlength="100">
+      <input type="text" required name="entityName" ng-model="tagActionAdvancedCtrl.tagAction.externalUrl" ng-maxlength="100">
 
       <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
         <div ng-message="required" translate>This is required.</div>

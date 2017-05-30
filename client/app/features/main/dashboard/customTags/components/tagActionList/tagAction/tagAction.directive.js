@@ -4,8 +4,7 @@ export default function tagAction(){
   return {
     restrict: 'E',
     scope: {
-        tagAction: '=',
-        hasActions: '=?'
+        tagAction: '='
     },
     template: require("./tagAction.tpl.html"),
     controller: controller.UID,

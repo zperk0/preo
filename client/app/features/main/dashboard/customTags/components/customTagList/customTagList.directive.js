@@ -6,7 +6,6 @@ export default function customTagList(){
     restrict: 'E',
     scope: {
       customTags:"=",
-      hasActions: '=?',
       hasNew:"=",
       hasSearch:"=?"
     },

@@ -15,10 +15,10 @@ export default class tagActionListController {
       return;
     }
     
-    let tagAction = {
+    let tagAction = new Preoday.CustomTagAction({
       venueId: this.venueId,
       $selected:true,
-    };
+    });
 
     this.tagActions.push(tagAction);
   }  
@@ -52,14 +52,6 @@ export default class tagActionListController {
       }).catch((err)=>{
         this.Spinner.hide("tag-action-delete");
       });
-  }
-
-  checkExistentName(name) {
-    let findName = this.tagActions.filter(tagAction => {
-      return tagAction.name.trim() == name.trim();
-    });
-
-    return findName.length > 1;
   }
 
   /* @ngInject */

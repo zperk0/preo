@@ -1,18 +1,12 @@
 <div class="custom-tag-list">
-  <div class='sv-root-holder'
-      sv-root="tagAction"
-      sv-disabled="tagActionListCtrl.svDisabled">
-
-    <card-item-list
-        has-new="tagActionListCtrl.hasNew"
-        tooltip="{{ 'Add new tag action' | translate }}"
-        on-click-new="tagActionListCtrl.showCreateTagAction()"
-        collection="tagActionListCtrl.tagActions">
-        <tag-action
-          has-actions="tagActionListCtrl.hasActions"
-          ng-repeat="tagAction in tagActionListCtrl.tagActions track by $index"
-          tag-action="tagAction">
-        </tag-action>
-    </card-item-list>
-  </div>
+  <card-item-list
+      has-new="tagActionListCtrl.hasNew"
+      tooltip="{{ 'Add new tag action' | translate }}"
+      on-click-new="tagActionListCtrl.showCreateTagAction()"
+      collection="tagActionListCtrl.tagActions">
+      <tag-action
+        ng-repeat="tagAction in tagActionListCtrl.tagActions track by $index"
+        tag-action="tagAction">
+      </tag-action>
+  </card-item-list>
 </div>

@@ -1,6 +1,3 @@
-// Import Style
-import './tagActionAdvanced.scss';
-
 
 // Import internal modules
 import controller from './tagActionAdvanced.controller';

@@ -86,10 +86,6 @@ export default class customTagController {
 
   onEdit ($event) {
 
-    if (this.customTag.menus && this.customTag.menus.length) {
-      this.customTag.$menuId = this.customTag.menus[0].id;
-    }
-
     this.originalCustomTag  = angular.copy(this.customTag);
     this.cardItemList.selectItem(this.customTag);
     this.contextual.showMenu(this.type, this.customTag, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
@@ -115,7 +111,7 @@ export default class customTagController {
       });
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, ErrorService) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService) {
   	"ngInject";
 
     this.$q = $q;
@@ -126,7 +122,6 @@ export default class customTagController {
   	this.contextual = contextual;
   	this.DialogService = DialogService;
   	this.LabelService = LabelService;
-    this.MenuService = MenuService;
     this.ErrorService = ErrorService;
 
   	this.type = 'customTag';

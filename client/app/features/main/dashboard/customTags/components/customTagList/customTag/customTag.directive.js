@@ -4,8 +4,7 @@ export default function customTag(){
   return {
     restrict: 'E',
     scope: {
-        customTag: '=',
-        hasActions: '=?'
+        customTag: '='
     },
     template: require("./customTag.tpl.html"),
     controller: controller.UID,
