@@ -25,6 +25,7 @@ export default function cardItemActions($parse){
       visibleMessage:'@',
       invisibleMessage:'@',
       addMessage: '=?',
+      addCustomFieldMessage: '=?',
       addLocationMessage: '=?'
     },
     template: require("./cardItemActions.tpl.html"),

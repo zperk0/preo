@@ -35,6 +35,7 @@
                        disable-add="outletLocationCtrl.outletLocation.isSeat() || outletLocationCtrl.outletLocation.hasChildren() || outletLocationCtrl.outletLocation.outletId"
                        disable-add-custom-field="outletLocationCtrl.outletLocation.hasCustomChildren()"
                        add-message="outletLocationCtrl.getAddSubGroupMessage()"
+                       add-custom-field-message="outletLocationCtrl.getAddCustomFieldMessage()"
                         ></card-item-actions>
 
     <card-item-actions ng-if="outletLocationCtrl.outletLocation.isCustom()"

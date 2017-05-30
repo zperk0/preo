@@ -337,6 +337,15 @@ export default class outletLocationController {
     return this.gettextCatalog.getString('Add sub group');
   }
 
+  getAddCustomFieldMessage () {
+
+    if (this.outletLocation.hasCustomChildren()) {
+      return this.ErrorService.OUTLET_LOCATION_CUSTOM_FIELD_CHILDREN.message;
+    }
+
+    return this.gettextCatalog.getString('Add custom fields at checkout');
+  }
+
   hasCustomOutletLocationFieldsFeature () {
 
     return this.FeatureService.hasCustomOutletLocationFieldsFeature();
