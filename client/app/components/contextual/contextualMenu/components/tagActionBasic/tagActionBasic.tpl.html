@@ -1,32 +1,30 @@
 <div class="tag-action-basic">
   <md-input-container class="md-block no-spacer">
-    <label translate>Tag name</label>
-    <input type="text" required name="entityName" ng-model="tagActionBasicCtrl.tagAction.name" ng-maxlength="100">
-
-    <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
-      <div ng-message="required" translate>This is required.</div>
-      <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+    <label translate>Tag action name</label>
+    <input type="text" autocomplete="off" required name="entityName" ng-model="tagActionBasicCtrl.tagAction.name" ng-maxlength="256" />
+    <div ng-messages="tagActionBasicCtrl.contextualForm.entityName.$error" ng-show="tagActionBasicCtrl.contextualForm.entityName.$dirty">
+      <div ng-message="required" translate  ng-class="{'activated': tagActionBasicCtrl.contextualForm.entityName.$error.required}">This is required.</div>
+      <div ng-message="maxlength" translate ng-class="{'activated': tagActionBasicCtrl.contextualForm.entityName.$error.maxlength}">Max length is 256.</div>
     </div>
   </md-input-container>
   <md-input-container class="md-block no-spacer">
     <label translate>Message title</label>
-    <input type="text" required name="entityName" ng-model="tagActionBasicCtrl.tagAction.messageTitle" ng-maxlength="100">
-
-    <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
-      <div ng-message="required" translate>This is required.</div>
-      <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+    <input type="text" autocomplete="off" required name="entityTitle" ng-model="tagActionBasicCtrl.tagAction.messageTitle" ng-maxlength="256" />
+    <div ng-messages="tagActionBasicCtrl.contextualForm.entityTitle.$error" ng-show="tagActionBasicCtrl.contextualForm.entityTitle.$dirty">
+      <div ng-message="required" translate  ng-class="{'activated': tagActionBasicCtrl.contextualForm.entityTitle.$error.required}">This is required.</div>
+      <div ng-message="maxlength" translate ng-class="{'activated': tagActionBasicCtrl.contextualForm.entityTitle.$error.maxlength}">Max length is 256.</div>
     </div>
   </md-input-container>
   <md-input-container class="md-block no-spacer">
     <label translate>Message body</label>
-    <input type="text" required name="entityName" ng-model="tagActionBasicCtrl.tagAction.messageBody" ng-maxlength="100">
-
-    <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
-      <div ng-message="required" translate>This is required.</div>
-      <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+    <input type="text" autocomplete="off" required name="entityBody" ng-model="tagActionBasicCtrl.tagAction.messageBody" ng-maxlength="256" />
+    <div ng-messages="tagActionBasicCtrl.contextualForm.entityBody.$error" ng-show="tagActionBasicCtrl.contextualForm.entityBody.$dirty">
+      <div ng-message="required" translate  ng-class="{'activated': tagActionBasicCtrl.contextualForm.entityBody.$error.required}">This is required.</div>
+      <div ng-message="maxlength" translate ng-class="{'activated': tagActionBasicCtrl.contextualForm.entityBody.$error.maxlength}">Max length is 256.</div>
     </div>
   </md-input-container>
   <div class="radio-group">
+    <div class="error" ng-if="tagActionBasicCtrl.contextualForm.$submitted && !tagActionBasicCtrl.tagAction.triggerType" translate>Trigger is required.</div>
     <div class='checkbox-label' translate>Trigger:</div>
     <md-radio-group ng-model="tagActionBasicCtrl.tagAction.triggerType">
       <md-radio-button value="BASKET" class="md-primary">{{'Add to basket' | translate}}</md-radio-button>
@@ -34,11 +32,12 @@
     </md-radio-group>
   </div>
   <div class="radio-group">
+    <div class="error" ng-if="tagActionBasicCtrl.contextualForm.$submitted && !tagActionBasicCtrl.tagAction.frequencyType" translate>Frequency is required.</div>
     <div class='checkbox-label' translate>Frequency:</div>
     <md-radio-group ng-model="tagActionBasicCtrl.tagAction.frequencyType">
       <md-radio-button value="ONCE" class="md-primary">{{'Once only' | translate}}</md-radio-button>
       <md-radio-button value="ORDER" class="md-primary">{{'Once per order' | translate}}</md-radio-button>
-      <md-radio-button value="EVERY" class="md-primary">{{'On every trigger' | translate}}</md-radio-button>
+      <md-radio-button value="TRIGGER" class="md-primary">{{'On every trigger' | translate}}</md-radio-button>
     </md-radio-group>
   </div>
 </div>

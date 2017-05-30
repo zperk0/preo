@@ -20,7 +20,7 @@ export default class tagActionController {
   }
 
   contextualMenuSuccess(entity){
-    if (this.tagAction && entity && entity.name){
+    if (this.tagAction && entity && entity.name && entity.triggerType && entity.frequencyType){
       this.tagAction = entity;
 
       if (!this.tagAction.id){
