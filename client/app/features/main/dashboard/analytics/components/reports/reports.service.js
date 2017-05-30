@@ -404,7 +404,8 @@ export default class ReportsService {
     if(reportsIds){
       for(var i=0; i < reportsIds.length; i++){
         let reportId = reportsIds[i];
-        if(!this.data.hasOwnProperty(reportId) || !this.data[reportId]){
+        
+        if(!this.data.hasOwnProperty(reportId) || this.data[reportId] == null){
           paramChanged = true;
           break;
         }
@@ -420,7 +421,7 @@ export default class ReportsService {
       var dataMin = moment(this.data.minCreated).format('L');
       var dataMax = moment(this.data.maxCreated).format('L');
       if(params.minCreated != dataMin || params.maxCreated != dataMax){
-        return true;
+        return true; 
       }
     }
 

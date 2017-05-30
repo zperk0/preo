@@ -125,16 +125,7 @@ export default class analyticsSummaryController {
     .then((data) => {
 
       this.chartsData = data;
-
-      this.updateBars(data);
-      this.updateDoughnuts(data);
-      this.updateCards(data);
-
-      this.dataLoaded = true;
-
-      //this.$timeout(() => {
-        this.hideSpinner();
-      //});
+      this.updateView();
 
     }, (err) => {
       console.log('ReportService fetch Summary Error - ', err);
@@ -213,7 +204,6 @@ export default class analyticsSummaryController {
 
     this.spinner = Spinner;
     this.ReportsService = ReportsService;
-    this.reportsData = ReportsService.data;
 
     this.dataFilters = {
       venues: null,
@@ -224,6 +214,8 @@ export default class analyticsSummaryController {
     this.$timeout = $timeout;
     this.ReportTypes = ReportTypes;
     this.chartsData = ReportsService.data;
+
+    this.setInitialFilterValues();
 
     this.dataLoaded = false;
     this.showSpinner();
@@ -240,8 +232,6 @@ export default class analyticsSummaryController {
         this.cards = data[0].cards;
         this.bars = data[0].bars;
         this.doughnuts = data[0].doughnuts;
-
-        this.setInitialFilterValues();
     });
 
   }

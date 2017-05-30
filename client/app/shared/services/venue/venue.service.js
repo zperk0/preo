@@ -17,7 +17,7 @@ export default class VenueService {
           return resolve(filtered[0]);
         }
         if (this.UserService.isAdmin()){
-          Preoday.Venue.getById(venueId,'features')
+          Preoday.Venue.getById(venueId,'features,outlets')
             .then((newVenue)=>{
               if (newVenue){
                 resolve(newVenue)
