@@ -37,10 +37,15 @@ export default class customDatafiltersController {
   // Venues and Events are multiselect. So they call update on Close event.
   // But dont want call update if venues inside didnt change.
   checkIfVenueChanged(){
+
+    if(this.onOpenVenueArray.length != this.selectedVenues.length)
+      return true;
+
     let arrayCombined = this.onOpenVenueArray.concat(this.selectedVenues);
     arrayCombined.sort((a, b) => {
-      if(a.id > b.id) return 1;
-      if(a.id < b.id) return -1;
+      if(a.uniqueId > b.uniqueId) return 1;
+      if(a.uniqueId < b.uniqueId) return -1;
+      
       return 0;
     });
 
@@ -49,7 +54,7 @@ export default class customDatafiltersController {
       return true;
 
     for(var i=0; i < arrayCombined.length - 1; i+=2){
-      if(arrayCombined[i].id != arrayCombined[i+1].id){
+      if(arrayCombined[i].uniqueId != arrayCombined[i+1].uniqueId){
         changed = true;
         break;
       }
@@ -61,6 +66,10 @@ export default class customDatafiltersController {
   // Venues and Events are multiselect. So they call update on Close event.
   // But dont want call update if venues inside didnt change.
   checkIfEventChanged(){
+
+    if(this.onOpenEventArray.length != this.filters.events.length)
+      return true;
+
     let arrayCombined = this.onOpenEventArray.concat(this.filters.events);
     arrayCombined.sort((a, b) => {
       if(a.occurId > b.occurId) return 1;
@@ -106,7 +115,7 @@ export default class customDatafiltersController {
     if(venueNames.length > 0)
       return venueNames;
     else
-      return this.getTextCatalog.getString("Venue"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
+      return this.getTextCatalog.getString("All Venues"); // if there is NO venue selected, get ALL venues 
   }
 
   getSelectedEventsNames(){
@@ -124,15 +133,30 @@ export default class customDatafiltersController {
   // Format Venue array to be returned to the Controller as an Object
   // venue: { id: ...., outlets:[]}
   formatVenuesValues(){
-    var venues = this.selectedVenues.filter((v) => {
-      if(v.type == 'venue')
-        return v;
-    });
+    var venues = [];
+    var outlets = [];
+    if(this.selectedVenues.length > 0){
+      venues = this.selectedVenues.filter((v) => {
+        if(v.type == 'venue')
+          return v;
+      });
 
-    var outlets = this.selectedVenues.filter((v) => {
-      if(v.type == 'outlet')
-        return v;
-    });
+      outlets = this.selectedVenues.filter((v) => {
+        if(v.type == 'outlet')
+          return v;
+      });
+    }
+    else{
+      venues = this.venues.filter((v) => {
+        if(v.type == 'venue')
+          return v;
+      });
+
+      outlets = this.venues.filter((v) => {
+        if(v.type == 'outlet')
+          return v;
+      });
+    }
 
     //first verify if Venue was selected. IF NOT...add venue info to array to be returned to the Controller
     outlets.forEach((o) => {
@@ -188,7 +212,7 @@ export default class customDatafiltersController {
     var contains = false;
 
     for(var i =0; i < arrayV.length; i++ ) {
-      if(arrayV[i].id == value){
+      if(arrayV[i].uniqueId == value){
         contains = true;
         break;
       }
@@ -204,9 +228,6 @@ export default class customDatafiltersController {
   }
 
   onVenueClose(){
-
-    if(this.selectedVenues.length <= 0)
-      return;
 
     if(!this.checkIfVenueChanged())
       return;
@@ -287,7 +308,7 @@ export default class customDatafiltersController {
 
     venuesRootOld.forEach((v) => {
       //if not checked now AND was checked before. Means need uncheck ALL his childs
-      if(!this.findElementById(v.id, this.selectedVenues)){
+      if(!this.findElementById(v.uniqueId, this.selectedVenues)){
 
         this.selectedVenues = filteredVenues.filter((x) => {
             if(x.group != v.group)
@@ -317,7 +338,7 @@ export default class customDatafiltersController {
         }).length;
 
         // if checked now AND was already checked before. AND childsSelected != total group Childs. Means some child was unchecked
-      if(v.type == 'venue' && this.findElementById(v.id, this.selectedVenuesOld)){
+      if(v.type == 'venue' && this.findElementById(v.uniqueId, this.selectedVenuesOld)){
           if(totalChilds !== totalCheckedChilds){
             this.selectedVenues = filteredVenues.filter((x) => {
               if(x.id != v.id)
@@ -326,14 +347,15 @@ export default class customDatafiltersController {
           }
       }
 
-        //if checked now AND was not checked before. Means need check ALL his childs.
-      if(v.type == 'venue' && !this.findElementById(v.id, this.selectedVenuesOld)){
+      //if checked now AND was not checked before. Means need check ALL his childs.
+      if(v.type == 'venue' && !this.findElementById(v.uniqueId, this.selectedVenuesOld)){
           this.venues.forEach((x) => {
 
             if(x.group === v.group && x.type ==='outlet'){
 
-              if(!x.selected)
+              if(!x.selected){
                 this.selectedVenues.push(x);
+              }
             }
           });
       }
@@ -354,7 +376,7 @@ export default class customDatafiltersController {
     });
 
     this.venues.forEach((v) => {
-      if(!this.findElementById(v.id, this.selectedVenues)){
+      if(!this.findElementById(v.uniqueId, this.selectedVenues)){
         v.selected = false;
       }
     });
@@ -561,16 +583,50 @@ export default class customDatafiltersController {
     this.onVenueChange();
   }
 
+  checkPermissions(){
+    return this.$q((resolve,reject) => {
+      var venueIds = this.VenueService.venues.map((x) => { return x.id});
+      var permissions = [this.Permissions.ANALYTICS];
+          this.PermissionService.checkVenuesPermissions( permissions ,venueIds)
+          .then((data) => {
+            
+            var venues = this.VenueService.venues.filter((x) => {
+              if(data.hasOwnProperty(x.id) && data[x.id][this.Permissions.ANALYTICS] === true)
+                return x;
+            });
+         
+            resolve(venues);
+          }, (err) => {
+            console.log("Error fetching venue permissions", err);
+            reject();
+          });
+    });
+  }
+
 // To make Venues and Outlets selectable on the same MD-SELECT, the same array will contain venues + outlets
 // Fields: group -> to keep venues and it owns outlets grouped
 //         type -> to know which object in array is an outlet / venue
 //         selected -> default always come all selected. used to control Parent <-> child relation on VenueChange event
-  getVenues(){
+  getVenues(venues){
 
     var localVenue = {};
     var localOutlet = {};
     var venuesIds = [];
-    this.VenueService.venues.forEach((venue) => {
+    
+    // SUPER ADMIN can see current venue selected too.
+    if(this.UserService.isAdmin()){
+
+      let isVenuePresent = this.VenueService.venues.filter((x) => {
+        if(x.id == this.VenueService.currentVenue.id)
+          return x;
+      });
+
+      if(isVenuePresent.length <= 0){
+        venues.push(this.VenueService.currentVenue);
+      }
+    }
+
+    venues.forEach((venue) => {
 
       venuesIds.push(venue.id);
       localVenue = {
@@ -580,21 +636,35 @@ export default class customDatafiltersController {
         hasApplication: false,
         type: 'venue',
         group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-        selected: true
+        selected: true,
+        display: true,
+        uniqueId: venue.name.substring(0,4).toUpperCase()+ venue.id
       };
       this.venues.push(localVenue);
 
+      let shouldDisplay = true;
+      // Venues with only 1 outlet, should not display it.
+      if(venue.outlets.length <= 1){
+        shouldDisplay = false;
+      }
+      
       venue.outlets.forEach((outlet) => {
         localOutlet = {
           id: outlet.id,
           name: outlet.name,
           type: 'outlet',
           group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-          selected: true
+          selected: true,
+          display: true,
+          uniqueId: outlet.id + venue.name.substring(0,4).toUpperCase()+ venue.id
         };
+
+        if(!shouldDisplay)
+          localOutlet.display = false;
 
         this.venues.push(localOutlet);
       });
+      
     });
 
     this.venues.sort(this.compareObjectVenue);
@@ -965,6 +1035,10 @@ export default class customDatafiltersController {
     }
     else
       this.setVenues(angular.copy(this.venues));
+
+    //
+    if(!this.hasReport)
+      this.debounceUpdate('Venue', true);
   }
 
   loadReports(){
@@ -1022,7 +1096,8 @@ export default class customDatafiltersController {
 
     this.spinner.show('init-datafilters');
 
-    this.getVenues()
+    this.checkPermissions()
+    .then(this.getVenues.bind(this))
     .then(this.loadReports.bind(this))
     .then(this.loadDateRange.bind(this))
     .then(() => {
@@ -1051,12 +1126,15 @@ export default class customDatafiltersController {
   }
 
   /* @ngInject */
-  constructor($q , $scope, Spinner, Snack, $timeout, VenueService , EventService, ReportsService, gettextCatalog) {
+  constructor($q , $scope, Spinner, Snack, $timeout, VenueService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog) {
   	'ngInject';
 
     this.spinner = Spinner;
     this.Snack = Snack;
     this.$timeout = $timeout;
+    this.UserService = UserService;
+    this.PermissionService = PermissionService;
+    this.Permissions = Permissions;
 
     this.VenueService = VenueService;
     this.Spinner = Spinner;

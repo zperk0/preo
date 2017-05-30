@@ -227,14 +227,6 @@ export default class analyticsStockController {
       return;
     }
 
-    if(typeChanged == 'Report'){
-
-      isReportUpdated = true;
-
-      this.shouldShowdatatable = false;
-      this.shouldShowChart = false;
-    }
-
     var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
 
     //Fetch from Api when any filter, except Report is changed, or if report changed but has no data to show for it.

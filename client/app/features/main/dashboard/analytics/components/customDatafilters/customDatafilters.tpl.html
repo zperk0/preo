@@ -9,8 +9,8 @@
     
       <md-input-container flex="50" layout-wrap class="select-venue">
         <label>{{'Venue' | translate }}</label>
-        <md-select ng-model="vm.selectedVenues" ng-model-options="{trackBy: '$value.id'}" multiple md-selected-text="vm.getSelectedVenuesNames()" md-container-class="md-customfix-container venueselect" ng-change="vm.onVenueChange()" md-on-open="vm.onOpenVenue()" md-on-close="vm.onVenueClose()" >
-          <md-option md-truncate ng-repeat="venue in vm.venues" ng-selected="venue.selected" ng-class="{'childmargin': (venue.type === 'outlet')}" ng-value="venue" >
+        <md-select ng-model="vm.selectedVenues" ng-model-options="{trackBy: '$value.uniqueId'}" multiple md-selected-text="vm.getSelectedVenuesNames()" md-container-class="md-customfix-container venueselect" ng-change="vm.onVenueChange()" md-on-open="vm.onOpenVenue()" md-on-close="vm.onVenueClose()" >
+          <md-option md-truncate ng-repeat="venue in vm.venues" ng-class="{'childmargin': (venue.type === 'outlet')}" ng-value="venue" ng-if="venue.display">
             {{ venue.name }}
           </md-option>
         </md-select>
