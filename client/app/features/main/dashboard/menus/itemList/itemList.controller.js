@@ -50,7 +50,7 @@ export default class itemListController {
     this.hideSpinner();
   }
 
-  constructor($stateParams, $timeout, ItemService, contextual, FeatureService, Spinner) {
+  constructor($stateParams, $timeout, ItemService, contextual, FeatureService, Spinner, tags) {
 
     "ngInject";
 
@@ -60,6 +60,7 @@ export default class itemListController {
     this.contextual = contextual;
     this.Spinner = Spinner;
     this.loaded = false;
+    this.tags = tags;
 
     this.showSpinner();
     this.setItems($stateParams.venueId);

@@ -12,6 +12,7 @@ export default function menuItem($timeout){
       onItemDeleted:"&?",
       onItemUpdated:"&?",
       onClone:"&?",
+      tags:"="
     },
     template: require("./menuItem.tpl.html"),
     controller: controller.UID,

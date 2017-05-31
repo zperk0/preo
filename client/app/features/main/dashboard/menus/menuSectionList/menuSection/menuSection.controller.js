@@ -299,14 +299,16 @@
       })
     }
     //if it's a new section we toggle the context menu to edit this
-    if (!this.section.id) {
-      this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
-        tags: this.menuSectionListCtrl.tags
-      });
-    } else {
-      this.buildItems();
+    $timeout(() => {
+      if (!this.section.id) {
+        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
+          tags: this.menuSectionListCtrl.tags
+        });
+      } else {
+        this.buildItems();
 
-      $scope.$on(BroadcastEvents.ON_ITEM_UPDATED, this.checkUpdatedItem.bind(this));
-    }
+        $scope.$on(BroadcastEvents.ON_ITEM_UPDATED, this.checkUpdatedItem.bind(this));
+      }
+    });
   }
 }
