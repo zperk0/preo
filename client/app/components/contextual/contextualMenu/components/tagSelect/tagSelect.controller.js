@@ -51,6 +51,7 @@ export default class tagSelectController {
     this.clearSelection();
     this.clearSearchText();
     this.ngModel = this.ngModel || [];
+    this.collection = this.collection || [];
     this.separatorKeys = [13, 188];
   }
 }
