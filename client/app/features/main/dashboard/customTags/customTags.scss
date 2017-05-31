@@ -5,4 +5,11 @@
     margin-top: 24px;
     width: calc(50% - 24px);
   }
+
+  .card-item {
+    &.card-item-new {
+      min-height: 48px;
+      max-height: 48px;
+    }
+  }
 }
