@@ -1,6 +1,7 @@
 import controller from './tagAction.controller'
 
 export default function tagAction(){
+  "ngInject";
   return {
     restrict: 'E',
     scope: {

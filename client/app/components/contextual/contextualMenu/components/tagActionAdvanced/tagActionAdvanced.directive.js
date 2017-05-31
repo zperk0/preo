@@ -1,6 +1,7 @@
 import controller from './tagActionAdvanced.controller'
 
 export default function tagActionAdvanced(){
+  "ngInject";
   return {
     restrict: 'E',
     template: require("./tagActionAdvanced.tpl.html"),

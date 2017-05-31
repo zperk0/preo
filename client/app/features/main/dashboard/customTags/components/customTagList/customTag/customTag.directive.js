@@ -1,6 +1,7 @@
 import controller from './customTag.controller'
 
 export default function customTag(){
+  "ngInject";
   return {
     restrict: 'E',
     scope: {
