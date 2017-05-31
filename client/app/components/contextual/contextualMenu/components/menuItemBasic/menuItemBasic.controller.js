@@ -4,8 +4,13 @@ export default class menuItemBasicController {
   }
 
   /* @ngInject */
-  constructor($scope, BroadcastEvents, ItemService) {
+  constructor($scope, BroadcastEvents, ItemService, VenueService) {
     'ngInject';
+
+    Preoday.CustomTag.getByVenueId(VenueService.currentVenue.id)
+      .then(tags => {
+        this.tags = tags;
+      });
 
     $scope.$on(BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED, () => {
       if (this.contextualForm.selectedTabIndex === 1) {
