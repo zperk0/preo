@@ -6,6 +6,7 @@ export default function tagActionList(){
     restrict: 'E',
     scope: {
       tagActions:"=",
+      tagGroups:"=",
       hasNew:"=",
       hasSearch:"=?"
     },

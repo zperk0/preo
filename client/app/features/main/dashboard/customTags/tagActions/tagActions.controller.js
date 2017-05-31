@@ -4,9 +4,10 @@ export default class tagActionsController {
   }
 
   /* @ngInject */
-  constructor(tagActions) {
+  constructor(tagActions, tagGroups) {
     'ngInject';
 
     this.tagActions = tagActions;
+    this.tagGroups = tagGroups;
   }
 }

@@ -77,7 +77,9 @@ export default class tagActionController {
 
     this.originalTagAction  = angular.copy(this.tagAction);
     this.cardItemList.selectItem(this.tagAction);
-    this.contextual.showMenu(this.type, this.tagAction, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+    this.contextual.showMenu(this.type, this.tagAction, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
+      tagGroups: this.tagActionListCtrl.tagGroups
+    });
     $event.stopPropagation();
   }    
 
@@ -89,8 +91,8 @@ export default class tagActionController {
       .then(()=>{
         this.contextual.hide();
         this.tagActionListCtrl.deleteTagAction(this.tagAction);
+        this.Spinner.hide("custom-tag-delete");
       });
-    this.Spinner.hide("custom-tag-delete");
   }  
 
   constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService) {
@@ -109,7 +111,9 @@ export default class tagActionController {
   	this.type = 'tagAction';
 
     if (this.tagAction && !this.tagAction.id) {
-        this.contextual.showMenu(this.type, this.tagAction, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+        this.contextual.showMenu(this.type, this.tagAction, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
+          tagGroups: this.tagActionListCtrl.tagGroups
+        });
     }    
   }
 }

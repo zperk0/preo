@@ -4,8 +4,13 @@ export default class tagActionBasicController {
   }
 
   /* @ngInject */
-  constructor() {
+  constructor($timeout) {
     'ngInject';
 
+    this.tagGroups = [];
+
+    $timeout(() => {
+      this.tagGroups = this.contextualMenuCtrl.params.tagGroups;
+    });
   }
 }
