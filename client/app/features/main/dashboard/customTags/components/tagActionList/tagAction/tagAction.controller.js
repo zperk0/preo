@@ -85,13 +85,10 @@ export default class tagActionController {
 
   onDelete(){
 
-    this.Spinner.show("custom-tag-delete");
-    
     this.DialogService.delete(this.LabelService.TITLE_DELETE_TAG_ACTION, this.LabelService.CONTENT_DELETE_TAG_ACTION)
       .then(()=>{
         this.contextual.hide();
         this.tagActionListCtrl.deleteTagAction(this.tagAction);
-        this.Spinner.hide("custom-tag-delete");
       });
   }  
 
@@ -110,10 +107,12 @@ export default class tagActionController {
 
   	this.type = 'tagAction';
 
-    if (this.tagAction && !this.tagAction.id) {
+    $timeout(() => {
+      if (this.tagAction && !this.tagAction.id) {
         this.contextual.showMenu(this.type, this.tagAction, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
           tagGroups: this.tagActionListCtrl.tagGroups
         });
-    }    
+      }
+    });
   }
 }
