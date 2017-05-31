@@ -11,15 +11,26 @@ export default class tagSelectController {
   }
 
   addToModel(tag) {
-    if (this.ngModel.indexOf(tag) == -1) {
+    if (!this.checkExists(tag, this.ngModel)) {
       this.ngModel.push(tag);
     }
   }
 
   addToCollection(tag) {
-    if (this.collection.indexOf(tag) == -1) {
+    if (!this.checkExists(tag, this.collection)) {
       this.collection.push(tag);
     }
+  }
+
+  checkExists(tag, array) {
+    let filter = array.filter(item => {
+      if (tag.id) {
+        return item.id == tag.id;
+      } else {
+        return item.name == tag.name;
+      }
+    });
+    return filter.length > 0 ? filter[0] : false;
   }
 
   transformChip(chip) {
@@ -27,7 +38,14 @@ export default class tagSelectController {
       return chip;
     }
 
-    return { name: chip };
+    let tag = { name: chip };
+
+    let existentTag = this.checkExists(tag, this.collection);
+    if (existentTag) {
+      tag = existentTag;
+    }
+
+    return tag;
   }
 
   querySearch(query) {
