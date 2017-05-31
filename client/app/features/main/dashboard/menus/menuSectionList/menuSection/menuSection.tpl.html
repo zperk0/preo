@@ -16,6 +16,7 @@
                           sv-on-external-sort="menuSectionCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin)">
                         <div sv-placeholder></div>
                       </div>
+                      <md-icon ng-show="menuSectionCtrl.showActionIcon()" class="action-icon">label</md-icon>
                       <span>{{menuSectionCtrl.section.id + "--" | debug}}{{menuSectionCtrl.section.name}}</span><icon class='arrow-icon' flex>{{menuSectionCtrl.section.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
                       <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
                         <div class='sv-dropzone sv-dropzone-modifier'
