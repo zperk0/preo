@@ -3,19 +3,19 @@ export default class tagSelectController {
     return "tagSelectController"
   }
 
-  querySearch(query) {
-    var results = query ? this.collection.filter(this.createFilterFor(query)) : [];
-    return results;
+  transformChip(chip) {
+    if (angular.isObject(chip)) {
+      return chip;
+    }
+
+    return { name: chip };
   }
 
-  createFilterFor(query) {
-    var lowercaseQuery = angular.lowercase(query);
-
-    return item => {
-      (item._lowername.indexOf(lowercaseQuery) === 0) ||
-      (item._lowertype.indexOf(lowercaseQuery) === 0);
-    };
-
+  querySearch(query) {
+    var results = query ? this.collection.filter(item => {
+      return item.name.toLowerCase().indexOf(query.toLowerCase()) > -1;
+    }) : [];
+    return results;
   }
 
   constructor() {
@@ -23,7 +23,7 @@ export default class tagSelectController {
 
     this.selectedItem = null;
     this.searchText = null;
-
-    console.info('collection', this.collection);
+    this.ngModel = this.ngModel || [];
+    this.separatorKeys = [13, 188];
   }
 }

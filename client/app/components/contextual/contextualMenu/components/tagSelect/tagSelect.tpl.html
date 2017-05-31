@@ -1,8 +1,13 @@
 <div class='tag-select'>
-  <md-chips ng-model="tagSelectCtrl.ngModel" md-autocomplete-snap>
+  <md-chips ng-model="tagSelectCtrl.ngModel" md-autocomplete-snap
+            md-require-match="false"
+            md-separator-keys="tagSelectCtrl.separatorKeys"
+            md-transform-chip="tagSelectCtrl.transformChip($chip)">
     <md-autocomplete md-selected-item="tagSelectCtrl.selectedItem" md-search-text="tagSelectCtrl.searchText" md-items="item in tagSelectCtrl.querySearch(tagSelectCtrl.searchText)"
       md-item-text="item.name" placeholder="Tags">
-      <span md-highlight-text="tagSelectCtrl.searchText">{{item.name}}</span>
+      <md-item-template>
+        <span md-highlight-text="tagSelectCtrl.searchText">test {{item.name}}</span>
+      </md-item-template>
     </md-autocomplete>
     <md-chip-template>
       <span>{{$chip.name}}</span>
