@@ -2,12 +2,18 @@
   <md-chips ng-model="tagSelectCtrl.ngModel" md-autocomplete-snap
             md-require-match="false"
             md-separator-keys="tagSelectCtrl.separatorKeys"
-            md-transform-chip="tagSelectCtrl.transformChip($chip)">
+            md-transform-chip="tagSelectCtrl.transformChip($chip)"
+            md-on-add="tagSelectCtrl.addToCollection($chip)">
     <md-autocomplete md-selected-item="tagSelectCtrl.selectedItem" md-search-text="tagSelectCtrl.searchText" md-items="item in tagSelectCtrl.querySearch(tagSelectCtrl.searchText)"
-      md-item-text="item.name" placeholder="Tags">
+                     md-item-text="item.name"
+                     md-no-cache="true"
+                     placeholder="Tags">
       <md-item-template>
-        <span md-highlight-text="tagSelectCtrl.searchText">test {{item.name}}</span>
+        <span md-highlight-text="tagSelectCtrl.searchText">{{item.name}}</span>
       </md-item-template>
+      <md-not-found>
+        <a class="create-tag-not-found" ng-click="tagSelectCtrl.newTag(tagSelectCtrl.searchText)">{{'Create tag' | translate}} "{{tagSelectCtrl.searchText}}"</a>
+      </md-not-found>
     </md-autocomplete>
     <md-chip-template>
       <span>{{$chip.name}}</span>

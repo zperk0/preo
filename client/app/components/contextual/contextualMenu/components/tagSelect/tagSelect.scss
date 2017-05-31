@@ -35,13 +35,10 @@
   }
 }
 
-md-autocomplete {
-  input {
-    &::-webkit-input-placeholder,
-    &:-moz-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder { 
-      color:red !important;
-    }
-  }
+.create-tag-not-found {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
