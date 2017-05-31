@@ -176,7 +176,9 @@
   onEdit($event){
     this.originalSection = angular.copy(this.section);
     this.cardItemList.selectItem(this.section);
-    this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+    this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
+      tags: this.menuSectionListCtrl.tags
+    });
     this.section.$expanded = false;
   }
   onDelete(){
@@ -298,7 +300,9 @@
     }
     //if it's a new section we toggle the context menu to edit this
     if (!this.section.id) {
-      this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+      this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
+        tags: this.menuSectionListCtrl.tags
+      });
     } else {
       this.buildItems();
 
