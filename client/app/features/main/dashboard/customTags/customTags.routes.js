@@ -17,62 +17,50 @@ export default function routes($stateProvider, Permissions) {
     requiresPermission:Permissions.MENUS,
     requiresFeature:Preoday.constants.Feature.ITEM_TAGS,
     resolve: {
-    	venueId: function ($q, $timeout, $state, VenueService) {
 
-    		if (VenueService.hasVenueSet()) {
-
-    			return $q.when(VenueService.currentVenue.id);
-    		} else {
-
-    			$timeout(() => {
-
-    				$state.go('main.dashboard');
-    			});
-
-    			return $q.reject();
-    		}
-    	},
-      tags:function($q, venueId, Spinner) {
+      // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
+      tags:function($q, $state, authenticated, VenueService, Spinner, ErrorService) {
         return $q((resolve, reject) => {
           Spinner.show('fetch-tags');
-          Preoday.CustomTag.getByVenueId(venueId)
+          Preoday.CustomTag.getByVenueId(VenueService.currentVenue.id)
           .then(tags => {
             resolve(tags);
-            Spinner.hide('fetch-tags');
             console.log('got tags', tags);
           }, error => {
             reject(error);
             Spinner.hide('fetch-tags');
+            $state.go('main.dashboard');
+            ErrorService.showRetry(ErrorService.FAILED_LOADING_TAGS);
             console.log('error', error);
           });
         });
       },
-      tagGroups:function($q, venueId, Spinner) {
+      tagGroups:function($q, $state, authenticated, VenueService, Spinner, ErrorService) {
         return $q((resolve, reject) => {
-          Spinner.show('fetch-tag-groups');
-          Preoday.CustomTagGroup.getByVenueId(venueId)
+          Preoday.CustomTagGroup.getByVenueId(VenueService.currentVenue.id)
           .then(tagGroups => {
             resolve(tagGroups);
-            Spinner.hide('fetch-tag-groups');
             console.log('got tag groups', tagGroups);
           }, error => {
             reject(error);
-            Spinner.hide('fetch-tag-groups');
+            Spinner.hide('fetch-tags');
+            $state.go('main.dashboard');
+            ErrorService.showRetry(ErrorService.FAILED_LOADING_TAGS);
             console.log('error', error);
           });
         });
       },
-      tagActions:function($q, venueId, Spinner) {
+      tagActions:function($q, $state, authenticated, VenueService, Spinner, ErrorService) {
         return $q((resolve, reject) => {
-          Spinner.show('fetch-tag-actions');
-          Preoday.CustomTagAction.getByVenueId(venueId)
+          Preoday.CustomTagAction.getByVenueId(VenueService.currentVenue.id)
           .then(tagActions => {
             resolve(tagActions);
-            Spinner.hide('fetch-tag-actions');
             console.log('got tag actions', tagActions);
           }, error => {
             reject(error);
-            Spinner.hide('fetch-tag-actions');
+            Spinner.hide('fetch-tags');
+            $state.go('main.dashboard');
+            ErrorService.showRetry(ErrorService.FAILED_LOADING_TAGS);
             console.log('error', error);
           });
         });

@@ -90,5 +90,8 @@ export default class ErrorService {
     
     // EXPIRED SESSION
     this.EXPIRED_SESSION = {code:'EXPIRED_SESSION', message:gettextCatalog.getString("Your session has expired. Please login again."), title:gettextCatalog.getString('Timeout')};
+
+    // CUSTOM TAGS
+    this.FAILED_LOADING_TAGS = {code: 'FAILED_LOADING_TAGS', message:gettextCatalog.getString('An unexpected error occurred loading tags, please try again.')};
   }
 }
