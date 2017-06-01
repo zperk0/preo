@@ -456,5 +456,48 @@ describe('menuSection Controller', function () {
 
     });
 
+    it("Should show tag action icon", function() {
 
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockSection();
+      _startController();
+
+      let mockTagAction = new Preoday.CustomTagAction({
+        id: 1,
+        name: 'Tag Action'
+      });
+
+      mockSection.id = null;
+      mockSection.tagActions = [mockTagAction];
+
+      MenuSectionCtrl.instance.section = mockSection;
+      MenuSectionCtrl = MenuSectionCtrl();
+
+      $timeout.flush();
+
+      expect(MenuSectionCtrl.showActionIcon()).toBe(true);
+    });
+
+    it("Shouldn't show tag action icon", function() {
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockSection();
+      _startController();
+
+      mockSection.id = null;
+      mockSection.tagActions = [];
+
+      MenuSectionCtrl.instance.section = mockSection;
+      MenuSectionCtrl = MenuSectionCtrl();
+
+      $timeout.flush();
+
+      expect(MenuSectionCtrl.showActionIcon()).toBe(false);
+    });
 });

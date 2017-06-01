@@ -272,7 +272,7 @@
   }
 
   showActionIcon() {
-    return this.section.tagActions && this.section.tagActions.length;
+    return this.section.tagActions && !!this.section.tagActions.length;
   }
 
   constructor($scope, $rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService, ErrorService, gettextCatalog) {

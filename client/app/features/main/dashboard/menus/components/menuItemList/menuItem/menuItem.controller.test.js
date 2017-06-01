@@ -1050,10 +1050,9 @@ describe('menuItem Controller', function () {
 
     expect(MenuItemCtrl.section).toBeUndefined();
     expect(MenuItemCtrl.sectionId).toBeUndefined();
-    expect(MenuItemCtrl.showActionIcon()).toBe(true);
   });
 
-  it("Should show tag action icon", function() {
+  it("Shouldn't show tag action icon", function() {
 
     let venueId = 5;
 
