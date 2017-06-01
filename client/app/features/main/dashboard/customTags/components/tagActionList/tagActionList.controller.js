@@ -62,5 +62,7 @@ export default class tagActionListController {
     this.$q = $q;
     this.$timeout = $timeout;
     this.LabelService = LabelService;
+
+    this.tagActions = this.tagActions || [];
   }
 }
