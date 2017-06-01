@@ -391,7 +391,7 @@ export default class menuItemController {
   }
 
   showActionIcon () {
-    return this.item.tagActions && this.item.tagActions.length;
+    return this.item.tagActions && !!this.item.tagActions.length;
   }
 
   constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService, ErrorService, gettextCatalog) {

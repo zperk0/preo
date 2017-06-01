@@ -1025,4 +1025,53 @@ describe('menuItem Controller', function () {
     expect(MenuItemCtrl.section.hasFromPrice()).toBeUndefined();
     expect(MenuItemCtrl.getFromPrice()).toEqual(MenuItemCtrl.item.getFromPrice());
   });
+
+  it("Should show tag action icon", function() {
+
+    let venueId = 5;
+
+    $stateParams.venueId = venueId;
+
+    _mockItem();
+    _startController();
+
+    let mockTagAction = new Preoday.CustomTagAction({
+      id: 1,
+      name: 'Tag Action'
+    });
+
+    mockItem.id = null;
+    mockItem.tagActions = [mockTagAction];
+
+    MenuItemCtrl.instance.item = mockItem;
+    MenuItemCtrl = MenuItemCtrl();
+
+    $timeout.flush();
+
+    expect(MenuItemCtrl.section).toBeUndefined();
+    expect(MenuItemCtrl.sectionId).toBeUndefined();
+    expect(MenuItemCtrl.showActionIcon()).toBe(true);
+  });
+
+  it("Should show tag action icon", function() {
+
+    let venueId = 5;
+
+    $stateParams.venueId = venueId;
+
+    _mockItem();
+    _startController();
+
+    mockItem.id = null;
+    mockItem.tagActions = [];
+
+    MenuItemCtrl.instance.item = mockItem;
+    MenuItemCtrl = MenuItemCtrl();
+
+    $timeout.flush();
+
+    expect(MenuItemCtrl.section).toBeUndefined();
+    expect(MenuItemCtrl.sectionId).toBeUndefined();
+    expect(MenuItemCtrl.showActionIcon()).toBe(false);
+  });
 });
