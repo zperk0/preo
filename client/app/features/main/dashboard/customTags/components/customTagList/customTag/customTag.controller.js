@@ -93,24 +93,10 @@ export default class customTagController {
   }    
 
   onDelete(){
-
-    this.Spinner.show("custom-tag-delete");
-    
-    this.customTag.canDelete()
-      .then(canDelete => {
-        this.DialogService.delete(canDelete ? this.LabelService.TITLE_DELETE_TAG : this.LabelService.TITLE_DELETE_TAG_IN_USE, 
-                                  canDelete ? this.LabelService.CONTENT_DELETE_TAG : this.LabelService.CONTENT_DELETE_TAG_IN_USE)
-          .then(()=>{
-            this.contextual.hide();
-            this.customTagListCtrl.deleteCustomTag(this.customTag);
-          });
-        this.Spinner.hide("custom-tag-delete");
-      }, err => {
-        console.log('error fetching tag /candelete', err);
-        this.Spinner.hide("custom-tag-delete");
-      });
-  }  
-
+    this.contextual.hide();
+    this.customTagListCtrl.deleteCustomTag(this.customTag);
+  }
+  
   constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService) {
   	"ngInject";
 

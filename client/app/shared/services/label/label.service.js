@@ -145,5 +145,6 @@ export default class LabelService {
     this.SNACK_TAG_ACTION_UPDATED_ERROR = gettextCatalog.getString('Error updating tag action');
     
     this.SNACK_TAG_ACTION_DELETED = gettextCatalog.getString('Tag action deleted');
+    this.SNACK_TAG_ACTION_DELETED_ERROR = gettextCatalog.getString('An error ocurred to delete the tag. Try again later.');
   }
 }
