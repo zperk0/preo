@@ -88,7 +88,7 @@ export default class menuItemController {
     this.cardItemList.selectItem(this.item);
     this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
       onDeleteImage: this.onDeleteImage.bind(this),
-      tags: this.tags
+      tags: this.tags || []
     });
   }
 
@@ -439,7 +439,7 @@ export default class menuItemController {
 
         this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
           onDeleteImage: this.onDeleteImage.bind(this),
-          tags: this.tags
+          tags: this.tags || []
         });
       })
     } else {

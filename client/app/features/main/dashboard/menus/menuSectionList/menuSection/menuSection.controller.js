@@ -177,7 +177,7 @@
     this.originalSection = angular.copy(this.section);
     this.cardItemList.selectItem(this.section);
     this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
-      tags: this.menuSectionListCtrl.tags
+      tags: this.menuSectionListCtrl && this.menuSectionListCtrl.tags ? this.menuSectionListCtrl.tags : []
     });
     this.section.$expanded = false;
   }
@@ -303,16 +303,17 @@
       })
     }
     //if it's a new section we toggle the context menu to edit this
-    $timeout(() => {
-      if (!this.section.id) {
-        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
-          tags: this.menuSectionListCtrl.tags
-        });
-      } else {
-        this.buildItems();
+    if (!this.section.id) {
 
-        $scope.$on(BroadcastEvents.ON_ITEM_UPDATED, this.checkUpdatedItem.bind(this));
-      }
-    });
+      $timeout(() => {
+        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
+          tags: this.menuSectionListCtrl && this.menuSectionListCtrl.tags ? this.menuSectionListCtrl.tags : []
+        });
+      });
+    } else {
+      this.buildItems();
+
+      $scope.$on(BroadcastEvents.ON_ITEM_UPDATED, this.checkUpdatedItem.bind(this));
+    }
   }
 }

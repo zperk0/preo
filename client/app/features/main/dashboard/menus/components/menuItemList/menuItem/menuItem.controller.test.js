@@ -125,7 +125,8 @@ describe('menuItem Controller', function () {
       expect(MenuItemCtrl.type).toEqual('menuItem');
 
       expect(contextual.showMenu).toHaveBeenCalledWith(MenuItemCtrl.type, mockItem, jasmine.any(Function), jasmine.any(Function), {
-        onDeleteImage: jasmine.any(Function)
+        onDeleteImage: jasmine.any(Function),
+        tags: jasmine.any(Array)
       });
       expect(MenuItemCtrl.section).toBeUndefined();
       expect(MenuItemCtrl.sectionId).toBeUndefined();

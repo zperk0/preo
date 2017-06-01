@@ -76,6 +76,7 @@ describe('menuSection Controller', function () {
 
       MenuSectionListCtrl = $controller('menuSectionListController', {
         '$scope': $scope,
+        'tags': []
       }, true);
     }
 
@@ -107,6 +108,8 @@ describe('menuSection Controller', function () {
       MenuSectionCtrl.instance.section = mockSection;
       MenuSectionCtrl = MenuSectionCtrl();
 
+      $timeout.flush();
+
       expect(MenuSectionCtrl.buildItems).toEqual(jasmine.any(Function));
       expect(MenuSectionCtrl.handleSuccess).toEqual(jasmine.any(Function));
       expect(MenuSectionCtrl.handleCancel).toEqual(jasmine.any(Function));
@@ -122,7 +125,9 @@ describe('menuSection Controller', function () {
       expect(MenuSectionCtrl.type).toEqual('menuSection');
       expect(MenuSectionCtrl.menuItemType).toEqual('menuItem');
 
-      expect(contextual.showMenu).toHaveBeenCalledWith(MenuSectionCtrl.type, mockSection, jasmine.any(Function), jasmine.any(Function));
+      expect(contextual.showMenu).toHaveBeenCalledWith(MenuSectionCtrl.type, mockSection, jasmine.any(Function), jasmine.any(Function), {
+        tags: jasmine.any(Array)
+      });
     });
 
     it("Should create a section", function(done) {

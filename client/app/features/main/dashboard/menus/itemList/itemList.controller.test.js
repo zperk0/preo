@@ -38,7 +38,8 @@ describe('itemList Controller', function () {
     function _startController() {
 
       ItemListCtrl = $controller('itemListController', {
-        '$scope': $scope
+        '$scope': $scope,
+        'tags': []
       }, true);
     }
 
