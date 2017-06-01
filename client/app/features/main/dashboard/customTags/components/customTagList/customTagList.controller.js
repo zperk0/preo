@@ -118,5 +118,7 @@ export default class customTagListController {
     this.$timeout = $timeout;
     this.LabelService = LabelService;
     this.DialogService = DialogService;
+
+    this.customTags = this.customTags || [];
   }
 }
