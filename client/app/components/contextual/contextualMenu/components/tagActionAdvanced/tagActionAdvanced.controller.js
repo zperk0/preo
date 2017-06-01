@@ -7,5 +7,7 @@ export default class tagActionAdvancedController {
   constructor() {
     'ngInject';
 
+    this.tagAction.$activateLink = this.tagAction.buttonLabel || this.tagAction.externalUrl;
+
   }
 }
