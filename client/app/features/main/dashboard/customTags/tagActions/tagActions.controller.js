@@ -4,9 +4,10 @@ export default class tagActionsController {
   }
 
   /* @ngInject */
-  constructor(tagActions, tagGroups) {
+  constructor(Spinner, tagActions, tagGroups) {
     'ngInject';
 
+    Spinner.hide('fetch-tags');
     this.tagActions = tagActions;
     this.tagGroups = tagGroups;
   }

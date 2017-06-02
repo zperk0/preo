@@ -4,9 +4,8 @@ export default class customTagsController {
     return "customTagsController";
   }
 
-  constructor(Spinner) {
+  constructor() {
     "ngInject";
 
-    Spinner.hide('fetch-tags');
   }
 }
