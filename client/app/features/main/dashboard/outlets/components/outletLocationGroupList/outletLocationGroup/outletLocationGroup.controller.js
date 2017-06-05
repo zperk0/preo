@@ -111,6 +111,13 @@ console.log('checking expanded', this.outletLocationGroup);
   	}
   }
 
+  getDefaultGroupLabel () {
+
+    return this.outletLocationGroup.isCustomField()
+      ? this.gettextCatalog.getString('Additional info')
+      : this.gettextCatalog.getString('Group label');
+  }
+
   constructor($scope, $state, $stateParams, $timeout, Snack, Spinner, DialogService, LabelService, contextual, contextualMenu, gettextCatalog) {
     "ngInject";
     this.contextualMenu = contextualMenu;

@@ -64,6 +64,7 @@ export default class outletLocationListController {
       parent: this.outletLocationGroup.id,
       label: this.outletLocationGroup.label,
       path: this.outletLocationGroup.path,
+      isCustomField: this.outletLocationGroup.isCustomField() ? 1 : 0,
       $selected:true,
     });
   }
@@ -73,11 +74,21 @@ export default class outletLocationListController {
     this.Spinner.show("outlet-location-delete");
     outletLocation.delete()
       .then(()=>{
-        this.Snack.show(this.gettextCatalog.getString('Outlet location deleted'));
+
+        if (outletLocation.isCustom()) {
+          this.Snack.show(this.gettextCatalog.getString('Custom field deleted'));
+        } else {
+          this.Snack.show(this.gettextCatalog.getString('Outlet location deleted'));
+        }
+
         this.Spinner.hide("outlet-location-delete");
       }).catch((err) => {
 
-        this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this outlet, please contact the support team'));
+        if (outletLocation.isCustom()) {
+          this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this custom field, please contact the support team'));
+        } else {
+          this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this outlet, please contact the support team'));
+        }
 
         this.Spinner.hide("outlet-location-delete");
       })
@@ -90,6 +101,13 @@ export default class outletLocationListController {
   getNewOutletLocationPosition () {
 
     return Math.max.apply(Math, this.outletLocations.map(function(o){return o.position || 0;})) + 1000;
+  }
+
+  getOutletLocationTootip () {
+
+    return this.outletLocationGroup.isCustomField()
+          ? this.gettextCatalog.getString('Add new custom field')
+          : this.gettextCatalog.getString('Add new outlet location');
   }
 
   /* @ngInject */
