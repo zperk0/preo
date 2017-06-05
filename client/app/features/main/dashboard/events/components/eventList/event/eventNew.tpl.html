@@ -1,0 +1,19 @@
+<div class='event menu-card-new'>
+  <md-card class='card-item card-item-new'>
+    <md-card-actions>
+    <md-menu>
+      <md-button class="md-fab md-mini md-primary" aria-label="{{'Add menu' | translate}}" ng-click="handleClick($event, $mdOpenMenu)">
+        <icon>add</icon>
+        <md-tooltip md-direction="top">
+          {{ 'Add new event' | translate }}
+        </md-tooltip>
+      </md-button>
+       <md-menu-content>
+        <md-menu-item ng-repeat="menu in menuEventTypes">
+          <md-button ng-click="onClick({$event:$event, type: menu.type})" > <span>{{ menu.name }}</span></md-button>
+        </md-menu-item>
+       </md-menu-content>
+    </md-menu>
+    </md-card-actions>
+  </md-card>
+</div>

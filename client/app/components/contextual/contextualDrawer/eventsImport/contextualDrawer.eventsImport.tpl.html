@@ -1,0 +1,53 @@
+ <div class="sidenav-wrapper" ng-show="drawerEventsImportCtrl.data && drawerEventsImportCtrl.data.length > 0">
+    <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-outlets md-whiteframe-4dp" md-component-id="eventsImport">
+        <div class='contextual-list'>
+
+        <div class='sv-root-holder' sv-root="event">
+        <div class="input-text">
+        <form layout="row" layout-align="start center" novalidate ng-submit="drawerEventsImportCtrl.done()" name="drawerEventsImportCtrl.nameForm">
+        <md-input-container md-no-float flex class="no-spacer">
+              <label>{{'Event name' | translate }}</label>
+              <input type="text" name="inputName" autofocus required ng-model="drawerEventsImportCtrl.inputName">
+              <div ng-messages="drawerEventsImportCtrl.nameForm.inputName.$error">
+                <div ng-message="required"> {{'This is required.' | translate}}</div>
+              </div>
+        </md-input-container>
+        
+        </div>
+        <card-item-list
+            
+            collection="drawerEventsImportCtrl.data">          
+          <div class='sort-holder'
+            sv-part="::drawerEventsImportCtrl.data"
+            sv-part-origin="::drawerEventsImportCtrl"
+            
+            sv-keep-in-list='true'
+            sv-is-dropzone='false'>
+            <card-item  
+            has-actions="drawerEventsImportCtrl.hasActions"    
+            ng-repeat="event in drawerEventsImportCtrl.data | orderBy: id track by $index"          
+            selected="event.$selected"              
+            ng-click="drawerEventsImportCtrl.selectEvent(event)"
+            sv-element="event">
+              <card-item-title has-visible="true">      
+                <span>{{event.name}} </span>                      
+              </card-item-title>
+            </card-item>        
+            <div sv-placeholder></div>
+            </div>
+        </card-item-list>
+        </div>           
+
+        </div>
+        <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="drawerEventsImportCtrl.close()" class='md-primary'>
+            {{'Cancel' | translate }}
+        </md-button>
+        <md-button type="submit" ng-disabled="drawerEventsImportCtrl.selectedEvents.length <= 0" class='md-raised'>
+           {{ 'Import' | translate}}
+        </md-button>
+        </md-card-actions>
+        </form>
+    </md-sidenav>
+</div>
+        

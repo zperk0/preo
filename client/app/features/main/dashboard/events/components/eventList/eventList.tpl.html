@@ -2,9 +2,9 @@
   <div class='sv-root-holder'>
 
     <card-item-list
-        has-new="eventListCtrl.hasNew"
+        
         tooltip="{{ 'Add new event' | translate }}"
-        on-click-new="eventListCtrl.showCreateEvent()"
+        
         collection="eventListCtrl.events">
       <div class='sort-holder'>
         <event
@@ -15,5 +15,7 @@
         <div sv-placeholder></div>
       </div>
     </card-item-list>
+
+    <event-new on-click="eventListCtrl.onMenuOptionClick($event, type)"> </event-new>
   </div>
 </div>

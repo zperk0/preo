@@ -131,6 +131,17 @@
    margin: 0px 22px 8px;
   }
 
+  .input-text{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+
+    md-input-container{
+      margin-bottom: 0;
+      width: 100%;
+    }
+  }
+
   .outlet-list {
     padding: 0 22px;
   }

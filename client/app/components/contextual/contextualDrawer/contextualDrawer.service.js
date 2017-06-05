@@ -56,9 +56,9 @@ export default class contextualDrawerService {
     this.$mdSidenav(id)
       .toggle()
       .then(function (argument) {
-
+        this.$rootScope.$broadcast('mdSideNavisOpen', {id: this.id});
         console.log(arguments);
-      });
+      }.bind(this));
 
     this.watchEspaceKey();
 

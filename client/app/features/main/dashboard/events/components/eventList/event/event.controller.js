@@ -30,7 +30,7 @@ export default class eventController {
     this.contextualMenu.close();
   }
 
-  contextualMenuCancel() {
+  contextualMenuCancel() {console.log('cancelll menu ->>>');
 
     this.restoreOriginalValues();
     this.event.$selected = false;

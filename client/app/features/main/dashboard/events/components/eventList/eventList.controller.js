@@ -15,6 +15,74 @@ export default class eventListController {
       });
   }
 
+  onMenuOptionClick($event, type){
+    if(type === 'NEW')
+      return this.showCreateEvent();
+    else if(type === 'IMPORT'){
+      
+   //   this.$timeout(() => {console.log('timeout -....');
+     
+      this.contextual.showDrawer('eventsImport')
+        .then((eventsImported) => {
+
+          this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));
+
+          eventsImported.forEach((ev) => {
+            let event = new Preoday.Event({
+              venueId: 1,//ev.venueId,
+              visible: 1,
+              $images: [],//ev.images,
+              schedules: [],//ev.schedules,
+              name: ev.name,
+              id: ev.id,
+              $selected: false,
+            });
+
+            this.events.push(event);  
+          });
+          // this.event.$selected = false;
+                  
+
+          console.log('outletLocation selected', eventsImported);
+        }, () => {
+
+         // this.event.$selected = false;
+          console.log('Drawer Event Import cancelled');
+        })
+      .catch((err) => {
+        console.log('Error importing events -', err);
+        this.Snack.showError(this.gettextCatalog.getString("An error occurred while importing events. Please try again."));
+      });
+     // });
+    }
+
+  }
+
+  showMenuOptions($event, $mdOpenMenu){
+
+    
+    if(!this.hasTMFeature){
+      return this.showCreateEvent();
+    }
+    else{
+
+      let options = [
+        {
+          name: gettextCatalog.getString('Create new event'),
+          type: 'NEW'
+        },
+        {
+          name: gettextCatalog.getString('Import Ticket Master event'),
+          type: 'IMPORT'
+        }
+      ];
+
+      this.menuOptions = options;
+
+      $mdOpenMenu();
+    }
+  }
+
   showCreateEvent(){
 
     if (!this.CollectionSlotsService.hasSlots()) {
@@ -61,16 +129,21 @@ export default class eventListController {
   }
 
   /* @ngInject */
-  constructor(VenueService, EventService, CollectionSlotsService, DialogService, ErrorService, gettextCatalog, $q, $state) {
+  constructor(VenueService, $scope, $timeout, EventService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
   	'ngInject';
-
-    this.VenueService = VenueService;
+    this.contextual = contextual;
+    this.Snack = Snack;
+    this.$scope = $scope;
+    this.VenueService = VenueService;   
     this.EventService = EventService;
     this.CollectionSlotsService = CollectionSlotsService;
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
     this.$q = $q;
-    this.$state = $state;
+    this.$state = $state; 
+    this.$timeout = $timeout;
+
+    this.hasTMFeature = FeatureService.hasTicketMasterEventFeature();
   }
 }
