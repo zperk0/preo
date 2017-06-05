@@ -43,6 +43,12 @@ export default class LabelService {
     this.TITLE_DELETE_OUTLET_LOCATION = gettextCatalog.getString("Delete outlet location?");
     this.CONTENT_DELETE_OUTLET_LOCATION = gettextCatalog.getString("Are you sure you want to delete this outlet location?");
 
+    this.TITLE_DELETE_CUSTOM_FIELD = gettextCatalog.getString("Delete custom field?");
+    this.CONTENT_DELETE_CUSTOM_FIELD = gettextCatalog.getString("Are you sure you want to delete this custom field?");
+
+    this.TITLE_DELETE_OUTLET_CUSTOM_FIELD = gettextCatalog.getString("This outlet location has custom fields");
+    this.CONTENT_DELETE_OUTLET_CUSTOM_FIELD = gettextCatalog.getString("Deleting this outlet will also delete the custom fields at checkout. Are you sure?");
+
     this.TITLE_DELETE_OUTLET_LOCATION_GROUP = gettextCatalog.getString("Delete group?");
     this.CONTENT_DELETE_OUTLET_LOCATION_GROUP = gettextCatalog.getString("This will delete the configuration of all sub-groups. Are you sure?");
 

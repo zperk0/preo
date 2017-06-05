@@ -7,13 +7,13 @@ export default class outletLocationController {
 
     if ($outlets && $outlets.length) {
 
-      if (this.outletLocation.outletId) {
-        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_ALREADY_OUTLET.message);
+      if (!this.outletLocation.isSeat() && this.outletLocation.hasChildren() && !this.outletLocation.hasCustomChildren()) {
+        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_LAST_CHILD.message);
         return;
       }
 
-      if (!this.outletLocation.isSeat() && this.outletLocation.hasChildren()) {
-        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_LAST_CHILD.message);
+      if (this.outletLocation.outletId) {
+        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_ALREADY_OUTLET.message);
         return;
       }
 
@@ -66,10 +66,21 @@ export default class outletLocationController {
 
             this.outletLocation.$selected = false;
             this.contextualMenu.hide();
-            this.Snack.show(this.gettextCatalog.getString('Outlet location created'));
+
+            if (this.outletLocation.isCustom()) {
+              this.Snack.show(this.gettextCatalog.getString('Custom field created'));
+            } else {
+              this.Snack.show(this.gettextCatalog.getString('Outlet location created'));
+            }
           }, (err)=>{
             console.log('error on save outlet location', err);
-            this.Snack.showError(this.gettextCatalog.getString('Error saving outlet location'));
+
+            if (this.outletLocation.isCustom()) {
+              this.Snack.showError(this.gettextCatalog.getString('Error saving custom field'));
+            } else {
+              this.Snack.showError(this.gettextCatalog.getString('Error saving outlet location'));
+            }
+
           })
 
       } else {
@@ -86,11 +97,21 @@ export default class outletLocationController {
     return this.$q((resolve, reject)=>{
       this.outletLocation.update()
         .then((o)=>{
-          this.Snack.show(this.gettextCatalog.getString('Outlet location updated'));
+
+          if (this.outletLocation.isCustom()) {
+            this.Snack.show(this.gettextCatalog.getString('Custom field updated'));
+          } else {
+            this.Snack.show(this.gettextCatalog.getString('Outlet location updated'));
+          }
           resolve(o);
       },()=>{
         reject();
-        this.Snack.showError(this.gettextCatalog.getString('Error saving outlet location'));
+
+        if (this.outletLocation.isCustom()) {
+          this.Snack.showError(this.gettextCatalog.getString('Error updating custom field'));
+        } else {
+          this.Snack.showError(this.gettextCatalog.getString('Error updating outlet location'));
+        }
       }).then(()=>{
         this.Spinner.hide("outlet-location-update");
       })
@@ -124,6 +145,19 @@ export default class outletLocationController {
     $event.stopPropagation();
   }
 
+  onAddCustomField ($event) {
+
+    if (!this.outletLocation.outletId
+        || this.outletLocation.hasCustomChildren()) {
+
+      return;
+    }
+
+    this.outletLocationGroupCtrl.changeGroup(this.outletLocation.createGroup(true));
+
+    $event.stopPropagation();
+  }
+
   onClone($event){
 
     this.Spinner.show("outlet-location-clone")
@@ -147,7 +181,15 @@ export default class outletLocationController {
 
   onDelete(){
 
-    this.DialogService.delete(this.LabelService.TITLE_DELETE_OUTLET_LOCATION, this.LabelService.CONTENT_DELETE_OUTLET_LOCATION)
+    let title = this.LabelService.TITLE_DELETE_OUTLET_LOCATION;
+    let message = this.LabelService.CONTENT_DELETE_OUTLET_LOCATION;
+
+    if (this.outletLocation.isCustom()) {
+      title = this.LabelService.TITLE_DELETE_CUSTOM_FIELD;
+      message = this.LabelService.CONTENT_DELETE_CUSTOM_FIELD;
+    }
+
+    this.DialogService.delete(title, message)
       .then(()=>{
         this.contextual.hide();
         this.outletLocationListCtrl.deleteOutletLocation(this.outletLocation);
@@ -161,18 +203,68 @@ export default class outletLocationController {
 
   removeOutlet () {
 
-    this.Spinner.show("outlet-location-remove-outlet")
+    if (this.outletLocation.hasCustomChildren()) {
+
+      this.DialogService.delete(this.LabelService.TITLE_DELETE_OUTLET_CUSTOM_FIELD, this.LabelService.CONTENT_DELETE_OUTLET_CUSTOM_FIELD)
+        .then(()=>{
+
+          this.deleteOutletAndCustomFields();
+        });
+    } else {
+
+      this.Spinner.show("outlet-location-remove-outlet");
+      this.deleteOutlet()
+        .then(() => {
+
+          this.Spinner.hide("outlet-location-remove-outlet");
+        }, () => {
+
+          this.Spinner.hide("outlet-location-remove-outlet");
+          this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
+        });
+    }
+
+  }
+
+  deleteOutletAndCustomFields () {
+
+    this.Spinner.show("outlet-location-remove-outlet-custom-fields");
+
+    this.outletLocation.deleteCustomFields()
+      .then(() => {
+
+        this.deleteOutlet()
+          .then(() => {
+
+            this.Spinner.hide("outlet-location-remove-outlet-custom-fields");
+          }, () => {
+            this.Spinner.hide("outlet-location-remove-outlet-custom-fields");
+            this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
+          });
+      }, () => {
+
+        this.Spinner.hide("outlet-location-remove-outlet-custom-fields");
+        this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
+      });
+  }
+
+  deleteOutlet () {
+
+    let deferred = this.$q.defer();
 
     this.outletLocation.outletId = null;
     this.outletLocation.update()
       .then(()=>{
+
         this.outlets = [];
-        this.Spinner.hide("outlet-location-remove-outlet")
+        deferred.resolve();
       }, (err)=>{
-        this.Spinner.hide("outlet-location-remove-outlet")
-        this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
+
         console.log(err);
+        deferred.reject();
     });
+
+    return deferred.promise;
   }
 
   onMove () {
@@ -245,7 +337,21 @@ export default class outletLocationController {
     return this.gettextCatalog.getString('Add sub group');
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, gettextCatalog, OutletLocationService, OutletService) {
+  getAddCustomFieldMessage () {
+
+    if (this.outletLocation.hasCustomChildren()) {
+      return this.ErrorService.OUTLET_LOCATION_CUSTOM_FIELD_CHILDREN.message;
+    }
+
+    return this.gettextCatalog.getString('Add custom fields at checkout');
+  }
+
+  hasCustomOutletLocationFieldsFeature () {
+
+    return this.FeatureService.hasCustomOutletLocationFieldsFeature();
+  }
+
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, gettextCatalog, OutletLocationService, OutletService, FeatureService) {
     "ngInject";
 
     this.$q =$q;
@@ -260,8 +366,13 @@ export default class outletLocationController {
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.gettextCatalog = gettextCatalog;
+    this.FeatureService = FeatureService;
     this.type = 'outletLocation'; //type for contextual menu
     this.outlets = [];
+
+    if (this.outletLocation && this.outletLocation.isCustom() && this.hasCustomOutletLocationFieldsFeature()) {
+      this.type = 'customField';
+    }
 
     this.newModifiers = [];
 
