@@ -1,0 +1,60 @@
+<div class='customers-analytics-view layout-left-right' flex layout="column" layout-align="stretch stretch">
+  <div flex layout="column" layout-align="start start">
+
+    <div class="customers-filters">
+    <custom-datafilters has-daterange="true"
+      has-report="true"
+      report-types="analyticsCustomersCtrl.reportTypes"
+      on-filter="analyticsCustomersCtrl.onFilter(filters, typeChanged)"
+      initial-values="analyticsCustomersCtrl.dataFilters">
+    </custom-datafilters>
+    </div>
+
+    <div class="customers-table" layout="row" ng-if="analyticsCustomersCtrl.shouldShowdatatable">
+    <md-card flex layout-fill>
+      <md-card-title>
+        <md-card-title-text layout="row" layout-align="space-between start">
+          <h2 class="md-title"> {{analyticsCustomersCtrl.reportTitle}}</h2>
+          <form action={{analyticsCustomersCtrl.exportDataUrl}} method='POST' ng-submit='analyticsCustomersCtrl.getExportData()'>
+            <input name='data' value='{{analyticsCustomersCtrl.exportData}}' type='hidden'/>
+              <div class="align-action-top" ng-if="analyticsCustomersCtrl.shouldShowActions">
+                <dropdown-actions actions-list="analyticsCustomersCtrl.actions" on-actions="analyticsCustomersCtrl.onActions(item)"> </dropdown-actions>
+              </div>
+              <button id="postData" class="btn-form-analytics" ng-click=""></button>
+          </form>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-table-container>
+        <table md-table md-row-select multiple ng-model="analyticsCustomersCtrl.linesSelected">
+          <thead md-head md-order="analyticsCustomersCtrl.query.order">
+           <tr md-row>
+            <th md-column ng-repeat="col in analyticsCustomersCtrl.tableData.header" md-order-by="{{col.key}}" ng-click="analyticsCustomersCtrl.onReorder(col.key)" ng-if="!col.isHidden">
+              <span>{{col.text}}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody md-body layout-wrap>
+           <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsCustomersCtrl.tableData.body | marketingFilter:analyticsCustomersCtrl.fieldToFilter:analyticsCustomersCtrl.filterCustomerMarketing track by $index">
+             <td md-cell ng-repeat="col in row track by $index" ng-switch="col.fieldType" ng-if="!col.isHidden">
+              <span ng-switch-default>{{col.displayValue}}</span>
+              <span ng-switch-when="icon">
+                <svg ng-if="col.value === true" fill="#1c9c18" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                </svg>
+                <svg ng-if="col.value === false" fill="#e02c00" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+      </md-table-container>
+    </md-card>
+    </div>
+
+  </div>
+</div>
