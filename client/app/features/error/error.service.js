@@ -91,5 +91,7 @@ export default class ErrorService {
 
     // EXPIRED SESSION
     this.EXPIRED_SESSION = {code:'EXPIRED_SESSION', message:gettextCatalog.getString("Your session has expired. Please login again."), title:gettextCatalog.getString('Timeout')};
+
+    this.FULL_CLIENT = {code:'FULL_CLIENT', message:gettextCatalog.getString("This feature is only available for full clients. Please contact our sales team using the chat widget at the bottom of the page to activate it."), title:gettextCatalog.getString("Full client")}
   }
 }
