@@ -199,11 +199,12 @@ export default class analyticsSummaryController {
     }
   }
 
-  constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes) {
+  constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
     this.ReportsService = ReportsService;
+    this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;
 
     this.dataFilters = {
       venues: null,
