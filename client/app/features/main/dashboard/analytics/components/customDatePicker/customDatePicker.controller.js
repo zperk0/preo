@@ -27,9 +27,9 @@ export default class customDatePickerController {
 
     if(dateInputed == null || !dateInputed.isValid()){
       if(dateInput.id === 'fromDate'){
-        elem.value = this.calendarDateFrom.format('L');// this.calendarDateFrom.format('DD/MM/YYYY');
+        elem.value = this.calendarDateFrom.format('L');
       }else if(dateInput.id === 'endDate'){
-        elem.value = this.calendarDateEnd.format('L'); //this.calendarDateEnd.format('DD/MM/YYYY');
+        elem.value = this.calendarDateEnd.format('L');
       }
     }
 
@@ -121,7 +121,7 @@ export default class customDatePickerController {
       this.calendarDateFrom = (startDate);
     }
     else{
-      this.inputDateFrom = startDate.format('L'); //startDate.format('DD/MM/YYYY');
+      this.inputDateFrom = startDate.format('L');
       this.calendarDateFrom = startDate;
     }
 
@@ -132,33 +132,50 @@ export default class customDatePickerController {
     }
     else{
       this.calendarDateEnd = endDate;
-      this.inputDateEnd = endDate.format('L');// endDate.format('DD/MM/YYYY');
+      this.inputDateEnd = endDate.format('L');
     }
 
     var startCallback = function(day){
-      this.inputDateFrom= day.format('L');// day.format('DD/MM/YYYY');
-      this.datesRange.startDate = day.format('L'); //day.format('DD/MM/YYYY');
+      this.inputDateFrom= day.format('L');
+      this.datesRange.startDate = day.format('L');     
+      // A fix to when user select a day AFTER 'endDate input', move endDate to the same date
+      // This will not work now, because angular-mighty-datepicker is not ready for it.
+      if(day.isAfter(this.calendarDateEnd)){
+       this.inputDateEnd = day.format('L') ;
+       this.datesRange.endDate = day.format('L');
+       this.calendarDateEnd = day;
+      }
+      
     }.bind(this);
 
     this.optionsStartDate = {
      // start: this.calendarDateFrom,
-      months: 1,
+      months: 1,     
       template: require('./calendarPicker.tpl.html'),
       callback: startCallback
     }
 
     var endCallback = function(day){
-      this.inputDateEnd= day.format('L'); //day.format('DD/MM/YYYY');
-      this.datesRange.endDate = day.format('L'); //day.format('DD/MM/YYYY');
+      this.inputDateEnd= day.format('L'); 
+      this.datesRange.endDate = day.format('L');
+      // A fix to when user select a day BEFORE 'fromDate input', move fromDate to the same date
+      // This will not work now, because angular-mighty-datepicker is not ready for it.
+      if(day.isBefore(this.calendarDateFrom)){
+        this.inputDateFrom = day.format('L') ;
+        this.datesRange.startDate = day.format('L');
+        this.calendarDateFrom = day;
+      }
+      
     }.bind(this);
 
     this.optionsEndDate = {
      // start: this.calendarDateEnd,
-      months: 1,
+      months: 1,      
       template: require('./calendarPicker.tpl.html'),
       callback: endCallback
     }
 
+    this.test = moment('2000-01-01'); console.log('test ->>> ', this.test);
   }
 
   constructor($scope, $timeout, Spinner, Snack) {

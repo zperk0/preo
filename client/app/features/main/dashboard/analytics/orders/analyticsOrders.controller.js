@@ -306,13 +306,13 @@ export default class analyticsOrdersController {
             newValues = newPossibleValues.slice(0, itemsLeft);
           else
             newValues = newPossibleValues.slice(0, this.valuesPerScrollPage);
-
+          
           this.$timeout(() => {
             this.tableData.body = this.tableData.body.concat(newValues);
             this.loadingMoreData = false;
 
             this.infiniteScrollIndex += this.valuesPerScrollPage;
-          },200);
+          },1500);
       }
     }
   }
