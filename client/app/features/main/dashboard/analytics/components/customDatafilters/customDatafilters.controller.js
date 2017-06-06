@@ -99,23 +99,19 @@ export default class customDatafiltersController {
   }
 
   getSelectedVenuesNames(){
-    var venueNames = "";
+    var venueNames = [];
 
     var venues = angular.copy(this.selectedVenues);
     venues.sort(this.compareObjectVenue);
 
     for(var i = 0; i < venues.length; i++){
       if(venues[i].display){
-        venueNames = venueNames + venues[i].name;
-
-        if(venues[i+1] && venues[i+1].display){
-          venueNames += ', ';
-        }
+        venueNames.push(venues[i].name);      
       }
     }
 
     if(venueNames.length > 0)
-      return venueNames;
+      return venueNames.join(", ");
     else
       return this.getTextCatalog.getString("All Venues"); // if there is NO venue selected, get ALL venues
   }
