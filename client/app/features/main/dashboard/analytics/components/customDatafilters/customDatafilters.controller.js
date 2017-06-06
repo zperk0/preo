@@ -45,7 +45,7 @@ export default class customDatafiltersController {
     arrayCombined.sort((a, b) => {
       if(a.uniqueId > b.uniqueId) return 1;
       if(a.uniqueId < b.uniqueId) return -1;
-      
+
       return 0;
     });
 
@@ -105,17 +105,19 @@ export default class customDatafiltersController {
     venues.sort(this.compareObjectVenue);
 
     for(var i = 0; i < venues.length; i++){
-      venueNames = venueNames + venues[i].name;
+      if(venues[i].display){
+        venueNames = venueNames + venues[i].name;
 
-      if(venues[i+1]){
-        venueNames += ', ';
+        if(venues[i+1] && venues[i+1].display){
+          venueNames += ', ';
+        }
       }
     }
 
     if(venueNames.length > 0)
       return venueNames;
     else
-      return this.getTextCatalog.getString("All Venues"); // if there is NO venue selected, get ALL venues 
+      return this.getTextCatalog.getString("All Venues"); // if there is NO venue selected, get ALL venues
   }
 
   getSelectedEventsNames(){
@@ -589,12 +591,12 @@ export default class customDatafiltersController {
       var permissions = [this.Permissions.ANALYTICS];
           this.PermissionService.checkVenuesPermissions( permissions ,venueIds)
           .then((data) => {
-            
+
             var venues = this.VenueService.venues.filter((x) => {
               if(data.hasOwnProperty(x.id) && data[x.id][this.Permissions.ANALYTICS] === true)
                 return x;
             });
-         
+
             resolve(venues);
           }, (err) => {
             console.log("Error fetching venue permissions", err);
@@ -612,7 +614,7 @@ export default class customDatafiltersController {
     var localVenue = {};
     var localOutlet = {};
     var venuesIds = [];
-    
+
     // SUPER ADMIN can see current venue selected too.
     if(this.UserService.isAdmin()){
 
@@ -647,7 +649,7 @@ export default class customDatafiltersController {
       if(venue.outlets.length <= 1){
         shouldDisplay = false;
       }
-      
+
       venue.outlets.forEach((outlet) => {
         localOutlet = {
           id: outlet.id,
@@ -664,7 +666,7 @@ export default class customDatafiltersController {
 
         this.venues.push(localOutlet);
       });
-      
+
     });
 
     this.venues.sort(this.compareObjectVenue);

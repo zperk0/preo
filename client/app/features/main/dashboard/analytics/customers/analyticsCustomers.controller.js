@@ -328,7 +328,7 @@ export default class analyticsCustomersController {
             this.loadingMoreData = false;
 
             this.infiniteScrollIndex += this.valuesPerScrollPage;
-          },200);
+          },1500);
       }
     }
   }

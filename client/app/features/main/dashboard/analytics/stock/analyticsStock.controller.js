@@ -350,7 +350,7 @@ export default class analyticsStockController {
             this.loadingMoreData = false;
 
             this.infiniteScrollIndex += this.valuesPerScrollPage;
-          },200);
+          },1500);
       }
     }
   }

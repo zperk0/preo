@@ -141,7 +141,8 @@ export default class ReportsService {
         colObj.fieldType = head.fieldType;
         colObj.key = head.key;
         colObj.isHidden = head.isHidden ? head.isHidden : false;
-
+        colObj.shouldTruncate = head.shouldTruncate ? head.shouldTruncate : false;
+        
         switch(colObj.fieldType){
           case "currency":
             colObj.displayValue = this.$filter('currency')(colObj.value);
@@ -649,7 +650,7 @@ export default class ReportsService {
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
         {key:'customerName', text:this.gettextCatalog.getString('Customer')},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
-        {key:'items', text:this.gettextCatalog.getString('Items')},
+        {key:'items', text:this.gettextCatalog.getString('Items') , shouldTruncate: true},
         //{key:'subtotal' ,text:this.gettextCatalog.getString('Subtotal'),fieldType: 'currency', isHidden: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
         {key:'fee', text:this.gettextCatalog.getString('Fees'), fieldType: 'currency'},
