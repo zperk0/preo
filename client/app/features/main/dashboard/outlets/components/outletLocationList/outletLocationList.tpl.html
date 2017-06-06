@@ -6,7 +6,7 @@
     <card-item-list
         collection="vm.outletLocations"
         has-new="vm.outletLocationGroup.$expanded"
-        tooltip="{{ 'Add new outlet location' | translate }}"
+        tooltip="{{ vm.getOutletLocationTootip() }}"
         on-click-new="vm.showCreateOutletLocation()"
         >
     <div class='sort-holder' sv-part="vm.outletLocations">

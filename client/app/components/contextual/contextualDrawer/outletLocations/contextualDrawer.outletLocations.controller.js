@@ -21,18 +21,18 @@ export default class contextualDrawerOutletLocationsController {
     }, (err) => {
 console.log('errrrr', err);
       this.data = {};
-    });        
+    });
   }
 
   selectOutletLocation (outletLocation) {
 
     let outletLocationToMove = this.OutletLocationService.getOutletLocationToMove();
-    
+
     if (outletLocationToMove.id === outletLocation.id) {
       this.Snack.showError('You need select a different outlet location destination');
       return;
     }
-    
+
     if (outletLocation.path && outletLocation.path.indexOf('/' + outletLocationToMove.id + '/') !== -1) {
       this.Snack.showError('You need select a different outlet location destination');
       return;
@@ -40,7 +40,12 @@ console.log('errrrr', err);
 
     if (!outletLocation.isGroup && outletLocation.isSeat()) {
       this.Snack.showError('You can not add children for seat outlet location');
-      return;      
+      return;
+    }
+
+    if (outletLocation.outletId) {
+      this.Snack.showError('You can not add children for an outlet location with an outlet');
+      return;
     }
 
     this.selectedOutletLocation = outletLocation;
@@ -62,19 +67,19 @@ console.log('errrrr', err);
 
   constructor($scope, OutletLocationService, VenueService, BroadcastEvents, $stateParams,contextualDrawer, Snack) {
     "ngInject";
-    this.OutletLocationService = OutletLocationService;  
-    this.VenueService = VenueService;  
-    this.contextualDrawer = contextualDrawer;  
-    this.Snack = Snack;  
+    this.OutletLocationService = OutletLocationService;
+    this.VenueService = VenueService;
+    this.contextualDrawer = contextualDrawer;
+    this.Snack = Snack;
     this.selectedOutletLocation = null;
 
     if (VenueService.hasVenueSet()) {
       this.fetchOutletLocations();
     } else {
       $scope.$on(BroadcastEvents.ON_CURRENT_VENUE, (event, venue) => {
-        
+
         this.fetchOutletLocations();
       });
-    }    
+    }
   }
 }
