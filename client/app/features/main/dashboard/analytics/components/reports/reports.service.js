@@ -847,7 +847,7 @@ export default class ReportsService {
       ];
 
     }
-    else if(type == this.ReportTypes.SUMMARY){
+    else if(type == this.ReportTypes.SUMMARY || type == this.ReportTypes.SUMMARY_CARDS){
       response = this.getSummaryReports();
     }
 

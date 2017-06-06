@@ -119,7 +119,7 @@ export default class analyticsSummaryController {
     if(!this.spinnerRunning())
       this.showSpinner();
 
-   this.dataFilters.report = { reportType: this.ReportTypes.SUMMARY };
+   this.dataFilters.report = { reportType: this.hasKnowYourCustomersFeature ? this.ReportTypes.SUMMARY : this.ReportTypes.SUMMARY_CARDS };
 
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
@@ -151,6 +151,9 @@ export default class analyticsSummaryController {
   }
 
   onFilter(filters , typeChanged){
+    if ((this.dataFilters.venues || this.dataFilters.report || this.dataFilters.datesRange || this.dataFilters.events) && !this.hasKnowYourCustomersFeature) {
+      return this.showFullClientError();
+    }
 
     this.dataFilters = filters;
 
@@ -199,11 +202,21 @@ export default class analyticsSummaryController {
     }
   }
 
-  constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes, hasKnowYourCustomersFeature) {
+  showFullClientError() {
+    this.DialogService.show(this.ErrorService.FULL_CLIENT.title, this.ErrorService.FULL_CLIENT.message, [{
+      name: this.LabelService.CONFIRMATION
+    }]);
+    return false;
+  }
+
+  constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes, LabelService, ErrorService, DialogService, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
     this.ReportsService = ReportsService;
+    this.LabelService = LabelService;
+    this.ErrorService = ErrorService;
+    this.DialogService = DialogService;
     this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;
 
     this.dataFilters = {
@@ -226,7 +239,7 @@ export default class analyticsSummaryController {
 
   _init(){
 
-    var types = [this.ReportTypes.SUMMARY];
+    var types = [this.hasKnowYourCustomersFeature ? this.ReportTypes.SUMMARY : this.ReportTypes.SUMMARY_CARDS];
    // this.ReportsService.clearData();
     this.ReportsService.getReports(types)
     .then((data) => {
