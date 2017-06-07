@@ -63,7 +63,7 @@ export default class analyticsOrdersController {
       data = this.linesSelected;
     }
     else{
-      data = this.tableData.body;
+      data = this.currentReport;
     }
 
     data = this.$filter('orderObj')( data, this.query.order ,'value');

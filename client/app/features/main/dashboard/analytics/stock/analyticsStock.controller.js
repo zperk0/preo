@@ -90,7 +90,7 @@ export default class analyticsStockController {
       data = this.linesSelected;
     }
     else{
-      data = this.tableData.body;
+      data = this.currentReport;
     }
 
     data = this.$filter('orderObj')( data, this.query.order ,'value');
@@ -207,8 +207,7 @@ export default class analyticsStockController {
 
   onFilter(filters , typeChanged){
 
-    this.dataFilters = filters;
-    var isReportUpdated = false;
+    this.dataFilters = filters;    
 
     // view is loaded with empty report fitler, no search at first time
     if(!this.dataFilters.report){
@@ -230,7 +229,7 @@ export default class analyticsStockController {
     var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
 
     //Fetch from Api when any filter, except Report is changed, or if report changed but has no data to show for it.
-    if(!isReportUpdated ||(isReportUpdated && paramsChanged)){
+    if(paramsChanged){
       this.debounceFetch();
     }
     else{

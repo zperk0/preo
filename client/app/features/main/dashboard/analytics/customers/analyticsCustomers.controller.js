@@ -64,10 +64,10 @@ export default class analyticsCustomersController {
     }
     else{
       if(this.dataFilters.customerMarketing){
-        data = this.$filter('marketingFilter')(this.tableData.body, this.fieldToFilter, true);
+        data = this.$filter('marketingFilter')(this.currentReport, this.fieldToFilter, true);
       }
       else{
-        data = this.tableData.body;
+        data = this.currentReport;
       }
     }
 

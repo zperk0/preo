@@ -21,19 +21,15 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
     // ONLY when use DAILY, MONTHLY, WEEKLY modes
     // array with Data may always come with Days, formated as YYYY-MM-DD.
-
     var chartValues = angular.copy(scope.config.data);
 
     var canvas = elem[0].querySelector('#barchart');
 
-    var formatType = scope.config.type;
-
     //always init with Daily view if not setted. Or if will not use these modes
-    var currentDataVisualization = (scope.config.defaultMode) ? scope.config.defaultMode : CardActionsCodes.DAILY_MODE;
+    var currentDataVisualization = null;
+    var formatType = null;
 
-    //if user will not use Daily, Weekly, Monthly modes only need to send a string as title.
-    var propTitle = scope.config.name[currentDataVisualization.type];
-    scope.title = propTitle ? propTitle : scope.config.name;
+    _updateChartProperties(scope.config.defaultMode);
 
     // update chartView before initChart
     if(currentDataVisualization != CardActionsCodes.DAILY_MODE){
@@ -46,15 +42,9 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       () => { return scope.config.data; },
       function(newValue, oldValue){
 
-        if(typeof oldValue === 'undefined' || (oldValue.x.length <= 0 && newValue.x.length <= 0 && oldValue.y.length <= 0 && newValue.y.length <= 0))
+        if(typeof oldValue === 'undefined' || (!oldValue.x.length && !newValue.x.length && !oldValue.y.length && !newValue.y.length))
         return;
         Spinner.show('barchart-directive');
-
-        if(newValue.x.length <= 0 && newValue.y.length <= 0)
-          scope.shouldShowActions = false;
-        else{
-          scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;                   
-        }
 
         // update current chart with the same visualization it had before. 
         _onAction(currentDataVisualization, true);
@@ -181,33 +171,47 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       }
     }
 
-    function _showDailyMode(actionSelected){
-      currentDataVisualization = actionSelected;
+    function _updateChartProperties(modeSelected){
 
-      var propTitle = scope.config.name[actionSelected.type];
+      // show/hide actions from chart if its empty
+      if(!chartValues.x.length && !chartValues.y.length)
+        scope.shouldShowActions = false;
+      else{
+        scope.shouldShowActions = scope.config.actions && scope.config.actions.length ? true : false;                   
+      }
+
+      //update curretnVisualizationMode
+      currentDataVisualization = (modeSelected) ? modeSelected : CardActionsCodes.DAILY_MODE;
+
+      //update title
+      var propTitle = scope.config.name[currentDataVisualization.type];
       scope.title = propTitle ? propTitle : scope.config.name;
 
+      //update type
+      formatType = scope.config.type;
+    }
+
+    function _showDailyMode(modeSelected){      
+
       chartValues = angular.copy(scope.config.data);
+
+      _updateChartProperties(modeSelected);
 
       _updateChart();
     }
 
-    function _showWeeklyMode(actionSelected){
-      currentDataVisualization = actionSelected;
+    function _showWeeklyMode(modeSelected){  
 
-      var propTitle = scope.config.name[actionSelected.type];
-      scope.title = propTitle ? propTitle : scope.config.name;
+      _updateChartProperties(modeSelected);    
 
       _groupByWeek();
 
       _updateChart();
     }
 
-    function _showMonthlyMode(actionSelected){
-      currentDataVisualization = actionSelected;
+    function _showMonthlyMode(modeSelected){
 
-      var propTitle = scope.config.name[actionSelected.type];
-      scope.title = propTitle ? propTitle : scope.config.name;
+      _updateChartProperties(modeSelected);      
 
       _groupByMonth();
 
