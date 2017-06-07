@@ -391,7 +391,7 @@ export default class analyticsStockController {
     }
   }
 
-  constructor($filter, $stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, CardActionsCodes, ReportTypes) {
+  constructor($filter, $stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, CardActionsCodes, ReportTypes, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
@@ -404,6 +404,8 @@ export default class analyticsStockController {
 
     this.cardActionsCodes = CardActionsCodes;
     this.ReportTypes = ReportTypes;
+
+    this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;
 
     this.reportTypes = this.getReportTypes();
 
