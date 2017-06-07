@@ -4,7 +4,8 @@
   <div class="summary-filters">
   <custom-datafilters has-daterange="true"
       on-filter="analyticsSummaryCtrl.onFilter(filters, typeChanged)"
-      initial-values="analyticsSummaryCtrl.dataFilters">
+      initial-values="analyticsSummaryCtrl.dataFilters"
+      kyc="analyticsSummaryCtrl.hasKnowYourCustomersFeature">
   </custom-datafilters>
   </div>
 
@@ -25,10 +26,10 @@
     </div>
   </div>
   <div class="bar-chart" layout-wrap layout="row" ng-if="analyticsSummaryCtrl.dataLoaded">
-  	<bar-chart flex="100" ng-repeat="bar in analyticsSummaryCtrl.bars" config="bar" ></bar-chart>
+  	<bar-chart flex="100" ng-repeat="bar in analyticsSummaryCtrl.bars" config="bar" kyc="analyticsSummaryCtrl.hasKnowYourCustomersFeature"></bar-chart>
   </div>
   <div class="doughnut-chart" layout-wrap layout="row" ng-if="analyticsSummaryCtrl.dataLoaded">
-    <doughnut-chart flex="50" ng-repeat="doughnut in analyticsSummaryCtrl.doughnuts" config="doughnut"></doughnut-chart>
+    <doughnut-chart flex="50" ng-repeat="doughnut in analyticsSummaryCtrl.doughnuts" config="doughnut" kyc="analyticsSummaryCtrl.hasKnowYourCustomersFeature"></doughnut-chart>
   </div>
 </div>
 </div>
