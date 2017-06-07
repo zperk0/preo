@@ -366,7 +366,7 @@ export default class analyticsOrdersController {
     }
   }
 
-  constructor($filter, Snack, $q, $scope, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, CardActionsCodes, gettextCatalog, DialogService) {
+  constructor($filter, Snack, $q, $scope, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, CardActionsCodes, gettextCatalog, DialogService, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
@@ -384,6 +384,8 @@ export default class analyticsOrdersController {
     this.ReportsService = ReportsService;
     //this.reportsData = ReportsService.data;
     this.DialogService = DialogService;
+
+    this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;
 
     this.reportTypes = this.getReportTypes();
 

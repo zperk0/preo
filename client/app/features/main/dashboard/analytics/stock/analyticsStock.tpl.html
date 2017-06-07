@@ -6,12 +6,13 @@
       has-report="true"
       report-types="analyticsStockCtrl.reportTypes"
       on-filter="analyticsStockCtrl.onFilter(filters, typeChanged)"
-      initial-values="analyticsStockCtrl.dataFilters">
+      initial-values="analyticsStockCtrl.dataFilters"
+      kyc="analyticsStockCtrl.hasKnowYourCustomersFeature">
     </custom-datafilters>
     </div>
 
     <div class="stock-charts" flex layout="row" ng-if="analyticsStockCtrl.shouldShowChart">
-      <bar-chart flex="100" config="analyticsStockCtrl.chartData" ></bar-chart>
+      <bar-chart flex="100" config="analyticsStockCtrl.chartData" kyc="analyticsStockCtrl.hasKnowYourCustomersFeature"></bar-chart>
     </div>
 
     <div class="stock-table" layout="row" ng-if="analyticsStockCtrl.shouldShowdatatable">
