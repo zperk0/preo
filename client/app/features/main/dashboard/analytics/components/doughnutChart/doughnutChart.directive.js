@@ -260,7 +260,7 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
 
     function _getOverlayContent() {
       if (!scope.kyc) {
-        return 'NOT AVAILABLE';
+        return LabelService.NOT_AVAILABLE;
       }
     }
 

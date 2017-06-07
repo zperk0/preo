@@ -558,7 +558,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
 
     function _getOverlayContent() {
       if (!scope.kyc) {
-        return 'NOT AVAILABLE';
+        return LabelService.NOT_AVAILABLE;
       }
     }
 
