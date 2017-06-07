@@ -397,7 +397,7 @@ export default class ReportsService {
   checkIfParamsChanged(parameters, format ,reportsIds){
     var params = format ? this.formatDataFilters(parameters) : parameters;
     var paramChanged = false;
-
+    
     if(!this.data){
       return true;
     }
@@ -411,6 +411,11 @@ export default class ReportsService {
           break;
         }
       }
+    }
+
+    if(!paramChanged && params.menuItemId){
+      if(!this.data.menuItemId || params.menuItemId != this.data.menuItemId)
+        return true;
     }
 
     if(params.minCreated && params.maxCreated){
