@@ -25,31 +25,68 @@ export default class contextualDrawerEventsImportController {
 
   done () {
 
-    if(this.nameForm.$invalid){      
+    if(this.nameForm.$invalid){
+      if(this.selectedTab !== 0)
+        this.selectedTab = 0;
       return;
     }
 
-    var events = this.selectedEvents;
+    if(!this.slots.pickupSlots.length){
+      if(this.selectedTab !== 1)
+        this.selectedTab = 1;
 
-    this.cleanData();
+      return;
+    }
 
-    this.data = null;
-    this.contextualDrawer.success(events);
-   // this.ExternalService.importTicketMasterEventToPreoday(this.venueId, this.inputName, events)
-   // .then((data) => {
+    this.showSpinner();
+    this.ExternalService.importTicketMasterEventToPreoday(this.venueId, this.inputName, this.selectedEvents, this.slots.pickupSlots)
+    .then((data) => {
 
-   //   this.contextualDrawer.success(data);
-   // }, (err) => {
-   //   this.cleanData();
-   //   this.contextualDrawer.cancel(err);
-   // });   
+      this.cleanData(true);
+      this.hideSpinner();
+      this.contextualDrawer.success(data);
+    }, (err) => {
+      this.cleanData();
+      this.hideSpinner();
+      this.contextualDrawer.cancel(err);
+    });   
   }
 
-  cleanData(){
+  formatResponse(data){
+    var response = [];
+
+    data.forEach((x) => {
+      let obj = {
+        id: x.id,
+        domain_id: x.domain_id,
+        name: x.name,
+        showName: moment(x.eventTime).format('L')+ " - " +x.name,
+        eventTime: x.eventTime,
+        $selected: false
+      };
+
+      response.push(obj);
+    });
+
+    this.data = response;
+
+    if(!data || data.length <= 0)
+      this.emptyData = true;
+    else
+      this.emptyData = false;
+
+    this.loaded = true;
+  }
+
+  cleanData(emptyData){
     this.selectedEvents = [];
     this.inputname = "";
+    this.slots.pickupSlots = [];
 
-    this.data.forEach((x) => {x.$selected = false;});
+    if(emptyData)
+      this.data= null;
+    else
+      this.data.forEach((x) => {x.$selected = false;});
   }
 
   showSpinner(){
@@ -60,7 +97,7 @@ export default class contextualDrawerEventsImportController {
     this.Spinner.hide('drawer-eventsImport');
   }
 
-  constructor($scope, $timeout, OutletService, Spinner, ExternalService, $stateParams,$mdSidenav, contextualDrawer, Snack) {
+  constructor($scope, $timeout, OutletService, BroadcastEvents, Spinner, ExternalService, $stateParams,$mdSidenav, contextualDrawer, Snack) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.cancelledOutlets = [];
@@ -74,10 +111,11 @@ export default class contextualDrawerEventsImportController {
     this.ExternalService = ExternalService;
 
     this.venueId = $stateParams.venueId;
+    this.slots = {pickupSlots: []};
 
-    $scope.$on('mdSideNavisOpen', (event, args) => {
-   
+    $scope.$on(BroadcastEvents.ON_CONTEXTUAL_DRAWER_OPEN, (event, args) => {
       if(args.id === 'eventsImport' && !this.data){
+        this.loaded = false;
         this.init();
       }
     });       
@@ -85,17 +123,12 @@ export default class contextualDrawerEventsImportController {
 
   init(){
     this.showSpinner();
-    //this.ExternalService.getTicketMasterEvents(new Array(this.venueId))
-     this.OutletService.getOutlets({
-       venueId: this.venueId
-     }).then((data)=>{
+    this.ExternalService.getTicketMasterEvents(new Array(this.venueId))
+    .then((data) => {  
 
-       console.log('Event service impot data READY', data);
+      this.formatResponse(data);
 
-       this.data = data.outlets;
-       this.data.forEach((x) => {x.$selected = false;});
-       
-       this.hideSpinner();      
+      this.hideSpinner();      
     }, () => {
        console.log('Error eventImport service');
      })

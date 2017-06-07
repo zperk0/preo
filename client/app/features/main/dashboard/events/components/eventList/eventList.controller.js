@@ -20,40 +20,38 @@ export default class eventListController {
       return this.showCreateEvent();
     else if(type === 'IMPORT'){
       
-   //   this.$timeout(() => {console.log('timeout -....');
-     
       this.contextual.showDrawer('eventsImport')
         .then((eventsImported) => {
 
           this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));
 
           eventsImported.forEach((ev) => {
-            let event = new Preoday.Event({
-              venueId: 1,//ev.venueId,
-              visible: 1,
-              $images: [],//ev.images,
-              schedules: [],//ev.schedules,
-              name: ev.name,
-              id: ev.id,
-              $selected: false,
-            });
-
+            
+             let event = new Preoday.Event({
+               venueId: ev.venueId,
+               visible: 1,
+               $images: ev.images ? ev.images : [],
+               schedules: ev.schedules,
+               name: ev.name,
+               id: ev.id,
+               $selected: false,
+             });
+         
             this.events.push(event);  
-          });
-          // this.event.$selected = false;
-                  
+          });         
+          
+         // this.events = this.events.concat(eventsImported);
 
-          console.log('outletLocation selected', eventsImported);
+          console.log('outletLocation selected ->> ', this.events);
         }, () => {
-
-         // this.event.$selected = false;
+        
           console.log('Drawer Event Import cancelled');
         })
       .catch((err) => {
         console.log('Error importing events -', err);
         this.Snack.showError(this.gettextCatalog.getString("An error occurred while importing events. Please try again."));
       });
-     // });
+    
     }
 
   }

@@ -7,7 +7,7 @@ export default class ExternalService {
   getTicketMasterEvents(venueIds){
     return this.$q((resolve,reject)=>{
       
-      Preoday.External.getTicketMasterEvents(venueIds)
+      Preoday.External.getEventsByVenueIds(venueIds)
         .then((events)=>{
           
           console.log("ExternalService - Reesolve get events")
@@ -23,10 +23,10 @@ export default class ExternalService {
 
   }
 
-  importTicketMasterEventToPreoday(venueId, eventName, tmEvents){
+  importTicketMasterEventToPreoday(venueId, eventName, tmEvents, collectionSlots){
     return this.$q((resolve,reject)=>{
       
-      Preoday.External.importTicketMasterEvent(venueIds, eventName, tmEvents)
+      Preoday.External.importTicketMasterEventsToPreday(venueId, eventName, tmEvents, collectionSlots)
         .then((events)=>{
           
           console.log("ExternalService - resolve posting events to Preoday")

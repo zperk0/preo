@@ -28,9 +28,7 @@ angular.module("webapp.events" , [
 		eventScheduleListComponent,
 		eventScheduleComponent,
 		collectionSlotsListComponent,
-		collectionSlotsListItemComponent,
-    externalEventList,
-    externalEvent
+		collectionSlotsListItemComponent,  
 	])
   .config(routes)
   .controller(controller.UID, controller)

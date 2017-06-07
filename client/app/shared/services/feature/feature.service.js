@@ -44,7 +44,7 @@ export default class FeatureService {
 
   hasTicketMasterEventFeature(){
     return true;
-    //return this.getLocalFeature(Preoday.constants.Feature.TICKET_MASTER_EVENT);
+    //return this.getLocalFeature(Preoday.constants.Feature.EXTERNAL_EVENT_MAPPING);
   }
 
   getLocalFeature (featureId) {

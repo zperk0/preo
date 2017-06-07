@@ -16,7 +16,7 @@ export default function eventNew(FeatureService, gettextCatalog){
         type: 'NEW'
        },
        {
-        name: gettextCatalog.getString('Import Ticket Master event'),
+        name: gettextCatalog.getString('Import event(s)'),
         type: 'IMPORT'
        }
      ];
