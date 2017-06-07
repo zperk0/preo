@@ -46,6 +46,10 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.CUSTOM_OUTLET_LOCATION_FIELDS);
   }
 
+  hasKnowYourCustomersFeature () {
+    return this.getLocalFeature(Preoday.constants.Feature.KNOW_YOUR_CUSTOMERS);
+  }
+
   getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
         return +item.id;

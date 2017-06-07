@@ -52,6 +52,16 @@ export default class analyticsSummaryController {
     return response;
   }
 
+  getMockValues(keys) {
+    let values = [],
+        min = 50,
+        max = 99;
+    for (let key of keys) {
+      values.push(Math.floor(Math.random() * (max - min + 1)) + min);
+    }
+    return values;
+  }
+
   updateBars(data){
     this.bars.forEach((bar) => {
 
@@ -64,7 +74,7 @@ export default class analyticsSummaryController {
 
         bar.data = {
           x: data[bar.id].keys,
-          y: data[bar.id].values
+          y: this.hasKnowYourCustomersFeature ? data[bar.id].values : this.getMockValues(data[bar.id].keys)
         }
       }
       else{
@@ -88,7 +98,7 @@ export default class analyticsSummaryController {
 
        doughnut.data = {
          labels: data[doughnut.id].keys,
-         values: data[doughnut.id].values
+         values: this.hasKnowYourCustomersFeature ? data[doughnut.id].values : this.getMockValues(data[doughnut.id].keys)
        }
      }
      else{
@@ -119,7 +129,7 @@ export default class analyticsSummaryController {
     if(!this.spinnerRunning())
       this.showSpinner();
 
-   this.dataFilters.report = { reportType: this.ReportTypes.SUMMARY };
+   this.dataFilters.report = { reportType: this.hasKnowYourCustomersFeature ? this.ReportTypes.SUMMARY : this.ReportTypes.SUMMARY_CARDS };
 
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
@@ -199,11 +209,15 @@ export default class analyticsSummaryController {
     }
   }
 
-  constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes) {
+  constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes, LabelService, ErrorService, DialogService, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
     this.ReportsService = ReportsService;
+    this.LabelService = LabelService;
+    this.ErrorService = ErrorService;
+    this.DialogService = DialogService;
+    this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;
 
     this.dataFilters = {
       venues: null,
@@ -225,7 +239,7 @@ export default class analyticsSummaryController {
 
   _init(){
 
-    var types = [this.ReportTypes.SUMMARY];
+    var types = [this.hasKnowYourCustomersFeature ? this.ReportTypes.SUMMARY : this.ReportTypes.SUMMARY_CARDS];
    // this.ReportsService.clearData();
     this.ReportsService.getReports(types)
     .then((data) => {

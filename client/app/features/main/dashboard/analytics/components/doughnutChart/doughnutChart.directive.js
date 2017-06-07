@@ -1,11 +1,12 @@
 //import controller from './doughnutChart.controller'
 
-export default function doughnutChart(CardActionsCodes, Spinner, $timeout, ReportsService, $filter){
+export default function doughnutChart(CardActionsCodes, Spinner, $timeout, ReportsService, $filter, LabelService, ErrorService, DialogService){
   'ngInject';
   return {
     restrict: 'E',
     scope:{
-      config:"="
+      config:"=",
+      kyc:"="
     },
     template: require("./doughnutChart.tpl.html"),
   //controller: controller.UID,
@@ -18,6 +19,9 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
 
     scope.onActions = _onAction;
     scope.getExportData = _getExportData;
+    scope.showOverlay = _showOverlay;
+    scope.getOverlayContent = _getOverlayContent;
+    scope.onOverlayClick = _onOverlayClick;
     scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;
 
     var canvas = elem[0].querySelector('#doughnutchart');
@@ -248,6 +252,24 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
       innerHtml += "</tbody>";
       var tableRoot = tooltipEl.querySelector('table');
       tableRoot.innerHTML = innerHtml;
+    }
+
+    function _showOverlay() {
+      return !scope.kyc;
+    }
+
+    function _getOverlayContent() {
+      if (!scope.kyc) {
+        return 'NOT AVAILABLE';
+      }
+    }
+
+    function _onOverlayClick() {
+      if (!scope.kyc) {
+        DialogService.show(ErrorService.FULL_CLIENT.title, ErrorService.FULL_CLIENT.message, [{
+          name: LabelService.CONFIRMATION
+        }]);
+      }
     }
 
   }
