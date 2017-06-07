@@ -52,6 +52,16 @@ export default class analyticsSummaryController {
     return response;
   }
 
+  getMockValues(keys) {
+    let values = [],
+        min = 50,
+        max = 99;
+    for (let key of keys) {
+      values.push(Math.floor(Math.random() * (max - min + 1)) + min);
+    }
+    return values;
+  }
+
   updateBars(data){
     this.bars.forEach((bar) => {
 
@@ -64,7 +74,7 @@ export default class analyticsSummaryController {
 
         bar.data = {
           x: data[bar.id].keys,
-          y: data[bar.id].values
+          y: this.hasKnowYourCustomersFeature ? data[bar.id].values : this.getMockValues(data[bar.id].keys)
         }
       }
       else{
@@ -88,7 +98,7 @@ export default class analyticsSummaryController {
 
        doughnut.data = {
          labels: data[doughnut.id].keys,
-         values: data[doughnut.id].values
+         values: this.hasKnowYourCustomersFeature ? data[doughnut.id].values : this.getMockValues(data[doughnut.id].keys)
        }
      }
      else{
