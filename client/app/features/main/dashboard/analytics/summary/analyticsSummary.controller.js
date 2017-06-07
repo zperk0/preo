@@ -151,9 +151,6 @@ export default class analyticsSummaryController {
   }
 
   onFilter(filters , typeChanged){
-    if ((this.dataFilters.venues || this.dataFilters.report || this.dataFilters.datesRange || this.dataFilters.events) && !this.hasKnowYourCustomersFeature) {
-      return this.showFullClientError();
-    }
 
     this.dataFilters = filters;
 
@@ -200,13 +197,6 @@ export default class analyticsSummaryController {
         this.dataFilters.events = params.eventIds;      
       }
     }
-  }
-
-  showFullClientError() {
-    this.DialogService.show(this.ErrorService.FULL_CLIENT.title, this.ErrorService.FULL_CLIENT.message, [{
-      name: this.LabelService.CONFIRMATION
-    }]);
-    return false;
   }
 
   constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes, LabelService, ErrorService, DialogService, hasKnowYourCustomersFeature) {

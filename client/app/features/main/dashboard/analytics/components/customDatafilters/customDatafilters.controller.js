@@ -429,6 +429,10 @@ export default class customDatafiltersController {
   }
 
   onDaterangeChange(){
+    if (!this.init && !this.kyc) {
+      this.selectedDaterange = this.getDefaultDateRange();
+      return this.showFullClientError();
+    }
 
     //save last option selected to use with Custom type
     if(this.selectedDaterange.start && this.selectedDaterange.end){
@@ -696,6 +700,12 @@ export default class customDatafiltersController {
     }
   }
 
+  getDefaultDateRange() {
+    let defaultOpt = {id: 4, type: 'minus30days',name: this.getTextCatalog.getString('Last 30 days'),
+                        start: moment().subtract(30, 'days').format('L'), end: moment().format('L')};
+    return defaultOpt;
+  }
+
   getDateRange(){
     return this.$q((resolve,reject) => {
       var venueTypes = this.getVenueSelectedTypes();
@@ -714,8 +724,7 @@ export default class customDatafiltersController {
         {id: 6, type: 'custom',     name: this.getTextCatalog.getString('Custom')}
       ];
 
-      var defaultOpt = {id: 4, type: 'minus30days',name: this.getTextCatalog.getString('Last 30 days'),
-                        start: moment().subtract(30, 'days').format('L'), end: today};
+      var defaultOpt = this.getDefaultDateRange();
 
       ranges.push(defaultOpt);
 
@@ -1125,8 +1134,15 @@ export default class customDatafiltersController {
     this.spinner.show('data-filters');
   }
 
+  showFullClientError() {
+    this.DialogService.show(this.ErrorService.FULL_CLIENT.title, this.ErrorService.FULL_CLIENT.message, [{
+      name: this.LabelService.CONFIRMATION
+    }]);
+    return false;
+  }
+
   /* @ngInject */
-  constructor($q , $scope, Spinner, Snack, $timeout, VenueService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog) {
+  constructor($q , $scope, Spinner, Snack, $timeout, VenueService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog, LabelService, ErrorService, DialogService) {
   	'ngInject';
 
     this.spinner = Spinner;
@@ -1135,6 +1151,9 @@ export default class customDatafiltersController {
     this.UserService = UserService;
     this.PermissionService = PermissionService;
     this.Permissions = Permissions;
+    this.LabelService = LabelService;
+    this.ErrorService = ErrorService;
+    this.DialogService = DialogService;
 
     this.VenueService = VenueService;
     this.Spinner = Spinner;
