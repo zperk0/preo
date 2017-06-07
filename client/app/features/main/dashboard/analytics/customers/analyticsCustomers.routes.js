@@ -32,8 +32,9 @@ export default function routes($stateProvider, Permissions) {
 
             DialogService.show(ErrorService.FULL_CLIENT.title, ErrorService.FULL_CLIENT.message, [{
               name: LabelService.CONFIRMATION
-            }]);
-            $state.go('main.dashboard.analytics.analyticsSummary');
+            }]).then(response => {
+              $state.go('main.dashboard.analytics.analyticsSummary');
+            });
     			});
 
     			return $q.reject();
