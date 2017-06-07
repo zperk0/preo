@@ -9,6 +9,8 @@ export default class LabelService {
 
     this.CONFIRMATION = gettextCatalog.getString("Got it");
 
+    this.NOT_AVAILABLE = gettextCatalog.getString("Not available");
+
     this.SNACK_WRONG_CREDENTIALS = gettextCatalog.getString("Invalid username and/or password");
 
     this.SNACK_WEBSETTINGS_ERROR = gettextCatalog.getString("Could not save weborders style");

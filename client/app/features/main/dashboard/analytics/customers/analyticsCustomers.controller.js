@@ -382,7 +382,7 @@ export default class analyticsCustomersController {
     }
   }
 
-  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, CardActionsCodes) {
+  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, CardActionsCodes, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
@@ -397,6 +397,8 @@ export default class analyticsCustomersController {
     this.ReportsService = ReportsService;
     //this.reportsData = ReportsService.data;
     this.DialogService = DialogService;
+
+    this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;
 
     this.reportTypes = this.getReportTypes();
     this.fieldToFilter = 'customerMarketing';
