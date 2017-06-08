@@ -1,6 +1,6 @@
 //import controller from './doughnutChart.controller'
 
-export default function doughnutChart(CardActionsCodes, Spinner, $timeout, ReportsService, $filter, LabelService, ErrorService, DialogService){
+export default function doughnutChart(Spinner, $timeout, ReportsService, $filter, LabelService, ErrorService, DialogService){
   'ngInject';
   return {
     restrict: 'E',
@@ -58,11 +58,11 @@ export default function doughnutChart(CardActionsCodes, Spinner, $timeout, Repor
     function _onAction(option){
 
       switch(option.id){
-        case CardActionsCodes.EXPORT_CSV.id:
+        case LabelService.EXPORT_CSV.id:
         _exportCsv();
         break;
 
-        case CardActionsCodes.EXPORT_PDF.id:
+        case LabelService.EXPORT_PDF.id:
         _exportPdf();
         break;
       }

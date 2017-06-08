@@ -5,7 +5,7 @@
     <span class="title-message">{{diagCtrl.message}}</span>
     <div class="md-dialog-content-body">
       <md-input-container flex layout="column">
-        <label translate>{{diagCtrl.placeholder}}</label>
+        <label>{{diagCtrl.placeholder}}</label>
         <textarea name="msgTextArea" ng-model="diagCtrl.textArea" required md-maxlength="400"></textarea>
         <div ng-messages="diagCtrl.areaForm.msgTextArea.$error">
           <div ng-message="required">{{'This is required.' | translate}}</div>
@@ -15,7 +15,7 @@
     </div>
   </md-dialog-content>
   <md-dialog-actions>
-    <md-button type="button" ng-click="diagCtrl.cancel()" class="md-primary" translate>Cancel</md-button>
+    <md-button type="button" ng-click="diagCtrl.cancel()" class="md-primary">{{'Cancel' | translate }}</md-button>
     <md-button type="submit" ng-repeat="button in diagCtrl.buttons" ng-click="diagCtrl.confirm(button)"  class="md-primary">{{button.name}}</md-button>
   </md-dialog-actions>
   </form>

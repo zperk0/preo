@@ -5,7 +5,7 @@
   <md-card class="actions-card" ng-mouseleave="vm.onMouseLeave()" ng-if="vm.shouldShowActions">
     <md-card-actions  >
       <md-button ng-repeat="item in vm.actionsList | orderBy: 'id' track by item.id" ng-value="item.id" ng-click="vm.onActions({item})">
-         {{item.name | translate}}
+         {{item.name}}
       </md-button>
     </md-card-actions>
   </md-card>

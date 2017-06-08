@@ -1,6 +1,6 @@
 //import controller from './barChart.controller'
 
-export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCatalog, $filter, ReportsService, LabelService, ErrorService, DialogService){
+export default function barChart(Spinner, $timeout, gettextCatalog, $filter, ReportsService, LabelService, ErrorService, DialogService){
   'ngInject';
   return {
   restrict: 'E',
@@ -32,7 +32,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
     _updateChartProperties(scope.config.defaultMode);
 
     // update chartView before initChart
-    if(currentDataVisualization != CardActionsCodes.DAILY_MODE){
+    if(currentDataVisualization != LabelService.DAILY_MODE){
       _onAction(currentDataVisualization, true);
     }
 
@@ -64,23 +64,23 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
         return;
 
       switch(option.id){
-        case CardActionsCodes.EXPORT_CSV.id:
+        case LabelService.EXPORT_CSV.id:
         _exportCsv(option);
         break;
 
-        case CardActionsCodes.EXPORT_PDF.id:
+        case LabelService.EXPORT_PDF.id:
         _exportPdf(option);
         break;
 
-        case CardActionsCodes.MONTHLY_MODE.id:
+        case LabelService.MONTHLY_MODE.id:
         _showMonthlyMode(option);
         break;
 
-        case CardActionsCodes.WEEKLY_MODE.id:
+        case LabelService.WEEKLY_MODE.id:
         _showWeeklyMode(option);
         break;
 
-        case CardActionsCodes.DAILY_MODE.id:
+        case LabelService.DAILY_MODE.id:
         _showDailyMode(option);
         break;
       }
@@ -181,7 +181,7 @@ export default function barChart(CardActionsCodes, Spinner, $timeout, gettextCat
       }
 
       //update curretnVisualizationMode
-      currentDataVisualization = (modeSelected) ? modeSelected : CardActionsCodes.DAILY_MODE;
+      currentDataVisualization = (modeSelected) ? modeSelected : LabelService.DAILY_MODE;
 
       //update title
       var propTitle = scope.config.name[currentDataVisualization.type];

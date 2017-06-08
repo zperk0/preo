@@ -11,11 +11,10 @@ export default class dropdownActionsController {
   	this.shouldShowActions = false;
   }
 
-  constructor($scope, CardActionsCodes) {
+  constructor($scope) {
     'ngInject';
 
     this.shouldShowActions = false;
-    this.CardActionsCodes = CardActionsCodes;
 
     this.exportActions = [];
   }
