@@ -145,15 +145,15 @@ export default class analyticsCustomersController {
   onActions(item){
 
     switch(item.id){
-      case this.cardActionsCodes.EXPORT_CSV.id:
+      case this.LabelService.EXPORT_CSV.id:
       this.exportCsv();
       break;
 
-      case this.cardActionsCodes.EXPORT_PDF.id:
+      case this.LabelService.EXPORT_PDF.id:
       this.exportPdf();
       break;
 
-      case this.cardActionsCodes.NOTIFICATION.id:
+      case this.LabelService.NOTIFICATION.id:
       this.sendNotification()
       break;
     }
@@ -382,7 +382,7 @@ export default class analyticsCustomersController {
     }
   }
 
-  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, CardActionsCodes, hasKnowYourCustomersFeature) {
+  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, LabelService, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
@@ -391,7 +391,7 @@ export default class analyticsCustomersController {
     this.$filter = $filter;
     this.Snack = Snack;
 
-    this.cardActionsCodes = CardActionsCodes;
+    this.LabelService = LabelService;
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.ReportsService = ReportsService;

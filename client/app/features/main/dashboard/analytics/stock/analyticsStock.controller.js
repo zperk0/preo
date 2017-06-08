@@ -129,11 +129,11 @@ export default class analyticsStockController {
   onActions(item){
 
     switch(item.id){
-      case this.cardActionsCodes.EXPORT_CSV.id:
+      case this.LabelService.EXPORT_CSV.id:
       this.exportCsv();
       break;
 
-      case this.cardActionsCodes.EXPORT_PDF.id:
+      case this.LabelService.EXPORT_PDF.id:
       this.exportPdf();
       break;
     }
@@ -390,7 +390,7 @@ export default class analyticsStockController {
     }
   }
 
-  constructor($filter, $stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, CardActionsCodes, ReportTypes, hasKnowYourCustomersFeature) {
+  constructor($filter, $stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, LabelService, ReportTypes, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
@@ -401,7 +401,7 @@ export default class analyticsStockController {
     this.ReportsService = ReportsService;
    // this.reportsData = ReportsService.data;
 
-    this.cardActionsCodes = CardActionsCodes;
+    this.LabelService = LabelService;
     this.ReportTypes = ReportTypes;
 
     this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;

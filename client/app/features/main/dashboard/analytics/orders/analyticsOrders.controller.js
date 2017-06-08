@@ -140,15 +140,15 @@ export default class analyticsOrdersController {
   onActions(item){
 
     switch(item.id){
-      case this.cardActionsCodes.EXPORT_CSV.id:
+      case this.LabelService.EXPORT_CSV.id:
       this.exportCsv();
       break;
 
-      case this.cardActionsCodes.EXPORT_PDF.id:
+      case this.LabelService.EXPORT_PDF.id:
       this.exportPdf();
       break;
 
-      case this.cardActionsCodes.NOTIFICATION.id:
+      case this.LabelService.NOTIFICATION.id:
       this.sendNotification()
       break;
     }
@@ -366,7 +366,7 @@ export default class analyticsOrdersController {
     }
   }
 
-  constructor($filter, Snack, $q, $scope, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, CardActionsCodes, gettextCatalog, DialogService, hasKnowYourCustomersFeature) {
+  constructor($filter, Snack, $q, $scope, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, LabelService, gettextCatalog, DialogService, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
@@ -378,7 +378,7 @@ export default class analyticsOrdersController {
 
     this.loadingMoreData = false;
 
-    this.cardActionsCodes = CardActionsCodes;
+    this.LabelService = LabelService;
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.ReportsService = ReportsService;

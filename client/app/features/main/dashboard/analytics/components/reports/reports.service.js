@@ -585,14 +585,14 @@ export default class ReportsService {
   }
 
   // Everytime a search is done, this service keeps the last Param and Data returned.
-  constructor($q , ReportTypes, $filter, gettextCatalog, CardActionsCodes, $window, VenueService) {
+  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService) {
     "ngInject";
     this.$q = $q;
     this.$window = $window;
     this.$filter = $filter;
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
-    this.cardActionsCodes = CardActionsCodes;
+    this.LabelService = LabelService;
     this.accountId = VenueService.currentVenue.accountId;
   }
 
@@ -777,13 +777,13 @@ export default class ReportsService {
     var response = [];
 
     //default actions for all reports
-    var defaultActions = [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF];
-    var chartActions = defaultActions.concat([this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]);
+    var defaultActions = [this.LabelService.EXPORT_CSV, this.LabelService.EXPORT_PDF];
+    var chartActions = defaultActions.concat([this.LabelService.MONTHLY_MODE, this.LabelService.WEEKLY_MODE, this.LabelService.DAILY_MODE]);
     var actionNotify = null;
 
     //only allow Notify option if Venues has an App
     if(this.reportsOptions && this.reportsOptions.hasApplicationId)
-      actionNotify = defaultActions.concat([this.cardActionsCodes.NOTIFICATION]);
+      actionNotify = defaultActions.concat([this.LabelService.NOTIFICATION]);
     else
       actionNotify = defaultActions;
 
@@ -869,6 +869,8 @@ export default class ReportsService {
   getSummaryReports(){
     var response = [];
     var objCharts = {};
+    var barActions = [this.LabelService.EXPORT_CSV, this.LabelService.EXPORT_PDF, this.LabelService.MONTHLY_MODE, this.LabelService.WEEKLY_MODE, this.LabelService.DAILY_MODE];
+    var doughnutActions = [this.LabelService.EXPORT_CSV,this.LabelService.EXPORT_PDF];
     objCharts.cards = [
       {id: 'totalRevenue', name: this.gettextCatalog.getString('Total revenue'), type: 'currency',  flexWidth: 50 },
       {id: 'totalOrders', name: this.gettextCatalog.getString('Total number of orders'), type:'integer' ,flexWidth: 50 },
@@ -880,27 +882,27 @@ export default class ReportsService {
 
     objCharts.bars = [
       {id: 'revenueByDay', name: {daily: this.gettextCatalog.getString('Daily Revenue'), monthly: this.gettextCatalog.getString('Monthly Revenue'), weekly: this.gettextCatalog.getString('Weekly Revenue')},
-        defaultMode: this.cardActionsCodes.DAILY_MODE, type: 'currency',actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]
+        defaultMode: this.LabelService.DAILY_MODE, type: 'currency',actions: barActions
        // data: {x: [], y: []},
       },
       {id: 'ordersByDay', name: {daily: this.gettextCatalog.getString('Daily Orders'), monthly: this.gettextCatalog.getString('Monthly Orders'), weekly: this.gettextCatalog.getString('Weekly Orders')},
-        defaultMode: this.cardActionsCodes.DAILY_MODE, type:'integer', actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]
+        defaultMode: this.LabelService.DAILY_MODE, type:'integer', actions: barActions
        // data: {x: [], y: []},
       },
       {id: 'customersByDay', name: {daily: this.gettextCatalog.getString('Daily Customers'), monthly: this.gettextCatalog.getString('Monthly Customers'), weekly: this.gettextCatalog.getString('Weekly Customers')},
-        defaultMode: this.cardActionsCodes.DAILY_MODE, type:'integer',actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF, this.cardActionsCodes.MONTHLY_MODE, this.cardActionsCodes.WEEKLY_MODE, this.cardActionsCodes.DAILY_MODE]
+        defaultMode: this.LabelService.DAILY_MODE, type:'integer',actions: barActions
        // data: {x: [], y: []},
       }
     ];
 
     objCharts.doughnuts = [
-      {id: 'revenueByChannel', name: this.gettextCatalog.getString('Revenue by channel'),type: 'currency',actions: [this.cardActionsCodes.EXPORT_CSV,this.cardActionsCodes.EXPORT_PDF]},
+      {id: 'revenueByChannel', name: this.gettextCatalog.getString('Revenue by channel'),type: 'currency',actions: doughnutActions},
         //data: {labels: [], values: []},
-      {id: 'ordersByChannel', name: this.gettextCatalog.getString('Orders by channel'),type:'integer' ,actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+      {id: 'ordersByChannel', name: this.gettextCatalog.getString('Orders by channel'),type:'integer' ,actions: doughnutActions},
       //data: {labels: [], values: []},
-      {id: 'customersNewReturning', name: this.gettextCatalog.getString('New vs Returning customers'),type:'integer', actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]},
+      {id: 'customersNewReturning', name: this.gettextCatalog.getString('New vs Returning customers'),type:'integer', actions: doughnutActions},
        //data: {labels: [], values: []},
-      {id: 'customersHowSignedup', name: this.gettextCatalog.getString('How customers signed up'),type:'integer', actions: [this.cardActionsCodes.EXPORT_CSV, this.cardActionsCodes.EXPORT_PDF]}
+      {id: 'customersHowSignedup', name: this.gettextCatalog.getString('How customers signed up'),type:'integer', actions: doughnutActions}
        // data: {labels: [], values: []},
     ];
 
