@@ -23,10 +23,10 @@ export default class ExternalService {
 
   }
 
-  importTicketMasterEventToPreoday(venueId, eventName, tmEvents, collectionSlots){
+  importTicketMasterEventToPreoday(venueId, tmEvents, collectionSlots){
     return this.$q((resolve,reject)=>{
       
-      Preoday.External.importTicketMasterEventsToPreday(venueId, eventName, tmEvents, collectionSlots)
+      Preoday.External.importTMEventsToPreday(venueId, tmEvents, collectionSlots)
         .then((events)=>{
           
           console.log("ExternalService - resolve posting events to Preoday")
@@ -36,6 +36,63 @@ export default class ExternalService {
           reject();
       }).catch((err)=>{
         console.error("Error posting events : ", err)
+        reject();
+      })
+    })
+
+  }
+
+  deleteTMEventOfPreodayEvent(eventId, domainId, externalEventId){
+    return this.$q((resolve,reject)=>{
+      
+      Preoday.External.deleteTMEventOfPreodayEvent(eventId, domainId, externalEventId)
+        .then((events)=>{
+          
+          console.log("ExternalService - delete event successfull")
+          resolve(events);
+        }, (err)=>{
+          console.error("Error deleting tmEvent: ", err)
+          reject();
+      }).catch((err)=>{
+        console.error("Error deleting tmEvent : ", err)
+        reject();
+      })
+    })
+
+  }
+
+  addTMEventToExistentEvent(eventId, venueId, tmEvents){
+    return this.$q((resolve,reject)=>{
+      
+      Preoday.External.addTMEventToExistentEvent(eventId, venueId, tmEvents)
+        .then((events)=>{
+          
+          console.log("ExternalService - Reesolve add tmEvents to Event")
+          resolve(events);
+        }, (err)=>{
+          console.error("Error adding events to existent eventId : ", err)
+          reject();
+      }).catch((err)=>{
+        console.error("Error adding events to existent eventId: ", err)
+        reject();
+      })
+    })
+
+  }
+
+  getTMEventsLinkedtoEventId(venueId, eventId){
+    return this.$q((resolve,reject)=>{
+      
+      Preoday.External.getTMEventsLinkedtoEventId(venueId, eventId)
+        .then((events)=>{
+          
+          console.log("ExternalService - Reesolve get events by eventId")
+          resolve(events);
+        }, (err)=>{
+          console.error("Error fetching events of existent eventId: ", err)
+          reject();
+      }).catch((err)=>{
+        console.error("Error fetching events of existent eventId: ", err)
         reject();
       })
     })

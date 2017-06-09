@@ -25,11 +25,11 @@ export default class contextualDrawerEventsImportController {
 
   done () {
 
-    if(this.nameForm.$invalid){
-      if(this.selectedTab !== 0)
-        this.selectedTab = 0;
-      return;
-    }
+    // if(this.nameForm.$invalid){
+    //   if(this.selectedTab !== 0)
+    //     this.selectedTab = 0;
+    //   return;
+    // }
 
     if(!this.slots.pickupSlots.length){
       if(this.selectedTab !== 1)
@@ -39,7 +39,7 @@ export default class contextualDrawerEventsImportController {
     }
 
     this.showSpinner();
-    this.ExternalService.importTicketMasterEventToPreoday(this.venueId, this.inputName, this.selectedEvents, this.slots.pickupSlots)
+    this.ExternalService.importTicketMasterEventToPreoday(this.venueId, this.selectedEvents, this.slots.pickupSlots)
     .then((data) => {
 
       this.cleanData(true);

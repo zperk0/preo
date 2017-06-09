@@ -22,6 +22,7 @@ import taxGroupSelect from './components/taxGroupSelect';
 import menuItemAdvanced from './components/menuItemAdvanced';
 import userRoleSelect from './components/userRoleSelect';
 import promotionComponents from './components/promotionComponents';
+import externalEventList from './components/externalEventList';
 
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
@@ -55,6 +56,7 @@ export default angular.module("contextualMenu" , [
 	minIntegerValue,
 	compareNumber,
   promotionComponents,
+  externalEventList,
 	venueCurrency
 ])
 

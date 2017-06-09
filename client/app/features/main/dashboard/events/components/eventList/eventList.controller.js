@@ -35,6 +35,7 @@ export default class eventListController {
                name: ev.name,
                id: ev.id,
                $selected: false,
+               externalEvents: ev.externalEvents
              });
          
             this.events.push(event);  

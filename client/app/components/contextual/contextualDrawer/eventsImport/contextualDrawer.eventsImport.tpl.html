@@ -4,9 +4,9 @@
 
     <div class='contextual-list' ng-class="{'empty': drawerEventsImportCtrl.emptyData}">
       <md-tabs md-dynamic-height md-stretch-tabs="always" md-selected="drawerEventsImportCtrl.selectedTab">
-        <md-tab label="Basics">
+        <md-tab label="Events">
           <div class='sv-root-holder' sv-root="event">
-            <div class="event-import-name" ng-if="!drawerEventsImportCtrl.emptyData">
+            <!-- <div class="event-import-name" ng-if="!drawerEventsImportCtrl.emptyData">
             <md-input-container md-no-float flex class="no-spacer">
               <label>{{'Event name' | translate }}</label>
               <input type="text" name="inputName" autofocus required ng-model="drawerEventsImportCtrl.inputName">
@@ -14,7 +14,7 @@
                 <div ng-message="required"> {{'This is required.' | translate}}</div>
               </div>
             </md-input-container>
-            </div>
+            </div> -->
 
             <div class="events-list">
             <label class="label-title" ng-if="!drawerEventsImportCtrl.emptyData">{{ 'Choose events to import:' | translate }}</label>
