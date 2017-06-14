@@ -16,7 +16,7 @@ export default class customTagListController {
     }
     
     let customTag = new Preoday.CustomTag({
-      venueId: this.venueId,
+      venueId: this.VenueService.currentVenue.id,
       $selected:true,
     });
 
@@ -110,7 +110,7 @@ export default class customTagListController {
   }
 
   /* @ngInject */
-  constructor($timeout, $q, Spinner, Snack, LabelService, DialogService) {
+  constructor($timeout, $q, Spinner, Snack, LabelService, DialogService, VenueService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -118,6 +118,7 @@ export default class customTagListController {
     this.$timeout = $timeout;
     this.LabelService = LabelService;
     this.DialogService = DialogService;
+    this.VenueService = VenueService;
 
     this.customTags = this.customTags || [];
   }

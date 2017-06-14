@@ -16,7 +16,7 @@ export default class tagActionListController {
     }
     
     let tagAction = new Preoday.CustomTagAction({
-      venueId: this.venueId,
+      venueId: this.VenueService.currentVenue.id,
       $selected:true,
     });
 
@@ -55,13 +55,14 @@ export default class tagActionListController {
   }
 
   /* @ngInject */
-  constructor($timeout, $q, Spinner, Snack, LabelService) {
+  constructor($timeout, $q, Spinner, Snack, LabelService, VenueService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
     this.$timeout = $timeout;
     this.LabelService = LabelService;
+    this.VenueService = VenueService;
 
     this.tagActions = this.tagActions || [];
   }
