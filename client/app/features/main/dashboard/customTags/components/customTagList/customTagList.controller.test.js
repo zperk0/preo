@@ -13,6 +13,8 @@ describe('customTagList Controller', function () {
       Snack,
       LabelService,
       DialogService,
+      VenueService,
+      currentVenue,
       server,
       $controller;
 
@@ -28,6 +30,14 @@ describe('customTagList Controller', function () {
       Snack = $injector.get('Snack');
       LabelService = $injector.get('LabelService');
       DialogService = $injector.get('DialogService');
+      VenueService = $injector.get('VenueService');
+
+      currentVenue = new Preoday.Venue.constructor({
+        id: 9,
+      });
+      currentVenue.setAsCurrent();
+
+      VenueService.currentVenue = currentVenue;
 
       $scope = $rootScope.$new();
 

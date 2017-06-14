@@ -12,6 +12,8 @@ describe('tagActionList Controller', function () {
       Spinner,
       Snack,
       LabelService,
+      VenueService,
+      currentVenue,
       server,
       $controller;
 
@@ -26,6 +28,14 @@ describe('tagActionList Controller', function () {
       Spinner = $injector.get('Spinner');
       Snack = $injector.get('Snack');
       LabelService = $injector.get('LabelService');
+      VenueService = $injector.get('VenueService');
+
+      currentVenue = new Preoday.Venue.constructor({
+        id: 9,
+      });
+      currentVenue.setAsCurrent();
+
+      VenueService.currentVenue = currentVenue;
 
       $scope = $rootScope.$new();
 
