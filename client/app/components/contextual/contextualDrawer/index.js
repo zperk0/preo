@@ -40,8 +40,9 @@ import eventsImportDirective from './eventsImport/contextualDrawer.eventsImport.
 
 import cardItemList from '../../cardItemList';
 
+import externalEventList from './eventsImport/externalEventList';
 
-export default angular.module("contextualDrawer" , [cardItemList])
+export default angular.module("contextualDrawer" , [cardItemList, externalEventList])
   .service(service.UID, service)
 
   .controller(controller.UID, controller)

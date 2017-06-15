@@ -1,0 +1,14 @@
+<div class='external-event'>
+<card-item
+  has-actions="externalEventListCtrl.hasActions"              
+  ng-repeat="event in externalEventListCtrl.events | orderBy: eventDate track by $index"
+  selected="event.$selected"
+  ng-click="externalEventListCtrl.selectEvent(event)"
+  >
+  <card-item-title has-visible="true">
+    <span>{{event.showName}} </span>
+  </card-item-title>
+
+  <card-item-actions ng-if="externalEventListCtrl.hasActions" on-delete="externalEventListCtrl.onDelete(event)"></card-item-actions> 
+</card-item>
+</div>

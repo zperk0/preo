@@ -19,40 +19,25 @@ export default class eventListController {
     if(type === 'NEW')
       return this.showCreateEvent();
     else if(type === 'IMPORT'){
-      
+
+      this.ExternalService.cleanEntityEvent();
+   
       this.contextual.showDrawer('eventsImport')
         .then((eventsImported) => {
 
-          this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));
-
-          eventsImported.forEach((ev) => {
-            
-             let event = new Preoday.Event({
-               venueId: ev.venueId,
-               visible: 1,
-               $images: ev.images ? ev.images : [],
-               schedules: ev.schedules,
-               name: ev.name,
-               id: ev.id,
-               $selected: false,
-               externalEvents: ev.externalEvents
-             });
-         
-            this.events.push(event);  
-          });         
+          this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));        
           
-         // this.events = this.events.concat(eventsImported);
-
+          this.events = this.events.concat(eventsImported);
+         
           console.log('outletLocation selected ->> ', this.events);
         }, () => {
-        
-          console.log('Drawer Event Import cancelled');
+     
+          console.log('Drawer Event Import cancelled');          
         })
       .catch((err) => {
-        console.log('Error importing events -', err);
+        console.log('Error importing events -', err);     
         this.Snack.showError(this.gettextCatalog.getString("An error occurred while importing events. Please try again."));
-      });
-    
+      });   
     }
 
   }
@@ -128,7 +113,7 @@ export default class eventListController {
   }
 
   /* @ngInject */
-  constructor(VenueService, $scope, $timeout, EventService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
+  constructor(VenueService, $scope, $timeout, EventService, ExternalService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
   	'ngInject';
     this.contextual = contextual;
     this.Snack = Snack;
@@ -142,6 +127,8 @@ export default class eventListController {
     this.$q = $q;
     this.$state = $state; 
     this.$timeout = $timeout;
+
+    this.ExternalService= ExternalService;    
 
     this.hasTMFeature = FeatureService.hasTicketMasterEventFeature();
   }

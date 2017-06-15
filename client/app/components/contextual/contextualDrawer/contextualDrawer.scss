@@ -117,7 +117,7 @@
   .no-results{
     padding: 16px;
   }
-  &:not(.contextual-drawer-delivery-zones){
+  &:not(.contextual-drawer-delivery-zones):not(.contextual-drawer-events-import){
     .item-actions{
       display: none;
     }
@@ -134,26 +134,7 @@
   .error {
     font-size:12px;
     color: rgb(221,44,0);
-  }
-
-  .event-import-name{
-    width: 100%;
-
-    md-input-container{
-      margin-bottom: 0;
-      margin-top: 0;
-      width: 100%;     
-    }
-  }
-
-  .events-list{
-   // margin-top: 24px;
-
-    .repeat-holder .sort-holder{
-      padding-top: 4px;
-    }
-    
-  }
+  }   
 
   .label-title {
     color: #424242;
@@ -170,6 +151,33 @@
     .collection-slots-select {
       margin-top: 12px;
     }
+  }
+
+  &.contextual-drawer-events-import {
+    .repeat-holder .sort-holder{
+      padding-top: 4px;
+    }
+   
+    .event-edit-list{
+      min-height: 0;
+    }
+    .sv-placeholder {
+      min-height: 58px !important;
+      // margin: 0px;
+    }
+
+    .card-item {
+      &.card-item-new {
+        max-height: 60px;
+        min-height: 60px;
+
+        md-card-actions .md-button{
+          padding-right: 0;
+          padding-left: 0;
+        } 
+      }
+    }
+
   }
 
   .outlet-list {

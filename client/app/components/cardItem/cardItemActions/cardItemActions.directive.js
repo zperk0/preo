@@ -21,7 +21,8 @@ export default function cardItemActions(){
       visibleMessage:'@',
       invisibleMessage:'@',
       addMessage: '=?',
-      addLocationMessage: '=?'
+      addLocationMessage: '=?',
+      onExternalEvents: '&?'
     },
     template: require("./cardItemActions.tpl.html"),
     replace:true,

@@ -1,19 +1,26 @@
 import controller from './externalEventList.controller'
 
 export default function externalEventList(){
+  "ngInject";
   return {
     restrict: 'E',
+    scope: {
+      events: '=',
+      onItemClicked: '&?',
+      onItemDelete: '&?',    
+      hasActions: '=',
+
+    },
     template: require("./externalEventList.tpl.html"),
     controller: controller.UID,
-    scope:{
-      event: "=ngModel",
-    },
     controllerAs: "externalEventListCtrl",
     bindToController: true,
-    require: ['^form', 'externalEventList'],
-    link: (scope, el, attr, ctrls) => {
+    replace:true,
+    require:["^cardItemList", "externalEventList"],
+    link: (scope, el, attr, ctrl) => {
 
-      ctrls[1].contextualForm = ctrls[0];
+      ctrl[1].cardItemList = ctrl[0];
+
     }
   }
 }

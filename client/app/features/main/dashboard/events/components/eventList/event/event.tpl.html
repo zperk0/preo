@@ -31,10 +31,17 @@
         >
     </event-schedule-list>
 
-    <card-item-actions is-visible="eventCtrl.event.visible"
+    <card-item-actions ng-if="!eventCtrl.event.externalEvents.length" is-visible="eventCtrl.event.visible"
+                       on-delete="eventCtrl.onDelete()"
+                       on-edit="eventCtrl.onEdit($event)"
+                       on-add-location="eventCtrl.onAddOutletLocation($event)"                       
+                       add-location-message="eventCtrl.getAddOutletLocationMessage()"
+                        ></card-item-actions>
+    <card-item-actions ng-if="eventCtrl.event.externalEvents.length" is-visible="eventCtrl.event.visible"
                        on-delete="eventCtrl.onDelete()"
                        on-edit="eventCtrl.onEdit($event)"
                        on-add-location="eventCtrl.onAddOutletLocation($event)"
+                       on-external-events="eventCtrl.onExternalEvents($event)"
                        add-location-message="eventCtrl.getAddOutletLocationMessage()"
                         ></card-item-actions>
   </card-item>

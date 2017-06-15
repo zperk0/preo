@@ -4,6 +4,26 @@ export default class ExternalService {
     return "ExternalService"
   }
 
+  cleanEntityEvent(){
+    this.entityEvent = null;
+  }
+
+  setEntityEvent(event){
+    this.entityEvent = event;
+  }
+
+  getEntityEvent(){
+    return this.entityEvent;
+  }
+
+  getHasChanges(){
+    return this.hasChanges;
+  }
+
+  setHasChanges(param){
+    this.hasChanges = param;
+  }
+
   getTicketMasterEvents(venueIds){
     return this.$q((resolve,reject)=>{
       
@@ -11,6 +31,7 @@ export default class ExternalService {
         .then((events)=>{
           
           console.log("ExternalService - Reesolve get events")
+          
           resolve(events);
         }, (err)=>{
           console.error("Error fetching events : ", err)
@@ -44,7 +65,7 @@ export default class ExternalService {
 
   deleteTMEventOfPreodayEvent(eventId, domainId, externalEventId){
     return this.$q((resolve,reject)=>{
-      
+
       Preoday.External.deleteTMEventOfPreodayEvent(eventId, domainId, externalEventId)
         .then((events)=>{
           
@@ -65,10 +86,10 @@ export default class ExternalService {
     return this.$q((resolve,reject)=>{
       
       Preoday.External.addTMEventToExistentEvent(eventId, venueId, tmEvents)
-        .then((events)=>{
+        .then((event)=>{
           
           console.log("ExternalService - Reesolve add tmEvents to Event")
-          resolve(events);
+          resolve(event);
         }, (err)=>{
           console.error("Error adding events to existent eventId : ", err)
           reject();

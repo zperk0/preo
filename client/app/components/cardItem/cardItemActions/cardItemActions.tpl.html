@@ -45,6 +45,12 @@
           {{'Delete' | translate}}
         </md-tooltip>
       </md-button>
+      <md-button ng-if="vm.onExternalEvents" class="md-icon-button" ng-click="vm.onExternalEvents({$event:$event})">
+        <icon>event</icon>
+        <md-tooltip md-direction="bottom">
+          {{'External events' | translate }}
+        </md-tooltip>
+      </md-button>
       <md-button ng-if="vm.onAddLocation" class="md-icon-button" ng-click="vm.onAddLocation({$event:$event})">
         <icon>add_location</icon>
         <md-tooltip md-direction="bottom">
