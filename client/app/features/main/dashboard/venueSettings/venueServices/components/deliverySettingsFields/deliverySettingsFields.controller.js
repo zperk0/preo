@@ -30,8 +30,8 @@ export default class deliverySettingsFieldsController {
   };
 
   doUpdate() {
-
     var promises = [];
+    this.setDefaultLeadTime();
     promises.push(this.venue.settings.update())
     promises.push(this.saveFee())
     this.$q.all(promises).then((results)=>{
@@ -103,6 +103,17 @@ export default class deliverySettingsFieldsController {
         this.Snack.showError(this.LabelService.SNACK_ERROR_FETCHING_FEES)
         this.Spinner.hide("venue-details");
       });
+  }
+
+  setDefaultLeadTime() {
+    if (this.venue.settings) {
+      if (!this.venue.settings.leadTime) {
+        this.venue.settings.leadTime = 0;
+      }
+      if (!this.venue.settings.deliveryLeadTime) {
+        this.venue.settings.deliveryLeadTime = 0;
+      }
+    }
   }
 
   constructor($scope, $q, Snack, LabelService, Spinner) {

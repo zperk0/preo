@@ -15,7 +15,9 @@
           </outlet-location-group-list>
      </div>
     <div class='floating-right-buttons'>
-    	<md-button ng-click="outletLocationsCtrl.toggleDrawer('outlets')" class="md-primary md-hue-2" ng-if="outletLocationsCtrl.hasOutlets()" translate>Add outlets</md-button>
+    	<md-button ng-click="outletLocationsCtrl.toggleDrawer('outlets')"
+                 class="md-primary md-hue-2"
+                 ng-if="outletLocationsCtrl.hasOutlets() && !outletLocationsCtrl.outletGroup.isCustomField()" translate>Add outlets</md-button>
   	</div>
   	<div class='main-content-right' media-query="min-width: 1024px" sticky offset="134" contextual-menu-holder></div>
   </div>

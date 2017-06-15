@@ -43,8 +43,13 @@ export default class FeatureService {
   }
 
   hasTicketMasterEventFeature(){
-    return true;
-    //return this.getLocalFeature(Preoday.constants.Feature.EXTERNAL_EVENT_MAPPING);
+   // return true;
+    return this.getLocalFeature(Preoday.constants.Feature.EXTERNAL_EVENT_MAPPING);
+  }
+
+  hasCustomOutletLocationFieldsFeature () {
+    return this.getLocalFeature(Preoday.constants.Feature.CUSTOM_OUTLET_LOCATION_FIELDS);
+
   }
 
   getLocalFeature (featureId) {
