@@ -23,10 +23,8 @@ export default class contextualDrawerEventsImportController {
   }
 
   done(){
-   //if(this.entityChanged)
-   //   this.cleanData(true);
-   // else
-      this.cleanData();
+  
+    this.cleanData();
     this.contextualDrawer.success({ hasChanges: this.entityChanged, event: this.entity});
   }
 
@@ -43,7 +41,7 @@ export default class contextualDrawerEventsImportController {
   }
 
   onItemDelete(){
-    //this.entityChanged = true;
+   // this.entityChanged = true;
     this.data = null;
   }
 
@@ -179,14 +177,14 @@ export default class contextualDrawerEventsImportController {
 
     $scope.$on(BroadcastEvents.ON_CONTEXTUAL_DRAWER_OPEN, (event, args) => {
       if(args.id === 'eventsImport'){
-        this.entityChanged = false;     
+        this.entityChanged = false; 
         this.init();
       }
     });       
   }
 
   init(paramEvent){
-    this.loaded = false;
+    this.loaded = false; 
     this.entity = paramEvent ? paramEvent : this.ExternalService.getEntityEvent();
 
     if(!this.entity || this.linkToExistentEvent){

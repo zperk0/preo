@@ -113,11 +113,10 @@ export default class eventListController {
   }
 
   /* @ngInject */
-  constructor(VenueService, $scope, $timeout, EventService, ExternalService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
+  constructor(VenueService, $timeout, EventService, ExternalService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
   	'ngInject';
     this.contextual = contextual;
-    this.Snack = Snack;
-    this.$scope = $scope;
+    this.Snack = Snack;   
     this.VenueService = VenueService;   
     this.EventService = EventService;
     this.CollectionSlotsService = CollectionSlotsService;

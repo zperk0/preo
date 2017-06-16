@@ -13,15 +13,15 @@ export default class eventController {
   }
 
   onExternalEvents($event){
-
+    this.event.$expanded = false;
     //contextualDrawer rceives zero param, so need to set entity on Service, so its possible to use on contextual init
     this.ExternalService.setEntityEvent(this.event);
     this.contextual.showDrawer('eventsImport')
       .then((data) => {
-   
-        if(data.hasChanges){   
+
+        if(data.hasChanges){
           this.event.schedules = data.event.schedules;
-          this.event.externalEvents = data.event.externalEvents;
+          this.event.externalEvents = data.event.externalEvents;               
         }       
 
         this.ExternalService.cleanEntityEvent();
