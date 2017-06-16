@@ -12,6 +12,39 @@ export default class EventService {
     return this.getEvents(venueId, filter);
   }
 
+  getByVenuesIdsAndName(venueIds, searchName, offset, limit){
+
+    var params = {
+      venueIds: venueIds      
+    };
+
+    if(searchName)
+      params.eventName = searchName;
+
+    if(offset && !isNaN(offset))
+      params.offset = offset;
+
+    if(limit && !isNaN(limit))
+      params.limit = limit;
+
+    return this.$q((resolve, reject)=>{
+
+      Preoday.Event.getByVenuesAndName(params).then((events)=> {
+        
+        resolve(events);
+      },(err)=>{
+
+        console.log("Error fetching events", err);
+        reject(err);
+      })
+      .catch((err)=>{
+
+        console.log("Error fetching events", err);
+        reject(err);
+      });
+    });
+  }
+
   getEvents(venueId, params) {
 
     if (this.data.events){
