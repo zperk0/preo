@@ -231,21 +231,32 @@ export default class customDatafiltersController {
       return;
 
     if(this.filters.report && this.filters.report.hasItemFilter){
-      this.getItemsFilter();
+      this.getItemsFilter()
+      .then(() => {
+        if(this.hasReport){
+          this.getReports();
+        }
+
+        if(this.hasDaterange){
+          this.getDateRange();
+        }
+
+        this.debounceUpdate('Venue', true);
+      });
     }
     else{
       this.reportItems = null;
+      if(this.hasReport){
+        this.getReports();
+      }
+
+      if(this.hasDaterange){
+        this.getDateRange();
+      }
+
+      this.debounceUpdate('Venue', true);
     }
 
-    if(this.hasReport){
-      this.getReports();
-    }
-
-    if(this.hasDaterange){
-      this.getDateRange();
-    }
-
-    this.debounceUpdate('Venue', true);
   }
 
   onOpenEvent(){
@@ -413,14 +424,20 @@ export default class customDatafiltersController {
 
     //check if filter item should be visible: if report has this option
     if(this.filters.report.hasItemFilter){
-      this.shouldShowItemFilter = true;
 
-      if(!this.reportItems)
-        this.getItemsFilter();
+      if(!this.reportItems){
+        this.getItemsFilter()
+        .then(() => {
+
+          this.shouldShowItemFilter = true;
+        });
+      }
+      else
+        this.shouldShowItemFilter = true;
 
     } else {
       this.shouldShowItemFilter = false;
-      this.filters.item = null;
+      this.filters.item = null;      
     }
 
     this.debounceUpdate('Report');
@@ -544,39 +561,41 @@ export default class customDatafiltersController {
   }
 
   getItemsFilter(){
+    return this.$q((resolve, reject) => {
+      this.showSpinner();
 
-    this.showSpinner();
+      var params = { venues: this.filters.venues}
 
-    var params = { venues: this.filters.venues}
+      let oldItem = null;
+      if(this.filters.item)
+        oldItem = angular.copy(this.filters.item);
 
-    let oldItem = null;
-    if(this.filters.item)
-      oldItem = angular.copy(this.filters.item);
+      this.ReportsService.getMenuItemsByVenues(params)
+      .then((data) => {
 
-    this.ReportsService.getMenuItemsByVenues(params)
-    .then((data) => {
+        this.reportItems = data;
 
-      this.reportItems = data;
+        let matchItem = false;
+        if(oldItem){
+          data.forEach((x) => {
+            if(x.menuItemId == oldItem.menuItemId){
+              matchItem = true;
+            }
+          });
+        }
 
-      let matchItem = false;
-      if(oldItem){
-        data.forEach((x) => {
-          if(x.menuItemId == oldItem.menuItemId){
-            matchItem = true;
-          }
-        });
-      }
+        if(matchItem)
+          this.filters.item = oldItem;
+        else if(oldItem)
+          this.filters.item = null;
 
-      if(matchItem)
-        this.filters.item = oldItem;
-      else if(oldItem)
-        this.filters.item = null;
-
-      this.hideSpinner();
-
-    }, (err) => {
-      console.log('Error fetching items from venues ', err);
-      this.hideSpinner();
+        this.hideSpinner();
+        resolve(this.filters.item);
+      }, (err) => {
+        console.log('Error fetching items from venues ', err);
+        reject();
+        this.hideSpinner();
+      });
     });
   }
 

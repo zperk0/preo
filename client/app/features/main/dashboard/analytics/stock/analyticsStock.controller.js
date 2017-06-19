@@ -205,24 +205,23 @@ export default class analyticsStockController {
     this.infiniteScrollIndex = this.valuesPerScrollPage;
   }
 
-  onFilter(filters , typeChanged){
-
-    this.dataFilters = filters;    
+  onFilter(filters , typeChanged){    
+    this.dataFilters = filters;  
 
     // view is loaded with empty report fitler, no search at first time
     if(!this.dataFilters.report){
       this.shouldShowdatatable = false;
       return;
-    }
+    } 
 
-    var isChartReport = this.dataFilters.report.isChartType;
+    var isChartReport = this.dataFilters.report.isChartType; 
 
     // If none item selected, do nothing.
     if(isChartReport && !this.dataFilters.item){
-      this.$timeout(() => {
+     this.$timeout(() => {
         this.shouldShowChart = false;
-        this.shouldShowdatatable = false;
-      });
+        this.shouldShowdatatable = false;        
+     });
       return;
     }
 
@@ -245,10 +244,11 @@ export default class analyticsStockController {
       this.$timeout(() => {
         this.getChartData();
         this.shouldShowChart = true;
+        this.shouldShowdatatable = false; 
       });
     }
     else{
-
+      this.shouldShowChart = false;
       this.reportTitle = this.dataFilters.report.name;
 
       this.getTableData();
