@@ -18,6 +18,18 @@ export default class PermissionService {
     });
   }
 
+  checkVenuesPermissions(permissions,venueIds){
+    return this.$q((resolve,reject)=>{
+      Preoday.Permission.check(permissions.join(","),venueIds.join(","))
+        .then((perms)=>{ 
+            resolve(perms);          
+          reject();
+        },()=>{
+          reject();
+      })
+    });
+  }
+
   hasPermission(perm){
     return this.permissions && this.permissions[perm];
   }

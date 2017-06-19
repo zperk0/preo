@@ -9,6 +9,8 @@ export default class LabelService {
 
     this.CONFIRMATION = gettextCatalog.getString("Got it");
 
+    this.NOT_AVAILABLE = gettextCatalog.getString("Not available");
+
     this.SNACK_WRONG_CREDENTIALS = gettextCatalog.getString("Invalid username and/or password");
 
     this.SNACK_WEBSETTINGS_ERROR = gettextCatalog.getString("Could not save weborders style");
@@ -124,5 +126,12 @@ export default class LabelService {
 
     this.SNACK_ERROR_FETCHING_FEES = gettextCatalog.getString("An error ocurred to fetch the fees. Try again later.");
 
+    //dropdownActions - Analytics
+    this.EXPORT_CSV  = { id: 1, name: gettextCatalog.getString('Export as CSV'), type: 'csv' },
+    this.EXPORT_PDF  = { id: 2, name: gettextCatalog.getString('Export as PDF'), type: 'pdf' },
+    this.DAILY_MODE  = { id: 3, name: gettextCatalog.getString('Daily') , type: 'daily' },
+    this.WEEKLY_MODE = { id: 4, name: gettextCatalog.getString('Weekly'), type: 'weekly' },
+    this.MONTHLY_MODE= { id: 5, name: gettextCatalog.getString('Monthly'), type: 'monthly'},
+    this.NOTIFICATION= { id: 6, name: gettextCatalog.getString('Send push notification'), type: 'notification'}
   }
 }
