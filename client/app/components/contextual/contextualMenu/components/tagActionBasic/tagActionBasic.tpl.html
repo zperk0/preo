@@ -23,7 +23,7 @@
       <div ng-message="maxlength" translate ng-class="{'activated': tagActionBasicCtrl.contextualForm.entityBody.$error.maxlength}">Max length is 256.</div>
     </div>
   </md-input-container>
-  <tag-select ng-model="tagActionBasicCtrl.tagAction.tags" collection="tagActionBasicCtrl.tagGroups"></tag-select>
+  <tag-select ng-model="tagActionBasicCtrl.tagAction.groups" collection="tagActionBasicCtrl.tagGroups"></tag-select>
   <div class="radio-group">
     <div class="error" ng-if="tagActionBasicCtrl.contextualForm.$submitted && !tagActionBasicCtrl.tagAction.triggerType" translate>Trigger is required.</div>
     <div class='checkbox-label' translate>Trigger:</div>
