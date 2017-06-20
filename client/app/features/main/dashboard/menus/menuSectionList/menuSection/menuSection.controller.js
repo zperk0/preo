@@ -225,8 +225,9 @@
           });
 
       } else {
-        this.saveSection().then(()=>{
+        this.saveSection().then(section =>{
           this.contextualMenu.hide();
+          this.section.tagActions = section && section.tagActions;
           this.section.$selected = false;
         })
       }
@@ -247,7 +248,7 @@
   }
 
   checkUpdatedItem (event, updatedItem) {
-
+    
     if (updatedItem.sectionId === this.section.id) {
       return;
     }
