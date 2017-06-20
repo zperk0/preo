@@ -235,7 +235,7 @@ export default class ItemService {
     }
   }
 
-  getItems(venueId, expand='images,tags,modifiers'){
+  getItems(venueId, expand='images,tags,modifiers,customTags,tagActions'){
     return this.$q((resolve, reject)=>{
       if (this.data.items){
         resolve(this.data);
