@@ -1,0 +1,14 @@
+<div class='venue-item'
+      ng-attr-data-id="{{venueItemCtrl.venue.id}}">
+  <card-item  has-actions="true"
+              deleted="venueItemCtrl.promotion.$deleted"
+              selected="venueItemCtrl.promotion.$selected"
+              class='small'>
+    <card-item-title has-visible="false">
+        <span>{{venueItemCtrl.venue.name}} </span>
+    </card-item-title>
+
+    <card-item-actions on-sync="venueItemCtrl.onSync()"
+                        ></card-item-actions>
+  </card-item>
+</div>
