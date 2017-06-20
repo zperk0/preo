@@ -55,7 +55,7 @@ export default class customTagController {
         
         this.$timeout(() => {
 
-          this.cardItemList.onItemCreated(_customTag);
+          this.cardItemList.onItemCreated(_customTag, true);
           this.contextualMenu.hide();
           this.Spinner.hide("custom-tag-create");
           this.Snack.show(this.LabelService.SNACK_TAG_CREATED);
