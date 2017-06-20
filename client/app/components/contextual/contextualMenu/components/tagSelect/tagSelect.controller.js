@@ -38,7 +38,10 @@ export default class tagSelectController {
       return chip;
     }
 
-    let tag = { name: chip };
+    let tag = {
+      name: chip,
+      venueId: this.VenueService.currentVenue.id
+    };
 
     let existentTag = this.checkExists(tag, this.collection);
     if (existentTag) {
@@ -63,8 +66,10 @@ export default class tagSelectController {
     this.searchText = null;
   }
 
-  constructor() {
+  constructor(VenueService) {
     "ngInject";
+
+    this.VenueService = VenueService;
 
     this.clearSelection();
     this.clearSearchText();
