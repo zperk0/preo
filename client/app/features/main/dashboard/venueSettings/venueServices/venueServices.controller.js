@@ -123,7 +123,6 @@ export default class venueServicesController {
   }
 
   setDefaultLeadTime() {
-    console.info(this.venue.settings);
     if (this.venue.settings) {
       if (!this.venue.settings.leadTime) {
         this.venue.settings.leadTime = 0;
