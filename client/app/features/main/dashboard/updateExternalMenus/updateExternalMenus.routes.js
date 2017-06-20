@@ -12,7 +12,7 @@ export default function routes($stateProvider, Permissions) {
     url: "/updateExternalMenus",
     template: require("./updateExternalMenus.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "updateExternalMenusCtrl",
     requiresPermission: Permissions.MENU,
     resolve :{
       auth:(authenticated)=>{
