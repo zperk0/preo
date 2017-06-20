@@ -235,29 +235,29 @@ export default class ItemService {
     }
   }
 
-  getItems(venueId, expand='images,tags,modifiers,customTags,tagActions'){
+  fetchItems(venueId, expand='images,tags,modifiers,customTags,tagActions') {
     return this.$q((resolve, reject)=>{
-      if (this.data.items){
-        resolve(this.data);
-      } else {
-        Preoday.Item.getAll({venueId:venueId, expand:expand})
-        .then((items)=>{
-          this.data.items = items || [];
+      Preoday.Item.getAll({venueId:venueId, expand:expand})
+      .then((items)=>{
+        this.data.items = items || [];
 
-          this.setItemsSizes();
+        this.setItemsSizes();
 
-          return this.ModifierService.getModifiers(venueId)
-        })
-        .then((modifiers)=>{
-          // this.populateModifiers(modifiers);
-          resolve(this.data)
-        })
-        .catch((err)=>{
-          console.log("Error fetching items", err);
-          reject(err);
-        });
-      }
-    })
+        return this.ModifierService.getModifiers(venueId)
+      })
+      .then((modifiers)=>{
+        // this.populateModifiers(modifiers);
+        resolve(this.data)
+      })
+      .catch((err)=>{
+        console.log("Error fetching items", err);
+        reject(err);
+      });
+    });
+  }
+
+  getItems(){
+    return this.data.items;
   }
 
   getNewItemBase (venueId, isVoucher) {

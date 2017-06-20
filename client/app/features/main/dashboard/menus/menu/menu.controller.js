@@ -47,9 +47,7 @@ export default class menuController {
     this.contextual = contextual;
     this.tags = tags;
 
-    ItemService.getItems($stateParams.venueId).then(()=>{
-      this.setMenu($stateParams.menuId);
-    });
+    this.setMenu($stateParams.menuId);
   }
 }
 

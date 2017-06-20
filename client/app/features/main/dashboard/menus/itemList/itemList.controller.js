@@ -17,37 +17,13 @@ export default class itemListController {
     this.contextual.showDrawer(id);
   }
 
-  setItems(venueId) {
+  getItems() {
+    this.items = this.ItemService.getItems();
 
-    this.ItemService.getItems(venueId)
-      .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"FAILED_LOADING_MENU_ITEMS"))
-      .catch((err)=> {
+    console.log('items here----', this.items);
+    // {items:data.items.map((i, index)=>({id:i.id, item:i}))}
 
-        this.handleError();
-
-        this.loaded = true;
-        console.log("err",err)
-      });
-
-  }
-
-  handleFinishLoading(data) {
-
-    this.$timeout(()=>{
-      console.log('data here----', data);
-      // {items:data.items.map((i, index)=>({id:i.id, item:i}))}
-      this.data = data;
-
-      this.hideSpinner();
-
-      this.loaded = true;
-    })
-
-  }
-
-  handleError(menu){
-
-    this.hideSpinner();
+    this.loaded = true;
   }
 
   constructor($stateParams, $timeout, ItemService, contextual, FeatureService, Spinner, tags) {
@@ -62,8 +38,7 @@ export default class itemListController {
     this.loaded = false;
     this.tags = tags;
 
-    this.showSpinner();
-    this.setItems($stateParams.venueId);
+    this.getItems();
 
     FeatureService.hasFeature(Preoday.constants.Feature.NESTED_MODIFIER);
   }

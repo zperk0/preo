@@ -6,23 +6,23 @@
       </div>
     </div>
 
-    <div class='contextual-list' ng-class="{empty:!drawerItemsCtrl.data.items || !drawerItemsCtrl.data.items.length}">
+    <div class='contextual-list' ng-class="{empty:!drawerItemsCtrl.items || !drawerItemsCtrl.items.length}">
 
       <div class='menu-item-list'>
         <div class='sv-root-holder' sv-root='item'>
           <card-item-list
-                collection="::drawerItemsCtrl.data.items"
+                collection="::drawerItemsCtrl.items"
                 search-filter="drawerItemsCtrl.searchText"
                 search-label="items">
                 <div class='sort-holder'
-                  sv-part="::drawerItemsCtrl.data.items"
-                  sv-part-origin="::drawerItemsCtrl.data.items"
+                  sv-part="::drawerItemsCtrl.items"
+                  sv-part-origin="::drawerItemsCtrl.items"
                   sv-multi-select='true'
                   sv-keep-in-list='true'
                   sv-is-dropzone='false'>
 
                   <static-menu-item
-                     ng-repeat="item in ::drawerItemsCtrl.data.items | orderBy: 'id' track by item.id"
+                     ng-repeat="item in ::drawerItemsCtrl.items | orderBy: 'id' track by item.id"
                      ng-show="drawerItemsCtrl.isInFilter(item, drawerItemsCtrl.searchText.name)"
                      ng-attr-data-id="{{ ::item.id }}"
                      item="::item"

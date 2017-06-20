@@ -15,33 +15,33 @@ export default function routes($stateProvider, Permissions) {
     controller: controller.UID,
     controllerAs: "menus",
     resolve: {
-      venueId: function ($q, $timeout, $state, VenueService) {
 
-    		if (VenueService.hasVenueSet()) {
-
-    			return $q.when(VenueService.currentVenue.id);
-    		} else {
-
-    			$timeout(() => {
-
-    				$state.go('main.dashboard');
-    			});
-
-    			return $q.reject();
-    		}
-    	},
-      tags:function($q, venueId, Spinner) {
+      // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
+      items:function(authenticated, $q, $state, ItemService, VenueService, Spinner) {
         return $q((resolve, reject) => {
-          Spinner.show('fetch-tags');
-          Preoday.CustomTag.getByVenueId(venueId)
+          Spinner.show('resolve-menus');
+          ItemService.fetchItems(VenueService.currentVenue.id)
+          .then(items => {
+            resolve(items);
+          }, error => {
+            Spinner.hide('resolve-menus');
+            console.log('error fetching items', error);
+            ErrorService.showRetry(ErrorService.FAILED_LOADING_MENUS);
+            $state.go('main.dashboard.home');
+          });
+        });
+      },
+      tags:function(authenticated, $q, $state, VenueService, ErrorService, Spinner) {
+        return $q((resolve, reject) => {
+          Preoday.CustomTag.getByVenueId(VenueService.currentVenue.id)
           .then(tags => {
             resolve(tags);
-            Spinner.hide('fetch-tags');
             console.log('got tags', tags);
           }, error => {
-            reject(error);
-            Spinner.hide('fetch-tags');
+            Spinner.hide('resolve-menus');
             console.log('error', error);
+            ErrorService.showRetry(ErrorService.FAILED_LOADING_MENUS);
+            $state.go('main.dashboard.home');
           });
         });
       }
