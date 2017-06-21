@@ -56,14 +56,9 @@ describe('itemList Controller', function () {
 
       ItemListCtrl = ItemListCtrl();
 
-      expect(ItemListCtrl.getItems).toEqual(jasmine.any(Function));
       expect(ItemListCtrl.toggleDrawer).toEqual(jasmine.any(Function));
-      expect(ItemListCtrl.hideSpinner).toEqual(jasmine.any(Function));
-      expect(ItemListCtrl.showSpinner).toEqual(jasmine.any(Function));
 
       expect(FeatureService.hasFeature).toHaveBeenCalledWith(Preoday.constants.Feature.NESTED_MODIFIER);
-      expect(ItemService.getItems).toHaveBeenCalled();
-      
     });
 
     it("Should fetch the items", function() {
@@ -86,8 +81,6 @@ describe('itemList Controller', function () {
       ItemListCtrl = ItemListCtrl();
 
       expect(FeatureService.hasFeature).toHaveBeenCalledWith(Preoday.constants.Feature.NESTED_MODIFIER);
-      expect(ItemService.getItems).toHaveBeenCalled();
       expect(ItemListCtrl.items.length).toBe(items.length);
-      
     });
 });
