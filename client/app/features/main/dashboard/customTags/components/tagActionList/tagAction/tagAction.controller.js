@@ -34,7 +34,15 @@ export default class tagActionController {
     }
   }  
 
+  concatExternalUrl() {
+    if (this.tagAction.externalUrl && (!this.tagAction.externalUrl.match(/http:\/\//i) && !this.tagAction.externalUrl.match(/https:\/\//i))) {
+      this.tagAction.externalUrl = 'http://' + this.tagAction.externalUrl;
+    }
+  }
+
   createTagAction(){
+    this.concatExternalUrl();
+
     this.Spinner.show("custom-tag-create");
     this.tagActionListCtrl.createTagAction(this.tagAction)
       .then((_tagAction)=>{
@@ -57,6 +65,7 @@ export default class tagActionController {
   }
 
   updateTagAction(){
+    this.concatExternalUrl();
 
     this.Spinner.show("custom-tag-update");
     return this.$q((resolve, reject)=>{
