@@ -1,6 +1,6 @@
 <div class="tag-action-advanced">
   <md-input-container class="md-block input-label">
-    <md-checkbox aria-label="{{'Link to external URL' | translate}}" ng-model="tagActionAdvancedCtrl.tagAction.$activateLink">
+    <md-checkbox aria-label="{{'Link to external URL' | translate}}" ng-change="tagActionAdvancedCtrl.onActivateLinkChange()" ng-model="tagActionAdvancedCtrl.tagAction.$activateLink">
       {{'Link to external URL' | translate}}
     </md-checkbox>
   </md-input-container>
