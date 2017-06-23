@@ -35,6 +35,9 @@ export default class tagSelectController {
 
   transformChip(chip) {
     if (angular.isObject(chip)) {
+      if (this.checkExists(chip, this.ngModel)) {
+        return null;
+      }
       return chip;
     }
 
