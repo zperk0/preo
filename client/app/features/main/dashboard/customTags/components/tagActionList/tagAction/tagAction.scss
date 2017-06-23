@@ -1,0 +1,24 @@
+.tag-action-item {
+  .tag-chips {
+    md-chips-wrap {
+      display: flex;
+      align-items: center;
+      padding: 10px 13px;
+      flex-wrap: wrap;
+
+      .md-chip-input-container {
+        display: none;
+      }
+
+      md-chip {
+        &.md-chip {
+          margin: 2px;
+        }
+      }
+    }
+  }
+
+  .card-item > .card-title {
+    padding: 0 22px 0 15px;
+  }
+}

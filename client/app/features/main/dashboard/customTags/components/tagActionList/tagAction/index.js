@@ -1,3 +1,4 @@
+import './tagAction.scss';
 
 // Import internal modules
 import controller from './tagAction.controller';

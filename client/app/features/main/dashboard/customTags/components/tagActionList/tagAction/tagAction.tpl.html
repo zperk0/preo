@@ -1,17 +1,24 @@
 <div class='tag-action-item' 
     ng-attr-data-id="{{vm.tagAction.id}}">
 
-  <card-item  has-actions="true"
-              deleted="vm.tagAction.$deleted"
-              selected="vm.tagAction.$selected"
-              >
+  <card-item has-actions="true"
+             deleted="vm.tagAction.$deleted"
+             selected="vm.tagAction.$selected">
 
     <card-item-title>
-      <span>{{vm.tagAction.name}} </span>
+      <span>{{vm.tagAction.name}}</span>
     </card-item-title>
 
     <card-item-actions on-delete="vm.onDelete()"
-                       on-edit="vm.onEdit($event)"
-                        ></card-item-actions>
+                       on-edit="vm.onEdit($event)"></card-item-actions>
+
+    <md-chips ng-if="vm.tagAction.groups.length"
+              class="tag-chips"
+              ng-model="vm.tagAction.groups"
+              md-on-remove="vm.updateTagAction()">
+      <md-chip-template>
+        <span>{{$chip.name}}</span>
+      </md-chip-template>
+    </md-chips>
   </card-item>
 </div>
