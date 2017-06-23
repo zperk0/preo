@@ -161,12 +161,34 @@ export default class analyticsStockController {
   getChartData(){
 
     var report = this.dataFilters.report;
-    var data = this.ReportsService.getDataFromReport(report.id) ? this.ReportsService.getDataFromReport(report.id) : {keys: [], values: []};
-    var dates = this.getParamsDate();
+    var dates = this.getParamsDate(); 
+    var apiData = this.ReportsService.getDataFromReport(report.id) ? this.ReportsService.getDataFromReport(report.id) : null;    
+    var data = {};
+
+    if(apiData && apiData.daily){
+      data.daily = {
+        x: apiData.daily.keys,
+        y: apiData.daily.values
+      };
+    }
+
+    if(apiData && apiData.weekly){
+      data.weekly = {
+        x: apiData.weekly.keys,
+        y: apiData.weekly.values
+      };
+    }
+
+    if(apiData && apiData.monthly){
+      data.monthly = {
+        x: apiData.monthly.keys,
+        y: apiData.monthly.values
+      };
+    }
 
     var obj = {
       name: report.name,
-      data: {x: data.keys, y: data.values},
+      data: data,
       actions: report.actions,
       startDate: dates.start,
       endDate: dates.end

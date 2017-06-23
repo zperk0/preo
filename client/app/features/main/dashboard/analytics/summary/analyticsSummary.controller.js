@@ -69,20 +69,35 @@ export default class analyticsSummaryController {
 
       bar.startDate = dates.start;
       bar.endDate = dates.end;
-
+      bar.data = {};
+      
       if(data.hasOwnProperty(bar.id)){
+        let apiData = data[bar.id];
+      
+        if(apiData.daily){
+          bar.data.daily = {
+            x: apiData.daily.keys ,
+            y: this.hasKnowYourCustomersFeature ? apiData.daily.values : this.getMockValues(apiData.daily.keys)
+          };
+        }
 
-        bar.data = {
-          x: data[bar.id].keys,
-          y: this.hasKnowYourCustomersFeature ? data[bar.id].values : this.getMockValues(data[bar.id].keys)
+        if(apiData.weekly){
+          bar.data.weekly = {
+            x: apiData.weekly.keys ,
+            y: this.hasKnowYourCustomersFeature ? apiData.weekly.values : this.getMockValues(apiData.weekly.keys)
+          };
         }
+
+        if(apiData.monthly){
+          bar.data.monthly = {
+            x: apiData.monthly.keys ,
+            y: this.hasKnowYourCustomersFeature ? apiData.monthly.values : this.getMockValues(apiData.monthly.keys)
+         }; 
+        }
+         // x: data[bar.id].keys,
+        //  y: this.hasKnowYourCustomersFeature ? data[bar.id].values : this.getMockValues(data[bar.id].keys)        
       }
-      else{
-        bar.data = {
-         x: [],
-         y: []
-        }
-     }
+      
     });
   }
 
