@@ -29,7 +29,8 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
     _updateChartProperties();
 
     var barChart = _initChart();
-
+    setHiddenBorders(barChart, 0);
+    
     scope.$watch(
       () => { return scope.config.data; },
       function(newValue, oldValue){
@@ -300,41 +301,7 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
 
       return ticks;
     }
-
-    function _newPlugin(){
-      // Define a plugin to provide data labels
-      Chart.plugins.register({
-        afterDatasetsDraw: function(chart, easing) {
-        // To only draw at the end of animation, check for easing === 1
-          var mychart = chart;
-          var ctx = mychart.chart.ctx;
-          chart.data.datasets.forEach(function (dataset, i) {
-            var meta = chart.getDatasetMeta(i);
-            if (!meta.hidden) {
-              meta.data.forEach(function(element, index) {
-                //console.log('chart', mychart);
-                //console.log('ctx', ctx);
-                //mychart.scales['y-axis-0'].minHeight = 15;
-                // Draw the text in black, with the specified font
-                // ctx.fillStyle = 'rgb(0, 0, 0)';
-                // var fontSize = 16;
-                // var fontStyle = 'normal';
-                // var fontFamily = 'Helvetica Neue';
-                // ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
-                // // Just naively convert to string for now
-                // var dataString = dataset.data[index].toString();
-                // // Make sure alignment settings are correct
-                // ctx.textAlign = 'center';
-                // ctx.textBaseline = 'middle';
-                // var padding = 5;
-                // var position = element.tooltipPosition();
-                // ctx.fillText(dataString, position.x, position.y - (fontSize / 2) - padding);
-              });
-            }
-          });
-        }
-      });
-    }
+   
 
     function _customTooltips(tooltip) {
 
@@ -426,7 +393,7 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
         data: {
           labels: chartValues.x,
           datasets: [{
-            borderColor: "rgba(151,187,205,1)",
+            borderColor: "#0287D0",
             borderWidth: 2,
             backgroundColor: gradient2,
             hoverBackgroundColor: gradient,
@@ -435,6 +402,19 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
         },
         options: chartOptions
       });
+    }
+
+    function setHiddenBorders(chart, dataset) { 
+      let key = Object.getOwnPropertyNames(chart.config.data.datasets[0]._meta)[0];
+      let bars = chart.config.data.datasets[dataset]._meta[key];     
+      
+      bars.data.forEach((bar, index) => {           
+        bar.draw = function() {
+          Chart.elements.Rectangle.prototype.draw.apply(this, arguments);
+          chart.chart.ctx.setLineDash([0,1]);
+        }              
+     
+      });     
     }
 
     function _customOptions(){
