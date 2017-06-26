@@ -227,7 +227,7 @@ export default class ReportsService {
   }
 
   // need to show/ hide some fields based on Events/Takeaway properties from header. AND based on Filters used to search
-  prepareDataToPdf(report, dataSelected){console.log('gooo ---', dataSelected);
+  prepareDataToPdf(report, dataSelected){
     var header = this.getReportHeader(report.id);
     var reportTitle = report.name;
 
@@ -237,7 +237,7 @@ export default class ReportsService {
       if(!col.isOnlyCsv && ((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue)))
         response[col.text] = [];
     });
-console.log('header ---', response);
+
     dataSelected.forEach((row) => {
 
       row.forEach((col) => {
@@ -248,7 +248,7 @@ console.log('header ---', response);
         })[0];
 
         if(headerCol && !headerCol.isOnlyCsv && ((!headerCol.showToEventsOnly && !headerCol.showToTakeawaysOnly) || (headerCol.showToEventsOnly && this.hasEventVenue) || (headerCol.showToTakeawaysOnly && this.hasTakeawayVenue))){
-console.log('adicionando col -> ', headerCol.text);
+
           if(col.value === true)
             response[headerCol.text].push(this.gettextCatalog.getString('Yes'));
           else if(col.value === false)
