@@ -158,6 +158,23 @@ export default class analyticsStockController {
 
   }
 
+  formatKeysToBarChart(keys, type){
+    
+    let copyKeys = angular.copy(keys);
+    copyKeys.forEach( function(e, index) {      
+      if(type === 'month')
+      keys[index] = moment(e, 'YYYY-MM-DD').format('MMM YYYY');
+    else if(type === 'week'){
+      let month = moment(e, 'YYYY-MM-DD').format('MMM YYYY');
+      let start = moment(e, 'YYYY-MM-DD').format('DD');
+      let end = moment(e, 'YYYY-MM-DD').add(6,'day').format('DD');
+      keys[index] = start + '-' + end + ' ' + month;
+    }
+    });
+
+    return keys;
+  }
+
   getChartData(){
 
     var report = this.dataFilters.report;
@@ -174,14 +191,14 @@ export default class analyticsStockController {
 
     if(apiData && apiData.weekly){
       data.weekly = {
-        x: apiData.weekly.keys,
+        x: this.formatKeysToBarChart(apiData.weekly.keys, 'week'),
         y: apiData.weekly.values
       };
     }
 
     if(apiData && apiData.monthly){
       data.monthly = {
-        x: apiData.monthly.keys,
+        x: this.formatKeysToBarChart(apiData.monthly.keys, 'month') ,
         y: apiData.monthly.values
       };
     }

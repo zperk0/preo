@@ -81,24 +81,40 @@ export default class analyticsSummaryController {
           };
         }
 
-        if(apiData.weekly){
+        if(apiData.weekly){         
           bar.data.weekly = {
-            x: apiData.weekly.keys ,
+            x: this.formatKeysToBarChart(apiData.weekly.keys, 'week') ,
             y: this.hasKnowYourCustomersFeature ? apiData.weekly.values : this.getMockValues(apiData.weekly.keys)
           };
         }
 
         if(apiData.monthly){
           bar.data.monthly = {
-            x: apiData.monthly.keys ,
+            x: this.formatKeysToBarChart(apiData.monthly.keys, 'month')  ,
             y: this.hasKnowYourCustomersFeature ? apiData.monthly.values : this.getMockValues(apiData.monthly.keys)
          }; 
         }
-         // x: data[bar.id].keys,
-        //  y: this.hasKnowYourCustomersFeature ? data[bar.id].values : this.getMockValues(data[bar.id].keys)        
+                
       }
       
     });
+  }
+
+  formatKeysToBarChart(keys, type){
+    
+    let copyKeys = angular.copy(keys);
+    copyKeys.forEach( function(e, index) {      
+      if(type === 'month')
+      keys[index] = moment(e, 'YYYY-MM-DD').format('MMM YYYY');
+    else if(type === 'week'){
+      let month = moment(e, 'YYYY-MM-DD').format('MMM YYYY');
+      let start = moment(e, 'YYYY-MM-DD').format('DD');
+      let end = moment(e, 'YYYY-MM-DD').add(6,'day').format('DD');
+      keys[index] = start + '-' + end + ' ' + month;
+    }
+    });
+
+    return keys;
   }
 
   updateDoughnuts(data){
