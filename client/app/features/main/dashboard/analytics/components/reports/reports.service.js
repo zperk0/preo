@@ -227,17 +227,17 @@ export default class ReportsService {
   }
 
   // need to show/ hide some fields based on Events/Takeaway properties from header. AND based on Filters used to search
-  prepareDataToPdf(report, dataSelected){
+  prepareDataToPdf(report, dataSelected){console.log('gooo ---', dataSelected);
     var header = this.getReportHeader(report.id);
     var reportTitle = report.name;
 
     var response = {};
 
     header.forEach((col) => {
-      if((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue))
+      if(!col.isOnlyCsv && ((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue)))
         response[col.text] = [];
     });
-
+console.log('header ---', response);
     dataSelected.forEach((row) => {
 
       row.forEach((col) => {
@@ -247,8 +247,8 @@ export default class ReportsService {
             return x;
         })[0];
 
-        if((!headerCol.showToEventsOnly && !headerCol.showToTakeawaysOnly) || (headerCol.showToEventsOnly && this.hasEventVenue) || (headerCol.showToTakeawaysOnly && this.hasTakeawayVenue)){
-
+        if(headerCol && !headerCol.isOnlyCsv && ((!headerCol.showToEventsOnly && !headerCol.showToTakeawaysOnly) || (headerCol.showToEventsOnly && this.hasEventVenue) || (headerCol.showToTakeawaysOnly && this.hasTakeawayVenue))){
+console.log('adicionando col -> ', headerCol.text);
           if(col.value === true)
             response[headerCol.text].push(this.gettextCatalog.getString('Yes'));
           else if(col.value === false)
@@ -656,6 +656,7 @@ export default class ReportsService {
         {key:'customerName', text:this.gettextCatalog.getString('Customer')},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'items', text:this.gettextCatalog.getString('Items') , shouldTruncate: true},
+        {key:'notes', text:this.gettextCatalog.getString('Notes') , isHidden: true, isOnlyCsv: true},
         //{key:'subtotal' ,text:this.gettextCatalog.getString('Subtotal'),fieldType: 'currency', isHidden: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
         {key:'fee', text:this.gettextCatalog.getString('Fees'), fieldType: 'currency'},
