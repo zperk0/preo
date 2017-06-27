@@ -11,17 +11,17 @@ export default class venueItemController {
       .then(() => {
 
         this.hideSpinner();
-        this.Snack.show(this.gettextCatalog.getString('The menu has been synced'));
+        this.Snack.show(this.gettextCatalog.getString('The menu has been updated, please wait while the app refreshes to load new data'));
 
         this.$timeout(() => {
 
           this.$state.go('main.dashboard');
           window.location.reload();
-        }, 1000);
+        }, 2000);
       }, () => {
 
         this.hideSpinner();
-        this.Snack.showError(this.gettextCatalog.getString('An error ocurred to sync the menu. Try again later please'));
+        this.Snack.showError(this.gettextCatalog.getString('An error ocurred updating the menu, please contact support'));
       });
   }
 

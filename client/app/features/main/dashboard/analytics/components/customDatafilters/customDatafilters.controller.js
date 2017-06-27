@@ -633,6 +633,7 @@ export default class customDatafiltersController {
     var localVenue = {};
     var localOutlet = {};
     var venuesIds = [];
+    var isCurrentVenue = false;
 
     // SUPER ADMIN can see current venue selected too.
     if(this.UserService.isAdmin()){
@@ -648,6 +649,7 @@ export default class customDatafiltersController {
     }
 
     venues.forEach((venue) => {
+      isCurrentVenue = (this.VenueService.currentVenue.id == venue.id) ? true : false;
 
       venuesIds.push(venue.id);
       localVenue = {
@@ -657,7 +659,7 @@ export default class customDatafiltersController {
         hasApplication: false,
         type: 'venue',
         group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-        selected: true,
+        selected: isCurrentVenue,
         display: true,
         uniqueId: venue.name.substring(0,4).toUpperCase()+ venue.id
       };
@@ -675,7 +677,7 @@ export default class customDatafiltersController {
           name: outlet.name,
           type: 'outlet',
           group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-          selected: true,
+          selected: isCurrentVenue,
           display: true,
           uniqueId: outlet.id + venue.name.substring(0,4).toUpperCase()+ venue.id
         };
@@ -1040,29 +1042,33 @@ export default class customDatafiltersController {
   }
 
   initVenues(){
+    let venuesSelected = [];
     if(this.init && this.init.venues){
-      let venuesSelected = [];
+     
       this.venues.forEach((v) => {
-        if(v.type== 'venue'){
+        if(v.type== 'venue' && v.selected ){
           if(this.init.venues.indexOf(v.id) > -1)
             venuesSelected.push(v);
           else
             v.selected = false;
         }
-        else if(v.type == 'outlet' && this.init.outlets){
+        else if(v.type == 'outlet' && v.selected && this.init.outlets){
           if(this.init.outlets.indexOf(v.id) > -1)
             venuesSelected.push(v);
           else
             v.selected = false;
         }
-      });
-
-      this.setVenues(venuesSelected);
+      });     
     }
-    else
-      this.setVenues(angular.copy(this.venues));
+    else{
+      venuesSelected = this.venues.filter((v) => {
+          if(v.selected)
+            return v;
+        });
+    }
 
-    //
+    this.setVenues(venuesSelected);
+    
     if(!this.hasReport)
       this.debounceUpdate('Venue', true);
   }
