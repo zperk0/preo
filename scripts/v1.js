@@ -40,7 +40,8 @@ function fixFiles(){
     './dist/menus/index.php',
     './dist/venueSettings/index.php',
     './dist/manageUsers/index.php',
-    './dist/notifications/index.php'
+    './dist/notifications/index.php',
+    './dist/updateExternalMenus/index.php'
   ];
 
   filesToFix.forEach(function(f){
