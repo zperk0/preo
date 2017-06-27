@@ -97,6 +97,13 @@ md-input-container {
   overflow: visible !important;
 }
 
+.full-tabs {
+  md-tabs-wrapper {
+    left: 0;
+    margin-right: 0;
+  }
+}
+
 
 @media (max-width: 1280px) {
   @import './shared/styles/responsive/1024-1280';

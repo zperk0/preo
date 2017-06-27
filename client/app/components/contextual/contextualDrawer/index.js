@@ -35,6 +35,8 @@ import styleEmailsController from './style/contextualDrawer.styleEmails.controll
 import styleEmailsDirective from './style/contextualDrawer.styleEmails.directive';
 import styleRowDirective from './style/row/contextualDrawer.style-row.directive';
 
+import venueDetailsForm from './venueDetails/components/venueDetailsForm/venueDetailsForm.directive';
+
 import cardItemList from '../../cardItemList';
 
 
@@ -72,4 +74,5 @@ export default angular.module("contextualDrawer" , [cardItemList])
   .directive("contextualDrawerStyleEmails", styleEmailsDirective)
 
   .directive("drawerStyleRow", styleRowDirective)
+  .directive("venueDetailsForm", venueDetailsForm)
   .name;

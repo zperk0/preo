@@ -1,6 +1,10 @@
 .venue-details{
   width: 100%;
 
+  &.with-toolbar {
+    padding-top: 49px !important;
+  }
+
   md-card-content, md-card-title{
     padding-left:24px;
     padding-right:24px;
@@ -14,11 +18,14 @@
     top: 16px;
   }
 
-  md-tabs-wrapper.md-stretch-tabs{
-      left: 24px;
-      margin-right: 48px;
+  md-tabs {
+    &:not(.full-tabs) {
+      md-tabs-wrapper.md-stretch-tabs{
+        left: 24px;
+        margin-right: 48px;
+      }
     }
-
+  }
   #venue-map{
      width: calc(100% - 657px);
      height: calc(100vh - 110px); /* this is for safari, 100% height or flexbox don't work here i have no idea why*/
