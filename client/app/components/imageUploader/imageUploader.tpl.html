@@ -9,7 +9,7 @@
    </div>
    <icon class='delete-icon' ng-click="imageUploaderCtrl.deleteImage($event)">delete</icon>
   </div>
-  <div class='upload-specs'>
+  <div class='upload-specs' ng-if="imageUploaderCtrl.dimensions">
     <icon>info</icon>
     <span class='text' translate>Upload specs</span>
       <md-tooltip md-direction="bottom">

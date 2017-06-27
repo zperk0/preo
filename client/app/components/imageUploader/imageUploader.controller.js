@@ -39,6 +39,21 @@ export default class imageUploaderController {
     $event.stopPropagation();
   }
 
+  onImageCropped (img) {
+
+    if (this.ngModel.length){
+      this.ngModel[0].$image = img;
+    } else {
+      this.ngModel[0] = {
+        $image:img
+      }
+    }
+    this.ngModel[0].$delete = false;
+    this.ngModel[0].$save = true;
+    this.callOnChange();
+    angular.element(this.el[0].querySelector(".image-wrapper.not-found")).removeClass("not-found");
+  }
+
   fileChange(event){
     console.log("on file change");
     let allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -46,23 +61,21 @@ export default class imageUploaderController {
     reader.onload = (evt) => {
       console.log("got result - loading dialog");
       if (evt.target.result){
-        var p = this.CroppieService.show(evt.target.result,this.boundry, this.viewport, this.output)
+
+        if (this.dimensions) {
+          var p = this.CroppieService.show(evt.target.result,this.boundry, this.viewport, this.output)
           .then((img)=>{
             console.log("uploading img dialog", this.ngModel);
-            if (this.ngModel.length){
-              this.ngModel[0].$image = img;
-            } else {
-              this.ngModel[0] = {
-                $image:img
-              }
-            }
-            this.ngModel[0].$delete = false;
-            this.ngModel[0].$save = true;
-            this.callOnChange();
-            angular.element(this.el[0].querySelector(".image-wrapper.not-found")).removeClass("not-found");
+            this.onImageCropped(img);
           }, ()=>{
             console.log("cancelling img dialog")
           })
+        } else {
+          this.$timeout(() => {
+
+            this.onImageCropped(evt.target.result);
+          });
+        }
       }
     };
     const file = event.currentTarget.files[0];
@@ -95,8 +108,8 @@ export default class imageUploaderController {
     this.CroppieService = CroppieService;
     this.Snack = Snack;
     console.log("constrcut", this.ngModel)
-    if (this.ngModel && this.ngModel.length && !this.ngModel[0].$image && this.ngModel[0].image){
-      this.ngModel[0].$image = this.UtilsService.getImagePath(this.ngModel[0].image);
+    if (this.ngModel && this.ngModel.length && !this.ngModel[0].$image && (this.ngModel[0].image || this.ngModel[0].src)) {
+      this.ngModel[0].$image = this.UtilsService.getImagePath(this.ngModel[0].image || this.ngModel[0].src);
       console.log("have length", this.ngModel[0].$image)
     }
 

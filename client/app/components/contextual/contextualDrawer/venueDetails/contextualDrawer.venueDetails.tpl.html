@@ -6,11 +6,13 @@
 
       <md-tabs md-dynamic-height md-stretch-tabs="always" class="full-tabs">
         <md-tab label="{{'Basics' | translate}}">
-          <md-card-content>
-            <venue-details-form></venue-details-form>
-          </md-card-content>
+          <venue-details-form></venue-details-form>
         </md-tab>
         <md-tab label="{{'Venue Map' | translate}}">
+          <image-uploader
+            ng-model="drawerVenueDetailsCtrl.venueMapImages"
+            on-change="drawerVenueDetailsCtrl.onVenueMapImageChange(image)"
+            on-delete="contextualMenuCtrl.params.onDeleteImage(image)"></image-uploader>
         </md-tab>
       </md-tabs>
     <div class='map-overlay-drawing'></div>

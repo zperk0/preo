@@ -32,7 +32,7 @@ export default class contextualDrawerOutletsController {
     this.venueDetailsForm.$setSubmitted();
     this.isSaving = true;
     if (this.venueDetailsForm.$valid){
-        this.debounce(this.doUpdate.bind(this), 1000)()      
+        this.debounce(this.doUpdate.bind(this), 1000)()
     } else {
       this.$timeout(()=>{ //in a timeout to prevent super fast results
         this.isSaving = false;
@@ -44,14 +44,14 @@ export default class contextualDrawerOutletsController {
   doUpdate(){
 
       try {
-      //  delete this.venue.ccySymbol;       
+      //  delete this.venue.ccySymbol;
        // this.venue.update()
        this.VenueService.updateVenue()
         .then((venue)=>{
-         
+
           // angular.extend(this.venue,venue);
-           angular.extend(this.VenueService.currentVenue, venue);  
-     
+           angular.extend(this.VenueService.currentVenue, venue);
+
           return this.venue.settings.update()
         })
         .then((settings)=>{
@@ -83,31 +83,61 @@ export default class contextualDrawerOutletsController {
       }
   }
 
+  onVenueMapImageChange (image) {
+console.log('image here .....', image);
+    if (image && image.$image && !image.$deleted) {
+      this.venueMapImages[0].type = this.VenueImageType.VENUE_MAP;
+      this.VenueService.saveImage(this.venueMapImages[0])
+        .then(() => {
+
+        }, () => {
+
+        });
+    }
+  }
+
 
   init(){
     this.Spinner.show("venue-details");
     this.venue = this.VenueService.currentVenue;
-   
+
+    this.venueMapImages = [];
+
+    if (this.venue.images) {
+      this.venueMapImages = this.venue.images.filter((image) => {
+
+        return image.type === this.VenueImageType.VENUE_MAP;
+      });
+
+      console.log('venue map images here', this.venueMapImages);
+    }
+
+    // if (this.venue.isEvent()) {
+
+    // }
+
     this.$timeout(()=>{
       console.log(this.venue);
       this.Spinner.hide("venue-details");
-    })   
-    
+    })
+
   }
 
-  constructor($scope, $stateParams, $mdSidenav, Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService) {
+  constructor($scope, $stateParams, $mdSidenav, Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService, VenueImageType) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
-    this.cancelledOutlets = [];   
+    this.cancelledOutlets = [];
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
     this.MapsService = MapsService;
     this.VenueService = VenueService;
     this.LabelService = LabelService;
+    this.$timeout = $timeout;
+    this.VenueImageType = VenueImageType;
+
     this.isError = false;
     this.isSaving = false;
-    this.$timeout = $timeout;
     this.debounceTimeout = null;
 
     this.init();
