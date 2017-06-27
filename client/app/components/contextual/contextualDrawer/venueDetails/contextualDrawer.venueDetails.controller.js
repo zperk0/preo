@@ -84,12 +84,32 @@ export default class contextualDrawerOutletsController {
   }
 
   onVenueMapImageChange (image) {
-console.log('image here .....', image);
-    if (image && image.$image && !image.$deleted) {
-      this.venueMapImages[0].type = this.VenueImageType.VENUE_MAP;
-      this.VenueService.saveImage(this.venueMapImages[0])
+
+    if (image) {
+      image.type = this.VenueImageType.VENUE_MAP;
+      this.VenueService.saveImage(image)
+        .then((response) => {
+
+          angular.extend(response, image);
+          response.$save = false;
+
+          this.venueMapImages.splice(this.venueMapImages.indexOf(image), 1, response);
+        }, () => {
+
+        });
+    }
+  }
+
+  onVenueMapImageDeleted (image) {
+
+    if (image) {
+      image.delete()
         .then(() => {
 
+          this.$timeout(() => {
+
+            this.venueMapImages.splice(this.venueMapImages.indexOf(image), 1);
+          });
         }, () => {
 
         });

@@ -12,6 +12,7 @@ export default function imageUploader(){
       viewport:'=?',
       dimensions:"@",
       onChange: "&?",
+      onAdd: "&?",
       onDelete: "&?",
       keepOnDestroy: '=?'
     },

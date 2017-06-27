@@ -51,6 +51,10 @@ export default class imageUploaderController {
     this.ngModel[0].$delete = false;
     this.ngModel[0].$save = true;
     this.callOnChange();
+
+    this.onAdd && this.onAdd({
+      image: this.ngModel[0]
+    });
     angular.element(this.el[0].querySelector(".image-wrapper.not-found")).removeClass("not-found");
   }
 

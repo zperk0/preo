@@ -232,7 +232,8 @@ export default class VenueService {
           delete response.image;
 
           if (response.id) {
-            return response.update();
+            response.update()
+              .then(resolve, reject);
           } else {
             Preoday.VenueImage.create(response)
               .then(resolve, reject);
