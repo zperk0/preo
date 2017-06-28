@@ -35,10 +35,14 @@ import styleEmailsController from './style/contextualDrawer.styleEmails.controll
 import styleEmailsDirective from './style/contextualDrawer.styleEmails.directive';
 import styleRowDirective from './style/row/contextualDrawer.style-row.directive';
 
+import eventsImportController from './eventsImport/contextualDrawer.eventsImport.controller';
+import eventsImportDirective from './eventsImport/contextualDrawer.eventsImport.directive';
+
 import cardItemList from '../../cardItemList';
 
+import externalEventList from './eventsImport/externalEventList';
 
-export default angular.module("contextualDrawer" , [cardItemList])
+export default angular.module("contextualDrawer" , [cardItemList, externalEventList])
   .service(service.UID, service)
 
   .controller(controller.UID, controller)
@@ -72,4 +76,8 @@ export default angular.module("contextualDrawer" , [cardItemList])
   .directive("contextualDrawerStyleEmails", styleEmailsDirective)
 
   .directive("drawerStyleRow", styleRowDirective)
+
+  .controller(eventsImportController.UID, eventsImportController)
+  .directive("contextualDrawerEventsImport", eventsImportDirective)
+
   .name;

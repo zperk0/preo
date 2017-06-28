@@ -20,13 +20,16 @@ export default function cardItemActions($parse){
       onAdd:'&?',
       onAddCustomField:'&?',
       onAddLocation:'&?',
+      onSync:'&?',
       disableAdd:'=?',
       disableAddCustomField:'=?',
       visibleMessage:'@',
       invisibleMessage:'@',
       addMessage: '=?',
+      onExternalEvents: '&?',
       addCustomFieldMessage: '=?',
-      addLocationMessage: '=?'
+      addLocationMessage: '=?',
+      syncMessage: '=?'
     },
     template: require("./cardItemActions.tpl.html"),
     replace:true,

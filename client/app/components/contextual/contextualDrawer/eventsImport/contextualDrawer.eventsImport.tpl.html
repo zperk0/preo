@@ -1,0 +1,69 @@
+<div class="sidenav-wrapper" ng-show="drawerEventsImportCtrl.loaded">
+  <form  ng-submit="drawerEventsImportCtrl.import()" novalidate name="drawerEventsImportCtrl.nameForm">
+  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-events-import md-whiteframe-4dp" md-component-id="eventsImport">
+
+    <div class='contextual-list' ng-class="{'empty': drawerEventsImportCtrl.emptyData}">
+      <md-tabs md-dynamic-height md-stretch-tabs="always" md-selected="drawerEventsImportCtrl.selectedTab">
+      <md-tab label="{{'Imported events' | translate}}" ng-if="drawerEventsImportCtrl.isEditMode">
+        <div class='sv-root-holder'> 
+      
+          <!-- <label class="label-title">{{ 'Events imported:' | translate }}</label>   -->        
+          <card-item-list 
+            tooltip="{{ 'Import new event' | translate }}"
+            has-new="true" 
+            on-click-new="drawerEventsImportCtrl.showAddNew()" 
+            collection="drawerEventsImportCtrl.entity.externalEvents">
+            <div class='sort-holder event-edit-list'>
+            <external-event-list has-actions="true" on-item-delete="drawerEventsImportCtrl.onItemDelete()" events="drawerEventsImportCtrl.entity.externalEvents"></external-event-list>
+           
+            <div sv-placeholder></div>
+            </div>
+          </card-item-list>  
+        </div>     
+      </md-tab>
+        <md-tab label="{{'Events' | translate}}" ng-if="drawerEventsImportCtrl.isImportMode">
+          <div class='sv-root-holder' sv-root="event">            
+
+            <label class="label-title" ng-if="!drawerEventsImportCtrl.emptyData">{{ 'Choose events to import:' | translate }}</label>
+            <card-item-list collection="drawerEventsImportCtrl.data">
+              <div class='sort-holder'>
+              <external-event-list has-actions="false" on-item-clicked="drawerEventsImportCtrl.onItemClicked(event)" events="drawerEventsImportCtrl.data">
+              </external-event-list>             
+              <div sv-placeholder></div>
+              </div>
+            </card-item-list>          
+          </div>
+
+          <div class='contextual-empty'>
+            <img src='/images/emptydrawer.png'>
+            <div class='header'> {{'No new events to import.' | translate}} </div>
+          </div>
+        </md-tab>
+
+        <md-tab label="{{'Collection Slots' | translate}}" ng-if="drawerEventsImportCtrl.isImportMode && !drawerEventsImportCtrl.entity">
+          <div class="collection-slots-select-content">
+            <div class="error error-required-pickup-slot" ng-if="drawerEventsImportCtrl.nameForm.$submitted && !drawerEventsImportCtrl.slots.pickupSlots.length">
+              {{ 'You must select at least one collection slot.' | translate }}
+            </div>
+
+            <label class="label-title" translate>{{'Choose collection slots:' | translate }}</label>
+            <collection-slots-select ng-model="drawerEventsImportCtrl.slots"></collection-slots-select>
+          </div>
+        </md-tab>
+      </md-tabs>
+    </div>
+
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-if="!drawerEventsImportCtrl.doneButton" aria-disabled="true" ng-click="drawerEventsImportCtrl.close()" class='md-primary'>
+        {{drawerEventsImportCtrl.cancelBtn}}
+      </md-button>
+      <md-button ng-if="!drawerEventsImportCtrl.doneButton" aria-disabled="true" type="submit" ng-disabled="drawerEventsImportCtrl.selectedEvents.length <= 0" class='md-raised'>
+        {{drawerEventsImportCtrl.importBtn}}
+      </md-button>
+      <md-button ng-if="drawerEventsImportCtrl.doneButton" ng-click="drawerEventsImportCtrl.done()" class='md-raised'>
+        {{'Done' | translate}}
+      </md-button>
+    </md-card-actions>
+  </md-sidenav>
+  </form>
+</div>

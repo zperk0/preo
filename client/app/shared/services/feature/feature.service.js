@@ -42,12 +42,22 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.EXTERNAL_VOUCHER_CODES);
   }
 
+  hasTicketMasterEventFeature(){
+   // return true;
+    return this.getLocalFeature(Preoday.constants.Feature.EXTERNAL_EVENT_MAPPING);
+  }
+
   hasCustomOutletLocationFieldsFeature () {
     return this.getLocalFeature(Preoday.constants.Feature.CUSTOM_OUTLET_LOCATION_FIELDS);
+
   }
 
   hasKnowYourCustomersFeature () {
     return this.getLocalFeature(Preoday.constants.Feature.KNOW_YOUR_CUSTOMERS);
+  }
+
+  hasExternalMenusFeature () {
+    return this.getLocalFeature(Preoday.constants.Feature.UPDATE_EXTERNAL_MENU);
   }
 
   getLocalFeature (featureId) {
