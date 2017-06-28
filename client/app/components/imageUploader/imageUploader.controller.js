@@ -14,6 +14,11 @@ export default class imageUploaderController {
   }
 
   deleteImage($event){
+
+    if (this.ngDisabled) {
+      return;
+    }
+
     //if it's a tmp image delete it, otherwise mark it to be deleted when DONE is clicked
       if (this.ngModel[0].$save){
         if (this.ngModel.length && this.ngModel[0].image){

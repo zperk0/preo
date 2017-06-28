@@ -238,7 +238,11 @@ export default class VenueService {
             Preoday.VenueImage.create(response)
               .then(resolve, reject);
           }
-        }, reject);
+        }, (err) => {
+
+          delete response.image;
+          reject(err);
+        });
 
     });
   }

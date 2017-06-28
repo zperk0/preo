@@ -11,8 +11,15 @@
       <md-tab label="{{'Venue Map' | translate}}">
         <image-uploader
           ng-model="drawerVenueDetailsCtrl.venueMapImages"
+          ng-disabled="drawerVenueDetailsCtrl.isSavingImage"
           on-add="drawerVenueDetailsCtrl.onVenueMapImageChange(image)"
           on-delete="drawerVenueDetailsCtrl.onVenueMapImageDeleted(image)"></image-uploader>
+
+
+        <auto-save is-saving="drawerVenueDetailsCtrl.isSavingImage"
+                   is-error="drawerVenueDetailsCtrl.isErrorImage"
+                   retry="drawerVenueDetailsCtrl.onVenueMapImageChange(drawerVenueDetailsCtrl.venueMapImages[0])"
+                   class="auto-save-venue-map"></auto-save>
       </md-tab>
     </md-tabs>
     <div class='map-overlay-drawing'></div>

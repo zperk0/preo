@@ -7,7 +7,7 @@
         <icon>not_interested</icon>
         <span translate>Image not found</span>
    </div>
-   <icon class='delete-icon' ng-click="imageUploaderCtrl.deleteImage($event)">delete</icon>
+   <icon class='delete-icon' ng-class="{'disabled': imageUploaderCtrl.ngDisabled}" ng-click="imageUploaderCtrl.deleteImage($event)">delete</icon>
   </div>
   <div class='upload-specs' ng-if="imageUploaderCtrl.dimensions">
     <icon>info</icon>
@@ -20,7 +20,7 @@
   </div>
   <label class="import-file" for='imagefile'>
     <input type="file" class="imagefile" name='imagefile' custom-on-change="imageUploaderCtrl.fileChange($event)">
-    <md-button ng-click="imageUploaderCtrl.target()" class="md-fab md-mini md-primary" aria-label="{{'Add Section' | translate}}">
+    <md-button ng-click="imageUploaderCtrl.target()" ng-disabled="imageUploaderCtrl.ngDisabled" class="md-fab md-mini md-primary" aria-label="{{'Add Section' | translate}}">
       <icon>add</icon>
     </md-button>
     <!-- <div class='target'></div> -->

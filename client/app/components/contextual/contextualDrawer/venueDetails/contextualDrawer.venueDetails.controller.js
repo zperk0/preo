@@ -83,19 +83,40 @@ export default class contextualDrawerOutletsController {
       }
   }
 
+  setOnSaveImageState() {
+
+    this.isSavingImage = true;
+  }
+
+  setOnImageSavedState () {
+
+    this.isSavingImage = false;
+    this.isErrorImage = false;
+  }
+
+  setOnImageErrorState () {
+
+    this.isSavingImage = false;
+    this.isErrorImage = true;
+  }
+
   onVenueMapImageChange (image) {
 
     if (image) {
+      this.setOnSaveImageState();
+
       image.type = this.VenueImageType.VENUE_MAP;
       this.VenueService.saveImage(image)
         .then((response) => {
 
           angular.extend(response, image);
           response.$save = false;
+          this.setOnImageSavedState();
 
           this.venueMapImages.splice(this.venueMapImages.indexOf(image), 1, response);
         }, () => {
 
+          this.setOnImageErrorState();
         });
     }
   }
@@ -103,15 +124,19 @@ export default class contextualDrawerOutletsController {
   onVenueMapImageDeleted (image) {
 
     if (image) {
+      this.setOnSaveImageState();
+
       image.delete()
         .then(() => {
 
           this.$timeout(() => {
 
             this.venueMapImages.splice(this.venueMapImages.indexOf(image), 1);
+            this.setOnImageSavedState();
           });
         }, () => {
 
+          this.setOnImageErrorState();
         });
     }
   }
