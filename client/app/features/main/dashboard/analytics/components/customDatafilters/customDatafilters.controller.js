@@ -231,21 +231,32 @@ export default class customDatafiltersController {
       return;
 
     if(this.filters.report && this.filters.report.hasItemFilter){
-      this.getItemsFilter();
+      this.getItemsFilter()
+      .then(() => {
+        if(this.hasReport){
+          this.getReports();
+        }
+
+        if(this.hasDaterange){
+          this.getDateRange();
+        }
+
+        this.debounceUpdate('Venue', true);
+      });
     }
     else{
       this.reportItems = null;
+      if(this.hasReport){
+        this.getReports();
+      }
+
+      if(this.hasDaterange){
+        this.getDateRange();
+      }
+
+      this.debounceUpdate('Venue', true);
     }
 
-    if(this.hasReport){
-      this.getReports();
-    }
-
-    if(this.hasDaterange){
-      this.getDateRange();
-    }
-
-    this.debounceUpdate('Venue', true);
   }
 
   onOpenEvent(){
@@ -413,14 +424,20 @@ export default class customDatafiltersController {
 
     //check if filter item should be visible: if report has this option
     if(this.filters.report.hasItemFilter){
-      this.shouldShowItemFilter = true;
 
-      if(!this.reportItems)
-        this.getItemsFilter();
+      if(!this.reportItems){
+        this.getItemsFilter()
+        .then(() => {
+
+          this.shouldShowItemFilter = true;
+        });
+      }
+      else
+        this.shouldShowItemFilter = true;
 
     } else {
       this.shouldShowItemFilter = false;
-      this.filters.item = null;
+      this.filters.item = null;      
     }
 
     this.debounceUpdate('Report');
@@ -544,39 +561,41 @@ export default class customDatafiltersController {
   }
 
   getItemsFilter(){
+    return this.$q((resolve, reject) => {
+      this.showSpinner();
 
-    this.showSpinner();
+      var params = { venues: this.filters.venues}
 
-    var params = { venues: this.filters.venues}
+      let oldItem = null;
+      if(this.filters.item)
+        oldItem = angular.copy(this.filters.item);
 
-    let oldItem = null;
-    if(this.filters.item)
-      oldItem = angular.copy(this.filters.item);
+      this.ReportsService.getMenuItemsByVenues(params)
+      .then((data) => {
 
-    this.ReportsService.getMenuItemsByVenues(params)
-    .then((data) => {
+        this.reportItems = data;
 
-      this.reportItems = data;
+        let matchItem = false;
+        if(oldItem){
+          data.forEach((x) => {
+            if(x.menuItemId == oldItem.menuItemId){
+              matchItem = true;
+            }
+          });
+        }
 
-      let matchItem = false;
-      if(oldItem){
-        data.forEach((x) => {
-          if(x.menuItemId == oldItem.menuItemId){
-            matchItem = true;
-          }
-        });
-      }
+        if(matchItem)
+          this.filters.item = oldItem;
+        else if(oldItem)
+          this.filters.item = null;
 
-      if(matchItem)
-        this.filters.item = oldItem;
-      else if(oldItem)
-        this.filters.item = null;
-
-      this.hideSpinner();
-
-    }, (err) => {
-      console.log('Error fetching items from venues ', err);
-      this.hideSpinner();
+        this.hideSpinner();
+        resolve(this.filters.item);
+      }, (err) => {
+        console.log('Error fetching items from venues ', err);
+        reject();
+        this.hideSpinner();
+      });
     });
   }
 
@@ -614,6 +633,7 @@ export default class customDatafiltersController {
     var localVenue = {};
     var localOutlet = {};
     var venuesIds = [];
+    var isCurrentVenue = false;
 
     // SUPER ADMIN can see current venue selected too.
     if(this.UserService.isAdmin()){
@@ -629,6 +649,7 @@ export default class customDatafiltersController {
     }
 
     venues.forEach((venue) => {
+      isCurrentVenue = (this.VenueService.currentVenue.id == venue.id) ? true : false;
 
       venuesIds.push(venue.id);
       localVenue = {
@@ -638,7 +659,7 @@ export default class customDatafiltersController {
         hasApplication: false,
         type: 'venue',
         group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-        selected: true,
+        selected: isCurrentVenue,
         display: true,
         uniqueId: venue.name.substring(0,4).toUpperCase()+ venue.id
       };
@@ -656,7 +677,7 @@ export default class customDatafiltersController {
           name: outlet.name,
           type: 'outlet',
           group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-          selected: true,
+          selected: isCurrentVenue,
           display: true,
           uniqueId: outlet.id + venue.name.substring(0,4).toUpperCase()+ venue.id
         };
@@ -1021,29 +1042,33 @@ export default class customDatafiltersController {
   }
 
   initVenues(){
+    let venuesSelected = [];
     if(this.init && this.init.venues){
-      let venuesSelected = [];
+     
       this.venues.forEach((v) => {
-        if(v.type== 'venue'){
+        if(v.type== 'venue' && v.selected ){
           if(this.init.venues.indexOf(v.id) > -1)
             venuesSelected.push(v);
           else
             v.selected = false;
         }
-        else if(v.type == 'outlet' && this.init.outlets){
+        else if(v.type == 'outlet' && v.selected && this.init.outlets){
           if(this.init.outlets.indexOf(v.id) > -1)
             venuesSelected.push(v);
           else
             v.selected = false;
         }
-      });
-
-      this.setVenues(venuesSelected);
+      });     
     }
-    else
-      this.setVenues(angular.copy(this.venues));
+    else{
+      venuesSelected = this.venues.filter((v) => {
+          if(v.selected)
+            return v;
+        });
+    }
 
-    //
+    this.setVenues(venuesSelected);
+    
     if(!this.hasReport)
       this.debounceUpdate('Venue', true);
   }

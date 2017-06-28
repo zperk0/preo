@@ -81,6 +81,14 @@
           {{ cardItemActionsCtrl.addCustomFieldMessage }}
         </md-tooltip>
       </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onSync"
+                 class="md-icon-button sync-button"
+                 ng-click="cardItemActionsCtrl.onSync({$event:$event})">
+        <icon>sync</icon>
+        <md-tooltip md-direction="bottom">
+          {{ cardItemActionsCtrl.syncMessage }}
+        </md-tooltip>
+      </md-button>
     </div>
   </md-card-actions>
 </div>

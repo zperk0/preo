@@ -150,8 +150,8 @@ export default class ReportsService {
           case "number":
             colObj.displayValue = this.$filter('currency')(colObj.value,true,0);
             break;
-          case "percent":
-            colObj.displayValue = this.$filter('percent')(colObj.value);
+          case "percent": 
+            colObj.displayValue = this.$filter('percent')(colObj.value, 0);
             break;
           case "date":
             colObj.displayValue = this.$filter('datelocale')(colObj.value);
