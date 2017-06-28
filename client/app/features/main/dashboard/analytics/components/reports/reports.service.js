@@ -609,6 +609,7 @@ export default class ReportsService {
     if(reportId== 'allItemsSold'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'modifiers', text:this.gettextCatalog.getString('Modifiers') , isHidden: true, isOnlyCsv: true},
         {key:'itemCount', text:this.gettextCatalog.getString('Quantity'), fieldType: 'number'},
         {key:'itemTotal', text:this.gettextCatalog.getString('Revenue'), fieldType: 'currency'}
       ];
