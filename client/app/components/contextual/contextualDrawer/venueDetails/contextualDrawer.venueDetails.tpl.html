@@ -1,20 +1,20 @@
  <div class="sidenav-wrapper">
   <md-sidenav md-is-locked-open="true" md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-venue-details md-whiteframe-4dp" md-component-id="venueDetails">
-<!--       <md-card-content>
-        <venue-details-form></venue-details-form>
-      </md-card-content> -->
+    <md-card-content ng-if="!drawerVenueDetailsCtrl.venue.isEvent()">
+      <venue-details-form></venue-details-form>
+    </md-card-content>
 
-      <md-tabs md-dynamic-height md-stretch-tabs="always" class="full-tabs">
-        <md-tab label="{{'Basics' | translate}}">
-          <venue-details-form></venue-details-form>
-        </md-tab>
-        <md-tab label="{{'Venue Map' | translate}}">
-          <image-uploader
-            ng-model="drawerVenueDetailsCtrl.venueMapImages"
-            on-add="drawerVenueDetailsCtrl.onVenueMapImageChange(image)"
-            on-delete="drawerVenueDetailsCtrl.onVenueMapImageDeleted(image)"></image-uploader>
-        </md-tab>
-      </md-tabs>
+    <md-tabs md-dynamic-height md-stretch-tabs="always" class="full-tabs" ng-if="drawerVenueDetailsCtrl.venue.isEvent()">
+      <md-tab label="{{'Basics' | translate}}">
+        <venue-details-form></venue-details-form>
+      </md-tab>
+      <md-tab label="{{'Venue Map' | translate}}">
+        <image-uploader
+          ng-model="drawerVenueDetailsCtrl.venueMapImages"
+          on-add="drawerVenueDetailsCtrl.onVenueMapImageChange(image)"
+          on-delete="drawerVenueDetailsCtrl.onVenueMapImageDeleted(image)"></image-uploader>
+      </md-tab>
+    </md-tabs>
     <div class='map-overlay-drawing'></div>
   </md-sidenav>
 </div>
