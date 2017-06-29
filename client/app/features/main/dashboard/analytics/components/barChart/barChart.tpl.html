@@ -7,7 +7,7 @@
 				<form action={{exportDataUrl}} method='POST' ng-submit='getExportData()'>
 				  <input name='data' value='{{exportData}}' type='hidden'/>
 					<div class="align-action-top" ng-if="shouldShowActions">
-						<dropdown-actions actions-list="config.actions" on-actions="onActions(item)"> </dropdown-actions>
+						<dropdown-actions actions-list="activeActions" on-actions="onActions(item)"> </dropdown-actions>
 					</div>
 				  <button id="postData" class="btn-form-analytics" ng-click=""></button>
 				</form> 

@@ -12,16 +12,13 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
   replace:true,
   link: (scope, elem, attr, ctrl) => {
 
-    scope.onActions = _onAction;
+    scope.onActions = _onUpdate;
     scope.getExportData = _getExportData;
     scope.showOverlay = _showOverlay;
     scope.getOverlayContent = _getOverlayContent;
-    scope.onOverlayClick = _onOverlayClick;
-    scope.shouldShowActions = scope.config.actions && scope.config.actions.length > 0 ? true : false;
+    scope.onOverlayClick = _onOverlayClick; 
 
-    // ONLY when use DAILY, MONTHLY, WEEKLY modes
-    // array with Data may always come with Days, formated as YYYY-MM-DD.
-    var chartValues = angular.copy(scope.config.data);
+    var chartValues = {x:[], y:[]};
 
     var canvas = elem[0].querySelector('#barchart');
 
@@ -29,12 +26,7 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
     var currentDataVisualization = null;
     var formatType = null;
 
-    _updateChartProperties(scope.config.defaultMode);
-
-    // update chartView before initChart
-    if(currentDataVisualization != LabelService.DAILY_MODE){
-      _onAction(currentDataVisualization, true);
-    }
+    _updateChartProperties();
 
     var barChart = _initChart();
     setHiddenBorders(barChart, 0);
@@ -43,26 +35,47 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
       () => { return scope.config.data; },
       function(newValue, oldValue){
 
-        if(typeof oldValue === 'undefined' || (!oldValue.x.length && !newValue.x.length && !oldValue.y.length && !newValue.y.length))
+        if(typeof oldValue === 'undefined' || (_isEmptyData(newValue) && _isEmptyData(oldValue)))
         return;
         Spinner.show('barchart-directive');
 
         // update current chart with the same visualization it had before. 
-        _onAction(currentDataVisualization, true);
+        _onUpdate(null, true);
 
         Spinner.hide('barchart-directive');
       },
       true
     );
 
+    function _isEmptyData(values){   
+
+      if(!values.daily && !values.weekly && !values.monthly)
+        return true;
+
+      if((values.daily && !values.daily.x.length && !values.daily.y.length)
+         && (values.weekly && !values.weekly.x.length && !values.weekly.y.length)
+         && (values.monthly && !values.monthly.x.length && !values.monthly.y.length))
+        return true;
+
+      return false;
+    }
+
     function _getExportData(){
       console.log('Exporting data...');
     }
 
-    function _onAction(option,isWatchUpdate){
+    function _onUpdate(option, isWatchUpdate){
 
-      if(currentDataVisualization.id == option.id && !isWatchUpdate)
+      // if click on same action, return
+      if(option && currentDataVisualization.id == option.id)
         return;
+
+      //when watch if fired, need to update properties, and update param option
+      if(!option || (option.id != LabelService.EXPORT_CSV.id && option.id != LabelService.EXPORT_PDF.id))
+        _updateChartProperties(option);
+
+      if(!option)
+        option = currentDataVisualization;
 
       switch(option.id){
         case LabelService.EXPORT_CSV.id:
@@ -74,15 +87,15 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
         break;
 
         case LabelService.MONTHLY_MODE.id:
-        _showMonthlyMode(option);
+        _updateChart();
         break;
 
         case LabelService.WEEKLY_MODE.id:
-        _showWeeklyMode(option);
+        _updateChart();
         break;
 
         case LabelService.DAILY_MODE.id:
-        _showDailyMode(option);
+        _updateChart();
         break;
       }
     }
@@ -172,17 +185,56 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
       }
     }
 
-    function _updateChartProperties(modeSelected){
-
-      // show/hide actions from chart if its empty
-      if(!chartValues.x.length && !chartValues.y.length)
-        scope.shouldShowActions = false;
-      else{
-        scope.shouldShowActions = scope.config.actions && scope.config.actions.length ? true : false;                   
+    function _updateActions(){
+      let actions = angular.copy(scope.config.actions);
+      if(scope.config.actions.indexOf(LabelService.DAILY_MODE) > 0 && !scope.config.data.daily){
+        let index = scope.config.actions.indexOf(LabelService.DAILY_MODE);
+        actions.splice(index, 1);
       }
 
+      if(scope.config.actions.indexOf(LabelService.WEEKLY_MODE) > 0 && !scope.config.data.weekly){
+        let index = scope.config.actions.indexOf(LabelService.WEEKLY_MODE);
+        actions.splice(index, 1);
+      }
+
+      if(scope.config.actions.indexOf(LabelService.MONTHLY_MODE) > 0 && !scope.config.data.monthly){
+        let index = scope.config.actions.indexOf(LabelService.MONTHLY_MODE);
+        actions.splice(index, 1);
+      }
+
+      scope.activeActions = actions;
+    }
+
+    function _updateChartProperties(modeSelected){
+      
       //update curretnVisualizationMode
-      currentDataVisualization = (modeSelected) ? modeSelected : LabelService.DAILY_MODE;
+      if(modeSelected){
+        currentDataVisualization = modeSelected;
+        chartValues = scope.config.data[modeSelected.type];
+      }
+      else if(scope.config.data.daily){
+      
+        currentDataVisualization = LabelService.DAILY_MODE;
+        chartValues = angular.copy(scope.config.data.daily);
+      }
+      else if(scope.config.data.weekly){
+       
+        currentDataVisualization = LabelService.WEEKLY_MODE;
+        chartValues = angular.copy(scope.config.data.weekly);
+      }
+      else if(scope.config.data.monthly){
+       
+        currentDataVisualization = LabelService.MONTHLY_MODE;
+        chartValues = angular.copy(scope.config.data.monthly);
+      }
+
+      // show/hide actions from chart if its empty
+      if((!chartValues.x && !chartValues.y) || (!chartValues.x.length && !chartValues.y.length))
+        scope.shouldShowActions = false;
+      else if(scope.config.actions && scope.config.actions.length){
+        scope.shouldShowActions = true;
+        _updateActions();
+      }
 
       //update title
       var propTitle = scope.config.name[currentDataVisualization.type];
@@ -190,99 +242,7 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
 
       //update type
       formatType = scope.config.type;
-    }
-
-    function _showDailyMode(modeSelected){      
-
-      chartValues = angular.copy(scope.config.data);
-
-      _updateChartProperties(modeSelected);
-
-      _updateChart();
-    }
-
-    function _showWeeklyMode(modeSelected){  
-
-      _updateChartProperties(modeSelected);    
-
-      _groupByWeek();
-
-      _updateChart();
-    }
-
-    function _showMonthlyMode(modeSelected){
-
-      _updateChartProperties(modeSelected);      
-
-      _groupByMonth();
-
-      _updateChart();
-    }
-
-    function _groupByMonth(){
-      var monthX = [];
-      var monthY = [];
-      var monthCurr = null;
-
-      var key = null;
-
-      var dayValues = angular.copy(scope.config.data);
-
-      dayValues.x.forEach((x, index) => {
-
-        monthCurr = moment(x, "YYYY-MM-DD").endOf('month');
-
-        key = monthCurr.format('MMM YYYY');
-
-        var i = monthX.indexOf(key);
-
-        //if KEY already exists in array, just Sum Y value to previous value
-        if(i > -1){
-        let sumValue = (monthY[i]) + (dayValues.y[index]);
-        monthY[i] = sumValue;
-        }
-        else{
-        monthX.push(key);
-        monthY.push(dayValues.y[index]);
-        }
-      });
-
-      chartValues.x = monthX;
-      chartValues.y = monthY;
-    }
-
-    function _groupByWeek(){
-      var weekX = [];
-      var weekY = [];
-      var endWeek = null;
-      var startWeek = null;
-
-      var key = null;
-
-      var dayValues = angular.copy(scope.config.data);
-
-      dayValues.x.forEach((x, index) => {
-
-        endWeek = moment(x, "YYYY-MM-DD").endOf('week');
-        startWeek = moment(x, "YYYY-MM-DD").startOf('week');
-        key = startWeek.format('DD') + '-' + endWeek.format('DD MMM YYYY');
-
-        var i = weekX.indexOf(key);
-
-        //if KEY already exists in array, just Sum Y value to previous value
-        if(i > -1){
-        let sumValue = (weekY[i]) + (dayValues.y[index]);
-        weekY[i] = sumValue;
-        }
-        else{
-        weekX.push(key);
-        weekY.push(dayValues.y[index]);
-        }
-      });
-
-      chartValues.x = weekX;
-      chartValues.y = weekY;
-    }
+    }      
 
     function _updateChart(){
       barChart.data.datasets[0].data = chartValues.y;
@@ -299,7 +259,7 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
 
     function _calcYaxisMaxSize(yValues){
 
-      if(yValues.length <= 0)
+      if(!yValues || !yValues.length)
         return 0;
 
       var maxValue = Math.max(...yValues);

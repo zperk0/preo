@@ -158,15 +158,54 @@ export default class analyticsStockController {
 
   }
 
+  formatKeysToBarChart(keys, type){
+    
+    let copyKeys = angular.copy(keys);
+    copyKeys.forEach( function(e, index) {      
+      if(type === 'month')
+      keys[index] = moment(e, 'YYYY-MM-DD').format('MMM YYYY');
+    else if(type === 'week'){
+      let month = moment(e, 'YYYY-MM-DD').format('MMM YYYY');
+      let start = moment(e, 'YYYY-MM-DD').format('DD');
+      let end = moment(e, 'YYYY-MM-DD').add(6,'day').format('DD');
+      keys[index] = start + '-' + end + ' ' + month;
+    }
+    });
+
+    return keys;
+  }
+
   getChartData(){
 
     var report = this.dataFilters.report;
-    var data = this.ReportsService.getDataFromReport(report.id) ? this.ReportsService.getDataFromReport(report.id) : {keys: [], values: []};
-    var dates = this.getParamsDate();
+    var dates = this.getParamsDate(); 
+    var apiData = this.ReportsService.getDataFromReport(report.id) ? this.ReportsService.getDataFromReport(report.id) : null;    
+    var data = {};
+
+    if(apiData && apiData.daily){
+      data.daily = {
+        x: apiData.daily.keys,
+        y: apiData.daily.values
+      };
+    }
+
+    if(apiData && apiData.weekly){
+      data.weekly = {
+        x: this.formatKeysToBarChart(apiData.weekly.keys, 'week'),
+        y: apiData.weekly.values
+      };
+    }
+
+    if(apiData && apiData.monthly){
+      data.monthly = {
+        x: this.formatKeysToBarChart(apiData.monthly.keys, 'month') ,
+        y: apiData.monthly.values
+      };
+    }
 
     var obj = {
       name: report.name,
-      data: {x: data.keys, y: data.values},
+      data: data,
       actions: report.actions,
       startDate: dates.start,
       endDate: dates.end

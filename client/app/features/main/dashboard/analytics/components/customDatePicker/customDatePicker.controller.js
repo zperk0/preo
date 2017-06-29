@@ -174,8 +174,7 @@ export default class customDatePickerController {
       template: require('./calendarPicker.tpl.html'),
       callback: endCallback
     }
-
-    this.test = moment('2000-01-01'); console.log('test ->>> ', this.test);
+    
   }
 
   constructor($scope, $timeout, Spinner, Snack) {
