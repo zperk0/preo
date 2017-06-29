@@ -10,6 +10,7 @@ export default class venueServicesController {
 
   doUpdate(){
     var promises = [];
+    this.setDefaultLeadTime();
     promises.push(this.VenueService.updateVenue())
     promises.push(this.venue.settings.update())
     this.$q.all(promises).then((results)=>{
@@ -84,8 +85,6 @@ export default class venueServicesController {
       if (!this.collectionForm.$valid) {
         return;
       }
-
-      this.setDefaultLeadTime();
 
       this.Spinner.show("venue-services-save");
       try {

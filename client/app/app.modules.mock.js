@@ -13,6 +13,7 @@
   'webapp.styling',
   'webapp.users',
   'webapp.taxes',
+  'webapp.updateExternalMenus',
   'webapp.customTags',
 ].forEach(function (item) {
 

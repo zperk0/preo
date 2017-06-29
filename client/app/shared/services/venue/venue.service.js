@@ -17,7 +17,7 @@ export default class VenueService {
           return resolve(filtered[0]);
         }
         if (this.UserService.isAdmin()){
-          Preoday.Venue.getById(venueId,'features')
+          Preoday.Venue.getById(venueId,'features,outlets')
             .then((newVenue)=>{
               if (newVenue){
                 resolve(newVenue)
@@ -46,7 +46,7 @@ export default class VenueService {
 
       Preoday.Venue.fetch({
         adminId: user.id,
-        expand: 'features'
+        expand: 'features,outlets'
       }).then((venues)=>{
 
         if (venues && venues.length){
@@ -210,7 +210,7 @@ export default class VenueService {
 
   updateVenue(){
     var venueCopy = angular.copy(this.currentVenue);
-    
+
     delete venueCopy.ccySymbol;
     return venueCopy.update()
   }

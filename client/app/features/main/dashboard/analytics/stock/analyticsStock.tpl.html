@@ -1,0 +1,59 @@
+<div class='stock-analytics-view layout-left-right' flex layout="column" layout-align="stretch stretch">
+  <div flex layout="column" layout-align="start start">
+
+    <div class="stock-filters">
+    <custom-datafilters has-daterange="true"
+      has-report="true"
+      report-types="analyticsStockCtrl.reportTypes"
+      on-filter="analyticsStockCtrl.onFilter(filters, typeChanged)"
+      initial-values="analyticsStockCtrl.dataFilters"
+      kyc="analyticsStockCtrl.hasKnowYourCustomersFeature">
+    </custom-datafilters>
+    </div>
+
+    <div class="stock-charts" flex layout="row" ng-if="analyticsStockCtrl.shouldShowChart">
+      <bar-chart flex="100" config="analyticsStockCtrl.chartData" kyc="analyticsStockCtrl.hasKnowYourCustomersFeature"></bar-chart>
+    </div>
+
+    <div class="stock-table" layout="row" ng-if="analyticsStockCtrl.shouldShowdatatable">
+    <md-card flex layout-fill>
+      <md-card-title>
+        <md-card-title-text layout="row" layout-align="space-between start">
+          <h2 class="md-title" > {{analyticsStockCtrl.reportTitle}}</h2>
+          <form action={{analyticsStockCtrl.exportDataUrl}} method='POST' ng-submit='analyticsStockCtrl.getExportData()'>
+            <input name='data' value='{{analyticsStockCtrl.exportData}}' type='hidden'/>
+              <div class="align-action-top" ng-if="analyticsStockCtrl.shouldShowActions">
+                <dropdown-actions actions-list="analyticsStockCtrl.actions" on-actions="analyticsStockCtrl.onActions(item)"> </dropdown-actions>
+              </div>
+              <button id="postData" class="btn-form-analytics" ng-click=""></button>
+          </form>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-table-container >
+        <table md-table md-row-select multiple ng-model="analyticsStockCtrl.linesSelected">
+          <thead md-head md-order="analyticsStockCtrl.query.order">
+           <tr md-row>
+            <th md-column ng-repeat="col in analyticsStockCtrl.tableData.header" ng-click="analyticsStockCtrl.onReorder(col.key)" md-order-by="{{col.key}}" ng-if="!col.isHidden">
+              <span>{{col.text}}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody md-body>
+           <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsStockCtrl.tableData.body track by $index">
+             <td md-cell ng-repeat="col in row track by $index" ng-if="!col.isHidden">
+              <span >{{col.displayValue}}</span>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+      </md-table-container>
+    </md-card>
+
+    <div layout="row" class="content-spinner" ng-if="analyticsStockCtrl.loadingMoreData">
+      <spinner></spinner>
+    </div> 
+    </div> 
+    
+  </div>
+</div>

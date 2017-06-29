@@ -1,13 +1,13 @@
 <div class="outlet-location-tree">
-	<h3 class="outlet-location-group-name" 
-			ng-class="{'allow-select': allowSelectGroup, 'selected': isSelected()}" 
+	<h3 class="outlet-location-group-name"
+			ng-class="{'allow-select': allowSelectGroup, 'selected': isSelected()}"
 			ng-click="selectGroup()"
 			ng-if="outletLocations.length">
 		{{ getGroupName() }}
 	</h3>
 	<div>
-		<outlet-location-tree-item ng-repeat='outletLocation in outletGroup.outletLocations' 
-			outlet-location='outletLocation' 
+		<outlet-location-tree-item ng-repeat='outletLocation in outletGroup.outletLocations'
+			outlet-location='outletLocation'
 			on-select="onSelectItem({outletLocation: outletLocation})"
 			selected="selected"
 		></outlet-location-tree-item>

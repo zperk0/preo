@@ -9,6 +9,8 @@ export default class LabelService {
 
     this.CONFIRMATION = gettextCatalog.getString("Got it");
 
+    this.NOT_AVAILABLE = gettextCatalog.getString("Not available");
+
     this.CREATE = gettextCatalog.getString("Create");
 
     this.SNACK_WRONG_CREDENTIALS = gettextCatalog.getString("Invalid username and/or password");
@@ -44,6 +46,12 @@ export default class LabelService {
 
     this.TITLE_DELETE_OUTLET_LOCATION = gettextCatalog.getString("Delete outlet location?");
     this.CONTENT_DELETE_OUTLET_LOCATION = gettextCatalog.getString("Are you sure you want to delete this outlet location?");
+
+    this.TITLE_DELETE_CUSTOM_FIELD = gettextCatalog.getString("Delete custom field?");
+    this.CONTENT_DELETE_CUSTOM_FIELD = gettextCatalog.getString("Are you sure you want to delete this custom field?");
+
+    this.TITLE_DELETE_OUTLET_CUSTOM_FIELD = gettextCatalog.getString("This outlet location has custom fields");
+    this.CONTENT_DELETE_OUTLET_CUSTOM_FIELD = gettextCatalog.getString("Deleting this outlet will also delete the custom fields at checkout. Are you sure?");
 
     this.TITLE_DELETE_OUTLET_LOCATION_GROUP = gettextCatalog.getString("Delete group?");
     this.CONTENT_DELETE_OUTLET_LOCATION_GROUP = gettextCatalog.getString("This will delete the configuration of all sub-groups. Are you sure?");
@@ -116,6 +124,14 @@ export default class LabelService {
     this.SNACK_PROMOTION_EXISTING_CODE = gettextCatalog.getString("This promotion code is already being used.");
 
     this.SNACK_ERROR_FETCHING_FEES = gettextCatalog.getString("An error ocurred to fetch the fees. Try again later.");
+
+    //dropdownActions - Analytics
+    this.EXPORT_CSV  = { id: 1, name: gettextCatalog.getString('Export as CSV'), type: 'csv' },
+    this.EXPORT_PDF  = { id: 2, name: gettextCatalog.getString('Export as PDF'), type: 'pdf' },
+    this.DAILY_MODE  = { id: 3, name: gettextCatalog.getString('Daily') , type: 'daily' },
+    this.WEEKLY_MODE = { id: 4, name: gettextCatalog.getString('Weekly'), type: 'weekly' },
+    this.MONTHLY_MODE= { id: 5, name: gettextCatalog.getString('Monthly'), type: 'monthly'},
+    this.NOTIFICATION= { id: 6, name: gettextCatalog.getString('Send push notification'), type: 'notification'}
 
     // CUSTOM TAGS
     this.TITLE_DELETE_TAG = gettextCatalog.getString("Delete tag?");
