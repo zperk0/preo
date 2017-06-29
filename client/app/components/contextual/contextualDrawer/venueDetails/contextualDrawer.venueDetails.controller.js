@@ -148,7 +148,7 @@ export default class contextualDrawerOutletsController {
 
     this.venueMapImages = [];
 
-    if (this.venue.images) {
+    if (this.venue && this.venue.images) {
       this.venueMapImages = this.venue.images.filter((image) => {
 
         return image.type === this.VenueImageType.VENUE_MAP;
