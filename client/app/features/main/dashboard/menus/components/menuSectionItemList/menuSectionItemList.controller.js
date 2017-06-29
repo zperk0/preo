@@ -10,13 +10,6 @@ export default class menuSectionItemListController {
     newItem.menuId = this.section.menuId;
 
     this.recalculateHeight();
-
-    this.addToOriginalList(newItem);
-  }
-
-  addToOriginalList (newItem) {
-
-    this.ItemService.addItem(newItem);
   }
 
   onItemUpdated() {
@@ -198,7 +191,6 @@ export default class menuSectionItemListController {
         console.log("cloned", createdItem, this.item);
 
         this.cardItemList.insert(item, createdItem, this.section);
-        this.addToOriginalList(createdItem);
         this.doSimpleSort(this.items);
 
       }, (err)=>{

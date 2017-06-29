@@ -199,8 +199,15 @@ export default class ItemService {
     this.DEBUG && console.log("creating item", item, sectionId);
     return this._parseImages(item)
       .then(() => {
-
-        return Preoday.Item.save(item, sectionId);
+        return this.$q((resolve, reject) => {
+          Preoday.Item.save(item, sectionId)
+            .then(createdItem => {
+              this.addItem(createdItem);
+              resolve(createdItem);
+            }, error => {
+              reject(error);
+            });
+        });
       });
   }
 
