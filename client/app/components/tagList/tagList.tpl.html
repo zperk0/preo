@@ -1,6 +1,6 @@
 <div class='tag-list'>
 
-  <md-checkbox class='md-primary' ng-click="tagListCtrl.onChange(tag)" ng-model="tag.$model" ng-repeat="tag in tagListCtrl.tags" >
+  <md-checkbox class='md-primary' ng-click="tagListCtrl.onChange(tag)" ng-model="tag.$model" ng-repeat="tag in tagListCtrl.tags | orderBy:'$fullName'" >
       {{tag.$fullName}}
   </md-checkbox>
 </div>
