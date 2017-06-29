@@ -190,7 +190,7 @@ export default class ItemService {
   }
 
   createItem(item, sectionId){
-    
+
     if (item.$size && item.$size.$isMultiple && item.$size.items.length) {
       item.modifiers = [item.$size];
       item.price = 0;
@@ -222,10 +222,12 @@ export default class ItemService {
     return this.data.items.filter((i)=>id===i.id)[0];
   }
 
-  populateModifiers(modifiers){
-    this.data.items.forEach((i)=>{
-      i.modifiers = this.ModifierService.getByIds(i.modifiers.map((m)=>m.id));
-    })
+  populateModifiers(){
+    if (this.data && this.data.items) {
+      this.data.items.forEach((i)=>{
+        i.modifiers = this.ModifierService.getByIds(i.modifiers.map((m)=>m.id));
+      })
+    }
   }
 
   setItemsSizes () {
@@ -249,7 +251,6 @@ export default class ItemService {
           return this.ModifierService.getModifiers(venueId)
         })
         .then((modifiers)=>{
-          // this.populateModifiers(modifiers);
           resolve(this.data)
         })
         .catch((err)=>{
