@@ -7,6 +7,7 @@
                     has-visible="true"
                     show-visible="!menuItemCtrl.item.visible"
                     ng-attr-data-id="{{menuItemCtrl.item.id}}">
+                    <md-icon ng-show="menuItemCtrl.showActionIcon()" class="action-icon">label</md-icon>
                     <span class='name' flex>{{menuItemCtrl.item.id + "--" + menuItemCtrl.item.position + "--" | debug}} {{menuItemCtrl.item.name}} </span>
                     <span ng-show="menuItemCtrl.hasFromPrice()" class='price from'> (from {{menuItemCtrl.getFromPrice() | currency}})</span>
                     <span class='price'> {{menuItemCtrl.item.price | currency}}</span>

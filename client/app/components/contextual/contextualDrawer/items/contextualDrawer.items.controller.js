@@ -48,17 +48,11 @@ export default class contextualDrawerItemController {
     this.types = ['NONE'];
     this.lastUpdate = 0;
 
-
-
-    ItemService.getItems($stateParams.venueId)
-      .then(() => {
-        this.data = ItemService.data;
-      });
-
+    this.items = ItemService.getItems();
 
     let unRegisterWatchData = $scope.$watch(() => {
-      if (this.data) {
-        return this.data.items;
+      if (this.items) {
+        return this.items;
       }
     }, () => {
       this.lastUpdate ++;

@@ -4,6 +4,7 @@
     <div class='card-title' layout="row" layout-align="start center" ng-class="::{invisible: !staticMenuItemCtrl.item.visible}">
       <div flex layout="row" layout-align="start center">
         <icon class='visibility' ng-if="::!staticMenuItemCtrl.item.visible">visibility_off</icon>
+        <md-icon ng-show="staticMenuItemCtrl.showActionIcon()" class="action-icon">label</md-icon>
         <span class='card-title-text' flex ayout="row" layout-align="start center">
           <span class='name' flex>{{ ::staticMenuItemCtrl.item.name }} </span>
           <span class='price'> {{ ::staticMenuItemCtrl.formattedPrice }}</span>

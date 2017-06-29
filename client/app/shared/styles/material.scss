@@ -352,6 +352,26 @@ mdp-time-picker, mdp-date-picker {
   }
 }
 
+md-autocomplete {
+  input {
+    &::-webkit-input-placeholder {
+      color: rgba(0, 0, 0, 0.26) !important;
+    }
+
+    &:-moz-placeholder {
+      color: rgba(0, 0, 0, 0.26) !important;
+    }
+
+    &::-moz-placeholder {
+      color: rgba(0, 0, 0, 0.26) !important;
+    }
+
+    &:-ms-input-placeholder {
+      color: rgba(0, 0, 0, 0.26) !important;
+    }
+  }
+}
+
 .preo-ng-messages {
   div[ng-message] {
     font-size: 12px;

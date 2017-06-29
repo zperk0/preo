@@ -9,7 +9,8 @@
             sv-disabled="true"
             has-new="true"
             ng-if="itemListCtrl.loaded"
-            items="itemListCtrl.data.items"></menu-item-list>
+            items="itemListCtrl.items"
+            tags="itemListCtrl.tags"></menu-item-list>
       </div>
       <div class='floating-right-buttons'>
       <md-button ng-click="itemListCtrl.toggleDrawer('modifiers')" class="md-primary md-hue-2" translate>Show modifiers</md-button>

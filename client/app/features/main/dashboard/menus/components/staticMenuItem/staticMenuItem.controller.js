@@ -20,6 +20,10 @@ export default class staticMenuItemController {
     }
   }
 
+  showActionIcon () {
+    return this.item.tagActions && !!this.item.tagActions.length;
+  }
+
   constructor($filter, ItemService, ModifierService) {
     "ngInject";
     

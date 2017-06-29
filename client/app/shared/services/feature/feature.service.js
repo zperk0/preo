@@ -60,6 +60,10 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.UPDATE_EXTERNAL_MENU);
   }
 
+  hasItemTagsFeature () {
+    return this.getLocalFeature(Preoday.constants.Feature.ITEM_TAGS);
+  }
+
   getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
         return +item.id;

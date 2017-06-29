@@ -1,0 +1,13 @@
+<div class="custom-tag-list">
+
+  <card-item-list
+      has-new="customTagListCtrl.hasNew"
+      tooltip="{{ 'Add new tag' | translate }}"
+      on-click-new="customTagListCtrl.showCreateCustomTag()"
+      collection="customTagListCtrl.customTags">
+      <custom-tag
+        ng-repeat="customTag in customTagListCtrl.customTags track by $index"
+        custom-tag="customTag">
+      </custom-tag>
+  </card-item-list>
+</div>

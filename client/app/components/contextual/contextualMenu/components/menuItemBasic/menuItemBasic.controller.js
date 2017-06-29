@@ -4,8 +4,14 @@ export default class menuItemBasicController {
   }
 
   /* @ngInject */
-  constructor($scope, BroadcastEvents, ItemService) {
+  constructor($scope, BroadcastEvents, ItemService, VenueService, $timeout) {
     'ngInject';
+
+    this.tags = [];
+
+    $timeout(() => {
+      this.tags = this.contextualMenuCtrl.params.tags;
+    });
 
     $scope.$on(BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED, () => {
       if (this.contextualForm.selectedTabIndex === 1) {

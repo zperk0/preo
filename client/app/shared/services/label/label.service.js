@@ -11,6 +11,8 @@ export default class LabelService {
 
     this.NOT_AVAILABLE = gettextCatalog.getString("Not available");
 
+    this.CREATE = gettextCatalog.getString("Create");
+
     this.SNACK_WRONG_CREDENTIALS = gettextCatalog.getString("Invalid username and/or password");
 
     this.SNACK_WEBSETTINGS_ERROR = gettextCatalog.getString("Could not save weborders style");
@@ -133,5 +135,35 @@ export default class LabelService {
     this.WEEKLY_MODE = { id: 4, name: gettextCatalog.getString('Weekly'), type: 'weekly' },
     this.MONTHLY_MODE= { id: 5, name: gettextCatalog.getString('Monthly'), type: 'monthly'},
     this.NOTIFICATION= { id: 6, name: gettextCatalog.getString('Send push notification'), type: 'notification'}
+
+    // CUSTOM TAGS
+    this.TITLE_DELETE_TAG = gettextCatalog.getString("Delete tag?");
+    this.CONTENT_DELETE_TAG = gettextCatalog.getString("Are you sure you want to delete this tag?");
+
+    this.TITLE_DELETE_TAG_ACTION = gettextCatalog.getString("Delete tag action?");
+    this.CONTENT_DELETE_TAG_ACTION = gettextCatalog.getString("Are you sure you want to delete this tag action?");
+
+    this.TITLE_DELETE_TAG_IN_USE = gettextCatalog.getString("This tag is in use");
+    this.CONTENT_DELETE_TAG_IN_USE = gettextCatalog.getString("Deleting this tag will remove it from all items and tag actions. Are you sure?");
+
+    this.TITLE_DUPLICATED_TAG_NAME = gettextCatalog.getString("Warning");
+    this.CONTENT_DUPLICATED_TAG_NAME = gettextCatalog.getString("There is already another tag with the same name, are you sure you want to create this new tag?");
+  
+    this.SNACK_TAG_CREATED = gettextCatalog.getString('Tag created');
+    this.SNACK_TAG_CREATED_ERROR = gettextCatalog.getString('Error creating tag');
+    
+    this.SNACK_TAG_UPDATED = gettextCatalog.getString('Tag updated');
+    this.SNACK_TAG_UPDATED_ERROR = gettextCatalog.getString('Error updating tag');
+    
+    this.SNACK_TAG_DELETED = gettextCatalog.getString('Tag deleted');
+
+    this.SNACK_TAG_ACTION_CREATED = gettextCatalog.getString('Tag action created');
+    this.SNACK_TAG_ACTION_CREATED_ERROR = gettextCatalog.getString('Error creating tag action');
+    
+    this.SNACK_TAG_ACTION_UPDATED = gettextCatalog.getString('Tag action updated');
+    this.SNACK_TAG_ACTION_UPDATED_ERROR = gettextCatalog.getString('Error updating tag action');
+    
+    this.SNACK_TAG_ACTION_DELETED = gettextCatalog.getString('Tag action deleted');
+    this.SNACK_TAG_ACTION_DELETED_ERROR = gettextCatalog.getString('An error ocurred to delete the tag. Try again later.');
   }
 }

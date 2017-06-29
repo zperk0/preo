@@ -5,64 +5,18 @@ export default class itemListController {
     return "itemListController"
   }
 
-  showSpinner(){
-    this.Spinner.show("item-list");
-  }
-
-  hideSpinner(){
-    this.Spinner.hide("item-list");
-  }
-
   toggleDrawer(id){
     this.contextual.showDrawer(id);
   }
 
-  setItems(venueId) {
-
-    this.ItemService.getItems(venueId)
-      .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"FAILED_LOADING_MENU_ITEMS"))
-      .catch((err)=> {
-
-        this.handleError();
-
-        this.loaded = true;
-        console.log("err",err)
-      });
-
-  }
-
-  handleFinishLoading(data) {
-
-    this.$timeout(()=>{
-      console.log('data here----', data);
-      // {items:data.items.map((i, index)=>({id:i.id, item:i}))}
-      this.data = data;
-
-      this.hideSpinner();
-
-      this.loaded = true;
-    })
-
-  }
-
-  handleError(menu){
-
-    this.hideSpinner();
-  }
-
-  constructor($stateParams, $timeout, ItemService, contextual, FeatureService, Spinner) {
-
+  constructor($stateParams, $timeout, ItemService, contextual, FeatureService, Spinner, tags) {
     "ngInject";
 
-    this.data = {items:[]}
     this.$timeout = $timeout;
-    this.ItemService = ItemService;
     this.contextual = contextual;
-    this.Spinner = Spinner;
-    this.loaded = false;
-
-    this.showSpinner();
-    this.setItems($stateParams.venueId);
+    this.tags = tags;
+    this.items = ItemService.getItems();
+    this.loaded = true;
 
     FeatureService.hasFeature(Preoday.constants.Feature.NESTED_MODIFIER);
   }
