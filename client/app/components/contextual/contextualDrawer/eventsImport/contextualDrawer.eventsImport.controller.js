@@ -42,7 +42,7 @@ export default class contextualDrawerEventsImportController {
 
   onItemDelete(){
    // this.entityChanged = true;
-    this.data = null;
+    this.data = null;  
   }
 
   import () {
@@ -64,7 +64,7 @@ export default class contextualDrawerEventsImportController {
         this.cleanData(true);
         
         this.init(data); // reset tabs
-        this.entityChanged = true;
+        this.entityChanged = true;        
         this.hideSpinner();
       }, (err) => {
         this.cleanData();
@@ -90,52 +90,41 @@ export default class contextualDrawerEventsImportController {
 
   cleanData(cleanLocalData){
     this.selectedEvents = [];
-    this.slots.pickupSlots = [];
-    
-    this.loaded = false;
+    this.slots.pickupSlots = [];    
+   
     this.isEditMode = false;
     this.isImportMode = false;
     this.doneButton = null;
     this.linkToExistentEvent = false;
 
-    if(cleanLocalData)
-      this.data= null;
-    else if(this.data)   
-      this.data.forEach((x) => {x.$selected = false;});
+    if(cleanLocalData){
+      this.data= null;    
+    }
   }
 
-  fetchExternalEvents(){
-    this.showSpinner();
-    this.ExternalService.getTicketMasterEvents(new Array(this.venueId))
+  fetchExternalEvents(){   
+    this.loadingData = true;
+    this.ExternalService.getTicketMasterEvents([this.venueId])
     .then((data) => {  
 
       this.data = data;
 
-      this.data.forEach((x) => {  
-        x.showName = moment(x.eventDate).format('L')+ " - " +x.name,           
-        x.$selected = false           
-      });
-
-      if(!data || data.length <= 0)
-        this.emptyData = true;
-      else
-        this.emptyData = false;
-
       this.setContextualProperties();
-
-      this.ExternalService.setHasChanges(false); //reset          
-      this.hideSpinner();
-    }, () => {
-       console.log('Error eventImport service');
+      this.ExternalService.setHasChanges(false); //reset 
+      this.loadingData = false;
+    }, () => {     
+      this.loadingData = false;
+      this.Snack.showError(this.gettextCatalog.getString("An error occurred while trying to fetch Ticket Master events. Please try again."));
+      console.log('Error externalService getting TMEvents - drawer');
     })
   }
 
   setContextualProperties(){
     if(this.isEditMode){
-      this.doneButton = true; 
+      this.doneButton = true;       
     }
     else if(this.isImportMode){
-      this.doneButton = false;
+      this.doneButton = false;      
 
       if(this.linkToExistentEvent){
         this.cancelBtn = this.gettextCatalog.getString('Back');
@@ -147,7 +136,11 @@ export default class contextualDrawerEventsImportController {
       }
     }
 
-    this.loaded = true;
+    if(!this.data || this.data.length <= 0)
+      this.emptyData = true;
+    else
+      this.emptyData = false;
+    
   }
 
   showSpinner(){
@@ -177,19 +170,25 @@ export default class contextualDrawerEventsImportController {
 
     $scope.$on(BroadcastEvents.ON_CONTEXTUAL_DRAWER_OPEN, (event, args) => {
       if(args.id === 'eventsImport'){
-        this.entityChanged = false; 
+        this.entityChanged = false;
+        this.isImportMode = false;
+        this.isEditMode = false;
+        this.linkToExistentEvent = false;
         this.init();
       }
     });       
   }
 
   init(paramEvent){
-    this.loaded = false; 
-    this.entity = paramEvent ? paramEvent : this.ExternalService.getEntityEvent();
+    // if entityChanged, data is already updated, no need update again
+    if(!this.entityChanged)
+      this.entity = paramEvent ? paramEvent : this.ExternalService.getEntityEvent();
+    
+    this.emptyData = false;
 
     if(!this.entity || this.linkToExistentEvent){
 
-      this.isImportMode = true; 
+      this.isImportMode = true;    
 
       if(!this.data || this.ExternalService.getHasChanges()){
         this.fetchExternalEvents();
@@ -210,7 +209,7 @@ export default class contextualDrawerEventsImportController {
         uniqueId++;      
       });      
       
-      this.setContextualProperties(); 
-    }
+      this.setContextualProperties();     
+    }    
   }
 }

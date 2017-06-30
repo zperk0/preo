@@ -13,6 +13,7 @@ export default class eventController {
   }
 
   onExternalEvents($event){
+  
     this.event.$expanded = false;
     //contextualDrawer rceives zero param, so need to set entity on Service, so its possible to use on contextual init
     this.ExternalService.setEntityEvent(this.event);
@@ -229,8 +230,9 @@ export default class eventController {
           this.Spinner.show("event-delete");
 
           //contextualDrawer rceives zero param, so need to set changes on Service, so its possible to use on contextual init
-          if(this.event.externalEvents && this.event.externalEvents.length)
+          if(this.event.externalEvents && this.event.externalEvents.length){           
             this.ExternalService.setHasChanges(true);
+          }
 
           this.event.visible = 0;
 
