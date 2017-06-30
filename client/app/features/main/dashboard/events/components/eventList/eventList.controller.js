@@ -21,30 +21,29 @@ export default class eventListController {
     else if(type === 'IMPORT'){
 
       this.ExternalService.cleanEntityEvent();
-   
+
       this.contextual.showDrawer('eventsImport')
         .then((eventsImported) => {
 
-          this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));        
-          
+          this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));
+
           this.events = this.events.concat(eventsImported);
-         
-          console.log('outletLocation selected ->> ', this.events);
+
         }, () => {
-     
-          console.log('Drawer Event Import cancelled');          
+
+          console.log('Drawer Event Import cancelled');
         })
       .catch((err) => {
-        console.log('Error importing events -', err);     
+        console.log('Error importing events -', err);
         this.Snack.showError(this.gettextCatalog.getString("An error occurred while importing events. Please try again."));
-      });   
-    }
+      });
 
+    }
   }
 
   showMenuOptions($event, $mdOpenMenu){
 
-    
+
     if(!this.hasTMFeature){
       return this.showCreateEvent();
     }
@@ -112,22 +111,31 @@ export default class eventListController {
     return deferred.promise;
   }
 
+  showSpinner(){
+    this.Spinner.show('eventList-spinner');
+  }
+
+  hideSpinner(){
+    this.Spinner.hide('eventList-spinner');
+  }
+
   /* @ngInject */
-  constructor(VenueService, $timeout, EventService, ExternalService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
+  constructor(VenueService, $timeout, EventService, Spinner, ExternalService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
   	'ngInject';
     this.contextual = contextual;
-    this.Snack = Snack;   
-    this.VenueService = VenueService;   
+    this.Snack = Snack;
+    this.Spinner = Spinner;
+    this.VenueService = VenueService;
     this.EventService = EventService;
     this.CollectionSlotsService = CollectionSlotsService;
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
     this.$q = $q;
-    this.$state = $state; 
+    this.$state = $state;
     this.$timeout = $timeout;
 
-    this.ExternalService= ExternalService;    
+    this.ExternalService= ExternalService;
 
     this.hasTMFeature = FeatureService.hasTicketMasterEventFeature();
   }

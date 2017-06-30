@@ -12,6 +12,22 @@ export default class ExternalService {
     this.entityEvent = event;
   }
 
+  setTMData(data){
+    this.TMdata = data;
+
+    if(this.TMdata){
+      this.TMdata.forEach((x) => {  
+       //events need to be show formatted
+       x.showName = moment(x.eventDate).format('L')+ " - " +x.name,           
+       x.$selected = false           
+      });
+    }
+  }
+
+  getTMData(){
+    return this.TMdata;
+  }
+
   getEntityEvent(){
     return this.entityEvent;
   }
@@ -31,8 +47,8 @@ export default class ExternalService {
         .then((events)=>{
           
           console.log("ExternalService - Reesolve get events")
-          
-          resolve(events);
+          this.setTMData(events);
+          resolve(this.TMdata);
         }, (err)=>{
           console.error("Error fetching events : ", err)
           reject();

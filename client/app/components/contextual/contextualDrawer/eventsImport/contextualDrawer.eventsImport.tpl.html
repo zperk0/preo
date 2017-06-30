@@ -1,4 +1,4 @@
-<div class="sidenav-wrapper" ng-show="drawerEventsImportCtrl.loaded">
+<div class="sidenav-wrapper">
   <form  ng-submit="drawerEventsImportCtrl.import()" novalidate name="drawerEventsImportCtrl.nameForm">
   <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-events-import md-whiteframe-4dp" md-component-id="eventsImport">
 
@@ -22,7 +22,10 @@
         </div>     
       </md-tab>
         <md-tab label="{{'Events' | translate}}" ng-if="drawerEventsImportCtrl.isImportMode">
-          <div class='sv-root-holder' sv-root="event">            
+        <div layout="row" class="content-spinner" ng-if="drawerEventsImportCtrl.loadingData">
+          <spinner></spinner>
+        </div>
+          <div class='sv-root-holder' sv-root="event" ng-show="!drawerEventsImportCtrl.loadingData">            
 
             <label class="label-title" ng-if="!drawerEventsImportCtrl.emptyData">{{ 'Choose events to import:' | translate }}</label>
             <card-item-list collection="drawerEventsImportCtrl.data">
@@ -64,6 +67,7 @@
         {{'Done' | translate}}
       </md-button>
     </md-card-actions>
+     
   </md-sidenav>
   </form>
 </div>
