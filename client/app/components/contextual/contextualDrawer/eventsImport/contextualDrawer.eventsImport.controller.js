@@ -22,9 +22,13 @@ export default class contextualDrawerEventsImportController {
     }
   }
 
-  done(){
-  
-    this.cleanData();
+  done(param){
+    
+    if(param)
+      this.cleanData(param);
+    else  
+      this.cleanData();
+    
     this.contextualDrawer.success({ hasChanges: this.entityChanged, event: this.entity});
   }
 
@@ -61,11 +65,13 @@ export default class contextualDrawerEventsImportController {
 
         this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));
 
-        this.cleanData(true);
+       // this.cleanData(true);
         
-        this.init(data); // reset tabs
-        this.entityChanged = true;        
+      //  this.init(data); // reset tabs
+        this.entityChanged = true;
+        this.entity = data;
         this.hideSpinner();
+        this.done(true);
       }, (err) => {
         this.cleanData();
         this.hideSpinner();
@@ -79,6 +85,7 @@ export default class contextualDrawerEventsImportController {
 
         this.cleanData(true);
         this.hideSpinner();
+        
         this.contextualDrawer.success(data);
       }, (err) => {
         this.cleanData();
@@ -182,7 +189,8 @@ export default class contextualDrawerEventsImportController {
   init(paramEvent){
     // if entityChanged, data is already updated, no need update again
     if(!this.entityChanged)
-      this.entity = paramEvent ? paramEvent : this.ExternalService.getEntityEvent();
+      this.entity = this.ExternalService.getEntityEvent();
+     // this.entity = paramEvent ? paramEvent : this.ExternalService.getEntityEvent();
     
     this.emptyData = false;
 
