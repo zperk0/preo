@@ -1,0 +1,48 @@
+.md-chips {
+  padding: 0;
+  margin-top: -9px;
+  
+  .md-chip {
+    padding: 0 18px;
+    height: 24px;
+    line-height: 22px;
+    background-color: #eeeeee;
+    border: solid 1px #e0e0e0;
+    border-radius: 0;
+    box-sizing: content-box;
+
+    .md-chip-remove-container {
+      left: 0;
+      width: 24px;
+
+      .md-chip-remove {
+        height: 24px;
+        width: 24px;
+      }
+    }
+
+    md-chip-template {
+      span {
+        padding: 6px;
+        font-size: 10px;
+        color: #333333;
+      }
+    }
+  }
+
+  &:not(.md-readonly) {
+    .md-chip {
+      &:not(.md-readonly) {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.create-tag-not-found {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

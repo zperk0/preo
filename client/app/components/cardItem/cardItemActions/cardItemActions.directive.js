@@ -26,6 +26,7 @@ export default function cardItemActions($parse){
       visibleMessage:'@',
       invisibleMessage:'@',
       addMessage: '=?',
+      onExternalEvents: '&?',
       addCustomFieldMessage: '=?',
       addLocationMessage: '=?',
       syncMessage: '=?'

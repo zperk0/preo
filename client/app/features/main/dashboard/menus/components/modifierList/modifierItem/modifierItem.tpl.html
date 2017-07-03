@@ -6,9 +6,9 @@
         selected="modifierItemCtrl.modifier.$selected"
         deleted="modifierItemCtrl.modifier.$deleted"
         sv-element="modifierItemCtrl.modifier">
-        
+
       <card-item-title>
-        <span>{{modifierItemCtrl.modifier.id +" -- " | debug}}{{ modifierItemCtrl.modifier.name}}</span>
+        <span>{{modifierItemCtrl.modifier.id +" -- " | debug}}{{ modifierItemCtrl.modifier.internalName}}</span>
         <div sv-root="modifier" class='modifier-title-dropzone'>
           <div class='sv-dropzone sv-dropzone-modifier'
                 sv-part="modifierItemCtrl.newModifiers"

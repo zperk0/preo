@@ -117,7 +117,7 @@
   .no-results{
     padding: 16px;
   }
-  &:not(.contextual-drawer-delivery-zones){
+  &:not(.contextual-drawer-delivery-zones):not(.contextual-drawer-events-import){
     .item-actions{
       display: none;
     }
@@ -129,6 +129,59 @@
   }
   .modifier-item{
    margin: 0px 22px 8px;
+  }
+  
+  .error {
+    font-size:12px;
+    color: rgb(221,44,0);
+  }   
+
+  .label-title {
+    color: #424242;
+    font-size: 16px;
+  }
+
+  .collection-slots-select-content {
+    //margin-top: 24px;
+
+    .error-required-pickup-slot {
+      margin-bottom: 10px;
+    }
+
+    .collection-slots-select {
+      margin-top: 12px;
+    }
+  }
+
+  &.contextual-drawer-events-import {
+    .repeat-holder .sort-holder{
+      padding-top: 4px;
+    }
+   
+    .event-edit-list{
+      min-height: 0;
+    }
+    .sv-placeholder {
+      min-height: 58px !important;
+      // margin: 0px;
+    }
+
+    .card-item {
+      &.card-item-new {
+        max-height: 60px;
+        min-height: 60px;
+
+        md-card-actions .md-button{
+          padding-right: 0;
+          padding-left: 0;
+        } 
+      }
+    }
+
+    .content-spinner{
+      justify-content: center;
+    }
+
   }
 
   .outlet-list {

@@ -159,7 +159,7 @@ export default class eventListViewController {
   	this.loaded = false;
     this.calendarMode = false;
     this.expandedSchedules = {};
-
+    
     this.Spinner.show('events');
 
     this.calendar = {

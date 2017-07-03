@@ -71,6 +71,7 @@ module.exports = function(ENV, options) {
       analytics: './client/app/features/main/dashboard/analytics/index.js',
       manageUsers: './client/app/features/main/dashboard/manageUsers/index.js',
       updateExternalMenus: './client/app/features/main/dashboard/updateExternalMenus/index.js',
+      customTags: './client/app/features/main/dashboard/customTags/index.js',
       vendor: './client/app/vendor.js'
     },
     /**
@@ -208,7 +209,7 @@ module.exports = function(ENV, options) {
       new HtmlWebpackPlugin({
         template:'./client/index.html',
         chunksSortMode: chunkSort,
-        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'updateExternalMenus', 'app','vendor'],
+        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'updateExternalMenus', 'customTags', 'app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),
@@ -267,6 +268,13 @@ module.exports = function(ENV, options) {
         chunksSortMode: chunkSort,
         inject:true,
         filename:'manageUsers/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['customTags','app','vendor'],
+        chunksSortMode: chunkSort,
+        inject:true,
+        filename:'customTags/index.php'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',

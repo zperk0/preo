@@ -70,8 +70,17 @@ export default class webordersController {
     "ngInject";
     this.$timeout = $timeout;
     this.$window=$window;
-    this.webordersUrl = $window._PREO_DATA._WEBORDERS+VenueService.currentVenue.permalink;
-    this.webordersEditUrl = $window._PREO_DATA._WEBORDERS_EDIT+'?venueId='+$stateParams.venueId+'&editor=true'
+    this.webordersUrl = $window._PREO_DATA._WEBORDERS;
+    this.webordersEditUrl = $window._PREO_DATA._WEBORDERS_EDIT
+
+    if (this.webordersUrl.indexOf('://localhost') !== -1) {
+
+     this.webordersUrl += '?permalink=' + VenueService.currentVenue.permalink;
+     this.webordersEditUrl += '?permalink=' + VenueService.currentVenue.permalink + '&editor=true';
+    } else {
+      this.webordersUrl += VenueService.currentVenue.permalink;
+      this.webordersEditUrl += VenueService.currentVenue.permalink + '?editor=true';
+    }
 
     this.$scope = $scope;
     if (!$window.hasListener){

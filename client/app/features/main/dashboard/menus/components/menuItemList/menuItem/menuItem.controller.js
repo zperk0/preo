@@ -87,7 +87,8 @@ export default class menuItemController {
     this.originalItem  = angular.copy(this.item);
     this.cardItemList.selectItem(this.item);
     this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
-      onDeleteImage: this.onDeleteImage.bind(this)
+      onDeleteImage: this.onDeleteImage.bind(this),
+      tags: this.tags || []
     });
   }
 
@@ -389,6 +390,10 @@ export default class menuItemController {
     });
   }
 
+  showActionIcon () {
+    return this.item.tagActions && !!this.item.tagActions.length;
+  }
+
   constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService, ErrorService, gettextCatalog) {
     "ngInject";
     this.$q =$q;
@@ -433,7 +438,8 @@ export default class menuItemController {
         }
 
         this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
-          onDeleteImage: this.onDeleteImage.bind(this)
+          onDeleteImage: this.onDeleteImage.bind(this),
+          tags: this.tags || []
         });
       })
     } else {

@@ -12,6 +12,33 @@ export default class eventController {
     }
   }
 
+  onExternalEvents($event){
+  
+    this.event.$expanded = false;
+    //contextualDrawer rceives zero param, so need to set entity on Service, so its possible to use on contextual init
+    this.ExternalService.setEntityEvent(this.event);
+    this.contextual.showDrawer('eventsImport')
+      .then((data) => {
+
+        if(data.hasChanges){
+          this.event.schedules = data.event.schedules;
+          this.event.externalEvents = data.event.externalEvents;               
+        }       
+
+        this.ExternalService.cleanEntityEvent();
+       
+      }, () => {
+        this.ExternalService.cleanEntityEvent();
+        console.log('Drawer Event Import cancelled');
+        
+      })
+    .catch((err) => {
+      this.ExternalService.cleanEntityEvent();
+      console.log('Error editing external events -', err);
+      this.Snack.showError(this.gettextCatalog.getString("An error occurred while importing events. Please try again."));
+    });
+  }
+
   toggleExpanded($event){
     if (this.event.$expanding){
       return;
@@ -195,9 +222,17 @@ export default class eventController {
 
   onDelete(){
 
+    if(this.contextualDrawer.isOpen('eventsImport'))
+      this.contextualDrawer.close();
+
     this.DialogService.delete(this.LabelService.TITLE_DELETE_EVENT, this.LabelService.CONTENT_DELETE_EVENT)
       .then(()=>{
           this.Spinner.show("event-delete");
+
+          //contextualDrawer rceives zero param, so need to set changes on Service, so its possible to use on contextual init
+          if(this.event.externalEvents && this.event.externalEvents.length){           
+            this.ExternalService.setHasChanges(true);
+          }
 
           this.event.visible = 0;
 
@@ -262,7 +297,7 @@ export default class eventController {
     }).length > 0;
   }
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, EventScheduleService, gettextCatalog, OutletLocationService) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, contextualDrawer, DialogService, LabelService,ExternalService, ErrorService, EventService, EventScheduleService, gettextCatalog, OutletLocationService) {
   	"ngInject";
 
     this.$q = $q;
@@ -270,11 +305,13 @@ export default class eventController {
   	this.Spinner = Spinner;
   	this.Snack = Snack;
   	this.contextualMenu = contextualMenu;
+    this.contextualDrawer = contextualDrawer;
   	this.contextual = contextual;
   	this.DialogService = DialogService;
     this.LabelService = LabelService;
   	this.ErrorService = ErrorService;
     this.EventService = EventService;
+    this.ExternalService = ExternalService;
     this.EventScheduleService = EventScheduleService;
     this.gettextCatalog = gettextCatalog;
   	this.OutletLocationService = OutletLocationService;

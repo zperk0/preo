@@ -37,7 +37,7 @@ export default class menuController {
   }
 
 
-  constructor($stateParams, $timeout,Spinner, contextual, ItemService, MenuService) {
+  constructor($stateParams, $timeout,Spinner, contextual, ItemService, MenuService, tags) {
     "ngInject";
     this.Spinner = Spinner;
     this.showSpinner();
@@ -45,10 +45,9 @@ export default class menuController {
     this.MenuService = MenuService;
     this.$timeout = $timeout;
     this.contextual = contextual;
+    this.tags = tags;
 
-    ItemService.getItems($stateParams.venueId).then(()=>{
-      this.setMenu($stateParams.menuId);
-    });
+    this.setMenu($stateParams.menuId);
   }
 }
 

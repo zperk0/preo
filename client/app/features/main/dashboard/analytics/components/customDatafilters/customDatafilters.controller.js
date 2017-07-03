@@ -106,7 +106,7 @@ export default class customDatafiltersController {
 
     for(var i = 0; i < venues.length; i++){
       if(venues[i].display){
-        venueNames.push(venues[i].name);      
+        venueNames.push(venues[i].name);
       }
     }
 
@@ -437,7 +437,7 @@ export default class customDatafiltersController {
 
     } else {
       this.shouldShowItemFilter = false;
-      this.filters.item = null;      
+      this.filters.item = null;
     }
 
     this.debounceUpdate('Report');
@@ -740,7 +740,7 @@ export default class customDatafiltersController {
          start: moment().subtract(7, 'days').format('L'), end: today},
         {id: 5, type: 'minus1year', name: this.getTextCatalog.getString('1 year'),
          start: moment().subtract(1, 'year').format('L'), end: today},
-        {id: 6, type: 'custom',     name: this.getTextCatalog.getString('Custom')}
+        {id: 7, type: 'custom',     name: this.getTextCatalog.getString('Custom')}
       ];
 
       var defaultOpt = this.getDefaultDateRange();
@@ -749,7 +749,7 @@ export default class customDatafiltersController {
 
       //do not allow this option if has no Event venue selected
       if(venueTypes.hasEvent){
-        ranges.push({id: 7, type:'event', name: this.getTextCatalog.getString('By event')});
+        ranges.push({id: 6, type:'event', name: this.getTextCatalog.getString('By event')});
       }
 
       this.dateRangeOptions = ranges;
@@ -1044,7 +1044,7 @@ export default class customDatafiltersController {
   initVenues(){
     let venuesSelected = [];
     if(this.init && this.init.venues){
-     
+
       this.venues.forEach((v) => {
         if(v.type== 'venue' && v.selected ){
           if(this.init.venues.indexOf(v.id) > -1)
@@ -1058,7 +1058,7 @@ export default class customDatafiltersController {
           else
             v.selected = false;
         }
-      });     
+      });
     }
     else{
       venuesSelected = this.venues.filter((v) => {
@@ -1068,7 +1068,7 @@ export default class customDatafiltersController {
     }
 
     this.setVenues(venuesSelected);
-    
+
     if(!this.hasReport)
       this.debounceUpdate('Venue', true);
   }

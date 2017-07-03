@@ -40,6 +40,7 @@ export default class menuItemSizeController {
           minChoices: 1,
           venueId:this.$stateParams.venueId,
           name:"Choose a size",
+          internalName:"Choose a size",
           items:[
           ]
         }

@@ -176,7 +176,9 @@
   onEdit($event){
     this.originalSection = angular.copy(this.section);
     this.cardItemList.selectItem(this.section);
-    this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+    this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
+      tags: this.menuSectionListCtrl && this.menuSectionListCtrl.tags ? this.menuSectionListCtrl.tags : []
+    });
     this.section.$expanded = false;
   }
   onDelete(){
@@ -223,8 +225,9 @@
           });
 
       } else {
-        this.saveSection().then(()=>{
+        this.saveSection().then(section =>{
           this.contextualMenu.hide();
+          this.section.tagActions = section && section.tagActions;
           this.section.$selected = false;
         })
       }
@@ -245,7 +248,7 @@
   }
 
   checkUpdatedItem (event, updatedItem) {
-
+    
     if (updatedItem.sectionId === this.section.id) {
       return;
     }
@@ -267,6 +270,10 @@
         this.items.splice(this.items.indexOf(current), 1, newItem);
       }
     }
+  }
+
+  showActionIcon() {
+    return this.section.tagActions && !!this.section.tagActions.length;
   }
 
   constructor($scope, $rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService, ErrorService, gettextCatalog) {
@@ -298,7 +305,12 @@
     }
     //if it's a new section we toggle the context menu to edit this
     if (!this.section.id) {
-      this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+
+      $timeout(() => {
+        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
+          tags: this.menuSectionListCtrl && this.menuSectionListCtrl.tags ? this.menuSectionListCtrl.tags : []
+        });
+      });
     } else {
       this.buildItems();
 

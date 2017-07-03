@@ -142,7 +142,7 @@ export default class ReportsService {
         colObj.key = head.key;
         colObj.isHidden = head.isHidden ? head.isHidden : false;
         colObj.shouldTruncate = head.shouldTruncate ? head.shouldTruncate : false;
-        
+
         switch(colObj.fieldType){
           case "currency":
             colObj.displayValue = this.$filter('currency')(colObj.value);
@@ -150,7 +150,7 @@ export default class ReportsService {
           case "number":
             colObj.displayValue = this.$filter('currency')(colObj.value,true,0);
             break;
-          case "percent": 
+          case "percent":
             colObj.displayValue = this.$filter('percent')(colObj.value, 0);
             break;
           case "date":
@@ -234,7 +234,7 @@ export default class ReportsService {
     var response = {};
 
     header.forEach((col) => {
-      if((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue))
+      if(!col.isOnlyCsv && ((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue)))
         response[col.text] = [];
     });
 
@@ -247,7 +247,7 @@ export default class ReportsService {
             return x;
         })[0];
 
-        if((!headerCol.showToEventsOnly && !headerCol.showToTakeawaysOnly) || (headerCol.showToEventsOnly && this.hasEventVenue) || (headerCol.showToTakeawaysOnly && this.hasTakeawayVenue)){
+        if(headerCol && !headerCol.isOnlyCsv && ((!headerCol.showToEventsOnly && !headerCol.showToTakeawaysOnly) || (headerCol.showToEventsOnly && this.hasEventVenue) || (headerCol.showToTakeawaysOnly && this.hasTakeawayVenue))){
 
           if(col.value === true)
             response[headerCol.text].push(this.gettextCatalog.getString('Yes'));
@@ -397,7 +397,7 @@ export default class ReportsService {
   checkIfParamsChanged(parameters, format ,reportsIds){
     var params = format ? this.formatDataFilters(parameters) : parameters;
     var paramChanged = false;
-    
+
     if(!this.data){
       return true;
     }
@@ -405,7 +405,7 @@ export default class ReportsService {
     if(reportsIds){
       for(var i=0; i < reportsIds.length; i++){
         let reportId = reportsIds[i];
-        
+
         if(!this.data.hasOwnProperty(reportId) || this.data[reportId] == null){
           paramChanged = true;
           break;
@@ -427,7 +427,7 @@ export default class ReportsService {
       var dataMin = moment(this.data.minCreated).format('L');
       var dataMax = moment(this.data.maxCreated).format('L');
       if(params.minCreated != dataMin || params.maxCreated != dataMax){
-        return true; 
+        return true;
       }
     }
 
@@ -448,7 +448,7 @@ export default class ReportsService {
       if(!paramChanged)
       for(var i=0; i < arrayCombined.length - 1; i+=2){
         if(arrayCombined[i].occurrenceId != arrayCombined[i+1].occurrenceId){
-          
+
           paramChanged = true;
           break;
         }
@@ -469,7 +469,7 @@ export default class ReportsService {
       if(!paramChanged)
       for(var i=0; i < arrayCombined.length - 1; i+=2){
         if(arrayCombined[i] != arrayCombined[i+1]){
-          
+
           paramChanged = true;
           break;
         }
@@ -491,7 +491,7 @@ export default class ReportsService {
       if(!paramChanged)
       for(var i=0; i < arrayCombined.length - 1; i+=2){
         if(arrayCombined[i] != arrayCombined[i+1]){
-          
+
           paramChanged = true;
           break;
         }
@@ -609,6 +609,7 @@ export default class ReportsService {
     if(reportId== 'allItemsSold'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'modifiers', text:this.gettextCatalog.getString('Modifiers') , isHidden: true, isOnlyCsv: true},
         {key:'itemCount', text:this.gettextCatalog.getString('Quantity'), fieldType: 'number'},
         {key:'itemTotal', text:this.gettextCatalog.getString('Revenue'), fieldType: 'currency'}
       ];
@@ -656,6 +657,7 @@ export default class ReportsService {
         {key:'customerName', text:this.gettextCatalog.getString('Customer')},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'items', text:this.gettextCatalog.getString('Items') , shouldTruncate: true},
+        {key:'notes', text:this.gettextCatalog.getString('Notes') , isHidden: true, isOnlyCsv: true},
         //{key:'subtotal' ,text:this.gettextCatalog.getString('Subtotal'),fieldType: 'currency', isHidden: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
         {key:'fee', text:this.gettextCatalog.getString('Fees'), fieldType: 'currency'},
@@ -881,29 +883,26 @@ export default class ReportsService {
     ];
 
     objCharts.bars = [
-      {id: 'revenueByDay', name: {daily: this.gettextCatalog.getString('Daily Revenue'), monthly: this.gettextCatalog.getString('Monthly Revenue'), weekly: this.gettextCatalog.getString('Weekly Revenue')},
-        defaultMode: this.LabelService.DAILY_MODE, type: 'currency',actions: barActions
-       // data: {x: [], y: []},
+      {id: 'revenueByPeriod', name: {daily: this.gettextCatalog.getString('Daily Revenue'), monthly: this.gettextCatalog.getString('Monthly Revenue'), weekly: this.gettextCatalog.getString('Weekly Revenue')},
+        type: 'currency',actions: barActions
       },
-      {id: 'ordersByDay', name: {daily: this.gettextCatalog.getString('Daily Orders'), monthly: this.gettextCatalog.getString('Monthly Orders'), weekly: this.gettextCatalog.getString('Weekly Orders')},
-        defaultMode: this.LabelService.DAILY_MODE, type:'integer', actions: barActions
-       // data: {x: [], y: []},
+      {id: 'ordersByPeriod', name: {daily: this.gettextCatalog.getString('Daily Orders'), monthly: this.gettextCatalog.getString('Monthly Orders'), weekly: this.gettextCatalog.getString('Weekly Orders')},
+        type:'integer', actions: barActions
       },
-      {id: 'customersByDay', name: {daily: this.gettextCatalog.getString('Daily Customers'), monthly: this.gettextCatalog.getString('Monthly Customers'), weekly: this.gettextCatalog.getString('Weekly Customers')},
-        defaultMode: this.LabelService.DAILY_MODE, type:'integer',actions: barActions
-       // data: {x: [], y: []},
+      {id: 'customersByPeriod', name: {daily: this.gettextCatalog.getString('Daily Customers'), monthly: this.gettextCatalog.getString('Monthly Customers'), weekly: this.gettextCatalog.getString('Weekly Customers')},
+        type:'integer',actions: barActions
       }
     ];
 
     objCharts.doughnuts = [
       {id: 'revenueByChannel', name: this.gettextCatalog.getString('Revenue by channel'),type: 'currency',actions: doughnutActions},
-        //data: {labels: [], values: []},
+
       {id: 'ordersByChannel', name: this.gettextCatalog.getString('Orders by channel'),type:'integer' ,actions: doughnutActions},
-      //data: {labels: [], values: []},
+
       {id: 'customersNewReturning', name: this.gettextCatalog.getString('New vs Returning customers'),type:'integer', actions: doughnutActions},
-       //data: {labels: [], values: []},
+
       {id: 'customersHowSignedup', name: this.gettextCatalog.getString('How customers signed up'),type:'integer', actions: doughnutActions}
-       // data: {labels: [], values: []},
+
     ];
 
     response.push(objCharts);

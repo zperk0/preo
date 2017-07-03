@@ -19,6 +19,7 @@ export default function menuSectionItemList($animate, $timeout){
       svIsDropzoneDisabled:"=?",
       orderBy: '=?',
       orderByReverse: '=?',
+      tags: "="
     },
     template: require("./menuSectionItemList.tpl.html"),
     controller: controller.UID,

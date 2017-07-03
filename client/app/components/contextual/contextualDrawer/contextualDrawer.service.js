@@ -46,19 +46,19 @@ export default class contextualDrawerService {
     if (this.id){
       this.cancel();
     }
-
-    this.deferred = this.$q.defer();
-
     this.id = id;
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_DRAWER_OPEN, {id: this.id});
+    this.deferred = this.$q.defer();    
 
     this.parentElement = angular.element(document.querySelectorAll("md-sidenav[md-component-id='" + this.id + "']")).parent();
 
     this.$mdSidenav(id)
       .toggle()
       .then(function (argument) {
-
+        
         console.log(arguments);
-      });
+      }.bind(this));
 
     this.watchEspaceKey();
 
@@ -93,7 +93,7 @@ export default class contextualDrawerService {
     }
   }
 
-  constructor($compile, $rootScope, $q, $mdSidenav, $mdConstant, $location) {
+  constructor($compile, $rootScope, $q, $mdSidenav, BroadcastEvents, $mdConstant, $location) {
     "ngInject";
     this.$location = $location;
     this.$compile = $compile;
@@ -101,6 +101,7 @@ export default class contextualDrawerService {
     this.$q = $q;
     this.$mdSidenav =$mdSidenav;
     this.$mdConstant =$mdConstant;
+    this.BroadcastEvents = BroadcastEvents;
 
     this.deferred = null;
 

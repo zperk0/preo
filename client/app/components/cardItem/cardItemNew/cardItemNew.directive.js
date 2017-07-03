@@ -1,5 +1,5 @@
 
-export default function cardItemNew(){
+export default function cardItemNew(gettextCatalog, FeatureService){
   'ngInject';
   return {
     restrict: 'E',
