@@ -38,6 +38,8 @@ import styleRowDirective from './style/row/contextualDrawer.style-row.directive'
 import eventsImportController from './eventsImport/contextualDrawer.eventsImport.controller';
 import eventsImportDirective from './eventsImport/contextualDrawer.eventsImport.directive';
 
+import venueDetailsForm from './venueDetails/components/venueDetailsForm/venueDetailsForm.directive';
+
 import cardItemList from '../../cardItemList';
 
 import externalEventList from './eventsImport/externalEventList';
@@ -80,4 +82,5 @@ export default angular.module("contextualDrawer" , [cardItemList, externalEventL
   .controller(eventsImportController.UID, eventsImportController)
   .directive("contextualDrawerEventsImport", eventsImportDirective)
 
+  .directive("venueDetailsForm", venueDetailsForm)
   .name;
