@@ -237,8 +237,11 @@ export default function barChart(Spinner, $timeout, gettextCatalog, $filter, Rep
       }
 
       //update title
-      var propTitle = scope.config.name[currentDataVisualization.type];
-      scope.title = propTitle ? propTitle : scope.config.name;
+      // when veneu has not analytics feature, data = null
+      if(currentDataVisualization){
+        var propTitle = scope.config.name[currentDataVisualization.type];
+        scope.title = propTitle ? propTitle : scope.config.name;
+      }
 
       //update type
       formatType = scope.config.type;
