@@ -1,5 +1,5 @@
 
-export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, Spinner, contextualMenu, contextualDrawer, PermissionService, $timeout){
+export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, Spinner, contextualMenu, contextualDrawer, PermissionService, FeatureService, $timeout){
   "ngInject";
 
   const notRequiresUser= ['auth.signin', 'auth.signup', 'auth.invite', 'error', 'emailSuccess'];
@@ -17,6 +17,14 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
       if (toState.requiresPermission){
         if (!PermissionService.hasPermission(toState.requiresPermission)){
+          $state.go("main.dashboard");
+          event.preventDefault();
+          return false;
+        }
+      }
+      
+      if (toState.requiresFeature){
+        if (!FeatureService.hasFeature(toState.requiresFeature)){
           $state.go("main.dashboard");
           event.preventDefault();
           return false;

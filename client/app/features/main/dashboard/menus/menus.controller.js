@@ -5,8 +5,9 @@ export default class menusController {
   }
 
 
-  constructor($stateParams, ErrorService, TaxesService) {
+  constructor($stateParams, ErrorService, TaxesService, Spinner) {
     "ngInject";
+    Spinner.hide('resolve-menus');
     console.log(" on menus controller ");
     TaxesService.getTaxGroups(true); // pre-load tax groups, non-blocker
   }

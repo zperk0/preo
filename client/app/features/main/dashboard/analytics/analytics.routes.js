@@ -13,6 +13,14 @@ export default function routes($stateProvider, Permissions) {
     template: require("./analytics.tpl.html"),
     controller: controller.UID,
     controllerAs: "analyticsCtrl",
-    requiresPermission: Permissions.ANALYTICS
+    abstract:true,
+    requiresPermission: Permissions.ANALYTICS,
+    resolve: {
+
+      hasKnowYourCustomersFeature: function($q, $state, $timeout, authenticated, FeatureService, ErrorService, LabelService, DialogService) {
+
+        return FeatureService.hasKnowYourCustomersFeature();
+      }
+    }
   });
 }

@@ -56,6 +56,16 @@ export default class promotionController {
     })
   }
 
+  checkPromotionValidity() {
+    if (this.promotion.endDate) {
+      let finalDate = new Date(this.promotion.endDate);
+      let now = new Date();
+      if (finalDate < now) {
+        this.onPause();
+      }
+    }
+  }
+
   contextualMenuSuccess(entity){
     this.Spinner.show("save-update-promotion");
     if (this.promotion && entity && entity.name){
@@ -69,6 +79,7 @@ export default class promotionController {
 
         this.$timeout(() => {
           angular.extend(this.promotion, newPromotion);
+          this.checkPromotionValidity();
           this.contextualMenu.hide();
           this.Spinner.hide("save-update-promotion");
           this.Snack.show(this.LabelService.SNACK_PROMOTION_SAVED);

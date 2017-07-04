@@ -46,6 +46,7 @@ export default class ErrorService {
     this.OUTLET_LOCATION_SUB_GROUP_SEAT = {code:'OUTLET_LOCATION_SUB_GROUP_SEAT', message:gettextCatalog.getString("You cannot add a sub group because this outlet location is for seat")};
     this.OUTLET_LOCATION_ALREADY_OUTLET = {code:'OUTLET_LOCATION_ALREADY_OUTLET', message:gettextCatalog.getString("This outlet location already has an outlet")};
     this.OUTLET_LOCATION_LAST_CHILD = {code:'OUTLET_LOCATION_LAST_CHILD', message:gettextCatalog.getString("You only can add an outlet for the last child")};
+    this.OUTLET_LOCATION_CUSTOM_FIELD_CHILDREN = {code:'OUTLET_LOCATION_CUSTOM_FIELD_CHILDREN', message:gettextCatalog.getString("You cannot add a custom field because this outlet location already has one")};
 
     //TAXES
     this.TAXES_ERROR = {code:'FAILED_LOADING_TAXES', message:gettextCatalog.getString("Error loading tax settings")}
@@ -85,5 +86,15 @@ export default class ErrorService {
 
     this.INVITE_EXPIRED = {code:'INVITE_EXPIRED', message:gettextCatalog.getString("That link appears to have expired. Please ask your administrator to send you a new one."), title: gettextCatalog.getString("Sorry")};
 
+    // MANAGE USERS
+    this.DELETE_CURRENT_USER = {code:'DELETE_CURRENT_USER', message:gettextCatalog.getString("It is not possible to delete your own user."), title: ''};
+
+    // EXPIRED SESSION
+    this.EXPIRED_SESSION = {code:'EXPIRED_SESSION', message:gettextCatalog.getString("Your session has expired. Please login again."), title:gettextCatalog.getString('Timeout')};
+
+    this.FULL_CLIENT = {code:'FULL_CLIENT', message:gettextCatalog.getString("This feature is only available for full clients. Please contact our sales team using the chat widget at the bottom of the page to activate it."), title:gettextCatalog.getString("Full client")}
+
+    // CUSTOM TAGS
+    this.FAILED_LOADING_TAGS = {code: 'FAILED_LOADING_TAGS', message:gettextCatalog.getString('An unexpected error occurred loading tags, please try again.')};
   }
 }

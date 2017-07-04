@@ -191,7 +191,7 @@ export default class ItemService {
 
   createItem(item, sectionId){
 
-    if (item.$size && item.$size.items.length) {
+    if (item.$size && item.$size.$isMultiple && item.$size.items.length) {
       item.modifiers = [item.$size];
       item.price = 0;
     }
@@ -199,8 +199,15 @@ export default class ItemService {
     this.DEBUG && console.log("creating item", item, sectionId);
     return this._parseImages(item)
       .then(() => {
-
-        return Preoday.Item.save(item, sectionId);
+        return this.$q((resolve, reject) => {
+          Preoday.Item.save(item, sectionId)
+            .then(createdItem => {
+              this.addItem(createdItem);
+              resolve(createdItem);
+            }, error => {
+              reject(error);
+            });
+        });
       });
   }
 
@@ -222,10 +229,12 @@ export default class ItemService {
     return this.data.items.filter((i)=>id===i.id)[0];
   }
 
-  populateModifiers(modifiers){
-    this.data.items.forEach((i)=>{
-      i.modifiers = this.ModifierService.getByIds(i.modifiers.map((m)=>m.id));
-    })
+  populateModifiers(){
+    if (this.data && this.data.items) {
+      this.data.items.forEach((i)=>{
+        i.modifiers = this.ModifierService.getByIds(i.modifiers.map((m)=>m.id));
+      })
+    }
   }
 
   setItemsSizes () {
@@ -235,29 +244,29 @@ export default class ItemService {
     }
   }
 
-  getItems(venueId, expand='images,tags,modifiers'){
+  fetchItems(venueId, expand='images,tags,modifiers,customTags,tagActions') {
     return this.$q((resolve, reject)=>{
-      if (this.data.items){
-        resolve(this.data);
-      } else {
-        Preoday.Item.getAll({venueId:venueId, expand:expand})
-        .then((items)=>{
-          this.data.items = items || [];
+      Preoday.Item.getAll({venueId:venueId, expand:expand})
+      .then((items)=>{
+        this.data.items = items || [];
 
-          this.setItemsSizes();
+        this.setItemsSizes();
 
-          return this.ModifierService.getModifiers(venueId)
-        })
-        .then((modifiers)=>{
-          // this.populateModifiers(modifiers);
-          resolve(this.data)
-        })
-        .catch((err)=>{
-          console.log("Error fetching items", err);
-          reject(err);
-        });
-      }
-    })
+        return this.ModifierService.getModifiers(venueId)
+      })
+      .then((modifiers)=>{
+        // this.populateModifiers(modifiers);
+        resolve(this.data)
+      })
+      .catch((err)=>{
+        console.log("Error fetching items", err);
+        reject(err);
+      });
+    });
+  }
+
+  getItems(){
+    return this.data.items;
   }
 
   getNewItemBase (venueId, isVoucher) {

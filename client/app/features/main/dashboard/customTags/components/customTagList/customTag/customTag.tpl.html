@@ -1,0 +1,16 @@
+<div class='custom-tag-item'
+      ng-attr-data-id="{{vm.customTag.id}}">
+
+  <card-item  has-actions="true"
+              deleted="vm.customTag.$deleted"
+              selected="vm.customTag.$selected"
+              >
+    <card-item-title>
+      <span>{{vm.customTag.name}} </span>
+    </card-item-title>
+
+    <card-item-actions on-delete="vm.onDelete()"
+                       on-edit="vm.onEdit($event)"
+                        ></card-item-actions>
+  </card-item>
+</div>

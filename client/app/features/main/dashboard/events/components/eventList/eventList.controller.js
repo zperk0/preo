@@ -15,6 +15,57 @@ export default class eventListController {
       });
   }
 
+  onMenuOptionClick($event, type){
+    if(type === 'NEW')
+      return this.showCreateEvent();
+    else if(type === 'IMPORT'){
+
+      this.ExternalService.cleanEntityEvent();
+
+      this.contextual.showDrawer('eventsImport')
+        .then((eventsImported) => {
+
+          this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));
+
+          this.events = this.events.concat(eventsImported);
+
+        }, () => {
+
+          console.log('Drawer Event Import cancelled');
+        })
+      .catch((err) => {
+        console.log('Error importing events -', err);
+        this.Snack.showError(this.gettextCatalog.getString("An error occurred while importing events. Please try again."));
+      });
+
+    }
+  }
+
+  showMenuOptions($event, $mdOpenMenu){
+
+
+    if(!this.hasTMFeature){
+      return this.showCreateEvent();
+    }
+    else{
+
+      let options = [
+        {
+          name: gettextCatalog.getString('Create new event'),
+          type: 'NEW'
+        },
+        {
+          name: gettextCatalog.getString('Import Ticket Master event'),
+          type: 'IMPORT'
+        }
+      ];
+
+      this.menuOptions = options;
+
+      $mdOpenMenu();
+    }
+  }
+
   showCreateEvent(){
 
     if (!this.CollectionSlotsService.hasSlots()) {
@@ -60,10 +111,20 @@ export default class eventListController {
     return deferred.promise;
   }
 
-  /* @ngInject */
-  constructor(VenueService, EventService, CollectionSlotsService, DialogService, ErrorService, gettextCatalog, $q, $state) {
-  	'ngInject';
+  showSpinner(){
+    this.Spinner.show('eventList-spinner');
+  }
 
+  hideSpinner(){
+    this.Spinner.hide('eventList-spinner');
+  }
+
+  /* @ngInject */
+  constructor(VenueService, $timeout, EventService, Spinner, ExternalService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
+  	'ngInject';
+    this.contextual = contextual;
+    this.Snack = Snack;
+    this.Spinner = Spinner;
     this.VenueService = VenueService;
     this.EventService = EventService;
     this.CollectionSlotsService = CollectionSlotsService;
@@ -72,5 +133,10 @@ export default class eventListController {
     this.gettextCatalog = gettextCatalog;
     this.$q = $q;
     this.$state = $state;
+    this.$timeout = $timeout;
+
+    this.ExternalService= ExternalService;
+
+    this.hasTMFeature = FeatureService.hasTicketMasterEventFeature();
   }
 }

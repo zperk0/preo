@@ -1,17 +1,17 @@
-<div class="outlet-location-tree-item" ng-init="outletLocation.$expanded = false;" 
+<div class="outlet-location-tree-item" ng-init="outletLocation.$expanded = false;"
 		ng-class="{'expanded': outletLocation.$expanded, 'selected': isSelected()}">
 	<div class="outlet-location-name" ng-click="selectItem($event)">
 		<div class="content-icon">
-			<icon ng-click="toggleExpand()" ng-if="!outletLocation.isSeat() && outletLocation.hasChildren()">{{ outletLocation.$expanded  ? 'remove' : 'add' }}</icon>
+			<icon ng-click="toggleExpand()" ng-if="!outletLocation.isSeat() && outletLocation.hasChildren() && !outletLocation.hasCustomChildren() && !outletLocation.isCustom()">{{ outletLocation.$expanded  ? 'remove' : 'add' }}</icon>
 		</div>
 		<span class="name">{{ getOutletLocationName() }}</span>
 	</div>
-	<div ng-if="!outletLocation.isSeat() && outletLocation.hasChildren()" class="outlet-location-tree-content">
-		<outlet-location-tree 
-				outlet-locations='outletLocation.getChildren()' 
-				outlet-group='outletLocation.createGroup()' 
-				on-select-item="onSelect({outletLocation: outletLocation})" 
-				selected="selected">		
+	<div ng-if="!outletLocation.isSeat() && outletLocation.hasChildren() && !outletLocation.hasCustomChildren() && !outletLocation.isCustom()" class="outlet-location-tree-content">
+		<outlet-location-tree
+				outlet-locations='outletLocation.getChildren()'
+				outlet-group='outletLocation.createGroup()'
+				on-select-item="onSelect({outletLocation: outletLocation})"
+				selected="selected">
 			</outlet-location-tree>
 	</div>
 </div>

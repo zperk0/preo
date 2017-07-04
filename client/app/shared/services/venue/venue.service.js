@@ -17,7 +17,7 @@ export default class VenueService {
           return resolve(filtered[0]);
         }
         if (this.UserService.isAdmin()){
-          Preoday.Venue.getById(venueId,'features')
+          Preoday.Venue.getById(venueId,'features,outlets,map')
             .then((newVenue)=>{
               if (newVenue){
                 resolve(newVenue)
@@ -46,7 +46,7 @@ export default class VenueService {
 
       Preoday.Venue.fetch({
         adminId: user.id,
-        expand: 'features'
+        expand: 'features,outlets,map'
       }).then((venues)=>{
 
         if (venues && venues.length){
@@ -168,7 +168,6 @@ export default class VenueService {
       .then((venues)=>{
 
         this.venues = venues;
-
         this.goToVenue();
       }, (err)=>{
 
@@ -199,10 +198,10 @@ export default class VenueService {
   }
 
   load(){
-    if (currentVenue && currentVenue.id>0){
-      return this.$q.resolve(currentVenue);
+    if (this.currentVenue && this.currentVenue.id>0){
+      return this.$q.resolve(this.currentVenue);
     }
-    return $q((resolve,reject)=>{
+    return this.$q((resolve,reject)=>{
       this.selectVenue()
         .then(resolve,reject)
     })
@@ -211,9 +210,41 @@ export default class VenueService {
 
   updateVenue(){
     var venueCopy = angular.copy(this.currentVenue);
-    
+
     delete venueCopy.ccySymbol;
     return venueCopy.update()
+  }
+
+  saveImage (venueImage) {
+
+    venueImage.venueId = this.currentVenue.id;
+
+    if (!venueImage.image && venueImage.$image) {
+      venueImage.image = venueImage.$image;
+    }
+
+    return this.$q((resolve,reject)=>{
+      Preoday.VenueImage.saveToCdn(venueImage)
+        .then((response) => {
+
+          response.id = venueImage.id;
+          response.src = response.image;
+          delete response.image;
+
+          if (response.id) {
+            response.update()
+              .then(resolve, reject);
+          } else {
+            Preoday.VenueImage.create(response)
+              .then(resolve, reject);
+          }
+        }, (err) => {
+
+          delete response.image;
+          reject(err);
+        });
+
+    });
   }
 
   getVenuePriceConfig () {

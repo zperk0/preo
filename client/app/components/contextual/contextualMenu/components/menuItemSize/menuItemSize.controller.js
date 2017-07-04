@@ -40,6 +40,7 @@ export default class menuItemSizeController {
           minChoices: 1,
           venueId:this.$stateParams.venueId,
           name:"Choose a size",
+          internalName:"Choose a size",
           items:[
           ]
         }
@@ -72,7 +73,7 @@ export default class menuItemSizeController {
       }
     }
 
-    if (this.ngModel.$isMultiple && (!this.hasNestedModifierFeature() || this.item.isVoucher())) {
+    if (this.ngModel.$isMultiple && this.item.isVoucher()) {
       this.ngModel.$isMultiple = false;
     }
   }

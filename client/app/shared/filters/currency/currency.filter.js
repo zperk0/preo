@@ -4,7 +4,7 @@ export default function currency(VenueService){
 
   var accounting = require("accounting");
 
-  return function(number, withoutSymbol) {
+  return function(number, withoutSymbol, decimals) {
 
     let config = VenueService.getVenuePriceConfig();
 
@@ -13,6 +13,11 @@ export default function currency(VenueService){
       config.format = config.format.replace(' ', '');
     }
 
-    return accounting.formatMoney(number, config.symbol, 2, config.thousand, config.decimal, config.format);
+    var countDecimals = 2;
+    if(!isNaN(decimals)){
+      countDecimals = decimals;      
+    }
+    
+    return accounting.formatMoney(number, config.symbol, countDecimals, config.thousand, config.decimal, config.format);
   };
 }

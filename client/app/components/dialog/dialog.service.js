@@ -75,6 +75,38 @@ export default class DialogService {
     });
   }
 
+  showTextDialog($scope, title, placeholder, titleMessage, buttons) {
+
+    function DialogController($scope, $mdDialog) {
+      "ngInject";
+     
+      this.cancel = function() {
+        $mdDialog.cancel();
+      };
+      this.confirm = function(buttonId) {
+
+        if (this.areaForm.$invalid) {
+          return;
+        }
+        
+        $mdDialog.hide(buttonId);
+      };
+    }
+
+    return this.$mdDialog.show({
+      template:require('./dialog.text.tpl.html'),
+      scope:$scope,
+      preserveScope: true,
+      focusOnOpen:true,
+      escapeToClose: true,
+      clickOutsideToClose: true,
+      controller: DialogController,
+      bindToController: true,
+      controllerAs: 'diagCtrl',
+      locals: { title: title, placeholder: placeholder, message: titleMessage, buttons: buttons}
+    });
+  }
+
 
   constructor($rootScope, $q, $mdDialog) {
     "ngInject";

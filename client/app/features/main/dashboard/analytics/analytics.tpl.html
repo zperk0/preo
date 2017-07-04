@@ -1,4 +1,4 @@
-<div class="analytics-view view-content" flex layout='row' layout-align="stretch stretch">
+<!-- <div class="analytics-view view-content" flex layout='row' layout-align="stretch stretch">
   <div class="iframe-content" ng-if="!analyticsCtrl.iframeFailed">
   	<iframe id='analytics-iframe' src='{{analyticsCtrl.analyticsUrl | sanitize}}' iframe-load="analyticsCtrl.onIframeLoad(status)"></iframe>
   </div>
@@ -6,4 +6,9 @@
   <div class='iframe-error' ng-if="analyticsCtrl.iframeFailed">
      <span translate>There was a problem loading this page. <span class='fake-link' ng-click="analyticsCtrl.reload()" translate>Retry</span></span>
   </div>
+</div> -->
+
+<div class='analytics-view' flex layout='row' layout-align="stretch stretch">
+  <ui-view name="analyticsContent" flex layout='row' layout-align="stretch stretch"></ui-view>
 </div>
+

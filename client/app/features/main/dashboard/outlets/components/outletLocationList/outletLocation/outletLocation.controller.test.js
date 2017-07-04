@@ -14,8 +14,13 @@ describe('OutletLocation item Controller', function () {
       OutletService,
       OutletLocationService,
       VenueService,
+      ErrorService,
+      DialogService,
+      LabelService,
       Spinner,
+      Snack,
       $timeout,
+      $q,
       server,
       currentVenue,
       outletLocations,
@@ -32,8 +37,13 @@ describe('OutletLocation item Controller', function () {
       OutletService = $injector.get('OutletService');
       OutletLocationService = $injector.get('OutletLocationService');
       VenueService = $injector.get('VenueService');
+      ErrorService = $injector.get('ErrorService');
+      DialogService = $injector.get('DialogService');
+      LabelService = $injector.get('LabelService');
       Spinner = $injector.get('Spinner');
+      Snack = $injector.get('Snack');
       $timeout = $injector.get('$timeout');
+      $q = $injector.get('$q');
       $scope = $rootScope.$new();
 
       server = sinon.fakeServer.create();
@@ -322,6 +332,211 @@ describe('OutletLocation item Controller', function () {
 
           done();
         });
+      });
+    });
+
+
+    it("Should show a dialog to confirm when try to remove an outlet from a location with custom fields", function(done) {
+
+      // _mockOutletLocation();
+      _mockOutlets();
+      _startOutletLocationListController();
+      _startController();
+
+      outletLocations = [new Preoday.OutletLocation({
+        id: 1,
+        venueId: currentVenue.id,
+        path: '/',
+        parent: null,
+        outletId: 1,
+        name: 'First outlet to mock test'
+      }), new Preoday.OutletLocation({
+        id: 2,
+        venueId: currentVenue.id,
+        path: '/1/',
+        parent: 1,
+        name: 'Custom field',
+        isCustomField: 1
+      })];
+
+      OutletLocationListCtrl.instance.outletLocations = outletLocations;
+
+      OutletLocationCtrl.instance.outletLocationListCtrl = OutletLocationListCtrl();
+
+      OutletLocationCtrl.instance.outletLocation = outletLocations[0];
+
+      spyOn(contextual, 'showMenu').and.callThrough();
+      spyOn(OutletLocationCtrl.instance, 'buildOutlet').and.callThrough();
+      spyOn(OutletLocationCtrl.instance.outletLocation, 'update').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(DialogService, 'delete').and.returnValue($q.reject());
+
+      OutletLocationCtrl = OutletLocationCtrl();
+
+      OutletLocationCtrl.removeOutlet();
+
+      setTimeout(function () {
+
+        expect(contextual.showMenu).not.toHaveBeenCalled();
+        expect(Spinner.show).not.toHaveBeenCalledWith('outlet-location-remove-outlet');
+        expect(Spinner.hide).not.toHaveBeenCalledWith('outlet-location-remove-outlet');
+        expect(OutletLocationCtrl.type).toBe('outletLocation');
+        expect(OutletLocationCtrl.buildOutlet).toHaveBeenCalled();
+        expect(DialogService.delete).toHaveBeenCalledWith(LabelService.TITLE_DELETE_OUTLET_CUSTOM_FIELD, LabelService.CONTENT_DELETE_OUTLET_CUSTOM_FIELD);
+        expect(OutletLocationCtrl.outletLocation.update).not.toHaveBeenCalled();
+        expect(OutletLocationCtrl.outletLocation.outletId).toBe(1);
+
+        done();
+      });
+    });
+
+    it("Should confirm the dialog and remove the outlet and the custom fields from the outlet location", function(done) {
+
+      _mockOutlets();
+      _startOutletLocationListController();
+      _startController();
+
+      outletLocations = [new Preoday.OutletLocation({
+        id: 1,
+        venueId: currentVenue.id,
+        path: '/',
+        parent: null,
+        outletId: 1,
+        name: 'First outlet to mock test'
+      }), new Preoday.OutletLocation({
+        id: 2,
+        venueId: currentVenue.id,
+        path: '/1/',
+        parent: 1,
+        name: 'Custom field',
+        isCustomField: 1
+      })];
+
+      OutletLocationListCtrl.instance.outletLocations = [];
+
+      OutletLocationCtrl.instance.outletLocationListCtrl = OutletLocationListCtrl();
+
+      spyOn(contextual, 'showMenu').and.callThrough();
+      spyOn(OutletLocationCtrl.instance, 'buildOutlet').and.callThrough();
+      spyOn(OutletLocationCtrl.instance, 'updateOutletLocation').and.callThrough();
+      spyOn(OutletLocationCtrl.instance.outletLocationListCtrl, 'createOutletLocation').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(DialogService, 'delete').and.returnValue($q.resolve());
+
+      OutletLocationCtrl.instance.outletLocation = outletLocations[0];
+
+      spyOn(OutletLocationCtrl.instance.outletLocation, 'update').and.callThrough();
+      spyOn(OutletLocationCtrl.instance.outletLocation, 'deleteCustomFields').and.callThrough();
+
+      OutletLocationCtrl = OutletLocationCtrl();
+
+      OutletLocationCtrl.removeOutlet();
+
+      server.respondWith('DELETE', '/api/venues/' + OutletLocationCtrl.outletLocation.venueId + '/outletlocations/children?parentId=' + OutletLocationCtrl.outletLocation.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
+      $rootScope.$digest();
+
+      setTimeout(function() {
+
+        server.respond();
+        $rootScope.$digest();
+
+        setTimeout(function () {
+
+          $rootScope.$digest();
+
+          server.respondWith('PUT', '/api/venues/' + OutletLocationCtrl.outletLocation.venueId + '/outletlocations/' + OutletLocationCtrl.outletLocation.id, [200, {"Content-Type": "application/json"}, JSON.stringify(OutletLocationCtrl.outletLocation)]);
+
+          setTimeout(function() {
+            server.respond();
+            $rootScope.$digest();
+
+            setTimeout(function() {
+
+              $rootScope.$digest();
+
+              expect(contextual.showMenu).not.toHaveBeenCalled();
+              expect(Spinner.show).toHaveBeenCalledWith('outlet-location-remove-outlet-custom-fields');
+              expect(Spinner.hide).toHaveBeenCalledWith('outlet-location-remove-outlet-custom-fields');
+              expect(OutletLocationCtrl.type).toBe('outletLocation');
+              expect(OutletLocationCtrl.buildOutlet).toHaveBeenCalled();
+              expect(DialogService.delete).toHaveBeenCalledWith(LabelService.TITLE_DELETE_OUTLET_CUSTOM_FIELD, LabelService.CONTENT_DELETE_OUTLET_CUSTOM_FIELD);
+              expect(OutletLocationCtrl.outletLocation.update).toHaveBeenCalled();
+              expect(OutletLocationCtrl.outletLocation.deleteCustomFields).toHaveBeenCalled();
+              expect(OutletLocationCtrl.outletLocation.outletId).toBe(null);
+
+              done();
+            })
+          });
+        });
+      });
+    });
+
+    it("Should remove the outlet from the outlet location without custom fields", function(done) {
+
+      _mockOutlets();
+      _startOutletLocationListController();
+      _startController();
+
+      outletLocations = [new Preoday.OutletLocation({
+        id: 1,
+        venueId: currentVenue.id,
+        path: '/',
+        parent: null,
+        outletId: 1,
+        name: 'First outlet to mock test'
+      }), new Preoday.OutletLocation({
+        id: 2,
+        venueId: currentVenue.id,
+        path: '/',
+        parent: null,
+        name: 'Custom field',
+      })];
+
+      OutletLocationListCtrl.instance.outletLocations = [];
+
+      OutletLocationCtrl.instance.outletLocationListCtrl = OutletLocationListCtrl();
+
+      spyOn(contextual, 'showMenu').and.callThrough();
+      spyOn(OutletLocationCtrl.instance, 'buildOutlet').and.callThrough();
+      spyOn(OutletLocationCtrl.instance, 'updateOutletLocation').and.callThrough();
+      spyOn(OutletLocationCtrl.instance.outletLocationListCtrl, 'createOutletLocation').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(DialogService, 'delete').and.returnValue($q.resolve());
+
+      OutletLocationCtrl.instance.outletLocation = outletLocations[0];
+
+      spyOn(OutletLocationCtrl.instance.outletLocation, 'update').and.callThrough();
+      spyOn(OutletLocationCtrl.instance.outletLocation, 'deleteCustomFields').and.callThrough();
+
+      OutletLocationCtrl = OutletLocationCtrl();
+
+      OutletLocationCtrl.removeOutlet();
+
+      server.respondWith('PUT', '/api/venues/' + OutletLocationCtrl.outletLocation.venueId + '/outletlocations/' + OutletLocationCtrl.outletLocation.id, [200, {"Content-Type": "application/json"}, JSON.stringify(OutletLocationCtrl.outletLocation)]);
+
+      setTimeout(function() {
+        server.respond();
+        $rootScope.$digest();
+
+        setTimeout(function() {
+
+          $rootScope.$digest();
+
+          expect(contextual.showMenu).not.toHaveBeenCalled();
+          expect(Spinner.show).toHaveBeenCalledWith('outlet-location-remove-outlet');
+          expect(Spinner.hide).toHaveBeenCalledWith('outlet-location-remove-outlet');
+          expect(OutletLocationCtrl.type).toBe('outletLocation');
+          expect(OutletLocationCtrl.buildOutlet).toHaveBeenCalled();
+          expect(DialogService.delete).not.toHaveBeenCalled();
+          expect(OutletLocationCtrl.outletLocation.update).toHaveBeenCalled();
+          expect(OutletLocationCtrl.outletLocation.deleteCustomFields).not.toHaveBeenCalled();
+          expect(OutletLocationCtrl.outletLocation.outletId).toBe(null);
+
+          done();
+        })
       });
     });
 

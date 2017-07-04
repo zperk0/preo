@@ -7,6 +7,7 @@ export default class menuItemAdvancedController {
 
     if (!this.item.$voucherTypePost) {
       this.item.$hasMessageAnyVoucher = false;
+      this.item.$assignCodePost = false;
     }
   }
 
@@ -14,6 +15,7 @@ export default class menuItemAdvancedController {
 
     if (!this.item.$voucherTypeEmail) {
       this.item.$hasMessageOnlyEmail = false;
+      this.item.$assignCodeEmail = false;
     }
   }
 
@@ -32,8 +34,15 @@ export default class menuItemAdvancedController {
   }
 
   /* @ngInject */
-  constructor($scope) {
+  constructor($scope, FeatureService, VoucherService) {
     'ngInject';
+
+    this.hasExternalVoucherCodes = FeatureService.hasExternalVoucherCodesFeature();
+
+    VoucherService.getAssignCodeTypes()
+      .then(assignCodeTypes => {
+        this.assignCodeTypes = assignCodeTypes;
+      });
 
     switch (this.item.voucherType) {
       case Preoday.constants.VoucherType.ALL:
@@ -66,6 +75,23 @@ export default class menuItemAdvancedController {
       case 0:
         this.item.$hasMessageOnlyEmail = false;
         this.item.$hasMessageAnyVoucher = false;
+        break;
+    }
+
+    switch (this.item.assignCode) {
+      case Preoday.constants.VoucherType.ALL:
+        this.item.$assignCodeEmail = true;
+        this.item.$assignCodePost = true;
+        break;
+
+      case Preoday.constants.VoucherType.EMAIL:
+        this.item.$assignCodeEmail = true;
+        this.item.$assignCodePost = false;
+        break;
+
+      case Preoday.constants.VoucherType.POST:
+        this.item.$assignCodeEmail = false;
+        this.item.$assignCodePost = true;
         break;
     }
   }

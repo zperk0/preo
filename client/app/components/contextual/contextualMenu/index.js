@@ -22,6 +22,9 @@ import taxGroupSelect from './components/taxGroupSelect';
 import menuItemAdvanced from './components/menuItemAdvanced';
 import userRoleSelect from './components/userRoleSelect';
 import promotionComponents from './components/promotionComponents';
+import tagActionBasic from './components/tagActionBasic';
+import tagActionAdvanced from './components/tagActionAdvanced';
+import tagSelect from './components/tagSelect';
 
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
@@ -55,6 +58,9 @@ export default angular.module("contextualMenu" , [
 	minIntegerValue,
 	compareNumber,
   promotionComponents,
+	tagActionBasic,
+	tagActionAdvanced,
+	tagSelect,
 	venueCurrency
 ])
 

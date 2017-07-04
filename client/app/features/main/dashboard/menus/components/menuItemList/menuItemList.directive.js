@@ -16,6 +16,7 @@ export default function menuItemList($animate, $timeout, $document, $rootScope){
       svKeepInList:"=?",
       svIsDropzone:"=?",
       types:"=?",
+      tags:"="
     },
     template: require("./menuItemList.tpl.html"),
     controller: controller.UID,

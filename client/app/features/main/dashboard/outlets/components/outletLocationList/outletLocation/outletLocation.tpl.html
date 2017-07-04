@@ -16,23 +16,38 @@
       <div class='sv-dropzone sv-dropzone-outlet' sv-part="outletLocationCtrl.newModifiers" sv-on-external-sort="outletLocationCtrl.onNewOutletMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
         <div sv-placeholder></div>
       </div>
-    </div>    
+    </div>
 
-    <item-chips ng-if="outletLocationCtrl.outletLocation.outletId && outletLocationCtrl.outlets.length" items="outletLocationCtrl.outlets" on-remove="outletLocationCtrl.removeOutlet(item)"></item-chips>
+    <item-chips ng-if="outletLocationCtrl.outletLocation.outletId && !outletLocationCtrl.outletLocation.isCustom() && outletLocationCtrl.outlets.length"
+                items="outletLocationCtrl.outlets"
+                on-remove="outletLocationCtrl.removeOutlet(item)"></item-chips>
 
-    <card-item-actions is-visible="outletLocationCtrl.outletLocation.visible"
+    <card-item-actions ng-if="!outletLocationCtrl.outletLocation.isCustom()"
+                       is-visible="outletLocationCtrl.outletLocation.visible"
                        on-move="outletLocationCtrl.onMove()"
                        on-clone="outletLocationCtrl.onClone($event)"
                        on-delete="outletLocationCtrl.onDelete(createdOutlet)"
                        on-edit="outletLocationCtrl.onEdit($event)"
                        on-add="outletLocationCtrl.onAddSubGroup($event)"
+                       on-add-custom-field="outletLocationCtrl.onAddCustomField($event)"
+                       is-add="!outletLocationCtrl.outletLocation.outletId || !outletLocationCtrl.hasCustomOutletLocationFieldsFeature()"
+                       is-add-custom-field="outletLocationCtrl.outletLocation.outletId && outletLocationCtrl.hasCustomOutletLocationFieldsFeature()"
                        disable-add="outletLocationCtrl.outletLocation.isSeat() || outletLocationCtrl.outletLocation.hasChildren() || outletLocationCtrl.outletLocation.outletId"
+                       disable-add-custom-field="outletLocationCtrl.outletLocation.hasCustomChildren()"
                        add-message="outletLocationCtrl.getAddSubGroupMessage()"
+                       add-custom-field-message="outletLocationCtrl.getAddCustomFieldMessage()"
+                        ></card-item-actions>
+
+    <card-item-actions ng-if="outletLocationCtrl.outletLocation.isCustom()"
+                       on-delete="outletLocationCtrl.onDelete(createdOutlet)"
+                       on-edit="outletLocationCtrl.onEdit($event)"
                         ></card-item-actions>
   </card-item>
-  
 
-  <md-button ng-if="!outletLocationCtrl.outletLocation.isSeat() && outletLocationCtrl.outletLocation.hasChildren()" class="md-icon-button btn-view-sub-group" ng-click="outletLocationCtrl.showSubGroup()">
+
+  <md-button ng-if="(!outletLocationCtrl.outletLocation.isSeat() && outletLocationCtrl.outletLocation.hasChildren()) || (outletLocationCtrl.outletLocation.hasCustomChildren() && outletLocationCtrl.hasCustomOutletLocationFieldsFeature())"
+             class="md-icon-button btn-view-sub-group"
+             ng-click="outletLocationCtrl.showSubGroup()">
     <icon>keyboard_arrow_right</icon>
-  </md-button>  
+  </md-button>
 </div>

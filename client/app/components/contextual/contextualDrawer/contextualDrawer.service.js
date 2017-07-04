@@ -26,6 +26,7 @@ export default class contextualDrawerService {
       this.id = false;
     }
     this.clearLocationParam();
+    this.offWatchEspaceKey();
   }
 
   cancel(err){
@@ -45,28 +46,62 @@ export default class contextualDrawerService {
     if (this.id){
       this.cancel();
     }
-
-    this.deferred = this.$q.defer();
-
     this.id = id;
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_DRAWER_OPEN, {id: this.id});
+    this.deferred = this.$q.defer();    
+
+    this.parentElement = angular.element(document.querySelectorAll("md-sidenav[md-component-id='" + this.id + "']")).parent();
+
     this.$mdSidenav(id)
       .toggle()
       .then(function (argument) {
-
+        
         console.log(arguments);
-      })
+      }.bind(this));
+
+    this.watchEspaceKey();
 
     return this.deferred.promise
 
   }
 
-  constructor($compile, $rootScope, $q, $mdSidenav, $location) {
+  watchEspaceKey () {
+
+    if (!this.parentElement) {
+      return;
+    }
+
+    this.parentElement['on']('keydown', this.onKeyDown.bind(this));
+  }
+
+  offWatchEspaceKey () {
+
+    if (!this.parentElement) {
+      return;
+    }
+
+    this.parentElement['off']('keydown', this.onKeyDown.bind(this));
+  }
+
+  onKeyDown (ev) {
+
+    var isEscape = (ev.keyCode === this.$mdConstant.KEY_CODE.ESCAPE);
+
+    if (isEscape) {
+      this.cancel();
+    }
+  }
+
+  constructor($compile, $rootScope, $q, $mdSidenav, BroadcastEvents, $mdConstant, $location) {
     "ngInject";
     this.$location = $location;
     this.$compile = $compile;
     this.$rootScope = $rootScope;
     this.$q = $q;
     this.$mdSidenav =$mdSidenav;
+    this.$mdConstant =$mdConstant;
+    this.BroadcastEvents = BroadcastEvents;
 
     this.deferred = null;
 

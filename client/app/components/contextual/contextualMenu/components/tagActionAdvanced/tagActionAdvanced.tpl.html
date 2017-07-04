@@ -1,0 +1,25 @@
+<div class="tag-action-advanced">
+  <md-input-container class="md-block input-label">
+    <md-checkbox aria-label="{{'Link to external URL' | translate}}" ng-change="tagActionAdvancedCtrl.onActivateLinkChange()" ng-model="tagActionAdvancedCtrl.tagAction.$activateLink">
+      {{'Link to external URL' | translate}}
+    </md-checkbox>
+  </md-input-container>
+  <div ng-if="tagActionAdvancedCtrl.tagAction.$activateLink">
+    <md-input-container class="md-block no-spacer">
+      <label translate>Button label</label>
+      <input type="text" autocomplete="off" required name="entityLabel" ng-model="tagActionAdvancedCtrl.tagAction.buttonLabel" ng-maxlength="100" />
+      <div ng-messages="tagActionAdvancedCtrl.contextualForm.entityLabel.$error" ng-show="tagActionAdvancedCtrl.contextualForm.entityLabel.$dirty">
+        <div ng-message="required" translate  ng-class="{'activated': tagActionAdvancedCtrl.contextualForm.entityLabel.$error.required}">This is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': tagActionAdvancedCtrl.contextualForm.entityLabel.$error.maxlength}">Max length is 100.</div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block no-spacer">
+      <label translate>URL</label>
+      <input type="text" autocomplete="off" required name="entityUrl" ng-model="tagActionAdvancedCtrl.tagAction.externalUrl" ng-maxlength="300" />
+      <div ng-messages="tagActionAdvancedCtrl.contextualForm.entityUrl.$error" ng-show="tagActionAdvancedCtrl.contextualForm.entityUrl.$dirty">
+        <div ng-message="required" translate  ng-class="{'activated': tagActionAdvancedCtrl.contextualForm.entityUrl.$error.required}">This is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': tagActionAdvancedCtrl.contextualForm.entityUrl.$error.maxlength}">Max length is 300.</div>
+      </div>
+    </md-input-container>
+  </div>
+</div>

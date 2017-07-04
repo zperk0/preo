@@ -10,7 +10,7 @@
     <card-item-title
 	    has-visible="true"
 	    sv-root="item">
-	      <span>{{vm.outletLocationGroup.label || 'Group label' | translate}} </span>
+	      <span>{{vm.outletLocationGroup.label || vm.getDefaultGroupLabel() | translate}} </span>
 	   </card-item-title>
     <outlet-location-list
     			ng-if="vm.outletLocationGroup.$expanded"

@@ -15,11 +15,10 @@ fileOutput.on('close', function () {
 });
 
 archive.pipe(fileOutput);
-archive.glob("./dist/**/!(*.js.map)");
-archive.glob("./dist/.htaccess");
+archive.glob("**/!(*.js.map)", {cwd: './dist/'});
+archive.glob(".htaccess", {cwd: './dist/'});
 archive.on('error', function(err){
     throw err;
 });
 
 archive.finalize();
-

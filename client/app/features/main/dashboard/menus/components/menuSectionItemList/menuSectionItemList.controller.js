@@ -10,13 +10,6 @@ export default class menuSectionItemListController {
     newItem.menuId = this.section.menuId;
 
     this.recalculateHeight();
-
-    this.addToOriginalList(newItem);
-  }
-
-  addToOriginalList (newItem) {
-
-    this.ItemService.addItem(newItem);
   }
 
   onItemUpdated() {
@@ -189,13 +182,16 @@ export default class menuSectionItemListController {
 
     this.ItemService.cloneItem(item, this.section.id, clonePosition)
       .then((createdItem)=>{
+
+        createdItem.setSize();
+
         createdItem.$show = true; //need show for animation
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
         console.log("cloned", createdItem, this.item);
 
         this.cardItemList.insert(item, createdItem, this.section);
-        this.addToOriginalList(createdItem);
+        this.doSimpleSort(this.items);
 
       }, (err)=>{
         console.log("failed creating item", err)

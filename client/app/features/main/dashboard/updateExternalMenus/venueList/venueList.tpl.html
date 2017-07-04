@@ -1,0 +1,13 @@
+<div class="venue-list-component">
+    <div>
+    <card-item-list
+        has-new="false"
+        collection="venueListCtrl.venues">
+        <venue-item
+          has-actions="true"
+          ng-repeat="venue in venueListCtrl.venues | orderBy: id"
+          venue="venue">
+        </venue-item>
+    </card-item-list>
+  </div>
+</div>

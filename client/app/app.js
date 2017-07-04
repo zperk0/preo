@@ -38,6 +38,7 @@ import v2Auth from './features/auth';
 import v2NotFound from './features/notFound';
 import v2EmailSuccess from './features/emailSuccess';
 import v2StripeSuccess from './features/stripeSuccess';
+import v2Redirect from './features/redirect';
 
 // Import global components
 import imageUploader from './components/imageUploader';
@@ -81,7 +82,8 @@ require('./components/sticky/sticky.directive.js');
   v2Auth,
   v2NotFound,
   v2EmailSuccess,
-  v2StripeSuccess
+  v2StripeSuccess,
+  v2Redirect
   ])
   .config(config)
   .run(run)

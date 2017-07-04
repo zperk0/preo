@@ -49,11 +49,34 @@ export default class mainController {
       })
   }
 
+  logout() {
 
-  constructor($rootScope, $stateParams, $state, $timeout, Permissions,  ErrorService, BroadcastEvents, UserService, VenueService, Spinner) {
+    this.UserService.signout()
+      .then(success => {
+
+        this.UserService.restore();
+      }, error => {
+
+        this.handleError(error);
+      });
+  }
+
+  handle403() {
+
+    this.DialogService.show(this.ErrorService.EXPIRED_SESSION.title, this.ErrorService.EXPIRED_SESSION.message, [{
+      name: this.LabelService.CONFIRMATION
+    }]).then(() => this.logout());
+  }
+
+
+  constructor($rootScope, $stateParams, $state, $timeout, Permissions, DialogService, ErrorService, LabelService, BroadcastEvents, UserService, VenueService, UtilsService, Spinner) {
     "ngInject";
     this.VenueService=VenueService;
+    this.DialogService = DialogService;
     this.ErrorService = ErrorService;
+    this.LabelService = LabelService;
+    this.UtilsService = UtilsService;
+    this.UserService = UserService;
     this.$state = $state;
     this.Permissions = Permissions;
     this.$rootScope = $rootScope;
@@ -74,5 +97,13 @@ export default class mainController {
         this.handleFinishLoading();
       }
     }
+
+    UtilsService.onMessage((e) => {
+      switch (e.data) {
+        case '__REQUEST_ERROR:403__':
+          this.handle403();
+          break;
+      }
+    });
   }
 }

@@ -38,7 +38,8 @@ describe('itemList Controller', function () {
     function _startController() {
 
       ItemListCtrl = $controller('itemListController', {
-        '$scope': $scope
+        '$scope': $scope,
+        'tags': []
       }, true);
     }
 
@@ -55,16 +56,9 @@ describe('itemList Controller', function () {
 
       ItemListCtrl = ItemListCtrl();
 
-      expect(ItemListCtrl.handleError).toEqual(jasmine.any(Function));
-      expect(ItemListCtrl.handleFinishLoading).toEqual(jasmine.any(Function));
-      expect(ItemListCtrl.setItems).toEqual(jasmine.any(Function));
       expect(ItemListCtrl.toggleDrawer).toEqual(jasmine.any(Function));
-      expect(ItemListCtrl.hideSpinner).toEqual(jasmine.any(Function));
-      expect(ItemListCtrl.showSpinner).toEqual(jasmine.any(Function));
 
       expect(FeatureService.hasFeature).toHaveBeenCalledWith(Preoday.constants.Feature.NESTED_MODIFIER);
-      expect(ItemService.getItems).toHaveBeenCalledWith(venueId);
-      
     });
 
     it("Should fetch the items", function() {
@@ -76,10 +70,8 @@ describe('itemList Controller', function () {
       })];
 
       spyOn(FeatureService, 'hasFeature');
-      spyOn(ItemService, 'getItems').and.returnValue($q.resolve({
-        items: items
-      }));
-
+      spyOn(ItemService, 'getItems').and.returnValue(items);
+      
       let venueId = 5;
 
       $stateParams.venueId = venueId;
@@ -88,36 +80,7 @@ describe('itemList Controller', function () {
 
       ItemListCtrl = ItemListCtrl();
 
-      $timeout.flush();
-      
       expect(FeatureService.hasFeature).toHaveBeenCalledWith(Preoday.constants.Feature.NESTED_MODIFIER);
-      expect(ItemService.getItems).toHaveBeenCalledWith(venueId);
-      expect(ItemListCtrl.data.items.length).toBe(items.length);
-      
+      expect(ItemListCtrl.items.length).toBe(items.length);
     });
-
-    it("Should show an error when fail on fetch items", function() {
-
-      spyOn(FeatureService, 'hasFeature');
-      spyOn(ItemService, 'getItems').and.returnValue($q.reject({}));
-
-      let venueId = 5;
-
-      $stateParams.venueId = venueId;
-
-      _startController();
-
-      ItemListCtrl = ItemListCtrl();
-
-      spyOn(ItemListCtrl, 'hideSpinner');
-
-      $rootScope.$digest();
-      
-      expect(FeatureService.hasFeature).toHaveBeenCalledWith(Preoday.constants.Feature.NESTED_MODIFIER);
-      expect(ItemService.getItems).toHaveBeenCalledWith(venueId);
-      expect(ItemListCtrl.hideSpinner).toHaveBeenCalled();
-      expect(ItemListCtrl.data.items.length).toBe(0);
-      
-    });
-
 });

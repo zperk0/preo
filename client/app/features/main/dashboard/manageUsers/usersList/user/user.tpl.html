@@ -1,5 +1,6 @@
 <div class='user'
-      ng-attr-data-id="{{userCtrl.user.id}}">
+      ng-attr-data-id="{{userCtrl.user.id}}"
+      ng-class="{current: userCtrl.user.$current}">
   <card-item  has-actions="true"
               deleted="userCtrl.user.$deleted"
               selected="userCtrl.user.$selected"

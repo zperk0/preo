@@ -87,7 +87,8 @@ export default class menuItemController {
     this.originalItem  = angular.copy(this.item);
     this.cardItemList.selectItem(this.item);
     this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
-      onDeleteImage: this.onDeleteImage.bind(this)
+      onDeleteImage: this.onDeleteImage.bind(this),
+      tags: this.tags || []
     });
   }
 
@@ -231,6 +232,16 @@ export default class menuItemController {
         this.item.voucherType = Preoday.constants.VoucherType.POST;
       }
 
+      if (entity.$assignCodeEmail && entity.$assignCodePost) {
+        this.item.assignCode = Preoday.constants.VoucherType.ALL;
+      } else if (entity.$assignCodeEmail) {
+        this.item.assignCode = Preoday.constants.VoucherType.EMAIL;
+      } else if (entity.$assignCodePost) {
+        this.item.assignCode = Preoday.constants.VoucherType.POST;
+      } else {
+        this.item.assignCode = Preoday.constants.VoucherType.NONE;
+      }
+
       if (entity.$hasMessageAnyVoucher) {
         this.item.hasMessage = 1;
       } else if (entity.$hasMessageOnlyEmail) {
@@ -333,12 +344,33 @@ export default class menuItemController {
     if (this.item && this.item.modifiers){
       this.modifiers = this.item.modifiers.map((_modifier) => {
 
-        let modifier = angular.copy(this.ModifierService.getById(_modifier.id));
+        let modifier = angular.copy(this.ModifierService.getById(_modifier.id)) || angular.copy(_modifier);
         modifier.position = _modifier.position;
 
         return modifier;
       });
     }
+  }
+
+  hasFromPrice () {
+    return this.item.hasFromPrice() || (this.section && this.section.hasFromPrice());
+  }
+
+  getFromPrice() {
+    let fromPrice = 0;
+
+    if (this.item.hasFromPrice()) {
+      fromPrice += this.item.getFromPrice();
+    }
+    if (this.section && this.section.hasFromPrice(this.item)) {
+      fromPrice += this.section.getFromPrice(this.item);
+
+      if (!this.item.hasFromPrice()) {
+        fromPrice += this.item.price;
+      }
+    }
+
+    return fromPrice;
   }
 
   watchModifiers () {
@@ -356,6 +388,10 @@ export default class menuItemController {
 
       this.buildModifiers();
     });
+  }
+
+  showActionIcon () {
+    return this.item.tagActions && !!this.item.tagActions.length;
   }
 
   constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService, ErrorService, gettextCatalog) {
@@ -402,7 +438,8 @@ export default class menuItemController {
         }
 
         this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
-          onDeleteImage: this.onDeleteImage.bind(this)
+          onDeleteImage: this.onDeleteImage.bind(this),
+          tags: this.tags || []
         });
       })
     } else {

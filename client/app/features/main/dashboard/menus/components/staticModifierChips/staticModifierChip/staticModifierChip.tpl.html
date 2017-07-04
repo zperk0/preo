@@ -5,7 +5,7 @@
   <md-tooltip ng-if="::staticModifierChipCtrl.modifier.items.length" class="modifier-chip-tooltip">
     <div ng-repeat="item in ::staticModifierChipCtrl.modifier.items" class="modifierChipItem">
       <span class="item-name">{{ ::item.name }}</span>
-      <span class="item-price">{{ ::item.formmattedPrice }}</span>
+      <span class="item-price">{{ ::item.$formmattedPrice }}</span>
     </div>
   </md-tooltip>
 </div>

@@ -40,7 +40,10 @@ module.exports = function(ENV, options) {
      * Make bower_components available for the resolvers
      */
     resolve: {
-      root: [path.join(__dirname, "./bower_components")],
+      root: [
+        path.join(__dirname, "./bower_components"),
+        path.resolve(__dirname, '..', 'client')
+      ],
       alias: {
         appConstants: "./" + ENV + ".constants.js"
       }
@@ -67,6 +70,8 @@ module.exports = function(ENV, options) {
       taxes: './client/app/features/main/dashboard/taxes/index.js',
       analytics: './client/app/features/main/dashboard/analytics/index.js',
       manageUsers: './client/app/features/main/dashboard/manageUsers/index.js',
+      updateExternalMenus: './client/app/features/main/dashboard/updateExternalMenus/index.js',
+      customTags: './client/app/features/main/dashboard/customTags/index.js',
       vendor: './client/app/vendor.js'
     },
     /**
@@ -204,7 +209,7 @@ module.exports = function(ENV, options) {
       new HtmlWebpackPlugin({
         template:'./client/index.html',
         chunksSortMode: chunkSort,
-        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'app','vendor'],
+        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'updateExternalMenus', 'customTags', 'app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),
@@ -266,10 +271,24 @@ module.exports = function(ENV, options) {
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
+        chunks:['customTags','app','vendor'],
+        chunksSortMode: chunkSort,
+        inject:true,
+        filename:'customTags/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
         chunks:['notifications','app','vendor'],
         chunksSortMode: chunkSort,
         inject:true,
         filename:'notifications/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['updateExternalMenus','app','vendor'],
+        chunksSortMode: chunkSort,
+        inject:true,
+        filename:'updateExternalMenus/index.php'
       })
     ]
   }
