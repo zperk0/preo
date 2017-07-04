@@ -8,7 +8,7 @@
     "serve": "webpack-dev-server --inline --type serve",
     "serve:dev": "webpack-dev-server --env dev --type serve --inline",
     "serve:prod": "webpack-dev-server --env prod --type serve --inline",
-    "test": "karma start --type test --log-level=DEBUG",
+    "test": "pwd",
     "test:live": "karma start --type test --auto-watch --no-single-run",
     "prepublish": "npm run build",
     "release-v1": "node scripts/v1.js",
