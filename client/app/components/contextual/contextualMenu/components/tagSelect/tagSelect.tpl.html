@@ -4,7 +4,8 @@
             md-autocomplete-snap md-require-match="false" 
             md-separator-keys="tagSelectCtrl.separatorKeys"
             md-transform-chip="tagSelectCtrl.transformChip($chip)" 
-            md-on-add="tagSelectCtrl.addToCollection($chip)">
+            md-on-add="tagSelectCtrl.addToCollection($chip)"
+            md-add-on-blur="true">
     <md-autocomplete md-selected-item="tagSelectCtrl.selectedItem" 
                      md-search-text="tagSelectCtrl.searchText" 
                      md-items="item in tagSelectCtrl.querySearch(tagSelectCtrl.searchText)"
