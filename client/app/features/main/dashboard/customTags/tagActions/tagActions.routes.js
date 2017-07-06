@@ -6,7 +6,8 @@ import controller from './tagActions.controller'
  * @param  $stateProvider
  */
 /* @ngInject */
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
+  "ngInject";
   $stateProvider.state("main.dashboard.customTags.tagActions", {
     url: "/tagActions",
     requiresPermission:Permissions.MENUS,
