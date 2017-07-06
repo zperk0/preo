@@ -6,8 +6,11 @@ var output = '.zip';
 
 var fileName =   './build/'+pjson.name+"."+pjson.version+output;
 
-var fileOutput = fs.createWriteStream(fileName);
+if (!fs.existsSync('./build')){
+    fs.mkdirSync('./build');
+}
 
+var fileOutput = fs.createWriteStream(fileName);
 
 fileOutput.on('close', function () {
     console.log(archive.pointer() + ' total bytes');
