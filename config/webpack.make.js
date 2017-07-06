@@ -24,8 +24,14 @@ module.exports = function makeWebpackConfig(options) {
   var config = defaultConfig(ENV, configOptions);
 
   switch (TYPE) {
+    case 'release':
+    var newConfig = buildConfig(ENV, true, configOptions);
+    // Make sure to apply modules plugins first
+    config.plugins = newConfig.plugins.push.apply(newConfig.plugins, config.plugins);
+    merge(config, newConfig);
+    break;
     case 'build':
-    var newConfig = buildConfig(ENV, configOptions);
+    var newConfig = buildConfig(ENV, false, configOptions);
     // Make sure to apply modules plugins first
     config.plugins = newConfig.plugins.push.apply(newConfig.plugins, config.plugins);
     merge(config, newConfig);

@@ -3,7 +3,22 @@ var path = require("path");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = function(ENV) {
+var plugins =  [new webpack.NoErrorsPlugin(),
+                new CopyWebpackPlugin([
+                  { from: 'client/index.php'},
+                  { from: 'client/.htaccess'},
+                  { from: 'client/stripe-success.php', to:'payments/stripe-success.php'}
+                ]),
+                new webpack.optimize.DedupePlugin()]
+
+var removeLogOption = [new webpack.optimize.UglifyJsPlugin({compress:{drop_console: true}})];
+
+module.exports = function(ENV, removeLogs) {
+
+  if (removeLogs) {
+    plugins = plugins.concat(removeLogOption);
+  }
+
   return {
     /**
      * Entry
@@ -35,20 +50,7 @@ module.exports = function(ENV) {
      * Reference: http://webpack.github.io/docs/configuration.html#plugins
      * List: http://webpack.github.io/docs/list-of-plugins.html
      */
-    plugins: [
+    plugins: plugins
 
-      // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
-      // Only emit files when there are no errors
-      new webpack.NoErrorsPlugin(),
-      new CopyWebpackPlugin([
-        { from: 'client/index.php'},
-        { from: 'client/.htaccess'},
-        { from: 'client/stripe-success.php', to:'payments/stripe-success.php'}
-      ]),
-
-      // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-      // Dedupe modules in the output
-      new webpack.optimize.DedupePlugin(),
-    ]
   }
 }
