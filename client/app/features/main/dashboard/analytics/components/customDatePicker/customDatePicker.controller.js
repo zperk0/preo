@@ -27,9 +27,9 @@ export default class customDatePickerController {
 
     if(dateInputed == null || !dateInputed.isValid()){
       if(dateInput.id === 'fromDate'){
-        elem.value = this.calendarDateFrom.format('L');
+        elem.value = this.calendarDateFrom.startDate.format('L');
       }else if(dateInput.id === 'endDate'){
-        elem.value = this.calendarDateEnd.format('L');
+        elem.value = this.calendarDateFrom.endDate.format('L');
       }
     }
 
@@ -85,22 +85,26 @@ export default class customDatePickerController {
       var newDate = moment(elem.value, 'L', true).format();
 
       if(elementId === 'fromDate'){
-        this.calendarDateFrom = moment(newDate);
+       // this.calendarDateFrom = moment(newDate);
+        this.calendarDateFrom.startDate = moment(newDate);
         this.datesRange.startDate = elem.value;
 
         if(this.calendarDateFrom.isAfter(this.calendarDateEnd)){
          this.inputDateEnd = elem.value ;
          this.datesRange.endDate = elem.value;
-         this.calendarDateEnd = moment(newDate);
+         //this.calendarDateEnd = moment(newDate);
+         this.calendarDateFrom.endDate = moment(newDate);
         }
       }else if(elementId === 'endDate'){
-        this.calendarDateEnd = moment(newDate);
+       // this.calendarDateEnd = moment(newDate);
+        this.calendarDateFrom.endDate = moment(newDate);
         this.datesRange.endDate = elem.value;
 
         if(this.calendarDateEnd.isBefore(this.calendarDateFrom)){
           this.inputDateFrom = elem.value ;
           this.datesRange.startDate = elem.value;
-          this.calendarDateFrom = moment(newDate);
+          //this.calendarDateFrom = moment(newDate);
+          this.calendarDateFrom.startDate = moment(newDate);
         }
       }
 
@@ -118,20 +122,22 @@ export default class customDatePickerController {
     if(this.datesRange.startDate){
       startDate = moment(this.datesRange.startDate, 'L', true);
       this.inputDateFrom = this.datesRange.startDate;
-      this.calendarDateFrom = (startDate);
+      this.calendarDateFrom.startDate = (startDate);
     }
     else{
       this.inputDateFrom = startDate.format('L');
-      this.calendarDateFrom = startDate;
+      this.calendarDateFrom.startDate = startDate;
     }
 
     if(this.datesRange.endDate){
       endDate = moment(this.datesRange.endDate, 'L', true);
       this.inputDateEnd = this.datesRange.endDate;
-      this.calendarDateEnd = (endDate);
+     // this.calendarDateEnd = (endDate);
+      this.calendarDateFrom.endDate = (endDate);
     }
     else{
-      this.calendarDateEnd = endDate;
+     // this.calendarDateEnd = endDate;
+      this.calendarDateFrom.endDate = (endDate);
       this.inputDateEnd = endDate.format('L');
     }
 
@@ -143,13 +149,15 @@ export default class customDatePickerController {
       if(day.isAfter(this.calendarDateEnd)){
        this.inputDateEnd = day.format('L') ;
        this.datesRange.endDate = day.format('L');
-       this.calendarDateEnd = day;
+       //this.calendarDateEnd = day;
+       this.calendarDateFrom.endDate = day;
       }
       
     }.bind(this);
 
     this.optionsStartDate = {
      // start: this.calendarDateFrom,
+      mode: 'range',
       months: 1,     
       template: require('./calendarPicker.tpl.html'),
       callback: startCallback
@@ -163,7 +171,8 @@ export default class customDatePickerController {
       if(day.isBefore(this.calendarDateFrom)){
         this.inputDateFrom = day.format('L') ;
         this.datesRange.startDate = day.format('L');
-        this.calendarDateFrom = day;
+        //this.calendarDateFrom = day;
+        this.calendarDateFrom.startDate = day;
       }
       
     }.bind(this);
@@ -181,6 +190,10 @@ export default class customDatePickerController {
     "ngInject";
 
     this.shouldShowCalendar =false;
+    this.calendarDateFrom = {
+      startDate: null,
+      endDate: null
+    };
     this.scope = $scope;
 
     this.initCalendar();

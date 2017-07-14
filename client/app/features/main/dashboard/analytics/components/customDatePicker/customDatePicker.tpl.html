@@ -7,10 +7,14 @@
     
     <md-card md-autofocus id="calendarPicker" class="calendar-picker" layout="column" ng-show="vm.shouldShowCalendar">
       <md-card-content layout="row">
-        <mighty-datepicker ng-model="vm.calendarDateFrom" range-from="true" options="vm.optionsStartDate" before="vm.calendarDateEnd">
+      <date-picker ng-model="vm.calendarDateFrom" options="vm.optionsStartDate" before="vm.calendarDateEnd" after="vm.calendarDateFrom">
+      </date-picker>
+     <!--  <date-picker ng-model="vm.calendarDateEnd" range-to="true" options="vm.optionsEndDate" after="vm.calendarDateFrom">
+      </date-picker> -->
+<!--         <mighty-datepicker ng-model="vm.calendarDateFrom" range-from="true" options="vm.optionsStartDate" before="vm.calendarDateEnd">
         </mighty-datepicker>
         <mighty-datepicker ng-model="vm.calendarDateEnd" range-to="true" options="vm.optionsEndDate" after="vm.calendarDateFrom">
-        </mighty-datepicker>
+        </mighty-datepicker> -->
       </md-card-content>
     </md-card>
   
