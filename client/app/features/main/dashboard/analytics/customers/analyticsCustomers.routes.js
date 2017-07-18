@@ -7,7 +7,7 @@ import controller from './analyticsCustomers.controller'
  */
 /* @ngInject */
 export default function routes($stateProvider, Permissions) {
-  "ngInject;"
+  "ngInject";
   $stateProvider.state("main.dashboard.analytics.analyticsCustomers", {
     url: "/analyticsCustomers/:reportName?",
     requiresPermission:Permissions.ANALYTICS,

@@ -7,7 +7,7 @@ import controller from './venueDetails.controller'
  */
 /* @ngInject */
 export default function routes($stateProvider, Permissions) {
-  "ngInject;"
+  "ngInject";
   $stateProvider.state("main.dashboard.venueSettings.venueDetails", {
     url: "/venueDetails",
     requiresPermission:Permissions.VENUE_CREATE,
