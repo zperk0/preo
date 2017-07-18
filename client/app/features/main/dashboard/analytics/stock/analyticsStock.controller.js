@@ -30,19 +30,19 @@ export default class analyticsStockController {
     if(!this.spinnerRunning())
       this.showSpinner();
 
-    this.ReportsService.getReportData(this.dataFilters)
-    .then((data) => {
+  //  this.ReportsService.getReportData(this.dataFilters)
+  //  .then((data) => {
 
      //this.reportsData = data;
 
-      this.updateView();
+   //   this.updateView();
 
       this.hideSpinner();
 
-    }, (err) => {
-     console.log('ReportService fetch Stock Error - ', err);
-     this.hideSpinner();
-    });
+   // }, (err) => {
+   //  console.log('ReportService fetch Stock Error - ', err);
+   //  this.hideSpinner();
+   // });
 
   }
 

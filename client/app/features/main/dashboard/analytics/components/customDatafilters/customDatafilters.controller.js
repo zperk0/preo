@@ -474,6 +474,8 @@ export default class customDatafiltersController {
 
       this.filters.datesRange.startDate = this.lastDataSelected.start;
       this.filters.datesRange.endDate = this.lastDataSelected.end;
+      this.datesRange.startDate = moment(this.lastDataSelected.start, 'L') ;
+      this.datesRange.endDate = moment( this.lastDataSelected.end, 'L') ;
     }
 
     //Will show From/Until fields displaying datesRange equals to the last option selected before Custom
@@ -1109,12 +1111,26 @@ export default class customDatafiltersController {
       end: {}
     };
 
+    var endCallback = function(){
+      console.log('test callback --->>');
+    };
+
+    this.datesRange= {
+      startDate: null,
+      endDate: null,
+    };
+    this.datesRangeOptions = {
+        mode: 'range',
+        months: 1,
+        callback: endCallback
+    };
+
     this.filters = {
       venues: [],
       report: null,
       datesRange: {
         startDate: null,
-        endDate: null
+        endDate: null,
       },
       events: [],
       customerMarketing: false
@@ -1191,11 +1207,12 @@ export default class customDatafiltersController {
 
     //Watch created -> because customDatePicker modify dateRange too
     $scope.$watch(
-      () => { return this.filters.datesRange; },
+      () => { return this.datesRange; },
       function(newValue, oldValue){
 
         if(this.dateRangeChanged === true){
-
+          this.filters.datesRange.startDate = this.datesRange.startDate.format('L');
+          this.filters.datesRange.endDate = this.datesRange.endDate.format('L');
           this.debounceUpdate('DateRange',true);
         }
       }.bind(this),

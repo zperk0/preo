@@ -13,6 +13,15 @@ export default class customDatePickerController {
 
     elementFocused.setSelectionRange(0, elementFocused.value.length);
     this.shouldShowCalendar = true;
+
+    if(dateInput.id == 'fromDate'){
+      this.startSelected = true;
+      this.endSelected = false;
+    }
+    else{
+      this.startSelected = false;
+      this.endSelected = true;
+    }
   }
 
   onBlurinputs(event){
@@ -141,17 +150,56 @@ export default class customDatePickerController {
       this.inputDateEnd = endDate.format('L');
     }
 
-    var startCallback = function(day){
-      this.inputDateFrom= day.format('L');
-      this.datesRange.startDate = day.format('L');     
-      // A fix to when user select a day AFTER 'endDate input', move endDate to the same date
-      // This will not work now, because angular-mighty-datepicker is not ready for it.
-      if(day.isAfter(this.calendarDateEnd)){
-       this.inputDateEnd = day.format('L') ;
-       this.datesRange.endDate = day.format('L');
-       //this.calendarDateEnd = day;
-       this.calendarDateFrom.endDate = day;
+    // var startCallback = function(day){
+    //   this.inputDateFrom= day.format('L');
+    //   this.datesRange.startDate = day.format('L');     
+    //   // A fix to when user select a day AFTER 'endDate input', move endDate to the same date
+    //   // This will not work now, because angular-mighty-datepicker is not ready for it.
+    //   if(day.isAfter(this.calendarDateFrom.endDate)){
+    //    this.inputDateEnd = day.format('L') ;
+    //    this.datesRange.endDate = day.format('L');
+    //    //this.calendarDateEnd = day;
+    //    this.calendarDateFrom.endDate = day;
+    //   }
+      
+    // }.bind(this);
+
+    var endCallback = function(day){
+
+      if(this.startSelected){
+
+        this.inputDateFrom = day.format('L') ;
+        this.datesRange.startDate = day.format('L');
+          //this.calendarDateFrom = day;
+        this.calendarDateFrom.startDate = day;
+
+        if(day.isAfter(this.calendarDateFrom.endDate)){
+          this.inputDateEnd = day.format('L') ;
+          this.datesRange.endDate = day.format('L');
+          //this.calendarDateEnd = day;
+          this.calendarDateFrom.endDate = day;
+        }
+
+        var obj = {target: { id: 'endDate'}}
+        this.onEnterinputs(obj);
       }
+      else if(this.endSelected){
+        this.inputDateEnd = day.format('L') ;
+        this.datesRange.endDate = day.format('L');
+        //this.calendarDateEnd = day;
+        this.calendarDateFrom.endDate = day;
+
+        if(day.isBefore(this.calendarDateFrom.startDate)){
+          this.inputDateFrom = day.format('L') ;
+          this.datesRange.startDate = day.format('L');
+          //this.calendarDateFrom = day;
+          this.calendarDateFrom.startDate = day;
+        }
+
+        var obj = {target: { id: 'fromDate'}}
+        this.onEnterinputs(obj);
+      }
+
       
     }.bind(this);
 
@@ -160,29 +208,15 @@ export default class customDatePickerController {
       mode: 'range',
       months: 1,     
       template: require('./calendarPicker.tpl.html'),
-      callback: startCallback
-    }
-
-    var endCallback = function(day){
-      this.inputDateEnd= day.format('L'); 
-      this.datesRange.endDate = day.format('L');
-      // A fix to when user select a day BEFORE 'fromDate input', move fromDate to the same date
-      // This will not work now, because angular-mighty-datepicker is not ready for it.
-      if(day.isBefore(this.calendarDateFrom)){
-        this.inputDateFrom = day.format('L') ;
-        this.datesRange.startDate = day.format('L');
-        //this.calendarDateFrom = day;
-        this.calendarDateFrom.startDate = day;
-      }
-      
-    }.bind(this);
-
-    this.optionsEndDate = {
-     // start: this.calendarDateEnd,
-      months: 1,      
-      template: require('./calendarPicker.tpl.html'),
       callback: endCallback
-    }
+    };
+
+    // this.optionsEndDate = {
+    //  // start: this.calendarDateEnd,
+    //   months: 1,      
+    //   template: require('./calendarPicker.tpl.html'),
+    //   callback: endCallback
+    // }
     
   }
 

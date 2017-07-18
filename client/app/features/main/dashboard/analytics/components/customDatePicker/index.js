@@ -1,7 +1,7 @@
 // Import Style
 import './customDatePicker.scss';
 // import '../../../../../../../../node_modules/angular-mighty-datepicker/build/angular-mighty-datepicker.css';
-import 'angular-mighty-datepicker/build/angular-mighty-datepicker.css';
+//import 'angular-mighty-datepicker/build/angular-mighty-datepicker.css';
 
 //import mightyDatepicker from '../../../../node_modules/angular-mighty-datepicker/build/angular-mighty-datepicker.js';
 
@@ -20,9 +20,9 @@ import extendMoment from 'moment-range/dist/moment-range.js';
 window['moment-range'] = require('moment-range/dist/moment-range.js');
 window['moment-range'].extendMoment(moment);
 
-import datePicker from '../../../../../../components/datePicker';
+//import datePicker from '../../../../../../components/datePicker';
 
-export default angular.module("customDatePicker" , [datePicker])
+export default angular.module("customDatePicker" , ["pasvaz.bindonce"])
   .directive("customDatePicker", directive)
   .controller(controller.UID, controller)
   .name;
