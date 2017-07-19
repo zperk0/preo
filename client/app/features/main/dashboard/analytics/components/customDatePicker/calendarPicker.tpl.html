@@ -13,7 +13,7 @@
      <span ng-repeat="day in currentMonth.weeks[1]" class="day" bo-text="day.date.format('dd')"></span>
 </div>
 <div bindonce class="week days layout-align-space-around-center layout-row" ng-repeat="week in currentMonth.weeks">
-    <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="start-day md-fab day" type="button" ng-mouseover="checkDayRange(day)" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: currentMonth.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
+    <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="start-day md-fab day" type="button" ng-mouseover="onMouseOverDay(day)" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: currentMonth.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
     </button> 
 </div> 
 </div>
@@ -32,7 +32,7 @@
      <span ng-repeat="day in nextMonth.weeks[1]" class="day" bo-text="day.date.format('dd')"></span>
 </div>
 <div bindonce class="week days layout-align-space-around-center layout-row" ng-repeat="week in nextMonth.weeks">
-    <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="end-day md-fab day" type="button" ng-mouseover="checkDayRange(day)" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: nextMonth.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
+    <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="end-day md-fab day" type="button" ng-mouseover="onMouseOverDay(day)" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: nextMonth.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
     </button> 
 </div> 
 </div>

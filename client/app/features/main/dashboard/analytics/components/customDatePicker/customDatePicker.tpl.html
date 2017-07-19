@@ -2,7 +2,7 @@
   <div flex layout="row" class="inputs-dates">
     <md-input-container md-no-float flex class="no-spacer">
       <label translate>From</label>
-      <input type="text" ng-keydown="onKeyDown($event)" ng-keyup="onKeyUp($event)" id="fromDate" ng-focus="onEnterinputs($event)" ng-blur="onBlurinputs($event)" ng-model="inputDateFrom"  maxlength="10">
+      <input type="text" ng-keydown="onKeyDown($event)" ng-keyup="onKeyUp($event)" placeholder= "{{dayOnMouseOver}}" id="fromDate" ng-focus="onEnterinputs($event)" ng-blur="onBlurinputs($event)" ng-model="inputDateFrom"  maxlength="10">
     </md-input-container>  
     
     <md-card md-autofocus id="calendarPicker" class="calendar-picker" layout="column" ng-show="shouldShowCalendar">
@@ -22,7 +22,7 @@
   
     <md-input-container md-no-float flex class="no-spacer" ng-if="isRangeMode">
       <label translate>Until</label>
-      <input type="text" ng-keydown="onKeyDown($event)" ng-keyup="onKeyUp($event)" id="endDate" ng-focus="onEnterinputs($event)" ng-blur="onBlurinputs($event)" ng-model="inputDateEnd"  maxlength="10">
+      <input type="text" ng-keydown="onKeyDown($event)" ng-keyup="onKeyUp($event)" placeholder= "{{dayOnMouseOver}}" id="endDate" ng-focus="onEnterinputs($event)" ng-blur="onBlurinputs($event)" ng-model="inputDateEnd"  maxlength="10">
     </md-input-container>
   </div>
 
