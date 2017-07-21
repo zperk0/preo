@@ -1121,7 +1121,7 @@ export default class customDatafiltersController {
     };
     this.datesRangeOptions = {
         mode: 'range',
-        months: 1,
+        months: 2,
         callback: endCallback
     };
 

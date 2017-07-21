@@ -1,39 +1,20 @@
 <div class="mighty-picker__holder" layout="row">
-<div flex class="mighty-picker__month" bindonce ng-mouseleave="mouseLeaveMonth()">
- <header class=" layout-align-space-between-center layout-row ">
- <button id="previousmonthBtn" class="md-icon-button md-mini" ng-click="moveMonth(-1)">
-  <md-icon>chevron_left</md-icon>
- </button>
- <span ng-bind="currentMonth.name" ng-class="{'space-between-header': isRangeMode, 'div-left': isRangeMode }"> </span>
-  <button id="nextmonthBtn" class="md-icon-button md-mini" ng-if="!isRangeMode" ng-click="moveMonth(1)">
-    <md-icon>chevron_right</md-icon>
-  </button>
- </header>
-<div class="week names layout-align-space-around-center layout-row">
-     <span ng-repeat="day in currentMonth.weeks[1]" class="day" bo-text="day.date.format('dd')"></span>
-</div>
-<div bindonce class="week days layout-align-space-around-center layout-row" ng-repeat="week in currentMonth.weeks">
-    <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="start-day md-fab day" type="button" ng-mouseover="onMouseOverDay(day)" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: currentMonth.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
-    </button> 
-</div> 
-</div>
-
-<div flex class="mighty-picker__month" bindonce ng-if="isRangeMode" ng-mouseleave="mouseLeaveMonth()">
- <header class=" layout-align-space-between-center layout-row ">
- <button id="previousmonthBtn" class="md-icon-button md-mini" ng-if="!isRangeMode" ng-click="moveMonth(-1)">
-  <md-icon>chevron_left</md-icon>
- </button>
- <span ng-bind="nextMonth.name" ng-class="{'space-between-header': isRangeMode, 'div-right': isRangeMode}"> </span>
-  <button id="nextmonthBtn" class="md-icon-button md-mini" ng-click="moveMonth(1)">
-    <md-icon>chevron_right</md-icon>
-  </button>
- </header>
-<div class="week names layout-align-space-around-center layout-row">
-     <span ng-repeat="day in nextMonth.weeks[1]" class="day" bo-text="day.date.format('dd')"></span>
-</div>
-<div bindonce class="week days layout-align-space-around-center layout-row" ng-repeat="week in nextMonth.weeks">
-    <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="end-day md-fab day" type="button" ng-mouseover="onMouseOverDay(day)" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: nextMonth.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
-    </button> 
-</div> 
-</div>
+  <div flex class="mighty-picker__month" bindonce ng-repeat= "month in months">
+     <header class=" layout-align-space-between-center layout-row ">
+       <button id="previousmonthBtn" class="md-icon-button md-mini" ng-if="$first" ng-click="moveMonth(-1)">
+        <md-icon>chevron_left</md-icon>
+       </button>
+       <span ng-bind="month.name" ng-class="{'space-between-header': isRangeMode, 'div-left': isRangeMode && $first, 'div-right': isRangeMode && $last }"> </span>
+       <button id="nextmonthBtn" class="md-icon-button md-mini" ng-if="$last" ng-click="moveMonth(1)">
+         <md-icon>chevron_right</md-icon>
+       </button>
+     </header>
+    <div class="week names layout-align-space-around-center layout-row">
+      <span ng-repeat="day in month.weeks[1]" class="day" bo-text="day.date.format('dd')"></span>
+    </div>
+    <div bindonce class="week days layout-align-space-around-center layout-row" ng-repeat="week in month.weeks" ng-mouseleave="mouseLeaveMonth()">
+      <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="start-day md-fab day" type="button" ng-mouseover="onMouseOverDay(day)" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: month.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
+      </button> 
+    </div> 
+  </div>
 </div>
