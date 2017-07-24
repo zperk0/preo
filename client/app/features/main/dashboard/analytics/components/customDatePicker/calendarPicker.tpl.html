@@ -1,5 +1,5 @@
-<div class="mighty-picker__holder" layout="row">
-  <div flex class="mighty-picker__month" bindonce ng-repeat= "month in months">
+<div class="picker-wrapper" layout="row">
+  <div flex class="month" bindonce ng-repeat= "month in months">
      <header class=" layout-align-space-between-center layout-row ">
        <button id="previousmonthBtn" class="md-icon-button md-mini" ng-if="$first" ng-click="moveMonth(-1)">
         <md-icon>chevron_left</md-icon>
@@ -13,7 +13,7 @@
       <span ng-repeat="day in month.weeks[1]" class="day" bo-text="day.date.format('dd')"></span>
     </div>
     <div bindonce class="week days layout-align-space-around-center layout-row" ng-repeat="week in month.weeks" ng-mouseleave="mouseLeaveMonth()">
-      <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="start-day md-fab day" type="button" ng-mouseover="onMouseOverDay(day)" ng-click="select(day)" bo-class='{"mighty-picker-calendar__day": day, "mighty-picker-calendar__day--marked": day.marker, "mighty-picker-calendar__day--in-range": day.inRange}' ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: month.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
+      <button aria-label="day.date.date()" ng-repeat="day in week track by $index" class="start-day md-fab day" type="button" ng-mouseover="onMouseOverDay(day)" ng-click="select(day)" ng-class='{ selected: day.selected, inrange: day.inRange && !day.selected, differentmonth: month.name != day.date.format("MMMM YYYY")}' bo-text="day.date.date()"> 
       </button> 
     </div> 
   </div>

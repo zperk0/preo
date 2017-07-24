@@ -21,7 +21,8 @@ export default function customDatePicker($compile, $timeout){
     link: ($scope, elem, attr, ctrl) => {
 
       var rangeMouseOver, _startSelected, _endSelected, _ignorePrepare, _isSelecting, _isTyping;
-            
+      $scope.inputs = {};
+
       function _injectPicker() {
         var domEl;
         domEl = $compile(angular.element(options.template))($scope);
@@ -186,9 +187,7 @@ export default function customDatePicker($compile, $timeout){
 
             $scope.mouseLeaveMonth = function() {
               _isSelecting = false;
-
-              //if($scope.options.mode !== 'range')
-                _prepareDayLayout();
+              _prepareDayLayout();
             };
 
             $scope.onMouseOverDay = function(day) {
@@ -215,7 +214,7 @@ export default function customDatePicker($compile, $timeout){
 
             //does not execute placeholder part if is selecting day
             if(isSelecting){
-              $scope.dayOnMouseOver = "";
+              $scope.inputs.placeholder = "";
 
               if($scope.options.mode === 'simple')
                 $scope.shouldShowCalendar = false;
@@ -223,62 +222,65 @@ export default function customDatePicker($compile, $timeout){
             }
 
             if(day){
-              if(_startSelected)
-                $scope.inputDateFrom = "";
-              if(_endSelected)
-                $scope.inputDateEnd = "";
 
-              $scope.dayOnMouseOver = day.format('L');
+              if(_startSelected || (_endSelected && day.isBefore($scope.model.startDate)))
+                $scope.inputs.start = "";
+              if(_endSelected && day.isAfter($scope.model.startDate))
+                $scope.inputs.end = "";
+
+              $scope.inputs.placeholder = day.format('L');
             }
             else{ 
               switch ($scope.options.mode) {
                 case 'multiple':
-                  $scope.inputDateFrom = _fillMultipleDatesInput();
+                  $scope.inputs.start = _fillMultipleDatesInput();
                   break;
                 case 'range':
-                  $scope.inputDateFrom = $scope.model.startDate.format('L');
-                  $scope.inputDateEnd = $scope.model.endDate.format('L') ;
+                  $scope.inputs.start = $scope.model.startDate.format('L');
+                  $scope.inputs.end = $scope.model.endDate.format('L') ;
                   break;
                 default:
-                  $scope.inputDateFrom = $scope.model.format('L');
+                  $scope.inputs.start = $scope.model.format('L');
                   break;
               }
 
-              $scope.dayOnMouseOver = "";
+              $scope.inputs.placeholder = "";
             }
           };
 
           function _setInputFocus(input){
             var elementFocused = elem[0].querySelector('#' + input);
-            _ignorePrepare = true;console.log('focuss ', input);
+            _ignorePrepare = true;
             elementFocused.focus();
            
           }
 
           function _fillRangeModel(day) {
-
             if(_startSelected){
 
-              $scope.inputDateFrom = day.format('L') ;
+              $scope.inputs.start = day.format('L') ;
               $scope.model.startDate = day;
 
               if(day.isAfter($scope.model.endDate)){
-                  $scope.inputDateEnd = day.format('L') ;
-                  $scope.model.endDate = day;
+                  $scope.inputs.end = day.format('L') ;
+                  $scope.model.endDate = day;      
               }
 
               _setInputFocus('endDate');
             }
             else if(_endSelected){
-              $scope.inputDateEnd = day.format('L') ;
-              $scope.model.endDate = day;
 
               if(day.isBefore($scope.model.startDate)){
-                $scope.inputDateFrom = day.format('L') ;
-                $scope.model.startDate = day;
-              }
+                  $scope.inputs.start = day.format('L') ;
+                  $scope.model.startDate = day;
 
-              $scope.shouldShowCalendar = false;
+                  _setInputFocus('endDate');
+              }
+              else{
+                $scope.inputs.end = day.format('L') ;
+                $scope.model.endDate = day;
+                $scope.shouldShowCalendar = false;
+              }
             }
 
           };
@@ -314,70 +316,24 @@ export default function customDatePicker($compile, $timeout){
                       $scope.model.splice(ix, 1);
                     } else {
                       _pushIntoModelSorted(day.date);
-                     // $scope.model.push(moment(day.date));
                     }
-                    $scope.inputDateFrom = _fillMultipleDatesInput();
+                    $scope.inputs.start = _fillMultipleDatesInput();
                     break;
                   case 'range':
                     _fillRangeModel(day.date);
                     break;
                   default:
                     $scope.model = day.date;
-                    $scope.inputDateFrom = day.date.format('L');
+                    $scope.inputs.start = day.date.format('L');
                     break;
                 }
                 if ($scope.options.callback) {
                   $scope.options.callback(day.date);
                 }
 
-                _prepareDayLayout(day.date, _isSelecting || _isTyping);
+                _prepareDayLayout(day.date, _isSelecting);
               }
             };
-
-            switch ($scope.options.mode) {
-              case "multiple":
-                // $scope.$watchCollection('model', function(newVals, oldVals) {
-                //   _prepare();
-                // });
-                break;
-              case "range":
-                // $scope.$watch('model.startDate', function(newVal, oldVal) {
-                //   if (!moment.isMoment(newVal)) {
-                //     newVal = moment(newVal);
-                //   }
-                //   if (!oldVal || oldVal && !newVal.isSame(oldVal, 'day')) { console.log('watcher start date ------');
-                //     $scope.model.startDate = newVal;
-                //     if (oldVal) {
-                //       $scope.options.start = moment(newVal);
-                //     }
-                //      _prepare();
-                //   }
-                // });
-                // $scope.$watch('model.endDate', function(newVal, oldVal) { console.log('watcher end date ----------');
-                //   if (!moment.isMoment(newVal)) {
-                //     newVal = moment(newVal);
-                //   }
-                //   if (!oldVal || oldVal && !newVal.isSame(oldVal, 'day')) {
-                //     $scope.model.endDate = newVal;
-                //      _prepare();
-                //   }
-                // });
-                break;
-              default:
-                // $scope.$watch('model', function(newVal, oldVal) {
-                //   if (!moment.isMoment(newVal)) {
-                //     newVal = moment(newVal);
-                //   }
-                //   if (!oldVal || oldVal && !newVal.isSame(oldVal, 'day')) {
-                //     $scope.model = newVal;
-                //     if (oldVal) {
-                //       $scope.options.start = moment(newVal);
-                //     }
-                //      _prepare();
-                //   }
-                // });
-                break;
-            }
 
             function _checkMonthsLoaded(){
 
@@ -434,7 +390,7 @@ export default function customDatePicker($compile, $timeout){
                     start = angular.copy($scope.model.startDate);
                     
                     //if startDate month is == nexMonth does not move calendar 
-                    if(($scope.model.startDate.month() > currentMonth || $scope.model.startDate.year() > currentYear) && isSameMonth)
+                    if(((start.month() > currentMonth && start.year() >= currentYear) || (start.year() > currentYear)) && isSameMonth)
                       step = -1;
                     break;
                   default:
@@ -449,16 +405,15 @@ export default function customDatePicker($compile, $timeout){
 
                 // if endDate month is < nextMonth.....start at selected month
                 var step = -1;
-                if($scope.model.endDate.month() < nextMonth && $scope.model.endDate.year() == currentYear && isSameMonth)
+                if(((start.month() < nextMonth && start.year() <= currentYear) || (start.year() < currentYear)) && isSameMonth)
                   step = 0;
                 
                 $scope.options.start = start.add(step, 'months');
               }
 
-              console.log('start atttt ', $scope.options.start.format('L'));
             }
 
-            $scope.onEnterinputs = function(event){console.log('enter input ---');
+            $scope.onEnterinputs = function(event){
               var dateInput = event.target || event.srcElement;
               _defineStartDate(dateInput.id);
               if(!_ignorePrepare && !_checkMonthsLoaded()){
@@ -500,21 +455,21 @@ export default function customDatePicker($compile, $timeout){
                 if(dateInput.id === 'fromDate'){
                   switch($scope.options.mode) {
                     case 'multiple':
-                      $scope.inputDateFrom= _fillMultipleDatesInput();
+                      $scope.inputs.start= _fillMultipleDatesInput();
                       break;
                     case 'range':
-                      $scope.inputDateFrom = $scope.model.startDate.format('L');
+                      $scope.inputs.start = $scope.model.startDate.format('L');
                       break;
                     default:
-                      $scope.inputDateFrom = $scope.model.format('L');
+                      $scope.inputs.start = $scope.model.format('L');
                       break;
                   }
                   
                 }else if(dateInput.id === 'endDate'){
-                  $scope.inputDateEnd = $scope.model.endDate.format('L');
+                  $scope.inputs.end = $scope.model.endDate.format('L');
                 }
               }
-
+              _isSelecting = false;
             }
 
              // Trap Div will hide calendar, and automatically fire events: focus & click from element at position X,Y where user clicked
@@ -562,23 +517,18 @@ export default function customDatePicker($compile, $timeout){
 
                  var newDate = moment(element.value, 'L', true);
                  var obj = { date: newDate};
-                 _isTyping = true;
+                 _isSelecting = true;
                 
                 _select(obj);
                 _defineStartDate(elementId);
 
-                if(!_checkMonthsLoaded())
+                if(!_checkMonthsLoaded()){
                   _prepare();
-                else
+                }
+                else{
                   _prepareDayLayout();
-                
-                _isTyping = false;
+                }
 
-
-               // if(_startSelected)
-                //  _setInputFocus('endDate');
-               // else if(_endSelected)
-                //  $scope.shouldShowCalendar = false;
               }
               
              }
@@ -595,7 +545,7 @@ export default function customDatePicker($compile, $timeout){
                     $scope.model.push(startDate);
                   }
 
-                  $scope.inputDateFrom = _fillMultipleDatesInput();
+                  $scope.inputs.start = _fillMultipleDatesInput();
                   break;
                 case 'range':
                   
@@ -605,19 +555,18 @@ export default function customDatePicker($compile, $timeout){
                   if(!$scope.model.endDate)
                     $scope.model.endDate = endDate;
 
-                  $scope.inputDateFrom = $scope.model.startDate.format('L');
-                  $scope.inputDateEnd = $scope.model.endDate.format('L');
+                  $scope.inputs.start = $scope.model.startDate.format('L');
+                  $scope.inputs.end = $scope.model.endDate.format('L');
                   break;
                 default:
                   if(!$scope.model)
                     $scope.model = startDate;
 
-                  $scope.inputDateFrom = $scope.model.format('L');
+                  $scope.inputs.start = $scope.model.format('L');
                   break;
               }
             }
 
-      //$scope.onMouseOverDay = _prepareDayLayout;
       $scope.select = _select;
       _initCalendar();
       _setup();

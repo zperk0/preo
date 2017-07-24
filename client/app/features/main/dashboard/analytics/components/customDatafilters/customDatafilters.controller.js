@@ -1112,7 +1112,7 @@ export default class customDatafiltersController {
     };
 
     var endCallback = function(){
-      console.log('test callback --->>');
+      console.log('callback datepicker');
     };
 
     this.datesRange= {
