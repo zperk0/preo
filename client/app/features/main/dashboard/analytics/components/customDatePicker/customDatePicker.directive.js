@@ -62,11 +62,13 @@ export default function customDatePicker($compile, $timeout){
                   if(!rangeMouseOver)
                     return isRangeModel;
 
-                  let isRangeMouse = moment.range($scope.model.startDate, rangeMouseOver).contains(day) || day.isSame(rangeMouseOver, 'day')
-                                  || moment.range($scope.model.endDate, rangeMouseOver).contains(day) || day.isSame(rangeMouseOver, 'day')
-                                  || moment.range( rangeMouseOver, $scope.model.endDate).contains(day) 
-                                  || moment.range( rangeMouseOver, $scope.model.startDate).contains(day) ;
-
+                  let isRangeMouse ;
+                  if(_startSelected)
+                    isRangeMouse = day.isSame(rangeMouseOver, 'day') || moment.range( rangeMouseOver, $scope.model.startDate).contains(day);
+                  if(_endSelected)
+                    isRangeMouse = day.isSame(rangeMouseOver, 'day') || moment.range( rangeMouseOver, $scope.model.startDate).contains(day)
+                                  || moment.range($scope.model.endDate, rangeMouseOver).contains(day) ;
+                  
                   return isRangeModel || isRangeMouse;
               } else {
                 return false;
@@ -255,11 +257,13 @@ export default function customDatePicker($compile, $timeout){
            
           }
 
+          //range mode -> randeDone obj controls if both date has been updated or only the first one.
           function _fillRangeModel(day) {
             if(_startSelected){
 
               $scope.inputs.start = day.format('L') ;
               $scope.model.startDate = day;
+              $scope.model.rangeDone = false;
 
               if(day.isAfter($scope.model.endDate)){
                   $scope.inputs.end = day.format('L') ;
@@ -273,6 +277,7 @@ export default function customDatePicker($compile, $timeout){
               if(day.isBefore($scope.model.startDate)){
                   $scope.inputs.start = day.format('L') ;
                   $scope.model.startDate = day;
+                  $scope.model.rangeDone = false;
 
                   _setInputFocus('endDate');
               }
@@ -280,6 +285,8 @@ export default function customDatePicker($compile, $timeout){
                 $scope.inputs.end = day.format('L') ;
                 $scope.model.endDate = day;
                 $scope.shouldShowCalendar = false;
+
+                $scope.model.rangeDone = true;
               }
             }
 
@@ -469,7 +476,7 @@ export default function customDatePicker($compile, $timeout){
                   $scope.inputs.end = $scope.model.endDate.format('L');
                 }
               }
-              _isSelecting = false;
+
             }
 
              // Trap Div will hide calendar, and automatically fire events: focus & click from element at position X,Y where user clicked
@@ -480,6 +487,9 @@ export default function customDatePicker($compile, $timeout){
 
                var trapDiv = elem[0].querySelector('#trapDiv');
                trapDiv.style.display = 'none';
+
+              if($scope.options.mode == 'range' && !$scope.model.rangeDone)
+                $scope.model.rangeDone = true;
                
                var elemClicked = document.elementFromPoint(e.clientX, e.clientY);
                
@@ -528,6 +538,8 @@ export default function customDatePicker($compile, $timeout){
                 else{
                   _prepareDayLayout();
                 }
+
+                _isSelecting = false;
 
               }
               
