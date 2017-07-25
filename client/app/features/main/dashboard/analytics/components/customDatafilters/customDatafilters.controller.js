@@ -1210,7 +1210,7 @@ export default class customDatafiltersController {
       () => { return this.datesRange; },
       function(newValue, oldValue){
 
-        if(this.dateRangeChanged === true && this.datesRange.rangeDone){
+        if(this.dateRangeChanged === true && (this.selectedDaterange.type != 'custom' || ( this.selectedDaterange.type == 'custom' && this.datesRange.rangeDone))){
           this.filters.datesRange.startDate = this.datesRange.startDate.format('L');
           this.filters.datesRange.endDate = this.datesRange.endDate.format('L');
           this.debounceUpdate('DateRange', false);
