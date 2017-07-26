@@ -30,7 +30,6 @@
     "angular-material-calendar": "^0.2.14",
     "angular-material-data-table": "^0.10.10",
     "angular-messages": "1.5.8",
-    "angular-mighty-datepicker": "^0.1.4",
     "angular-sanitize": "1.5.8",
     "angular-scroll": "^1.0.0",
     "angular-sortable-view": "git+ssh://bitbucket.org/preoday/angular-sortable.git",
