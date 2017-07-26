@@ -662,6 +662,7 @@ export default class ReportsService {
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
         {key:'fee', text:this.gettextCatalog.getString('Fees'), fieldType: 'currency'},
         {key:'total', text:this.gettextCatalog.getString('Total'), fieldType: 'currency'},
+        {key:'paymentType', text:this.gettextCatalog.getString('Payment Method'), isHidden: true, isOnlyCsv: true},
         //{key:'orderStatus' ,text:this.gettextCatalog.getString('Status'), isHidden: true , showToTakeawaysOnly: true},
       ];
     }
