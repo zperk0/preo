@@ -13,7 +13,7 @@ export default class ContextualDrawerDeliveryZonesEditController {
     if (this.deliveryZoneForm.$valid){
       this.DeliveryZoneService.saveEditableDeliveryZone()
         .then(()=>{
-          return this.$mdSidenav('deliveryZonesEdit').close()
+          return this.contextualDrawer.close();
         }).then(()=>{
           console.log("close deliveryZonesEdit is done", this.deliveryZoneForm);
         });
@@ -32,12 +32,17 @@ export default class ContextualDrawerDeliveryZonesEditController {
     this.editableData = DeliveryZoneService.editableData;
     this.distanceUnit = VenueService.getKmOrMiles();
     this.translatedDistanceUnit = "kms";
-    if (this.distanceUnit === "kms") this.translatedDistanceUnit = gettextCatalog.getString("kms")
-    else if (this.distanceUnit === "miles") this.translatedDistanceUnit = gettextCatalog.getString("miles");
+
+    if (this.distanceUnit === "kms") {
+      this.translatedDistanceUnit = gettextCatalog.getString("kms");
+    } else if (this.distanceUnit === "miles") {
+      this.translatedDistanceUnit = gettextCatalog.getString("miles");
+    }
 
     this.isEditing = false;
+
     $scope.$watch('drawerDeliveryZonesEditCtrl.DeliveryZoneService.editableDeliveryZone',(newValue,oldValue)=>{
-      console.log("on watch", newValue,oldValue);
+      console.log("on watch ", newValue, oldValue);
       this.editableDeliveryZone = newValue;
     })
 
