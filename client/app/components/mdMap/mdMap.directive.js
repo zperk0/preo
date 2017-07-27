@@ -16,7 +16,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
 
 
       var distanceMultiplier =  VenueService.getKmOrMiles() && VenueService.getKmOrMiles()=="miles"?  1.6 : 1;
-      var deliveryZoneDrawingPolygon = false;
+      var deliveryZoneDrawingPolygon;
       var shapes = {};
       var polygonDrawer = {};
       var auxGeocoding = {}; // USed to Store lat/lng values coming from Geocode when venue has no lat/lng yet.
@@ -108,11 +108,8 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
 
       function updateShape(deliveryZone, shape){
         if(deliveryZone.type === 'DISTANCE'){
-          console.log('DISTANCE --', deliveryZone.distance );
 
-          console.log('distanceMultiplier -', distanceMultiplier);
           var radius =  deliveryZone.distance * 1000 * distanceMultiplier;
-          console.log('RADIUS - ', radius);
           shape.setRadius(radius);
         }else if(deliveryZone.type === 'CUSTOM') {
 
@@ -149,6 +146,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
               handlePolygonComplete(shape);
             });
           }
+
         }
 
         shape.setStyle({fillColor:deliveryZone.$color.border, editable:true, fillOpacity:0.3, opacity: 0.5,stroke:true, color:deliveryZone.$color.border,zIndex:deliveryZone.id});
@@ -158,6 +156,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
         } else {
           scope.map.removeLayer(shape);
         }
+
       }
 
        function drawShape(deliveryZone){
@@ -201,7 +200,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
             shapes[deliveryZoneDrawingPolygon.id] = polygon;
             deliveryZoneDrawingPolygon.polygon = preparePolygonArray(polygon);
             polygon.setStyle({editable:false});
-            deliveryZoneDrawingPolygon = false;
+            //deliveryZoneDrawingPolygon = false;
           })
         }
 
