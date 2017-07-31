@@ -44,6 +44,18 @@
 			z-index: 4;
 			box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.24), 0 0 8px 0 rgba(0, 0, 0, 0.12);		
 
+			.space-between-header{
+			  flex: 1;
+			  text-align: center;
+			  &.div-right{
+			    padding-left: 20%;
+			  }
+
+			  &.div-left{
+			    padding-right: 20%;
+			  }
+			}
+
 			header {
 				font-weight: bold;
 				font-size: 12px;
@@ -97,6 +109,11 @@
 				transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1)
 			}
 
+			.month {
+			  display: inline-block;
+			  margin: 0 6px;
+			}
+
 			.week {
 				.day {
 					width: 32px;
@@ -136,8 +153,13 @@
 							color: black !important;
 						}
 
+						&.marked {
+						  color: orange;
+						  font-weight: bold;
+						}
+
 						&.differentmonth {
-							color: rgba(0,0,0,0.5);
+							color: rgba(0,0,0,0.1);
 							font-weight: normal;
 						}
 

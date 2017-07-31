@@ -44,7 +44,7 @@
       </md-input-container>
       
       <div flex="30" ng-if="vm.shouldShowCustomDate">
-        <custom-date-picker dates-range="vm.filters.datesRange"> </custom-date-picker>
+        <custom-date-picker dates-range="vm.datesRange" options="vm.datesRangeOptions"> </custom-date-picker>
       </div>
     </md-card-content>
     <md-card-content layout="column" ng-if="vm.shouldShowReportfilter">
