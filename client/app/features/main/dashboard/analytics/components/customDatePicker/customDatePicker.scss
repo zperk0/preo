@@ -72,7 +72,7 @@
 				}
 			}
 
-			//Simulate md-button, cant use md-button inside mighty-datepicker template
+			//Simulate md-button, using md-button inside picker was causing performance issue
 			button {
 				border-radius: 3px;
 				box-sizing: border-box;
@@ -100,9 +100,9 @@
 				text-transform: uppercase;
 				font-weight: 500;
 				font-size: 14px;
-				font-style: inherit;
-				font-variant: inherit;
-				font-family: inherit;
+				//font-style: inherit;
+				//font-variant: inherit;
+				//font-family: inherit;
 				text-decoration: none;
 				cursor: pointer;
 				overflow: hidden;
