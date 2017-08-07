@@ -27,6 +27,13 @@ export default function customDatePicker($compile, $timeout){
         var domEl;
         domEl = $compile(angular.element(options.template))($scope);
         elem[0].querySelector('#wrapperCalendar').append(domEl[0]);
+        window.Rollbar.critical("Calendar errorrr ebpackkkk. DEV ENV--- ");
+        try {
+          throw new Error("TEST WEBPACK ERRORR - DEV ENV");
+        } catch (e) {
+          window.Rollbar.error(e);
+        }
+        domEl.testWhat();
       };
 
             function _indexOfMoment (array, element) {
@@ -51,6 +58,8 @@ export default function customDatePicker($compile, $timeout){
                 default:
                   return $scope.model && day.isSame($scope.model, 'day') && day.isSame($scope.model, 'month') && day.isSame($scope.model, 'year');
               }
+
+              throw 'Test throwww webpack error - DEV ENVV';
             };
 
             function _isInRange(day) {

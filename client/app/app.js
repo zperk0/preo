@@ -47,10 +47,13 @@ import contextual from './components/contextual';
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
 
+require('ng-rollbar');
+ import rollbar from './rollbar.config.js';
 
   angular.module('webapp', [
   /* external */
   'webapp.vendors',
+  'tandibar/ng-rollbar',
   /* directives */
   'sticky',
   imageUploader,
@@ -88,6 +91,7 @@ require('./components/sticky/sticky.directive.js');
   .config(config)
   .run(run)
   .config(routes)
+  .config(['RollbarProvider', rollbar])
   .name;
 
   (function _init(){
