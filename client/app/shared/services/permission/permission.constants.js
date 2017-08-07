@@ -7,6 +7,7 @@ export default {
   VOUCHERS:'voucher_create',
   ORDERS:'order_read',
   ACCOUNT:'account_update', //payments
+  ACCOUNT_READ:'account_read',
   ANALYTICS:'analytics_read',
   TAXES:'tax_create',
   VENUE_CREATE:'venue_create',
