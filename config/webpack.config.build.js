@@ -3,7 +3,7 @@ var path = require("path");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
-const PUBLIC_PATH='https://app-dev.preoday.com/';
+const PUBLIC_PATH='https://app-dev.preoday.com';
 
 var plugins =  [new webpack.NoErrorsPlugin(),
                 new CopyWebpackPlugin([
