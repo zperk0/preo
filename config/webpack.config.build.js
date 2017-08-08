@@ -3,7 +3,8 @@ var path = require("path");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
-const PUBLIC_PATH='https://app-dev.preoday.com';
+const ROLLBAR_POST_SERVER = 'eae81354dbed4493a20f9b7346af8bc9';
+const release = 'webapp-v2 1.0.26m';
 
 var plugins =  [new webpack.NoErrorsPlugin(),
                 new CopyWebpackPlugin([
@@ -11,20 +12,35 @@ var plugins =  [new webpack.NoErrorsPlugin(),
                   { from: 'client/.htaccess'},
                   { from: 'client/stripe-success.php', to:'payments/stripe-success.php'}
                 ]),
-                new webpack.optimize.DedupePlugin(),
-                new RollbarSourceMapPlugin({
-                    accessToken: 'eae81354dbed4493a20f9b7346af8bc9',
-                    version: 'webapp-v2 1.0.26h',
-                    publicPath: PUBLIC_PATH
-                  })]
+                new webpack.optimize.DedupePlugin()]
 
 var removeLogOption = [new webpack.optimize.UglifyJsPlugin({compress:{drop_console: true}})];
 
 module.exports = function(ENV, removeLogs) {
 
+  console.log('EnVV BUILDD ---', ENV);
   if (removeLogs) {
     plugins = plugins.concat(removeLogOption);
   }
+
+  var public_path = '';
+  if(ENV === 'dev'){
+    public_path = 'https://app-dev.preoday.com';
+  } else if(ENV === 'demo') {
+    public_path = 'https://app-demo.preoday.com';
+  } else if(ENV === 'prod') {
+    public_path = 'https://app.preoday.com';
+  } else {
+    public_path = 'http://localhost';
+  }
+
+  plugins.push(
+    new RollbarSourceMapPlugin({
+        accessToken: ROLLBAR_POST_SERVER,
+        version: release,
+        publicPath: public_path
+    })
+  );
 
   return {
     /**

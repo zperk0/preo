@@ -27,14 +27,6 @@ export default function customDatePicker($compile, $timeout, Rollbar){
         var domEl;
         domEl = $compile(angular.element(options.template))($scope);
         elem[0].querySelector('#wrapperCalendar').append(domEl[0]);
-        // test  Rollbar
-        Rollbar.critical("Calendar errorrr ebpackkkk. DEV ENV--- ");
-        try {
-          throw new Error("TEST WEBPACK ERRORR - DEV ENV");
-        } catch (e) {
-          Rollbar.error(e);
-        }
-        domEl.testWhat();
       };
 
             function _indexOfMoment (array, element) {
