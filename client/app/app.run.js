@@ -15,7 +15,7 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
   if (language) {
     gettextCatalog.setCurrentLanguage(language);
   }
-console.log('APPP UNNNNNN --', window._release);
+
   Preoday.Api.headers({
     'preo-appid': window._release
   });

@@ -4,7 +4,6 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
 const PUBLIC_PATH='https://app-dev.preoday.com';
-// const PUBLIC_PATH='http://8a50a6f7.ngrok.io';
 
 var plugins =  [new webpack.NoErrorsPlugin(),
                 new CopyWebpackPlugin([
@@ -15,7 +14,7 @@ var plugins =  [new webpack.NoErrorsPlugin(),
                 new webpack.optimize.DedupePlugin(),
                 new RollbarSourceMapPlugin({
                     accessToken: 'eae81354dbed4493a20f9b7346af8bc9',
-                    version: 'webapp-v2 1.0.26f',
+                    version: 'webapp-v2 1.0.26h',
                     publicPath: PUBLIC_PATH
                   })]
 

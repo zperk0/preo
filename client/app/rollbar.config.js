@@ -1,12 +1,11 @@
 export default function rollbar(RollbarProvider){
   "ngInject";
-
-  console.log('relse rollbar ocnfig ----', window._release);
+  if (window._PREO_DATA._ROLLBAR_ENV && window._PREO_DATA._ROLLBAR_CLIENT_TOKEN) {
     RollbarProvider.init({
-      accessToken: '7368f1bdec554a9dade4166ab5d7425d',
+      accessToken: window._PREO_DATA._ROLLBAR_CLIENT_TOKEN,
       captureUncaught: true,
       payload: {
-        environment: 'dev',
+        environment: window._PREO_DATA._ROLLBAR_ENV,
         client: {
               javascript: {
                 source_map_enabled: true,
@@ -18,4 +17,7 @@ export default function rollbar(RollbarProvider){
             }
       }
     });
+  } else {
+    RollbarProvider.init({enabled: false});
+  }
 }
