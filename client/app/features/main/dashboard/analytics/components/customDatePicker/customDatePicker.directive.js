@@ -27,7 +27,8 @@ export default function customDatePicker($compile, $timeout, Rollbar){
         var domEl;
         domEl = $compile(angular.element(options.template))($scope);
         elem[0].querySelector('#wrapperCalendar').append(domEl[0]);
-        window.Rollbar.critical("Calendar errorrr ebpackkkk. DEV ENV--- ");
+        // test  Rollbar
+        Rollbar.critical("Calendar errorrr ebpackkkk. DEV ENV--- ");
         try {
           throw new Error("TEST WEBPACK ERRORR - DEV ENV");
         } catch (e) {
@@ -49,8 +50,6 @@ export default function customDatePicker($compile, $timeout, Rollbar){
             };
 
             function _isSelected (day) {
-              throw 'Test throwww webpack error - DEV ENVV';
-              
               switch ($scope.options.mode) {
                 case "multiple":
                   return _indexOfMoment($scope.model, day) > -1;
