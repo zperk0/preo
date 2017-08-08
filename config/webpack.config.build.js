@@ -46,8 +46,7 @@ module.exports = function(ENV, removeLogs) {
       path: __dirname + '/../dist',
       publicPath: '/',
       filename: '[name].bundle.[chunkhash].js',
-      chunkFilename: '[name].bundle.[chunkhash].js',
-      sourceMapFilename: "[name].bundle.[chunkhash].js.map",
+      chunkFilename: '[name].bundle.[chunkhash].js'
     },
     /**
      * Devtool settings
