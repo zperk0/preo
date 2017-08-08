@@ -1,6 +1,6 @@
 //import controller from './customDatePicker.controller';
 
-export default function customDatePicker($compile, $timeout){
+export default function customDatePicker($compile, $timeout, Rollbar){
   "ngInject";
 
   var options = {
@@ -31,7 +31,7 @@ export default function customDatePicker($compile, $timeout){
         try {
           throw new Error("TEST WEBPACK ERRORR - DEV ENV");
         } catch (e) {
-          window.Rollbar.error(e);
+          Rollbar.error(e);
         }
         domEl.testWhat();
       };
@@ -49,6 +49,8 @@ export default function customDatePicker($compile, $timeout){
             };
 
             function _isSelected (day) {
+              throw 'Test throwww webpack error - DEV ENVV';
+              
               switch ($scope.options.mode) {
                 case "multiple":
                   return _indexOfMoment($scope.model, day) > -1;
@@ -58,8 +60,6 @@ export default function customDatePicker($compile, $timeout){
                 default:
                   return $scope.model && day.isSame($scope.model, 'day') && day.isSame($scope.model, 'month') && day.isSame($scope.model, 'year');
               }
-
-              throw 'Test throwww webpack error - DEV ENVV';
             };
 
             function _isInRange(day) {
