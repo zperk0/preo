@@ -14,7 +14,7 @@ var plugins =  [new webpack.NoErrorsPlugin(),
                 new webpack.optimize.DedupePlugin(),
                 new RollbarSourceMapPlugin({
                     accessToken: 'eae81354dbed4493a20f9b7346af8bc9',
-                    version: 'webapp-v2 1.0.26',
+                    version: 'webapp-v2 1.0.26b',
                     publicPath: PUBLIC_PATH
                   })]
 
