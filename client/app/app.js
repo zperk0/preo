@@ -44,7 +44,7 @@ import v2Redirect from './features/redirect';
 import imageUploader from './components/imageUploader';
 import contextual from './components/contextual';
 
-window._release = 'webapp-v2 1.0.26d';
+window._release = 'webapp-v2 1.0.26e';
 
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
