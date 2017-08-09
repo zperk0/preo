@@ -1,6 +1,6 @@
 //import controller from './customDatePicker.controller';
 
-export default function customDatePicker($compile, $timeout){
+export default function customDatePicker($compile, $timeout, Rollbar){
   "ngInject";
 
   var options = {

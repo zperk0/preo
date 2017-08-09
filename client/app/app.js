@@ -44,13 +44,18 @@ import v2Redirect from './features/redirect';
 import imageUploader from './components/imageUploader';
 import contextual from './components/contextual';
 
+window._release = 'webapp-v2 1.0.26';
+
+require('ng-rollbar');
+import rollbar from './rollbar.config.js';
+
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
-
 
   angular.module('webapp', [
   /* external */
   'webapp.vendors',
+  'tandibar/ng-rollbar',
   /* directives */
   'sticky',
   imageUploader,
@@ -88,6 +93,7 @@ require('./components/sticky/sticky.directive.js');
   .config(config)
   .run(run)
   .config(routes)
+  .config(['RollbarProvider', rollbar])
   .name;
 
   (function _init(){
