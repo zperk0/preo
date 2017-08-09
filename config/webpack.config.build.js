@@ -4,7 +4,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
 const ROLLBAR_POST_SERVER = 'eae81354dbed4493a20f9b7346af8bc9';
-const release = 'webapp-v2 1.0.26m';
+const release = 'webapp-v2 1.0.26';
 
 var plugins =  [new webpack.NoErrorsPlugin(),
                 new CopyWebpackPlugin([
@@ -18,7 +18,6 @@ var removeLogOption = [new webpack.optimize.UglifyJsPlugin({compress:{drop_conso
 
 module.exports = function(ENV, removeLogs) {
 
-  console.log('EnVV BUILDD ---', ENV);
   if (removeLogs) {
     plugins = plugins.concat(removeLogOption);
   }
