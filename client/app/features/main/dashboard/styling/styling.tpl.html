@@ -1,5 +1,6 @@
 <div class="styling-view" flex layout='row' layout-align="stretch stretch">
   <contextual-drawer-style></contextual-drawer-style>
-	<contextual-drawer-style-emails></contextual-drawer-style-emails>
+	<contextual-drawer-style-emails ng-if="vm.loadEmailsDrawer"></contextual-drawer-style-emails>
+  <contextual-drawer-style-mobile ng-if="vm.loadMobileDrawer"></contextual-drawer-style-mobile>
   <ui-view name="stylingContent" flex layout='row' layout-align="stretch stretch"></ui-view>
 </div>

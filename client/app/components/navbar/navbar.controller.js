@@ -113,6 +113,7 @@ export default class navbarController {
         return PermissionService.hasPermission(Permissions.ACCOUNT)
       }},
       {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
+      {name: gettextCatalog.getString("Mobile App"), id:"mobileApp"},
         {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
         {name: gettextCatalog.getString("Emails"), id:"emails"}
       ],shouldShow:function(){

@@ -2,8 +2,16 @@ html{
 
 
   .image-uploader{
-    width: 430px;
-    height: 242px;
+
+    &.portrait {
+      width: 430px;
+      height: 242px;
+    }
+
+    &.landscape {
+      height: 340px;
+      width: 192px;
+    }
 
    .image-not-found{
     font-size:20px;

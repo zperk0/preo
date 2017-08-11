@@ -13,8 +13,16 @@ html{
   }
 
   .image-uploader{
-    width: 262px;
-    height: 147px;
+
+    &.portrait{
+      width: 262px;
+      height: 147px;
+    }
+
+    &.landscape {
+      width: 97px;
+      height: 172px;
+    }
 
     .image-not-found{
        font-size:16px;

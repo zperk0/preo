@@ -11,13 +11,14 @@ export default function contextualMenu($compile){
     },
     replace:true,
     transclude:true,
-    require:['?^contextualDrawerStyle', '?^contextualDrawerStyleEmails'],
+    require:['?^contextualDrawerStyle', '?^contextualDrawerStyleEmails', '?^contextualDrawerStyleMobile'],
     link: (scope, el, attr, ctrls) => {
-      var ctrl = ctrls[0] || ctrls[1];
+      var ctrl = ctrls[0] || ctrls[1] || ctrls[2];
       scope.toggleAccordion = ctrl.toggleExpanded.bind(ctrl);
       let $template = require("./templates/"+scope.entity.id+".tpl.html");
       let $templateEl = $compile($template)(scope);
       let wrapper = angular.element(el[0].querySelector(".form-style"));
+
       wrapper.prepend($templateEl);
 
       function recalcHeight(newVal, oldVal){
@@ -40,7 +41,7 @@ export default function contextualMenu($compile){
       });
 
       scope.$watch('entity.expanded',(newVal, oldVal)=>{
-        console.log("recalc height")
+        console.log("recalc height -> ", newVal, oldVal)
         recalcHeight(newVal,oldVal);
       })
 

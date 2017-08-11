@@ -43,6 +43,24 @@
   }
 }
 
+.style-editor-editing-MOB-BACKGROUND{
+.style-editor-enabled-MOB-BACKGROUND{
+  position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-editing-MOB-BUTTONS{
+.style-editor-enabled-MOB-BUTTONS{
+  position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
 .style-editor-editing-BANNER{
 .style-editor-enabled-BANNER{
   position: relative;
