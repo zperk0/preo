@@ -278,7 +278,7 @@ export default class customDatafiltersController {
 
   eventSearchUp(){
 
-    if(this.eventSearchTerm.length < 4){
+    if(this.eventSearchTerm.length < 3){
 
       //if search is empty, shows initial values
       if(this.eventSearchTerm.length == 0){
