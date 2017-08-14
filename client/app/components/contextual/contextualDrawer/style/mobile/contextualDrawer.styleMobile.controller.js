@@ -184,12 +184,12 @@ export default class contextualDrawerStyleController {
     this.styles = [
       {
           id: "MOB-BACKGROUND",
-          name: this.gettextCatalog.getString("Background"),
-          height: '250px'
+          name: this.gettextCatalog.getString("Splash screen background"),
+          height: '360px'
       },
       {
           id: "MOB-BUTTONS",
-          name: this.gettextCatalog.getString("Buttons"),
+          name: this.gettextCatalog.getString("Button colour"),
           height: '100px'
       }
     ];

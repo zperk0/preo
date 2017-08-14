@@ -13,16 +13,23 @@ html{
   }
 
   .image-uploader{
+    width: 262px;
+    height: 147px;
+    // &.portrait{
+    //   width: 262px;
+    //   height: 147px;
+    // }
 
-    &.portrait{
-      width: 262px;
-      height: 147px;
-    }
+    // &.landscape {
+    //   width: 137px;
+    //   height: 272px;
+    // }
 
-    &.landscape {
-      width: 97px;
-      height: 172px;
-    }
+    // .upload-specs {
+    //   &.landscape {
+    //     margin-left: 15px;
+    //   }
+    // }
 
     .image-not-found{
        font-size:16px;
@@ -78,6 +85,26 @@ html{
         .image-uploader{
           width: 270px;
           height: 165px;
+        }
+      }
+
+      &.MOB-BACKGROUND{
+        .image-uploader{
+          &.portrait{
+            width: 270px;
+            height: 165px;
+          }
+
+          &.landscape {
+            width: 137px;
+            height: 272px;
+          }
+
+          .upload-specs {
+            &.landscape {
+              margin-left: 15px;
+            }
+          }
         }
       }
     }
