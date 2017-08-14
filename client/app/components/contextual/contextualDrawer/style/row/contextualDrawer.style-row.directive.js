@@ -33,7 +33,6 @@ export default function contextualMenu($compile){
         }
       }
 
-
       scope.$watch('radioChoice',(newVal, oldVal)=>{
         if (scope.entity.expanded){
           recalcHeight(true,false);

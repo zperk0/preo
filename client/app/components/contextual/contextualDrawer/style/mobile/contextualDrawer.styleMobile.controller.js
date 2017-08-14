@@ -38,7 +38,7 @@ export default class contextualDrawerStyleController {
 
   onImageUpload(key, image){
     if (key && image){
-      image.type = "EMAIL_BANNER";
+      image.type = "MOB-BACKGROUND";
     }
   }
 
@@ -137,7 +137,7 @@ export default class contextualDrawerStyleController {
     });
   }
 
-  close(){ console.log(' closeingg');
+  close(){
     this.$timeout(this.toggleExpanded.bind(this));
    // this.StyleService.imagesModel = angular.copy(this.originalModel.images);
    // this.StyleService.templatesModel = angular.copy(this.originalModel.templates);
@@ -145,7 +145,7 @@ export default class contextualDrawerStyleController {
     return this.contextualDrawer.close();
   }
 
-  toggleExpanded(style){ console.log('entrou tooglle');
+  toggleExpanded(style){
     if (!style){
       this.styles.forEach((i)=>{ //collapse all
         i.expanded = false;
@@ -198,9 +198,11 @@ export default class contextualDrawerStyleController {
     this.$stateParams = $stateParams;
 
     this.model = {
-      images: VenueService.currentVenue.wallpaper,
-
+      images: []
     };
+
+    if(VenueService.currentVenue.wallpaper)
+      this.model.images.push(VenueService.currentVenue.wallpaper);
 
     // StyleService.getTemplates()
     // .then(StyleService.getImages.bind(StyleService))

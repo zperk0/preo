@@ -14,10 +14,16 @@ export default class stylingController {
 
   loadDrawers() {
     if(this.$location.path().indexOf('/mobileApp') >= 0) {
+      this.loadWebordersDrawer = false;
       this.loadEmailsDrawer = false;
       this.loadMobileDrawer = true;
     } else if(this.$location.path().indexOf('/emails') >= 0) {
+      this.loadWebordersDrawer = false;
       this.loadEmailsDrawer = true;
+      this.loadMobileDrawer = false;
+    } else if (this.$location.path().indexOf('/weborders') >= 0) {
+      this.loadWebordersDrawer = true;
+      this.loadEmailsDrawer = false;
       this.loadMobileDrawer = false;
     }
   }

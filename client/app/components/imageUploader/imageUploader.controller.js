@@ -122,7 +122,7 @@ export default class imageUploaderController {
     
     if(!this.fileTypes)
       this.fileTypes = 'jpg, png';
-    
+
     console.log("constrcut", this.ngModel)
     if (this.ngModel && this.ngModel.length && !this.ngModel[0].$image && (this.ngModel[0].image || this.ngModel[0].src)) {
       this.ngModel[0].$image = this.UtilsService.getImagePath(this.ngModel[0].image || this.ngModel[0].src);

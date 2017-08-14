@@ -90,6 +90,13 @@ html{
             height: 280px; // 340
             width: 162px; // 192
           }
+
+          .upload-specs {
+            &.landscape {
+              margin-left: 15px;
+              align-items: center;
+            }
+          }
         }
       }
     }
