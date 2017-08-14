@@ -83,6 +83,21 @@ export default class VenueService {
     });
   }
 
+  loadAccount (venue) {
+    return this.$q((resolve, reject) => {
+      return venue.getPermissions(this.Permissions.ACCOUNT_READ)
+      .then(perms => {
+        if (perms[this.Permissions.ACCOUNT_READ]) {
+          return resolve(Preoday.Account.get(venue.accountId));
+        } else {
+          return reject();
+        }
+      }, () => {
+        return reject();
+      });
+    });
+  }
+
   setCurrentVenue (venue) {
     let deferred = this.$q.defer();
 
@@ -91,7 +106,7 @@ export default class VenueService {
 
     this.UtilsService.updateLocale();
 
-    Preoday.Account.get(venue.accountId)
+    this.loadAccount(venue)
     .then((account)=>{
       console.log("loaded account", account);
       this.account = account;
@@ -287,7 +302,7 @@ export default class VenueService {
     return this.PermissionService.loadPermissions(this.currentVenue);
   }
 
-  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, PermissionService, gettextCatalog, UserService, ErrorService, UtilsService) {
+  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, PermissionService, gettextCatalog, UserService, ErrorService, UtilsService, Permissions) {
     "ngInject";
     this.$q = $q;
     this.$state = $state;
@@ -302,6 +317,7 @@ export default class VenueService {
     this.UserService = UserService;
     this.ErrorService = ErrorService;
     this.UtilsService = UtilsService;
+    this.Permissions = Permissions;
 
     this.venuesDeferred = null;
     this.venues = null;
