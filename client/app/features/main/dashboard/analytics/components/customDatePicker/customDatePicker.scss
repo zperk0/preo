@@ -161,6 +161,7 @@
 						&.differentmonth {
 							color: rgba(0,0,0,0.1);
 							font-weight: normal;
+							visibility: hidden;
 						}
 
 						&.today {
