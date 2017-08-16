@@ -43,17 +43,23 @@
   }
 }
 
-.style-editor-editing-MOB-BACKGROUND{
-.style-editor-enabled-MOB-BACKGROUND{
+.style-editor-editing-MOB_BACKGROUND{
+.style-editor-enabled-MOB_BACKGROUND{
   position: relative;
     &:after{
       display: block;
     }
+
+    &:not(.placeholder) {
+      &.style-editor-enabled {
+        margin: 55px 10px;
+      }
+    }
   }
 }
 
-.style-editor-editing-MOB-BUTTONS{
-.style-editor-enabled-MOB-BUTTONS{
+.style-editor-editing-MOB_BUTTONS{
+.style-editor-enabled-MOB_BUTTONS{
   position: relative;
     &:after{
       display: block;

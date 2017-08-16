@@ -35,8 +35,8 @@ import styleEmailsController from './style/contextualDrawer.styleEmails.controll
 import styleEmailsDirective from './style/contextualDrawer.styleEmails.directive';
 import styleRowDirective from './style/row/contextualDrawer.style-row.directive';
 
-import styleMobileController from './style/mobile/contextualDrawer.styleMobile.controller';
-import styleMobileDirective from './style/mobile/contextualDrawer.styleMobile.directive';
+import styleMobileController from './style/contextualDrawer.styleMobile.controller';
+import styleMobileDirective from './style/contextualDrawer.styleMobile.directive';
 
 import eventsImportController from './eventsImport/contextualDrawer.eventsImport.controller';
 import eventsImportDirective from './eventsImport/contextualDrawer.eventsImport.directive';

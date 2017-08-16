@@ -10,7 +10,7 @@ export default function styleEditor($document, $timeout, $location, $rootScope){
         const body = angular.element($document[0].body);
         function openDrawer(el){
           $timeout(()=>{
-            if(editorAttr === 'MOB-BACKGROUND' || editorAttr === 'MOB-BUTTONS') {
+            if(editorAttr === 'MOB_BACKGROUND' || editorAttr === 'MOB_BUTTONS') {
               $location.search('drawer-mobile-style',editorAttr);
             } else {
               $location.search('drawer-emails-style',editorAttr);

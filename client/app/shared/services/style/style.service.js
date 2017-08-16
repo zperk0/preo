@@ -39,6 +39,25 @@ export default class StyleService {
     });
   }
 
+  getMobileImages(type) {
+    return this.$q((resolve, reject)=>{
+      return Preoday.VenueImage.get(this.VenueService.currentVenue.id)
+        .then((images)=>{
+          if (images && images.length){
+            let ts = images.filter((t)=>t.type === type);
+            if (ts && ts.length){
+              this.imagesModel[ts[0].type] = ts[0];
+            }
+          }
+          resolve(this.imagesModel)
+        },(err)=>{ //api returns 404 if not found
+          resolve(this.imagesModel)
+        }).catch((err)=>{
+          resolve(this.imagesModel)
+      })
+    });
+  }
+
   getImages(){
     console.log("getting images");
     return this.$q((resolve, reject)=>{
@@ -74,6 +93,14 @@ export default class StyleService {
     });
   }
 
+  initColorsModel() {
+    angular.forEach(this.VenueService.currentVenue.settings,(value,key)=>{
+      if(key.indexOf('Colour') >= 0 && value){
+        this.colorsModel[key] = '#' + value;
+      }
+    });
+  }
+
   constructor($q, VenueService, Spinner, Snack, LabelService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
@@ -85,8 +112,15 @@ export default class StyleService {
     this.imagesModel = {
       EMAIL_BANNER: new Preoday.VenueImage({
         type:"EMAIL_BANNER"
+      }),
+      MOB_BACKGROUND: new Preoday.VenueImage({
+        type:"MOB_BACKGROUND"
       })
-    }
+    };
+
+    this.colorsModel = {};
+
+    this.initColorsModel();
 
   }
 }

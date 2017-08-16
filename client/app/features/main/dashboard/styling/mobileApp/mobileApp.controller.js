@@ -10,7 +10,7 @@ export default class mobileAppController {
     }
   }
 
-  constructor($scope, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout) {
+  constructor($scope, Spinner, contextual, $location, contextualDrawer, StyleService, $rootScope, $window, $timeout) {
     "ngInject";
     this.$timeout = $timeout;
     this.$window=$window;
@@ -21,6 +21,7 @@ export default class mobileAppController {
     this.Spinner = Spinner;
     this.$location = $location;
     this.contextual = contextual;
+    this.StyleService = StyleService;
     this.contextualDrawer = contextualDrawer;
     this.toggleDrawer();
   }
