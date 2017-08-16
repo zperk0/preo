@@ -1,6 +1,6 @@
 //import controller from './customDatePicker.controller';
 
-export default function customDatePicker($compile, $timeout){
+export default function customDatePicker($compile, $timeout, Rollbar){
   "ngInject";
 
   var options = {
@@ -83,6 +83,29 @@ export default function customDatePicker($compile, $timeout){
               day.selected = isInMonth && _isSelected(day.date);
             }
 
+            function _numberWeeksInMonth(day){
+
+              let firstDay = day.clone().startOf('month');
+              let lastDay = day.clone().endOf('month');
+              let keepGoing = true;
+              let weeks = 0;
+
+              let testedDate = firstDay.clone().startOf('week');
+              while (keepGoing) {
+                if (testedDate.isSameOrBefore(lastDay)) {
+                  testedDate = testedDate.add(1, 'weeks');
+                } else if (testedDate.isAfter(lastDay)) {
+                  keepGoing = false;
+                }
+
+                if (keepGoing) {
+                  weeks++;
+                }
+              }
+
+              return weeks;
+            }
+
             function _buildWeek(time, month) {
               var days, start;
               days = [];
@@ -108,11 +131,11 @@ export default function customDatePicker($compile, $timeout){
            function _buildMonth(time) {
               var start, weeks, weeksInMonth;
               weeks = [];
-              weeksInMonth = 4;
+              weeksInMonth = _numberWeeksInMonth(time);
               start = time.startOf('month');
               weeks = (function() {
                 var _results = [];
-                for(var i = 0; i <= weeksInMonth; i++){
+                for(var i = 0; i < weeksInMonth; i++){
                   _results.push(_buildWeek(moment(start).add(i, 'weeks'), moment(start).month()));
                 }
                 return _results;

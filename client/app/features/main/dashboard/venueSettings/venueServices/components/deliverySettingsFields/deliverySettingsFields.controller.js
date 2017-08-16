@@ -72,7 +72,7 @@ export default class deliverySettingsFieldsController {
       venueId: this.venue.id,
       name: 'Delivery',
       orderType: Preoday.constants.OrderType.DELIVERY,
-      endDate: new Date('2038-01-18 22:00:00').getTime()
+      endDate: null
     });
   }
 
