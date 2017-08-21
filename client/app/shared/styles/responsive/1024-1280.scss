@@ -15,21 +15,6 @@ html{
   .image-uploader{
     width: 262px;
     height: 147px;
-    // &.portrait{
-    //   width: 262px;
-    //   height: 147px;
-    // }
-
-    // &.landscape {
-    //   width: 137px;
-    //   height: 272px;
-    // }
-
-    // .upload-specs {
-    //   &.landscape {
-    //     margin-left: 15px;
-    //   }
-    // }
 
     .image-not-found{
        font-size:16px;
@@ -88,7 +73,7 @@ html{
         }
       }
 
-      &.MOB_BACKGROUND{
+      &.mobileWallpaper{
         .image-uploader{
           &.portrait{
             width: 270px;

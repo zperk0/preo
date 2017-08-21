@@ -5,39 +5,46 @@ export default class contextualDrawerStyleMobileController {
 
   _restoreImages(){
     this.StyleService.imagesModel.$images = {
-      mobileBackground: this.StyleService.imagesModel[this.drawerKey] ? [{ //we neeed to to this because of the name of the property in image_uploader, it's image not src
+      mobileWallpaper: this.StyleService.imagesModel[this.drawerKey] ? [{ //we neeed to to this because of the name of the property in image_uploader, it's image not src
           id:this.StyleService.imagesModel[this.drawerKey].id, //this could be avoided if we rename venues column from src to image
           image:this.StyleService.imagesModel[this.drawerKey].src,
-          type: this.drawerKey,
+          type: null,
           $image:this.UtilsService.getImagePath(this.StyleService.imagesModel[this.drawerKey].src)
       }] : []
     }
   }
 
   _saveImagesToCdn() {
-   var promises = []
-   angular.forEach(this.StyleService.imagesModel.$images,(imageObject, key)=>{
-     let img = imageObject[0];
-     if (img){
-       if (img.$save) {
-         let p = Preoday.VenueImage.saveToCdn(img.$image, this.$stateParams.venueId)
-           .then((itemImage) => {
-             angular.extend(this.StyleService.imagesModel[img.type], {src:itemImage.image});
-         })
-         promises.push(p);
-       }
-     }
-   })
-   if (promises.length === 0){
-     console.log("Item does not have images")
-   }
-   return this.$q.all(promises);
+    var promises = []
+    angular.forEach(this.StyleService.imagesModel.$images,(imageObject, key)=>{
+      let img = imageObject[0];
+      if (img){
+        if (img.$save) {
+          let p = Preoday.VenueImage.saveToCdn(img.$image, this.$stateParams.venueId)
+          .then((itemImage) => {
+
+            if (this.StyleService.imagesModel[key]) {
+              angular.extend(this.StyleService.imagesModel[key], {src:itemImage.image});
+            } else {
+              this.StyleService.imagesModel[key] = {src:itemImage.image};
+            }
+
+            this.imageSaved = true;
+          });
+          promises.push(p);
+        }
+      }
+    });
+
+    if (promises.length === 0){
+      console.log("Item does not have images")
+    }
+
+    return this.$q.all(promises);
   }
 
   onImageUpload(key, image){
-    if (key && image){
-      image.type = this.drawerKey;
-    }
+    console.log('image uploaded');
   }
 
   onImageDelete(key, image){
@@ -45,38 +52,51 @@ export default class contextualDrawerStyleMobileController {
       this.DialogService.delete(this.LabelService.TITLE_DELETE_ITEM_IMAGE, this.LabelService.CONTENT_DELETE_ITEM_IMAGE)
       .then(()=> {
         this.Spinner.show("venue-image-delete");
-        let img = this.StyleService.imagesModel[image.type];
-        img.delete().then(()=>{
-          this.StyleService.imagesModel[image.type] = new Preoday.VenueImage({type:image.type});
-          this.StyleService.imagesModel.$images[key]= [];
-          this.originalModel.images[image.type] = new Preoday.VenueImage({type:image.type});
-          this.originalModel.images.$images[key]= [];
-          this.Snack.show(this.LabelService.IMAGE_DELETE_SUCCESS);
-          this.Spinner.hide("venue-image-delete");
-     })
+        let img = this.StyleService.imagesModel[key];
+
+        this.model.mobileSettings.wallpaper = null;
+        this.model.mobileSettings.update()
+        .then(() => {
+          img.delete().then(()=>{
+            this.StyleService.imagesModel[key] = new Preoday.VenueImage();
+            this.StyleService.imagesModel.$images[key]= [];
+            this.originalModel.images[key] = new Preoday.VenueImage();
+            this.originalModel.images.$images[key]= [];
+            this.Snack.show(this.LabelService.IMAGE_DELETE_SUCCESS);
+            this.Spinner.hide("venue-image-delete");
+          })
+        })
         .catch((err)=>{
           console.log("Failed deleting item image", err)
           this.Spinner.hide("venue-image-delete")
           this.Snack.showError(this.LabelService.IMAGE_DELETE_ERROR);
-        })
+        });
       });
     }
   }
 
   saveVenueImages() {
+
     return this.$q((resolve,reject)=>{
       this._saveImagesToCdn()
       .then(()=>{
         var promises = [];
-        angular.forEach(this.StyleService.imagesModel,(img,key)=>{
-          if(key != "$images" && img.src && img.type){
-            if(img.id){
-              promises.push(img.update());
-            } else {
-              img.venueId=this.$stateParams.venueId;
-              promises.push(Preoday.VenueImage.create(img).then((newImg)=>{
-                angular.extend(this.StyleService.imagesModel[img.type], newImg);
-              }))
+        angular.forEach(this.StyleService.imagesModel.$images,(img,key)=>{
+          if(img[0].$save){
+            let venueImage = this.StyleService.imagesModel[key];
+
+            if(venueImage.src){
+              if(venueImage.id){
+                promises.push(venueImage.update());
+              } else {
+                venueImage.venueId = this.$stateParams.venueId;
+                promises.push(
+                  Preoday.VenueImage.create(venueImage)
+                  .then((newImg)=>{
+                    angular.extend(this.StyleService.imagesModel[key], newImg);
+                  })
+                );
+              }
             }
           }
         });
@@ -89,33 +109,78 @@ export default class contextualDrawerStyleMobileController {
     });
   }
 
+  _checkIfSaveSettings() {
+
+    let hasColor = true;
+    if(this.model.mobileSettings.buttonColour === this.model.colors.buttonColour.substr(1) 
+       && this.model.mobileSettings.buttonTextColour === this.model.colors.buttonTextColour.substr(1) 
+       && (this.model.mobileSettings.wallpaper && this.model.images[this.drawerKey].id === this.model.mobileSettings.wallpaper))
+      hasColor = false;
+
+    let hasSave = false;
+    angular.forEach(this.StyleService.imagesModel.$images, (value, key) => {
+      if(value[0].$save)
+        hasSave = true;
+    });
+
+    if(!hasSave && !hasColor)
+      return false;
+    else 
+      return true;
+  }
+
   saveSettings() {
     return this.$q((resolve, reject) => {
-      let obj = {
-        wallpaper: this.model.images[this.drawerKey].src,
-        buttonColour: this.model.colors.buttonColour.substr(1) // jump first # character
-      };
-      angular.extend(this.VenueService.currentVenue.settings, obj);
 
-      this.VenueService.currentVenue.settings.update()
-      .then(resolve, reject)
-      .catch((err)=>{
-        console.error('Error saving Venue Settings - ', err);
-        reject(err);
-      });
+      if(!this._checkIfSaveSettings()) {
+        return resolve({hideSave: true});
+      }
+
+      let obj = {
+        wallpaper: this.model.images[this.drawerKey].id,
+        buttonColour: this.model.colors.buttonColour.substr(1), // jump first # character
+        buttonTextColour: this.model.colors.buttonTextColour.substr(1)  // jump first # character
+      };
+      angular.extend(this.model.mobileSettings, obj);
+
+      if (this.model.mobileSettings.id) {
+        this.model.mobileSettings.update()
+        .then(resolve, reject)
+        .catch((err)=>{
+          console.error('Error updating Venue Mobile Settings - ', err);
+          reject(err);
+        });
+      } else {
+        Preoday.VenueMobileSettings.save(this.model.mobileSettings, this.VenueService.currentVenue.id)
+        .then((newSettings) => {
+          angular.extend(this.model.mobileSettings, newSettings);
+          this.StyleService.mobileExtendModels(newSettings);
+          resolve(newSettings);
+        })
+        .catch((err)=>{
+          console.error('Error saving Venue Mobile Settings - ', err);
+          reject(err);
+        });
+      }
+
     });
   }
 
   saveAll() {
     return this.saveVenueImages()
-      .then(this.saveSettings.bind(this));
+      .then(this.saveSettings.bind(this))
   }
 
   saveAndClose(){
     this.showSavingSpinner();
-    return this.saveAll().then(()=>{
+    return this.saveAll().then((data)=>{
       this.hideSavingSpinner();
-      this.Snack.show(this.LabelService.SNACK_MOBILE_STYLING_SUCCESS)
+
+      if(!data.hideSave || this.imageSaved) {
+        this.Snack.show(this.LabelService.SNACK_MOBILE_STYLING_SUCCESS)
+      }
+
+      this.imageSaved = false;
       this.originalModel = angular.copy(this.model);
       return this.close();
     }, ()=>{
@@ -193,7 +258,7 @@ export default class contextualDrawerStyleMobileController {
     this.$scope = $scope;
     this.$rootScope = $rootScope;
 
-    this.drawerKey = 'MOB_BACKGROUND';
+    this.drawerKey = 'mobileWallpaper';
 
     this.styles = [{
       id: this.drawerKey,
@@ -201,9 +266,9 @@ export default class contextualDrawerStyleMobileController {
       height: '360px'
     },
     {
-      id: "MOB_BUTTONS",
+      id: "mobileButtons",
       name: this.gettextCatalog.getString("Button colour"),
-      height: '100px'
+      height: '150px'
     }];
 
     this.model = {
@@ -216,9 +281,9 @@ export default class contextualDrawerStyleMobileController {
 
   init() { 
     this.showSpinner();
-    this.StyleService.getMobileImages(this.drawerKey)
-    .then(()=>{
-
+    this.StyleService.getMobileSettings()
+    .then((data)=>{
+      this.model.mobileSettings = data ? data : new Preoday.VenueMobileSettings();
       this.model.images = this.StyleService.imagesModel;
       this.model.colors = this.StyleService.colorsModel;
 

@@ -6,16 +6,6 @@ html{
     width: 430px;
     height: 242px;
 
-    // &.portrait {
-    //   width: 430px;
-    //   height: 242px;
-    // }
-
-    // &.landscape {
-    //   height: 280px; // 340
-    //   width: 162px; // 192
-    // }
-
    .image-not-found{
     font-size:20px;
       md-icon{
@@ -79,7 +69,7 @@ html{
         }
       }
 
-      &.MOB_BACKGROUND{
+      &.mobileWallpaper{
         .image-uploader{
           &.portrait {
             width: 402px;

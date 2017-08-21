@@ -58,6 +58,42 @@ export default class StyleService {
     });
   }
 
+  mobileExtendModels(data) {
+    angular.forEach(data, (value, key) => {
+
+      if(key.indexOf('Image') >= 0){ 
+        let newKey = key.substr(0, key.indexOf('Image'));
+
+        if(value)
+          this.imagesModel[newKey] = new Preoday.VenueImage(value);
+        else
+          this.imagesModel[newKey] = new Preoday.VenueImage();
+      }
+
+      // add # character, so md-color-picker can recognize as a color.
+      if(key.indexOf('Colour') >= 0 && value){
+        this.colorsModel[key] = '#' + value;
+      }
+    });
+  }
+
+  getMobileSettings() {
+    return this.$q((resolve, reject)=>{
+      return Preoday.VenueMobileSettings.get(this.VenueService.currentVenue.id, "images")
+        .then((data)=>{
+          if(data) {
+            this.mobileExtendModels(data);
+          }
+
+          resolve(data);
+        },(err)=>{ //api returns 404 if not found
+          resolve(this.imagesModel)
+        }).catch((err)=>{
+          resolve(this.imagesModel)
+      })
+    });
+  }
+
   getImages(){
     console.log("getting images");
     return this.$q((resolve, reject)=>{
@@ -93,14 +129,6 @@ export default class StyleService {
     });
   }
 
-  initColorsModel() {
-    angular.forEach(this.VenueService.currentVenue.settings,(value,key)=>{
-      if(key.indexOf('Colour') >= 0 && value){
-        this.colorsModel[key] = '#' + value;
-      }
-    });
-  }
-
   constructor($q, VenueService, Spinner, Snack, LabelService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
@@ -113,14 +141,8 @@ export default class StyleService {
       EMAIL_BANNER: new Preoday.VenueImage({
         type:"EMAIL_BANNER"
       }),
-      MOB_BACKGROUND: new Preoday.VenueImage({
-        type:"MOB_BACKGROUND"
-      })
     };
 
     this.colorsModel = {};
-
-    this.initColorsModel();
-
   }
 }
