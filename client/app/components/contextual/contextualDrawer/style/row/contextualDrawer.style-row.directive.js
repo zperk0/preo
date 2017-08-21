@@ -1,6 +1,6 @@
 import './contextualDrawer.style-row.scss';
 
-export default function contextualMenu($compile){
+export default function contextualMenu($compile, $timeout){
   "ngInject";
   return {
     restrict: 'E',

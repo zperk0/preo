@@ -82,22 +82,23 @@ export default class contextualDrawerStyleMobileController {
       .then(()=>{
         var promises = [];
         angular.forEach(this.StyleService.imagesModel.$images,(img,key)=>{
-          if(img[0].$save){
-            let venueImage = this.StyleService.imagesModel[key];
+          let image = img[0];
+          if(image && image.$save){
+              let venueImage = this.StyleService.imagesModel[key];
 
-            if(venueImage.src){
-              if(venueImage.id){
-                promises.push(venueImage.update());
-              } else {
-                venueImage.venueId = this.$stateParams.venueId;
-                promises.push(
-                  Preoday.VenueImage.create(venueImage)
-                  .then((newImg)=>{
-                    angular.extend(this.StyleService.imagesModel[key], newImg);
-                  })
-                );
+              if(venueImage.src){
+                if(venueImage.id){
+                  promises.push(venueImage.update());
+                } else {
+                  venueImage.venueId = this.$stateParams.venueId;
+                  promises.push(
+                    Preoday.VenueImage.create(venueImage)
+                    .then((newImg)=>{
+                      angular.extend(this.StyleService.imagesModel[key], newImg);
+                    })
+                  );
+                }
               }
-            }
           }
         });
 
@@ -109,37 +110,45 @@ export default class contextualDrawerStyleMobileController {
     });
   }
 
-  _checkIfSaveSettings() {
+  _shouldSaveSettings() {
 
-    let hasColor = true;
-    if(this.model.mobileSettings.buttonColour === this.model.colors.buttonColour.substr(1) 
-       && this.model.mobileSettings.buttonTextColour === this.model.colors.buttonTextColour.substr(1) 
-       && (this.model.mobileSettings.wallpaper && this.model.images[this.drawerKey].id === this.model.mobileSettings.wallpaper))
-      hasColor = false;
+    let hasChanges = true;
+    if(!this.model.mobileSettings.buttonColour && !this.model.colors.buttonColour || 
+       (this.model.mobileSettings.buttonColour && this.model.colors.buttonColour && 
+        this.model.mobileSettings.buttonColour === this.model.colors.buttonColour.substr(1)))
+      hasChanges = false;
+    console.log('first  model --', this.model.mobileSettings.buttonColour, this.model.colors.buttonColour);
+console.log(' first --', hasChanges);
+    if(!hasChanges && !this.model.mobileSettings.buttonTextColour && !this.model.colors.buttonTextColour || 
+       (this.model.mobileSettings.buttonTextColour && this.model.colors.buttonTextColour && 
+        this.model.mobileSettings.buttonTextColour === this.model.colors.buttonTextColour.substr(1)))
+      hasChanges = false;
+    console.log(' secondd --', hasChanges);
+    if(!hasChanges && (this.model.mobileSettings.wallpaper && this.model.images[this.drawerKey].id === this.model.mobileSettings.wallpaper))
+      hasChanges = false;
+    console.log(' thirddd --', hasChanges);
+    if(!hasChanges && this.StyleService.imagesModel.$images) {
+      angular.forEach(this.StyleService.imagesModel.$images, (value, key) => {
+        let image = value[0];
+        if(image && image.$save)
+          hasChanges = true;
+      });
+    }
 
-    let hasSave = false;
-    angular.forEach(this.StyleService.imagesModel.$images, (value, key) => {
-      if(value[0].$save)
-        hasSave = true;
-    });
-
-    if(!hasSave && !hasColor)
-      return false;
-    else 
-      return true;
+    return hasChanges;
   }
 
   saveSettings() {
     return this.$q((resolve, reject) => {
 
-      if(!this._checkIfSaveSettings()) {
+      if(!this._shouldSaveSettings()) {
         return resolve({hideSave: true});
       }
 
       let obj = {
         wallpaper: this.model.images[this.drawerKey].id,
-        buttonColour: this.model.colors.buttonColour.substr(1), // jump first # character
-        buttonTextColour: this.model.colors.buttonTextColour.substr(1)  // jump first # character
+        buttonColour: this.model.colors.buttonColour ? this.model.colors.buttonColour.substr(1) : null, // jump first # character
+        buttonTextColour: this.model.colors.buttonTextColour ? this.model.colors.buttonTextColour.substr(1) : null  // jump first # character
       };
       angular.extend(this.model.mobileSettings, obj);
 
