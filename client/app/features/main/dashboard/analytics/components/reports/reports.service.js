@@ -180,6 +180,22 @@ export default class ReportsService {
     return viewTable;
   }
 
+  addTotalRows(response, header, total) {
+    for (const totalType in total) {
+      let row = [];
+      header.forEach(col => {
+        if (col.key === 'id' || col.key === 'orderId') {
+          row.push(totalType === 'CARD' || totalType === 'CASH' ? this.gettextCatalog.getString('TOTAL - ' + totalType) : this.gettextCatalog.getString('TOTAL'));
+        } else if (total[totalType].hasOwnProperty(col.key)) {
+          row.push(this.$filter('currency')(total[totalType][col.key] || 0));
+        } else {
+          row.push('-');
+        }
+      });
+      response.push(row);
+    }
+  }
+
   // need to show/ hide some fields based on Events/Takeaway properties from header. AND based on Filters used to search
   prepareDataToCsv(report, dataSelected){
     var minDate = moment(this.params.minCreated).format("L");
@@ -187,27 +203,50 @@ export default class ReportsService {
 
     var header = this.getReportHeader(report.id);
     var reportTitle = report.name;
-
+    
     var response = [[minDate +' - '+ maxDate],[reportTitle]];
 
     var itemData = [];
+
+    const totalFields = ['discount', 'fee', 'subtotal', 'tax', 'total', 'net'];
+    const shouldCountTotal = report.id === 'orders' || report.id === 'taxReport';
+    let total = {CASH: {}, CARD: {}, ALL: {}};
+    let headerRow = [];
+
     header.forEach((col) => {
 
-      if((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue))
+      if((!col.showToEventsOnly && !col.showToTakeawaysOnly) || (col.showToEventsOnly && this.hasEventVenue) || (col.showToTakeawaysOnly && this.hasTakeawayVenue)) {
         itemData.push(col.text);
+        headerRow.push(col);
+      }
     });
 
     response.push(itemData);
 
     dataSelected.forEach((row) => {
 
+      let paymentType = row.filter(col => {
+        if (col.key === 'paymentType') {
+          return col;
+        }
+      });
+
+      paymentType = paymentType.length ? paymentType[0].value : '';
+
       itemData = [];
       row.forEach((col) => {
-
+      
         let headerCol = header.filter((x) => {
           if(x.key == col.key)
             return x;
         })[0];
+
+        if (shouldCountTotal && totalFields.indexOf(col.key) > -1) {
+          if (paymentType) {
+            total[paymentType][col.key] = total[paymentType][col.key] ? total[paymentType][col.key] += col.value : col.value;
+          }
+          total.ALL[col.key] = total.ALL[col.key] ? total.ALL[col.key] += col.value : col.value;
+        }
 
         if((!headerCol.showToEventsOnly && !headerCol.showToTakeawaysOnly) || (headerCol.showToEventsOnly && this.hasEventVenue) || (headerCol.showToTakeawaysOnly && this.hasTakeawayVenue)){
 
@@ -222,6 +261,10 @@ export default class ReportsService {
 
       response.push(itemData);
     });
+
+    if (shouldCountTotal) {
+      this.addTotalRows(response, headerRow, total);
+    }
 
     return {data: response };
   }
