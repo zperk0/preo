@@ -736,6 +736,7 @@ export default class ReportsService {
     else if(reportId== 'allPayingCustomers'){
       response = [
         {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
+        {key:'dateOfBirth' ,text:this.gettextCatalog.getString('D.O.B'), fieldType:'date'},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'orderCount', text:this.gettextCatalog.getString('Orders')},
         {key:'orderTotal', text:this.gettextCatalog.getString('Spend'), fieldType: 'currency'},
