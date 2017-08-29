@@ -11,11 +11,12 @@ import 'md-color-picker/dist/mdColorPicker.min.css'
 import controller from './styling.controller';
 import routes from './styling.routes';
 
+import mobileApp from './mobileApp';
 import mobile from './mobile';
 import emails from './emails';
 import weborders from './weborders';
 
-angular.module("webapp.styling" , ['ui.router', mobile, emails, weborders, 'mdColorPicker', styleEditor])
+angular.module("webapp.styling" , ['ui.router', mobileApp, mobile, emails, weborders, 'mdColorPicker', styleEditor])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

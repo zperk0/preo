@@ -1,0 +1,17 @@
+ <div class="sidenav-wrapper">
+    <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="style-mobile">
+        <div class='contextual-list'>
+
+            <drawer-style-row ng-if="drawerStyleMobileCtrl.model" ng-repeat="style in drawerStyleMobileCtrl.styles" model="drawerStyleMobileCtrl.model" entity="style"></drawer-style-row>
+
+        </div>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="drawerStyleMobileCtrl.close()" class="md-primary" translate>
+                Cancel
+            </md-button>
+            <md-button ng-click="drawerStyleMobileCtrl.saveAndClose()" class='md-raised' translate>
+                Done
+            </md-button>
+        </md-card-actions>
+    </md-sidenav>
+</div>

@@ -1,0 +1,136 @@
+.styling-mobileapp {
+  padding-left: 92px;
+  padding-top: 60px;
+
+  .iphone {
+    height: 530px;
+    width: 260px;
+    background-color: #fff;
+    display: block;
+    position: relative;
+    border: 2px solid #999;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -o-border-radius: 30px;
+  }
+
+  .cam {
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 0, 0, .2);
+    position: absolute;
+    margin: 23px 90px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+
+  .lens {
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    background: rgb(50, 70, 100);
+    margin: 3px 3px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+
+  .speak {
+    width: 45px;
+    height: 12px;
+    background: rgba(0, 0, 0, .2);
+    position: absolute;
+    margin: 22px 110px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+
+  .sound {
+    width: 37px;
+    height: 4px;
+    background: gray;
+    position: absolute;
+    margin: 4px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+
+  .screen {
+    position: absolute;
+  }
+
+  .screen-size{
+    height: 416px;
+    width: 236px;
+    margin: 55px 10px;
+  }
+
+  .placeholder {
+    background-color: #e0e0e0;
+    border: 2px solid #999;
+  }
+
+  .btnPower {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border: 1px solid gray;
+    margin: 478px 105px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+
+  .btnOrder {
+    width: 208px;
+     height: 36.2px;
+     border-radius: 4px;
+     position: absolute;
+     margin: 0px 24px;
+     top: 72%;
+     z-index: 44;
+     background-color: #2089cf;
+
+     .orderText {
+        height: 11px;
+        font-family: Avenir;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1;
+       // text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+     }
+  }
+
+  .square {
+    width: 12px;
+    height: 12px;
+    border: 1px solid gray;
+    position: absolute;
+    margin: 13px 13px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+  }
+
+  img {
+    height: 416px;
+    width: 236px;
+  }
+
+}

@@ -43,6 +43,30 @@
   }
 }
 
+.style-editor-editing-mobileWallpaper{
+.style-editor-enabled-mobileWallpaper{
+  position: relative;
+    &:after{
+      display: block;
+    }
+
+    &:not(.placeholder) {
+      &.style-editor-enabled {
+        margin: 55px 10px;
+      }
+    }
+  }
+}
+
+.style-editor-editing-mobileButtons{
+.style-editor-enabled-mobileButtons{
+  position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
 .style-editor-editing-BANNER{
 .style-editor-enabled-BANNER{
   position: relative;

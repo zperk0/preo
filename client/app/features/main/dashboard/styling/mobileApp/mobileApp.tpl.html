@@ -1,0 +1,28 @@
+<div class="styling-mobileapp">
+  <div class="iphone">
+
+    <div class="cam">
+      <div class="lens"></div>
+    </div>
+    <div class="speak">
+      <div class="sound"></div>
+    </div>
+       
+    <div class="screen">
+      <div style-editor="mobileWallpaper" class="screen-size" ng-class="{'placeholder': !vm.StyleService.imagesModel.$images.mobileWallpaper || !vm.StyleService.imagesModel.$images.mobileWallpaper.length || !vm.StyleService.imagesModel.$images.mobileWallpaper[0].$image}">
+        <img class="header-image" alt=""
+           ng-if="vm.StyleService.imagesModel.$images.mobileWallpaper && vm.StyleService.imagesModel.$images.mobileWallpaper.length && vm.StyleService.imagesModel.$images.mobileWallpaper[0].$image"
+           ng-src="{{vm.StyleService.imagesModel.$images.mobileWallpaper[0].$image}}">
+        <md-tooltip md-direction="top"> {{'Edit background' | translate}} </md-tooltip>
+      </div>
+      <div style-editor="mobileButtons" class="btnOrder" ng-style="{'background-color': vm.StyleService.colorsModel.buttonColour ? vm.StyleService.colorsModel.buttonColour : '#2089cf'}"> 
+        <span flex class="orderText" ng-style="{'color': vm.StyleService.colorsModel.buttonTextColour ? vm.StyleService.colorsModel.buttonTextColour : '#FFFFFF'}">{{ 'Order now' | translate}}</span>
+        <md-tooltip md-direction="top"> {{'Edit button' | translate}} </md-tooltip>
+      </div>
+    </div>
+
+    <div class="btnPower">
+      <div class="square"></div>
+    </div>
+  </div>
+</div>
