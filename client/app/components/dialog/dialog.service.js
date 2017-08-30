@@ -75,7 +75,7 @@ export default class DialogService {
     });
   }
 
-  showTextDialog($scope, title, placeholder, titleMessage, buttons) {
+  showTextDialog($scope, title, placeholder, titleMessage, buttons, onInput) {
 
     function DialogController($scope, $mdDialog) {
       "ngInject";
@@ -91,6 +91,7 @@ export default class DialogService {
         
         $mdDialog.hide(buttonId);
       };
+      this.onInput = typeof onInput === 'function' ? onInput : function() {};
     }
 
     return this.$mdDialog.show({
