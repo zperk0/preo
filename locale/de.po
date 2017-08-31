@@ -1,0 +1,1032 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"Language: de\n"
+"Content-Type: text/plain; charset=UTF-8"
+
+msgid "(pending)"
+msgstr "(Ausstehend)"
+
+msgid "+ VAT"
+msgstr "+ MwSt "
+
+msgid "404 - Page Not Found"
+msgstr "404 - Seite nicht gefunden"
+
+msgid "Add Item"
+msgstr "Artikel hinzufügen"
+
+msgid "Add New"
+msgstr "Neu hinzufügen"
+
+msgid "Add Section"
+msgstr "Bereich hinzufügen"
+
+msgid "Add delivery Zones"
+msgstr "Liefergebiete hinzufügen"
+
+msgid "Add delivery zone"
+msgstr "Liefergebiet hinzufügen"
+
+msgid "Add item"
+msgstr "Artikel hinzufügen"
+
+msgid "Add menu"
+msgstr "Menü hinzufügen"
+
+msgid "Add new collection slot"
+msgstr "Einen neues Zeitfenster für Abholungen hinzufügen"
+
+msgid "Add new event"
+msgstr "Neue Veranstaltung hinzufügen"
+
+msgid "Add new group"
+msgstr "Eine neue Gruppe hinzufügen"
+
+msgid "Add new item"
+msgstr "Einen neuen Artikel hinzufügen"
+
+msgid "Add new opening hour"
+msgstr "Eine weitere Öffnungsstunde hinzufügen"
+
+msgid "Add new outlet"
+msgstr "Eine neue Verkaufsstelle hinzufügen"
+
+msgid "Add new outlet location"
+msgstr "Einen neuen Verkaufsstellenort hinzufügen:"
+
+msgid "Add new schedule"
+msgstr "Einen neuen Zeitplan hinzufügen"
+
+msgid "Add new tax group"
+msgstr "Neue Steuergruppe hinzufügen"
+
+msgid "Add new voucher"
+msgstr "Einen neuen Gutschein hinzufügen"
+
+msgid "Add option"
+msgstr "Option hinzufügen"
+
+msgid "Add outlets"
+msgstr "Verkaufsstelle hinzufügen"
+
+msgid "Add promotion"
+msgstr "Aktion hinzufügen"
+
+msgid "Add schedule"
+msgstr "Zeitplan hinzufügen"
+
+msgid "Add section"
+msgstr "Bereich hinzufügen"
+
+msgid "Add size"
+msgstr "Größe hinzufügen"
+
+msgid "Add sub group"
+msgstr "Untergruppe hinzufügen"
+
+msgid "Address line 1"
+msgstr "Adresszeile 1"
+
+msgid "Address line 2"
+msgstr "Adresszeile 2"
+
+msgid "Address line 3"
+msgstr "Adresszeile 3"
+
+msgid "Address not found"
+msgstr "Adresse nicht gefunden"
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Advanced"
+msgstr "Erweitert"
+
+msgid "After event start time"
+msgstr "Nach Start der Veranstaltung"
+
+msgid "All menus"
+msgstr "Alle Menüs"
+
+msgid "All your service methods are currently disabled."
+msgstr "Alle Leistungen sind derzeit deaktiviert."
+
+msgid "Allow custom messages:"
+msgstr "Benutzerdefinierte Meldungen zulassen:"
+
+msgid "An error ocurred to change your email, try again later"
+msgstr ""
+"Beim Ändern Ihrer E-Mail-Adresse ist ein Fehler aufgetreten. Bitte versuchen "
+"Sie es später erneut."
+
+msgid "An error ocurred to change your language. Try again later"
+msgstr ""
+"Beim Ändern der Sprache ist ein Fehler aufgetreten. Bitte versuchen Sie es "
+"später erneut."
+
+msgid "An error ocurred to change your password, try again later"
+msgstr ""
+"Beim Ändern Ihres Passworts ist ein Fehler aufgetreten. Bitte versuchen Sie "
+"es später erneut."
+
+msgid "An error ocurred to fetch the fees. Try again later."
+msgstr ""
+"Beim Abruf der Gebühren ist ein Fehler aufgetreten. Bitte versuchen Sie es "
+"später erneut."
+
+msgid "An event must have at least one schedule."
+msgstr "Eine Veranstaltung muss mindestens einen Zeitplan enthalten."
+
+msgid "An outlet location is using this outlet. You need remove it before"
+msgstr ""
+"Ein Verkaufsstellenort verwendet diese Verkaufstelle. Sie müssen diese "
+"vorher entfernen."
+
+msgid "An unexpected error occurred"
+msgstr "Ein unerwarteter Fehler ist aufgetreten."
+
+msgid "An unexpected error occurred loading this page, please try again"
+msgstr ""
+"Beim Laden dieser Seite ist ein unerwarteter Fehler aufgetreten. Bitte "
+"versuchen Sie es erneut."
+
+msgid "An unexpected error occurred while loading menus"
+msgstr "Beim Laden der Menüs ist ein unerwarteter Fehler aufgetreten."
+
+msgid "An unexpected error occurred while loading your venues"
+msgstr ""
+"Beim Laden Ihrer Spielstätten ist ein unerwarteter Fehler aufgetreten."
+
+msgid "Analytics"
+msgstr "Analysen"
+
+msgid "Any voucher"
+msgstr "Beliebiger Gutschein"
+
+msgid "Apply automatically at checkout"
+msgstr "Automatisiert an der Kasse anwenden"
+
+msgid "Apply discount to payment methods"
+msgstr "Ermäßigung für Zahlungsarten anwenden."
+
+msgid "Apply discount to service methods"
+msgstr "Ermäßigung für Leistungen anwenden."
+
+msgid "Apply discount to specific event:"
+msgstr "Ermäßigung für eine bestimmte Veranstaltung anwenden:"
+
+msgid "Are you sure you want to delete this collection slot?"
+msgstr "Möchten Sie diesen Abholzeitraum wirklich löschen?"
+
+msgid "Are you sure you want to delete this event?"
+msgstr "Möchten Sie diese Veranstaltung wirklich löschen?"
+
+msgid "Are you sure you want to delete this image?"
+msgstr "Möchten Sie dieses Bild wirklich löschen?"
+
+msgid "Are you sure you want to delete this outlet location?"
+msgstr "Möchten Sie den Ort der Verkaufsstelle wirklich löschen?"
+
+msgid "Are you sure you want to delete this outlet?"
+msgstr "Möchten Sie diese Verkaufsstelle wirklich löschen?"
+
+msgid "Are you sure you want to delete this schedule?"
+msgstr "Möchten Sie diesen Zeitplan wirklich löschen?"
+
+msgid "Are you sure you want to delete this section?"
+msgstr "Möchten Sie diesen Bereich wirklich löschen?"
+
+msgid "Are you sure you want to delete this tax group?"
+msgstr "Möchten Sie diese Gebührengruppe wirklich löschen?"
+
+msgid "Are you sure you want to permanently delete this delivery zone?"
+msgstr "Möchten Sie dieses Liefergebiet wirklich endgültig löschen?"
+
+msgid "Are you sure you want to permanently delete this image?"
+msgstr "Möchten Sie dieses Bild wirklich endgültig löschen?"
+
+msgid "Are you sure you want to permanently delete this item?"
+msgstr "Möchten Sie diesen Artikel wirklich endgültig löschen?"
+
+msgid "Are you sure you want to permanently delete this promotion?"
+msgstr "Möchten Sie diese Aktion wirklich endgültig löschen?"
+
+msgid "Are you sure you want to remove this item from the section?"
+msgstr ""
+"Möchten Sie diesen Artikel wirklich endgültig aus dem Bereich entfernen?"
+
+msgid "Auto accept"
+msgstr "Automatisch akzeptieren"
+
+msgid "Autosave error."
+msgstr "Fehler beim automatischen Speichern"
+
+msgid "Autosave error. Invalid fields"
+msgstr "Fehler beim automatischen Speichern. Ungültige Felder"
+
+msgid "Back"
+msgstr "Zurück"
+
+msgid "Basic"
+msgstr "Basic"
+
+msgid "Basics"
+msgstr "Basics"
+
+msgid "Before event start time"
+msgstr "Vor Start der Veranstaltungsstart"
+
+msgid "Billing"
+msgstr "Rechnung"
+
+msgid "Billing amount:"
+msgstr "Rechnungsbetrag:"
+
+msgid "Billing date not set"
+msgstr "Rechnungsdatum nicht gesetzt"
+
+msgid "Billing info"
+msgstr "Rechnungsinformationen"
+
+msgid "Buttons Background"
+msgstr "Button-Hintergrund"
+
+msgid "Buttons and section names"
+msgstr "Schaltflächen und Bereichnamen"
+
+msgid "CVC"
+msgstr "CVC"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Cannot delete schedule"
+msgstr "Der Zeitplan kann nicht gelöscht werden."
+
+msgid "Card"
+msgstr "Karte"
+
+msgid "Card number"
+msgstr "Kartennummer"
+
+msgid "Cash"
+msgstr "Bar"
+
+msgid "Change email address"
+msgstr "E-Mail-Adresse ändern"
+
+msgid "Changes saved"
+msgstr "Änderungen speichern"
+
+msgid "Choose a colour"
+msgstr "Farbe auswählen"
+
+msgid "Choose collection slots:"
+msgstr "Abholungszeiträume auswählen:"
+
+msgid "Clear"
+msgstr "Löschen"
+
+msgid "Click here"
+msgstr "Hier klicken"
+
+msgid "Click here to return to your dashboard"
+msgstr "Klicken Sie hier, um zu Ihrem Dashboard zurückzukehren."
+
+msgid ""
+"Click on the map to begin drawing your custom area. Connect the first and "
+"last points to finish."
+msgstr ""
+"Klicken Sie auf die Karte, um mit dem Zeichnen des benutzerdefinierten "
+"Bereichs zu beginnen. Zum Beenden verbinden Sie den ersten und letzten "
+"Punkte."
+
+msgid "Closed"
+msgstr "Geschlossen"
+
+msgid "Collection"
+msgstr "Abholung"
+
+msgid "Collection Slot created"
+msgstr "Zeitraum der Abholung erstellt"
+
+msgid "Collection Slot updated"
+msgstr "Zeitraum der Abholung aktualisiert"
+
+msgid "Collection Slots"
+msgstr "Zeiträume der Abholungen"
+
+msgid "Collection time"
+msgstr "Zeit der Abholung"
+
+msgid "Collection time:"
+msgstr "Zeit der Abholung:"
+
+msgid "Colour"
+msgstr "Farbe"
+
+msgid "Confirm new password"
+msgstr "Neues Passwort bestätigten"
+
+msgid "Confirmation code:"
+msgstr "Bestätigungscode:"
+
+msgid "Connect to stripe"
+msgstr "Mit Stripe verbinden"
+
+msgid "Connected"
+msgstr "Verbunden"
+
+msgid "Connection confirmed"
+msgstr "Verbindung bestätigt"
+
+msgid "Connection failed"
+msgstr "Verbindung fehlgeschlagen"
+
+msgid "Could not save emails style"
+msgstr "E-Mail-Form konnte nicht gespeichert werden."
+
+msgid "Could not save weborders style"
+msgstr "Weborder-Form konnte nicht gespeichert werden."
+
+msgid "Create a slot"
+msgstr "Zeitfenster erstellen"
+
+msgid "Create new item"
+msgstr "Neuen Artikel erstellen"
+
+msgid "Custom"
+msgstr "Personalisiert"
+
+msgid "Dannish"
+msgstr "Dänisch"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Default delivery time <small>(minutes)</small>"
+msgstr "Standardlieferzeit <small>(Minuten)</small>"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Delete collection slot?"
+msgstr "Abholzeitraum löschen?"
+
+msgid "Delete delivery zone?"
+msgstr "Liefergebiet löschen?"
+
+msgid "Delete event?"
+msgstr "Veranstaltung löschen?"
+
+msgid "Delete group?"
+msgstr "Gruppe löschen?"
+
+msgid "Delete image?"
+msgstr "Bild löschen?"
+
+msgid "Delete item?"
+msgstr "Artikel löschen?"
+
+msgid "Delete menu?"
+msgstr "Menü löschen?"
+
+msgid "Delete outlet location?"
+msgstr "Ort der Vorverkaufsstelle löschen?"
+
+msgid "Delete outlet?"
+msgstr "Verkaufsstelle löschen?"
+
+msgid "Delete promotion?"
+msgstr "Aktion löschen?"
+
+msgid "Delete schedule?"
+msgstr "Zeitplan löschen?"
+
+msgid "Delete section?"
+msgstr "Bereich löschen?"
+
+msgid "Delete tax group?"
+msgstr "Gebührengruppe löschen?"
+
+msgid "Delete user?"
+msgstr "Benutzer löschen?"
+
+msgid "Delivery"
+msgstr "Lieferung"
+
+msgid "Delivery Areas"
+msgstr "Auslieferungsgebiete"
+
+msgid "Delivery Fee"
+msgstr "Liefergebühr"
+
+msgid "Delivery Time"
+msgstr "Lieferzeit"
+
+msgid "Delivery Zone"
+msgstr "Liefergebiet"
+
+msgid "Delivery Zones"
+msgstr "Liefergebiete"
+
+msgid "Delivery charge"
+msgstr "Liefergebühr"
+
+msgid "Delivery fee"
+msgstr "Liefergebühr"
+
+msgid "Delivery rate"
+msgstr "Liefermenge"
+
+msgid "Delivery zone not saved"
+msgstr "Liefergebiet nicht gespeichert"
+
+msgid "Demo mode"
+msgstr "Demo-Modus"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Dimensions"
+msgstr "Maße"
+
+msgid "Directions"
+msgstr "Wegbeschreibung"
+
+msgid "Discount"
+msgstr "Ermäßigung"
+
+msgid "Discount Value"
+msgstr "Rabattwert"
+
+msgid "Discount for delivery orders (%)"
+msgstr "Ermäßigung für Lieferaufträge (%)"
+
+msgid "Display Name"
+msgstr "Anzeigename"
+
+msgid "Display name"
+msgstr "Anzeigename"
+
+msgid "Display text"
+msgstr "Anzeigetext"
+
+msgid "Distance"
+msgstr "Entfernung"
+
+msgid "Done"
+msgstr "Fertig"
+
+msgid "Dummy orders only. Payments are not processed."
+msgstr "Nur Dummy-Bestellungen. Zahlungen werden nicht bearbeitet."
+
+msgid "Duplicate"
+msgstr "Duplikat"
+
+msgid "Dutch"
+msgstr "Niederländisch"
+
+msgid "E-voucher"
+msgstr "eGutschein"
+
+msgid "ERROR"
+msgstr "FEHLER"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Edit Mode"
+msgstr "Modus ändern"
+
+msgid "Edit footer"
+msgstr "Fußzeile bearbeiten"
+
+msgid "Edit header"
+msgstr "Kopfzeile bearbeiten"
+
+msgid "Email"
+msgstr "E-Mail"
+
+msgid "Email Address"
+msgstr "E-Mail-Adresse"
+
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+msgid "Emails"
+msgstr "E-Mails"
+
+msgid "End date"
+msgstr "Enddatum"
+
+msgid "End date need to be after start date."
+msgstr "Enddatum muss nach dem Startdatum liegen."
+
+msgid "End number"
+msgstr "Endnummer"
+
+msgid "End number need to be bigger than start number"
+msgstr "Endnummer muss größer als Startnummer sein."
+
+msgid "End time"
+msgstr "Endzeit"
+
+msgid "English"
+msgstr "Englisch"
+
+msgid "Error adding outlet to outlet location"
+msgstr "Fehler beim Hinzufügen einer Verkaufsstelle zum Verkauffstellenort"
+
+msgid "Error deleting outlet"
+msgstr "Fehler beim Löschen der Verkaufsstelle"
+
+msgid "Error loading tax settings"
+msgstr "Fehler beim Laden der Steuereinstellungen"
+
+msgid "Error moving outlet"
+msgstr "Fehler beim Bewegen der Verkaufsstelle"
+
+msgid "Error moving outlet location"
+msgstr "Fehler beim Bewegen des Verkaufsstellenorts"
+
+msgid "Error saving collection slot"
+msgstr "Fehler beim Speichern des Abholzeitraums"
+
+msgid "Error saving event"
+msgstr "Fehler beim Speichern der Veranstaltung"
+
+msgid "Error saving outlet"
+msgstr "Fehler beim Speichern der Verkaufsstelle"
+
+msgid "Error saving outlet location"
+msgstr "Fehler beim Speichern des Verkaufsstellenorts"
+
+msgid "Error saving schedule"
+msgstr "Fehler beim Speichern des Zeitplans"
+
+msgid "Error saving tax Group"
+msgstr "Fehler beim Speichern der Steuergruppe"
+
+msgid "Error updating collection slot"
+msgstr "Fehler beim Aktualisieren des Abholzeitraums"
+
+msgid "Error updating event"
+msgstr "Fehler beim Aktualisieren der Veranstaltung"
+
+msgid "Error updating schedule"
+msgstr "Fehler beim Aktualisieren des Zeitlplans"
+
+msgid "Event created"
+msgstr "Veranstaltung erstellt"
+
+msgid "Event name"
+msgstr "Name der Veranstaltung"
+
+msgid "Event updated"
+msgstr "Veranstaltung aktualisiert"
+
+msgid "Events"
+msgstr "Veranstaltungen"
+
+msgid "Expiry:"
+msgstr "Ablauf:"
+
+msgid "Failed duplicating outlet location"
+msgstr "Fehler beim Duplizieren des Standorts"
+
+msgid "Failed to move outlet location"
+msgstr "Standort konnte nicht verschoben werden"
+
+msgid "Failed to remove outlet"
+msgstr "Standort konnte nicht gelöscht werden"
+
+msgid "Failed to update the group"
+msgstr "Fehler beim Aktualisieren der Gruppe"
+
+msgid "Fees"
+msgstr "Gebühren"
+
+msgid "File type"
+msgstr "Dateityp"
+
+msgid "Finnish"
+msgstr "Finnisch"
+
+msgid "First purchase only"
+msgstr "Nur erster Kauf"
+
+msgid "Food and drink menu"
+msgstr "Speise- und Getränkekarte"
+
+msgid "Footer"
+msgstr "Fußzeile"
+
+msgid "Footer text"
+msgstr "Text Fußzeile"
+
+msgid "Forgot Password"
+msgstr "Passwort vergessen"
+
+msgid "Free delivery for orders above"
+msgstr "Kostenlose Lieferung für oben aufgeführte Bestellungen"
+
+msgid "French"
+msgstr "Französisch"
+
+msgid "Frequency:"
+msgstr "Frequenz:"
+
+msgid "GOT IT"
+msgstr "VERSTANDEN"
+
+msgid "German"
+msgstr "Deutsch"
+
+msgid "Gift Vouchers"
+msgstr "Geschenkgutscheine"
+
+msgid "Go to Signin"
+msgstr "Weiter zur Anmeldung"
+
+msgid "Got it"
+msgstr "Verstanden"
+
+msgid "Group Bookings"
+msgstr "Gruppenbuchungen"
+
+msgid "Header"
+msgstr "Kopfzeile"
+
+msgid "Hide delivery zone"
+msgstr "Liefergebiet verbergen"
+
+msgid "Hide from menu"
+msgstr "Aus dem Menü ausblenden"
+
+msgid "I Forgot My Password"
+msgstr "Ich habe mein Passwort vergessen"
+
+msgid "If there are any problems, please contact {{venue}} on {{contact}}"
+msgstr ""
+"Für den Fall, dass Probleme auftreten sollten, wenden Sie sich bitte an "
+"{{venue}} an {{contact}}."
+
+msgid "If there are any problems, please contact {{venue}}'s staff"
+msgstr ""
+"Für den Fall, dass Probleme auftreten sollten, wenden Sie sich bitte an das "
+"Personal von {{venue}}."
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "Image not found"
+msgstr "Bild nicht gefunden"
+
+msgid "Import existing item"
+msgstr "Vorhandenen Artikel importieren"
+
+msgid "In case of customer queries contact"
+msgstr "Bei Kundenanfragen kontaktieren Sie:"
+
+msgid "Invalid email"
+msgstr "Ungültige E-Mail"
+
+msgid "Invalid email address."
+msgstr "Ungültige E-Mail-Adresse"
+
+msgid "Invalid format."
+msgstr "Ungültiges Format"
+
+msgid "Invalid price."
+msgstr "Ungültiger Preis"
+
+msgid "Invite new user"
+msgstr "Neuen Benutzer einladen"
+
+msgid "Item"
+msgstr "Artikel"
+
+msgid "Item name"
+msgstr "Name des Artikels"
+
+msgid "Items"
+msgstr "Artikel"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Live"
+msgstr "Live"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "MM"
+msgstr "MM"
+
+msgid "Manage Users"
+msgstr "Benutzer verwalten"
+
+msgid "Manager"
+msgstr "Manager"
+
+msgid "Max file size"
+msgstr "Max. Dateigröße"
+
+msgid "Max length is 100."
+msgstr "Max. Länge: 100"
+
+msgid "Max length is 1000 chars."
+msgstr "Max. 1.000 Zeichen"
+
+msgid "Max length is 255."
+msgstr "Max. Länge: 225"
+
+msgid "Max length is 256."
+msgstr "Max. Länge: 256"
+
+msgid "Max length is 50."
+msgstr "Max. Länge: 50"
+
+msgid "Max length is 500."
+msgstr "Max. Länge: 500"
+
+msgid "Menus"
+msgstr "Menüs"
+
+msgid "Message"
+msgstr "Nachricht"
+
+msgid "Minimum Selection"
+msgstr "Mindestauswahl"
+
+msgid "Minimum order value"
+msgstr "Mindestbestellwert"
+
+msgid "Minimum selection needs to be equal or smaller than maximum selection"
+msgstr ""
+"Die Mindestauswahl muss gleich oder kleiner als die maximale Auswahl sein."
+
+msgid "Mins"
+msgstr "Minuten"
+
+msgid "Move"
+msgstr "Bewegen"
+
+msgid "Multiple Sizes"
+msgstr "Mehrere Größen"
+
+msgid "Multiple use"
+msgstr "Mehrfachverwendung"
+
+msgid "My Events"
+msgstr "Meine Veranstaltungen"
+
+msgid "My Outlets"
+msgstr "Meine Verkaufsstelle"
+
+msgid "My account"
+msgstr "Mein Konto"
+
+msgid "My menus"
+msgstr "Meine Menüs"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Navigation"
+msgstr "Navigation"
+
+msgid "New email address"
+msgstr "Neue E-Mail-Adresse"
+
+msgid "New password"
+msgstr "Neues Passwort"
+
+msgid "Next billing date:"
+msgstr "Nächstes Abrechnungsdatum:"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "No results..."
+msgstr "Keine Ergebnisse..."
+
+msgid "Norwegian"
+msgstr "Norwegisch"
+
+msgid "Not connected"
+msgstr "Nicht verbunden"
+
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Old password"
+msgstr "Altes Passwort"
+
+msgid "Open"
+msgstr "Geöffnet"
+
+msgid "Opening hours"
+msgstr "Öffnungszeiten"
+
+msgid "Operational hours"
+msgstr "Betriebsstunden"
+
+msgid "Option"
+msgstr "Option"
+
+msgid "Optional"
+msgstr "Optional"
+
+msgid "Order #123456"
+msgstr "Bestellung #123456"
+
+msgid "Order status"
+msgstr "Bestellstatus"
+
+msgid "Orders"
+msgstr "Bestellungen"
+
+msgid "Outlet"
+msgstr "Verkaufsstelle"
+
+msgid "Outlet Locations"
+msgstr "Standorte der Verkaufsstellen"
+
+msgid "Outlet configuration"
+msgstr "Verkaufsstellen-Konfiguration"
+
+msgid "Outlet created"
+msgstr "Verkaufsstelle erstellt"
+
+msgid "Outlet deleted"
+msgstr "Verkaufsstelle gelöscht"
+
+msgid "Outlets"
+msgstr "Verkaufsstellen"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Pause this promotion"
+msgstr "Diese Aktion pausieren"
+
+msgid "Payment Card"
+msgstr "Kartenzahlung"
+
+msgid "Post voucher"
+msgstr "Gutschein per Post"
+
+msgid "Postcode/ZIP"
+msgstr "Postleitzahl"
+
+msgid "Price"
+msgstr "Preis"
+
+msgid "Promotion code"
+msgstr "Aktions-Code"
+
+msgid "Promotion deleted"
+msgstr "Aktion gelöscht"
+
+msgid "Report"
+msgstr "Bericht"
+
+msgid "Role"
+msgstr "Funktion"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Saving..."
+msgstr "Wird gespeichert..."
+
+msgid "Send"
+msgstr "Senden"
+
+msgid "Send invite"
+msgstr "Einladung senden"
+
+msgid "Services"
+msgstr "Leistungen"
+
+msgid "Short Name"
+msgstr "Kurzname"
+
+msgid "Sign In"
+msgstr "Anmelden"
+
+msgid "Sign in"
+msgstr "Anmelden"
+
+msgid "Sign in?"
+msgstr "Anmelden?"
+
+msgid "Signout"
+msgstr "Abmelden"
+
+msgid "Sorry"
+msgstr "Entschuldigung"
+
+msgid "Spanish"
+msgstr "Spanisch"
+
+msgid "Start date"
+msgstr "Start-Datum"
+
+msgid "Start number"
+msgstr "Start-Nummer"
+
+msgid "Start time"
+msgstr "Start-Zeit"
+
+msgid "Styling"
+msgstr "Design"
+
+msgid "Swedish"
+msgstr "Schwedisch"
+
+msgid "TOTAL"
+msgstr "GESAMT"
+
+msgid "Tel"
+msgstr "Tel"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Thanks for your order"
+msgstr "Vielen Dank für Ihre Bestellung"
+
+msgid "Time"
+msgstr "Zeit"
+
+msgid "Total"
+msgstr "Gesamt"
+
+msgid "Town / City"
+msgstr "Ort / Stadt"
+
+msgid "Town/City"
+msgstr "Ort/Stadt"
+
+msgid "User permissions:"
+msgstr "Berechtigungen:"
+
+msgid "Venue Settings"
+msgstr "Spielstätten-Einstellungen"
+
+msgid "Venue name"
+msgstr "Name der Spielstätte"
+
+msgid "Web Orders"
+msgstr "Online-Bestellungen"
+
+msgid "Write a valid email address."
+msgstr "Bitte eine gültige E-Mail-Adresse eingeben."
+
+msgid "YY"
+msgstr "JJ"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "click here"
+msgstr "Hier klicken"
+
+msgid "events"
+msgstr "Veranstaltungen"
+
+msgid "in demo mode"
+msgstr "im Demo-Modus"
+
+msgid "live"
+msgstr "Live"
+
+msgid "miles"
+msgstr "km"
+
+msgid "mins"
+msgstr "Minuten"
+
+msgid "offline"
+msgstr "Offline"
+
+msgid "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
+msgstr "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
+
+msgid "{{getBillingDate()}}"
+msgstr "{{getBillingDate()}}"
+
+msgid "{{notificationsFormCtrl.title}}"
+msgstr "{{notificationsFormCtrl.title}}"
