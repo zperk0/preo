@@ -4,18 +4,15 @@ export default class deliveryZoneListController {
     return "deliveryZoneListController"
   }
 
-
   showCreateItem(){
 
     this.DeliveryZoneService.showCreateDeliveryZone();
-
     this.$timeout(() => {
-
       this.contextual.showDrawer('deliveryZonesEdit')
         .then(() => {
-
+          console.log('deliveryZone drawer closed successfully');
         }, () => {
-
+          console.log('error opening deliveryZone drawer');
           this.DeliveryZoneService.cancelEditing();
         });
     });
@@ -23,7 +20,6 @@ export default class deliveryZoneListController {
 
   constructor($scope, $stateParams, $timeout, Spinner, Snack, contextual, DeliveryZoneService) {
     "ngInject";
-
 
     this.$scope = $scope;
     this.$stateParams = $stateParams;

@@ -15,7 +15,10 @@ export default function imageUploader(){
       onAdd: "&?",
       onDelete: "&?",
       keepOnDestroy: '=?',
-      ngDisabled: '=?'
+      ngDisabled: '=?',
+      maxSize: '=?',
+      fileTypes: '=?',
+      landscape: '=?'
     },
     template: require("./imageUploader.tpl.html"),
     controller: controller.UID,

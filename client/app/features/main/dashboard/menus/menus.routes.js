@@ -17,7 +17,7 @@ export default function routes($stateProvider, Permissions) {
     resolve: {
 
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
-      items:function(authenticated, $q, $state, ItemService, VenueService, Spinner) {
+      items:function(authenticated, $q, $state, ItemService, ErrorService, VenueService, Spinner) {
         return $q((resolve, reject) => {
           Spinner.show('resolve-menus');
           ItemService.fetchItems(VenueService.currentVenue.id)

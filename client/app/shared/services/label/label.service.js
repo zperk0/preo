@@ -22,11 +22,17 @@ export default class LabelService {
     this.SNACK_EMAILS_ERROR = gettextCatalog.getString("Could not save emails style");
     this.SNACK_EMAILS_SUCCESS = gettextCatalog.getString("Saved emails style");
 
+    this.SNACK_MOBILE_STYLING_SUCCESS = gettextCatalog.getString("Mobile App styling saved with success.");
+    this.SNACK_MOBILE_STYLING_ERROR = gettextCatalog.getString("Error updating Mobile App styling.");
+
     this.TITLE_DELETE_SECTION = gettextCatalog.getString("Delete section?");
     this.CONTENT_DELETE_SECTION = gettextCatalog.getString("Are you sure you want to delete this section?");
 
     this.TITLE_DELETE_ITEM_IMAGE  = gettextCatalog.getString("Delete image?");
     this.CONTENT_DELETE_ITEM_IMAGE = gettextCatalog.getString("Are you sure you want to permanently delete this image?");
+
+    this.IMAGE_DELETE_SUCCESS = gettextCatalog.getString("Image Deleted successfully.");
+    this.IMAGE_DELETE_ERROR = gettextCatalog.getString("Error deleting image.");
 
     this.TITLE_DELETE_ITEM  = gettextCatalog.getString("Delete item?");
     this.CONTENT_DELETE_ITEM = gettextCatalog.getString("Are you sure you want to permanently delete this item?");

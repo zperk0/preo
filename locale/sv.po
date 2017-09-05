@@ -2,379 +2,380 @@ msgid ""
 msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
-"Language: nb\n"
+"Language: sv\n"
 "Content-Type: text/plain; charset=UTF-8"
 
 msgid "#"
 msgstr "#"
 
 msgid "% decrease"
-msgstr "% reduksjon"
+msgstr "% minskning"
 
 msgid "% increase"
-msgstr "% økning"
+msgstr "% ökning"
 
 msgid "(pending)"
-msgstr "(venter)"
+msgstr "(väntande)"
 
 msgid ""
 "** Showing the next 100 events available. Events not displayed can be "
 "searched using field above."
 msgstr ""
-"** Viser de neste 100 arrangementene. Du kan benytte søkefeltet over for å "
-"finne flere."
+"** Visar de kommande 100 evenemangen. Evenemang som inte visas kan sökas "
+"efter i fältet ovan"
 
 msgid "+ VAT"
-msgstr "+ MVA"
+msgstr "+ MOMS"
 
 msgid "404 - Page Not Found"
-msgstr "404 - Siden ble ikke funnet"
+msgstr "404 - Sidan hittades inte"
 
 msgid ""
 "<icon>info</icon> Click on the map to drop a pin, or drag and drop the pin, "
 "to set the exact location of your venue"
 msgstr ""
-"<icon>Info</icon> Klikk på kartet for å plassere nåla, eller dra og slipp "
-"for å plassere den nøyaktig"
+"Klicka <icon>info</icon> Klicka på kartan för att göra en markering eller "
+"dra och släpp markeringen, för att ange exakt platsen för ditt evenemang"
 
 msgid "Add Item"
-msgstr "Legg til vare"
+msgstr "Lägg till produkt"
 
 msgid "Add Modifier"
-msgstr "Legg til variasjon"
+msgstr "Lägg till administratör"
 
 msgid "Add New"
-msgstr "Legg til ny"
+msgstr "Lägg till"
 
 msgid "Add Section"
-msgstr "Legg til gruppe"
+msgstr "Lägg till sektion"
 
 msgid "Add custom fields at checkout"
-msgstr "Legg til egendefinert felt til ordrehode"
+msgstr "Lägg till anpassade fält vid kassan"
 
 msgid "Add delivery Zones"
-msgstr "Legg til leveringsområder"
+msgstr "Lägg till leveransplatser"
 
 msgid "Add delivery zone"
-msgstr "Legg til leveringsområde"
+msgstr "Lägg till leveransplatser"
 
 msgid "Add item"
-msgstr "Legg til vare"
+msgstr "Lägg till produkt"
 
 msgid "Add menu"
-msgstr "Legg til meny"
+msgstr "Lägg till meny"
 
 msgid "Add modifier"
-msgstr "Legg til variasjon"
+msgstr "Lägg till administratör"
 
 msgid "Add new collection slot"
-msgstr "Legg til ny periode for henting"
+msgstr "Lägg till ny uthämtningstid"
 
 msgid "Add new custom field"
-msgstr "Legg til egendefinert felt"
+msgstr "Lägg till nya anpassade fält"
 
 msgid "Add new event"
-msgstr "Legg til nytt arrangement"
+msgstr "Lägg till nytt event"
 
 msgid "Add new group"
-msgstr "Legg til ny gruppe"
+msgstr "Lägg till ny grupp"
 
 msgid "Add new item"
-msgstr "Legg til vare"
+msgstr "Lägg till ny produkt"
 
 msgid "Add new opening hour"
-msgstr "Legg til nye åpningstider"
+msgstr "Lägg till öppningstid"
 
 msgid "Add new outlet"
-msgstr "Legg til nytt utleveringssted"
+msgstr "Lägg till butik"
 
 msgid "Add new outlet location"
-msgstr "Legg til nytt leveringsområde"
+msgstr "Lägg till ny butiksplats"
 
 msgid "Add new schedule"
-msgstr "Legg til ny tidsplan"
+msgstr "Lägg till nytt schema"
 
 msgid "Add new tag"
-msgstr "Legg til stikkord"
+msgstr "Lägg till ny etikett"
 
 msgid "Add new tag action"
-msgstr "Legg til aktivitet for stikkord"
+msgstr "Lägg till ny ettikettfunktion"
 
 msgid "Add new tax group"
-msgstr "Legg til ny MVA gruppe"
+msgstr "Lägg till ny momsgrupp"
 
 msgid "Add new voucher"
-msgstr "Legg til nytt gavekort"
+msgstr "Lägg till ny kupong"
 
 msgid "Add option"
-msgstr "Legg til alternativ"
+msgstr "Lägg till val"
 
 msgid "Add outlets"
-msgstr "Legg til utleveringssted"
+msgstr "Lägg till butiker"
 
 msgid "Add promotion"
-msgstr "Legg til rabattkode"
+msgstr "Skapa kampanj"
 
 msgid "Add schedule"
-msgstr "Legg til tidsplan"
+msgstr "Lägg till schema"
 
 msgid "Add section"
-msgstr "Legg til seksjon"
+msgstr "Lägg till sektion"
 
 msgid "Add size"
-msgstr "Legg til størrelse"
+msgstr "Lägg till storlek"
 
 msgid "Add sub group"
-msgstr "Legg til undergruppe"
+msgstr "Lägg till undergrupp"
 
 msgid "Add to basket"
-msgstr "Legg i kurven"
+msgstr "Lägg till i varukorg"
 
 msgid "Add to event"
-msgstr "Koble til arrangement"
+msgstr "Lägg till"
 
 msgid "Additional info"
-msgstr "Tilleggsinformasjon"
+msgstr "Övrig information"
 
 msgid "Address line 1"
-msgstr "Adresselinje 1"
+msgstr "Adressrad 1"
 
 msgid "Address line 2"
-msgstr "Adresselinje 2"
+msgstr "Adressrad 2"
 
 msgid "Address line 3"
-msgstr "Adresselinje 3"
+msgstr "Adressrad 3"
 
 msgid "Address not found"
-msgstr "Adresse ikke funnet"
+msgstr "Adressen hittades inte"
 
 msgid "Administrator"
-msgstr "Administrator"
+msgstr "Administratör"
 
 msgid "Advanced"
-msgstr "Avansert"
+msgstr "Avancerade"
 
 msgid "After event start time"
-msgstr "Etter arrangement start tid"
+msgstr "Efter evenemangets starttid"
 
 msgid "All"
-msgstr "Alle"
+msgstr "Alla"
 
 msgid "All items sold"
-msgstr "Alle solgt"
+msgstr "Alla varor sålda"
 
 msgid "All menus"
-msgstr "Alle menyer"
+msgstr "Alla menyer"
 
 msgid "All orders"
-msgstr "Alle bestillinger"
+msgstr "Alla beställningar"
 
 msgid "All paying customers"
-msgstr "Alle betalende kunder"
+msgstr "Alla betalande kunder"
 
 msgid "All your service methods are currently disabled."
-msgstr "Alle er nå deaktivert."
+msgstr "Alla dina tjänster är för närvarande inaktiverade."
 
 msgid "Allow custom messages:"
-msgstr "Tillat tilpassede meldinger:"
+msgstr "Tillåt meddelanden:"
 
 msgid "An error occurred sending your message. Please try again later."
 msgstr ""
-"Det oppstod en feil ved sending av meldingen. Vennligst prøv igjen senere."
+"Ett tekniskt fel inträffade vid sändningen av ditt meddelande, vänligen "
+"försök igen senare."
 
 msgid "An error occurred while importing events. Please try again."
-msgstr "Feil ved import av arrangement. Vennligst prøv igjen."
+msgstr "Ett fel uppstod vid importen av evenemang. Vänligen försök igen."
 
 msgid ""
 "An error occurred while trying to fetch Ticket Master events. Please try "
 "again."
 msgstr ""
-"Det oppstod en feil under forsøk på å hente Ticket Master arrangement. Vær "
-"vennlig og prøv på nytt."
+"Ett fel uppstod vid hämtningen av Ticketmaster-evenemang. Vänligen försök "
+"igen."
 
 msgid "An error ocurred in your signup, try again later"
-msgstr "Feil ved innlogging, prøv igjen senere"
+msgstr "Ett tekniskt fel inträffade vid inloggningen, försök igen senare"
 
 msgid "An error ocurred to change your email, try again later"
-msgstr "Feil ved endring av e-postadresse, prøv igjen senere"
+msgstr "Ett fel inträffade vid ändring av din mailadress, försök igen senare"
 
 msgid "An error ocurred to change your language. Try again later"
-msgstr "Feil ved endring språk, prøv igjen senere"
+msgstr "Ett fel inträffade vid ändring av språk, försök igen senare"
 
 msgid "An error ocurred to change your password, try again later"
-msgstr "Feil ved endring av passord, prøv igjen senere"
+msgstr ""
+"Ett fel inträffade när du försökte ändra ditt lösenord, försök igen senare"
 
 msgid "An error ocurred to delete the tag. Try again later."
-msgstr ""
-"Det oppstod en feil ved sletting av stikkord. Vennligst prøv igjen senere."
+msgstr "Ett fel uppstod vid borttagningen av etiktten. Försök igen senare."
 
 msgid "An error ocurred to fetch the fees. Try again later."
-msgstr "Det oppstod en feil ved henting av kostnader. Prøv igjen senere."
+msgstr "Ett fel uppstod vid hämtningen av avgifter. Försök igen senare."
 
 msgid "An error ocurred updating the menu, please contact support"
-msgstr "Det oppsto en feil ved å oppdatere menyen, vennligst kontakt support"
+msgstr ""
+"Ett fel uppstod vid uppdateringen av menyn, vänligen kontakta supporten"
 
 msgid "An event must have at least one schedule."
-msgstr "Et arrangement må ha minst en tidsplan."
+msgstr "Alla evenemang måste ha minst ett schema."
 
 msgid "An outlet location is using this outlet. You need remove it before"
-msgstr ""
-"Et leveringsområde bruker dette utleveringsstedet. Du må slette dette først"
+msgstr "En butiksplats använder redan denna butik. Du måste ta bort den innan"
 
 msgid "An unexpected error occurred"
-msgstr "En uventet feil har oppstått"
+msgstr "Ett oväntat fel inträffade"
 
 msgid "An unexpected error occurred loading tags, please try again."
 msgstr ""
-"En uventet feil har oppstått ved lasting av stikkord. Vennligst prøv igjen "
-"senere."
+"Ett oväntat fel inträffade vid uppdateringen av etiketterna, vänligen försök "
+"igen."
 
 msgid "An unexpected error occurred loading this page, please try again"
-msgstr "Feil ved innlasting av side, prøv igjen"
+msgstr "Ett oväntat fel inträffade vid laddning, försök igen"
 
 msgid "An unexpected error occurred while loading menus"
-msgstr "En uventet feil har oppstått ved lasting av menyer"
+msgstr "Ett oväntat fel inträffade när menyerna laddades"
 
 msgid "An unexpected error occurred while loading your venues"
-msgstr "En uventet feil har oppstått ved lasting av dine steder"
+msgstr "Ett oväntat fel inträffade när dina arenor laddades"
 
 msgid "Analytics"
-msgstr "Analyser"
+msgstr "Analys"
 
 msgid "Any voucher"
-msgstr "Ethvert gavekort"
+msgstr "En kupong"
 
 msgid "Apply automatically at checkout"
-msgstr "Legg til automatisk i kassen"
+msgstr "Ange automatiskt vid betalning"
 
 msgid "Apply discount to payment methods"
-msgstr "Legg til rabatt på betalingsmetoder"
+msgstr "Koppla rabatt till betalningsmetoder"
 
 msgid "Apply discount to service methods"
-msgstr "Legg til rabatt på tjenester"
+msgstr "Koppla rabatt till tjänster"
 
 msgid "Apply discount to specific event:"
-msgstr "Legg til rabatt på spesifikke arrangement:"
+msgstr "Koppla rabatt till ett evenemang"
 
 msgid "Are you sure you want to delete this collection slot?"
-msgstr "Vil du slette denne perioden for henting?"
+msgstr "Är du säker på att du vill ta bort uthämtningstiden?"
 
 msgid "Are you sure you want to delete this custom field?"
-msgstr "Er du sikker på at du vil slette dette egendefinerte feltet?"
+msgstr "Är du säker på att du vill ta bort det anpassade fältet?"
 
 msgid "Are you sure you want to delete this event?"
-msgstr "Vil du slette dette arrangementet?"
+msgstr "Är du säker på att du vill ta bort evenemanget?"
 
 msgid "Are you sure you want to delete this image?"
-msgstr "Er du sikker på at du vil slette dette bilde?"
+msgstr "Är du säker på att du vill ta bort denna bild? "
 
 msgid "Are you sure you want to delete this outlet location?"
-msgstr "Er du sikker på at du vil slette dette leveringsområdet?"
+msgstr "Är du säker på att du vill ta bort butikens plats?"
 
 msgid "Are you sure you want to delete this outlet?"
-msgstr "Er du sikker på at du vil slette dette utleveringsstedet?"
+msgstr "Är du säker på att du vill ta bort butiken?"
 
 msgid "Are you sure you want to delete this schedule?"
-msgstr "Vil du slette denne tidsplanen?"
+msgstr "Är du säker på att du vill radera schemat? "
 
 msgid "Are you sure you want to delete this section?"
-msgstr "Er du sikker på at du vil slette denne seksjonen?"
+msgstr "Är du säker på att "
 
 msgid "Are you sure you want to delete this tag action?"
-msgstr "Er du sikker på at du vil slette denne aktiviteten?"
+msgstr "Är du säker på att du vill ta bort etiketterna?"
 
 msgid "Are you sure you want to delete this tag?"
-msgstr "Er du sikker på at du vil slette dette stikkordet?"
+msgstr "Är du säker på att du vill ta bort den här etiketten?"
 
 msgid "Are you sure you want to delete this tax group?"
-msgstr "Vil du slette denne MVA gruppen?"
+msgstr "Är du säker på att du vill ta bort momsgruppen?"
 
 msgid "Are you sure you want to permanently delete this delivery zone?"
-msgstr "Vil du slette dette leveringsområde?"
+msgstr "Är du säker på att du vill radera leveransplatsen permanent?"
 
 msgid "Are you sure you want to permanently delete this image?"
-msgstr "Vil du slette dette bilde?"
+msgstr "Är du säker på att du vill radera bilden permanent?"
 
 msgid "Are you sure you want to permanently delete this item?"
-msgstr "Er du sikker på at du vil slette denne varen?"
+msgstr "Är du säker på att du vill ta bort denna produkt?"
 
 msgid "Are you sure you want to permanently delete this promotion?"
-msgstr "Vil du slette denne kampanjen?"
+msgstr "Är du säker på att du vill ta bort denna kampanj? "
 
 msgid "Are you sure you want to remove this item from the section?"
-msgstr "Er du sikker på at du vil fjerne denne varen fra seksjonen?"
+msgstr "Är du säker på att du vill ta bort denna produkt från sektionen?"
 
 msgid "Area"
 msgstr "Område"
 
 msgid "Assign code type"
-msgstr "Tilordne kodetype"
+msgstr "Tilldela kodtyp"
 
 msgid "Assign code:"
-msgstr "Tilordne kode:"
+msgstr "Tilldela kod"
 
 msgid "Auto accept"
-msgstr "Automatisk godkjenning"
+msgstr "Autogodkänna"
 
 msgid "Autosave error."
-msgstr "Automatisk lagring feilet."
+msgstr "Fel vid autospar"
 
 msgid "Autosave error. Invalid fields"
-msgstr "Feil ved automatisk lagring. Ugyldige verdier"
+msgstr "Fel vid autospar. Ogiltig information."
 
 msgid "Average order value"
-msgstr "Gjennomsnittlig bestillingsbeløp"
+msgstr "Genomsnittligt beställningsvärde"
 
 msgid "Average orders per customer"
-msgstr "Gjennomsnitt antall bestillinger per kunde"
+msgstr "Genomsnittliga beställningar per kund"
 
 msgid "Average revenue per customer"
-msgstr "Gjennomsnittlig omsetning per kunde"
+msgstr "Genomsnittlig inkomst per kund"
 
 msgid "Back"
-msgstr "Tilbake"
+msgstr "Tillbaka"
 
 msgid "Basic"
-msgstr "Generelt"
+msgstr "Enkel"
 
 msgid "Basics"
-msgstr "Generelt"
+msgstr "Grunder"
 
 msgid "Before event start time"
-msgstr "Før arrangementets start tidspunkt"
+msgstr "Före evenemangets starttid"
 
 msgid "Billing"
 msgstr "Fakturering"
 
 msgid "Billing amount:"
-msgstr "Fakturabeløp:"
+msgstr "Faktureringsbelopp"
 
 msgid "Billing date not set"
-msgstr "Fakturadato ikke satt"
+msgstr "Ej bestämt faktureringsdatum"
 
 msgid "Billing info"
-msgstr "Faktura info"
+msgstr "Faktureringsinformation"
 
 msgid "Busiest days"
-msgstr "Travleste dager"
+msgstr "De mest aktiva dagarna"
 
 msgid "Busiest events"
-msgstr "Travleste event"
+msgstr "De mest aktiva evenemangen"
 
 msgid "Busiest time of day"
-msgstr "Travleste tid på dagen"
+msgstr "Den mest hektiska tiden på dagen"
 
 msgid "Button label"
 msgstr "Knappetikett"
 
 msgid "Buttons Background"
-msgstr "Bakgrunn for knapper"
+msgstr "Bakgrund för knappar"
 
 msgid "Buttons and section names"
-msgstr "Knapper og seksjons navn"
+msgstr "Namn på knappar och sektioner"
 
 msgid "By continuing, you accept the"
-msgstr "Ved å fortsette godtar du"
+msgstr "Genom att fortsätta accepterar du våra"
 
 msgid "CVC"
 msgstr "CVC"
@@ -383,10 +384,12 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 msgid "Cannot delete schedule"
-msgstr "Kan ikke slette tidsplan"
+msgstr "Kan inte radera schema"
 
 msgid "Can’t delete this tax code while there are menu items using it."
-msgstr "Kan ikke slette momsgruppe, det er produkter som bruker den."
+msgstr ""
+"Det går inte att ta bort den här momskoden medan det finns menyvaror som är "
+"kopplade till den."
 
 msgid "Card"
 msgstr "Kort"
@@ -395,571 +398,573 @@ msgid "Card number"
 msgstr "Kortnummer"
 
 msgid "Cash"
-msgstr "Betal ved henting/levering"
+msgstr "Kontant"
 
 msgid "Celery"
 msgstr "Selleri"
 
 msgid "Cereals"
-msgstr "Korn"
+msgstr "Flingor"
 
 msgid "Change email address"
-msgstr "Endre e-postadresse"
+msgstr "Ändra mailadress"
 
 msgid "Changes saved"
-msgstr "Endringer lagret"
+msgstr "Ändringarna sparades"
 
 msgid "Checkout"
-msgstr "Gå til kassen"
+msgstr "Kassa"
 
 msgid "Choose a colour"
-msgstr "Velg en farge"
+msgstr "Välj en färg"
 
 msgid "Choose collection slots:"
-msgstr "Velg henteperioder:"
+msgstr "Välj uthämtningstider:"
 
 msgid "Choose events to import:"
-msgstr "Velg arrangement som skal importeres:"
+msgstr "Välj evenemang för import:"
 
 msgid "Clear"
-msgstr "Tilbakestill"
+msgstr "Rensa"
 
 msgid "Click here"
-msgstr "Klikk her"
+msgstr "Klicka här"
 
 msgid "Click here to return to your dashboard"
-msgstr "Klikk her for å gå tilbake til kontrollpanelet"
+msgstr "Klicka här för att gå tillbaka till adminsidan"
 
 msgid ""
 "Click on the map to begin drawing your custom area. Connect the first and "
 "last points to finish."
 msgstr ""
-"Klikk på kartet for å tegne inn egendefinert området. Du må koble det første "
-"og det siste punktet til slutt."
+"Klicka på kartan för att börja rita ditt område. Koppla den första och sista "
+"punkten för att avsluta."
 
 msgid "Closed"
-msgstr "Stengt"
+msgstr "Stängd"
 
 msgid "Collapse menu sections"
-msgstr "Lukk meny seksjoner"
+msgstr "Stäng menysektionerna"
 
 msgid "Collection"
-msgstr "Henting"
+msgstr "Inställning"
 
 msgid "Collection Slot created"
-msgstr "Periode for henting opprettet"
+msgstr "Uthämtningstid skapad"
 
 msgid "Collection Slot updated"
-msgstr "Periode for henting oppdatert"
+msgstr "Uthämtningstid uppdaterad"
 
 msgid "Collection Slots"
-msgstr "Henteperioder"
+msgstr "Uthämtningstider"
 
 msgid "Collection time"
-msgstr "Tidspunkt for henting"
+msgstr "Tid"
 
 msgid "Collection time:"
-msgstr "Tidspunkt for henting:"
+msgstr "Tid:"
 
 msgid "Colour"
-msgstr "Farge"
+msgstr "Färg"
 
 msgid "Confirm new password"
-msgstr "Bekreft nytt passord"
+msgstr "Bekräfta lösenordet"
 
 msgid "Confirmation code:"
-msgstr "Bekreftelseskode:"
+msgstr "Bekräftelsekod"
 
 msgid "Connect to stripe"
-msgstr "Koble til Stripe"
+msgstr "Koppla till Stripe"
 
 msgid "Connected"
-msgstr "Tilkoblet"
+msgstr "Kopplad"
 
 msgid "Connection confirmed"
-msgstr "Tilkobling bekreftet"
+msgstr "Kopplingen är bekräftad"
 
 msgid "Connection failed"
-msgstr "Tilkobling feilet"
+msgstr "Kopplingen misslyckades"
 
 msgid "Could not save emails style"
-msgstr "Kunne ikke lagre tilpasset e-post"
+msgstr "Kunde inte spara mailtyperna"
 
 msgid "Could not save weborders style"
-msgstr "Kunne ikke lagre"
+msgstr "Kunde inte spara stilen för webb-beställningar"
 
 msgid "Create"
-msgstr "Opprett"
+msgstr "Skapa"
 
 msgid "Create a slot"
-msgstr "Opprett sted"
+msgstr "Skapa ny plats"
 
 msgid "Create new event"
-msgstr "Opprett nytt arrangement"
+msgstr "Skapa nytt evenemang"
 
 msgid "Create new item"
-msgstr "Opprett ny vare"
+msgstr "Skapa ny produkt"
 
 msgid "Create tag"
-msgstr "Opprett stikkord"
+msgstr "Skapa etikett"
 
 msgid "Crustaceans"
-msgstr "Krepsdyr"
+msgstr "Skaldjur"
 
 msgid "Custom"
-msgstr "Tilpasset"
+msgstr "Anpassad"
 
 msgid "Custom field created"
-msgstr "Egendefinert felt opprettet"
+msgstr "Anpassad ruta skapad"
 
 msgid "Custom field deleted"
-msgstr "Egendefinert felt slettet"
+msgstr "Anpassad ruta borttagen"
 
 msgid "Custom field updated"
-msgstr "Egendefinert felt oppdatert"
+msgstr "Anpassad ruta ändrad"
 
 msgid "Customer"
-msgstr "Kunde"
+msgstr "Kund"
 
 msgid "Customers"
 msgstr "Kunder"
 
 msgid "Customers can choose to pay <br> cash on receipt of their order"
-msgstr "Kunder kan velge å betale <br> ved henting/levering"
+msgstr ""
+"Konsumenter kan välja att betala  <br> kontanter på kvittot av deras "
+"beställning."
 
 msgid "Customers requesting delivery to a new area"
-msgstr "Kunder som etterlyser levering til et nytt område"
+msgstr "Kunder som önskar leverans till nytt område"
 
 msgid "Customers who have only ordered once"
-msgstr "Kunder som kun har en bestilling"
+msgstr "Kunder som har gjort endast en beställning."
 
 msgid "Customers who signed up but haven't ordered"
-msgstr "Kunder som har registrert seg, men ikke bestilt"
+msgstr "Kunder som har signat upp sig men ännu inte gjort en beställning"
 
 msgid "Daily"
 msgstr "Daglig"
 
 msgid "Daily Customers"
-msgstr "Daglige kunder"
+msgstr "Dagliga kunder"
 
 msgid "Daily Orders"
-msgstr "Daglige bestillinger"
+msgstr "Dagliga beställningar"
 
 msgid "Daily Revenue"
-msgstr "Daglig omsetning"
+msgstr "Dagliga intäkter"
 
 msgid "Dannish"
-msgstr "Dansk"
+msgstr "Danska"
 
 msgid "Data filters"
-msgstr "Filter"
+msgstr "Datafilter"
 
 msgid "Date"
-msgstr "Dato"
+msgstr "Datum"
 
 msgid "Date joined"
-msgstr "Registrert dato"
+msgstr "Medlem från"
 
 msgid "Date range"
-msgstr "Datointervall"
+msgstr "Datumintervall"
 
 msgid "Date requested"
-msgstr "Dato for ønske"
+msgstr "Datum efterfrågat"
 
 msgid "Day"
 msgstr "Dag"
 
 msgid "Default delivery time <small>(minutes)</small>"
-msgstr "Standard leveringstid <small>(minutter)</small>"
+msgstr "Standard leveranstid <small>(minuter)</small>"
 
 msgid "Delete"
-msgstr "Slett"
+msgstr "Ta bort"
 
 msgid "Delete collection slot?"
-msgstr "Slette tidspunkt henting?"
+msgstr "Radera uthämtningstid?"
 
 msgid "Delete custom field?"
-msgstr "Slette egendefinert felt?"
+msgstr "Ta bort anpassat fält?"
 
 msgid "Delete delivery zone?"
-msgstr "Slette leveringsområdet?"
+msgstr "Radera leveransplats?"
 
 msgid "Delete event?"
-msgstr "Sette arrangement?"
+msgstr "Radera event?"
 
 msgid "Delete external event?"
-msgstr "Slett eksternt arrangement?"
+msgstr "Radera externt evenemang?"
 
 msgid "Delete group?"
-msgstr "Slett gruppe?"
+msgstr "Radera grupp?"
 
 msgid "Delete image?"
-msgstr "Slett bilde?"
+msgstr "Radera bild?"
 
 msgid "Delete item?"
-msgstr "Slett vare?"
+msgstr "Radera produkt?"
 
 msgid "Delete menu?"
-msgstr "Slett meny?"
+msgstr "Ta bort meny?"
 
 msgid "Delete modifier?"
-msgstr "Slett variasjon?"
+msgstr "Ta bort administratör?"
 
 msgid "Delete outlet location?"
-msgstr "Slett leveringsområdet?"
+msgstr "Ta bort butikens plats?"
 
 msgid "Delete outlet?"
-msgstr "Slett utleveringssted?"
+msgstr "Ta bort butik?"
 
 msgid "Delete promotion?"
-msgstr "Slette rabattkode?"
+msgstr "Ta bort kampanj?"
 
 msgid "Delete schedule?"
-msgstr "Slette tidsplan?"
+msgstr "Radera schema?"
 
 msgid "Delete section?"
-msgstr "Slett seksjon?"
+msgstr "Radera sektion?"
 
 msgid "Delete tag action?"
-msgstr "Slett aktivitet for stikkord?"
+msgstr "Radera etikett?"
 
 msgid "Delete tag?"
-msgstr "Slett stikkord?"
+msgstr "Radera etikett?"
 
 msgid "Delete tax group?"
-msgstr "Slette momsgruppe?"
+msgstr "Radera momsgrupp?"
 
 msgid "Delete user?"
-msgstr "Slett bruker?"
+msgstr "Radera användare?"
 
 msgid ""
 "Deleting this outlet will also delete the custom fields at checkout. Are you "
 "sure?"
 msgstr ""
-"Om du sletter dette stedet vil du også fjerne det egendefinerte feltet i "
-"ordrehodet. Sikker?"
+"Om du tar bort det här uthämtningsstället kommer du också radera de "
+"anpassade fälten vid kassan. Är du säker?"
 
 msgid ""
 "Deleting this tag will remove it from all items and tag actions. Are you "
 "sure?"
 msgstr ""
-"Dersom du sletter dette stikkordet vil det fjernes fra alle varer og "
-"aktiviteter for stikkord. Er du sikker?"
+"Om du tar bort den här etiketten tas den bort från alla varor och "
+"etikettfunktioner. Är du säker?"
 
 msgid "Delivery"
-msgstr "Levering"
+msgstr "Leverans"
 
 msgid "Delivery Areas"
-msgstr "Leveringsområder"
+msgstr "Leveransområden"
 
 msgid "Delivery Fee"
-msgstr "Avgift for levering"
+msgstr "Leveranskostnad"
 
 msgid "Delivery Time"
-msgstr "Leveringstid"
+msgstr "Leveranstid"
 
 msgid "Delivery Zone"
-msgstr "Leveringsområdet"
+msgstr "Leveransplats"
 
 msgid "Delivery Zones"
-msgstr "Leveringsområder"
+msgstr "Leveransplatser"
 
 msgid "Delivery charge"
-msgstr "Leveringskostnad"
+msgstr "Leveranskostnad"
 
 msgid "Delivery fee"
-msgstr "Avgift for levering"
+msgstr "Leveranskostnad"
 
 msgid "Delivery rate"
-msgstr "Sats for levering"
+msgstr "Leveransbelopp"
 
 msgid "Delivery zone not saved"
-msgstr "Leveringområdet ikke lagret"
+msgstr "Leveransplatsen sparades inte"
 
 msgid "Delivery zone saved"
-msgstr "Leveringsområdet lagret"
+msgstr "Leveransplatsen sparades"
 
 msgid "Demo mode"
-msgstr "Demo modus"
+msgstr "Demo läge"
 
 msgid "Description"
-msgstr "Beskrivelse"
+msgstr "Beskrivning"
 
 msgid "Details"
-msgstr "Innstillinger"
+msgstr "Detaljer"
 
 msgid "Dimensions"
-msgstr "Dimensjoner"
+msgstr "Storlekar"
 
 msgid "Directions"
-msgstr "Beskrivelse"
+msgstr "Beskrivning"
 
 msgid "Discount"
 msgstr "Rabatt"
 
 msgid "Discount Value"
-msgstr "Rabattens verdi"
+msgstr "Rabattvärde"
 
 msgid "Discount for delivery orders (%)"
-msgstr "Rabatt ved ordre for levering (%)"
+msgstr "Rabatt för leveransbeställningar (%)"
 
 msgid "Display Name"
-msgstr "Navn som vises (f.eks mva)"
+msgstr "Visa namn"
 
 msgid "Display name"
-msgstr "Navn som vises (f.eks mva)"
+msgstr "Visa namn"
 
 msgid "Display promotion on the menu"
-msgstr "Vis rabattkoden i menyen"
+msgstr "Visa kampanj i menyn"
 
 msgid "Display text"
-msgstr "Tekst som vises"
+msgstr "Visa text"
 
 msgid "Distance"
-msgstr "Avstand"
+msgstr "Avstånd"
 
 msgid "Done"
-msgstr "Fullfør"
+msgstr "Klar"
 
 msgid "Dummy orders only. Payments are not processed."
-msgstr "Kun test bestillinger. Betalinger vil ikke behandles."
+msgstr "Endast testbeställningar. Betalningar genomförs ej."
 
 msgid "Duplicate"
-msgstr "Dupliser"
+msgstr "Duplicera"
 
 msgid "Duplicate modifier"
-msgstr "Kopier variasjon"
+msgstr "Duplicera administratör"
 
 msgid "Dutch"
-msgstr "Tysk"
+msgstr "Holländska"
 
 msgid "E-voucher"
-msgstr "Gavekort"
+msgstr "E-kupong"
 
 msgid "ERROR"
-msgstr "FEIL"
+msgstr "ERROR"
 
 msgid "Edit"
-msgstr "Rediger"
+msgstr "Ändra"
 
 msgid "Edit Mode"
-msgstr "Redigerings modus"
+msgstr "Ändra läge"
 
 msgid "Edit footer"
-msgstr "Rediger footer"
+msgstr "Ändra sidfot"
 
 msgid "Edit header"
-msgstr "Rediger header"
+msgstr "Ändra rubrik"
 
 msgid "Eggs"
-msgstr "Egg"
+msgstr "Ägg"
 
 msgid "Email"
-msgstr "E-post"
+msgstr "Mail"
 
 msgid "Email Address"
-msgstr "E-postadresse"
+msgstr "Mailadress"
 
 msgid "Email address"
-msgstr "E-postadresse"
+msgstr "Mailadress"
 
 msgid "Emails"
-msgstr "E-post"
+msgstr "Mail"
 
 msgid "End date"
-msgstr "Sluttdato"
+msgstr "Slutdatum"
 
 msgid "End date need to be after start date."
-msgstr "Sluttdato må være senere enn startdato."
+msgstr "Slutnumret måste komma efter startnumret."
 
 msgid "End number"
-msgstr "Slutt-nummer"
+msgstr "Slutsiffra"
 
 msgid "End number need to be bigger than start number"
-msgstr "Slutt-nummer må være høyere enn start-nummer"
+msgstr "Slutnumret måste vara större än startnumret"
 
 msgid "End time"
-msgstr "Sluttidspunkt"
+msgstr "Slut tid"
 
 msgid "English"
-msgstr "Engelsk"
+msgstr "Engelska"
 
 msgid "Error adding outlet to outlet location"
-msgstr "Feil ved kobling av utleveringssted til leveringsområdet"
+msgstr "Problem med att lägga till butik till plats"
 
 msgid "Error creating tag"
-msgstr "Feil ved opprettelse av stikkord"
+msgstr "Ett fel uppstod när etiketten skapades"
 
 msgid "Error creating tag action"
-msgstr "Feil ved opprettelse av aktivitet for stikkord"
+msgstr "Ett fel uppstod när etiketten skapades"
 
 msgid "Error deleting outlet"
-msgstr "Feil ved sletting av utleveringssted"
+msgstr "Problem med att radera butik"
 
 msgid "Error loading tax settings"
-msgstr "Feil ved lasting av MVA innstillinger"
+msgstr "Fel vid laddning av momsinställningar"
 
 msgid "Error moving outlet"
-msgstr "Feil ved flytting av utleveringssted"
+msgstr "Problem med att flytta butik"
 
 msgid "Error moving outlet location"
-msgstr "Feil ved flytting av leveringsområde"
+msgstr "Problem med att flytta butikens plats"
 
 msgid "Error saving collection slot"
-msgstr "Feil ved lagring av tidspunkt for henting"
+msgstr "Det gick inte att spara uthämtningstid"
 
 msgid "Error saving custom field"
-msgstr "Feil ved lagring"
+msgstr "Fel vid lagring av anpassat fält"
 
 msgid "Error saving event"
-msgstr "Feil ved lagring av arrangement"
+msgstr "Fel vid sparandet av event"
 
 msgid "Error saving outlet"
-msgstr "Feil ved lagring av utleveringssted"
+msgstr "Problem med att spara butik"
 
 msgid "Error saving outlet location"
-msgstr "Feil ved lagring av leveringsområde"
+msgstr "Problem med att spara butikens plats"
 
 msgid "Error saving schedule"
-msgstr "Feil ved lagring av tidsplan"
+msgstr "Fel vid sparandet av schema"
 
 msgid "Error saving tax Group"
-msgstr "Feil ved lagring av momsgruppe"
+msgstr "Fel vid sparandet av momsgrupp"
 
 msgid "Error updating collection slot"
-msgstr "Feil ved oppdatering av tidspunkt for henting"
+msgstr "Det gick inte att uppdatera uthämtningstid"
 
 msgid "Error updating custom field"
-msgstr "Feil ved oppdatering"
+msgstr "Fel vid uppdatering av anpassat fält"
 
 msgid "Error updating event"
-msgstr "Feil ved oppdatering av arrangement"
+msgstr "Fel vid uppdatering av evenemang"
 
 msgid "Error updating outlet location"
-msgstr "Feil ved oppdatering"
+msgstr "Ett fel uppstod vid ändringen av uthämtningsplatsen"
 
 msgid "Error updating schedule"
-msgstr "Feil ved oppdatering av tidsplan"
+msgstr "Fel vid uppdatering av schema"
 
 msgid "Error updating tag"
-msgstr "Feil ved endring av stikkord"
+msgstr "Ett fel uppstod i uppdateringen av etiketten"
 
 msgid "Error updating tag action"
-msgstr "Feil ved endring av aktivitet for stikkord"
+msgstr "Ett fel uppstod i uppdateringen av etiketten"
 
 msgid "Event"
-msgstr "Event"
+msgstr "Evenemang"
 
 msgid "Event created"
-msgstr "Arrangement opprettet"
+msgstr "Evenemang skapat"
 
 msgid "Event deleted successfully."
-msgstr "Arrangement slettet."
+msgstr "Borttagningen av evenemanget lyckades."
 
 msgid "Event name"
-msgstr "Arrangement navn"
+msgstr "Evenemangets namn"
 
 msgid "Event updated"
-msgstr "Arrangement oppdatert"
+msgstr "Evenemanget uppdaterat"
 
 msgid "Events"
-msgstr "Arrangementer"
+msgstr "Evenemang"
 
 msgid "Events imported successfully."
-msgstr "Arrangement importert."
+msgstr "Importeringen av evenemanget lyckades."
 
 msgid "Events imported:"
-msgstr "Arrangement importert:"
+msgstr "Importerade evenemang: "
 
 msgid "Expiry:"
-msgstr "Utløper:"
+msgstr "Giltigt till:"
 
 msgid "Export as CSV"
-msgstr "Eksporter som CSV"
+msgstr "Exportera som CSV"
 
 msgid "Export as PDF"
-msgstr "Eksporter som PDF"
+msgstr "Exportera som PDF"
 
 msgid "External events"
-msgstr "Eksterne arrangement"
+msgstr "Externt evenemang"
 
 msgid "Failed duplicating outlet location"
-msgstr "Duplisering av leveringsområde feilet"
+msgstr "Kunde inte duplicera butikens plats"
 
 msgid "Failed to move outlet location"
-msgstr "Flytting av leveringsområde feilet"
+msgstr "Problem med att flytta butikens plats"
 
 msgid "Failed to remove outlet"
-msgstr "Sletting av utleveringssted feilet"
+msgstr "Problem med att ta bort butik"
 
 msgid "Failed to update the group"
-msgstr "Oppdatering av gruppen feilet"
+msgstr "Problem med att uppdatera gruppen"
 
 msgid "Fees"
 msgstr "Avgifter"
 
 msgid "Field name"
-msgstr "Feltnavn"
+msgstr "Namn på fält"
 
 msgid "File type"
-msgstr "Filtype"
+msgstr "Filtyp"
 
 msgid "Finnish"
-msgstr "Finsk"
+msgstr "Finska"
 
 msgid "First purchase only"
-msgstr "Kun første kjøp"
+msgstr "Endast första beställning"
 
 msgid "Fish"
 msgstr "Fisk"
 
 msgid "Food and drink menu"
-msgstr "Meny for mat og drikke"
+msgstr "Mat- och dryckesmeny"
 
 msgid "Footer"
-msgstr "Bunnområde"
+msgstr "Sidfot"
 
 msgid "Footer text"
-msgstr "Tekst for bunnområde"
+msgstr "Text i sidfot"
 
 msgid "Forgot Password"
-msgstr "Glemt passord"
+msgstr "Glömt lösenord"
 
 msgid "Free delivery for orders above"
-msgstr "Gratis levering for ordre over"
+msgstr "Gratis leverans for beställningarna ovan"
 
 msgid "Free delivery order value"
-msgstr "Ordreverdi for gratis levering"
+msgstr "Ordervärde för gratis leverans "
 
 msgid "French"
-msgstr "Fransk"
+msgstr "Franska"
 
 msgid "Frequency is required."
-msgstr "Frekvens er nødvendig."
+msgstr "Frekvens krävs"
 
 msgid "Frequency:"
 msgstr "Frekvens:"
 
 msgid "From {{inputDateFrom}}"
-msgstr "Fra {{inputDateFrom}}"
+msgstr "Från {{inputDateFrom}}"
 
 msgid "Full client"
-msgstr "Premium-bruker"
+msgstr "Kund"
 
 msgid "GO TO DASHBOARD"
-msgstr "TIL KONTROLLPANEL"
+msgstr "GÅ TILL ADMINSIDAN"
 
 msgid "GO TO LOGIN"
-msgstr "TIL LOGG INN"
+msgstr "TILL INLOGGNINGEN"
 
 msgid "GOT IT"
-msgstr "FORSTÅTT"
+msgstr "OK"
 
 msgid "German"
-msgstr "Tysk"
+msgstr "Tyska"
 
 msgid "Gift Vouchers"
-msgstr "Gavekort"
+msgstr "Presentkuponger"
 
 msgid "Gluten"
 msgstr "Gluten"
@@ -968,153 +973,153 @@ msgid "Gluten Free"
 msgstr "Glutenfri"
 
 msgid "Go to Signin"
-msgstr "Gå til innlogging"
+msgstr "Gå till inloggning"
 
 msgid "Go to stripe"
-msgstr "Gå til Stripe"
+msgstr "Gå till Stripe"
 
 msgid "Got it"
-msgstr "Forstått"
+msgstr "OK"
 
 msgid "Group Bookings"
-msgstr "Forhåndsbestillinger"
+msgstr "Gruppbokningar"
 
 msgid "Group label"
-msgstr "Gruppe merking"
+msgstr "Gruppnamn"
 
 msgid "Halal"
 msgstr "Halal"
 
 msgid "Header"
-msgstr "Header"
+msgstr "Rubrik"
 
 msgid "Hide delivery zone"
-msgstr "Skjul leveringsområde"
+msgstr "Göm leveransplats"
 
 msgid "Hide from menu"
-msgstr "Skjul fra meny"
+msgstr "Dölj från meny"
 
 msgid "Home"
-msgstr "Hjem"
+msgstr "Hem"
 
 msgid "Hot"
-msgstr "Sterk"
+msgstr "Stark"
 
 msgid "How customers signed up"
-msgstr "Hvordan gjesten meldte seg på"
+msgstr "Hur kunder anmälde sig"
 
 msgid "I Forgot My Password"
-msgstr "Glemt passord?"
+msgstr "Jag har glömt mitt lösenord"
 
 msgid "If there are any problems, please contact {{venue}} on {{contact}}"
-msgstr "Ved spørsmål vennligst kontakt {{venue}} på {{contact}}"
+msgstr "Om problem uppstår, kontakta {{venue}} på {{contact}}"
 
 msgid "If there are any problems, please contact {{venue}}'s staff"
-msgstr "Ved spørsmål vennligst ta direkte kontakt med {{venue}}"
+msgstr "Om problem uppstår, kontakta {{venue}}s personal"
 
 msgid ""
 "If you delete this slot, it will be removed from all your events. <br /> Are "
 "you sure?"
 msgstr ""
-"Hvis du sletter denne perioden vil den bli fjernet fra alle dine arrangement."
-" <br/> Er du sikker?"
+"Om du tar bort denna plats så kommer den att raderas från alla dina "
+"evenemang.<br/> Är du säker?"
 
 msgid "Image"
-msgstr "Bilde"
+msgstr "Bild"
 
 msgid "Image not found"
-msgstr "Bilde ikke funnet"
+msgstr "Bilden hittades inte"
 
 msgid "Import"
 msgstr "Import"
 
 msgid "Import Ticket Master event"
-msgstr "Import av Ticket Master arrangement"
+msgstr "Importera Ticketmaster-evenemang"
 
 msgid "Import event(s)"
-msgstr "Importer arrangement"
+msgstr "Importera evenemang"
 
 msgid "Import existing item"
-msgstr "Importer eksisterende vare"
+msgstr "Importera befintlig produkt"
 
 msgid "Import new event"
-msgstr "Importer nye arrangement"
+msgstr "Importera nytt evenemang"
 
 msgid "Imported events"
-msgstr "Importerte arrangement"
+msgstr "Importerade evenemang"
 
 msgid "In case of customer queries contact"
-msgstr "Ved kundehenvendelser kontakt:"
+msgstr "Vid frågor från kunder, kontakta: "
 
 msgid "Individially numbered locations"
-msgstr "Individuelt nummererte steder"
+msgstr "Individuellt numrerade platser"
 
 msgid "Individual item data (number sold)"
-msgstr "Enheter solgt"
+msgstr "Individuell objektdata (antal sålda)"
 
 msgid "Individual item data (revenue)"
-msgstr "Omsetning per enhet"
+msgstr "Individuell objektdata (intäkter)"
 
 msgid "Invalid configuration"
-msgstr "Ugyldig konfigurasjon"
+msgstr "Ogiltiga inställningar"
 
 msgid "Invalid date."
-msgstr "Ugyldig dato."
+msgstr "Ogiltigt datum."
 
 msgid "Invalid email"
-msgstr "Ugyldig e-post"
+msgstr "Ogiltig mailadress"
 
 msgid "Invalid email address."
-msgstr "Ugyldig e-post"
+msgstr "Ogiltig mailadress."
 
 msgid "Invalid format."
-msgstr "Ugyldig format."
+msgstr "Ogiltigt format."
 
 msgid "Invalid price."
-msgstr "Ugyldig pris."
+msgstr "Ogiltigt pris."
 
 msgid "Invalid username and/or password"
-msgstr "Ugyldig brukernavn og/eller passord"
+msgstr "Ogiltigt användarnamn och/eller lösenord"
 
 msgid "Invitation not sent"
-msgstr "Invitasjon ikke sendt"
+msgstr "Inbjudan skickades inte"
 
 msgid "Invitation sent"
-msgstr "Invitasjon sendt"
+msgstr "Inbjudan skickades"
 
 msgid "Invite new user"
-msgstr "Inviter ny bruker"
+msgstr "Bjud in ny användare"
 
 msgid "It is not possible to delete your own user."
-msgstr "Det er ikke mulig å slette din egen bruker."
+msgstr "Det är inte möjligt att radera ditt eget användarkonto."
 
 msgid ""
 "It is not possible to select a single location as your outlet configuration."
-msgstr "Det er ikke mulig å velge kun ett område for ditt utleveringssted."
+msgstr "Det är inte möjligt att ange en plats som din butiksinställning."
 
 msgid "Item"
-msgstr "Vare"
+msgstr "Produkt"
 
 msgid "Item name"
-msgstr "Varenavn"
+msgstr "Produktens namn"
 
 msgid "Items"
-msgstr "Varer"
+msgstr "Produkter"
 
 msgid "Items decreasing in revenue"
-msgstr "Redusert omsetning"
+msgstr "Produkter som minskar i intäkter"
 
 msgid "Items descreasing in popularity"
-msgstr "Redusert popularitet"
+msgstr "Produkter som minskar i popularitet"
 
 msgid "Items increasing in popularity"
-msgstr "Økt popularitet"
+msgstr "Produkter som ökar i popularitet"
 
 msgid "Items increasing in revenue"
-msgstr "Økt omsetning"
+msgstr "Produkter som ökar i intäkterna"
 
 msgid "Just this menu"
-msgstr "Kun denne menyen"
+msgstr "Bara denna meny"
 
 msgid "Labels"
 msgstr "Etiketter"
@@ -1123,410 +1128,410 @@ msgid "Language"
 msgstr "Språk"
 
 msgid "Language saved"
-msgstr "Språk lagret"
+msgstr "Språk sparat"
 
 msgid "Lead Time"
-msgstr "Standard forberedelsestid"
+msgstr "Ledtid"
 
 msgid "Lead time"
-msgstr "Standard forberedelsestid"
+msgstr "Ledtid"
 
 msgid "Link to external URL"
-msgstr "Lenke til ekstern URL"
+msgstr "Länk till extern URL"
 
 msgid "Live"
 msgstr "Live"
 
 msgid "Location label"
-msgstr "Område etikett"
+msgstr "Plats märkning"
 
 msgid "Location name"
-msgstr "Navn"
+msgstr "Namn på plats"
 
 msgid "Location not found"
-msgstr "Område ikke funnet"
+msgstr "Platsen hittades inte"
 
 msgid "Logo"
-msgstr "Logo"
+msgstr "Logga"
 
 msgid "Lupin"
-msgstr "Lupiner"
+msgstr "Lupin"
 
 msgid "MM"
 msgstr "MM"
 
 msgid "Manage Users"
-msgstr "Administrere brukere"
+msgstr "Hantera användare"
 
 msgid "Manager"
-msgstr "Leder"
+msgstr "Manager"
 
 msgid "Mandatory"
-msgstr "Påbudt"
+msgstr "Obligatoriskt"
 
 msgid "Marketing"
-msgstr "Markedsføring"
+msgstr "Marknadsföring"
 
 msgid "Max file size"
-msgstr "Maks filstørrelse"
+msgstr "Filens maxvikt"
 
 msgid "Max length is 100."
-msgstr "Maks lengde er 100."
+msgstr "Maxlängd 100."
 
 msgid "Max length is 1000 chars."
-msgstr "Maks lengde er 1000 tegn."
+msgstr "Maxlängd är 1000 tecken."
 
 msgid "Max length is 255."
-msgstr "Maks lengde er 255."
+msgstr "Maxlängd 255."
 
 msgid "Max length is 256."
-msgstr "Maks lengde er 256."
+msgstr "Maxlängd är 256."
 
 msgid "Max length is 300."
-msgstr "Maks lengde er 300."
+msgstr "Maxlängd är 300."
 
 msgid "Max length is 50."
-msgstr "Maks lengde er 50."
+msgstr "Maxlängd är 50."
 
 msgid "Max length is 500."
-msgstr "Maks lengde er 500."
+msgstr "Maxlängd är 500."
 
 msgid "Max length is 512."
-msgstr "Maks lengde er 512."
+msgstr "Maxlängd är 512."
 
 msgid "Max value is 100%."
-msgstr "Maks verdi er 100%"
+msgstr "Maxvärde är 100%"
 
 msgid "Max value is 1000."
-msgstr "Maks veri er 1000."
+msgstr "Maxvärde 1000."
 
 msgid "Max value is 2147483646."
-msgstr "Maks verdi er 2147483646."
+msgstr "Maxvärde är 2147483646."
 
 msgid "Max value is {{ '99999999.99' | currency:true }}."
-msgstr "Maks verdi er {{ '99999999.99' | currency:true }}."
+msgstr "Maxvärde är {{ '99999999.99' | currency:true }}."
 
 msgid "Max value is {{ modifierSelectionCtrl.maxIntegerValue }}."
-msgstr "Maks verdi er {{ modifierSelectionCtrl.maxIntegerValue }}."
+msgstr "Maxvärde {{ modifierSelectionCtrl.maxIntegerValue }}."
 
 msgid "Maximum Selection"
-msgstr "Maks valg"
+msgstr "Max val"
 
 msgid "Maximum selection needs to be equal or bigger than minimum selection"
-msgstr "Maks valg må være lik eller høyere enn minimum valg"
+msgstr "Max antal val måste vara större än minimum antalet"
 
 msgid "Maximum value is 100%"
-msgstr "Maks verdi er 100%"
+msgstr "Maxvärde är 100%"
 
 msgid "Medium"
 msgstr "Medium"
 
 msgid "Menu is required."
-msgstr "Meny er påkrevd."
+msgstr "En meny krävs."
 
 msgid "Menu name"
-msgstr "Meny navn"
+msgstr "Namn på meny"
 
 msgid "Menus"
 msgstr "Menyer"
 
 msgid "Message"
-msgstr "Melding"
+msgstr "Meddelande"
 
 msgid "Message body"
-msgstr "Innhold i melding"
+msgstr "Meddelandetext"
 
 msgid "Message title"
-msgstr "Tittel i melding"
+msgstr "Titel på meddelande"
 
 msgid "Mild"
 msgstr "Mild"
 
 msgid "Milk"
-msgstr "Melk"
+msgstr "Mjölk"
 
 msgid "Minimum Selection"
-msgstr "Minimum valg"
+msgstr "Min val"
 
 msgid "Minimum order value"
-msgstr "Minstebeløp for ordre"
+msgstr "Minsta värde för beställning"
 
 msgid "Minimum selection needs to be equal or smaller than maximum selection"
-msgstr "Minimum valg må være lik eller lavere enn maks valg"
+msgstr "Minimum antal val måste vara mindre än max antalet"
 
 msgid "Mins"
-msgstr "Min"
+msgstr "Minuter"
 
 msgid "Modifiers"
-msgstr "Variasjoner"
+msgstr "Administratörer"
 
 msgid "Molluscs"
-msgstr "Bløtdyr"
+msgstr "Musslor"
 
 msgid "Monthly"
-msgstr "Månedlig"
+msgstr "Månadsvis"
 
 msgid "Monthly Customers"
-msgstr "Kunder per måned"
+msgstr "Konsumenter per månad"
 
 msgid "Monthly Orders"
-msgstr "Bestillinger per måned"
+msgstr "Månadens beställningar "
 
 msgid "Monthly Revenue"
-msgstr "Omsetning per måned"
+msgstr "Månadsintäkt"
 
 msgid "Move"
-msgstr "Flytt"
+msgstr "Flytta"
 
 msgid "Multiple Sizes"
-msgstr "Flere størrelser"
+msgstr "Flera storlekar"
 
 msgid "Multiple instances found"
-msgstr "Flere forekomster funnet"
+msgstr "Flera exempel hittades"
 
 msgid "Multiple use"
-msgstr "Kan brukes flere ganger"
+msgstr "Används av flera"
 
 msgid "Mustard"
-msgstr "Sennep"
+msgstr "Senap"
 
 msgid "My Events"
-msgstr "Mine arrangementer"
+msgstr "Mina evenemang"
 
 msgid "My Outlets"
-msgstr "Mine utleveringssteder"
+msgstr "Mina butiker"
 
 msgid "My Tags"
-msgstr "Mine stikkord"
+msgstr "Mina etiketter"
 
 msgid "My account"
-msgstr "Min konto"
+msgstr "Mitt konto"
 
 msgid "My menus"
-msgstr "Mine menyer"
+msgstr "Mina menyer"
 
 msgid "Name"
-msgstr "Navn"
+msgstr "Namn"
 
 msgid "Navigation"
-msgstr "Navigasjon"
+msgstr "Navigering"
 
 msgid "New customers"
-msgstr "Nye kunder"
+msgstr "Nya kunder"
 
 msgid "New email address"
-msgstr "Ny e-post adresse"
+msgstr "Ny mailadress"
 
 msgid "New password"
-msgstr "Nytt passord"
+msgstr "Nytt lösenord"
 
 msgid "New vs Returning customers"
-msgstr "Nye kontra tidligere kunder"
+msgstr "Nya kunder vs. återkommande kunder"
 
 msgid "Next billing date:"
-msgstr "Neste fakturerings dato:"
+msgstr "Nästa faktureringsdatum:"
 
 msgid "No"
-msgstr "Nei"
+msgstr "Nej"
 
 msgid "No new events to import."
-msgstr "Ingen nye arrangement å importere."
+msgstr "Inget nytt evenemang att importera"
 
 msgid "No results found..."
-msgstr "Ingen resultater funnet..."
+msgstr "Inga resultat hittade..."
 
 msgid "No results..."
-msgstr "Ingen resultater..."
+msgstr "Inga resultat..."
 
 msgid "Norwegian"
-msgstr "Norsk"
+msgstr "Norska"
 
 msgid "Not available"
-msgstr "Ikke tilgjengelig"
+msgstr "Inte tillgänglig"
 
 msgid "Not connected"
-msgstr "Ikke tilkoblet"
+msgstr "Inte kopplad"
 
 msgid "Notes"
-msgstr "Merknader"
+msgstr "Noteringar"
 
 msgid "Notifications"
-msgstr "Meldinger"
+msgstr "Notiser"
 
 msgid "Nuts"
-msgstr "Nøtter"
+msgstr "Nötter"
 
 msgid "Offline"
 msgstr "Offline"
 
 msgid "Old password"
-msgstr "Gammelt passord"
+msgstr "Gammalt lösenord"
 
 msgid "On every trigger"
-msgstr "På hver trigger"
+msgstr "På varje utlösare"
 
 msgid "Once only"
-msgstr "En gang"
+msgstr "Endast en gång"
 
 msgid "Once per order"
-msgstr "En gang per ordre"
+msgstr "En gång per beställning"
 
 msgid "One off"
 msgstr "En av"
 
 msgid "Only display customers who have opted in to marketing"
-msgstr "Vis bare kunder som har takket ja til markedsføring"
+msgstr "Visa enbart konsumenter som markerat opt in"
 
 msgid "Only e-voucher"
-msgstr "Kun e-gavekort"
+msgstr "Endast e-kupong"
 
 msgid "Open"
-msgstr "Åpent"
+msgstr "Öppna"
 
 msgid "Open phone interactions menu"
-msgstr "Åpne telefon menyen"
+msgstr "Öppna menyn för telefoninteraktioner"
 
 msgid "Open profile interactions menu"
-msgstr "Åpne profil menyen"
+msgstr "Öppna menyn för profilinteraktioner"
 
 msgid "Open {{ name }} interactions menu"
-msgstr "Åpne {{name}} menyen"
+msgstr "Öppna menyn för {{ name }}interaktioner"
 
 msgid "Opening hours"
-msgstr "Åpningstider"
+msgstr "Öppettider"
 
 msgid "Operational hours"
-msgstr "Serveringstider"
+msgstr "Användartimmar"
 
 msgid "Option"
-msgstr "Valg"
+msgstr "Val"
 
 msgid "Optional"
-msgstr "Valgfritt"
+msgstr "Valfritt"
 
 msgid "Order #123456"
-msgstr "Ordre #123456"
+msgstr "Order #123456"
 
 msgid "Order rejection"
-msgstr "Avvist bestilling"
+msgstr "Avbokning"
 
 msgid "Order screen"
-msgstr "Ordreskjerm"
+msgstr "Beställningssida"
 
 msgid "Order status"
-msgstr "Ordrestatus"
+msgstr "Order status"
 
 msgid "Orders"
-msgstr "Ordre"
+msgstr "Beställningar"
 
 msgid "Orders by channel"
-msgstr "Bestillinger etter kanal"
+msgstr "Beställningar per kanal"
 
 msgid "Outlet"
-msgstr "Utleveringssted"
+msgstr "Butik"
 
 msgid "Outlet Locations"
-msgstr "Leveringsområder"
+msgstr "Butikernas plats"
 
 msgid "Outlet configuration"
-msgstr "Instillinger for utleveringssted"
+msgstr "Butikskonfiguration"
 
 msgid "Outlet created"
-msgstr "Utleveringssted opprettet"
+msgstr "Butik skapad"
 
 msgid "Outlet deleted"
-msgstr "Utleveringssted slettet"
+msgstr "Butik raderad"
 
 msgid "Outlet location created"
-msgstr "Leveringsområde opprettet"
+msgstr "Butikens plats skapad"
 
 msgid "Outlet location deleted"
-msgstr "Leveringsområde slettet"
+msgstr "Butikens plats raderad"
 
 msgid "Outlet location duplicated"
-msgstr "Leveringsområde duplisert"
+msgstr "Butikens plats duplicerad"
 
 msgid "Outlet location moved"
-msgstr "Leveringsområde flyttet"
+msgstr "Butikens plats flyttad"
 
 msgid "Outlet location updated"
-msgstr "Leveringsområde oppdatert"
+msgstr "Butikens plats uppdaterad"
 
 msgid "Outlet menu:"
-msgstr "Utleveringssted meny:"
+msgstr "Butikens meny:"
 
 msgid "Outlet moved"
-msgstr "Utleveringssted flyttet"
+msgstr "Butik flyttad"
 
 msgid "Outlet name"
-msgstr "Utleveringssted navn"
+msgstr "Uthämtningsställets namn"
 
 msgid "Outlet updated"
-msgstr "Utleveringssted oppdatert"
+msgstr "Butik uppdaterad"
 
 msgid "Outlets"
-msgstr "Utleveringssteder"
+msgstr "Butiker"
 
 msgid "Page Background"
-msgstr "Sidens bakgrunn"
+msgstr "Sidans bakgrund"
 
 msgid "Password"
-msgstr "Passord"
+msgstr "Lösenord"
 
 msgid "Password doesn't match."
-msgstr "Passord stemmer ikke."
+msgstr "Lösenordet matchar inte."
 
 msgid "Pause this promotion"
-msgstr "Pause denne kampanjen"
+msgstr "Pausa kampanj"
 
 msgid "Payment Card"
-msgstr "Kort for betaling"
+msgstr "Betalkort"
 
 msgid "Payment Method"
-msgstr "Betalingsmåte"
+msgstr "Betalningssätt"
 
 msgid "Payment method"
-msgstr "Betalingsmåte"
+msgstr "Betalningssätt"
 
 msgid "Payments"
-msgstr "Betaling"
+msgstr "Betalning"
 
 msgid "Payments not saved"
-msgstr "Betaling ikke lagret"
+msgstr "Betalningen sparades inte"
 
 msgid "Payments saved"
-msgstr "Betaling lagret"
+msgstr "Betalning sparad"
 
 msgid "Peanuts"
-msgstr "Peanøtter"
+msgstr "Jordnötter"
 
 msgid "Phone number"
 msgstr "Telefonnummer"
 
 msgid "Placeholder text"
-msgstr "Plassholder tekst"
+msgstr "Placeholder text"
 
 msgid "Please collect from:"
-msgstr "Hentes ved:"
+msgstr "Vänligen hämta från:"
 
 msgid "Please confirm your details and set a password."
-msgstr "Vennligst bekreft din informasjon og velg et passord."
+msgstr "Vänligen verifiera dina uppgifter och välj lösenord."
 
 msgid ""
 "Please note, push notifications will only be received by users who have your "
 "mobile app installed."
 msgstr ""
-"Vær oppmerksom på at push meldinger bare blir mottatt av de som har din app "
-"installert."
+"Observera att push-meddelanden bara kommer att tas emot av användare som har "
+"din mobilapp installerad."
 
 msgid "Please select a circle or draw a delivery area"
-msgstr "Velg en sirkel eller tegn opp leveringsområde"
+msgstr "Välj en cirkel eller rita ett leveransområde"
 
 msgid "Please sign in."
-msgstr "Vennligst logg inn."
+msgstr "Vänligen ligga in."
 
 msgid "Post voucher"
-msgstr "Post gavekort"
+msgstr "Posta kupong"
 
 msgid "Postcode/ZIP"
 msgstr "Postnummer"
@@ -1535,679 +1540,680 @@ msgid "Price"
 msgstr "Pris"
 
 msgid "Price (ex. tax)"
-msgstr "Pris (u/MVA)"
+msgstr "Pris (exkl moms)"
 
 msgid "Price (inc. tax)"
-msgstr "Pris (m/MVA)"
+msgstr "Pris (inkl moms)"
 
 msgid "Privacy Policy"
-msgstr "Personvern"
+msgstr "Integritetspolicy"
 
 msgid "Promotion code"
-msgstr "Kampanjekode"
+msgstr "Kampanjkod"
 
 msgid "Promotion deleted"
-msgstr "Rabattkode slettet"
+msgstr "Kampanjen raderad"
 
 msgid "Promotion name"
-msgstr "Kampanjenavn"
+msgstr "Namn på kampanj"
 
 msgid "Promotion not deleted"
-msgstr "Rabattkode ikke slettet"
+msgstr "Kampanjen raderades inte"
 
 msgid "Promotion not saved"
-msgstr "Rabattkode ikke lagret"
+msgstr "Kampanjen sparades inte"
 
 msgid "Promotion saved"
-msgstr "Rabattkode lagret"
+msgstr "Kampanjen sparades"
 
 msgid "Promotions"
-msgstr "Rabattkoder"
+msgstr "Kampanjer"
 
 msgid "Qty"
-msgstr "Antall"
+msgstr "Antal"
 
 msgid "Quantity"
-msgstr "Antall"
+msgstr "Antal"
 
 msgid "Remove validity period?"
-msgstr "Fjern gyldighetsperioden?"
+msgstr "Ta bort giltighetstid?"
 
 msgid "Repeat daily"
-msgstr "Gjenta daglig"
+msgstr "Upprepa dagligen"
 
 msgid "Repeat weekly"
-msgstr "Gjenta ukentlig"
+msgstr "Upprepa veckovis"
 
 msgid "Report"
 msgstr "Rapport"
 
 msgid "Resend invite"
-msgstr "Send invitasjon på nytt"
+msgstr "Skicka inbjudan"
 
 msgid "Reset password"
-msgstr "Tilbakestill passordet"
+msgstr "Återställ lösenord"
 
 msgid "Resume this promotion"
-msgstr "Gjenoppta denne kampanjen"
+msgstr "Fortsätt med kampanj"
 
 msgid "Retry"
-msgstr "Prøv på nytt"
+msgstr "Försök igen"
 
 msgid "Revenue"
-msgstr "Omsetning"
+msgstr "Vinst"
 
 msgid "Revenue by channel"
-msgstr "Omsetning etter kanal"
+msgstr "Vinst per kanal"
 
 msgid "Revenue last 30 days"
-msgstr "Omsetning siste 30 dager"
+msgstr "Intäkter de senaste 30 dagarna"
 
 msgid "Revenue previous 30 days"
-msgstr "Omsetning siste 30 dager"
+msgstr "Intäkter föregående 30 dagar"
 
 msgid "Role"
-msgstr "Rolle"
+msgstr "Roll"
 
 msgid "Same as opening hours"
-msgstr "Samme som åpningstidene"
+msgstr "Samma som öppningstider"
 
 msgid "Save"
-msgstr "Lagre"
+msgstr "Spara"
 
 msgid "Saved emails style"
-msgstr "Lagret e-post innstillinger"
+msgstr "Sparade mailtyper"
 
 msgid "Saved weborders style"
-msgstr "Lagret"
+msgstr "Sparade stilar för web-beställningar"
 
 msgid "Saving..."
-msgstr "Lagrer..."
+msgstr "Sparar..."
 
 msgid "Schedule created"
-msgstr "Tidsplan opprettet"
+msgstr "Schema skapades"
 
 msgid "Schedule not deleted"
-msgstr "Tidsplan ikke slettet"
+msgstr "Schemat kunde inte raderas"
 
 msgid "Schedule updated"
-msgstr "Tidsplan oppdatert"
+msgstr "Schemat uppdaterades"
 
 msgid "Search venue name"
-msgstr "Søk etter navn"
+msgstr "Sök arenanamn"
 
 msgid "Search {{cardItemListCtrl.searchLabel}}"
-msgstr "Søk {{cardItemListCtrl.searchLabel}}"
+msgstr "Sök{{cardItemListCtrl.searchLabel}}"
 
 msgid "Section name"
-msgstr "Seksjonsnavn"
+msgstr "Namn på sektion"
 
 msgid "Segment time"
-msgstr "Segment tid"
+msgstr "Segmentera tid"
 
 msgid "Seller Details"
-msgstr "Bedriftsinnstillinger"
+msgstr "Information om försäljare"
 
 msgid "Seller Name"
-msgstr "Bedriftsnavn"
+msgstr "Namn på försäljare"
 
 msgid "Seller details not saved"
-msgstr "Bedriftsinnstillinger ikke lagret"
+msgstr "Informationen om försäljaren sparades inte"
 
 msgid "Seller details saved"
-msgstr "Bedriftsinnstillinger lagret"
+msgstr "Information om försäljaren sparades"
 
 msgid "Send"
-msgstr "Send"
+msgstr "Skicka"
 
 msgid "Send a push notification..."
-msgstr "Send push melding"
+msgstr "Skicka en push-notis"
 
 msgid "Send confirmation"
-msgstr "Send bekreftelse"
+msgstr "Skicka bekräftelse"
 
 msgid "Send invite"
-msgstr "Send invitasjon"
+msgstr "Skicka inbjudan"
 
 msgid "Send push notification"
-msgstr "Send push notifikasjon"
+msgstr "Skicka push-meddelande"
 
 msgid "Service hours"
-msgstr "Åpningstider"
+msgstr "Servicetider"
 
 msgid "Services"
-msgstr "Tjenester"
+msgstr "Inställning"
 
 msgid "Services not saved"
-msgstr "Tjenester ikke lagret"
+msgstr "Tjänsterna sparades inte"
 
 msgid "Services saved"
-msgstr "Tjenester lagret"
+msgstr "Tjänsterna sparade"
 
 msgid "Sesame Seeds"
-msgstr "Sesamfrø"
+msgstr "Sesamfrön"
 
 msgid "Set area by:"
-msgstr "Sett området ved:"
+msgstr "Ange område för:"
 
 msgid "Set outlet configuration"
-msgstr "Instillinger for utleveringssted"
+msgstr "Ange butiksinställning"
 
 msgid "Set validity period"
-msgstr "Angi gyldighetsperiode"
+msgstr "Ange giltighetstid"
 
 msgid "Shellfish"
-msgstr "Skalldyr"
+msgstr "Skaldjur"
 
 msgid "Short Name"
-msgstr "Navn"
+msgstr "Kort namn"
 
 msgid "Show delivery zone"
-msgstr "Vis leveringsområde"
+msgstr "Visa leveransplats"
 
 msgid "Show modifiers"
-msgstr "Vis variasjoner"
+msgstr "Visa administratörer"
 
 msgid "Show on menu"
-msgstr "Vis på meny"
+msgstr "Visa på meny"
 
 msgid "Show weborders"
-msgstr "Vis web bestillinger"
+msgstr "Visa web-beställningar"
 
 msgid "Sign In"
-msgstr "Logg inn"
+msgstr "Logga in"
 
 msgid "Sign Up"
-msgstr "Opprett konto"
+msgstr "Starta konto"
 
 msgid "Sign in"
-msgstr "Logg inn"
+msgstr "Logga in"
 
 msgid "Sign in?"
-msgstr "﻿Logg inn?"
+msgstr "Logga in?"
 
 msgid "Signout"
-msgstr "Logg ut"
+msgstr "Logga ut"
 
 msgid "Single Size"
-msgstr "Enkelt størrelse"
+msgstr "Enkel"
 
 msgid "Single use"
-msgstr "Engangsbruk"
+msgstr "Används av en"
 
 msgid "Sleeping customers"
-msgstr "Passive kunder"
+msgstr "Sovande kunder"
 
 msgid "Slot ends"
-msgstr "Periode ender"
+msgstr "Platsens slut"
 
 msgid "Slot name"
-msgstr "Periode navn"
+msgstr "Namn på plats"
 
 msgid "Slot starts"
-msgstr "Periode starter"
+msgstr "Denna plats startar"
 
 msgid "Sold last 30 days"
-msgstr "Solgt siste 30 dager"
+msgstr "Sålt de senaste 30 dagarna"
 
 msgid "Sold previous 30 days"
-msgstr "Solgt tidligere 30 dager"
+msgstr "Sålt föregående 30 dagar"
 
 msgid ""
 "Some modifiers are already applied at the section level. Duplicate modifiers "
 "will only appear once to the user. Do you still want to add?"
 msgstr ""
-"Noen variasjoner er allerede brukt på seksjons nivå. Dupliserte variasjoner "
-"vil kun vises en gang til brukeren. Ønsker du fortsatt å legge til?"
+"Vissa modifieringar är redan tillagda på sektionsnivå . Extra modifieringar "
+"visas bara en gång för användaren. Vill du fortfarande lägga till?"
 
 msgid ""
 "Some modifiers are already applied in some items in this section. Duplicate "
 "modifiers will only appear once to the user. Do you still want to add?"
 msgstr ""
-"Noen variasjoner er allerede brukt på noen produkter i denne seksjonen. "
-"Dupliserte variasjoner vil kun vises en gang til brukeren. Ønsker du "
-"fortsatt å legge til?"
+"Vissa modifieringar används redan för vissa artiklar i den här sektionen. "
+"Extra modifieringar visas bara en gång för användaren. Vill du fortfarande "
+"lägga till?"
 
 msgid ""
 "Some modifiers on this item are already applied at section level. Duplicate "
 "modifiers will only appear once to the user."
 msgstr ""
-"Noen variasjoner på dette produktet er allerede i bruk på seksjons nivå. "
-"Dupliserte variasjoner vil kun vises en gang til brukeren."
+"Vissa modifieringar är redan tillagda på sektionsnivå . Extra modifieringar "
+"visas bara en gång för användaren."
 
 msgid "Something went wrong, please try again"
-msgstr "Noe gikk galt. Vennligst prøv igjen"
+msgstr "Något gick fel, vänligen försök igen"
 
 msgid "Sorry"
-msgstr "Beklager"
+msgstr "Beklagar"
 
 msgid "Sorry, the old password you entered was incorrect. Please try again!"
-msgstr "Ugyldig passord, prøv igjen."
+msgstr "Ledsen, det gamla lösenordet du angav var felaktigt. Försök igen!"
 
 msgid "Sorry, the password you entered was incorrect. Please try again!"
-msgstr "Ugyldig passord, prøv igjen."
+msgstr "Ledsen, lösenordet du angav var felaktigt. Försök igen!"
 
 msgid "Soya"
-msgstr "Soya"
+msgstr "Soja"
 
 msgid "Spanish"
-msgstr "Spansk"
+msgstr "Spanska"
 
 msgid "Spend"
-msgstr "Forbruk"
+msgstr "Spendera"
 
 msgid "Split slot into segments"
-msgstr "Splitt periode til segmenter"
+msgstr "Dela plats i olika segment"
 
 msgid "Staff Member"
-msgstr "Betjening"
+msgstr "Personal"
 
 msgid "Start date"
-msgstr "Startdato"
+msgstr "Startdatum"
 
 msgid "Start date need to be before end date."
-msgstr "Startdato må være før sluttdato."
+msgstr "Startdatum måste vara före slutdatum."
 
 msgid "Start number"
 msgstr "Startnummer"
 
 msgid "Start number need to be smaller than end number"
-msgstr "Startnummer må være lavere enn sluttnummer"
+msgstr "Startnumret måste vara mindre än slutnumret"
 
 msgid "Start time"
-msgstr "Start tidspunkt"
+msgstr "Starttid"
 
 msgid "Stock"
-msgstr "Varebeholdning"
+msgstr "Lager"
 
 msgid "Street name & number"
-msgstr "Gatenavn og nummer"
+msgstr "Gatunamn och nummer"
 
 msgid "Stripe"
 msgstr "Stripe"
 
 msgid "Styling"
-msgstr "Styling"
+msgstr "Utseende"
 
 msgid "Success! Please check your email for further instructions."
-msgstr "Vennligst sjekk din e-post for videre informasjon."
+msgstr "Klart! Kolla din mail för vidare instruktioner."
 
 msgid "Sulphites"
-msgstr "Sulfitter"
+msgstr "Sulfiter"
 
 msgid "Sulphur"
-msgstr "Svovel"
+msgstr "Svavel"
 
 msgid "Summary"
-msgstr "Oversikt"
+msgstr "Sammanfattning"
 
 msgid "Swedish"
-msgstr "Svensk"
+msgstr "Svenska"
 
 msgid "Sync menus"
-msgstr "Synkronisere menyer"
+msgstr "Synkronisera menyer"
 
 msgid "TOTAL"
-msgstr "TOTALT"
+msgstr "TOTAL"
 
 msgid "Tag Actions"
-msgstr "Stikkord aktiviteter"
+msgstr "Etikettfunktion"
 
 msgid "Tag action created"
-msgstr "Stikkord aktivitet opprettet"
+msgstr "Etikettfunktion skapad"
 
 msgid "Tag action deleted"
-msgstr "Stikkord aktivitet slettet"
+msgstr "Etikettfunktion raderad"
 
 msgid "Tag action name"
-msgstr "Stikkord aktivitet navn"
+msgstr "Namn på aktivitet"
 
 msgid "Tag action updated"
-msgstr "Stikkord aktivitet oppdatert"
+msgstr "Etikettfunktion uppdaterad"
 
 msgid "Tag created"
-msgstr "Stikkord opprettet"
+msgstr "Etikett skapad"
 
 msgid "Tag deleted"
-msgstr "Stikkord slettet"
+msgstr "Etikett raderad"
 
 msgid "Tag name"
-msgstr "Stikkord navn"
+msgstr "Etikettnamn"
 
 msgid "Tag updated"
-msgstr "Stikkord oppdatert"
+msgstr "Etikett uppdaterad"
 
 msgid "Tags"
-msgstr "Stikkord"
+msgstr "Etikett"
 
 msgid "Takeaway rate"
-msgstr "Sats for takeaway"
+msgstr "Takeaway belopp"
 
 msgid "Tax"
-msgstr "MVA"
+msgstr "Moms"
 
 msgid "Tax Group saved"
-msgstr "Momsgruppe lagret"
+msgstr "Momsgrupp sparad"
 
 msgid "Tax Groups"
 msgstr "Momsgrupper"
 
 msgid "Tax ID"
-msgstr "Organisasjonsnummer"
+msgstr "Momsregistreringsnummer"
 
 msgid "Tax group"
-msgstr "Momsgruppe"
+msgstr "Momsgrupp"
 
 msgid "Tax group name"
-msgstr "Navn på momsgruppe"
+msgstr "Namn på momsgrupp"
 
 msgid "Tax paid"
-msgstr "MVA betalt"
+msgstr "Moms betald"
 
 msgid "Tax rate"
-msgstr "MVA %"
+msgstr "Momssats"
 
 msgid "Tax report"
-msgstr "MVA rapport"
+msgstr "Momsrapport"
 
 msgid "Tel"
-msgstr "TELEFON"
+msgstr "Tel"
 
 msgid "Terms of use"
-msgstr "Vilkår for bruk"
+msgstr "Villkor"
 
 msgid "Text"
-msgstr "Tekst"
+msgstr "Text"
 
 msgid "Thanks for your order"
-msgstr "Takk for bestillingen"
+msgstr "Tack för din beställning"
 
 msgid ""
 "That link appears to have expired. Please ask your administrator to send you "
 "a new one."
 msgstr ""
-"Lenken har utløpt. Du kan be din administrator om å sende deg en ny "
-"invitasjon."
+"Länken verkar vara inaktiv. Vänligen be din administratör att skicka en ny "
+"länk."
 
 msgid ""
 "The menu has been updated, please wait while the app refreshes to load new "
 "data"
 msgstr ""
-"Menyen har blitt oppdatert, vent mens appen oppdateres for å laste inn nye "
-"data"
+"Menyn har ändrats, vänligen vänta medan appen uppdateras med den nya "
+"informationen."
 
 msgid "The message was sent successfully."
-msgstr "Meldingen ble sendt."
+msgstr "Meddelandet skickades."
 
 msgid "There are no collection slots assigned to this schedule"
-msgstr "Det finnes ingen henteperioder for dette skjemaet"
+msgstr "Schemat har inga uthämtningstider"
 
 msgid "There is already an account with this email address."
-msgstr "Det finnes allerede en konto med denne e-postadressen."
+msgstr "Det finns redan ett konto med denna mailadress."
 
 msgid ""
 "There is already another tag with the same name, are you sure you want to "
 "create this new tag?"
 msgstr ""
-"Det finnes allerede et stikkord med dette navnet. Er du sikker på at du "
-"opprette dette nye?"
+"Det finns redan en annan etikett med samma namn, är du säker på att du vill "
+"skapa den här nya etiketten?"
 
 msgid ""
 "There was a problem loading this page. <span class=\"fake-link\" ng-click="
 "\"vm.reload()\" translate=\"\">Retry</span>"
 msgstr ""
-"Det oppstod er problem ved lasting av denne siden.<span class=\"fake-link\" "
-"ng-click=\"vm.reload()\" translate=\"\">Prøv igjen</span>"
+"Det uppstod ett problem med att ladda sidan.  <span class=\"fake-link\" ng-"
+"click=\"vm.reload()\" translate=\"\">Försök igen</span>"
 
 msgid "There was an error deleting the event. Please try again."
-msgstr "Feil ved sletting av arrangement. Vennligst prøv på nytt."
+msgstr ""
+"Ett fel uppstod vid borttagningen av evenemanget. Vänligen försök igen.\n"
 
 msgid "This drawer is empty"
-msgstr "Denne kassen er tom"
+msgstr "Detta verktyg är tomt"
 
 msgid "This email is already in use, please use another"
-msgstr "E-postadressen er allerede i bruk, vennligst bruk en annen"
+msgstr "Denna mail används redan, välj en annan"
 
 msgid "This event will no longer be linked to Preoday. Are you sure?"
-msgstr "Arrangementet vil ikke lenger være koblet mot Preoday. Er du sikker?"
+msgstr ""
+"Evenemanget kommer inte längre vara kopplat till Preoday. Är du säker?"
 
 msgid ""
 "This feature is only available for full clients. Please contact our sales "
 "team using the chat widget at the bottom of the page to activate it."
 msgstr ""
-"Denne funksjonen er kun tilgjengelig for premium brukere. Vennligst ta "
-"kontakt med vårt salgsteam ved hjelp av chat-widgeten nederst på siden for å "
-"aktivere den."
+"Den här funktionen är enbart tillgänglig för vissa kunder. Vänligen kontakta "
+"säljteamet via chatten längst ner på sidan för att aktivera den."
 
 msgid "This is required."
-msgstr "Påkrevd."
+msgstr "Obligatorisk uppgift."
 
 msgid "This outlet location already has an outlet"
-msgstr "Dette leveringsområde har allerede et utleveringssted"
+msgstr "Denna butiksplats har redan en butik"
 
 msgid "This outlet location has custom fields"
-msgstr "Dette stedet har et egendefinert felt"
+msgstr "Denna uthämtningsplats har anpassade fält"
 
 msgid "This promotion code is already being used."
-msgstr "Denne kampanjekoden er allerede brukt."
+msgstr "Denna rabattkod har redan använts."
 
 msgid ""
 "This promotion hasn't started yet or has ended. If you activate it manually, "
 "the start and end dates will be removed."
 msgstr ""
-"Denne kampanjen har ikke startet enda, eller den er avsluttet. Hvis du "
-"aktiverer den manuelt vil start- og sluttdato fjernes."
+"Denna kampanj har inte startat eller har avslutats. Om du aktiverar den "
+"manuellt kommer start- och slutdatum att raderas."
 
 msgid "This slot is being used"
-msgstr "Denne perioden er i bruk"
+msgstr "Platsen används"
 
 msgid "This tag is in use"
-msgstr "Dette stikkordet er i bruk"
+msgstr "Den här etiketten används"
 
 msgid "This user already has an account"
-msgstr "Denne brukeren har allerede en konto"
+msgstr "Användaren har redan ett konto"
 
 msgid ""
 "This user will no longer be able to access the dashboard. Are you sure?"
 msgstr ""
-"Denne brukeren vil heretter ikke få tilgang til dashbordet. Er du sikker?"
+"Denna användare kommer ej längre ha tillgång till adminsidan. Är du säker?"
 
 msgid ""
 "This will delete all section and item configurations for this menu. Are you "
 "sure?"
 msgstr ""
-"Dette vil slette alle seksjoner og produkt innstillinger for denne menyen, "
-"er du sikker?"
+"Detta kommer att radera alla sektions- och produktkonfigurationer för menyn. "
+"Är du säker på det?"
 
 msgid "This will delete the configuration of all sub-groups. Are you sure?"
-msgstr "Dette vil slette innstillinger for alle undergrupper, er du sikker?"
+msgstr ""
+"Detta kommer att radera konfigurationen för alla undergrupper. Är du säker "
+"på det?"
 
 msgid "This will delete the modifier from all menus."
-msgstr "Dette vil slette variasjoner fra alle menyer."
+msgstr "Detta kommer att radera valmöjligheten från alla menyer."
 
 msgid "Time"
 msgstr "Tid"
 
 msgid "Timeout"
-msgstr "Timeout"
+msgstr "Paus"
 
 msgid "Timeslot"
-msgstr "Intervall"
+msgstr "Tid"
 
 msgid "To seat rate"
-msgstr "Sats for in-house"
+msgstr "Till plats belopp"
 
 msgid "Total"
 msgstr "Total"
 
 msgid "Total number of customers"
-msgstr "Totalt antall kunder"
+msgstr "Totalt antal kunder"
 
 msgid "Total number of orders"
-msgstr "Totalt antall bestillinger"
+msgstr "Totalt antal beställningar"
 
 msgid "Total revenue"
-msgstr "Omsetning"
+msgstr "Totala intäkter"
 
 msgid "Town / City"
-msgstr "Poststed"
+msgstr "Stad"
 
 msgid "Town/City"
-msgstr "Poststed"
+msgstr "Stad"
 
 msgid "Trigger is required."
-msgstr "Trigger er nødvendig"
+msgstr "Utlösare krävs."
 
 msgid "Trigger:"
-msgstr "Trigger:"
+msgstr "Utlösare:"
 
 msgid "URL"
 msgstr "URL"
 
 msgid "Until {{inputDateEnd}}"
-msgstr "Til {{inputDateEnd}}"
+msgstr "Till {{inputDateEnd}}"
 
 msgid "Update External Menus"
-msgstr "Oppdater eksterne menyer"
+msgstr "Uppdatera externa menyer"
 
 msgid "Update role"
-msgstr "Oppdater rolle"
+msgstr "Uppdatera roll"
 
 msgid "Upload specs"
-msgstr "Spesifikasjoner for opplastning"
+msgstr "Ladda upp beskrivning"
 
 msgid "Use the navigation menu on the left to manage your platform"
-msgstr "Bruk navigasjonsmenyen til venstre for å administrere din plattform"
+msgstr "Använd navigeringsmenyn till vänster för att hantera din plattform"
 
 msgid "User access not removed"
-msgstr "Brukertilgang ikke fjernet"
+msgstr "Användarbehörighet raderades inte"
 
 msgid "User access not updated"
-msgstr "Brukertilgang ikke oppdatert"
+msgstr "Användarbehörighet uppdaterades inte"
 
 msgid "User access removed"
-msgstr "Brukertilgang fjernet"
+msgstr "Användarbehörighet raderad"
 
 msgid "User access updated"
-msgstr "Brukertilgang oppdatert"
+msgstr "Användarbehörighet uppdaterad"
 
 msgid "User enters a promotion code"
-msgstr "Brukeren skriver inn en kampanjekode"
+msgstr "Användarna anger en kampanjkod"
 
 msgid "User permissions:"
-msgstr "Brukerrettigheter:"
+msgstr "Användarbehörighet:"
 
 msgid "Value must be at least 1."
-msgstr "Verdien må være minst 1."
+msgstr "Värdet måste vara minst 1."
 
 msgid "Variant Name"
-msgstr "Variant navn"
+msgstr "Variant namn"
 
 msgid "Vegan"
-msgstr "Vegetar"
+msgstr "Vegansk"
 
 msgid "Vegetarian"
-msgstr "Vegetarianer"
+msgstr "Vegetarisk"
 
 msgid "Venue"
-msgstr "Sted"
+msgstr "Arena"
 
 msgid "Venue Map"
-msgstr "Oversiktskart"
+msgstr "Arenakarta"
 
 msgid "Venue Settings"
-msgstr "Innstillinger"
+msgstr "Inställningar för arenan"
 
 msgid "Venue details not saved"
-msgstr "Innstillinger ikke lagret"
+msgstr "Detaljerna om arenan sparades inte"
 
 msgid "Venue details saved"
-msgstr "Innstillinger lagret"
+msgstr "Detaljerna om arenan sparades"
 
 msgid "Venue is"
-msgstr "Butikk er"
+msgstr "Arenan är"
 
 msgid "Venue location not saved"
-msgstr "Lokasjon ikke lagret"
+msgstr "Arenans plats har inte sparats"
 
 msgid "Venue location saved"
-msgstr "Lokasjon lagret"
+msgstr "Arenans plats sparad"
 
 msgid "Venue mode not changed"
-msgstr "Modus for sted ikke endret"
+msgstr "Arenaläge ändrades inte"
 
 msgid "Venue name"
-msgstr "Navn"
+msgstr "Arenans namn"
 
 msgid "Venue not found"
-msgstr "Ikke funnet"
+msgstr "Arenan hittades inte"
 
 msgid "Very Hot"
-msgstr "Svært sterk"
+msgstr "Väldigt stark"
 
 msgid "View Calendar"
-msgstr "Vis kalender"
+msgstr "Visa kalender"
 
 msgid "View:"
-msgstr "Vis:"
+msgstr "Visa:"
 
 msgid "Voucher"
-msgstr "Gavekort"
+msgstr "Kupong"
 
 msgid "Voucher footer text"
-msgstr "Bunntekst for gavekort"
+msgstr "Text i sidfot på kupong"
 
 msgid "Voucher menu"
-msgstr "Gavekort meny"
+msgstr "Meny för kupong"
 
 msgid "Voucher rate"
-msgstr "Sats for gavekort"
+msgstr "Kupongsbelopp"
 
 msgid "Voucher type"
-msgstr "Gavekort type"
+msgstr "Kupongstyp"
 
 msgid "Voucher value:"
-msgstr "Gavekort verdi:"
+msgstr "Kupongsvärde"
 
 msgid "Warning"
-msgstr "Advarsel"
+msgstr "Varning"
 
 msgid "We could not connect to your Stripe account. Please try again."
-msgstr "Vi kunne ikke koble til din Stripe konto, vennligst prøv igjen."
+msgstr "Vi kunde inte koppla till ditt Stripe konto. Försök igen."
 
 msgid "We could not find an account with that email address"
-msgstr "Vi kunne ikke finne en konto med denne e-postadressen"
+msgstr "Vi kunde inte hitta ett konto med den e-postadressen"
 
 msgid "Web Orders"
-msgstr "Web ordre"
+msgstr "Web beställningar"
 
 msgid "Weekly"
-msgstr "Ukentlig"
+msgstr "Veckovis"
 
 msgid "Weekly Customers"
-msgstr "Ukentlige kunder"
+msgstr "Kunder per vecka"
 
 msgid "Weekly Orders"
-msgstr "Ukentlige bestillinger"
+msgstr "Beställningar per vecka"
 
 msgid "Weekly Revenue"
-msgstr "Ukentlig omsetning"
+msgstr "Intäkter per vecka"
 
 msgid "Welcome to your dashboard"
-msgstr "Velkommen til kontrollpanelet"
+msgstr "Välkommen till din adminsida"
 
 msgid ""
 "When selected, all collection orders will be accepted automatically, without "
 "the need for you to first approve them manually"
-msgstr ""
-"Når dette er valgt vil alle bestillinger med henting bli akseptert "
-"automatisk, uten at du behøver å godkjenne de manuelt"
+msgstr "Alla beställningar för uthämtning kommer att godkännas automatiskt"
 
 msgid "Write a valid email address."
-msgstr "Skriv inn en gyldig e-postadresse."
+msgstr "Ange en giltig mailadress."
 
 msgid "Write here your message"
-msgstr "Skriv en melding"
+msgstr "Skriv ditt meddelande här"
 
 msgid "YY"
 msgstr "ÅÅ"
@@ -2216,164 +2222,168 @@ msgid "Yes"
 msgstr "Ja"
 
 msgid "You are being redirected..."
-msgstr "Du blir omdirigert ..."
+msgstr "Du omdirigeras"
 
 msgid "You are not accepting orders right now"
-msgstr "Du tar ikke i mot bestillinger akkurat nå"
+msgstr "Du kan inte ta emot beställningar just nu"
 
 msgid "You are ready to take orders"
-msgstr "Du er klar for å motta bestillinger"
+msgstr "Du är nu redo att ta beställningar"
 
 msgid ""
 "You cannot add a custom field because this outlet location already has one"
-msgstr "Du kan bare legge til et felt"
+msgstr ""
+"Du kan inte lägga till ett anpassat fält eftersom uthämtningsplatsen redan "
+"har ett"
 
 msgid ""
 "You cannot add a sub group because this outlet location already has one"
 msgstr ""
-"Du kan ikke legge til en undergruppe fordi dette leveringsområde allerede "
-"har en"
+"Du kan inte lägga till en sub grupp eftersom butiksplatsen redan har en"
 
 msgid "You cannot add a sub group because this outlet location has an outlet"
 msgstr ""
-"Du kan ikke legge til en undergruppe fordi dette leveringsområde har et "
-"utleveringssted"
+"Du kan inte lägga till en sub grupp eftersom butiksplatsen redan har en "
+"butik"
 
 msgid "You cannot add a sub group because this outlet location is for seat"
 msgstr ""
-"Du kan ikke legge til en undergruppe fordi dette leveringsområde er for "
-"sitting"
+"Du kan inte lägga till en sup grupp eftersom butiksplatsen är för "
+"sittplatser"
 
 msgid ""
 "You do not have permission to delete this custom field, please contact the "
 "support team"
-msgstr "Du mangler rettigheter til dette"
+msgstr ""
+"Du har inte behörighet att ta bort det här anpassade fältet, vänligen "
+"kontakta supporten."
 
 msgid ""
 "You do not have permission to delete this group, please contact the support "
 "team"
-msgstr "Du har ikke rettigheter til å slette denne gruppen"
+msgstr ""
+"Du har inte behörighet att ta bort denna grupp, kontakta supporten för info"
 
 msgid ""
 "You do not have permission to delete this outlet, please contact the support "
 "team"
-msgstr "Du har ikke rettigheter til å slette stedet"
+msgstr ""
+"Du har inte behörighet att ta bort denna butik, kontakta supporten för info"
 
 msgid ""
 "You do not have the necessary permissions to view this dashboard, please "
 "contact your administrator"
 msgstr ""
-"Du har ikke nok rettigheter til å vise kontrollpanelet. Kontakt din "
-"administrator om du mener dette er feil."
+"Du har inte behörighet till adminsidan, vänligen kontakta din administratör"
 
 msgid "You don't have outlet locations yet"
-msgstr "Du har ingen leveringsområder enda"
+msgstr "Du har inga butiksplatser ännu"
 
 msgid ""
 "You have edited an item that is in more than one menu. Where would you like "
 "to apply the changes?"
 msgstr ""
-"Du har redigert en vare som brukes på flere menyer. Hvor ønsker du å bruke "
-"endringene?"
+"Du har ändrat en vara som finns på fler menyer. Var vill du göra "
+"ändringarna?"
 
 msgid "You must accept at least one payment method before going live."
-msgstr "Du må aktivere minst en betalingsmetode før du kan gå live."
+msgstr ""
+"Du behöver godkänna åtminstone ett betalningssätt innan du kan gå live"
 
 msgid "You must add opening hours before specifying your service hours."
-msgstr "Du må opprette åpningstider før du legger til serveringstiden."
+msgstr "Du måste ange öppettider innan du kan ange servicetider."
 
 msgid "You must create at least one collection before you can add events"
-msgstr "Du må opprette minst en samling før du kan legge til event"
+msgstr "Du måste skapa en uthämtningstid innan du kan lägga till evenemang"
 
 msgid "You must have at least one active payment method."
-msgstr "Du må ha minst en aktiv betalingsmetode."
+msgstr "Du måste ha minst ett aktivt betalningssätt."
 
 msgid "You must have opening hours set for at least one day"
-msgstr "Du må ha opprettet åpningstider for minst en dag"
+msgstr "Du måste ange öppettider för minst en dag"
 
 msgid "You must select at least one collection slot."
-msgstr "Du må velge minst en periode for henting"
+msgstr "Du måste välja minst en uthämtningstid."
 
 msgid "You must select at least one date."
-msgstr "Du må velge minst en dato."
+msgstr "Du måste välja minst ett datum"
 
 msgid "You need to select at least one voucher type."
-msgstr "Du må velge minst en gavekort type."
+msgstr "Du måste välja minst en kupongstyp."
 
 msgid ""
 "You need to set up your address before selecting your location.  You'll be "
 "redirected to your Details page to configure your address."
 msgstr ""
-"Du må sette opp en adresse før du kan velge lokasjon.\n"
-"Du vil bli videresendt til siden for å konfigurere dine innstillinger."
+"Du måste ange en adress innan du kan välja plats. Du kommer nu bli skickad "
+"till inställningssidan för att ange adressen."
 
 msgid ""
 "You need to set up your location before creating delivery zones.  You'll be "
 "redirected to your Details page to configure your location."
 msgstr ""
-"Du må sette opp din egen lokasjon før du kan opprette leverings soner. Du "
-"vil bli omdirigert til siden for innstillinger for å konfigurere din "
-"lokasjon."
+"Du måste ange en plats innan du kan välja en leveranszon. Du kommer nu bli "
+"skickad till inställningssidan för att ange din plats."
 
 msgid "You only can add an outlet for the last child"
-msgstr "Du kan kun legge til ett utleveringssted for siste \"child\""
+msgstr "Du kan endast lägga till en butik för det sista barnet"
 
 msgid "Your email address was changed successfully"
-msgstr "E-postadressen din ble endret"
+msgstr "Din mailadress har uppdaterats"
 
 msgid "Your email has been changed"
-msgstr "Din e-postadresse har blitt endret"
+msgstr "Din mailadress har ändrats"
 
 msgid "Your new username is"
-msgstr "Din nye brukernavn er"
+msgstr "Ditt nya användarnamn är"
 
 msgid "Your password has been changed"
-msgstr "Passordet ditt ble endret"
+msgstr "Ditt lösenord har uppdaterats"
 
 msgid "Your session has expired. Please login again."
-msgstr "Økten din har utløpt. Vennligst logg inn igjen."
+msgstr "Din session har gått ut. Vänligen logga in igen."
 
 msgid "Your stripe account has been connected!"
-msgstr "Din Stripe konto er tilkoblet!"
+msgstr "Ditt Stripe konto har blivit kopplat!"
 
 msgid "Your venue was successfully connected to your Stripe account"
-msgstr "Du har koblet til din Stripe konto"
+msgstr "Din arena har kopplats till ditt Stripe konto"
 
 msgid "Zone name"
-msgstr "Områdenavn"
+msgstr "Namn på plats"
 
 msgid "and"
-msgstr "og"
+msgstr "och"
 
 msgid "click here"
-msgstr "klikk her"
+msgstr "klicka här"
 
 msgid "events"
-msgstr "arrangementer"
+msgstr "Evenemang"
 
 msgid "in demo mode"
-msgstr "i demo modus"
+msgstr "i demo läge"
 
 msgid "kms"
-msgstr "km"
+msgstr "Km"
 
 msgid "live"
 msgstr "live"
 
 msgid "miles"
-msgstr "km"
+msgstr "Km"
 
 msgid "mins"
-msgstr "min"
+msgstr "Minuter"
 
 msgid "offline"
 msgstr "offline"
 
 msgid "to activate them"
-msgstr "for å aktivere"
+msgstr "för att aktivera dem"
 
 msgid "to try again."
-msgstr "for å prøve igjen."
+msgstr "försök igen"
 
 msgid "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
 msgstr "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"

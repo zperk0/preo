@@ -44,6 +44,18 @@
 			z-index: 4;
 			box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.24), 0 0 8px 0 rgba(0, 0, 0, 0.12);		
 
+			.space-between-header{
+			  flex: 1 1 auto;
+			  text-align: center;
+			  &.div-right{
+			    padding-left: 20%;
+			  }
+
+			  &.div-left{
+			    padding-right: 20%;
+			  }
+			}
+
 			header {
 				font-weight: bold;
 				font-size: 12px;
@@ -60,7 +72,7 @@
 				}
 			}
 
-			//Simulate md-button, cant use md-button inside mighty-datepicker template
+			//Simulate md-button, using md-button inside picker was causing performance issue
 			button {
 				border-radius: 3px;
 				box-sizing: border-box;
@@ -88,13 +100,19 @@
 				text-transform: uppercase;
 				font-weight: 500;
 				font-size: 14px;
-				font-style: inherit;
-				font-variant: inherit;
-				font-family: inherit;
+				//font-style: inherit;
+				//font-variant: inherit;
+				//font-family: inherit;
 				text-decoration: none;
 				cursor: pointer;
 				overflow: hidden;
 				transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1)
+			}
+
+			.month {
+				flex: 1 1 auto;
+			  display: inline-block;
+			  margin: 0 6px;
 			}
 
 			.week {
@@ -136,9 +154,15 @@
 							color: black !important;
 						}
 
+						&.marked {
+						  color: orange;
+						  font-weight: bold;
+						}
+
 						&.differentmonth {
-							color: rgba(0,0,0,0.5);
+							color: rgba(0,0,0,0.1);
 							font-weight: normal;
+							visibility: hidden;
 						}
 
 						&.today {

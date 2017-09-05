@@ -72,6 +72,27 @@ html{
           height: 165px;
         }
       }
+
+      &.mobileWallpaper{
+        .image-uploader{
+          &.portrait{
+            width: 270px;
+            height: 165px;
+          }
+
+          &.landscape {
+            width: 137px;
+            height: 272px;
+          }
+
+          .upload-specs {
+            &.landscape {
+              margin-left: 15px;
+              align-items: center;
+            }
+          }
+        }
+      }
     }
   }
 

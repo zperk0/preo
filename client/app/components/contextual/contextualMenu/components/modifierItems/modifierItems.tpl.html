@@ -2,9 +2,10 @@
     <ng-form class='price' layout="row" layout-align="start center" name="itemForm" ng-repeat="item in vm.modifier.items">
       <md-input-container flex>
           <label translate>Option</label>
-          <input flex type="text" required name="itemName" ng-model="item.name">
+          <input flex type="text" required name="itemName" ng-model="item.name" ng-maxlength="100">
           <div ng-messages="itemForm.itemName.$error" ng-show="itemForm.itemName.$dirty">
             <div ng-message="required" translate ng-class="{'activated': itemForm.itemName.$error.required}">This is required.</div>
+            <div ng-message="maxlength" translate ng-class="{'activated': itemForm.itemName.$error.maxlength}">Max length is 100.</div>
           </div>
       </md-input-container>
       <md-input-container flex="25">
