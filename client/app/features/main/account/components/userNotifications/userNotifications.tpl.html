@@ -1,0 +1,53 @@
+<div class="user-notifications">
+  <md-card md-theme="default">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Notifications</span>
+      </md-card-title-text>
+    </md-card-title>
+    <form name="userNotificationsCtrl.userNotificationsForm" ng-submit="userNotificationsCtrl.submit()" novalidate>
+	    <md-card-content layout="row" layout-align="space-between">
+				<md-input-container class="md-block input-label md-block-split-time checkbox-group">
+					<div class='checkbox-label' translate>Please contact me about the following:</div>
+					<md-checkbox 
+						aria-label="{{'Marketing newsletters' | translate}}" 
+						ng-model="userNotificationsCtrl.user.optinMarketing"
+						ng-change="userNotificationsCtrl.debounceUpdate('marketing')"
+						ng-true-value="1"
+						ng-false-value="0">
+						{{'Marketing newsletters' | translate}}
+					</md-checkbox>
+					<md-checkbox 
+						aria-label="{{'Product updates' | translate}}" 
+						ng-model="userNotificationsCtrl.user.optinProduct"
+						ng-change="userNotificationsCtrl.debounceUpdate('product')"
+						ng-true-value="1"
+						ng-false-value="0">
+						{{'Product updates' | translate}}
+					</md-checkbox>
+					<md-checkbox
+						aria-label="{{'Support updates' | translate}}" 
+						ng-model="userNotificationsCtrl.user.optinSupport"
+						ng-change="userNotificationsCtrl.debounceUpdate('support')"
+						ng-true-value="1"
+						ng-false-value="0">
+						{{'Support updates' | translate}}
+					</md-checkbox>
+					<md-checkbox 
+						aria-label="{{'GDPR information' | translate}}" 
+						ng-model="userNotificationsCtrl.user.optinGdpr"
+						ng-change="userNotificationsCtrl.debounceUpdate('gdpr')"
+						ng-true-value="1"
+						ng-false-value="0">
+						{{'GDPR information' | translate}}
+					</md-checkbox>
+				</md-input-container>
+				<auto-save 
+					is-saving="userNotificationsCtrl.isSaving" 
+					is-error="userNotificationsCtrl.hasError" 
+					retry="userNotificationsCtrl.debounceUpdate('retry')">
+				</auto-save>
+	    </md-card-content>
+    </form>
+  </md-card>
+</div>
