@@ -1,0 +1,375 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"Language: nl\n"
+"Content-Type: text/plain; charset=UTF-8"
+
+msgid "404 - Page Not Found"
+msgstr "404 - pagina niet gevonden"
+
+msgid "Add Item"
+msgstr "Voeg item toe"
+
+msgid "Add New"
+msgstr "Voeg nieuwe toe"
+
+msgid "Add Section"
+msgstr "Voeg sectie toe"
+
+msgid "Add item"
+msgstr "Voeg item toe"
+
+msgid "Add menu"
+msgstr "Voeg menu toe"
+
+msgid "Add modifier"
+msgstr "Voeg wijziging toe"
+
+msgid "Add new group"
+msgstr "Voeg nieuwe groep toe"
+
+msgid "Add new outlet"
+msgstr "Voeg nieuwe outlet toe"
+
+msgid "Add new outlet location"
+msgstr "Voeg nieuwe verkooppuntlocatie toe"
+
+msgid "Add option"
+msgstr "Voeg optie toe"
+
+msgid "Add outlets"
+msgstr "Voeg outlets toe"
+
+msgid "Add section"
+msgstr "Voeg sectie toe"
+
+msgid "Add size"
+msgstr "Voeg formaat toe"
+
+msgid "Add sub group"
+msgstr "Voeg sub groep toe"
+
+msgid "All menus"
+msgstr "Alle menu's "
+
+msgid "An outlet location is using this outlet. You need remove it before"
+msgstr ""
+"Een andere outlet lokatie gebruikt deze outlet. U moet deze van te voren "
+"verwijderen"
+
+msgid "An unexpected error occurred"
+msgstr "Een onverwachte fout is opgetreden"
+
+msgid "An unexpected error occurred while loading menus"
+msgstr "Een onverwachte fout is opgetreden tijdens het laden van de menu's "
+
+msgid "An unexpected error occurred while loading your venues"
+msgstr ""
+"Een onverwachte fout is opgetreden tijdens het laden van de verkooppunten"
+
+msgid "Analytics"
+msgstr "Analytics"
+
+msgid "Are you sure you want to delete this image?"
+msgstr "Weet u zeker dat u deze afbeelding wilt verwijderen?"
+
+msgid "Are you sure you want to delete this outlet location?"
+msgstr "Weet u zeker dat u deze locatie wilt verwijderen?"
+
+msgid "Are you sure you want to delete this outlet?"
+msgstr "Weet u zeker dat je deze outlet wilt verwijderen?"
+
+msgid "Are you sure you want to delete this section?"
+msgstr "Weet u zeker dat u deze sectie wilt verwijderen?"
+
+msgid "Are you sure you want to permanently delete this item?"
+msgstr "Weet u zeker dat u dit item definitief wilt verwijderen?"
+
+msgid "Are you sure you want to remove this item from the section?"
+msgstr "Weet u zeker dat u dit item uit deze sectie wilt verwijderen?"
+
+msgid "Back"
+msgstr "Terug"
+
+msgid "Buttons Background"
+msgstr "Achtergrond knoppen"
+
+msgid "Buttons and section names"
+msgstr "Knoppen en sectie namen"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Card"
+msgstr "CreditCard"
+
+msgid "Cash"
+msgstr "Contant"
+
+msgid "Choose a colour"
+msgstr "Kies een kleur"
+
+msgid "Colour"
+msgstr "Kleur"
+
+msgid "Confirm new password"
+msgstr "Bevestig nieuw wachtwoord"
+
+msgid "Could not save weborders style"
+msgstr "Kan niet opslaan weborders stijl"
+
+msgid "Create new item"
+msgstr "Creeër een nieuw item"
+
+msgid "Delete"
+msgstr "Verwijder"
+
+msgid "Delete group?"
+msgstr "Verwijder groep?"
+
+msgid "Delete image?"
+msgstr "Verwijder afbeelding?"
+
+msgid "Delete item?"
+msgstr "Verwijder item?"
+
+msgid "Delete menu?"
+msgstr "Verwijder menu?"
+
+msgid "Delete modifier?"
+msgstr "Verwijder modifier?"
+
+msgid "Delete outlet location?"
+msgstr "Verwijder verkooppuntlocatie?"
+
+msgid "Delete outlet?"
+msgstr "Verwijder verkooppunt?"
+
+msgid "Delete section?"
+msgstr "Verwijder sectie?"
+
+msgid "Delivery Time"
+msgstr "Bezorgtijd"
+
+msgid "Description"
+msgstr "Omschrijving"
+
+msgid "Dimensions"
+msgstr "Afmetingen"
+
+msgid "Directions"
+msgstr "Aanwijzingen"
+
+msgid "Discount"
+msgstr "Korting"
+
+msgid "Done"
+msgstr "Klaar"
+
+msgid "Duplicate"
+msgstr "Kopiëren"
+
+msgid "E-voucher"
+msgstr "E-voucher"
+
+msgid "Edit"
+msgstr "Wijzig"
+
+msgid "Email address"
+msgstr "E-mailadres"
+
+msgid "Emails"
+msgstr "E-mails"
+
+msgid "End number"
+msgstr "Laatste nummer"
+
+msgid "End number need to be bigger than start number"
+msgstr "Laatste nummer moet groter zijn dan startnummer"
+
+msgid "Error adding outlet to outlet location"
+msgstr "Fout toevoegen verkooppuntlocatie"
+
+msgid "Error deleting outlet"
+msgstr "Fout verwijderen verkooppuntlocatie"
+
+msgid "Error moving outlet"
+msgstr "Fout verplaatsen verkooppunt"
+
+msgid "Error moving outlet location"
+msgstr "Fout verplaatsen verkooppuntlocatie"
+
+msgid "Error saving outlet"
+msgstr "Fout opslaan verkooppunt"
+
+msgid "Error saving outlet location"
+msgstr "Fout opslaan verkooppuntlocatie"
+
+msgid "Events"
+msgstr "Evenementen"
+
+msgid "Expiry:"
+msgstr "Vervaldatum:"
+
+msgid "Failed duplicating outlet location"
+msgstr "Niet gelukt dupliceren verkooppuntlocatie"
+
+msgid "Failed to move outlet location"
+msgstr "Niet gelukt verkooppuntlocatie te verplaatsen"
+
+msgid "Failed to remove outlet"
+msgstr "Niet gelukt verkooppunt te verwijderen"
+
+msgid "Failed to update the group"
+msgstr "Groep update niet gelukt"
+
+msgid "Fees"
+msgstr "Vergoedingen"
+
+msgid "File type"
+msgstr "Bestandstype"
+
+msgid "Go to Signin"
+msgstr "Ga naar aanmelden"
+
+msgid "Group Bookings"
+msgstr "Groepsboekingen"
+
+msgid "Group label"
+msgstr "Groep label"
+
+msgid "Header"
+msgstr "Header"
+
+msgid "Hide from menu"
+msgstr "Verberg"
+
+msgid "Image"
+msgstr "Afbeelding"
+
+msgid "Image not found"
+msgstr "Afbeelding niet gevonden"
+
+msgid "Import existing item"
+msgstr "Importeer bestaand item"
+
+msgid "Individially numbered locations"
+msgstr "Individueel genummerde locaties"
+
+msgid "Invalid username and/or password"
+msgstr "Verkeerde gebruikersnaam en wachtwoord"
+
+msgid "Item name"
+msgstr "Artikelnaam"
+
+msgid "Items"
+msgstr "Producten"
+
+msgid "Just this menu"
+msgstr "Alleen dit menu"
+
+msgid "Location label"
+msgstr "Locatie label"
+
+msgid "Location name"
+msgstr "Locatienaam"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Mandatory"
+msgstr "Verplicht"
+
+msgid "Max file size"
+msgstr "Maximale bestandsgrootte"
+
+msgid "Max length is 100."
+msgstr "Max. lengte is 100"
+
+msgid "Max length is 255."
+msgstr "Max. lengte is 255"
+
+msgid "Max value is 1000."
+msgstr "Max. waarde is 100"
+
+msgid "Max value is {{ modifierSelectionCtrl.maxIntegerValue }}."
+msgstr "Max. waarde is"
+
+msgid "Maximum Selection"
+msgstr "Max. selectie"
+
+msgid "Maximum selection needs to be equal or bigger than minimum selection"
+msgstr "Max. selectie moet even groot of groter zijn dan de min. selectie"
+
+msgid "Menu is required."
+msgstr "Menu is verplicht."
+
+msgid "Menu name"
+msgstr "Menu naam"
+
+msgid "Menus"
+msgstr "Menu's"
+
+msgid "Minimum Selection"
+msgstr "Minimale selectie"
+
+msgid "Minimum selection needs to be equal or smaller than maximum selection"
+msgstr "Minimale selectie moet gelijk of kleiner zijn dan de max. selectie"
+
+msgid "Modifiers"
+msgstr "Moderators"
+
+msgid "Move"
+msgstr "Verplaats"
+
+msgid "Multiple Sizes"
+msgstr "Meerdere maten"
+
+msgid "Multiple instances found"
+msgstr "Meerdere exemplaren gevonden"
+
+msgid "My Outlets"
+msgstr "Mijn verkooppunten"
+
+msgid "My menus"
+msgstr "Mijn menu's"
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Navigation"
+msgstr "Navigatie"
+
+msgid "New email address"
+msgstr "Nieuw e-mailadres"
+
+msgid "New password"
+msgstr "Nieuw wachtwoord"
+
+msgid "No"
+msgstr "Nee"
+
+msgid "No results..."
+msgstr "Geen resultaten.."
+
+msgid "Old password"
+msgstr "Oude wachtwoord"
+
+msgid "Open phone interactions menu"
+msgstr "Open telefoon interactie menu"
+
+msgid "Open profile interactions menu"
+msgstr "Open profiel interactie menu"
+
+msgid "Option"
+msgstr "Optie"
+
+msgid "Optional"
+msgstr "Facultatief"
+
+msgid "Orders"
+msgstr "Bestellingen"
+
+msgid "Outlet"
+msgstr "Verkooppunt"

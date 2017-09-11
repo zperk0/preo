@@ -45,7 +45,7 @@
 			box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.24), 0 0 8px 0 rgba(0, 0, 0, 0.12);		
 
 			.space-between-header{
-			  flex: 1;
+			  flex: 1 1 auto;
 			  text-align: center;
 			  &.div-right{
 			    padding-left: 20%;
@@ -110,6 +110,7 @@
 			}
 
 			.month {
+				flex: 1 1 auto;
 			  display: inline-block;
 			  margin: 0 6px;
 			}

@@ -25,8 +25,9 @@ export default function customDatePicker($compile, $timeout, Rollbar){
 
       function _injectPicker() {
         var domEl;
-        domEl = $compile(angular.element(options.template))($scope);
-        elem[0].querySelector('#wrapperCalendar').append(domEl[0]);
+        domEl = $compile(angular.element(options.template))($scope);  
+        let wrapper = angular.element(elem[0].querySelector('#wrapperCalendar'));
+        wrapper.append(domEl[0]);
       };
 
             function _indexOfMoment (array, element) {

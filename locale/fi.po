@@ -1,0 +1,1806 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"Language: fi\n"
+"Content-Type: text/plain; charset=UTF-8"
+
+msgid "#"
+msgstr "#"
+
+msgid "% decrease"
+msgstr "% lasku"
+
+msgid "% increase"
+msgstr "% nousu"
+
+msgid "(pending)"
+msgstr "(odottaa)"
+
+msgid ""
+"** Showing the next 100 events available. Events not displayed can be "
+"searched using field above."
+msgstr ""
+"** Näyttää seuraavat 100 saatavilla olevaa tapahtumaa. Tapahtumia jotka "
+"eivät ole näkyvissä, voi etsiä yllä olevan hakukentän kautta."
+
+msgid "+ VAT"
+msgstr "+ALV"
+
+msgid "404 - Page Not Found"
+msgstr "404 - Sivua ei löydetty"
+
+msgid ""
+"<icon>info</icon> Click on the map to drop a pin, or drag and drop the pin, "
+"to set the exact location of your venue"
+msgstr ""
+"<icon>info</icon> Klikkaa karttaa ja määrittele tapahtumapaikkasi sijainti."
+
+msgid "Add Item"
+msgstr "Lisää tuote"
+
+msgid "Add Modifier"
+msgstr "Lisää määre"
+
+msgid "Add New"
+msgstr "Lisää uusi"
+
+msgid "Add Section"
+msgstr "Lisää osio"
+
+msgid "Add custom fields at checkout"
+msgstr "Lisää mukautettuja kenttiä kassalla"
+
+msgid "Add delivery Zones"
+msgstr "Lisää toimitusalue"
+
+msgid "Add delivery zone"
+msgstr "Lisää toimitusalue"
+
+msgid "Add item"
+msgstr "Lisää tuote"
+
+msgid "Add menu"
+msgstr "LIsää menu"
+
+msgid "Add modifier"
+msgstr "Lisää määre"
+
+msgid "Add new collection slot"
+msgstr "Lisää uusi noutoaika"
+
+msgid "Add new custom field"
+msgstr "Lisää uusi mukautettu kenttä"
+
+msgid "Add new event"
+msgstr "Lisää uusi tapahtuma"
+
+msgid "Add new group"
+msgstr "Lisää uusi ryhmä"
+
+msgid "Add new item"
+msgstr "Lisää uusi tuote"
+
+msgid "Add new opening hour"
+msgstr "Lisää uusi aukioloaika"
+
+msgid "Add new outlet"
+msgstr "Lisää uusi myyntipiste"
+
+msgid "Add new outlet location"
+msgstr "Lisää uusi myyntipisteen sijainti"
+
+msgid "Add new schedule"
+msgstr "Lisää uusi aikataulu"
+
+msgid "Add new tax group"
+msgstr "Lisää uusi veroryhmä"
+
+msgid "Add new voucher"
+msgstr "Lisää uusi kuponki"
+
+msgid "Add option"
+msgstr "Lisää vaihtoehto"
+
+msgid "Add outlets"
+msgstr "Lisää myyntipisteitä"
+
+msgid "Add promotion"
+msgstr "Lisää tarjouskoodi"
+
+msgid "Add schedule"
+msgstr "Lisää aikataulu"
+
+msgid "Add section"
+msgstr "Lisää osio"
+
+msgid "Add size"
+msgstr "Lisää koko"
+
+msgid "Add sub group"
+msgstr "Lisää alaryhmä"
+
+msgid "Additional info"
+msgstr "Lisätietoa"
+
+msgid "Address line 1"
+msgstr "Osoiterivi 1"
+
+msgid "Address line 2"
+msgstr "Osoiterivi 2"
+
+msgid "Address line 3"
+msgstr "Osoiterivi 3"
+
+msgid "Address not found"
+msgstr "Osoitetta ei löytynyt"
+
+msgid "Administrator"
+msgstr "Järjestelmävalvoja"
+
+msgid "Advanced"
+msgstr "Lisäasetukset"
+
+msgid "After event start time"
+msgstr "Tilaisuuden alkamisajan jälkeen"
+
+msgid "All"
+msgstr "Kaikki"
+
+msgid "All items sold"
+msgstr "Kaikki tuotteet myyty"
+
+msgid "All menus"
+msgstr "Kaikki menut"
+
+msgid "All orders"
+msgstr "Kaikki tilaukset"
+
+msgid "All paying customers"
+msgstr "Kaikki maksavat asiakkaat"
+
+msgid "All your service methods are currently disabled."
+msgstr "Kaikki palvelutapasi ovat tällä hetkellä poissa käytöstä"
+
+msgid "Allow custom messages:"
+msgstr "Salli asiakasviestit"
+
+msgid "An error occurred sending your message. Please try again later."
+msgstr "Viestin lähetyksessä ilmeni virhe. Ole hyvä ja yritä uudelleen."
+
+msgid "An error ocurred in your signup, try again later"
+msgstr "Virhe käyttäjätunnuksen luonnissa, yritä myöhemmin uudelleen"
+
+msgid "An error ocurred to change your email, try again later"
+msgstr "Virhe sähköpostin vaihdossa, yritä myöhemmin uudelleen"
+
+msgid "An error ocurred to change your language. Try again later"
+msgstr "Virhe kielen vaihdossa, yritä myöhemmin uudelleen"
+
+msgid "An error ocurred to change your password, try again later"
+msgstr "Virhe salasanan vaihdossa, yritä myöhemmin uudelleen"
+
+msgid "An error ocurred to fetch the fees. Try again later."
+msgstr "Virhe kuluissa, yritä myöhemmin uudelleen."
+
+msgid "An event must have at least one schedule."
+msgstr "Tapahtumalla tulee olla vähintään yksi aikataulu"
+
+msgid "An outlet location is using this outlet. You need remove it before"
+msgstr ""
+"Myyntipisteen sijainti on käytössä tässä myyntipisteessä. Sinun täytyy "
+"poistaa se ennen"
+
+msgid "An unexpected error occurred"
+msgstr "Odottamaton virhe"
+
+msgid "An unexpected error occurred loading this page, please try again"
+msgstr "Odottamaton virhe sivun latauksesssa, yritä uudelleen pian"
+
+msgid "An unexpected error occurred while loading menus"
+msgstr "Odottamaton virhe  lataamisessa"
+
+msgid "An unexpected error occurred while loading your venues"
+msgstr "Odottamaton virhe tapahtumapaikkojesi latauksessa"
+
+msgid "Analytics"
+msgstr "Analytiikat"
+
+msgid "Any voucher"
+msgstr "Mikä tahansa kuponki"
+
+msgid "Apply automatically at checkout"
+msgstr "Hyväksy automaattisesti tarkistaessa"
+
+msgid "Apply discount to payment methods"
+msgstr "Hyväksy alennus maksutapoihin"
+
+msgid "Apply discount to service methods"
+msgstr "Hyväksy alennus palvelutapoihin"
+
+msgid "Apply discount to specific event:"
+msgstr "Hyväksy alennus tapahtumaan:"
+
+msgid "Are you sure you want to delete this collection slot?"
+msgstr "Haluatko varmasti poistaa tämän noutoajan?"
+
+msgid "Are you sure you want to delete this custom field?"
+msgstr "Haluatko varmasti poistaa tämän valinnaisen kentän?l"
+
+msgid "Are you sure you want to delete this event?"
+msgstr "Haluatko varmasti poistaa tämän tapahtuman?"
+
+msgid "Are you sure you want to delete this image?"
+msgstr "Oletko varma että haluat poistaa tämän kuvan?"
+
+msgid "Are you sure you want to delete this outlet location?"
+msgstr "Haluatko varmasti poistaa tämän myyntipisteen sijainnin?"
+
+msgid "Are you sure you want to delete this outlet?"
+msgstr "Haluatko varmasti poistaa tämän myyntipisteen?"
+
+msgid "Are you sure you want to delete this schedule?"
+msgstr "Haluatko varmasti poistaa tämän aikataulun?"
+
+msgid "Are you sure you want to delete this section?"
+msgstr "Haluatko varmasti poistaa tämän valinnan?"
+
+msgid "Are you sure you want to delete this tax group?"
+msgstr "Haluatko varmasti poistaa tämän veroryhmän?"
+
+msgid "Are you sure you want to permanently delete this delivery zone?"
+msgstr "Haluatko varmasti pysyvästi poistaa tämän toimitusalueen?"
+
+msgid "Are you sure you want to permanently delete this image?"
+msgstr "Haluatko varmasti poistaa tämän kuvan pysyvästi?"
+
+msgid "Are you sure you want to permanently delete this item?"
+msgstr "Haluatko varmasti poistaa tämän kohteen pysyvästi?"
+
+msgid "Are you sure you want to permanently delete this promotion?"
+msgstr "Haluatko varmasti poistaa tämän mainoksen pysyvästi?"
+
+msgid "Are you sure you want to remove this item from the section?"
+msgstr "Haluatko varmasti poistaa tämän tuotteen valikoimasta?"
+
+msgid "Area"
+msgstr "Alue"
+
+msgid "Assign code type"
+msgstr "Määritä koodin tyyppi"
+
+msgid "Assign code:"
+msgstr "Määritä koodi:"
+
+msgid "Auto accept"
+msgstr "Hyväksy automaattisesti"
+
+msgid "Autosave error."
+msgstr "Virhe tallennuksessa."
+
+msgid "Autosave error. Invalid fields"
+msgstr "Virhe tallennuksessa. VIrheelliset kentät."
+
+msgid "Average order value"
+msgstr "Tilauksen keskiarvo"
+
+msgid "Average orders per customer"
+msgstr "Keskivertotilaukset per asiakas"
+
+msgid "Average revenue per customer"
+msgstr "Keskivertoansiot per asiakas"
+
+msgid "Back"
+msgstr "Palaa"
+
+msgid "Basic"
+msgstr "Perus"
+
+msgid "Basics"
+msgstr "Perusteet"
+
+msgid "Before event start time"
+msgstr "Ennen tilaisuuden alkamisajankohtaa"
+
+msgid "Billing"
+msgstr "Laskutus"
+
+msgid "Billing amount:"
+msgstr "Laskutussumma:"
+
+msgid "Billing date not set"
+msgstr "Laskutuspäivämäärää ei asetettu"
+
+msgid "Billing info"
+msgstr "Laskutustiedot"
+
+msgid "Busiest days"
+msgstr "Kiireisimmät päivät"
+
+msgid "Busiest events"
+msgstr "Kiireisimmät tapahtumat"
+
+msgid "Busiest time of day"
+msgstr "Kiireisin aika päivästä"
+
+msgid "Buttons Background"
+msgstr "Painikkeiden tausta"
+
+msgid "Buttons and section names"
+msgstr "Painikkeiden ja valintojen nimet"
+
+msgid "By continuing, you accept the"
+msgstr "Jatkamalla hyväksyt"
+
+msgid "CVC"
+msgstr "CVC"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "Cannot delete schedule"
+msgstr "Ei voida poistaa aikataulua"
+
+msgid "Can’t delete this tax code while there are menu items using it."
+msgstr ""
+"Tätä verokoodia ei voida poistaa, sillä listalla on tuotteita, jotka "
+"käyttävät sitä."
+
+msgid "Card"
+msgstr "Kortti"
+
+msgid "Card number"
+msgstr "Kortin numero"
+
+msgid "Cash"
+msgstr "Käteinen"
+
+msgid "Change email address"
+msgstr "Vaihda sähköpostiosoite"
+
+msgid "Changes saved"
+msgstr "Muutokset tallennettu"
+
+msgid "Choose a colour"
+msgstr "Valitse väri"
+
+msgid "Choose collection slots:"
+msgstr "Valitse noutoajat:"
+
+msgid "Clear"
+msgstr "Pyyhi"
+
+msgid "Click here"
+msgstr "Klikkaa tästä"
+
+msgid "Click here to return to your dashboard"
+msgstr "Klikkaa tästä palataksesi ohjausnäkymään"
+
+msgid ""
+"Click on the map to begin drawing your custom area. Connect the first and "
+"last points to finish."
+msgstr ""
+"Klikkaa karttaa ja aloita piirtämään alue. Yhdistä ensimmäinen ja viimeinen "
+"piste lopuksi."
+
+msgid "Closed"
+msgstr "Suljettu"
+
+msgid "Collapse menu sections"
+msgstr "Kasaa menun valinnat"
+
+msgid "Collection"
+msgstr "Nouto"
+
+msgid "Collection Slot created"
+msgstr "Noutoaika luotu"
+
+msgid "Collection Slot updated"
+msgstr "Noutoaika päivitetty"
+
+msgid "Collection Slots"
+msgstr "Noutoajat"
+
+msgid "Collection time"
+msgstr "Noutoaika"
+
+msgid "Collection time:"
+msgstr "Noutoaika:"
+
+msgid "Colour"
+msgstr "Väri"
+
+msgid "Confirm new password"
+msgstr "Vahvista uusi salasana"
+
+msgid "Confirmation code:"
+msgstr "Vahvistuskoodi:"
+
+msgid "Connect to stripe"
+msgstr "Yhdistä Stripeen"
+
+msgid "Connected"
+msgstr "Yhdistetty"
+
+msgid "Connection confirmed"
+msgstr "Yhdistäminen vahvistettu"
+
+msgid "Connection failed"
+msgstr "Yhdistäminen epäonnistui"
+
+msgid "Could not save emails style"
+msgstr "Sähköpostin tyyliä ei voitu tallentaa"
+
+msgid "Could not save weborders style"
+msgstr "Verkkotilausten tyyliä ei voitu tallentaa"
+
+msgid "Create a slot"
+msgstr "Luo aika"
+
+msgid "Create new item"
+msgstr "Luo uusi kohde"
+
+msgid "Custom"
+msgstr "Custom"
+
+msgid "Customers can choose to pay <br> cash on receipt of their order"
+msgstr "Asiakas voi valita maksavansa <br> käteisellä kuitin tilauksistaan"
+
+msgid "Dannish"
+msgstr "tanska"
+
+msgid "Date"
+msgstr "Päivämäärä"
+
+msgid "Default delivery time <small>(minutes)</small>"
+msgstr "Oletettu toimitusaika <small>(minuuteissa)</small>"
+
+msgid "Delete"
+msgstr "Poista"
+
+msgid "Delete collection slot?"
+msgstr "Poista noutoaika?"
+
+msgid "Delete delivery zone?"
+msgstr "Poista toimitusalue?"
+
+msgid "Delete event?"
+msgstr "Poista tilaisuus?"
+
+msgid "Delete group?"
+msgstr "Poista ryhmä?"
+
+msgid "Delete image?"
+msgstr "Poista kuva?"
+
+msgid "Delete item?"
+msgstr "Poista kohde?"
+
+msgid "Delete menu?"
+msgstr "Poista menu?"
+
+msgid "Delete modifier?"
+msgstr "Poista määre?"
+
+msgid "Delete outlet location?"
+msgstr "Poista toimituspisteen sijainti?"
+
+msgid "Delete outlet?"
+msgstr "Poista myyntipiste?"
+
+msgid "Delete promotion?"
+msgstr "Poista promootio?"
+
+msgid "Delete schedule?"
+msgstr "Poista aikataulu?"
+
+msgid "Delete section?"
+msgstr "Poista osio?"
+
+msgid "Delete tax group?"
+msgstr "Poista veroryhmä?"
+
+msgid "Delete user?"
+msgstr "Poista käyttäjä?"
+
+msgid "Delivery"
+msgstr "Toimitus"
+
+msgid "Delivery Areas"
+msgstr "Toimitusalueet"
+
+msgid "Delivery Fee"
+msgstr "Toimituskulut"
+
+msgid "Delivery Time"
+msgstr "Toimitusaika"
+
+msgid "Delivery Zone"
+msgstr "Toimitusalue"
+
+msgid "Delivery Zones"
+msgstr "Toimitusalueet"
+
+msgid "Delivery charge"
+msgstr "Toimitusveloitus"
+
+msgid "Delivery fee"
+msgstr "Toimituskulut"
+
+msgid "Delivery rate"
+msgstr "Toimitusaste"
+
+msgid "Delivery zone not saved"
+msgstr "Toimitusaluetta ei tallennettu"
+
+msgid "Delivery zone saved"
+msgstr "Toimitusalue tallennettu"
+
+msgid "Demo mode"
+msgstr "Demo-tila"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Details"
+msgstr "Tiedot"
+
+msgid "Dimensions"
+msgstr "Mitat"
+
+msgid "Directions"
+msgstr "Ohjeet"
+
+msgid "Discount"
+msgstr "Alennus"
+
+msgid "Discount Value"
+msgstr "Alennuksen arvo"
+
+msgid "Discount for delivery orders (%)"
+msgstr "Alennus toimituksille (%)"
+
+msgid "Display Name"
+msgstr "Näytettävä nimi"
+
+msgid "Display name"
+msgstr "Näytettävä nimi"
+
+msgid "Display promotion on the menu"
+msgstr "Näytä alennus valikossa"
+
+msgid "Display text"
+msgstr "Näytä teksti"
+
+msgid "Distance"
+msgstr "Etäisyys"
+
+msgid "Done"
+msgstr "Valmis"
+
+msgid "Dummy orders only. Payments are not processed."
+msgstr "Vain valetilauksia. Maksuja ei suoriteta."
+
+msgid "Duplicate"
+msgstr "Kopioi"
+
+msgid "Duplicate modifier"
+msgstr "Kopioi muokkaaja"
+
+msgid "Dutch"
+msgstr "hollanti"
+
+msgid "E-voucher"
+msgstr "E-kuponki"
+
+msgid "ERROR"
+msgstr "VIRHE"
+
+msgid "Edit"
+msgstr "Muokkaa"
+
+msgid "Edit Mode"
+msgstr "Muokkaustila"
+
+msgid "Edit footer"
+msgstr "Muokkaa alatunnistetta"
+
+msgid "Edit header"
+msgstr "Muokkaa ylätunnistetta"
+
+msgid "Email"
+msgstr "Sähköposti"
+
+msgid "Email Address"
+msgstr "Sähköpostiosoite"
+
+msgid "Email address"
+msgstr "Sähköpostiosoite"
+
+msgid "Emails"
+msgstr "Sähköpostit"
+
+msgid "End date"
+msgstr "Päättymispäivämäärä"
+
+msgid "End date need to be after start date."
+msgstr "Päättymispäivämäärä ei voi olla ennen alkamispäivämäärää."
+
+msgid "End number"
+msgstr "Loppunumero"
+
+msgid "End number need to be bigger than start number"
+msgstr "Loppunumeron täytyy olla suurempi kuin alkunumeron"
+
+msgid "End time"
+msgstr "Lopetusaika"
+
+msgid "English"
+msgstr "englanti"
+
+msgid "Error adding outlet to outlet location"
+msgstr "Virhe myyntipaikan lisäämisessä sijaintiin"
+
+msgid "Error deleting outlet"
+msgstr "Virhe myyntipaikan poistamisessa"
+
+msgid "Error loading tax settings"
+msgstr "Virhe ladatessa veroasetuksia"
+
+msgid "Error moving outlet"
+msgstr "Virhe myyntipaikan siirtämisessä"
+
+msgid "Error moving outlet location"
+msgstr "Virhe myyntipaikan sijainnin siirtämisesssä"
+
+msgid "Error saving collection slot"
+msgstr "Virhe noutoajan tallennuksessa"
+
+msgid "Error saving event"
+msgstr "Virhe tapahtuman tallentamisessa"
+
+msgid "Error saving outlet"
+msgstr "Virhe myyntipisteen tallentamisessa"
+
+msgid "Error saving outlet location"
+msgstr "Virhe myynpisteen sijainnin tallentamisessa"
+
+msgid "Error saving schedule"
+msgstr "Virhe aikataulun tallentamisessa"
+
+msgid "Error saving tax Group"
+msgstr "Virhe veroryhmän tallentamisessa"
+
+msgid "Error updating collection slot"
+msgstr "Virhe noutoajan päivityksessä"
+
+msgid "Error updating event"
+msgstr "Virhe tapahtuman päivityksessä"
+
+msgid "Error updating schedule"
+msgstr "Virhe aikataulun päivityksessä"
+
+msgid "Event created"
+msgstr "Tapahtuma luotu"
+
+msgid "Event name"
+msgstr "Tapahtuman nimi"
+
+msgid "Event updated"
+msgstr "Tapahtuma päivitetty"
+
+msgid "Events"
+msgstr "Tapahtumat"
+
+msgid "Expiry:"
+msgstr "Voimassaolo päättyy:"
+
+msgid "Failed duplicating outlet location"
+msgstr "Myyntipisteen sijainnin kopiointi epäonnistui"
+
+msgid "Failed to move outlet location"
+msgstr "Myyntipisteen sijainnin siirtäminen epäonnistui"
+
+msgid "Failed to remove outlet"
+msgstr "Myyntipisteen poistaminen epäonnistui"
+
+msgid "Failed to update the group"
+msgstr "Ryhmän päivitys epäonnistui"
+
+msgid "Fees"
+msgstr "Kulut"
+
+msgid "File type"
+msgstr "Tiedostotyyppi"
+
+msgid "Finnish"
+msgstr "suomi"
+
+msgid "First purchase only"
+msgstr "Vain ensimmäinen ostos"
+
+msgid "Food and drink menu"
+msgstr "Ruoka- ja juomamenu"
+
+msgid "Footer"
+msgstr "Alatunniste"
+
+msgid "Footer text"
+msgstr "Alatunnisteen teksti"
+
+msgid "Forgot Password"
+msgstr "Salasana unohtunut"
+
+msgid "Free delivery for orders above"
+msgstr "Ilmainen toimitus ylläoleville tilauksille"
+
+msgid "Free delivery order value"
+msgstr "Ilmaisen toimituksen tilauksen arvo"
+
+msgid "French"
+msgstr "ranska"
+
+msgid "GO TO DASHBOARD"
+msgstr "MENE VALIKKOON"
+
+msgid "GO TO LOGIN"
+msgstr "MENE SISÄÄNKIRJAUTUMISEEN"
+
+msgid "GOT IT"
+msgstr "YMMÄRRÄN"
+
+msgid "German"
+msgstr "saksa"
+
+msgid "Gift Vouchers"
+msgstr "Lahjakupongit"
+
+msgid "Go to Signin"
+msgstr "Mene sisäänkirjautumiseen"
+
+msgid "Go to stripe"
+msgstr "Mene stripeen"
+
+msgid "Got it"
+msgstr "Ymmärrän"
+
+msgid "Group Bookings"
+msgstr "Ryhmävaraukset"
+
+msgid "Group label"
+msgstr "Ryhmämerkki"
+
+msgid "Header"
+msgstr "Ylätunniste"
+
+msgid "Hide delivery zone"
+msgstr "Piilota toimitusalue"
+
+msgid "Hide from menu"
+msgstr "Piilota menusta"
+
+msgid "Home"
+msgstr "Alkuun"
+
+msgid "I Forgot My Password"
+msgstr "Unohdin salasanani"
+
+msgid "If there are any problems, please contact {{venue}} on {{contact}}"
+msgstr ""
+"Ongelmatilanteessa ole yhteydessä tapahtumapaikkaan {{venue}} {{contact}}"
+
+msgid "If there are any problems, please contact {{venue}}'s staff"
+msgstr ""
+"Ongelmatilanteessa ole yhteydessä tapahtumapaikan {{venue}} henkilökuntaan"
+
+msgid ""
+"If you delete this slot, it will be removed from all your events. <br /> Are "
+"you sure?"
+msgstr ""
+"Jos poistat tämän ajan, se poistetaan kaikista tapahtumistasi. <br/> Oletko "
+"varma?"
+
+msgid "Image"
+msgstr "Kuva"
+
+msgid "Image not found"
+msgstr "Kuvaa ei löytynyt"
+
+msgid "Import existing item"
+msgstr "Tuo olemassaoleva tuote"
+
+msgid "In case of customer queries contact"
+msgstr "Asiakkaiden kysellessä ota yhteys"
+
+msgid "Individially numbered locations"
+msgstr "Yksilöllisesti numeroidut paikat"
+
+msgid "Invalid configuration"
+msgstr "Virheellinen rakenne"
+
+msgid "Invalid date."
+msgstr "Virheellinen päivämäärä."
+
+msgid "Invalid email"
+msgstr "Virheellinen sähköposti"
+
+msgid "Invalid email address."
+msgstr "Virheellinen sähköpostiosoite"
+
+msgid "Invalid format."
+msgstr "Virheellinen muoto."
+
+msgid "Invalid price."
+msgstr "Virheellinen hinta"
+
+msgid "Invalid username and/or password"
+msgstr "Virheellinen käyttäjätunnus ja/tai salasana"
+
+msgid "Invitation not sent"
+msgstr "Kutsua ei lähetetty"
+
+msgid "Invitation sent"
+msgstr "Kutsu lähetetty"
+
+msgid "Invite new user"
+msgstr "Kutsu uusi käyttäjä"
+
+msgid "It is not possible to delete your own user."
+msgstr "Et voi poistaa itseäsi."
+
+msgid ""
+"It is not possible to select a single location as your outlet configuration."
+msgstr ""
+"Myyntipisteesi rakenteella ei ole mahdollista valita yksittäistä sijaintia."
+
+msgid "Item"
+msgstr "Tuote"
+
+msgid "Item name"
+msgstr "Tuotteen nimi"
+
+msgid "Items"
+msgstr "Tuotteet"
+
+msgid "Just this menu"
+msgstr "Vain tämä menu"
+
+msgid "Labels"
+msgstr "Merkit"
+
+msgid "Language"
+msgstr "Kieli"
+
+msgid "Language saved"
+msgstr "Kieli tallennettu"
+
+msgid "Lead Time"
+msgstr "Läpimenoaika"
+
+msgid "Lead time"
+msgstr "Läpimenoaika"
+
+msgid "Live"
+msgstr "Live"
+
+msgid "Location label"
+msgstr "Sijaintikoodi"
+
+msgid "Location name"
+msgstr "Sijainnin nimi"
+
+msgid "Location not found"
+msgstr "Sijaintia ei löytynyt"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "MM"
+msgstr "KK"
+
+msgid "Manage Users"
+msgstr "Hallinnoi käyttäjiä"
+
+msgid "Manager"
+msgstr "Johtaja"
+
+msgid "Mandatory"
+msgstr "Pakollinen"
+
+msgid "Max file size"
+msgstr "Maksimi tiedostokoko"
+
+msgid "Max length is 100."
+msgstr "Maksimipituus on 100."
+
+msgid "Max length is 1000 chars."
+msgstr "Maksimipituus on 1000 merkkiä."
+
+msgid "Max length is 255."
+msgstr "Maksimipituus on 255."
+
+msgid "Max length is 256."
+msgstr "Maksimipituus o 256."
+
+msgid "Max length is 50."
+msgstr "Maksimipituus on 50."
+
+msgid "Max length is 500."
+msgstr "Maksimipituus on 500."
+
+msgid "Max length is 512."
+msgstr "Maksimipituus on 512."
+
+msgid "Max value is 100%."
+msgstr "Maksimiarvo on 100%."
+
+msgid "Max value is 1000."
+msgstr "Maksimiarvo on 1000."
+
+msgid "Max value is 2147483646."
+msgstr "Maksimiarvo on 2147483646."
+
+msgid "Max value is {{ '99999999.99' | currency:true }}."
+msgstr "Maksimiarvo on {{ '99999999.99' | currency:true }}."
+
+msgid "Max value is {{ modifierSelectionCtrl.maxIntegerValue }}."
+msgstr "Maksimiarvo on {{ modifierSelectionCtrl.maxIntegerValue }}."
+
+msgid "Maximum Selection"
+msgstr "Maksimi valintamäärä"
+
+msgid "Maximum selection needs to be equal or bigger than minimum selection"
+msgstr "Maksimivalinnan täytyy olla yhtäsuuri tai suurempi kuin minimivalinta"
+
+msgid "Maximum value is 100%"
+msgstr "Maksimiarvo on 100%"
+
+msgid "Menu is required."
+msgstr "Menu vaadittu"
+
+msgid "Menu name"
+msgstr "Menun nimi"
+
+msgid "Menus"
+msgstr "Menut"
+
+msgid "Message"
+msgstr "Viesti"
+
+msgid "Minimum Selection"
+msgstr "Minimivalinta"
+
+msgid "Minimum order value"
+msgstr "Minimitilauksen arvo"
+
+msgid "Minimum selection needs to be equal or smaller than maximum selection"
+msgstr "Minimivalinnan tulee olla yhtäsuuri tai pienempi kuin maksimivalinta"
+
+msgid "Mins"
+msgstr "Min"
+
+msgid "Modifiers"
+msgstr "Määritteet"
+
+msgid "Move"
+msgstr "Siirrä"
+
+msgid "Multiple Sizes"
+msgstr "Useita kokoja"
+
+msgid "Multiple instances found"
+msgstr "Useita tapauksia löytynyt"
+
+msgid "Multiple use"
+msgstr "Useita käyttöjä"
+
+msgid "My Events"
+msgstr "Tapahtumani"
+
+msgid "My Outlets"
+msgstr "Myyntipisteeni"
+
+msgid "My account"
+msgstr "Käyttäjätilini"
+
+msgid "My menus"
+msgstr "Menuni"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Navigation"
+msgstr "Navigointi"
+
+msgid "New email address"
+msgstr "Uusi sähköpostiosoite"
+
+msgid "New password"
+msgstr "Uusi salasana"
+
+msgid "Next billing date:"
+msgstr "Seuraava laskutuspäivämäärä:"
+
+msgid "No"
+msgstr "Ei"
+
+msgid "No results..."
+msgstr "Ei tuloksia..."
+
+msgid "Norwegian"
+msgstr "norja"
+
+msgid "Not connected"
+msgstr "Ei yhdistetty"
+
+msgid "Notifications"
+msgstr "Viestit"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Old password"
+msgstr "Vanha salasana"
+
+msgid "One off"
+msgstr "Pois päältä"
+
+msgid "Only e-voucher"
+msgstr "Vain e-kuponki"
+
+msgid "Open"
+msgstr "Auki"
+
+msgid "Open phone interactions menu"
+msgstr "Avaa puhelimen vastaava menu"
+
+msgid "Open profile interactions menu"
+msgstr "Avaa profiilin vastaava menu"
+
+msgid "Open {{ name }} interactions menu"
+msgstr "Avaa {{ name }} vastaava menu"
+
+msgid "Opening hours"
+msgstr "Aukioloajat"
+
+msgid "Operational hours"
+msgstr "Toiminta-ajat"
+
+msgid "Option"
+msgstr "Vaihtoehto"
+
+msgid "Optional"
+msgstr "Valinnainen"
+
+msgid "Order #123456"
+msgstr "Tilaus #123456"
+
+msgid "Order rejection"
+msgstr "Tilauksen hylkäys"
+
+msgid "Order screen"
+msgstr "Tilausnäyttö"
+
+msgid "Order status"
+msgstr "Tilauksen status"
+
+msgid "Orders"
+msgstr "Tilaukset"
+
+msgid "Outlet"
+msgstr "Myyntipiste"
+
+msgid "Outlet Locations"
+msgstr "Myyntipisteiden sijainnit"
+
+msgid "Outlet configuration"
+msgstr "Myyntipisteen asetukset"
+
+msgid "Outlet created"
+msgstr "Myyntipiste luotu"
+
+msgid "Outlet deleted"
+msgstr "Myyntipiste poistettu"
+
+msgid "Outlet location created"
+msgstr "Myyntipisteen sijainti luotu"
+
+msgid "Outlet location deleted"
+msgstr "Myyntipisteen sijainti poistettu"
+
+msgid "Outlet location duplicated"
+msgstr "Myyntipisteen sijainti kopioitu"
+
+msgid "Outlet location moved"
+msgstr "Myyntipisteen sijainti siirretty"
+
+msgid "Outlet location updated"
+msgstr "Myyntipisteen sijainti päivitetty"
+
+msgid "Outlet menu:"
+msgstr "Myyntipisteen menu:"
+
+msgid "Outlet moved"
+msgstr "Myyntipiste siirretty"
+
+msgid "Outlet name"
+msgstr "Myyntipisteen nimi"
+
+msgid "Outlet updated"
+msgstr "Myyntipiste päivitetty"
+
+msgid "Outlets"
+msgstr "Myyntipisteet"
+
+msgid "Page Background"
+msgstr "Sivun tausta"
+
+msgid "Password"
+msgstr "Salasana"
+
+msgid "Password doesn't match."
+msgstr "Salasana ei täsmää"
+
+msgid "Pause this promotion"
+msgstr "Pysäytä tarjous"
+
+msgid "Payment Card"
+msgstr "Maksukortti"
+
+msgid "Payments"
+msgstr "Maksut"
+
+msgid "Payments not saved"
+msgstr "Maksuja ei tallennettu"
+
+msgid "Payments saved"
+msgstr "Maksut tallennettu"
+
+msgid "Phone number"
+msgstr "Puhelinnumero"
+
+msgid "Please collect from:"
+msgstr "Nouda paikasta:"
+
+msgid "Please confirm your details and set a password."
+msgstr "Vahvista tietosi ja aseta salasana."
+
+msgid "Please select a circle or draw a delivery area"
+msgstr "Valitse ympyrä tai piirrä toimitusalue"
+
+msgid "Please sign in."
+msgstr "Kirjaudu sisään."
+
+msgid "Post voucher"
+msgstr "Postita kuponki"
+
+msgid "Postcode/ZIP"
+msgstr "Postinumero"
+
+msgid "Price"
+msgstr "Hinta"
+
+msgid "Privacy Policy"
+msgstr "Tietosuojakäytäntö"
+
+msgid "Promotion code"
+msgstr "Tarjouskoodi"
+
+msgid "Promotion deleted"
+msgstr "Tarjous poistettu"
+
+msgid "Promotion name"
+msgstr "Tarjouksen nimi"
+
+msgid "Promotion not deleted"
+msgstr "Tarjousta ei poistettu"
+
+msgid "Promotion not saved"
+msgstr "Tarjousta ei tallennettu"
+
+msgid "Promotion saved"
+msgstr "Tarjous tallennettu"
+
+msgid "Promotions"
+msgstr "Tarjoukset"
+
+msgid "Qty"
+msgstr "Määrä"
+
+msgid "Remove validity period?"
+msgstr "Poista voimassaoloaika?"
+
+msgid "Repeat daily"
+msgstr "Toista päivittäin"
+
+msgid "Repeat weekly"
+msgstr "Toista viikoittain"
+
+msgid "Report"
+msgstr "Raportoi"
+
+msgid "Resend invite"
+msgstr "Lähetä kutsu uudelleen"
+
+msgid "Reset password"
+msgstr "Nollaa salasana"
+
+msgid "Resume this promotion"
+msgstr "Jatka tätä tarjousta"
+
+msgid "Retry"
+msgstr "Uudelleen"
+
+msgid "Role"
+msgstr "Rooli"
+
+msgid "Same as opening hours"
+msgstr "Sama kuin aukioloajat"
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "Saved emails style"
+msgstr "Tallennettu sähköpostityyliin"
+
+msgid "Saved weborders style"
+msgstr "Tallennettu verkkotilaustyyliin"
+
+msgid "Saving..."
+msgstr "Tallentaa..."
+
+msgid "Schedule created"
+msgstr "Aikataulu luotu"
+
+msgid "Schedule not deleted"
+msgstr "Aikataulua ei poistettu"
+
+msgid "Schedule updated"
+msgstr "Aikataulu päivitetty"
+
+msgid "Search venue name"
+msgstr "Etsi tapahtumapaikan nimeä"
+
+msgid "Search {{cardItemListCtrl.searchLabel}}"
+msgstr "Etsi {{cardItemListCtrl.searchLabel}}"
+
+msgid "Section name"
+msgstr "Osion nimi"
+
+msgid "Segment time"
+msgstr "Segmentin aika"
+
+msgid "Seller Details"
+msgstr "Myyjän tiedot"
+
+msgid "Seller Name"
+msgstr "Myyjän nimi"
+
+msgid "Seller details not saved"
+msgstr "Myyjän tietoja ei tallennettu"
+
+msgid "Seller details saved"
+msgstr "Myyjän tiedot tallennettu"
+
+msgid "Send"
+msgstr "Lähetetty"
+
+msgid "Send confirmation"
+msgstr "Lähetä vahvistus"
+
+msgid "Send invite"
+msgstr "Lähetä kutsu"
+
+msgid "Service hours"
+msgstr "Palveluajat"
+
+msgid "Services"
+msgstr "Palvelut"
+
+msgid "Services not saved"
+msgstr "Palveluita ei tallennettu"
+
+msgid "Services saved"
+msgstr "Palvelut tallennettu"
+
+msgid "Set area by:"
+msgstr "Aseta alue:"
+
+msgid "Set outlet configuration"
+msgstr "Aseta myyntipisteen asetukset"
+
+msgid "Set validity period"
+msgstr "Aseta voimassaoloaika"
+
+msgid "Short Name"
+msgstr "Lyhenne"
+
+msgid "Show delivery zone"
+msgstr "Näytä toimitusalue"
+
+msgid "Show modifiers"
+msgstr "Näytä muokkaajat"
+
+msgid "Show on menu"
+msgstr "Näytä menussa"
+
+msgid "Show weborders"
+msgstr "Näytä verkkotilaukset"
+
+msgid "Sign In"
+msgstr "Kirjaudu sisään"
+
+msgid "Sign Up"
+msgstr "Kirjaudu tästä"
+
+msgid "Sign in"
+msgstr "Kirjaudu sisään"
+
+msgid "Sign in?"
+msgstr "Kirjaudu sisään?"
+
+msgid "Signout"
+msgstr "Kirjaudu ulos"
+
+msgid "Single Size"
+msgstr "Yksittäinen koko"
+
+msgid "Single use"
+msgstr "Yksittäinen käyttö"
+
+msgid "Slot ends"
+msgstr "Aika loppuu"
+
+msgid "Slot name"
+msgstr "Ajan nimi"
+
+msgid "Slot starts"
+msgstr "Aika alkaa"
+
+msgid ""
+"Some modifiers are already applied at the section level. Duplicate modifiers "
+"will only appear once to the user. Do you still want to add?"
+msgstr ""
+"Joitakin muokkauksia on jo hyväksytty tälle tasolle. Tuplamuokkaukset "
+"ilmestyvät vain kerran käyttäjälle. Haluatko silti lisätä?"
+
+msgid ""
+"Some modifiers are already applied in some items in this section. Duplicate "
+"modifiers will only appear once to the user. Do you still want to add?"
+msgstr ""
+"Joitakin muokkauksia käytetään jo joidenkin tämän alueen tuotteissa. "
+"Tuplamuokkaukset näkyvät vain kerran käyttäjälle. Haluatko silti lisätä?"
+
+msgid ""
+"Some modifiers on this item are already applied at section level. Duplicate "
+"modifiers will only appear once to the user."
+msgstr ""
+"Joitakin tämän kohteen muokkauksia on jo käytössä tällä tasolla. "
+"Tuplamuokkaukset näkyvät vain kerran käyttäjälle."
+
+msgid "Something went wrong, please try again"
+msgstr "Jokin meni pieleen, yritä uudelleen"
+
+msgid "Sorry"
+msgstr "Anteeksi"
+
+msgid "Sorry, the old password you entered was incorrect. Please try again!"
+msgstr ""
+"Valitettavasti vanha salasanasi oli virheellinen. Ole hyvä ja yritä "
+"uudelleen!"
+
+msgid "Sorry, the password you entered was incorrect. Please try again!"
+msgstr "Valitettavasti syöttämäsi salasana oli virheellinen. Yritä uudelleen!"
+
+msgid "Spanish"
+msgstr "espanja"
+
+msgid "Split slot into segments"
+msgstr "Jaa aika osiin"
+
+msgid "Staff Member"
+msgstr "Henkilökunnan jäsen"
+
+msgid "Start date"
+msgstr "Aloituspäivämäärä"
+
+msgid "Start date need to be before end date."
+msgstr "Aloituspäivämäärän täytyy olla ennen päättymispäivämäärää."
+
+msgid "Start number"
+msgstr "Aloitusnumero"
+
+msgid "Start number need to be smaller than end number"
+msgstr "Aloitusnumeron tulee olla pienempi kuin loppunumeron"
+
+msgid "Start time"
+msgstr "Aloitusaika"
+
+msgid "Street name & number"
+msgstr "Tien nimi ja numero"
+
+msgid "Stripe"
+msgstr "Stripe"
+
+msgid "Styling"
+msgstr "Ulkonäkö"
+
+msgid "Success! Please check your email for further instructions."
+msgstr "Onnistui! Tarkista sähköpostistasi lisäohjeet."
+
+msgid "Swedish"
+msgstr "ruotsi"
+
+msgid "TOTAL"
+msgstr "YHTEENSÄ"
+
+msgid "Takeaway rate"
+msgstr "Noutoaste"
+
+msgid "Tax"
+msgstr "Vero"
+
+msgid "Tax Group saved"
+msgstr "Veroryhmä tallennettu"
+
+msgid "Tax Groups"
+msgstr "Veroryhmät"
+
+msgid "Tax ID"
+msgstr "Vero ID"
+
+msgid "Tax group"
+msgstr "Veroryhmä"
+
+msgid "Tax group name"
+msgstr "Veroryhmän nimi"
+
+msgid "Tel"
+msgstr "Puh"
+
+msgid "Terms of use"
+msgstr "Käyttöehdot"
+
+msgid "Text"
+msgstr "Teksti"
+
+msgid "Thanks for your order"
+msgstr "Kiitos tilauksestasi"
+
+msgid ""
+"That link appears to have expired. Please ask your administrator to send you "
+"a new one."
+msgstr ""
+"Tämä linkki näyttää olevan vanhentunut. Pyydä järjestelmävalvojaasi "
+"lähettämään sinulle uusi."
+
+msgid "There are no collection slots assigned to this schedule"
+msgstr "Tälle aikataululle ei ole noutoaikoja"
+
+msgid "There is already an account with this email address."
+msgstr "Tällä sähköpostiosoitteella on jo tunnus. "
+
+msgid ""
+"There was a problem loading this page. <span class=\"fake-link\" ng-click="
+"\"vm.reload()\" translate=\"\">Retry</span>"
+msgstr ""
+"Ladatessa sivua ilmeni ongelma. <span class=\"fake-link\" ng-click=\"vm."
+"reload()\" translate=\"\">Uudelleen</span>"
+
+msgid "This drawer is empty"
+msgstr "Tämä laatikko on tyhjä"
+
+msgid "This email is already in use, please use another"
+msgstr "Tämä sähköpostiosoite on jo käytössä, käytä toista"
+
+msgid "This is required."
+msgstr "Tämä vaaditaan."
+
+msgid "This outlet location already has an outlet"
+msgstr "Tällä sijainnilla on jo myyntpiste"
+
+msgid "This promotion code is already being used."
+msgstr "Tämä tarjouskoodi o jo käytössä."
+
+msgid ""
+"This promotion hasn't started yet or has ended. If you activate it manually, "
+"the start and end dates will be removed."
+msgstr ""
+"Tämä tarjous ei ole alkanut vielä tai se on jo päättynyt. Jos aktivoit sen "
+"manuaalisesti, aloitus- ja lopetuspäivämäärät poistetaan."
+
+msgid "This slot is being used"
+msgstr "Tämä aika on käytössä"
+
+msgid "This user already has an account"
+msgstr "Tällä käyttäjällä on jo käyttäjätunnus"
+
+msgid ""
+"This user will no longer be able to access the dashboard. Are you sure?"
+msgstr "Tällä käyttäjällä ei ole enää pääsyä dashboardiin. Oletko varma?"
+
+msgid ""
+"This will delete all section and item configurations for this menu. Are you "
+"sure?"
+msgstr ""
+"Tämä poistaa kaikki valinnat ja tuoterakenteet tästä menusta. Oletko varma?"
+
+msgid "This will delete the configuration of all sub-groups. Are you sure?"
+msgstr "Tämä poistaa kaikkien alaryhmien tuoterakenteet. Oletko varma?"
+
+msgid "This will delete the modifier from all menus."
+msgstr "Tämä poistaa muokkaukset kaikista menuista."
+
+msgid "Time"
+msgstr "Aika"
+
+msgid "To seat rate"
+msgstr "Istuinaste"
+
+msgid "Total"
+msgstr "Yhteensä"
+
+msgid "Town / City"
+msgstr "Kunta / Kaupunki"
+
+msgid "Town/City"
+msgstr "Kunta/Kaupunki"
+
+msgid "Update role"
+msgstr "Päivitä rooli"
+
+msgid "Upload specs"
+msgstr "Lataa speksit"
+
+msgid "Use the navigation menu on the left to manage your platform"
+msgstr "Käytä vasemmalla olevaa valikkoa sivutojen hallintaa varten."
+
+msgid "User access not removed"
+msgstr "Käyttöoikeutta ei poistettu"
+
+msgid "User access not updated"
+msgstr "Käyttöoikeutta ei päivitetty"
+
+msgid "User access removed"
+msgstr "Käyttöoikeus poistettu"
+
+msgid "User access updated"
+msgstr "Käyttöoikeus päivitetty"
+
+msgid "User enters a promotion code"
+msgstr "Käyttäjä syöttää tarjouskoodin"
+
+msgid "User permissions:"
+msgstr "Käyttöoikeudet:"
+
+msgid "Value must be at least 1."
+msgstr "Arvon pitää olla vähintään 1."
+
+msgid "Variant Name"
+msgstr "Muunnoksen nimi"
+
+msgid "Venue Settings"
+msgstr "Tapahtumapaikan asetukset"
+
+msgid "Venue details not saved"
+msgstr "Tapahtumapaikan tietoja ei päivitetty"
+
+msgid "Venue details saved"
+msgstr "Tapahtumapaikan tiedot tallennettu"
+
+msgid "Venue is"
+msgstr "Tapahtumapaikka on"
+
+msgid "Venue location not saved"
+msgstr "Tapahtumapaikan sijaintia ei tallennettu"
+
+msgid "Venue location saved"
+msgstr "Tapahtumapaikan sijainti tallennettu"
+
+msgid "Venue mode not changed"
+msgstr "Tapahtumapaikan tilaa ei muutettu"
+
+msgid "Venue name"
+msgstr "Tapahtumapaikan nimi"
+
+msgid "Venue not found"
+msgstr "Tapahtumapaikkaa ei löydetty"
+
+msgid "View Calendar"
+msgstr "Näytä kalenteri"
+
+msgid "View:"
+msgstr "Näytä:"
+
+msgid "Voucher footer text"
+msgstr "Kupongin alatunnisteen teksti"
+
+msgid "Voucher menu"
+msgstr "Kupongin menu"
+
+msgid "Voucher rate"
+msgstr "Kupongin aste"
+
+msgid "Voucher type"
+msgstr "Kupongin tyyppi"
+
+msgid "Voucher value:"
+msgstr "Kupungin arvo:"
+
+msgid "We could not connect to your Stripe account. Please try again."
+msgstr "Emme voineet yhdistää Stripe-tiliisi. Yritä uudelleen."
+
+msgid "We could not find an account with that email address"
+msgstr "Emme löytäneet käyttäjää tällä sähköpostiosoitteella."
+
+msgid "Web Orders"
+msgstr "Verkkotilaukset"
+
+msgid "Welcome to your dashboard"
+msgstr "Tervetuloa hallintaan."
+
+msgid ""
+"When selected, all collection orders will be accepted automatically, without "
+"the need for you to first approve them manually"
+msgstr ""
+"Kun valittuna, kaikki kerättävät tilaukset hyväksytään automaattisesti ilman "
+"tarvetta ensin hyväksyä niitä manuaalisesti."
+
+msgid "Write a valid email address."
+msgstr "Kirjoita voimassaoleva sähköpostiosoite."
+
+msgid "YY"
+msgstr "VV"
+
+msgid "Yes"
+msgstr "Kyllä"
+
+msgid "You are not accepting orders right now"
+msgstr "Et ole hyväksynyt tilauksia"
+
+msgid "You are ready to take orders"
+msgstr "Olet valmis ottamaan tilaukset"
+
+msgid ""
+"You cannot add a sub group because this outlet location already has one"
+msgstr ""
+"Et voi lisätä alaryhmää, sillä tällä myyntipisteen sijainnilla on jo yksi"
+
+msgid "You cannot add a sub group because this outlet location has an outlet"
+msgstr ""
+"Et voi lisätä alaryhmää, sillä tälllä myyntipisteellä on jo myyntipiste"
+
+msgid "You cannot add a sub group because this outlet location is for seat"
+msgstr "Et voi lisätä alaryhmää, sillä tämä myyntipisteen sijainti on otettu"
+
+msgid ""
+"You do not have permission to delete this group, please contact the support "
+"team"
+msgstr "Sinulla ei ole lupaa poistaa tätä ryhmää, ota yhteys tukiryhmään"
+
+msgid ""
+"You do not have permission to delete this outlet, please contact the support "
+"team"
+msgstr ""
+"Sinulla ei ole lupaa poistaa tätä myyntipistettä, ota yhteys tukiryhmään"
+
+msgid ""
+"You do not have the necessary permissions to view this dashboard, please "
+"contact your administrator"
+msgstr ""
+"Sinulla ei ole tarvittavia oikeuksia näyttää tätä valikkoa, ole hyvä ja ota "
+"yhteyttä ylläpitäjään"
+
+msgid "You don't have outlet locations yet"
+msgstr "Sinulla ei ole vielä sijaintia myyntipisteelle"
+
+msgid ""
+"You have edited an item that is in more than one menu. Where would you like "
+"to apply the changes?"
+msgstr ""
+"Olet muokannut tuotetta joka on useammassa kuin yhdessä menussa. Missä "
+"haluat käyttää muutoksia?"
+
+msgid "You must accept at least one payment method before going live."
+msgstr ""
+"Sinun tulee hyväksyä vähintään yksi maksutapa ennen kuin siirryt live-tilaan."
+""
+
+msgid "You must add opening hours before specifying your service hours."
+msgstr "Sinun täytyy lisätä aukioloajat ennen kuin määrität palveluajat."
+
+msgid "You must create at least one collection before you can add events"
+msgstr ""
+"Sinun täytyy luoda vähintään yksi valikoima ennen kuin voit lisätä "
+"tapahtumia"
+
+msgid "You must have at least one active payment method."
+msgstr "Sinulla täytyy olla vähintään yksi aktiivinen maksutapa."
+
+msgid "You must have opening hours set for at least one day"
+msgstr "Sinulla täytyy olla aukioloajat asetettuna vähintään yhdelle päivälle"
+
+msgid "You must select at least one collection slot."
+msgstr "Sinun täytyy valita vähintään yksi noutoaika."
+
+msgid "You must select at least one date."
+msgstr "Sinun täytyy valita vähintään yksi päivämäärä."
+
+msgid "You need to select at least one voucher type."
+msgstr "Sinun täytyy valita vähintään yksi kuponkityyppi."
+
+msgid ""
+"You need to set up your address before selecting your location.  You'll be "
+"redirected to your Details page to configure your address."
+msgstr ""
+"Sinun täytyy lisätä osoitteesi ennen kuin valitset sijaintisi. Sinut "
+"uudelleenohjataan Tietoja -sivulle määrittääksesi osoitteesi."
+
+msgid "You only can add an outlet for the last child"
+msgstr "Voit lisätä myyntipisteen vain viimeisimpään "
+
+msgid "Your email address was changed successfully"
+msgstr "Sähköpostisi muutettiin onnistuneesti"
+
+msgid "Your email has been changed"
+msgstr "Sähköpostisi on muutettu"
+
+msgid "Your new username is"
+msgstr "Uusi käyttäjätunnuksesi on"
+
+msgid "Your password has been changed"
+msgstr "Salasanasi on vaihdettu"
+
+msgid "Your session has expired. Please login again."
+msgstr "Istunto on vanhentunut. Kirjaudu sisään uudelleen."
+
+msgid "Your stripe account has been connected!"
+msgstr "Stripe-käyttäjäsi on yhdistetty!"
+
+msgid "Your venue was successfully connected to your Stripe account"
+msgstr "Tapahtumapaikkasi on onnistuneesti liitetty Stripe-tunnukseesi"
+
+msgid "Zone name"
+msgstr "Alueen nimi"
+
+msgid "and"
+msgstr "ja"
+
+msgid "click here"
+msgstr "klikkaa tästä"
+
+msgid "events"
+msgstr "tapahtumat"
+
+msgid "in demo mode"
+msgstr "demotilassa"
+
+msgid "kms"
+msgstr "kms"
+
+msgid "live"
+msgstr "live"
+
+msgid "miles"
+msgstr "mailia"
+
+msgid "mins"
+msgstr "minuuttia"
+
+msgid "offline"
+msgstr "offline"
+
+msgid "to activate them"
+msgstr "aktivoidaksesi"
+
+msgid "to try again."
+msgstr "kokeile uudelleen."
+
+msgid "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
+msgstr "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
+
+msgid "{{getBillingDate()}}"
+msgstr "{{getBillingDate()}}"
+
+msgid "{{notificationsFormCtrl.title}}"
+msgstr "{{notificationsFormCtrl.title}}"
