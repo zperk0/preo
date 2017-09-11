@@ -112,22 +112,23 @@ export default class contextualDrawerStyleMobileController {
 
   _shouldSaveSettings() {
 
-    let hasChanges = true;
-    if(!this.model.mobileSettings.buttonColour && !this.model.colors.buttonColour || 
-       (this.model.mobileSettings.buttonColour && this.model.colors.buttonColour && 
-        this.model.mobileSettings.buttonColour === this.model.colors.buttonColour.substr(1)))
-      hasChanges = false;
-    console.log('first  model --', this.model.mobileSettings.buttonColour, this.model.colors.buttonColour);
-console.log(' first --', hasChanges);
-    if(!hasChanges && !this.model.mobileSettings.buttonTextColour && !this.model.colors.buttonTextColour || 
-       (this.model.mobileSettings.buttonTextColour && this.model.colors.buttonTextColour && 
-        this.model.mobileSettings.buttonTextColour === this.model.colors.buttonTextColour.substr(1)))
-      hasChanges = false;
-    console.log(' secondd --', hasChanges);
-    if(!hasChanges && (this.model.mobileSettings.wallpaper && this.model.images[this.drawerKey].id === this.model.mobileSettings.wallpaper))
-      hasChanges = false;
-    console.log(' thirddd --', hasChanges);
-    if(!hasChanges && this.StyleService.imagesModel.$images) {
+    let hasChanges = false;
+    if(!this.model.mobileSettings.buttonColour && this.model.colors.buttonColour ||
+       this.model.mobileSettings.buttonColour && !this.model.colors.buttonColour ||
+       this.model.mobileSettings.buttonColour != this.model.colors.buttonColour )
+      return true;
+
+    if(!this.model.mobileSettings.buttonTextColour && this.model.colors.buttonTextColour ||
+       this.model.mobileSettings.buttonTextColour && !this.model.colors.buttonTextColour ||
+       this.model.mobileSettings.buttonTextColour != this.model.colors.buttonTextColour )
+      return true;
+
+    if(!this.model.mobileSettings.wallpaper && this.model.images[this.drawerKey].id ||
+      this.model.mobileSettings.wallpaper && !this.model.images[this.drawerKey].id ||
+      this.model.images[this.drawerKey].id != this.model.mobileSettings.wallpaper)
+      return true;
+
+    if(this.StyleService.imagesModel.$images) {
       angular.forEach(this.StyleService.imagesModel.$images, (value, key) => {
         let image = value[0];
         if(image && image.$save)
@@ -146,11 +147,11 @@ console.log(' first --', hasChanges);
       }
 
       let obj = {
-        wallpaper: this.model.images[this.drawerKey].id,
-        buttonColour: this.model.colors.buttonColour ? this.model.colors.buttonColour.substr(1) : null, // jump first # character
-        buttonTextColour: this.model.colors.buttonTextColour ? this.model.colors.buttonTextColour.substr(1) : null  // jump first # character
+        wallpaper: this.model.images[this.drawerKey] ? this.model.images[this.drawerKey].id : '',
+        buttonColour: this.model.colors.buttonColour ? this.model.colors.buttonColour.substr(1) : '', // jump first # character
+        buttonTextColour: this.model.colors.buttonTextColour ? this.model.colors.buttonTextColour.substr(1) : ''  // jump first # character
       };
-      angular.extend(this.model.mobileSettings, obj);
+      angular.merge(this.model.mobileSettings, obj);
 
       if (this.model.mobileSettings.id) {
         this.model.mobileSettings.update()
