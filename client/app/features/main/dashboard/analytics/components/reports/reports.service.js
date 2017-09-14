@@ -167,7 +167,7 @@ export default class ReportsService {
             break;
         }
 
-        colObj.displayValue = angular.isDefined(colObj.displayValue) && colObj.displayValue !== null ? colObj.displayValue : this.gettextCatalog.getString('N/A');
+        colObj.displayValue = angular.isDefined(colObj.displayValue) && colObj.displayValue !== null ? colObj.displayValue : this.gettextCatalog.getString('n/a');
 
         // AUX properties that are used to Push Notification
         if(row['userId'])
