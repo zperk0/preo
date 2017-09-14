@@ -64,6 +64,10 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.ITEM_TAGS);
   }
 
+  hasDateOfBirthFeature() {
+    return this.getLocalFeature(Preoday.constants.Feature.DATE_OF_BIRTH);
+  }
+
   getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
         return +item.id;

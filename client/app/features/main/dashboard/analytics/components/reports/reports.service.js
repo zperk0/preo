@@ -585,7 +585,7 @@ export default class ReportsService {
   }
 
   // Everytime a search is done, this service keeps the last Param and Data returned.
-  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService) {
+  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService, FeatureService) {
     "ngInject";
     this.$q = $q;
     this.$window = $window;
@@ -594,6 +594,7 @@ export default class ReportsService {
     this.gettextCatalog = gettextCatalog;
     this.LabelService = LabelService;
     this.accountId = VenueService.currentVenue.accountId;
+    this.hasDobFeature = FeatureService.hasDateOfBirthFeature();
   }
 
   // Object Properties:
@@ -736,7 +737,7 @@ export default class ReportsService {
     else if(reportId== 'allPayingCustomers'){
       response = [
         {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
-        {key:'dateOfBirth' ,text:this.gettextCatalog.getString('D.O.B'), fieldType:'date'},
+        {key:'dateOfBirth' ,text:this.gettextCatalog.getString('D.O.B'), fieldType:'date', isHidden: !this.hasDobFeature},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'orderCount', text:this.gettextCatalog.getString('Orders')},
         {key:'orderTotal', text:this.gettextCatalog.getString('Spend'), fieldType: 'currency'},
