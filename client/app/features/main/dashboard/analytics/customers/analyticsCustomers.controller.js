@@ -236,12 +236,15 @@ export default class analyticsCustomersController {
 
     var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
 
-    //CustomerMarketing its only a filter, no need new search    
+    //CustomerMarketing its only a filter, no need new search
     if(!isFilterCustomer && paramsChanged){
       this.debounceFetch();
     }
     else{
       this.updateView();
+      if (this.tableData.body.length < this.valuesPerScrollPage) {
+        this.onInfiniteScroll();
+      }
     }
 
   }
