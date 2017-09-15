@@ -7,5 +7,6 @@
         <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
       </div>
   </md-input-container>
-  <tag-select ng-model="contextualMenuCtrl.entity.customTags" collection="contextualMenuCtrl.params.tags"></tag-select>
+  <tag-select ng-if="contextualMenuCtrl.FeatureService.hasItemTagsFeature()" ng-model="contextualMenuCtrl.entity.customTags" collection="contextualMenuCtrl.params.tags"></tag-select>
+
 </md-card-content>

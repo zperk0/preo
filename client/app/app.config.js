@@ -4,7 +4,7 @@ export default function config($mdThemingProvider, $locationProvider, $mdDateLoc
 
   if (!window._PREO_DATA){
     window._PREO_DATA = {
-      _CDNROOT : 'http://cdn-local.preoday.com',
+      _CDNROOT : 'http://cdn-local.preoday.com/',
       _WEBORDERS : 'http://localhost:3000/',
       _WEBORDERS_EDIT : 'http://localhost:3000/',
       _ORDERSAPP : 'http://local.orders.preoday.com/',

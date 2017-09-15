@@ -1,4 +1,4 @@
-<div class='image-uploader'>
+<div class='image-uploader' ng-class="{'portrait': !imageUploaderCtrl.landscape, 'landscape': imageUploaderCtrl.landscape}">
   <div class='image-wrapper placeholder' ng-if="!imageUploaderCtrl.ngModel.length || !imageUploaderCtrl.ngModel[0].$image">
   </div>
   <div class='image-wrapper' ng-if="imageUploaderCtrl.ngModel.length && imageUploaderCtrl.ngModel[0].$image">
@@ -9,16 +9,16 @@
    </div>
    <icon class='delete-icon' ng-class="{'disabled': imageUploaderCtrl.ngDisabled}" ng-click="imageUploaderCtrl.deleteImage($event)">delete</icon>
   </div>
-  <div class='upload-specs' ng-if="imageUploaderCtrl.dimensions">
+  <div class='upload-specs' flex ng-class="{'portrait': !imageUploaderCtrl.landscape, 'landscape': imageUploaderCtrl.landscape}" ng-if="imageUploaderCtrl.dimensions">
     <icon>info</icon>
     <span class='text' translate>Upload specs</span>
       <md-tooltip md-direction="bottom">
         {{'Dimensions' | translate}}: {{imageUploaderCtrl.dimensions}} <br/>
-        {{'Max file size' | translate}}: 5mb <br/>
-        {{'File type' | translate}}: jpg, png
+        {{'Max file size' | translate}}: {{imageUploaderCtrl.maxSize}}<br/>
+        {{'File type' | translate}}: {{imageUploaderCtrl.fileTypes}}
       </md-tooltip>
   </div>
-  <label class="import-file" for='imagefile'>
+  <label class="import-file" ng-class="{'portrait': !imageUploaderCtrl.landscape, 'landscape': imageUploaderCtrl.landscape}" for='imagefile'>
     <input type="file" class="imagefile" name='imagefile' custom-on-change="imageUploaderCtrl.fileChange($event)">
     <md-button ng-click="imageUploaderCtrl.target()" ng-disabled="imageUploaderCtrl.ngDisabled" class="md-fab md-mini md-primary" aria-label="{{'Add Section' | translate}}">
       <icon>add</icon>

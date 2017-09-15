@@ -104,6 +104,13 @@ export default class analyticsCustomersController {
     });
   }
 
+  onNotificationInput() {
+    let nonBMP = "[^\u0000-\uFFFF]";
+    if (this.$scope.diagCtrl.textArea) {
+      this.$scope.diagCtrl.textArea = this.$scope.diagCtrl.textArea.replace(new RegExp(nonBMP, 'gu'), '');
+    }
+  }
+
   sendNotification(){
     var modal = {
       title: this.gettextCatalog.getString('Send a push notification...'),
@@ -112,7 +119,7 @@ export default class analyticsCustomersController {
       buttons: [{name:this.gettextCatalog.getString('Send')}]
     };
 
-    this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons)
+    this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons, this.onNotificationInput)
     .then(() => {
 
       var usersSelected = [];

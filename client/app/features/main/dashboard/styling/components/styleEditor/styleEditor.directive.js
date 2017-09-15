@@ -1,4 +1,4 @@
-export default function styleEditor($document, $timeout, $location){
+export default function styleEditor($document, $timeout, $location, $rootScope){
   "ngInject";
   return {
     restrict: 'A',
@@ -10,7 +10,11 @@ export default function styleEditor($document, $timeout, $location){
         const body = angular.element($document[0].body);
         function openDrawer(el){
           $timeout(()=>{
-            $location.search('drawer-emails-style',editorAttr);
+            if(editorAttr === 'mobileWallpaper' || editorAttr === 'mobileButtons') {
+              $location.search('drawer-mobile-style',editorAttr);
+            } else {
+              $location.search('drawer-emails-style',editorAttr);
+            }
           })
         };
 

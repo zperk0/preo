@@ -39,6 +39,61 @@ export default class StyleService {
     });
   }
 
+  getMobileImages(type) {
+    return this.$q((resolve, reject)=>{
+      return Preoday.VenueImage.get(this.VenueService.currentVenue.id)
+        .then((images)=>{
+          if (images && images.length){
+            let ts = images.filter((t)=>t.type === type);
+            if (ts && ts.length){
+              this.imagesModel[ts[0].type] = ts[0];
+            }
+          }
+          resolve(this.imagesModel)
+        },(err)=>{ //api returns 404 if not found
+          resolve(this.imagesModel)
+        }).catch((err)=>{
+          resolve(this.imagesModel)
+      })
+    });
+  }
+
+  mobileExtendModels(data) {
+    angular.forEach(data, (value, key) => {
+
+      if(key.indexOf('Image') >= 0){ 
+        let newKey = key.substr(0, key.indexOf('Image'));
+
+        if(value)
+          this.imagesModel[newKey] = new Preoday.VenueImage(value);
+        else
+          this.imagesModel[newKey] = new Preoday.VenueImage();
+      }
+
+      // add # character, so md-color-picker can recognize as a color.
+      if(key.indexOf('Colour') >= 0 && value){
+        this.colorsModel[key] = '#' + value;
+      }
+    });
+  }
+
+  getMobileSettings() {
+    return this.$q((resolve, reject)=>{
+      return Preoday.VenueMobileSettings.get(this.VenueService.currentVenue.id, "images")
+        .then((data)=>{
+          if(data) {
+            this.mobileExtendModels(data);
+          }
+
+          resolve(data);
+        },(err)=>{ //api returns 404 if not found
+          resolve(this.imagesModel)
+        }).catch((err)=>{
+          resolve(this.imagesModel)
+      })
+    });
+  }
+
   getImages(){
     console.log("getting images");
     return this.$q((resolve, reject)=>{
@@ -85,8 +140,9 @@ export default class StyleService {
     this.imagesModel = {
       EMAIL_BANNER: new Preoday.VenueImage({
         type:"EMAIL_BANNER"
-      })
-    }
+      }),
+    };
 
+    this.colorsModel = {};
   }
 }
