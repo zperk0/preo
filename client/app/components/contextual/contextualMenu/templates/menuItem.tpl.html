@@ -51,5 +51,17 @@
         <menu-item-advanced ng-model="contextualMenuCtrl.entity"></menu-item-advanced>
       </md-tab-body>
     </md-tab>
+    <md-tab>
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.ItemService.hasMoreTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+          <span>{{ 'More' | translate }}...</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <md-card-content>
+          <menu-item-more ng-model="contextualMenuCtrl.entity"></menu-item-more>
+        </md-card-content>
+      </md-tab-body>
+    </md-tab>
   </md-tabs>
 </div>
