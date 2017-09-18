@@ -15,4 +15,19 @@
       </md-tooltip>
     </div>
   </div>
+  <div ng-if="menuItemMoreCtrl.isEvent" class="input-group">
+    <md-input-container flex>
+      <label translate>Item cap per event</label>
+      <input flex type="number" name="entityCap" ng-model="menuItemMoreCtrl.item.cap" valid-number max-integer-value />
+      <div ng-messages="menuItemMoreCtrl.contextualForm.entityCap.$error">
+        <div ng-message="maxIntegerValue" translate>Max value is 2147483646.</div>
+      </div>
+    </md-input-container>
+    <div class="info">
+      <icon>info</icon>
+      <md-tooltip md-direction="bottom">
+        <span translate>Set a maximum number of times this item can be ordered for each event.</span>
+      </md-tooltip>
+    </div>
+  </div>
 </div>
