@@ -8,13 +8,6 @@ export default class menuSectionItemListController {
 
     newItem.sectionId = this.section.id;
     newItem.menuId = this.section.menuId;
-
-    this.recalculateHeight();
-  }
-
-  onItemUpdated() {
-
-    this.recalculateHeight();
   }
 
   onItemDeleted(item) {
@@ -99,9 +92,7 @@ export default class menuSectionItemListController {
     this.$q.all(promises).then((items)=>{
       items.forEach((newItem)=>{
 
-        newItem.$show = true;
         this.cardItemList.onItemCreated(newItem);
-        this.recalculateHeight();
       });
       return this.doSimpleSort($partTo);
     }).then(()=>{
@@ -128,7 +119,6 @@ export default class menuSectionItemListController {
       }).then(() => {
 
         this.Spinner.hide("item-move");
-        this.recalculateHeight();
       })
     }
   }
@@ -156,24 +146,6 @@ export default class menuSectionItemListController {
     return item.position;
   }
 
-  recalculateHeight() {
-
-    this.section.$expanding = true;
-    let maxHeight = 0;
-    this.items.forEach((i)=>{
-     maxHeight += 48 + 42 + 16 + (i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
-    });
-
-    let totalHeight = maxHeight + (80 + 35*5) + 'px';
-
-    if (this.el[0].style.maxHeight === totalHeight) {
-      this.section.$expanding = false;
-    } else {
-      this.el[0].style.maxHeight = totalHeight;
-    }
-
-  }
-
   onClone (item, sectionId) {
 
     this.Spinner.show("item-clone");
@@ -185,7 +157,6 @@ export default class menuSectionItemListController {
 
         createdItem.setSize();
 
-        createdItem.$show = true; //need show for animation
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
         console.log("cloned", createdItem, this.item);
@@ -216,26 +187,5 @@ export default class menuSectionItemListController {
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
-
-    this.items.forEach((i)=>i.$show = false);
-
-    this.section.$expanding = false;
-
-    $scope.$watch('menuSectionItemListCtrl.section.$expanded',(newVal, oldVal)=>{
-
-      if(newVal) { // if expanded = true;
-        this.items.forEach((i)=>i.$show = true)
-        if (this.items.length === 0){
-          this.recalculateHeight();
-        }
-      } else if (oldVal) { //if expanded = false and it was true
-        this.el[0].style.maxHeight = 0;
-        this.section.$expanding = true;
-        $timeout(()=>{
-          this.items.forEach((i)=>i.$show = false)
-          this.section.$expanding = false;
-        }, 1000);
-      }
-    })
   }
 }
