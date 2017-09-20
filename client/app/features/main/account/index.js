@@ -10,12 +10,14 @@ import routes from './account.routes';
 import userEmail from './components/userEmail';
 import userPassword from './components/userPassword';
 import userSettings from './components/userSettings';
+import userNotifications from './components/userNotifications';
 
 export default angular.module("account" , [
 	'ui.router',
 	userEmail,
 	userPassword,
-	userSettings
+	userSettings,
+	userNotifications
 ])
   .config(routes)
   .controller(controller.UID, controller)
