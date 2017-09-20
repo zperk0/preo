@@ -167,6 +167,8 @@ export default class ReportsService {
             break;
         }
 
+        colObj.displayValue = colObj.displayValue !== null && Boolean(String(colObj.displayValue)) ? colObj.displayValue : this.gettextCatalog.getString('n/a');
+
         // AUX properties that are used to Push Notification
         if(row['userId'])
           colObj.userId = row['userId'];
