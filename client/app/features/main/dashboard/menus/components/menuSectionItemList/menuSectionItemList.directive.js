@@ -1,29 +1,30 @@
-import controller from './menuSectionItemList.controller'
+import controller from './menuSectionItemList.controller';
 
 //refactor to not need section
 export default function menuSectionItemList($animate, $timeout){
-  "ngInject";
+  'ngInject';
   return {
     restrict: 'E',
     scope: {
-      items:"=",
-      hasNew:"=",
-      animate:"=?",
-      section:"=?",
-      hasSearch:"=?",
-      searchText:"=?",
-      svDisabled:"=",
-      svMultiSelect:"=?",
-      svKeepInList:"=?",
-      svIsDropzone:"=?",
-      svIsDropzoneDisabled:"=?",
+      items:'=',
+      hasNew:'=',
+      animate:'=?',
+      section:'=?',
+      hasSearch:'=?',
+      searchText:'=?',
+      svDisabled:'=',
+      svMultiSelect:'=?',
+      svKeepInList:'=?',
+      svIsDropzone:'=?',
+      svIsDropzoneDisabled:'=?',
       orderBy: '=?',
       orderByReverse: '=?',
-      tags: "="
+      tags: '=',
+      expanded: '='
     },
-    template: require("./menuSectionItemList.tpl.html"),
+    template: require('./menuSectionItemList.tpl.html'),
     controller: controller.UID,
-    controllerAs: "menuSectionItemListCtrl",
+    controllerAs: 'menuSectionItemListCtrl',
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {

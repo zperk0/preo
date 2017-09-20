@@ -1,5 +1,5 @@
-<div 
-  class='menu-section'
+<div class="menu-section"
+  ng-class="{expanded: menuSectionCtrl.$expanded}"
   ng-cloak
   ng-attr-data-id="{{menuSectionCtrl.section.id}}">
 
@@ -8,43 +8,47 @@
     deleted="menuSectionCtrl.section.$deleted"
     selected="menuSectionCtrl.section.$selected">
 
-    <section class="card-content">
-      <card-item-title 
-        ng-click="menuSectionCtrl.toggleExpanded($event)"
-        has-visible="true"
-        sv-root="item">
+    <card-item-title
+      ng-click="menuSectionCtrl.toggleExpanded($event)"
+      has-visible="true"
+      sv-root="item">
 
-        <div 
-          class='sv-dropzone sv-dropzone-item'
-          sv-part="menuSectionCtrl.newItems"
-          sv-on-external-sort="menuSectionCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin)">
+      <div class="sv-dropzone sv-dropzone-item"
+        sv-part="menuSectionCtrl.newItems"
+        sv-on-external-sort="menuSectionCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin)">
+        <div sv-placeholder></div>
+      </div>
+      <md-icon class="action-icon"
+        ng-show="menuSectionCtrl.showActionIcon()">
+        label
+      </md-icon>
+      <span>{{menuSectionCtrl.section.id + "--" | debug}}{{menuSectionCtrl.section.name}}</span>
+      <icon class="arrow-icon" flex>{{menuSectionCtrl.$expanded ? "arrow_drop_up" : "arrow_drop_down"}}</icon>
+      <div class="sv-dropzone sv-dropzone-modifier" 
+        sv-root="modifier">
+
+        <div class="sv-dropzone sv-dropzone-modifier"
+            sv-part="menuSectionCtrl.newModifiers"
+            sv-on-external-sort="menuSectionCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
           <div sv-placeholder></div>
         </div>
-        <md-icon ng-show="menuSectionCtrl.showActionIcon()" class="action-icon">label</md-icon>
-        <span>{{menuSectionCtrl.section.id + "--" | debug}}{{menuSectionCtrl.section.name}}</span><icon class='arrow-icon' flex>{{menuSectionCtrl.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
-        <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
-          <div class='sv-dropzone sv-dropzone-modifier'
-              sv-part="menuSectionCtrl.newModifiers"
-              sv-on-external-sort="menuSectionCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
-            <div sv-placeholder></div>
-          </div>
-        </div>
-      </card-item-title>
+      </div>
+    </card-item-title>
 
-      <modifier-chips 
-        ng-if="menuSectionCtrl.section.modifiers.length"
-        modifiers="menuSectionCtrl.section.modifiers"
-        section="menuSectionCtrl.section">
-      </modifier-chips>
-    </section>
+    <modifier-chips
+      ng-if="menuSectionCtrl.section.modifiers.length"
+      modifiers="menuSectionCtrl.section.modifiers"
+      section="menuSectionCtrl.section">
+    </modifier-chips>
 
-    <section class="card-extra">
-      <menu-section-item-list
-        items="menuSectionCtrl.items"
-        section="menuSectionCtrl.section"
-        tags="menuSectionCtrl.menuSectionListCtrl.tags">
-      </menu-section-item-list>
-    </section>
+    <menu-section-item-list
+      sv-is-dropzone-disabled="!!!menuSectionCtrl.$expanded"
+      has-new="menuSectionCtrl.$expanded"
+      items="menuSectionCtrl.items"
+      section="menuSectionCtrl.section"
+      tags="menuSectionCtrl.menuSectionListCtrl.tags"
+      expanded="menuSectionCtrl.$expanded">
+    </menu-section-item-list>
 
     <card-item-actions 
       on-delete="menuSectionCtrl.onDelete()"

@@ -5,6 +5,7 @@
 
   &>md-card{
     margin:0;
+    transition: max-height ease .5s;
 
     & .card-title{
       min-height: 60px;

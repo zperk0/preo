@@ -151,27 +151,10 @@
     return this.$q.all(promises);
   }
 
-  toggleExpanded($event) {
+  toggleExpanded() {
     this.$expanded = !this.$expanded;
 
-    const contentHeight = this.cardContentElement[0].offsetHeight,
-          extraHeight = this.cardExtraElement[0].offsetHeight;
-
-    let maxHeight = contentHeight;
-
-    if (this.$expanded) {
-      maxHeight += this.cardExtraElement[0].offsetHeight;
-    } else {
-      this.setMaxHeight(contentHeight + extraHeight + 'px');
-    }
-
-    this.$timeout(() => this.setMaxHeight(maxHeight + 'px'));
-
     this.contextualMenu.close();
-  }
-
-  setMaxHeight(maxHeight) {
-    this.cardElement.css('max-height', maxHeight);
   }
 
   onEdit($event){
@@ -180,7 +163,7 @@
     this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
       tags: this.menuSectionListCtrl && this.menuSectionListCtrl.tags ? this.menuSectionListCtrl.tags : []
     });
-    this.section.$expanded = false;
+    this.$expanded = false;
   }
   onDelete(){
     this.DialogService.delete(this.LabelService.TITLE_DELETE_SECTION, this.LabelService.CONTENT_DELETE_SECTION)
@@ -277,23 +260,7 @@
     return this.section.tagActions && !!this.section.tagActions.length;
   }
 
-  setElements() {
-    this.cardElement = angular.element(this.$element[0].querySelector('md-card'));
-    this.cardContentElement = angular.element(this.$element[0].querySelector('.card-content'));
-    this.cardExtraElement = angular.element(this.$element[0].querySelector('.card-extra'));
-
-    this.cardElement.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
-      if (e.propertyName === 'max-height' || (e.originalEvent && e.originalEvent.propertyName === 'max-height')) {
-        if (this.$expanded) {
-          this.setMaxHeight('max-content');
-        }
-      }
-    });
-
-    this.$timeout(() => this.setMaxHeight(this.cardContentElement[0].offsetHeight + 'px'));
-  }
-
-  constructor($scope, $rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService, ErrorService, gettextCatalog, $element) {
+  constructor($scope, $rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService, ErrorService, gettextCatalog) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
@@ -308,7 +275,6 @@
     this.contextual = contextual;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
-    this.$element = $element;
 
     this.type = 'menuSection'; //type for contextual menu
     this.menuItemType = 'menuItem';
@@ -316,10 +282,11 @@
     this.items = [];
     this.newItems = [];
     this.newModifiers = [];
-
-    $timeout(() => {
-      this.setElements();
-    });
+    if (this.section && $stateParams.sectionId && this.section.id === Number($stateParams.sectionId)){
+      $timeout(()=>{
+        this.$expanded=true;
+      });
+    }
 
     //if it's a new section we toggle the context menu to edit this
     if (!this.section.id) {

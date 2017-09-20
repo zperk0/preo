@@ -92,6 +92,7 @@ export default class menuSectionItemListController {
     this.$q.all(promises).then((items)=>{
       items.forEach((newItem)=>{
 
+        newItem.$show = true;
         this.cardItemList.onItemCreated(newItem);
       });
       return this.doSimpleSort($partTo);
@@ -157,6 +158,7 @@ export default class menuSectionItemListController {
 
         createdItem.setSize();
 
+        createdItem.$show = true; //need show for animation
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
         console.log("cloned", createdItem, this.item);
@@ -171,7 +173,47 @@ export default class menuSectionItemListController {
       });
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual, ModifierService, DialogService, ErrorService, gettextCatalog) {
+  setMaxHeight(maxHeight) {
+    angular.element(this.$element[0]).css('max-height', maxHeight);
+  }
+
+  getHeight() {
+    const container = angular.element(this.$element[0].querySelector('.container'));
+    return container && container.length ? container[0].offsetHeight : 0;
+  }
+
+  expand(status) {
+    this.$expanded = status;
+
+    let maxHeight = this.getHeight();
+
+    if (this.$expanded) {
+      this.items.forEach((i)=>i.$show = true);
+    } else {
+      this.setMaxHeight(this.getHeight() + 'px');
+      maxHeight = 0;
+    }
+
+    this.$timeout(() => this.setMaxHeight(maxHeight + 'px'));
+  }
+
+  setAnimation() {
+    angular.element(this.$element[0]).on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
+      if (e.propertyName === 'max-height' || (e.originalEvent && e.originalEvent.propertyName === 'max-height')) {
+        if (this.$expanded) {
+          this.setMaxHeight('max-content');
+        } else {
+          this.items.forEach((i)=>i.$show = false);
+        }
+      }
+    });
+
+    this.$scope.$watch('menuSectionItemListCtrl.expanded', newVal => {
+      this.expand(Boolean(newVal));
+    });
+  }
+
+  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual, ModifierService, DialogService, ErrorService, gettextCatalog, $element) {
     "ngInject";
 
     this.$scope = $scope;
@@ -187,5 +229,8 @@ export default class menuSectionItemListController {
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
+    this.$element = $element;
+
+    this.setAnimation();
   }
 }
