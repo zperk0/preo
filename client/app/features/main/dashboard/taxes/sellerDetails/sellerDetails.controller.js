@@ -5,6 +5,10 @@ export default class sellerDetailsController {
   }
 
   saveNewSettings(){
+
+    //Pre populate taxName with default value
+    this.taxSettings.taxName = this.gettextCatalog.getString('VAT Number');
+
     return Preoday.VenueTaxSettings.save(angular.extend({},this.taxSettings, {venueId:this.$stateParams.venueId})); //extend so if this fails for any reason it still triggers a save instead of update
   }
 
@@ -103,18 +107,19 @@ export default class sellerDetailsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout) {
+  constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout, gettextCatalog) {
     "ngInject";
     this.showError = false;
+    this.isError = false;
+    this.isSaving = false;
+    this.debounceTimeout = null;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$stateParams = $stateParams;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
-    this.isError = false;
-    this.isSaving = false;
     this.$timeout = $timeout;
-    this.debounceTimeout = null;
+    this.gettextCatalog = gettextCatalog;
 
     this.init();
   }
