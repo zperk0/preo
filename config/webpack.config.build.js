@@ -33,13 +33,15 @@ module.exports = function(ENV, removeLogs) {
     public_path = 'http://localhost';
   }
 
-  plugins.push(
-    new RollbarSourceMapPlugin({
-        accessToken: ROLLBAR_POST_SERVER,
-        version: release,
-        publicPath: public_path
-    })
-  );
+  var rollbarPlugin = [new RollbarSourceMapPlugin({
+          accessToken: ROLLBAR_POST_SERVER,
+          version: release,
+          publicPath: public_path
+      })];
+
+  if(ENV === 'dev' || ENV === 'demo' || ENV === 'prod') {
+    plugins = plugins.concat(rollbarPlugin);
+  }
 
   return {
     /**
