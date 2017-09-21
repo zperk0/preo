@@ -1,5 +1,5 @@
 <div class="menu-section"
-  ng-class="{expanded: menuSectionCtrl.$expanded}"
+  ng-class="{expanded: menuSectionCtrl.section.$expanded}"
   ng-cloak
   ng-attr-data-id="{{menuSectionCtrl.section.id}}">
 
@@ -23,7 +23,7 @@
         label
       </md-icon>
       <span>{{menuSectionCtrl.section.id + "--" | debug}}{{menuSectionCtrl.section.name}}</span>
-      <icon class="arrow-icon" flex>{{menuSectionCtrl.$expanded ? "arrow_drop_up" : "arrow_drop_down"}}</icon>
+      <icon class="arrow-icon" flex>{{menuSectionCtrl.section.$expanded ? "arrow_drop_up" : "arrow_drop_down"}}</icon>
       <div class="sv-dropzone sv-dropzone-modifier" 
         sv-root="modifier">
 
@@ -42,12 +42,11 @@
     </modifier-chips>
 
     <menu-section-item-list
-      sv-is-dropzone-disabled="!!!menuSectionCtrl.$expanded"
-      has-new="menuSectionCtrl.$expanded"
+      sv-is-dropzone-disabled="!!!menuSectionCtrl.section.$expanded"
+      has-new="menuSectionCtrl.section.$expanded"
       items="menuSectionCtrl.items"
       section="menuSectionCtrl.section"
-      tags="menuSectionCtrl.menuSectionListCtrl.tags"
-      expanded="menuSectionCtrl.$expanded">
+      tags="menuSectionCtrl.menuSectionListCtrl.tags">
     </menu-section-item-list>
 
     <card-item-actions 

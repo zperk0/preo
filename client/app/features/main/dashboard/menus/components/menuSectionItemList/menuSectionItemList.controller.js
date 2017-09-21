@@ -183,32 +183,40 @@ export default class menuSectionItemListController {
   }
 
   expand(status) {
-    this.$expanded = status;
+    this.section.$expanded = status;
 
-    let maxHeight = this.getHeight();
-
-    if (this.$expanded) {
+    if (status) {
       this.items.forEach((i)=>i.$show = true);
     } else {
+      this.runAnimation();
+    }
+  }
+
+  runAnimation() {
+    this.section.$expanding = true;
+    
+    let maxHeight = this.getHeight();
+    
+    if (!this.section.$expanded) {
       this.setMaxHeight(this.getHeight() + 'px');
       maxHeight = 0;
     }
 
     this.$timeout(() => this.setMaxHeight(maxHeight + 'px'));
+    this.$timeout(() => this.afterAnimation(), 500);
+  }
+
+  afterAnimation() {
+    if (this.section.$expanded) {
+      this.setMaxHeight('max-content');
+    } else {
+      this.items.forEach((i)=>i.$show = false);
+    }
+    this.section.$expanding = false;
   }
 
   setAnimation() {
-    angular.element(this.$element[0]).on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
-      if (e.propertyName === 'max-height' || (e.originalEvent && e.originalEvent.propertyName === 'max-height')) {
-        if (this.$expanded) {
-          this.setMaxHeight('max-content');
-        } else {
-          this.items.forEach((i)=>i.$show = false);
-        }
-      }
-    });
-
-    this.$scope.$watch('menuSectionItemListCtrl.expanded', newVal => {
+    this.$scope.$watch('menuSectionItemListCtrl.section.$expanded', newVal => {
       this.expand(Boolean(newVal));
     });
   }

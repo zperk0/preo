@@ -152,7 +152,10 @@
   }
 
   toggleExpanded() {
-    this.$expanded = !this.$expanded;
+    if (this.section.$expanding) {
+      return;
+    }
+    this.section.$expanded = !this.section.$expanded;
 
     this.contextualMenu.close();
   }
@@ -163,7 +166,7 @@
     this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this), {
       tags: this.menuSectionListCtrl && this.menuSectionListCtrl.tags ? this.menuSectionListCtrl.tags : []
     });
-    this.$expanded = false;
+    this.section.$expanded = false;
   }
   onDelete(){
     this.DialogService.delete(this.LabelService.TITLE_DELETE_SECTION, this.LabelService.CONTENT_DELETE_SECTION)
@@ -284,7 +287,7 @@
     this.newModifiers = [];
     if (this.section && $stateParams.sectionId && this.section.id === Number($stateParams.sectionId)){
       $timeout(()=>{
-        this.$expanded=true;
+        this.section.$expanded=true;
       });
     }
 
