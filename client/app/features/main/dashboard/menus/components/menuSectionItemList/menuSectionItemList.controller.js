@@ -193,16 +193,17 @@ export default class menuSectionItemListController {
   }
 
   runAnimation() {
+    if (this.section.$expanded === this.lastVal) {
+      return;
+    }
+    this.lastVal = this.section.$expanded;
     this.section.$expanding = true;
-    
-    let maxHeight = this.getHeight();
     
     if (!this.section.$expanded) {
       this.setMaxHeight(this.getHeight() + 'px');
-      maxHeight = 0;
     }
 
-    this.$timeout(() => this.setMaxHeight(maxHeight + 'px'));
+    this.$timeout(() => this.setMaxHeight((this.section.$expanded ? this.getHeight() : 0) + 'px'));
     this.$timeout(() => this.afterAnimation(), 500);
   }
 
