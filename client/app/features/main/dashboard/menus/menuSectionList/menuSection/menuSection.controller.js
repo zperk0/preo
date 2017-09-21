@@ -155,8 +155,8 @@
     if (this.section.$expanding) {
       return;
     }
-    this.section.$expanded = !this.section.$expanded;
 
+    this.cardItemList.expandItem(this.section);
     this.contextualMenu.close();
   }
 

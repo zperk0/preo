@@ -62,6 +62,16 @@ export default class cardItemListController {
     }
   }
 
+  expandItem(item){
+    this.collection.forEach((s)=>{
+      if (s.id === item.id){
+        s.$expanded = !s.$expanded;
+      } else {
+        s.$expanded = false;
+      }
+    });
+  }
+
   onSimpleSort(data){
     const promises = [];
     this.collection.forEach((s, index)=>{

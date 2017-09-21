@@ -6,7 +6,8 @@
   <card-item
     has-actions="true"
     deleted="menuSectionCtrl.section.$deleted"
-    selected="menuSectionCtrl.section.$selected">
+    selected="menuSectionCtrl.section.$selected"
+    expanded="menuSectionCtrl.section.$expanded">
 
     <card-item-title
       ng-click="menuSectionCtrl.toggleExpanded($event)"
@@ -14,6 +15,7 @@
       sv-root="item">
 
       <div class="sv-dropzone sv-dropzone-item"
+        ng-if="!menuSectionCtrl.section.$expanded"
         sv-part="menuSectionCtrl.newItems"
         sv-on-external-sort="menuSectionCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin)">
         <div sv-placeholder></div>
@@ -26,7 +28,6 @@
       <icon class="arrow-icon" flex>{{menuSectionCtrl.section.$expanded ? "arrow_drop_up" : "arrow_drop_down"}}</icon>
       <div class="sv-dropzone sv-dropzone-modifier" 
         sv-root="modifier">
-
         <div class="sv-dropzone sv-dropzone-modifier"
             sv-part="menuSectionCtrl.newModifiers"
             sv-on-external-sort="menuSectionCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
