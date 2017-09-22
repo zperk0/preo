@@ -18,8 +18,8 @@
   <div ng-if="menuItemMoreCtrl.isEvent" class="input-group">
     <md-input-container flex>
       <label translate>Item cap per event</label>
-      <input flex type="number" name="entityCap" ng-model="menuItemMoreCtrl.item.cap" valid-number max-integer-value />
-      <div ng-messages="menuItemMoreCtrl.contextualForm.entityCap.$error">
+      <input flex type="number" name="entityEventCap" ng-model="menuItemMoreCtrl.item.eventCap" valid-number max-integer-value />
+      <div ng-messages="menuItemMoreCtrl.contextualForm.entityEventCap.$error">
         <div ng-message="maxIntegerValue" translate>Max value is 2147483646.</div>
       </div>
     </md-input-container>
