@@ -36,7 +36,7 @@
           </tr>
         </thead>
         <tbody md-body layout-wrap>
-           <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsCustomersCtrl.tableData.body | marketingFilter:analyticsCustomersCtrl.fieldToFilter:analyticsCustomersCtrl.filterCustomerMarketing track by $index">
+           <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsCustomersCtrl.tableData.body track by $index">
              <td md-cell ng-repeat="col in row track by $index" ng-switch="col.fieldType" ng-if="!col.isHidden">
               <span ng-switch-default>{{col.displayValue}}</span>
               <span ng-switch-when="icon">

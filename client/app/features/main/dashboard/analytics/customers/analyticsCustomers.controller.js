@@ -204,6 +204,10 @@ export default class analyticsCustomersController {
 
     this.currentReport = this.$filter('orderObj')( angular.copy(viewTable.body), this.query.order ,'value');
 
+    if (this.filterCustomerMarketing) {
+      this.currentReport = this.$filter('marketingFilter')(this.currentReport, this.fieldToFilter, true);
+    }
+
     this.tableData = {
       header: viewTable.header,
       body: this.currentReport.slice(0, this.valuesPerScrollPage)
