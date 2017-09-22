@@ -1,4 +1,8 @@
 .menu-section-item-list {
   overflow: hidden;
   transition: all 1s ease, max-height .5s ease;
+
+  .container {
+    height: 100%;
+  }
 }

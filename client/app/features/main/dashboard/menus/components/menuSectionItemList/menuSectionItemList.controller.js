@@ -185,7 +185,7 @@ export default class menuSectionItemListController {
   expand(status) {
     this.section.$expanded = status;
 
-    if (status) {
+    if (status && this.items.length) {
       this.items.forEach((i)=>i.$show = true);
     } else {
       this.runAnimation();

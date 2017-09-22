@@ -4,6 +4,10 @@ $heightMenuItemCard:48px;
 	transition: all 1s ease, max-height .5s ease;
 	overflow: hidden;
 
+	.container {
+    height: 100%;
+  }
+
 	.sv-placeholder {
 		min-height: $heightMenuItemCard !important;
 		margin: 0px;
