@@ -183,19 +183,25 @@ export default class ReportsService {
   }
 
   addTotalRows(response, header, total) {
+    let allRow = null;
     for (const totalType in total) {
       let row = [];
       header.forEach(col => {
         if (col.key === 'id' || col.key === 'orderId') {
-          row.push(totalType === 'CARD' || totalType === 'CASH' ? this.gettextCatalog.getString('TOTAL - ' + totalType) : this.gettextCatalog.getString('TOTAL'));
+          row.push(totalType === 'ALL' ? this.gettextCatalog.getString('TOTAL') : this.gettextCatalog.getString('TOTAL - ' + totalType));
         } else if (total[totalType].hasOwnProperty(col.key)) {
           row.push(this.$filter('currency')(total[totalType][col.key] || 0));
         } else {
           row.push('-');
         }
       });
-      response.push(row);
+      if (totalType !== 'ALL') {
+        response.push(row);
+      } else {
+        allRow = row;
+      }
     }
+    response.push(allRow);
   }
 
   // need to show/ hide some fields based on Events/Takeaway properties from header. AND based on Filters used to search
@@ -212,7 +218,7 @@ export default class ReportsService {
 
     const totalFields = ['discount', 'fee', 'subtotal', 'tax', 'total', 'net'];
     const shouldCountTotal = report.id === 'orders' || report.id === 'taxReport';
-    let total = {CASH: {}, CARD: {}, WALLET: {}, ALL: {}};
+    let total = {ALL: {}};
     let headerRow = [];
 
     header.forEach((col) => {
@@ -245,6 +251,9 @@ export default class ReportsService {
 
         if (shouldCountTotal && totalFields.indexOf(col.key) > -1) {
           if (paymentType) {
+            if (!total[paymentType]) {
+              total[paymentType] = {};
+            }
             total[paymentType][col.key] = total[paymentType][col.key] ? total[paymentType][col.key] += col.value : col.value;
           }
           total.ALL[col.key] = total.ALL[col.key] ? total.ALL[col.key] += col.value : col.value;
