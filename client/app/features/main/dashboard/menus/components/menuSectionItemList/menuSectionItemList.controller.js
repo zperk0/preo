@@ -209,7 +209,7 @@ export default class menuSectionItemListController {
 
   afterAnimation() {
     if (this.section.$expanded) {
-      this.setMaxHeight('max-content');
+      this.setMaxHeight('unset');
     } else {
       this.items.forEach((i)=>i.$show = false);
     }

@@ -1,8 +1,10 @@
 .menu-section-item-list {
   overflow: hidden;
-  transition: all 1s ease, max-height .5s ease;
+  transition: all 1s ease, max-height .5s;
 
   .container {
+    display: table;
+    width: 100%;
     height: 100%;
   }
 }

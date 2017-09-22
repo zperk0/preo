@@ -111,7 +111,7 @@ export default class eventScheduleListController {
 
   afterAnimation() {
     if (this.event.$expanded) {
-      this.setMaxHeight('max-content');
+      this.setMaxHeight('unset');
     } else {
       this.schedules.forEach((s)=>s.$show = false);
     }

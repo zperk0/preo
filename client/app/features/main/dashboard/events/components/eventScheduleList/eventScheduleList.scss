@@ -5,7 +5,9 @@ $heightMenuItemCard:48px;
 	overflow: hidden;
 
 	.container {
-    height: 100%;
+		display: table;
+		height: 100%;
+		width: 100%;
   }
 
 	.sv-placeholder {
