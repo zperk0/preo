@@ -205,14 +205,14 @@ export default class ReportsService {
 
     var header = this.getReportHeader(report.id);
     var reportTitle = report.name;
-    
+
     var response = [[minDate +' - '+ maxDate],[reportTitle]];
 
     var itemData = [];
 
     const totalFields = ['discount', 'fee', 'subtotal', 'tax', 'total', 'net'];
     const shouldCountTotal = report.id === 'orders' || report.id === 'taxReport';
-    let total = {CASH: {}, CARD: {}, ALL: {}};
+    let total = {CASH: {}, CARD: {}, WALLET: {}, ALL: {}};
     let headerRow = [];
 
     header.forEach((col) => {
@@ -237,7 +237,7 @@ export default class ReportsService {
 
       itemData = [];
       row.forEach((col) => {
-      
+
         let headerCol = header.filter((x) => {
           if(x.key == col.key)
             return x;
