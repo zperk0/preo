@@ -1,0 +1,18 @@
+<div class="menu-item-more">
+  <div class="input-group">
+    <md-input-container flex>
+      <label translate>Item lead time</label>
+      <input flex type="number" name="entityLeadTime" ng-model="menuItemMoreCtrl.item.leadTime" valid-number max-integer-value />
+      <div ng-messages="menuItemMoreCtrl.contextualForm.entityLeadTime.$error">
+        <div ng-message="maxIntegerValue" translate>Max value is 2147483646.</div>
+      </div>
+    </md-input-container>
+    <div class='mins' flex="nogrow" translate>Mins</div>
+    <div class="info">
+      <icon>info</icon>
+      <md-tooltip md-direction="bottom">
+        <span translate>This will override your standard lead time for all orders that contain this item.</span>
+      </md-tooltip>
+    </div>
+  </div>
+</div>

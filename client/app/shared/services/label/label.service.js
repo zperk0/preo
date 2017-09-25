@@ -108,6 +108,9 @@ export default class LabelService {
     this.TITLE_DELETE_USER = gettextCatalog.getString("Delete user?");
     this.CONTENT_DELETE_USER= gettextCatalog.getString("This user will no longer be able to access the dashboard. Are you sure?");
 
+    this.TITLE_DELETE_ACCOUNT = gettextCatalog.getString("Delete account");
+    this.CONTENT_DELETE_ACCOUNT = gettextCatalog.getString("Deleting your account means you won't be able to access the dashboard any longer. This cannot be undone. Are you sure?");
+
     this.SNACK_USER_DELETED= gettextCatalog.getString("User access removed");
     this.SNACK_USER_DELETED_ERROR= gettextCatalog.getString("User access not removed");
     this.SNACK_USER_ROLE_UPDATE= gettextCatalog.getString("User access updated");

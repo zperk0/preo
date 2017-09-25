@@ -4,7 +4,10 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
 const ROLLBAR_POST_SERVER = 'eae81354dbed4493a20f9b7346af8bc9';
-const release = 'webapp-v2 1.0.26';
+var pjson = require('../package.json');
+const release = pjson.name + " " +pjson.version;
+
+console.log("Preparing release: " + release);
 
 var plugins =  [new webpack.NoErrorsPlugin(),
                 new CopyWebpackPlugin([
@@ -33,13 +36,15 @@ module.exports = function(ENV, removeLogs) {
     public_path = 'http://localhost';
   }
 
-  plugins.push(
-    new RollbarSourceMapPlugin({
-        accessToken: ROLLBAR_POST_SERVER,
-        version: release,
-        publicPath: public_path
-    })
-  );
+  var rollbarPlugin = [new RollbarSourceMapPlugin({
+          accessToken: ROLLBAR_POST_SERVER,
+          version: release,
+          publicPath: public_path
+      })];
+
+  if(ENV === 'dev' || ENV === 'demo' || ENV === 'prod') {
+    plugins = plugins.concat(rollbarPlugin);
+  }
 
   return {
     /**
