@@ -1,0 +1,15 @@
+.user-notifications {
+	.checkbox-group {
+		margin: 0;
+
+		.checkbox-label {
+			margin-bottom: 24px;
+		}
+	}
+
+	md-checkbox,
+	.auto-save {
+		display: block;
+		width: 100%;
+	}
+}
