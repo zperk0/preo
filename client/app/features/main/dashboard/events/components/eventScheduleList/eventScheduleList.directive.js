@@ -21,16 +21,6 @@ export default function eventScheduleList($timeout){
       let eventScheduleListCtrl = ctrls[1];
 
       eventScheduleListCtrl.eventCtrl = eventCtrl;
-
-      eventScheduleListCtrl.el = el;
-      el[0].style.maxHeight = 0;
-      el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
-        if (e.propertyName === 'max-height' || (e.originalEvent && e.originalEvent.propertyName === 'max-height')) {
-          $timeout(()=>{
-            eventScheduleListCtrl.event.$expanding = false;
-          })
-        }
-      })
     }
   }
 }
