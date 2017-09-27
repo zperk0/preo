@@ -66,24 +66,6 @@ export default class eventScheduleListController {
     return this.schedules.length;
   }
 
-  recalculateHeight() {
-
-    this.event.$expanding = true;
-    let maxHeight = 0;
-    this.schedules.forEach((i) => {
-      maxHeight += 50 + 16;
-    });
-
-    // (button + height + margin-top + margin-bottom)
-    maxHeight = maxHeight + (50 + 8 + 32) + "px";
-    if (this.el[0].style.maxHeight !== maxHeight) {
-      // this.el[0].style.maxHeight = maxHeight;
-      this.el[0].style.maxHeight = '100%';
-    } else {
-      this.event.$expanding = false;
-    }
-  }
-
   buildSchedules(shouldShow) {
 
     this.schedules.forEach((schedule) => {
@@ -93,10 +75,61 @@ export default class eventScheduleListController {
     });
   }
 
+  setMaxHeight(maxHeight) {
+    angular.element(this.$element[0]).css('max-height', maxHeight);
+  }
+
+  getHeight() {
+    const container = angular.element(this.$element[0].querySelector('.container'));
+    return container && container.length ? container[0].offsetHeight : 0;
+  }
+
+  expand(status) {
+    this.event.$expanded = status;
+
+    if (status) {
+      this.schedules.forEach((s)=>s.$show = true);
+    } else {
+      this.runAnimation();
+    }
+  }
+
+  runAnimation() {
+    if (this.event.$expanded === this.lastVal) {
+      return;
+    }
+    this.lastVal = this.event.$expanded;
+    this.event.$expanding = true;
+    
+    if (!this.event.$expanded) {
+      this.setMaxHeight(this.getHeight() + 'px');
+    }
+
+    this.$timeout(() => this.setMaxHeight((this.event.$expanded ? this.getHeight() : 0) + 'px'));
+    this.$timeout(() => this.afterAnimation(), 500);
+  }
+
+  afterAnimation() {
+    if (this.event.$expanded) {
+      this.setMaxHeight('unset');
+    } else {
+      this.schedules.forEach((s)=>s.$show = false);
+    }
+    this.event.$expanding = false;
+  }
+
+  setAnimation() {
+    this.$scope.$watch('eventScheduleListCtrl.event.$expanded', newVal => {
+      this.expand(Boolean(newVal));
+    });
+  }
+
   /* @ngInject */
-  constructor($scope, $timeout, $q, Spinner, Snack, gettextCatalog, EventScheduleService) {
+  constructor($scope, $element, $timeout, $q, Spinner, Snack, gettextCatalog, EventScheduleService) {
     "ngInject";
 
+    this.$scope = $scope;
+    this.$element = $element;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
@@ -107,27 +140,6 @@ export default class eventScheduleListController {
     this.event.$expanding = false;
 
     this.buildSchedules();
-
-    //watch for animation only if we're in a section
-    $scope.$watch(() => {
-
-      return this.event.$expanded;
-    }, (newVal, oldVal) => {
-
-      if (newVal) { // if expanded = true;
-        this.schedules.forEach((i) => i.$show = true)
-        if (this.schedules.length === 0) {
-          this.recalculateHeight();
-        }
-      } else if (oldVal) { //if expanded = false and it was true
-        this.el[0].style.maxHeight = 0;
-        this.event.$expanding = true;
-        $timeout(() => {
-          this.schedules.forEach((i) => i.$show = false)
-          this.event.$expanding = false;
-        }, 1000)
-
-      }
-    }, true);
+    this.setAnimation();
   }
 }

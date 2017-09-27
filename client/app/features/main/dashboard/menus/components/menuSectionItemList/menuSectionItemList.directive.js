@@ -1,42 +1,32 @@
-import controller from './menuSectionItemList.controller'
+import controller from './menuSectionItemList.controller';
 
 //refactor to not need section
 export default function menuSectionItemList($animate, $timeout){
-  "ngInject";
+  'ngInject';
   return {
     restrict: 'E',
     scope: {
-      items:"=",
-      hasNew:"=",
-      animate:"=?",
-      section:"=?",
-      hasSearch:"=?",
-      searchText:"=?",
-      svDisabled:"=",
-      svMultiSelect:"=?",
-      svKeepInList:"=?",
-      svIsDropzone:"=?",
-      svIsDropzoneDisabled:"=?",
+      items:'=',
+      hasNew:'=',
+      animate:'=?',
+      section:'=?',
+      hasSearch:'=?',
+      searchText:'=?',
+      svDisabled:'=',
+      svMultiSelect:'=?',
+      svKeepInList:'=?',
+      svIsDropzone:'=?',
+      svIsDropzoneDisabled:'=?',
       orderBy: '=?',
       orderByReverse: '=?',
-      tags: "="
+      tags: '='
     },
-    template: require("./menuSectionItemList.tpl.html"),
+    template: require('./menuSectionItemList.tpl.html'),
     controller: controller.UID,
-    controllerAs: "menuSectionItemListCtrl",
+    controllerAs: 'menuSectionItemListCtrl',
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {
-      ctrl.el = el;
-      el[0].style.maxHeight = 0;
-      // console.log("el", ctrl.el);
-      el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
-        if (e.propertyName === 'max-height' || (e.originalEvent && e.originalEvent.propertyName === 'max-height')) {
-          $timeout(()=>{
-            ctrl.section.$expanding = false;
-          })
-        }
-      })
     }
   }
 }

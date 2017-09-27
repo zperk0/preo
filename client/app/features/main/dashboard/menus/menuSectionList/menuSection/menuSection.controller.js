@@ -151,27 +151,14 @@
     return this.$q.all(promises);
   }
 
-
-  toggleExpanded($event){
-
-    if (this.section.$expanding){
+  toggleExpanded() {
+    if (this.section.$expanding) {
       return;
-    }
-    if ($event){
-      var el = angular.element($event.target);
-      while (el[0]) {
-        el = angular.element(el);
-        if (el.hasClass('sv-long-pressing')){
-          return;
-        }
-        el = el.parent();
-      }
     }
 
     this.cardItemList.expandItem(this.section);
     this.contextualMenu.close();
   }
-
 
   onEdit($event){
     this.originalSection = angular.copy(this.section);
@@ -301,8 +288,9 @@
     if (this.section && $stateParams.sectionId && this.section.id === Number($stateParams.sectionId)){
       $timeout(()=>{
         this.section.$expanded=true;
-      })
+      });
     }
+
     //if it's a new section we toggle the context menu to edit this
     if (!this.section.id) {
 

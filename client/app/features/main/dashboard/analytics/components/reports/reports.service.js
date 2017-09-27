@@ -167,6 +167,8 @@ export default class ReportsService {
             break;
         }
 
+        colObj.displayValue = colObj.displayValue !== null && Boolean(String(colObj.displayValue)) ? colObj.displayValue : this.gettextCatalog.getString('n/a');
+
         // AUX properties that are used to Push Notification
         if(row['userId'])
           colObj.userId = row['userId'];
@@ -181,19 +183,25 @@ export default class ReportsService {
   }
 
   addTotalRows(response, header, total) {
+    let allRow = null;
     for (const totalType in total) {
       let row = [];
       header.forEach(col => {
         if (col.key === 'id' || col.key === 'orderId') {
-          row.push(totalType === 'CARD' || totalType === 'CASH' ? this.gettextCatalog.getString('TOTAL - ' + totalType) : this.gettextCatalog.getString('TOTAL'));
+          row.push(totalType === 'ALL' ? this.gettextCatalog.getString('TOTAL') : this.gettextCatalog.getString('TOTAL - ' + totalType));
         } else if (total[totalType].hasOwnProperty(col.key)) {
           row.push(this.$filter('currency')(total[totalType][col.key] || 0));
         } else {
           row.push('-');
         }
       });
-      response.push(row);
+      if (totalType !== 'ALL') {
+        response.push(row);
+      } else {
+        allRow = row;
+      }
     }
+    response.push(allRow);
   }
 
   // need to show/ hide some fields based on Events/Takeaway properties from header. AND based on Filters used to search
@@ -203,14 +211,14 @@ export default class ReportsService {
 
     var header = this.getReportHeader(report.id);
     var reportTitle = report.name;
-    
+
     var response = [[minDate +' - '+ maxDate],[reportTitle]];
 
     var itemData = [];
 
     const totalFields = ['discount', 'fee', 'subtotal', 'tax', 'total', 'net'];
     const shouldCountTotal = report.id === 'orders' || report.id === 'taxReport';
-    let total = {CASH: {}, CARD: {}, ALL: {}};
+    let total = {ALL: {}};
     let headerRow = [];
 
     header.forEach((col) => {
@@ -235,7 +243,7 @@ export default class ReportsService {
 
       itemData = [];
       row.forEach((col) => {
-      
+
         let headerCol = header.filter((x) => {
           if(x.key == col.key)
             return x;
@@ -243,6 +251,9 @@ export default class ReportsService {
 
         if (shouldCountTotal && totalFields.indexOf(col.key) > -1) {
           if (paymentType) {
+            if (!total[paymentType]) {
+              total[paymentType] = {};
+            }
             total[paymentType][col.key] = total[paymentType][col.key] ? total[paymentType][col.key] += col.value : col.value;
           }
           total.ALL[col.key] = total.ALL[col.key] ? total.ALL[col.key] += col.value : col.value;
@@ -628,7 +639,7 @@ export default class ReportsService {
   }
 
   // Everytime a search is done, this service keeps the last Param and Data returned.
-  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService) {
+  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService, FeatureService) {
     "ngInject";
     this.$q = $q;
     this.$window = $window;
@@ -637,6 +648,7 @@ export default class ReportsService {
     this.gettextCatalog = gettextCatalog;
     this.LabelService = LabelService;
     this.accountId = VenueService.currentVenue.accountId;
+    this.hasDobFeature = FeatureService.hasDateOfBirthFeature();
   }
 
   // Object Properties:
@@ -706,6 +718,7 @@ export default class ReportsService {
         {key:'fee', text:this.gettextCatalog.getString('Fees'), fieldType: 'currency'},
         {key:'total', text:this.gettextCatalog.getString('Total'), fieldType: 'currency'},
         {key:'paymentType', text:this.gettextCatalog.getString('Payment Method'), isHidden: true, isOnlyCsv: true},
+        {key:'type', text:this.gettextCatalog.getString('Order Type'), isHidden: true, isOnlyCsv: true},
         //{key:'orderStatus' ,text:this.gettextCatalog.getString('Status'), isHidden: true , showToTakeawaysOnly: true},
       ];
     }
@@ -779,7 +792,7 @@ export default class ReportsService {
     else if(reportId== 'allPayingCustomers'){
       response = [
         {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
-        {key:'dateOfBirth' ,text:this.gettextCatalog.getString('D.O.B'), fieldType:'date'},
+        {key:'dateOfBirth' ,text:this.gettextCatalog.getString('D.O.B'), fieldType:'date', isHidden: !this.hasDobFeature},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'orderCount', text:this.gettextCatalog.getString('Orders')},
         {key:'orderTotal', text:this.gettextCatalog.getString('Spend'), fieldType: 'currency'},

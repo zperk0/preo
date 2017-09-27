@@ -1,8 +1,14 @@
 $heightMenuItemCard:48px;
 
 .event-schedule-list {
-	transition: all 1s ease;
+	transition: all 1s ease, max-height .5s ease;
 	overflow: hidden;
+
+	.container {
+		display: table;
+		height: 100%;
+		width: 100%;
+  }
 
 	.sv-placeholder {
 		min-height: $heightMenuItemCard !important;

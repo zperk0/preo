@@ -324,6 +324,13 @@ export default class ItemService {
             );
   }
 
+  hasMoreTabErrors (contextualForm, entity) {
+
+    return contextualForm && contextualForm.$submitted
+    && (contextualForm.entityName.$invalid
+      || (contextualForm.entityLeadTime && contextualForm.entityLeadTime.$invalid));
+  }
+
   addModifiersToItem (itemId, modifiersToAdd) {
 
     let item = this.getById(itemId);
