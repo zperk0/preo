@@ -204,6 +204,10 @@ export default class analyticsCustomersController {
 
     this.currentReport = this.$filter('orderObj')( angular.copy(viewTable.body), this.query.order ,'value');
 
+    if (this.filterCustomerMarketing) {
+      this.currentReport = this.$filter('marketingFilter')(this.currentReport, this.fieldToFilter, true);
+    }
+
     this.tableData = {
       header: viewTable.header,
       body: this.currentReport.slice(0, this.valuesPerScrollPage)
@@ -236,12 +240,15 @@ export default class analyticsCustomersController {
 
     var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
 
-    //CustomerMarketing its only a filter, no need new search    
+    //CustomerMarketing its only a filter, no need new search
     if(!isFilterCustomer && paramsChanged){
       this.debounceFetch();
     }
     else{
       this.updateView();
+      if (this.tableData.body.length < this.valuesPerScrollPage) {
+        this.onInfiniteScroll();
+      }
     }
 
   }

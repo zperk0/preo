@@ -8,13 +8,6 @@ export default class menuSectionItemListController {
 
     newItem.sectionId = this.section.id;
     newItem.menuId = this.section.menuId;
-
-    this.recalculateHeight();
-  }
-
-  onItemUpdated() {
-
-    this.recalculateHeight();
   }
 
   onItemDeleted(item) {
@@ -101,7 +94,6 @@ export default class menuSectionItemListController {
 
         newItem.$show = true;
         this.cardItemList.onItemCreated(newItem);
-        this.recalculateHeight();
       });
       return this.doSimpleSort($partTo);
     }).then(()=>{
@@ -128,7 +120,6 @@ export default class menuSectionItemListController {
       }).then(() => {
 
         this.Spinner.hide("item-move");
-        this.recalculateHeight();
       })
     }
   }
@@ -154,24 +145,6 @@ export default class menuSectionItemListController {
   getPosition(item) {
 
     return item.position;
-  }
-
-  recalculateHeight() {
-
-    this.section.$expanding = true;
-    let maxHeight = 0;
-    this.items.forEach((i)=>{
-     maxHeight += 48 + 42 + 16 + (i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
-    });
-
-    let totalHeight = maxHeight + (80 + 35*5) + 'px';
-
-    if (this.el[0].style.maxHeight === totalHeight) {
-      this.section.$expanding = false;
-    } else {
-      this.el[0].style.maxHeight = totalHeight;
-    }
-
   }
 
   onClone (item, sectionId) {
@@ -200,7 +173,56 @@ export default class menuSectionItemListController {
       });
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual, ModifierService, DialogService, ErrorService, gettextCatalog) {
+  setMaxHeight(maxHeight) {
+    angular.element(this.$element[0]).css('max-height', maxHeight);
+  }
+
+  getHeight() {
+    const container = angular.element(this.$element[0].querySelector('.container'));
+    return container && container.length ? container[0].offsetHeight : 0;
+  }
+
+  expand(status) {
+    this.section.$expanded = status;
+
+    if (status && this.items.length) {
+      this.items.forEach((i)=>i.$show = true);
+    } else {
+      this.runAnimation();
+    }
+  }
+
+  runAnimation() {
+    if (this.section.$expanded === this.lastVal) {
+      return;
+    }
+    this.lastVal = this.section.$expanded;
+    this.section.$expanding = true;
+    
+    if (!this.section.$expanded) {
+      this.setMaxHeight(this.getHeight() + 'px');
+    }
+
+    this.$timeout(() => this.setMaxHeight((this.section.$expanded ? this.getHeight() : 0) + 'px'));
+    this.$timeout(() => this.afterAnimation(), 500);
+  }
+
+  afterAnimation() {
+    if (this.section.$expanded) {
+      this.setMaxHeight('unset');
+    } else {
+      this.items.forEach((i)=>i.$show = false);
+    }
+    this.section.$expanding = false;
+  }
+
+  setAnimation() {
+    this.$scope.$watch('menuSectionItemListCtrl.section.$expanded', newVal => {
+      this.expand(Boolean(newVal));
+    });
+  }
+
+  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual, ModifierService, DialogService, ErrorService, gettextCatalog, $element) {
     "ngInject";
 
     this.$scope = $scope;
@@ -216,26 +238,8 @@ export default class menuSectionItemListController {
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
+    this.$element = $element;
 
-    this.items.forEach((i)=>i.$show = false);
-
-    this.section.$expanding = false;
-
-    $scope.$watch('menuSectionItemListCtrl.section.$expanded',(newVal, oldVal)=>{
-
-      if(newVal) { // if expanded = true;
-        this.items.forEach((i)=>i.$show = true)
-        if (this.items.length === 0){
-          this.recalculateHeight();
-        }
-      } else if (oldVal) { //if expanded = false and it was true
-        this.el[0].style.maxHeight = 0;
-        this.section.$expanding = true;
-        $timeout(()=>{
-          this.items.forEach((i)=>i.$show = false)
-          this.section.$expanding = false;
-        }, 1000);
-      }
-    })
+    this.setAnimation();
   }
 }

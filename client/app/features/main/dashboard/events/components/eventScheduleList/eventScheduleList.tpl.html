@@ -1,22 +1,22 @@
 <div class="event-schedule-list">
-  <div class='sv-root-holder'>
+  <div class="container">
+    <div class='sv-root-holder'>
 
-    <card-item-list
-        collection="eventScheduleListCtrl.schedules"
-        has-new="eventScheduleListCtrl.hasNew"
-        tooltip="{{ 'Add new schedule' | translate }}"
-        on-click-new="eventScheduleListCtrl.showCreateSchedule()"
-        >
-    <div class='sort-holder'>
-      <event-schedule
-        ng-repeat="schedule in eventScheduleListCtrl.schedules | orderBy: '$startTimestamp'"
-        schedule="schedule"
-        ng-if="schedule.$show"
-        ng-init="$last && eventScheduleListCtrl.recalculateHeight()"
-        >
-      </event-schedule>
-      <div sv-placeholder></div>
+      <card-item-list
+          collection="eventScheduleListCtrl.schedules"
+          has-new="eventScheduleListCtrl.hasNew"
+          tooltip="{{ 'Add new schedule' | translate }}"
+          on-click-new="eventScheduleListCtrl.showCreateSchedule()">
+      <div class='sort-holder'>
+        <event-schedule
+          ng-repeat="schedule in eventScheduleListCtrl.schedules | orderBy: '$startTimestamp'"
+          schedule="schedule"
+          ng-if="schedule.$show"
+          ng-init="$last && eventScheduleListCtrl.runAnimation()">
+        </event-schedule>
+        <div sv-placeholder></div>
+      </div>
+      </card-item-list>
     </div>
-    </card-item-list>
   </div>
 </div>
