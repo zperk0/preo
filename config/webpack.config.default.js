@@ -143,7 +143,7 @@ module.exports = function(ENV, options) {
         // Reference: https://github.com/babel/babel-loader
         test: /\.(js|jsx)$/,
         loaders: ['ng-annotate','babel'],
-        exclude: [/node_modules/, /bower_components/]
+        // exclude: [/node_modules/, /bower_components/]
       },
       {
         // ASSET LOADER
