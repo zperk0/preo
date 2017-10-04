@@ -56,6 +56,7 @@ export default class navbarController {
       shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ANALYTICS)
       }},
+      {name: gettextCatalog.getString("Customers"), icon:"people", id:"customers"},
       {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings", children:[
         {name: gettextCatalog.getString("Details"), id:"venueDetails"},
         {name: gettextCatalog.getString("Services"), id:"venueServices"},

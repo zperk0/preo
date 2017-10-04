@@ -1,0 +1,14 @@
+<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="customerNotes">
+  <refresher condition="drawerItemsCtrl.lastUpdate">
+
+    <div class='contextual-list'>
+      <customer-note-list collection="[1, 2]"></customer-note-list>
+    </div>          
+
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-click="drawerItemsCtrl.close()" class='md-raised' translate>
+          Done
+      </md-button>
+    </md-card-actions>
+  </refresher>
+</md-sidenav>
