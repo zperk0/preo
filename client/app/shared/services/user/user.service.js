@@ -16,6 +16,9 @@ export default class UserService {
 
     this.authDeferred = this.$q.defer();
 
+    if(this.domainId && data)
+      data.domain = this.domainId;
+
     Preoday.User.auth(data).then((user) => {
       console.log("doing auth", user);
 
@@ -135,6 +138,8 @@ export default class UserService {
     this.UtilsService = UtilsService;
     this.PermissionService = PermissionService;
     this.$state = $state;
+
+    this.domainId = window._PREO_DATA._DOMAIN ? window._PREO_DATA._DOMAIN : null;
 
     this.authDeferred = null;
   }

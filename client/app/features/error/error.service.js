@@ -20,11 +20,11 @@ export default class ErrorService {
       })
   }
 
-
   constructor(gettextCatalog, $state, DialogService) {
     "ngInject";
     this.$state = $state;
     this.DialogService = DialogService;
+    this.gettextCatalog = gettextCatalog;
 
     this.errorTitle = gettextCatalog.getString("ERROR");
 
