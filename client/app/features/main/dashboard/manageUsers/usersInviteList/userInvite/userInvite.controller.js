@@ -101,7 +101,7 @@ export default class userInviteController {
     this.$q = $q;
     this.$timeout = $timeout;
     this.Spinner = Spinner;
-    this.account = VenueService.account;
+    this.venue = VenueService.currentVenue;
     this.Snack = Snack;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
