@@ -1,13 +1,15 @@
 import controller from './contextualDrawer.customerNotes.controller'
 
 export default function contextualMenu(){
-  "ngInject";
+  'ngInject';
   return {
     restrict: 'E',
-    scope: true,
-    template: require("./contextualDrawer.customerNotes.tpl.html"),
+    scope: {
+      collection: '='
+    },
+    template: require('./contextualDrawer.customerNotes.tpl.html'),
     controller: controller.UID,
-    controllerAs: "drawerCustomerNotesCtrl",
+    controllerAs: 'drawerCustomerNotesCtrl',
     bindToController: true,
     link: (scope, el, attr, ctrl) => {
     }

@@ -97,5 +97,8 @@ export default class ErrorService {
 
     // CUSTOM TAGS
     this.FAILED_LOADING_TAGS = {code: 'FAILED_LOADING_TAGS', message:gettextCatalog.getString('An unexpected error occurred loading tags, please try again.')};
+
+    // USER NOTES
+    this.FAILED_LOADING_NOTES = {code: 'FAILED_LOADING_NOTES', message:gettextCatalog.getString('An unexpected error occurred loading the customer notes, please try again.')};
   }
 }

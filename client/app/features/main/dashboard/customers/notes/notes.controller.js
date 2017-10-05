@@ -4,8 +4,11 @@ export default class notesController {
   }
 
   /* @ngInject */
-  constructor($timeout, contextual) {
+  constructor($timeout, contextual, notes, Spinner) {
     'ngInject';
+
+    Spinner.hide('fetch-notes');
+    this.notes = notes;
 
     $timeout(() => {
       contextual.showDrawer('customerNotes')
