@@ -3,8 +3,13 @@ export default class contextualDrawerCustomerNotesController {
     return "ContextualDrawerCustomerNotes";
   }
 
-  constructor() {
+  close() {
+    this.$window.history.back();
+  }
+
+  constructor($window) {
     "ngInject";
 
+    this.$window = $window;
   }
 }

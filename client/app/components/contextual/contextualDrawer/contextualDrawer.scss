@@ -4,6 +4,22 @@
   width:657px;
   max-width: 657px;
 
+  .container {
+    height: 100%;
+    width: 100%;
+
+    md-input-container {
+      width: 100%;
+      padding: 0;
+      margin: 10px 0;
+
+      label {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .padded-content,
   md-tab-content > div{
     padding: 24px;
   }
@@ -32,7 +48,6 @@
     overflow-y: auto;
     height: calc(100% - 49px); // 100% - footer cards
     position: relative;
-
 
     .contextual-empty{
       display: none;
@@ -67,6 +82,17 @@
     }
   }
 
+  .contextual-header {
+    border-bottom: 1px solid #CCCCCC;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-around;
+
+    & + .contextual-list {
+      height: calc(100% - 49px - 50px); // 100% - footer cards
+    }
+  }
+
   .repeat-holder{
     .sort-holder{
       padding-top:30px;
@@ -78,6 +104,12 @@
     background:#F5F5F5;
     margin: 0;
     padding: 0px;
+
+    .md-button {
+      &.padded {
+        padding: 0 20px;
+      }
+    }
   }
 
   .card-title{

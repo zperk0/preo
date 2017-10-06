@@ -9,7 +9,7 @@ import controller from './customers.controller';
 export default function routes($stateProvider) {
   "ngInject";
   $stateProvider.state("main.dashboard.customers", {
-    url: "/customers/:id",
+    url: "/customers/:customerId",
     template: require("./customers.tpl.html"),
     controller: controller.UID,
     controllerAs: "customersCtrl",

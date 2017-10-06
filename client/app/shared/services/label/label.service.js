@@ -174,5 +174,9 @@ export default class LabelService {
     
     this.SNACK_TAG_ACTION_DELETED = gettextCatalog.getString('Tag action deleted');
     this.SNACK_TAG_ACTION_DELETED_ERROR = gettextCatalog.getString('An error ocurred to delete the tag. Try again later.');
+
+    // CUSTOMERS
+    this.SNACK_CUSTOMER_NOTE_SAVE = gettextCatalog.getString('Note created successfully');
+    this.SNACK_CUSTOMER_NOTE_SAVE_ERROR = gettextCatalog.getString('An error ocurred while creating the note. Try again later.');
   }
 }

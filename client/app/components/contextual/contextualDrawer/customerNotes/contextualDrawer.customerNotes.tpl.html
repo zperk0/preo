@@ -1,14 +1,15 @@
 <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="customerNotes">
-  <refresher condition="drawerCustomerNotesCtrl.lastUpdate">
+  <div class="contextual-header">
+    <md-button ui-sref="main.dashboard.customers.notes.new" class="md-primary" translate>Add note</md-button>
+  </div>
 
-    <div class='contextual-list'>
-      <customer-note-list collection="drawerCustomerNotesCtrl.collection"></customer-note-list>
-    </div>          
+  <div class="contextual-list">
+    <customer-note-list collection="drawerCustomerNotesCtrl.collection"></customer-note-list>
+  </div>
 
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="drawerCustomerNotesCtrl.close()" class='md-raised' translate>
-          Done
-      </md-button>
-    </md-card-actions>
-  </refresher>
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button ng-click="drawerCustomerNotesCtrl.close()" class="md-raised" translate>
+        Done
+    </md-button>
+  </md-card-actions>
 </md-sidenav>
