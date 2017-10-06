@@ -149,12 +149,11 @@ export default class paymentsController {
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue ;
-    this.account = this.VenueService.account;
-    Preoday.PaymentProvider.getStripeConnectLink(this.account.id, this.stripeRedirectUri).then((stripeLink)=>{
+    this.venue = this.VenueService.currentVenue;
+    Preoday.PaymentProvider.getStripeConnectLink(this.venue.id, this.stripeRedirectUri).then((stripeLink)=>{
       this.stripeLink = stripeLink;
     })
-    this.account.getPaymentProviders().then((paymentProviders)=>{
+    this.venue.getPaymentProviders().then((paymentProviders)=>{
       this.paymentProviders = paymentProviders;
       this.setStripe();
       this.Spinner.hide("venue-details");
