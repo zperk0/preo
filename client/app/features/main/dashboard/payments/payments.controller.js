@@ -95,7 +95,7 @@ export default class paymentsController {
         return;
       }
       this.Spinner.show("venue-payments-save");
-        this.stripe.update()
+        this.stripe.update(this.venue.id)
           .then(()=>{
             this.Snack.show(this.LabelService.SNACK_VENUE_PAYMENTS_SUCCESS)
             this.Spinner.hide("venue-payments-save");

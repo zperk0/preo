@@ -49,7 +49,7 @@ export default class manageUsersController {
     this.UserService = UserService;
     this.users = [];
     this.invites = [];
-    this.venue = VenueService.venue;
+    this.venue = VenueService.currentVenue;
     this.isError = false;
     this.$timeout = $timeout;
     this.init();
