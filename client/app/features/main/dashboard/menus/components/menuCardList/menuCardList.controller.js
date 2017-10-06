@@ -10,7 +10,7 @@ export default class menuCardListController {
   showCreateMenu($event, type) {
 
     let newMenu = {
-        accountId:this.VenueService.currentVenue.accountId,
+        venueId :this.VenueService.currentVenue.id,
         $selected:true,
         type: type,
         name:''
