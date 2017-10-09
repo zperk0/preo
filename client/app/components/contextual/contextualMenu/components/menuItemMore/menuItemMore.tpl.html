@@ -15,6 +15,12 @@
       </md-tooltip>
     </div>
   </div>
+  <div ng-if="menuItemMoreCtrl.hasExternalMenusFeature" class="input-group">
+    <md-input-container flex>
+      <label translate>External ID</label>
+      <input flex type="string" maxlength="45" name="entityExternalId" ng-model="menuItemMoreCtrl.item.externalId" ng-disabled="!menuItemMoreCtrl.hasMenuItemExternalIdFeature" />
+    </md-input-container>
+  </div>
   <div ng-if="menuItemMoreCtrl.isEvent" class="input-group">
     <md-input-container flex>
       <label translate>Item cap per event</label>
