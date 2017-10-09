@@ -188,7 +188,7 @@ export default class ReportsService {
       let row = [];
       header.forEach(col => {
         if (col.key === 'id' || col.key === 'orderId') {
-          row.push(totalType === 'ALL' ? this.gettextCatalog.getString('TOTAL') : this.gettextCatalog.getString('TOTAL - ' + totalType));
+          row.push(totalType === 'ALL' ? this.gettextCatalog.getString('TOTAL') : this.gettextCatalog.getString('TOTAL') + ' - ' + this.gettextCatalog.getString(totalType));
         } else if (total[totalType].hasOwnProperty(col.key)) {
           row.push(this.$filter('currency')(total[totalType][col.key] || 0));
         } else {
