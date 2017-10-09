@@ -4,7 +4,9 @@ export default class menuItemMoreController {
   }
 
   /* @ngInject */
-  constructor() {
+  constructor(VenueService) {
     'ngInject';
+
+    this.isEvent = VenueService.currentVenue.isEvent();
   }
 }
