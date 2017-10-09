@@ -1,0 +1,19 @@
+<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="orderHistory">
+  <div class="contextual-header">
+    <div class="flex-table">
+      <div class="column id label-sm">{{'Order' | translate}} #</div>
+      <div class="column date label-sm">{{'Date' | translate}}</div>
+      <div class="column time label-sm">{{'Time' | translate}}</div>
+    </div>
+  </div>
+
+  <div class="contextual-list">
+    <order-list orders="drawerOrderHistoryCtrl.orders"></order-list>
+  </div>
+
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button ng-click="drawerOrderHistoryCtrl.close()" class="md-raised" translate>
+        Done
+    </md-button>
+  </md-card-actions>
+</md-sidenav>

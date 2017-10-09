@@ -1,0 +1,58 @@
+<div class="order-detail">
+  <div class="item-container">
+    <div class="item">
+      <div class="label label-sm">{{'Order' | translate}} #:</div>
+      <div class="value" ui-sref="main.dashboard.customers.orders.detail({orderId:orderDetailCtrl.order.id})" ng-bind="orderDetailCtrl.order.id"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Status' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.status"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Venue' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.venueId"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Date' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.created | date:'EEE d MMM, y'"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Time' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.created | date:'HH:mm'"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Type' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.type"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Payment' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.paymentType"></div>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <div class="label label-sm">{{'Items' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.items"></div>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <div class="label label-sm">{{'Subtotal' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.subtotal"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Fees' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.fee"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Discount' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.discount"></div>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <div class="label label-sm">{{'TOTAL' | translate}}</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.total"></div>
+    </div>
+  </div>
+</div>

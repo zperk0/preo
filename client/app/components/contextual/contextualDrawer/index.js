@@ -53,7 +53,9 @@ import cardItemList from '../../cardItemList';
 
 import externalEventList from './eventsImport/externalEventList';
 
-export default angular.module("contextualDrawer" , [cardItemList, externalEventList])
+import GM from './GM';
+
+export default angular.module("contextualDrawer" , [cardItemList, externalEventList, GM])
   .service(service.UID, service)
 
   .controller(controller.UID, controller)
