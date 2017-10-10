@@ -11,20 +11,20 @@ export default class contextualDrawerUserSearchController {
     } else {
       this.selectedList.splice(index, 1);
     }
-
-    console.log("Users: ", this.selectedList);
   }
 
   onCancel(){
 
-    this.selectedList = [];
     this.contextualDrawer.cancel();
   }
 
   apply() {
 
-    this.contextualDrawer.successWithoutClose({"users": this.selectedList});
-    this.selectedList = [];
+    if (this.selectedList && this.selectedList.length) {
+      this.contextualDrawer.successWithoutClose({"users": this.selectedList});
+    } else {
+      this.contextualDrawer.notify();
+    }
   }
 
   constructor($scope, $stateParams, $mdSidenav, Spinner, contextualDrawer) {
@@ -35,6 +35,11 @@ export default class contextualDrawerUserSearchController {
     this.contextualDrawer = contextualDrawer;
 
     this.selectedList = [];
+
+    $scope.$on('$onSideNavClose', () =>{
+
+      this.selectedList = [];
+    });
   
   }
 }

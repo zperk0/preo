@@ -68,19 +68,29 @@ export default class promotionController {
   }
 
   onAddUser() {
-    console.log("Adding user");
     this.contextual.showDrawer("userSearch").then((data) => {
-      if (data && data.users) {
-        console.log("PROMOTION ", this.promotion);
-        console.log("Selected users: ", data.users);
-        this.Spinner.show("add-users-promotion");
-        this.promotion.addUsers(data.users).then(() => {
-          this.Spinner.hide("add-users-promotion");
-          this.contextual.hide();
 
-        });
-      }
-    });
+      this.Spinner.show("add-users-promotion");
+      this.promotion.addUsers(data.users).then(() => {
+
+        this.Spinner.hide("add-users-promotion");
+        this.contextual.hide();
+      }, () => {
+
+        this.Snack.showError(this.ErrorService.DEFAULT.message);
+      });
+        
+    }, (err) => {
+      console.log("Error with userSearch drawer");
+    }, () => {
+      this.DialogService.show(this.ErrorService.EMPTY_ADD_USER_PROMO.title,
+                                this.ErrorService.EMPTY_ADD_USER_PROMO.message,
+                                [{ name: this.LabelService.CONFIRMATION }]);
+      });
+  }
+
+  isAddUser(){
+    return this.promotion.global === 0;
   }
 
   contextualMenuSuccess(entity){
@@ -178,7 +188,7 @@ export default class promotionController {
   }
 
   /* @ngInject */
-  constructor($q,$stateParams, Spinner, Snack, $timeout, DialogService, LabelService, contextual, contextualMenu, APIErrorCode) {
+  constructor($q,$stateParams, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode) {
     "ngInject";
     this.$q = $q;
     this.title = "I am a promotion component"
@@ -187,6 +197,7 @@ export default class promotionController {
     this.Snack = Snack;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
+    this.ErrorService = ErrorService;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'promotion';

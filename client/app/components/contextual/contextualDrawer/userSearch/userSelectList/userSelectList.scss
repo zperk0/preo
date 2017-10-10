@@ -8,9 +8,11 @@
   .user-list {
     overflow-y: scroll;
     height: 100%;
+    padding-top: 49px;
   }
 
   .customers-count {
+    cursor: pointer;
     position: fixed;
     bottom: 49px;
     height: 24px;
@@ -38,6 +40,17 @@
     top: 150px;
     width: 100%;
     text-align: center;
+  }
+
+  .no-results {
+
+    svg {
+      margin-bottom: 12px;
+    }
+
+    g {
+      fill: #ccc;
+    }
   }
 
   height: calc(100% - 49px);
