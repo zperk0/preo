@@ -68,27 +68,7 @@ export default class promotionController {
   }
 
   onAddUser() {
-    this.contextual.showDrawer("userSearch").then((data) => {
-
-      this.Spinner.show("add-users-promotion");
-      this.promotion.addUsers(data.users).then(() => {
-
-        this.Snack.show(this.LabelService.SNACK_PROMOTION_ADD_USER);
-        this.Spinner.hide("add-users-promotion");
-        this.contextual.hide();
-      }, () => {
-
-        this.Snack.showError(this.ErrorService.DEFAULT.message);
-        this.Spinner.hide("add-users-promotion");
-      });
-        
-    }, (err) => {
-      console.log("Error with userSearch drawer");
-    }, () => {
-      this.DialogService.show(this.ErrorService.EMPTY_ADD_USER_PROMO.title,
-                                this.ErrorService.EMPTY_ADD_USER_PROMO.message,
-                                [{ name: this.LabelService.CONFIRMATION }]);
-      });
+    this.$state.go("main.dashboard.promotions.users", {promotionId: this.promotion.id});
   }
 
   isAddUser(){
@@ -190,9 +170,10 @@ export default class promotionController {
   }
 
   /* @ngInject */
-  constructor($q,$stateParams, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode) {
+  constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode) {
     "ngInject";
     this.$q = $q;
+    this.$state = $state;
     this.title = "I am a promotion component"
     this.Spinner = Spinner;
     this.$timeout = $timeout;
