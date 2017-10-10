@@ -31,6 +31,11 @@ export default class navbarController {
     this.$rootScope.$broadcast(this.BroadcastEvents._ON_NAVBAR_TOGGLE,this.expanded);
   }
 
+  getActivedMenu() {
+    return this.menu.filter((menu) => {
+      return !menu.hasOwnProperty('shouldShow') || menu.shouldShow();
+    });
+  }
 
   constructor($state, gettextCatalog, FeatureService, VenueService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions) {
     "ngInject";
