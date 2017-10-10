@@ -19,17 +19,19 @@ export default class contextualDrawerCustomerNotesNewController {
   }
 
   submit() {
-    this.Spinner.show('save-note');
-    Preoday.CustomerNote.save(this.note)
-      .then(newNote => {
-        this.note = newNote;
-        this.Spinner.hide('save-note');
-        this.Snack.show(this.LabelService.SNACK_CUSTOMER_NOTE_SAVE);
-        this.close();
-      }, error => {
-        this.Spinner.hide('save-note');
-        this.Snack.showError(this.LabelService.SNACK_CUSTOMER_NOTE_SAVE_ERROR);
-      });
+    if (this.newNoteForm.$valid) {
+      this.Spinner.show('save-note');
+      Preoday.CustomerNote.save(this.note)
+        .then(newNote => {
+          this.note = newNote;
+          this.Spinner.hide('save-note');
+          this.Snack.show(this.LabelService.SNACK_CUSTOMER_NOTE_SAVE);
+          this.close();
+        }, error => {
+          this.Spinner.hide('save-note');
+          this.Snack.showError(this.LabelService.SNACK_CUSTOMER_NOTE_SAVE_ERROR);
+        });
+    }
   }
 
   constructor($window, UserService, $stateParams, Spinner, Snack, LabelService) {
