@@ -6,7 +6,7 @@ export default function navbar(){
     restrict: 'E',
     template: require("./navbar.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "navBarCtrl",
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {

@@ -63,7 +63,8 @@ export default class userPasswordController {
 
     this.UserService.getCurrent().changePassword({
       oldPassword: this.data.oldPassword,
-      password: this.data.newPassword
+      password: this.data.newPassword,
+      domain: this.UtilsService.getDomain()
     }).then(() => {
 
       this.Snack.show(this.gettextCatalog.getString('Your password has been changed'));
@@ -83,7 +84,7 @@ export default class userPasswordController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, $timeout, gettextCatalog, UserService) {
+  constructor(Spinner, Snack, $timeout, gettextCatalog, UserService, UtilsService) {
   	'ngInject';
 
     this.Spinner = Spinner;
@@ -91,6 +92,7 @@ export default class userPasswordController {
     this.$timeout = $timeout;
     this.gettextCatalog = gettextCatalog;
     this.UserService = UserService;
+    this.UtilsService = UtilsService;
 
     this._showForm = false;
   }

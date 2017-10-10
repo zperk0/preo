@@ -5,14 +5,17 @@
       md-disable-backdrop
       md-whiteframe="5"
       layout="column"
-      ng-class="{expanded:vm.$expanded}">
-      <md-list flex>
-        <navbar-item ng-repeat="item in vm.menu" item="item" ng-if="!item.hasOwnProperty('shouldShow') || item.shouldShow()">{{item}} </navbar-item>
+      ng-class="{expanded:navBarCtrl.$expanded}">
+      <md-list flex ng-if="navBarCtrl.menu.length">
+        <navbar-item ng-repeat="item in navBarCtrl.getActivedMenu()"
+                     item="item" >
+                   {{item}}
+        </navbar-item>
       </md-list>
       <md-divider></md-divider>
       <div class="close-menu">
-        <md-button class="md-icon-button" ng-click="vm.toggleMenu()">
-            <icon>{{ vm.$expanded ? 'arrow_back' : 'arrow_forward' }}</icon>
+        <md-button class="md-icon-button" ng-click="navBarCtrl.toggleMenu()">
+            <icon>{{ navBarCtrl.$expanded ? 'arrow_back' : 'arrow_forward' }}</icon>
         </md-button>
       </div>
       <div class='map-overlay-drawing'></div>
