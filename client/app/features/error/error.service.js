@@ -97,5 +97,8 @@ export default class ErrorService {
 
     // CUSTOM TAGS
     this.FAILED_LOADING_TAGS = {code: 'FAILED_LOADING_TAGS', message:gettextCatalog.getString('An unexpected error occurred loading tags, please try again.')};
+
+    // PROMOTIONS
+    this.EMPTY_ADD_USER_PROMO = {code: 'EMPTY_ADD_USER_PROMO', message:gettextCatalog.getString('You must select one or more users to apply the promotion.'), title:gettextCatalog.getString('No users selected')};
   }
 }

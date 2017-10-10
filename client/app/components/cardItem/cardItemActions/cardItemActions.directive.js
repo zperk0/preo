@@ -11,6 +11,7 @@ export default function cardItemActions($parse){
       isPaused:"=?",
       isAdd:"=?",
       isAddCustomField:"=?",
+      isAddUser:"=?",
       onClone:'&?',
       onDelete:'&?',
       onEdit:'&?',
