@@ -21,7 +21,13 @@
           {{cardItemActionsCtrl.invisibleMessage}}
         </md-tooltip>
       </md-button>
-       <md-button ng-if="cardItemActionsCtrl.onPause" ng-show="!cardItemActionsCtrl.isPaused" class="md-icon-button" ng-click="cardItemActionsCtrl.onPause({newStatus:false})">
+      <md-button ng-if="cardItemActionsCtrl.onAddUser" class="md-icon-button" ng-show="1" ng-click="cardItemActionsCtrl.onAddUser()">
+        <icon>person_add</icon> <!-- pause_circle_outline -->
+        <md-tooltip md-direction="bottom">
+          <span translate>Apply to a customer account</span>
+        </md-tooltip>
+      </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onPause" ng-show="!cardItemActionsCtrl.isPaused" class="md-icon-button" ng-click="cardItemActionsCtrl.onPause({newStatus:false})">
         <icon>pause_circle_outline</icon> <!-- pause_circle_outline -->
         <md-tooltip md-direction="bottom">
           <span translate>Pause this promotion</span>
