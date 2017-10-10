@@ -1,24 +1,22 @@
-<div class="customer-note-item">
-  <div class="item-container">
-    <div class="item">
-      <div class="label">{{'Order' | translate}} #:</div>
-      <div class="value" ui-sref="vm.note.orderId" ng-bind="vm.note.orderId"></div>
-    </div>
-    <div class="item">
-      <div class="label">{{'Date' | translate}}:</div>
-      <div class="value" ng-bind="vm.note.created | date:'mediumDate'"></div>
-    </div>
-    <div class="item">
-      <div class="label">{{'Time' | translate}}:</div>
-      <div class="value" ng-bind="vm.note.created | date:'HH:mm'"></div>
-    </div>
-    <div class="item">
-      <div class="label">{{'Operator' | translate}}:</div>
-      <div class="value" ng-bind="vm.note.operator.name"></div>
-    </div>
-    <div class="item">
-      <div class="label">{{'Note' | translate}}:</div>
-      <div class="value" ng-bind="vm.note.message"></div>
-    </div>
+<div class="item-container">
+  <div class="item">
+    <div class="label label-sm">{{'Order' | translate}} #:</div>
+    <div class="value" ui-sref="vm.note.orderId" ng-bind="vm.note.orderId"></div>
+  </div>
+  <div class="item">
+    <div class="label label-sm">{{'Date' | translate}}:</div>
+    <div class="value" ng-bind="vm.note.created | date:'mediumDate'"></div>
+  </div>
+  <div class="item">
+    <div class="label label-sm">{{'Time' | translate}}:</div>
+    <div class="value" ng-bind="vm.note.created | date:'HH:mm'"></div>
+  </div>
+  <div class="item">
+    <div class="label label-sm">{{'Operator' | translate}}:</div>
+    <div class="value" ng-bind="vm.note.operator.name"></div>
+  </div>
+  <div class="item">
+    <div class="label label-sm">{{'Note' | translate}}:</div>
+    <div class="value" ng-bind="vm.note.message"></div>
   </div>
 </div>

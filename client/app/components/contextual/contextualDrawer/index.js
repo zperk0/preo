@@ -41,12 +41,6 @@ import styleMobileDirective from './style/contextualDrawer.styleMobile.directive
 import eventsImportController from './eventsImport/contextualDrawer.eventsImport.controller';
 import eventsImportDirective from './eventsImport/contextualDrawer.eventsImport.directive';
 
-import customerNotesController from './customerNotes/contextualDrawer.customerNotes.controller';
-import customerNotesDirective from './customerNotes/contextualDrawer.customerNotes.directive';
-
-import customerNotesNewController from './customerNotesNew/contextualDrawer.customerNotesNew.controller';
-import customerNotesNewDirective from './customerNotesNew/contextualDrawer.customerNotesNew.directive';
-
 import venueDetailsForm from './venueDetails/components/venueDetailsForm/venueDetailsForm.directive';
 
 import cardItemList from '../../cardItemList';
@@ -95,12 +89,6 @@ export default angular.module("contextualDrawer" , [cardItemList, externalEventL
 
   .controller(eventsImportController.UID, eventsImportController)
   .directive("contextualDrawerEventsImport", eventsImportDirective)
-
-  .controller(customerNotesController.UID, customerNotesController)
-  .directive("contextualDrawerCustomerNotes", customerNotesDirective)
-
-  .controller(customerNotesNewController.UID, customerNotesNewController)
-  .directive("contextualDrawerCustomerNotesNew", customerNotesNewDirective)
 
   .directive("venueDetailsForm", venueDetailsForm)
   .name;
