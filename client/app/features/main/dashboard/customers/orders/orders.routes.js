@@ -63,7 +63,7 @@ export default function routes($stateProvider) {
       order: function($q, $stateParams, $state, authenticated, Spinner, ErrorService) {
         return $q((resolve, reject) => {
           Spinner.show('fetch-order');
-          Preoday.Order.get($stateParams.orderId)
+          Preoday.Order.get($stateParams.orderId, 'venue,paymentNumber')
           .then(order => {
             console.log('got order', order);
             resolve(order);
