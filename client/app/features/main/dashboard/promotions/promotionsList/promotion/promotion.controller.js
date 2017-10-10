@@ -73,11 +73,13 @@ export default class promotionController {
       this.Spinner.show("add-users-promotion");
       this.promotion.addUsers(data.users).then(() => {
 
+        this.Snack.show(this.LabelService.SNACK_PROMOTION_ADD_USER);
         this.Spinner.hide("add-users-promotion");
         this.contextual.hide();
       }, () => {
 
         this.Snack.showError(this.ErrorService.DEFAULT.message);
+        this.Spinner.hide("add-users-promotion");
       });
         
     }, (err) => {
