@@ -129,7 +129,7 @@ export default class navbarController {
       // {name: gettextCatalog.getString("Gift vouchers"), icon:"label", id:"vouchers",shouldShow:function(){
       //   return PermissionService.hasPermission(Permissions.VOUCHERS)
       // }},
-      {name: gettextCatalog.getString("Orders"), icon:"receipt", id:"orders", external:window._PREO_DATA._ORDERSAPP,shouldShow:function(){
+      {name: gettextCatalog.getString("Orders"), icon:"receipt", id:"ordersapp", external:window._PREO_DATA._ORDERSAPP,shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ORDERS)
       }},
       {name: gettextCatalog.getString("Update External Menus"), icon:"sync", id:"updateExternalMenus", shouldShow:function(){

@@ -3,6 +3,10 @@ export default class orderDetailController {
     return "orderDetailController"
   }
 
+  getOrderStatus(status) {
+    return status ? status.replace('_', ' ') : '';
+  }
+
   /* @ngInject */
   constructor() {
     "ngInject";

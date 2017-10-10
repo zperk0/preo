@@ -22,6 +22,7 @@
   .flex-table {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: 50px;
 
@@ -29,15 +30,10 @@
       font-family: Roboto;
       font-size: 13px;
       padding-left: 15px;
-
-      &.id {
-        width: 75px;
-        max-width: 75px;
-      }
+      flex: 1 0 0;
 
       &.date {
-        width: 135px;
-        max-width: 135px;
+        flex: 2 0 0;
       }
     }
 
@@ -49,9 +45,15 @@
       &:hover {
         background-color: #e8e8e8;
       }
+    }
 
-      md-icon {
-        color: #0288d1;
+    md-icon {
+      color: #0288d1;
+      margin-right: 15px;
+
+      &.hidden {
+        visibility: hidden;
+        user-select: none;
       }
     }
   }
@@ -64,20 +66,53 @@
     }
     
     .item {
-      padding: 6px;
       font-family: Roboto;
       font-size: 13px;
       line-height: 1.5;
       display: flex;
       align-items: flex-start;
+      flex-wrap: wrap;
+
+      &:not(.flat) {
+        padding: 6px;
+      }
+
+      &.value:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
 
       .label {
-        flex-basis: 50px;
-        margin-right: 15px;
+        flex-basis: 65px;
+        margin-right: 10px;
       }
 
       .value {
-        flex: 1 0 0;
+        flex: 1;
+
+        &.flex {
+          flex: 1 auto;
+        }
+
+        &.end {
+          text-align: right;
+        }
+
+        &.block {
+          flex-basis: 100%;
+        }
+
+        &.capitalize {
+          text-transform: lowercase;
+
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .modifier {
+        flex-basis: 100%;
+        margin-left: 20px;
       }
     }
   }
@@ -116,6 +151,10 @@
     overflow-y: auto;
     height: calc(100% - 49px); // 100% - footer cards
     position: relative;
+
+    &.scroll-y {
+      overflow-y: scroll;
+    }
 
     .contextual-empty{
       display: none;
@@ -158,6 +197,10 @@
     min-height: 50px;
     display: flex;
     justify-content: space-around;
+    
+    &.scroll-y {
+      overflow-y: scroll;
+    }
 
     & + .contextual-list {
       height: calc(100% - 49px - 50px); // 100% - footer cards

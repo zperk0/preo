@@ -6,11 +6,11 @@
     </div>
     <div class="item">
       <div class="label label-sm">{{'Status' | translate}}:</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.status"></div>
+      <div class="value capitalize" ng-bind="orderDetailCtrl.getOrderStatus(orderDetailCtrl.order.status)"></div>
     </div>
-    <div class="item">
+    <div ng-if="orderDetailCtrl.order.venue" class="item">
       <div class="label label-sm">{{'Venue' | translate}}:</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.venueId"></div>
+      <div class="value" ng-bind="orderDetailCtrl.order.venue.name"></div>
     </div>
     <div class="item">
       <div class="label label-sm">{{'Date' | translate}}:</div>
@@ -22,37 +22,56 @@
     </div>
     <div class="item">
       <div class="label label-sm">{{'Type' | translate}}:</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.type"></div>
+      <div class="value capitalize" ng-bind="orderDetailCtrl.order.type"></div>
     </div>
     <div class="item">
       <div class="label label-sm">{{'Payment' | translate}}:</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.paymentType"></div>
+      <div class="value capitalize">
+        {{orderDetailCtrl.order.paymentType}}
+        <span ng-if="orderDetailCtrl.order.paymentNumber"> ****{{orderDetailCtrl.order.paymentNumber}}</span>
+      </div>
     </div>
   </div>
   <div class="item-container">
     <div class="item">
-      <div class="label label-sm">{{'Items' | translate}}:</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.items"></div>
+      <div class="label item flat label-sm">{{'Items' | translate}}:</div>
+      <div class="item flat value">
+        <div ng-repeat="item in orderDetailCtrl.order.items" class="item flat value block">
+          <div class="value flex">{{item.qty}} x {{item.name}}</div>
+          <div class="value end">{{item.total | currency}}</div>
+          <div class="modifier" ng-repeat="modifier in item.modifiers">- {{modifier.name}}</div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="item-container">
     <div class="item">
       <div class="label label-sm">{{'Subtotal' | translate}}:</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.subtotal"></div>
+      <div class="value end" ng-bind="orderDetailCtrl.order.subtotal | currency"></div>
     </div>
     <div class="item">
-      <div class="label label-sm">{{'Fees' | translate}}:</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.fee"></div>
+      <div class="label item flat label-sm">{{'Fees' | translate}}:</div>
+      <div class="item flat value">
+        <div class="item flat value block" ng-repeat="fee in orderDetailCtrl.order.fees">
+          <div class="value flex" ng-bind="fee.name"></div>
+          <div class="value end">{{fee.total | currency}}</div>
+        </div>
+      </div>
     </div>
     <div class="item">
-      <div class="label label-sm">{{'Discount' | translate}}:</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.discount"></div>
+      <div class="label item flat label-sm">{{'Discounts' | translate}}:</div>
+      <div class="item flat value">
+        <div class="item flat value block" ng-repeat="discount in orderDetailCtrl.order.discounts">
+          <div class="value flex" ng-bind="discount.name"></div>
+          <div class="value end">- {{discount.discount | currency}}</div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="item-container">
     <div class="item">
       <div class="label label-sm">{{'TOTAL' | translate}}</div>
-      <div class="value" ng-bind="orderDetailCtrl.order.total"></div>
+      <div class="value end" ng-bind="orderDetailCtrl.order.total | currency"></div>
     </div>
   </div>
 </div>
