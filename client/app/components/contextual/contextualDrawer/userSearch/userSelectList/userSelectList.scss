@@ -1,0 +1,44 @@
+.user-select-list {
+
+	.search-list-container {
+    height: 49px;
+    position: fixed;
+  }
+
+  .user-list {
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  .customers-count {
+    position: fixed;
+    bottom: 49px;
+    height: 24px;
+    line-height: 24px;
+    background: #0288d1;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .empty-list {
+
+    img {
+      width: 25%;
+      margin-bottom: 12px;
+    }
+
+    .text-content {
+      font-size: 13px;
+      color: #757575;
+    }
+
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    text-align: center;
+  }
+
+  height: calc(100% - 49px);
+}

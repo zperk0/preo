@@ -41,6 +41,11 @@ export default class contextualDrawerService {
     this.deferred && this.deferred.resolve(data);
   }
 
+  successWithoutClose(data){
+
+    this.deferred && this.deferred.resolve(data);
+  }
+
   //DO NOT CALL THIS METHOD DIRECTLY, use the contextual service;
   show(id){
     if (this.id){

@@ -1,0 +1,26 @@
+<div class="user-select-list">
+
+  <form ng-submit="userSelectListCtrl.doSearch()">
+    <md-input-container class='search search-list-container'>
+      <icon>search</icon>
+      <label translate>Search</label>
+      <input flex name="search" ng-model="userSelectListCtrl.searchLabel">
+    </md-input-container>
+  </form>
+
+  <div class="user-list" ng-if="userSelectListCtrl.userList.length">
+    <user-select-item
+      ng-click="userSelectListCtrl.onToogle({user:user})"
+      ng-repeat="user in userSelectListCtrl.userList | orderBy: 'id'"
+      user="user" selected="userSelectListCtrl.isSelected(user)">
+    </user-select-item>
+  </div>
+
+  <span class='customers-count' ng-if="userSelectListCtrl.selectedList.length"> {{userSelectListCtrl.selectedList.length}} customers selected </span>
+
+  <div class="empty-list" ng-if="!userSelectListCtrl.userList.length">
+    <img src='/images/finduser.png'>  
+    <div class='text-content'> Search for a customer account </div>
+    <div class='text-content'> by name or email address </div>
+  </div>
+</div>

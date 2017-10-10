@@ -41,6 +41,7 @@ export default class promotionController {
       },reject)
     })
   }
+
   savePromotion(){
     return this.$q((resolve,reject)=>{
       this.Spinner.show("saving-promotion");
@@ -64,6 +65,22 @@ export default class promotionController {
         this.onPause();
       }
     }
+  }
+
+  onAddUser() {
+    console.log("Adding user");
+    this.contextual.showDrawer("userSearch").then((data) => {
+      if (data && data.users) {
+        console.log("PROMOTION ", this.promotion);
+        console.log("Selected users: ", data.users);
+        this.Spinner.show("add-users-promotion");
+        this.promotion.addUsers(data.users).then(() => {
+          this.Spinner.hide("add-users-promotion");
+          this.contextual.hide();
+
+        });
+      }
+    });
   }
 
   contextualMenuSuccess(entity){
@@ -105,8 +122,6 @@ export default class promotionController {
       })
     }
   }
-
-
 
   onEdit ($event) {
     this.originalPromotion  = angular.copy(this.promotion);
