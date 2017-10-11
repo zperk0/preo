@@ -102,6 +102,7 @@ export default class ErrorService {
     this.FAILED_LOADING_NOTES = {code: 'FAILED_LOADING_NOTES', message:gettextCatalog.getString('An unexpected error occurred loading the customer notes, please try again.')};
 
     // USER ORDERS
+    this.FAILED_LOADING_ORDER = {code: 'FAILED_LOADING_ORDER', message:gettextCatalog.getString('An unexpected error occurred loading the order, please try again.'), title:gettextCatalog.getString("Sorry")};
     this.FAILED_LOADING_ORDERS = {code: 'FAILED_LOADING_ORDERS', message:gettextCatalog.getString('An unexpected error occurred loading the customer orders, please try again.')};
   }
 }

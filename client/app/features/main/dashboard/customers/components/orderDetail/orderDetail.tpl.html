@@ -38,7 +38,7 @@
       <div class="item flat value">
         <div ng-repeat="item in orderDetailCtrl.order.items" class="item flat value block">
           <div class="value flex">{{item.qty}} x {{item.name}}</div>
-          <div class="value end">{{item.total | currency}}</div>
+          <div class="value end">{{item.total | currency:false:2:orderDetailCtrl.order.venue.ccySymbol}}</div>
           <div class="modifier" ng-repeat="modifier in item.modifiers">- {{modifier.name}}</div>
         </div>
       </div>
@@ -47,14 +47,14 @@
   <div class="item-container">
     <div class="item">
       <div class="label label-sm">{{'Subtotal' | translate}}:</div>
-      <div class="value end" ng-bind="orderDetailCtrl.order.subtotal | currency"></div>
+      <div class="value end" ng-bind="orderDetailCtrl.order.subtotal | currency:false:2:orderDetailCtrl.order.venue.ccySymbol"></div>
     </div>
     <div class="item">
       <div class="label item flat label-sm">{{'Fees' | translate}}:</div>
       <div class="item flat value">
         <div class="item flat value block" ng-repeat="fee in orderDetailCtrl.order.fees">
           <div class="value flex" ng-bind="fee.name"></div>
-          <div class="value end">{{fee.total | currency}}</div>
+          <div class="value end">{{fee.total | currency:false:2:orderDetailCtrl.order.venue.ccySymbol}}</div>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
       <div class="item flat value">
         <div class="item flat value block" ng-repeat="discount in orderDetailCtrl.order.discounts">
           <div class="value flex" ng-bind="discount.name"></div>
-          <div class="value end">- {{discount.discount | currency}}</div>
+          <div class="value end">- {{discount.discount | currency:false:2:orderDetailCtrl.order.venue.ccySymbol}}</div>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
   <div class="item-container">
     <div class="item">
       <div class="label label-sm">{{'TOTAL' | translate}}</div>
-      <div class="value end" ng-bind="orderDetailCtrl.order.total | currency"></div>
+      <div class="value end" ng-bind="orderDetailCtrl.order.total | currency:false:2:orderDetailCtrl.order.venue.ccySymbol"></div>
     </div>
   </div>
 </div>
