@@ -588,6 +588,10 @@ export default class ReportsService {
       response.menuItemId = parameters.item.menuItemId;
     }
 
+    if(parameters.promotion){
+      response.promotionId = parameters.promotion.id;
+    }
+
     if(parameters.venues){
 
       response.venueIds = [];
@@ -822,6 +826,37 @@ export default class ReportsService {
         {key:'customerMarketing', text:this.gettextCatalog.getString('Marketing'), fieldType:'icon'}
       ];
     }
+    // PROMOTIONS
+    else if(reportId == 'allPromotions'){
+      response = [
+        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
+        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+      ];
+    }
+    else if(reportId == 'individualActivePromotions'){
+      response = [
+        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
+        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+      ];
+    }
+    else if(reportId == 'individualHistoricPromotions'){
+      response = [
+        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
+        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+      ];
+    }
 
     return response;
   }
@@ -912,6 +947,14 @@ export default class ReportsService {
         {id: 'allPayingCustomers', name:this.gettextCatalog.getString('All paying customers'), reportType: this.ReportTypes.PAYINGCUSTOMERS, hasCustomerMarketing: true, actions: actionNotify}
       ];
 
+    }
+    else if (type == this.ReportTypes.PROMOTIONS) {
+
+      response = [
+        {id: 'allPromotions', name:this.gettextCatalog.getString('All promotions'), reportType: this.ReportTypes.PROMOTIONS, actions: defaultActions},
+        {id: 'individualActivePromotions', name:this.gettextCatalog.getString('Individual active promotions'), isIndividual: true, hasPromotionsFilter: true, reportType: this.ReportTypes.PROMOTIONS,  actions: defaultActions},
+        {id: 'individualHistoricPromotions', name:this.gettextCatalog.getString('Individual historic promotions'), isIndividual: true, hasPromotionsFilter: true, deletedOnly: true, reportType: this.ReportTypes.PROMOTIONS, actions: defaultActions}
+      ];
     }
     else if(type == this.ReportTypes.SUMMARY || type == this.ReportTypes.SUMMARY_CARDS){
       response = this.getSummaryReports();

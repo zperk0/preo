@@ -440,6 +440,18 @@ export default class customDatafiltersController {
       this.filters.item = null;
     }
 
+    //check if filter promotion should be visible: if report has this option
+    if(this.filters.report.hasPromotionsFilter){
+      this.getPromotionsFilter(this.filters.report.deletedOnly)
+      .then(() => {
+
+        this.shouldShowPromotionsFilter = true;
+      });
+    } else {
+      this.shouldShowPromotionsFilter = false;
+      this.filters.promotion = null;
+    }
+
     this.debounceUpdate('Report');
   }
 
@@ -489,6 +501,11 @@ export default class customDatafiltersController {
   onItemChange(){
 
     this.debounceUpdate('Item');
+  }
+
+  onPromotionChange(){
+    
+    this.debounceUpdate('Promotion');
   }
 
   compareObjectVenue(obj1, obj2){
@@ -595,6 +612,64 @@ export default class customDatafiltersController {
         resolve(this.filters.item);
       }, (err) => {
         console.log('Error fetching items from venues ', err);
+        reject();
+        this.hideSpinner();
+      });
+    });
+  }
+
+  getPromotionsFilter(deletedOnly){
+    return this.$q((resolve, reject) => {
+      if (deletedOnly && this.deletedPromotions) {
+        return this.reportPromotions = this.deletedPromotions;
+      }
+
+      if (!deletedOnly && this.activePromotions) {
+        return this.reportPromotions = this.activePromotions;
+      }
+
+      this.showSpinner();
+
+      let venues = this.filters.venues || [],
+          params = {
+            venueIds: venues.map(v => v.id).join(','), 
+            deleted: deletedOnly 
+          },
+          oldPromotion = null;
+
+      if(this.filters.promotion) {
+        oldPromotion = angular.copy(this.filters.promotion);
+      }
+
+      Preoday.Report.getPromotionsByVenues(params)
+      .then((data) => {
+
+        this.reportPromotions = data;
+
+        if (deletedOnly) {
+          this.deletedPromotions = data;
+        } else {
+          this.activePromotions = data;
+        }
+
+        let matchPromotion = false;
+        if(oldPromotion){
+          data.forEach((x) => {
+            if(x.id == oldPromotion.id){
+              matchPromotion = true;
+            }
+          });
+        }
+
+        if(matchPromotion)
+          this.filters.promotion = oldPromotion;
+        else if(oldPromotion)
+          this.filters.promotion = null;
+
+        this.hideSpinner();
+        resolve(this.filters.promotion);
+      }, (err) => {
+        console.log('Error fetching promotions from venues ', err);
         reject();
         this.hideSpinner();
       });
