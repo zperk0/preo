@@ -621,11 +621,15 @@ export default class customDatafiltersController {
   getPromotionsFilter(deletedOnly){
     return this.$q((resolve, reject) => {
       if (deletedOnly && this.deletedPromotions) {
-        return this.reportPromotions = this.deletedPromotions;
+        this.filters.promotion = null;
+        this.reportPromotions = this.deletedPromotions;
+        resolve(this.filters.promotion);
       }
 
       if (!deletedOnly && this.activePromotions) {
-        return this.reportPromotions = this.activePromotions;
+        this.filters.promotion = null;
+        this.reportPromotions = this.activePromotions;
+        resolve(this.filters.promotion);
       }
 
       this.showSpinner();
@@ -652,19 +656,13 @@ export default class customDatafiltersController {
           this.activePromotions = data;
         }
 
-        let matchPromotion = false;
-        if(oldPromotion){
-          data.forEach((x) => {
-            if(x.id == oldPromotion.id){
-              matchPromotion = true;
-            }
-          });
+        if (oldPromotion) {
+          if (data && (data.id == oldPromotion.id)) {
+            this.filters.promotion = oldPromotion;
+          } else {
+            this.filters.promotion = null;
+          }
         }
-
-        if(matchPromotion)
-          this.filters.promotion = oldPromotion;
-        else if(oldPromotion)
-          this.filters.promotion = null;
 
         this.hideSpinner();
         resolve(this.filters.promotion);

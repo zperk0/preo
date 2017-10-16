@@ -472,6 +472,11 @@ export default class ReportsService {
         return true;
     }
 
+    if(!paramChanged && params.promotionId){
+      if(!this.data.promotionId || params.promotionId != this.data.promotionId)
+        return true;
+    }
+
     if(params.minCreated && params.maxCreated){
       if(!this.data.minCreated || !this.data.maxCreated)
         return true;
@@ -952,8 +957,13 @@ export default class ReportsService {
 
       response = [
         {id: 'allPromotions', name:this.gettextCatalog.getString('All promotions'), reportType: this.ReportTypes.PROMOTIONS, actions: defaultActions},
-        {id: 'individualActivePromotions', name:this.gettextCatalog.getString('Individual active promotions'), isIndividual: true, hasPromotionsFilter: true, reportType: this.ReportTypes.PROMOTIONS,  actions: defaultActions},
-        {id: 'individualHistoricPromotions', name:this.gettextCatalog.getString('Individual historic promotions'), isIndividual: true, hasPromotionsFilter: true, deletedOnly: true, reportType: this.ReportTypes.PROMOTIONS, actions: defaultActions}
+      ];
+    }
+    else if (type == this.ReportTypes.PROMOTIONS_INDIVIDUAL) {
+
+      response = [
+        {id: 'individualActivePromotions', name:this.gettextCatalog.getString('Individual active promotions'), isIndividual: true, hasPromotionsFilter: true, reportType: this.ReportTypes.PROMOTIONS_INDIVIDUAL,  actions: defaultActions},
+        {id: 'individualHistoricPromotions', name:this.gettextCatalog.getString('Individual historic promotions'), isIndividual: true, hasPromotionsFilter: true, deletedOnly: true, reportType: this.ReportTypes.PROMOTIONS_INDIVIDUAL, actions: defaultActions}
       ];
     }
     else if(type == this.ReportTypes.SUMMARY || type == this.ReportTypes.SUMMARY_CARDS){

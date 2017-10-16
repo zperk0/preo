@@ -27,6 +27,10 @@ export default class analyticsPromotionsController {
 
   updateReportData(){
 
+    if(this.dataFilters.report.isIndividual && !this.dataFilters.promotion){
+      return false;
+    }
+
     if(!this.spinnerRunning())
       this.showSpinner();
 
@@ -142,7 +146,7 @@ export default class analyticsPromotionsController {
 
   getReportTypes(){
 
-    var types = [this.ReportTypes.PROMOTIONS];
+    var types = [this.ReportTypes.PROMOTIONS, this.ReportTypes.PROMOTIONS_INDIVIDUAL];
     return types;
   }
 
@@ -185,7 +189,7 @@ export default class analyticsPromotionsController {
     this.infiniteScrollIndex = this.valuesPerScrollPage;
   }
 
-  onFilter(filters , typeChanged){    
+  onFilter(filters, typeChanged){
     this.dataFilters = filters;  
 
     // view is loaded with empty report fitler, no search at first time
@@ -206,32 +210,19 @@ export default class analyticsPromotionsController {
 
     //Fetch from Api when any filter, except Report is changed, or if report changed but has no data to show for it.
     if(paramsChanged){
+      this.shouldShowdatatable = false;
       this.debounceFetch();
     }
     else{
       this.updateView();
     }
-
   }
 
   updateView(){
 
-    if(this.dataFilters.report.isChartType == true){
-
-      this.$timeout(() => {
-        this.getChartData();
-        this.shouldShowChart = true;
-        this.shouldShowdatatable = false; 
-      });
-    }
-    else{
-      this.shouldShowChart = false;
-      this.reportTitle = this.dataFilters.report.name;
-
-      this.getTableData();
-
-      this.getTableActionList(this.dataFilters.report.actions);
-    }
+    this.reportTitle = this.dataFilters.report.name;
+    this.getTableData();
+    this.getTableActionList(this.dataFilters.report.actions);
 
     if(this.spinnerRunning())
       this.hideSpinner();
