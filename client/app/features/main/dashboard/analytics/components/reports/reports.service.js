@@ -831,6 +831,14 @@ export default class ReportsService {
         {key:'customerMarketing', text:this.gettextCatalog.getString('Marketing'), fieldType:'icon'}
       ];
     }
+    else if(reportId== 'unregisteredCustomers'){
+      response = [
+        {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
+       // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
+        {key:'lastOrder', text:this.gettextCatalog.getString('Last order'), fieldType: 'date'},
+        {key:'phone', text:this.gettextCatalog.getString('Tel')},
+      ];
+    }
     // PROMOTIONS
     else if(reportId == 'allPromotions'){
       response = [
@@ -933,6 +941,12 @@ export default class ReportsService {
 
       response = [
         {id: 'newCustomers', name:this.gettextCatalog.getString('New customers'), reportType: this.ReportTypes.NEWCUSTOMERS, hasCustomerMarketing: true, actions: actionNotify}
+      ];
+    }
+    else if(type == this.ReportTypes.UNREGISTERED_CUSTOMERS){
+      
+      response = [
+        {id: 'unregisteredCustomers', name:this.gettextCatalog.getString('Customers with no email address'), reportType: this.ReportTypes.UNREGISTERED_CUSTOMERS, actions: actionNotify}
       ];
     }
     else if(type == this.ReportTypes.ORDERS){
