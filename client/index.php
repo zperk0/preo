@@ -89,7 +89,7 @@ $contentsIndexHTML = str_replace("cdn/",$cdnRoot,$contentsIndexHTML);
 
 if($cssoverride)
 {
-    $overridePath = "../overrides/".$cssoverride."/override.css";
+    $overridePath = "./overrides/".$cssoverride."/override.css";
     if (file_exists($overridePath)){
     $contentsCssoverride = file_get_contents($overridePath);
     $tempOverride =  '<style type="text/css">'.$contentsCssoverride.'</style>';
