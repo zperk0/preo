@@ -53,11 +53,11 @@ export default class contextualMenuService {
     this.parent = angular.element(document.querySelector(".contextual-menu-holder"));
 
     let newScope = this.$rootScope.$new();
-    newScope.template = require("./templates/"+template+".tpl.html");;
+    // newScope.template = require("./templates/"+template+".tpl.html");;
     newScope.entity = entity;
     newScope.params = params;
 
-    this.directiveHtml ='<contextual-menu template="template" entity="entity" params="params"></contextual-menu>';
+    this.directiveHtml ='<contextual-menu template="' + template + '" entity="entity" params="params"></contextual-menu>';
     this.$el = this.$compile(this.directiveHtml)(newScope);
     this.parent.append(this.$el);
   }

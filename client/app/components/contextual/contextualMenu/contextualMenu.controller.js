@@ -4,14 +4,25 @@ export default class contextualMenuController {
   }
 
   //restore original state if user cancels
-  onCancel(){
+  doCancel(){
     console.log("cancel and reject")
-    this.contextualMenu.reject();
+
+    if (this.onCancel) {
+      this.onCancel();
+    } else {
+      this.contextualMenu.reject();
+    }
   }
 
   doSubmit(){
     if (this.contextualForm.$valid){
-      this.contextualMenu.resolve(this.entity);
+      if (this.onSuccess) {
+        this.onSuccess({
+          entity: this.entity
+        });
+      } else {
+        this.contextualMenu.resolve(this.entity);
+      }
     } else {
       // this is to the child directive redirect to error tab for example.
       this.$scope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED);
