@@ -21,6 +21,10 @@ export default class contextualDrawerService {
 
   //same as close but doesn't call error callback
   close(){
+    if (this.parentElement && this.parentElement.scope()) {
+      this.parentElement.scope().$broadcast('$onSideNavClose');
+    }
+
     if (this.id && this.$mdSidenav(this.id).isOpen()){
       this.$mdSidenav(this.id).close();
       this.id = false;
@@ -35,10 +39,25 @@ export default class contextualDrawerService {
     this.deferred && this.deferred.reject(err);
   }
 
+  cancelWithoutClose(err){
+
+    this.deferred && this.deferred.reject(err);
+  }
+
   success(data){
 
     this.close();
     this.deferred && this.deferred.resolve(data);
+  }
+
+  successWithoutClose(data){
+
+    this.deferred && this.deferred.resolve(data);
+  }
+
+  notify(data){
+
+    this.deferred && this.deferred.notify(data);
   }
 
   //DO NOT CALL THIS METHOD DIRECTLY, use the contextual service;

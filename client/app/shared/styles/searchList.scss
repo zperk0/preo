@@ -1,0 +1,25 @@
+.search-list-container {
+  position: fixed;
+  z-index: 21;
+
+  md-icon{
+    color: #757575;
+    top:6px;
+  }
+
+  &:not(.md-input-invalid).md-input-focused label{
+    display: none;
+  }
+
+  &:not(.md-input-invalid).md-input-has-value label{
+    display: none;
+  }
+
+  input{
+    border:none;
+  }
+
+  .md-errors-spacer{
+    display: none;
+  }
+}
