@@ -88,8 +88,8 @@ export default class mainController {
     $rootScope.$on(BroadcastEvents._PREO_DO_VENUE_SELECT,this.setVenue.bind(this));
     if (UserService.isAuth()){
 
-      if (Number($stateParams.venueId) > 0) {
-        VenueService.fetchById($stateParams.venueId).then((venue)=>{
+      if (Number($stateParams.entityId) > 0) {
+        VenueService.fetchById($stateParams.entityId).then((venue)=>{
           this.setVenue(null,venue.id)
         }, this.handleError.bind(this,"VENUE_NOT_FOUND"));
       } else {

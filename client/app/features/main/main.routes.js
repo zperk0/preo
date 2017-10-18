@@ -9,7 +9,7 @@ import controller from './main.controller';
 export default function routes($stateProvider) {
   "ngInject";
   $stateProvider.state("main", {
-    url: "/:venueId/main",
+    url: "/:entityId/main",
     abstract: true,
     template: require("./main.tpl.html"),
     controller: controller.UID,
@@ -19,7 +19,7 @@ export default function routes($stateProvider) {
     	authenticated: function ($q, $state, $stateParams, $timeout, UserService, VenueService) {
 
     		// this is needed because the $stateParams is empty in a service inside of a resolve function
-    		VenueService.venueId = $stateParams.venueId;
+    		VenueService.venueId = $stateParams.entityId;
     		if (UserService.isAuth()) {
           if (VenueService.hasVenueSet()){
             return $q.when();

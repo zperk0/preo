@@ -150,7 +150,9 @@ export default class VenueService {
       this.$rootScope.$broadcast(this.BroadcastEvents._PREO_DO_VENUE_SELECT,this.$stateParams.venueId)
     } else {
       venueId = this.venues[0].id;
-      this.$state.go('main.dashboard', {venueId});
+      this.$state.go('main.dashboard', {
+        entityId: venueId
+      });
     }
 
     this.venuesDeferred.resolve(this.venues);
