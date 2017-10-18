@@ -72,6 +72,10 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.MENU_ITEM_EXTERNAL_ID);
   }
 
+  hasCallCenterFeature() {
+    return this.getLocalFeature(Preoday.constants.Feature.CALL_CENTER);
+  }
+
   getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
         return +item.id;
