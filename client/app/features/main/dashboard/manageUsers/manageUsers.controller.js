@@ -8,7 +8,7 @@ export default class manageUsersController {
     this.Spinner.show("fetch-users");
     console.log("initing");
     var currentUser = this.UserService.getCurrent();
-    this.account.getUsers()
+    this.venue.getUsers()
     .then((users)=>{
       users.forEach((u)=>{
         u.$current = u.id === currentUser.id;
@@ -19,7 +19,7 @@ export default class manageUsersController {
       this.users = users
       console.log("got users", users);
     })
-    .then(this.account.getInvites.bind(this.account))
+    .then(this.venue.getInvites.bind(this.venue))
     .then((invites)=>{
       invites.forEach((u)=>{
         if (u.role === 'OWNER'){
@@ -49,7 +49,7 @@ export default class manageUsersController {
     this.UserService = UserService;
     this.users = [];
     this.invites = [];
-    this.account = VenueService.account;
+    this.venue = VenueService.currentVenue;
     this.isError = false;
     this.$timeout = $timeout;
     this.init();

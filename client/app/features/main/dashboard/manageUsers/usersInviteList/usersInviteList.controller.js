@@ -3,7 +3,7 @@ export default class usersInviteListController {
     return "usersInviteListController"
   }
 
-     showCreate(){
+  showCreate(){
       let isCreating = this.users.filter(function (item) {
         return item.id === undefined;
       }).length;
@@ -14,7 +14,7 @@ export default class usersInviteListController {
     }
 
     let invite = new Preoday.Invite({
-      accountId: this.account.id,
+      venueId: this.venue.id,
       role:'ADMIN',
       createdBy:this.user.id,
       $selected: true,
@@ -28,7 +28,7 @@ export default class usersInviteListController {
   constructor(VenueService, UserService) {
     "ngInject"
     this.title = "I am a usersList component"
-    this.account = VenueService.account;
+    this.venue = VenueService.currentVenue;
     this.user = UserService.user;
 
     this.domainId = window._PREO_DATA._DOMAIN ? window._PREO_DATA._DOMAIN : null;
