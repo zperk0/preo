@@ -16,22 +16,22 @@ export default function routes($stateProvider) {
     controllerAs: "vm",
     resolve: {
       // authenticated -> this makes sure there is an USER and a VENUE set in userService and venueService if you inject "authenticate" in any resolve routes
-    	authenticated: function ($q, $state, $stateParams, $timeout, UserService, VenueService) {
+    	authenticated: function ($q, $state, $stateParams, $timeout, UserService, VenueService, StateService) {
 
     		// this is needed because the $stateParams is empty in a service inside of a resolve function
-    		VenueService.venueId = $stateParams.entityId;
+    		// VenueService.venueId = $stateParams.entityId;
     		if (UserService.isAuth()) {
-          if (VenueService.hasVenueSet()){
+          if (StateService.isLoaded()){
             return $q.when();
           } else {
-            return VenueService.selectVenue()
+            return StateService.start();
           }
     		}
 
         var deferred = $q.defer();
     		UserService.auth()
     			.then(() => {
-    				VenueService.selectVenue()
+    				StateService.start()
     					.then(deferred.resolve, deferred.reject);
     			}, () => {
 	    			$timeout(() => {

@@ -27,10 +27,10 @@ export default class mainController {
   }
 
   loadPermissions(){
-    console.log("loading permissions")
-    this.VenueService.getPermissions()
+    console.log("MainController [loadPermissions] - loading permissions")
+    this.StateService.loadPermissions()
       .then((permissions)=>{
-        console.log("got permissions", permissions, permissions[this.Permissions.DASHBOARD]);
+        console.log("MainController [loadPermissions] - got permissions", permissions, permissions[this.Permissions.DASHBOARD]);
         if (!permissions[this.Permissions.DASHBOARD]){
           this.$state.go("main.account");
           this.hideSpinner();
@@ -43,7 +43,7 @@ export default class mainController {
           })
         }
       }, ()=>{
-        console.log("Error fetching permissions, redirecting to signin");
+        console.log("MainController [loadPermissions] - Error fetching permissions, redirecting to signin");
         this.hideSpinner();
         this.$state.go("auth.signin");
       })
@@ -69,9 +69,9 @@ export default class mainController {
   }
 
 
-  constructor($rootScope, $stateParams, $state, $timeout, Permissions, DialogService, ErrorService, LabelService, BroadcastEvents, UserService, VenueService, UtilsService, Spinner) {
+  constructor($rootScope, $stateParams, $state, $timeout, Permissions, DialogService, ErrorService, LabelService, BroadcastEvents, UserService, StateService, UtilsService, Spinner) {
     "ngInject";
-    this.VenueService=VenueService;
+    this.StateService=StateService;
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
@@ -83,20 +83,22 @@ export default class mainController {
     this.Spinner = Spinner;
     this.$timeout = $timeout;
     this.BroadcastEvents = BroadcastEvents;
-    this.showSpinner();
+    // this.showSpinner();
 
-    $rootScope.$on(BroadcastEvents._PREO_DO_VENUE_SELECT,this.setVenue.bind(this));
-    if (UserService.isAuth()){
+    // $rootScope.$on(BroadcastEvents._PREO_DO_VENUE_SELECT,this.setVenue.bind(this));
+    // if (UserService.isAuth()){
 
-      if (Number($stateParams.entityId) > 0) {
-        VenueService.fetchById($stateParams.entityId).then((venue)=>{
-          this.setVenue(null,venue.id)
-        }, this.handleError.bind(this,"VENUE_NOT_FOUND"));
-      } else {
-        VenueService.selectVenue();
-        this.handleFinishLoading();
-      }
-    }
+      // if (Number($stateParams.entityId) > 0) {
+      //   VenueService.fetchById($stateParams.entityId).then((venue)=>{
+      //     this.setVenue(null,venue.id)
+      //   }, this.handleError.bind(this,"VENUE_NOT_FOUND"));
+      // } else {
+      //   VenueService.selectVenue();
+      //   this.handleFinishLoading();
+      // }
+    // }
+
+    this.handleFinishLoading();
 
     UtilsService.onMessage((e) => {
       switch (e.data) {
