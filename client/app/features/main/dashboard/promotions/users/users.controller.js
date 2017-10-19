@@ -32,16 +32,8 @@ export default class usersPromotionsController {
       });
   }
 
-  findPromotionById(promotionId) {
-    const filtered = this.promotions.filter((promotion) => {
-      return +promotion.id === +promotionId;
-    });
-
-    return filtered.length ? filtered[0] : null;
-  }
-
   /* @ngInject */
-  constructor($q, $state, $stateParams, Spinner, Snack, DialogService, ErrorService, LabelService, $timeout, contextual, promotions) {
+  constructor($q, $state, $timeout, Spinner, Snack, DialogService, ErrorService, LabelService, contextual, promotion) {
     "ngInject";
     this.$state = $state;
     this.Spinner = Spinner;
@@ -50,15 +42,12 @@ export default class usersPromotionsController {
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
-    this.$timeout = $timeout;
     this.contextual = contextual;
-    this.promotions = promotions;
-    this.promotion = this.findPromotionById($stateParams.promotionId);
+    this.promotion = promotion;
 
-    this.$timeout(() => {
+    $timeout(() => {
       this.init();
-    })
-    
+    });
 
   }
 }

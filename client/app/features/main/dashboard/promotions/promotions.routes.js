@@ -48,6 +48,25 @@ export default function routes($stateProvider, Permissions) {
       controller: usersController.UID,
       requiresPermission:Permissions.OFFERS,
       controllerAs: "usersPromotionsCtrl",
+      resolve: {
+      promotion: ($q, promotions, $stateParams, $state, $timeout) => {
+
+        const promotionId = $stateParams.promotionId;
+        const filtered = promotions.filter((promotion) => {
+          return +promotion.id === +promotionId;
+        });
+
+        if (filtered.length) {
+          return $q.when(filtered[0]);
+        }
+
+        $timeout(() => {
+          $state.go("main.dashboard.promotions");
+        });
+
+        return $q.reject();
+      }
+    }
     }}
   });
 }
