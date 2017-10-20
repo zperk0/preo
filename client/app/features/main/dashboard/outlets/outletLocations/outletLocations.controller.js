@@ -25,10 +25,10 @@ export default class outletLocationsController {
 
     this.$q.all([
         this.OutletLocationService.getOutletLocations({
-          venueId: this.VenueService.currentVenue.id
+          venueId: this.StateService.venue.id
         }),
         this.OutletService.getOutlets({
-          venueId: this.VenueService.currentVenue.id
+          venueId: this.StateService.venue.id
         })
       ]).then((results) => {
 
@@ -166,7 +166,7 @@ export default class outletLocationsController {
     return window.location.pathname+url;
   }
 
-  constructor(contextual, Spinner, $scope, $timeout, $q, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService, OutletService, gettextCatalog) {
+  constructor(contextual, Spinner, StateService, $scope, $timeout, $q, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService, OutletService, gettextCatalog) {
     "ngInject";
 
     this.$q = $q;
@@ -175,7 +175,7 @@ export default class outletLocationsController {
     this.$location = $location;
     this.$stateParams = $stateParams;
     this.contextual = contextual;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.OutletLocationService = OutletLocationService;
     this.OutletService = OutletService;
     this.Spinner = Spinner;
@@ -184,13 +184,15 @@ export default class outletLocationsController {
 
     this.Spinner.show("outletLocations");
 
-    if (VenueService.hasVenueSet()) {
-      this.fetchOutlets();
-    } else {
-      $scope.$on(BroadcastEvents.ON_CURRENT_VENUE, (event, venue) => {
+    this.fetchOutlets();
 
-        this.fetchOutlets();
-      });
-    }
+    // if (VenueService.hasVenueSet()) {
+    //   this.fetchOutlets();
+    // } else {
+    //   $scope.$on(BroadcastEvents.ON_CURRENT_VENUE, (event, venue) => {
+
+    //     this.fetchOutlets();
+    //   });
+    // }
   }
 }

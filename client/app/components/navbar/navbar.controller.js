@@ -37,7 +37,7 @@ export default class navbarController {
     });
   }
 
-  constructor($state, gettextCatalog, FeatureService, VenueService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions, StateService) {
+  constructor($state, gettextCatalog, FeatureService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions, StateService) {
     "ngInject";
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
@@ -70,7 +70,7 @@ export default class navbarController {
           return FeatureService.hasDeliveryZoneFeature();
         }},
         {name: gettextCatalog.getString("Operational hours"), id:"venueOpeningHours", shouldShow:function(){
-          return VenueService.hasVenueSet() && !VenueService.currentVenue.isEvent();
+          return StateService.venue && !StateService.venue.isEvent();
         }},
       ],
       shouldShow:function(){
@@ -82,7 +82,7 @@ export default class navbarController {
       ],shouldShow:function(){
         return !isChannel && PermissionService.hasPermission(Permissions.TAXES)
       }},
-       {name: gettextCatalog.getString("Paymentsz"), icon:"credit_card", id:"payments",shouldShow:function(){
+       {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments",shouldShow:function(){
         return !isChannel && PermissionService.hasPermission(Permissions.ACCOUNT)
       }},
       {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets", children: [
@@ -108,7 +108,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("My Events"), id:"eventList"},
         {name: gettextCatalog.getString("Collection Slots"), id:"collectionSlots"},
       ], shouldShow: function () {
-        return !isChannel && VenueService.hasVenueSet()  && VenueService.currentVenue.isEvent() && PermissionService.hasPermission(Permissions.EVENTS);
+        return !isChannel && StateService.venue  && StateService.venue.isEvent() && PermissionService.hasPermission(Permissions.EVENTS);
       }},
       {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions",shouldShow:function(){
         return PermissionService.hasPermission(Permissions.OFFERS)

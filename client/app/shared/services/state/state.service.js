@@ -95,25 +95,27 @@ export default class StateService {
 
   selectVenue(venueId) {
 
-    console.log('StateService [selectVenue] - venueid: ', venueId);
     const {
       venues,
       VenueService,
+      UtilsService,
       $q
     } = this;
 
     const deferred = $q.defer();
 
-    const selected = venues.filter((v) => {
-      return +v.id === +venueId;
-    });
+    // const selected = venues.filter((v) => {
+    //   return +v.id === +venueId;
+    // });
 
-    this.venue = selected.length ? selected[0] : venues[0];
+    // this.venue = selected.length ? selected[0] : venues[0];
 
-    VenueService.fetchById(this.venue.id)
+    VenueService.fetchById(venueId)
       .then((venue) => {
 
         this.venue = venue;
+        this.venue.setAsCurrent();
+        UtilsService.updateLocale();
         this.fetchPermissionsAndAccount()
           .then(() => {
             this.navigateToVenue(this.venue.id);
@@ -244,6 +246,5 @@ export default class StateService {
     this.dashboardDeferred = null;
 
     this.isChannel = StateConfig.isChannel;
-    this.entityId = $stateParams.entityId;
   }
 }

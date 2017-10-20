@@ -16,10 +16,10 @@ export default function routes($stateProvider) {
     controllerAs: "vm",
     resolve: {
       // authenticated -> this makes sure there is an USER and a VENUE set in userService and venueService if you inject "authenticate" in any resolve routes
-    	authenticated: function ($q, $state, $stateParams, $timeout, UserService, VenueService, StateService) {
+    	authenticated: function ($q, $state, $stateParams, $timeout, UserService, StateService) {
 
     		// this is needed because the $stateParams is empty in a service inside of a resolve function
-    		// VenueService.venueId = $stateParams.entityId;
+    		StateService.entityId = $stateParams.entityId;
     		if (UserService.isAuth()) {
           if (StateService.isLoaded()){
             return $q.when();
