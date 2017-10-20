@@ -68,6 +68,7 @@ export default class StateService {
     } else {
       if (channels.length) {
         this.selectChannel(channels[0].id);
+        dashboardDeferred.resolve();
       } else if (venues.length) {
         const venueId = venues[0].id;
         isChannel

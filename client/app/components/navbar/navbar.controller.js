@@ -37,7 +37,7 @@ export default class navbarController {
     });
   }
 
-  constructor($state, gettextCatalog, FeatureService, VenueService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions) {
+  constructor($state, gettextCatalog, FeatureService, VenueService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions, StateService) {
     "ngInject";
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
@@ -45,6 +45,8 @@ export default class navbarController {
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
     this.$expanded = true;
+
+    const isChannel = StateService.isChannel;
     //name: label to be displayed in navbar
     //icon: icon to be displayed before label
     //id: route that will define destination on click. it's appended on DESTINATION_PREFIX, and if it's a child it's appended after it's parent's id
@@ -72,47 +74,47 @@ export default class navbarController {
         }},
       ],
       shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.VENUE_CREATE)
+        return !isChannel && PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       {name: gettextCatalog.getString("Tax"), icon:"account_balance", id:"taxes", children:[
         {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},
         {name: gettextCatalog.getString("Tax Groups"), id:"taxGroups"}
       ],shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.TAXES)
+        return !isChannel && PermissionService.hasPermission(Permissions.TAXES)
       }},
-       {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments",shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.ACCOUNT)
+       {name: gettextCatalog.getString("Paymentsz"), icon:"credit_card", id:"payments",shouldShow:function(){
+        return !isChannel && PermissionService.hasPermission(Permissions.ACCOUNT)
       }},
       {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets", children: [
         {name: gettextCatalog.getString("My Outlets"), id:"outletList"},
         {name: gettextCatalog.getString("Outlet Locations"), id:"location"},
       ], shouldShow: function () {
-        return FeatureService.hasOutletFeature() && PermissionService.hasPermission(Permissions.ACCOUNT);
+        return !isChannel && FeatureService.hasOutletFeature() && PermissionService.hasPermission(Permissions.ACCOUNT);
       }},
       {name: gettextCatalog.getString("Menus"), icon:"list", id:"menus", children:[
         {name: gettextCatalog.getString("My menus"), id:"menus", destination:"list", exclusions:["itemList","modifiers"]},
         {name: gettextCatalog.getString("Items"), id:"itemList"},
         {name: gettextCatalog.getString("Modifiers"), id:"modifiers"},
       ],shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.MENUS)
+        return !isChannel && PermissionService.hasPermission(Permissions.MENUS)
       }},
       {name: gettextCatalog.getString("Tags"), icon:"label", id:"customTags", children:[
         {name: gettextCatalog.getString("My Tags"), id:"myTags"},
         {name: gettextCatalog.getString("Tag Actions"), id:"tagActions"},
       ],shouldShow:function(){
-        return FeatureService.hasItemTagsFeature() && PermissionService.hasPermission(Permissions.MENUS)
+        return !isChannel && FeatureService.hasItemTagsFeature() && PermissionService.hasPermission(Permissions.MENUS)
       }},
       {name: gettextCatalog.getString("Events"), icon:"event", id:"events", children: [
         {name: gettextCatalog.getString("My Events"), id:"eventList"},
         {name: gettextCatalog.getString("Collection Slots"), id:"collectionSlots"},
       ], shouldShow: function () {
-        return VenueService.hasVenueSet()  && VenueService.currentVenue.isEvent() && PermissionService.hasPermission(Permissions.EVENTS);
+        return !isChannel && VenueService.hasVenueSet()  && VenueService.currentVenue.isEvent() && PermissionService.hasPermission(Permissions.EVENTS);
       }},
       {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions",shouldShow:function(){
         return PermissionService.hasPermission(Permissions.OFFERS)
       }},
       {name: gettextCatalog.getString("Notifications"), icon:"chat", id:"notifications",shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.VENUE_CREATE)
+        return !isChannel && PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       {name: gettextCatalog.getString("Manage Users"), icon:"account_box", id:"manageUsers",shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ACCOUNT)
@@ -122,7 +124,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
         {name: gettextCatalog.getString("Emails"), id:"emails"}
       ],shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.VENUE_CREATE)
+        return !isChannel && PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       // {name: gettextCatalog.getString("Group Bookings"), icon:"people", id:"bookings", children:[
       //   {name: gettextCatalog.getString("Settings"), id:"bookingSettings"},
@@ -134,10 +136,10 @@ export default class navbarController {
       //   return PermissionService.hasPermission(Permissions.VOUCHERS)
       // }},
       {name: gettextCatalog.getString("Orders"), icon:"receipt", id:"orders", external:window._PREO_DATA._ORDERSAPP,shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.ORDERS)
+        return !isChannel && PermissionService.hasPermission(Permissions.ORDERS)
       }},
       {name: gettextCatalog.getString("Update External Menus"), icon:"sync", id:"updateExternalMenus", shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.MENUS)
+        return !isChannel && PermissionService.hasPermission(Permissions.MENUS)
                 && FeatureService.hasExternalMenusFeature();
       }},
     ];
