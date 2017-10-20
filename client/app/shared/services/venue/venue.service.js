@@ -10,12 +10,12 @@ export default class VenueService {
     return this.$q((resolve,reject)=>{
       //If i have a list, try to find it in the cached list
       console.log("loading", this.venues, venueId)
-        let filtered = this.venues.filter((v)=>{
-          return v.id===Number(venueId);
-        });
-        if (filtered.length){
-          return resolve(filtered[0]);
-        }
+        // let filtered = this.venues.filter((v)=>{
+        //   return v.id===Number(venueId);
+        // });
+        // if (filtered.length){
+        //   return resolve(filtered[0]);
+        // }
         if (this.UserService.isAdmin()){
           Preoday.Venue.getById(venueId,'features,outlets,map')
             .then((newVenue)=>{
@@ -34,54 +34,54 @@ export default class VenueService {
     });
   }
 
-  fetchUserVenues (user) {
+  // fetchUserVenues (user) {
 
-    return this.$q((resolve,reject)=>{
+  //   return this.$q((resolve,reject)=>{
 
-      function _resolvePromise(data) {
+  //     function _resolvePromise(data) {
 
-        this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, data);
-        resolve(data);
-      }
+  //       this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, data);
+  //       resolve(data);
+  //     }
 
-      Preoday.Venue.fetch({
-        adminId: user.id,
-        expand: 'features,outlets,map'
-      }).then((venues)=>{
+  //     Preoday.Venue.fetch({
+  //       adminId: user.id,
+  //       expand: 'features,outlets,map'
+  //     }).then((venues)=>{
 
-        if (venues && venues.length){
-          this.venues = venues;
+  //       if (venues && venues.length){
+  //         this.venues = venues;
 
-          let venueId = this.getVenueIdParameter();
+  //         let venueId = this.getVenueIdParameter();
 
-          if (venueId && Number(venueId) > 0){
-            return this.fetchById(Number(venueId)).then((venue)=>{
-              this.setCurrentVenue(venue)
-                .then(() => {
+  //         if (venueId && Number(venueId) > 0){
+  //           return this.fetchById(Number(venueId)).then((venue)=>{
+  //             this.setCurrentVenue(venue)
+  //               .then(() => {
 
-                  _resolvePromise.bind(this)(venues);
-                }, () => {
+  //                 _resolvePromise.bind(this)(venues);
+  //               }, () => {
 
-                  _resolvePromise.bind(this)(venues);
-                });
-            },reject);
-          }
+  //                 _resolvePromise.bind(this)(venues);
+  //               });
+  //           },reject);
+  //         }
 
-          this.setCurrentVenue(venues[0])
-            .then(() => {
+  //         this.setCurrentVenue(venues[0])
+  //           .then(() => {
 
-              _resolvePromise.bind(this)(venues);
-            }, () => {
+  //             _resolvePromise.bind(this)(venues);
+  //           }, () => {
 
-              _resolvePromise.bind(this)(venues);
-            });
+  //             _resolvePromise.bind(this)(venues);
+  //           });
 
-        } else {
-          _resolvePromise.bind(this)(venues);
-        }
-      }, reject);
-    });
-  }
+  //       } else {
+  //         _resolvePromise.bind(this)(venues);
+  //       }
+  //     }, reject);
+  //   });
+  // }
 
   loadAccount (venue) {
     return this.$q((resolve, reject) => {

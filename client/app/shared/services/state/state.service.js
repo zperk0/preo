@@ -31,12 +31,12 @@ export default class StateService {
 
         this.processDashboard();
         this.hasDashboardLoaded = true;
-        this.dashboardDeferred.resolve();
-        this.dashboardDeferred = null;
+        // this.dashboardDeferred.resolve();
+        // this.dashboardDeferred = null;
       }, () => {
         this.resetData();
-        this.dashboardDeferred.reject();
-        this.dashboardDeferred = null;
+        // this.dashboardDeferred.reject();
+        // this.dashboardDeferred = null;
       });
 
     return this.dashboardDeferred.promise;
@@ -49,23 +49,31 @@ export default class StateService {
       venues,
       entityId,
       isChannel,
+      dashboardDeferred,
     } = this;
 
     if (entityId) {
       if (isChannel) {
         if (channels.length) {
           this.selectChannel(entityId);
+        } else if (venues.length) {
+          this.navigateToVenue(venues[0].id);
         } else {
-          // this.redirectToVenu(this.entityId);
+          console.warn('StateService [processDashboard] - there is no channel and venue set');
         }
       } else {
-        this.selectVenue(entityId);
+        this.selectVenue(entityId)
+          .then(dashboardDeferred.resolve, dashboardDeferred.reject);
       }
     } else {
       if (channels.length) {
         this.selectChannel(channels[0].id);
       } else if (venues.length) {
-        this.selectVenue(venues[0].id);
+        const venueId = venues[0].id;
+        isChannel
+          ? this.navigateToVenue(venueId)
+          : this.selectVenue(venueId)
+                .then(dashboardDeferred.resolve, dashboardDeferred.reject);
       } else {
         console.warn('StateService [processDashboard] - there is no channel and venue set');
       }
@@ -89,7 +97,11 @@ export default class StateService {
     console.log('StateService [selectVenue] - venueid: ', venueId);
     const {
       venues,
+      VenueService,
+      $q
     } = this;
+
+    const deferred = $q.defer();
 
     const selected = venues.filter((v) => {
       return +v.id === +venueId;
@@ -97,7 +109,55 @@ export default class StateService {
 
     this.venue = selected.length ? selected[0] : venues[0];
 
-    this.navigateToVenue(this.venue.id);
+    VenueService.fetchById(this.venue.id)
+      .then((venue) => {
+
+        this.venue = venue;
+        this.fetchPermissionsAndAccount()
+          .then(() => {
+            this.navigateToVenue(this.venue.id);
+            deferred.resolve();
+          }, deferred.resolve);
+      }, (err) => {
+        // TODO: WHAT SHOULD WE DO HERE?
+        console.warn('StateService [selectVenue] fetchById error', err);
+        deferred.reject();
+      });
+
+    return deferred.promise;
+  }
+
+  fetchPermissionsAndAccount() {
+
+    const {
+      PermissionService,
+      isChannel,
+      venue,
+      channel,
+      $q
+    } = this;
+
+    const deferred = $q.defer();
+
+    this.loadPermissions()
+      .then(() => {
+
+        if (isChannel) {
+          deferred.reject();
+        } else {
+          if (PermissionService.hasPermission(PermissionService.Permissions.ACCOUNT_READ)) {
+            Preoday.Account.get(venue.accountId)
+              .then((account) => {
+                this.account = account;
+                deferred.resolve();
+              }, deferred.resolve);
+          } else {
+            deferred.reject();
+          }
+        }
+      }, deferred.reject);
+
+    return deferred.promise;
   }
 
   navigateToVenue(venueId, shouldReload) {
@@ -165,7 +225,7 @@ export default class StateService {
     return this.hasDashboardLoaded;
   }
 
-  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents) {
+  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents, VenueService, UtilsService) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
@@ -176,6 +236,8 @@ export default class StateService {
 
     this.PermissionService = PermissionService;
     this.BroadcastEvents = BroadcastEvents;
+    this.VenueService = VenueService;
+    this.UtilsService = UtilsService;
 
     this.hasDashboardLoaded = false;
     this.dashboardDeferred = null;

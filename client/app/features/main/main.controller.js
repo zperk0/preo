@@ -22,31 +22,24 @@ export default class mainController {
     this.hideSpinner();
   }
   handleFinishLoading(){
-    console.log("handle finish loading")
-    this.loadPermissions();
-  }
 
-  loadPermissions(){
-    console.log("MainController [loadPermissions] - loading permissions")
-    this.StateService.loadPermissions()
-      .then((permissions)=>{
-        console.log("MainController [loadPermissions] - got permissions", permissions, permissions[this.Permissions.DASHBOARD]);
-        if (!permissions[this.Permissions.DASHBOARD]){
-          this.$state.go("main.account");
-          this.hideSpinner();
-        } else {
-          this.$timeout(()=>{
-            this.hideSpinner();
-            if (this.$state.current.name === 'main.dashboard') {
-              this.$state.go('main.dashboard.home');
-            }
-          })
-        }
-      }, ()=>{
-        console.log("MainController [loadPermissions] - Error fetching permissions, redirecting to signin");
+    const {
+      PermissionService,
+      $state,
+      $timeout,
+    } = this;
+
+    if (!PermissionService.hasPermission(PermissionService.Permissions.DASHBOARD)) {
+      $state.go("main.account");
+      this.hideSpinner();
+    } else {
+      $timeout(()=>{
         this.hideSpinner();
-        this.$state.go("auth.signin");
+        if ($state.current.name === 'main.dashboard') {
+          $state.go('main.dashboard.home');
+        }
       })
+    }
   }
 
   logout() {
@@ -69,9 +62,9 @@ export default class mainController {
   }
 
 
-  constructor($rootScope, $stateParams, $state, $timeout, Permissions, DialogService, ErrorService, LabelService, BroadcastEvents, UserService, StateService, UtilsService, Spinner) {
+  constructor($rootScope, $stateParams, $state, $timeout, Permissions, DialogService, ErrorService, LabelService, BroadcastEvents, UserService, PermissionService, UtilsService, Spinner) {
     "ngInject";
-    this.StateService=StateService;
+    this.PermissionService=PermissionService;
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
