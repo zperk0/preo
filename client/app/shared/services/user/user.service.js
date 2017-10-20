@@ -118,6 +118,10 @@ export default class UserService {
   forgotPassword (data) {
     const deferred = this.$q.defer();
     const that = this;
+    
+    if(this.domainId && data)
+      data.domain = this.domainId;
+
     Preoday.User.forgotPassword(data).then(
       function () {
         deferred.resolve();
