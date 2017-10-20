@@ -8,17 +8,30 @@ export default class venueSelectController {
   };
 
   switchVenue (venue) {
-    let venueId = venue.id;
-    this.$state.go('main.dashboard.home' , {venueId} ,  {reload: true});
-    this.$timeout(()=>{
+    const venueId = venue.id;
+
+    const {
+      StateService,
+      $timeout,
+    } = this;
+
+    StateService.navigateToVenue(venueId);
+
+    $timeout(()=>{
       window.location.reload();
-    },100)
+    }, 100);
   }
 
   setVenue(){
-    this.$timeout(()=>{
-      this.venues = this.VenueService.venues;
-      this.venue = this.VenueService.currentVenue;
+
+    const {
+      StateService,
+      $timeout,
+    } = this;
+
+    $timeout(()=>{
+      this.venues = StateService.venues;
+      this.entityName = StateService.getEntityName();
     });
   }
 
@@ -41,19 +54,20 @@ export default class venueSelectController {
   }
 
 
-  constructor($rootScope, BroadcastEvents, $timeout, VenueService, UserService, $stateParams, $state, Spinner) {
+  constructor($rootScope, BroadcastEvents, $timeout, StateService, UserService, $stateParams, $state, Spinner) {
     "ngInject";
     this.$timeout = $timeout;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.$state = $state;
     this.UserService = UserService;
     this.Spinner = Spinner;
 
-    $rootScope.$on(BroadcastEvents._ON_FETCH_VENUES,(event,venues)=>{
+    if (StateService.isLoaded()) {
       this.setVenue();
-    });
-
-    this.setVenue();
-
+    } else {
+      $rootScope.$on(BroadcastEvents.ON_STATE_LOADED,(event,venues)=>{
+        this.setVenue();
+      });
+    }
   }
 }

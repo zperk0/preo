@@ -88,7 +88,7 @@ export default class StateService {
 
     console.log('StateService [selectVenue] - venueid: ', venueId);
     const {
-      venues
+      venues,
     } = this;
 
     const selected = venues.filter((v) => {
@@ -96,6 +96,46 @@ export default class StateService {
     });
 
     this.venue = selected.length ? selected[0] : venues[0];
+
+    this.navigateToVenue(this.venue.id);
+  }
+
+  navigateToVenue(venueId, shouldReload) {
+
+    const {
+      isChannel,
+      $state,
+    } = this;
+
+    if (isChannel) {
+      window.location.href = window.location.protocol + "//" + window.location.host + '/#/' + venueId + '/main';
+    } else {
+      $state.go('main.dashboard', {
+        entityId: venueId
+      }, {
+        reload: shouldReload || false
+      });
+    }
+  }
+
+  getEntityName() {
+
+    const {
+      isChannel,
+      channel,
+      venue
+    } = this;
+
+    if (isChannel) {
+      return channel.name;
+    }
+
+    return venue.name;
+  }
+
+  dispatchLoadedEvent() {
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_STATE_LOADED);
   }
 
   loadPermissions() {
@@ -125,15 +165,17 @@ export default class StateService {
     return this.hasDashboardLoaded;
   }
 
-  constructor($q, $state, $stateParams, $timeout, PermissionService) {
+  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents) {
     "ngInject";
     this.$q = $q;
+    this.$rootScope = $rootScope;
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.$state = $state;
     this.$timeout = $timeout;
 
     this.PermissionService = PermissionService;
+    this.BroadcastEvents = BroadcastEvents;
 
     this.hasDashboardLoaded = false;
     this.dashboardDeferred = null;

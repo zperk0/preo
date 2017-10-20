@@ -6,7 +6,7 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
-      
+
       contextualDrawer.close();
       contextualMenu.close();
       if (notRequiresUser.indexOf(toState.name) === -1 && !UserService.user){
@@ -22,7 +22,7 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
           return false;
         }
       }
-      
+
       if (toState.requiresFeature){
         if (!FeatureService.hasFeature(toState.requiresFeature)){
           $state.go("main.dashboard");
