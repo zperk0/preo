@@ -219,6 +219,11 @@ export default class StateService {
     }
   }
 
+  updateVenue() {
+
+    return this.VenueService.updateVenue(this.venue);
+  }
+
   resetData() {
     this.venues = [];
     this.channels = [];

@@ -8,24 +8,24 @@ export default class venueDetailsController {
     if (lat && lng){
       this.venue.latitude = lat;
       this.venue.longitude = lng;
-    
+
       this.submit();
     }
   }
 
   submit(){
       this.Spinner.show("venue-LOCATION-save");
-      try {       
-        //delete this.venue.ccySymbol;       
+      try {
+        //delete this.venue.ccySymbol;
         //this.venue.update()
-      
-        this.VenueService.updateVenue()
-        .then((venue)=>{       
-          angular.extend(this.VenueService.currentVenue, venue);
+
+        this.StateService.updateVenue()
+        .then((venue)=>{
+          angular.extend(this.StateService.venue, venue);
          // angular.extend(this.venue,venue);
-    
+
             this.Spinner.hide("venue-LOCATION-save");
-            this.Snack.show(this.LabelService.SNACK_VENUE_LOCATION_SUCCESS)         
+            this.Snack.show(this.LabelService.SNACK_VENUE_LOCATION_SUCCESS)
           }, (err)=>{
             console.error("venue-LOCATION" ,err);
             this.Spinner.hide("venue-LOCATION-save");
@@ -50,37 +50,37 @@ export default class venueDetailsController {
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue;    
-      
+    this.venue = this.StateService.venue;
+
     this.showMap = true;
 
     this.$timeout(()=>{
       console.log(this.venue);
       this.Spinner.hide("venue-details");
-    })   
-    
+    })
+
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService, DialogService, gettextCatalog, $state) {
+  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, StateService, DialogService, gettextCatalog, $state) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
     this.MapsService = MapsService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.LabelService = LabelService;
     this.isError = false;
     this.isSaving = false;
     this.$timeout = $timeout;
     this.debounceTimeout = null;
-  
-    this.isEdit = false;   
+
+    this.isEdit = false;
     this.$state = $state;
     this.gettextCatalog = gettextCatalog;
-    this.DialogService = DialogService;     
+    this.DialogService = DialogService;
     this.showMap = false;
-    this.isMapLoaded = false; 
+    this.isMapLoaded = false;
 
     this.init();
   }

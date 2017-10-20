@@ -161,7 +161,7 @@ export default class contextualDrawerStyleMobileController {
           reject(err);
         });
       } else {
-        Preoday.VenueMobileSettings.save(this.model.mobileSettings, this.VenueService.currentVenue.id)
+        Preoday.VenueMobileSettings.save(this.model.mobileSettings, this.StateService.venue.id)
         .then((newSettings) => {
           angular.extend(this.model.mobileSettings, newSettings);
           this.StyleService.mobileExtendModels(newSettings);
@@ -250,7 +250,7 @@ export default class contextualDrawerStyleMobileController {
   }
 
   constructor($q, $scope, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout,
-    gettextCatalog, $rootScope, LabelService, UtilsService, DialogService, StyleService, VenueService) {
+    gettextCatalog, $rootScope, LabelService, UtilsService, DialogService, StyleService, StateService) {
     "ngInject";
     this.$q = $q;
     this.StyleService = StyleService;
@@ -259,7 +259,7 @@ export default class contextualDrawerStyleMobileController {
     this.DialogService = DialogService;
     this.contextualDrawer = contextualDrawer;
     this.gettextCatalog = gettextCatalog;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.$stateParams = $stateParams;
     this.$location = $location;
     this.$timeout = $timeout;
@@ -289,7 +289,7 @@ export default class contextualDrawerStyleMobileController {
     this.init();
   }
 
-  init() { 
+  init() {
     this.showSpinner();
     this.StyleService.getMobileSettings()
     .then((data)=>{

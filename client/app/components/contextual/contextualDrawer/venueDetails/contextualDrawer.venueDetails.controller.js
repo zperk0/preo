@@ -46,17 +46,17 @@ export default class contextualDrawerOutletsController {
       try {
       //  delete this.venue.ccySymbol;
        // this.venue.update()
-       this.VenueService.updateVenue()
+       this.StateService.updateVenue()
         .then((venue)=>{
 
           // angular.extend(this.venue,venue);
-           angular.extend(this.VenueService.currentVenue, venue);
+           angular.extend(this.StateService.venue, venue);
 
           return this.venue.settings.update()
         })
         .then((settings)=>{
             // angular.extend(this.venue.settings,settings);
-             angular.extend(this.VenueService.currentVenue.settings, settings)
+             angular.extend(this.StateService.venue.settings, settings)
             this.$timeout(()=>{
               this.isSaving = false;
               this.isError = false;
@@ -106,7 +106,7 @@ export default class contextualDrawerOutletsController {
       this.setOnSaveImageState();
 
       image.type = this.VenueImageType.VENUE_MAP;
-      this.VenueService.saveImage(image)
+      this.VenueService.saveImage(this.StateService.venue, image)
         .then((response) => {
 
           angular.extend(response, image);
@@ -144,7 +144,7 @@ export default class contextualDrawerOutletsController {
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue;
+    this.venue = this.StateService.venue;
 
     this.venueMapImages = [];
 
@@ -168,7 +168,7 @@ export default class contextualDrawerOutletsController {
 
   }
 
-  constructor($scope, $stateParams, $mdSidenav, Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService, VenueImageType) {
+  constructor($scope, $stateParams, $mdSidenav, Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService, StateService, VenueImageType) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.cancelledOutlets = [];
@@ -177,6 +177,7 @@ export default class contextualDrawerOutletsController {
     this.ErrorService = ErrorService;
     this.MapsService = MapsService;
     this.VenueService = VenueService;
+    this.StateService = StateService;
     this.LabelService = LabelService;
     this.$timeout = $timeout;
     this.VenueImageType = VenueImageType;

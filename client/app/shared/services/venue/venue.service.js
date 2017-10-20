@@ -225,16 +225,16 @@ export default class VenueService {
 
   }
 
-  updateVenue(){
-    var venueCopy = angular.copy(this.currentVenue);
+  updateVenue(venue){
+    var venueCopy = angular.copy(venue);
 
     delete venueCopy.ccySymbol;
     return venueCopy.update()
   }
 
-  saveImage (venueImage) {
+  saveImage (venue, venueImage) {
 
-    venueImage.venueId = this.currentVenue.id;
+    venueImage.venueId = venue.id;
 
     if (!venueImage.image && venueImage.$image) {
       venueImage.image = venueImage.$image;
