@@ -226,7 +226,7 @@ export default class StateService {
     return this.hasDashboardLoaded;
   }
 
-  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents, VenueService, UtilsService) {
+  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
@@ -243,7 +243,7 @@ export default class StateService {
     this.hasDashboardLoaded = false;
     this.dashboardDeferred = null;
 
-    this.isChannel = window._PREO_DATA._IS_CHANNEL || false;
+    this.isChannel = StateConfig.isChannel;
     this.entityId = $stateParams.entityId;
   }
 }
