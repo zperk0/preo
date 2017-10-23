@@ -99,10 +99,17 @@ export default class StateService {
       venues,
       VenueService,
       UtilsService,
+      BroadcastEvents,
+      $rootScope,
       $q
     } = this;
 
     const deferred = $q.defer();
+
+    function done () {
+      this.navigateToVenue(this.venue.id);
+      deferred.resolve();
+    }
 
     // const selected = venues.filter((v) => {
     //   return +v.id === +venueId;
@@ -115,12 +122,10 @@ export default class StateService {
 
         this.venue = venue;
         this.venue.setAsCurrent();
+        $rootScope.$broadcast(BroadcastEvents._ON_FETCH_VENUES);
         UtilsService.updateLocale();
         this.fetchPermissionsAndAccount()
-          .then(() => {
-            this.navigateToVenue(this.venue.id);
-            deferred.resolve();
-          }, deferred.resolve);
+          .then(done.bind(this), done.bind(this));
       }, (err) => {
         // TODO: WHAT SHOULD WE DO HERE?
         console.warn('StateService [selectVenue] fetchById error', err);
@@ -148,7 +153,7 @@ export default class StateService {
         if (isChannel) {
           deferred.reject();
         } else {
-          if (PermissionService.hasPermission(PermissionService.Permissions.ACCOUNT_READ)) {
+          if (venue.accountId && PermissionService.hasPermission(PermissionService.Permissions.ACCOUNT_READ)) {
             Preoday.Account.get(venue.accountId)
               .then((account) => {
                 this.account = account;
