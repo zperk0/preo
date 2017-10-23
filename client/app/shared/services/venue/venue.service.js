@@ -106,6 +106,12 @@ export default class VenueService {
 
     this.UtilsService.updateLocale();
 
+    if (!venue.accountId) {
+      this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
+      this.account = {};
+      return this.$q.when(venue);
+    }
+
     this.loadAccount(venue)
     .then((account)=>{
       console.log("loaded account", account);
