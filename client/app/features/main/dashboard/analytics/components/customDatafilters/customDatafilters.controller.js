@@ -608,12 +608,12 @@ export default class customDatafiltersController {
 
   checkPermissions(){
     return this.$q((resolve,reject) => {
-      var venueIds = this.VenueService.venues.map((x) => { return x.id});
+      var venueIds = this.StateService.venues.map((x) => { return x.id});
       var permissions = [this.Permissions.ANALYTICS];
           this.PermissionService.checkVenuesPermissions( permissions ,venueIds)
           .then((data) => {
 
-            var venues = this.VenueService.venues.filter((x) => {
+            var venues = this.StateService.venues.filter((x) => {
               if(data.hasOwnProperty(x.id) && data[x.id][this.Permissions.ANALYTICS] === true)
                 return x;
             });
@@ -640,18 +640,18 @@ export default class customDatafiltersController {
     // SUPER ADMIN can see current venue selected too.
     if(this.UserService.isAdmin()){
 
-      let isVenuePresent = this.VenueService.venues.filter((x) => {
-        if(x.id == this.VenueService.currentVenue.id)
+      let isVenuePresent = this.StateService.venues.filter((x) => {
+        if(x.id == this.StateService.venue.id)
           return x;
       });
 
       if(isVenuePresent.length <= 0){
-        venues.push(this.VenueService.currentVenue);
+        venues.push(this.StateService.venue);
       }
     }
 
     venues.forEach((venue) => {
-      isCurrentVenue = (this.VenueService.currentVenue.id == venue.id) ? true : false;
+      isCurrentVenue = (this.StateService.venue.id == venue.id) ? true : false;
 
       venuesIds.push(venue.id);
       localVenue = {
@@ -1181,7 +1181,7 @@ export default class customDatafiltersController {
   }
 
   /* @ngInject */
-  constructor($q , $scope, Spinner, Snack, $timeout, VenueService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog, LabelService, ErrorService, DialogService) {
+  constructor($q , $scope, Spinner, Snack, $timeout, StateService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog, LabelService, ErrorService, DialogService) {
   	'ngInject';
 
     this.spinner = Spinner;
@@ -1194,7 +1194,7 @@ export default class customDatafiltersController {
     this.ErrorService = ErrorService;
     this.DialogService = DialogService;
 
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.Spinner = Spinner;
     this.EventService = EventService;
     this.$q = $q;

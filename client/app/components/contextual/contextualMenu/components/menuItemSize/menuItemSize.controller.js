@@ -56,7 +56,7 @@ export default class menuItemSizeController {
   }
 
   /* @ngInject */
-  constructor($scope, $stateParams, $timeout, FeatureService, VenueService) {
+  constructor($scope, $stateParams, $timeout, FeatureService, StateService) {
     'ngInject';
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
@@ -68,7 +68,7 @@ export default class menuItemSizeController {
     } else {
       this.ngModel = {
         $isMultiple:false,
-        venueId: VenueService.hasVenueSet() && VenueService.currentVenue.id,
+        venueId: StateService.venue && StateService.venue.id,
         items:[]
       }
     }

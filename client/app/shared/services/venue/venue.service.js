@@ -293,9 +293,9 @@ export default class VenueService {
     return config;
   }
 
-  getKmOrMiles(){
+  getKmOrMiles(venue){
     var milesLocale =['en-US', 'en-GB']
-    if (this.currentVenue && milesLocale.indexOf(this.currentVenue.locale) !== -1)
+    if (venue && milesLocale.indexOf(venue.locale) !== -1)
       return "miles"
     return "kms"
   }

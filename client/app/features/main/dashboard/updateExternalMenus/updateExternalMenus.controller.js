@@ -5,10 +5,10 @@ export default class updateExternalMenusController {
   }
 
 
-  constructor(VenueService) {
+  constructor(StateService) {
     "ngInject";
 
-		this.venues = [VenueService.currentVenue];
+		this.venues = [StateService.venue];
 
 		console.log('venues ', this.venues);
   }

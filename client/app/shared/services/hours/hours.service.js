@@ -8,14 +8,14 @@ export default class HoursService {
 
   save (data) {
 
-    return Preoday.Hour.save(this.VenueService.currentVenue.id, data);
+    return Preoday.Hour.save(this.StateService.venue.id, data);
   }
 
 
-  constructor(VenueService) {
+  constructor(StateService) {
     "ngInject";
 
-    this.VenueService = VenueService;
+    this.StateService = StateService;
 
   }
 }

@@ -639,7 +639,7 @@ export default class ReportsService {
   }
 
   // Everytime a search is done, this service keeps the last Param and Data returned.
-  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService, FeatureService) {
+  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, StateService, FeatureService) {
     "ngInject";
     this.$q = $q;
     this.$window = $window;
@@ -647,7 +647,7 @@ export default class ReportsService {
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.LabelService = LabelService;
-    this.accountId = VenueService.currentVenue.accountId;
+    this.accountId = StateService.venue.accountId;
     this.hasDobFeature = FeatureService.hasDateOfBirthFeature();
   }
 

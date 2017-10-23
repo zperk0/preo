@@ -46,17 +46,17 @@ export default class venueModeSelectController {
 
   setVenue(){
     this.$timeout(()=>{
-      this.venues = this.VenueService.venues;
-      this.venue = this.VenueService.currentVenue;
+      this.venues = this.StateService.venues;
+      this.venue = this.StateService.venue;
       this.setTranslations(this.venue && this.venue.liveFlag ? (this.venue.demoFlag ? 'demo' : 'live') : 'offline')
     });
   }
 
 
-  constructor($rootScope, BroadcastEvents, $timeout, gettextCatalog, VenueService, $stateParams, Spinner, Snack, DialogService,  ErrorService, LabelService) {
+  constructor($rootScope, BroadcastEvents, $timeout, gettextCatalog, StateService, $stateParams, Spinner, Snack, DialogService,  ErrorService, LabelService) {
     "ngInject";
     this.$timeout = $timeout;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
