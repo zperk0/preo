@@ -127,19 +127,6 @@ export default class UserService {
     return deferred.promise;
   }
 
-   searchUsers (stringSearch) {
-    const deferred = this.$q.defer();
-    const that = this;
-    Preoday.Domain.searchUsers("preoday", stringSearch).then((data) => {
-      deferred.resolve(data);
-    }, (error) => {
-      console.log("rejecting getDomainUsers", error)
-      deferred.reject(error);
-    });
-
-    return deferred.promise;
-  }
-
   constructor($q, $rootScope, BroadcastEvents, UtilsService, PermissionService, $state) {
     "ngInject";
     this.$q = $q;
