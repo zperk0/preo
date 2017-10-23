@@ -36,6 +36,9 @@ export default class UtilsService {
     })
   }
 
+  getDomain() {
+    return "preoday";
+  }
 
   getImagePath (imgUrl) {
     if(!imgUrl)

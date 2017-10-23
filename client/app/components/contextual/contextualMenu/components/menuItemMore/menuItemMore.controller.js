@@ -4,7 +4,11 @@ export default class menuItemMoreController {
   }
 
   /* @ngInject */
-  constructor() {
+  constructor(VenueService,FeatureService) {
     'ngInject';
+
+    this.hasExternalMenusFeature = FeatureService.hasExternalMenusFeature();
+    this.hasMenuItemExternalIdFeature = FeatureService.hasMenuItemExternalIdFeature();
+    this.isEvent = VenueService.currentVenue.isEvent();
   }
 }

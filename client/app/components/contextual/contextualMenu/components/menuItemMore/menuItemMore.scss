@@ -3,8 +3,9 @@
 		display: flex;
 		align-items: center;
 
-		.mins {
-			padding: 0 20px;
+		.mins,
+		.info {
+			margin-left: 20px;
 		}
 	}
 }

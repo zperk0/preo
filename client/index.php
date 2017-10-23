@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $cdnRoot = "https://cdn-demo.preoday.com/";
@@ -11,6 +12,7 @@ $analytics = '';
 $sessionId = session_id();
 $rollbarEnv = null;
 $rollbarTokenClient = '';
+$cssoverride = null;
 
 if(isset($_SERVER["PREO_CDN"]))
 {
@@ -48,6 +50,10 @@ if(isset($_SERVER["PREO_ROLLBAR_POST_CLIENT"]))
 {
     $rollbarTokenClient = $_SERVER["PREO_ROLLBAR_POST_CLIENT"];
 }
+if(isset($_SERVER["PREO_CSS_OVERRIDE"]))
+{
+    $cssoverride = $_SERVER["PREO_CSS_OVERRIDE"];
+}
 
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .=" <script>";
@@ -60,7 +66,6 @@ if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .="   ga('send', 'pageview');";
     $analytics .=" </script>";
 }
-
 
 $pathIndexHTML = './index.html';
 $contentsIndexHTML = file_get_contents($pathIndexHTML);
@@ -81,6 +86,16 @@ $overrides .= "</script>";
 $contentsIndexHTML = str_replace("<!-- @@OVERRIDES -->",$overrides,$contentsIndexHTML);
 $contentsIndexHTML = str_replace("<!-- @@ANALYTICS -->",$analytics,$contentsIndexHTML);
 $contentsIndexHTML = str_replace("cdn/",$cdnRoot,$contentsIndexHTML);
+
+if($cssoverride)
+{
+    $overridePath = "./overrides/".$cssoverride."/override.css";
+    if (file_exists($overridePath)){
+    $contentsCssoverride = file_get_contents($overridePath);
+    $tempOverride =  '<style type="text/css">'.$contentsCssoverride.'</style>';
+    $contentsIndexHTML = str_replace("<!-- @@CSSOVERRIDE -->", $tempOverride, $contentsIndexHTML);
+    }
+}
 
 echo $contentsIndexHTML;
 
