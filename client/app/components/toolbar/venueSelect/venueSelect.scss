@@ -60,3 +60,16 @@ $spanColor: #FAFAFA;
       }
   }
 }
+
+.venue-select-menu-content {
+  md-menu-item {
+    button {
+      align-items: center;
+      display: flex;
+
+      md-icon {
+        margin-right: 12px;
+      }
+    }
+  }
+}

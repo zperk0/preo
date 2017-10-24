@@ -6,7 +6,7 @@ export default class manageUsersController {
 
    init(){
     this.Spinner.show("fetch-users");
-    console.log("initing");
+    console.log('ManagerUsersController [init] - venue:', this.venue);
     var currentUser = this.UserService.getCurrent();
     this.venue.getUsers()
     .then((users)=>{

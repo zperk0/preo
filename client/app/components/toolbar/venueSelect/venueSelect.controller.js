@@ -22,6 +22,21 @@ export default class venueSelectController {
     }, 100);
   }
 
+  switchChannel (channel) {
+    const channelId = channel.id;
+
+    const {
+      StateService,
+      $timeout,
+    } = this;
+
+    StateService.navigateToChannel(channelId);
+
+    $timeout(()=>{
+      window.location.reload();
+    }, 100);
+  }
+
   setVenue(){
 
     const {
@@ -31,6 +46,7 @@ export default class venueSelectController {
 
     $timeout(()=>{
       this.venues = StateService.venues;
+      this.channels = StateService.channels;
       this.entityName = StateService.getEntityName();
     });
   }
