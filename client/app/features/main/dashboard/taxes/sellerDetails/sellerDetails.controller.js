@@ -9,7 +9,7 @@ export default class sellerDetailsController {
     //Pre populate taxName with default value
     this.taxSettings.taxName = this.gettextCatalog.getString('VAT Number');
 
-    return Preoday.VenueTaxSettings.save(angular.extend({},this.taxSettings, {venueId:this.$stateParams.venueId})); //extend so if this fails for any reason it still triggers a save instead of update
+    return Preoday.VenueTaxSettings.save(angular.extend({},this.taxSettings, {venueId:this.StateService.venue.id})); //extend so if this fails for any reason it still triggers a save instead of update
   }
 
   updateSettings(){

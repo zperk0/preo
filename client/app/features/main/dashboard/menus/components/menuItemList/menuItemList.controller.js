@@ -11,7 +11,7 @@ export default class menuItemListController {
 
   showCreateItem($event, type) {
 
-    let newItem =  this.ItemService.getNewItemBase(this.$stateParams.venueId, type === 'VOUCHER');
+    let newItem =  this.ItemService.getNewItemBase(this.StateService.venue.id, type === 'VOUCHER');
 
     let isCreating = this.items.filter((s, index) => {
 
@@ -61,7 +61,7 @@ export default class menuItemListController {
     return !filterName || (item.name && item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
   }
 
-  constructor($scope, $stateParams, Spinner, Snack, ItemService, FeatureService) {
+  constructor($scope, $stateParams, Spinner, Snack, StateService, ItemService, FeatureService) {
     "ngInject";
 
     $scope.results = this.items;
@@ -70,6 +70,7 @@ export default class menuItemListController {
     this.$stateParams = $stateParams;
     this.Spinner = Spinner;
     this.Snack = Snack;
+    this.StateService = StateService;
 
     this.items = this.items === undefined ? [] : this.items;
     this.ItemService = ItemService;

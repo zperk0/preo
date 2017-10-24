@@ -20,7 +20,7 @@ export default class contextualDrawerStyleMobileController {
       let img = imageObject[0];
       if (img){
         if (img.$save) {
-          let p = Preoday.VenueImage.saveToCdn(img.$image, this.$stateParams.venueId)
+          let p = Preoday.VenueImage.saveToCdn(img.$image, this.StateService.venue.id)
           .then((itemImage) => {
 
             if (this.StyleService.imagesModel[key]) {
@@ -90,7 +90,7 @@ export default class contextualDrawerStyleMobileController {
                 if(venueImage.id){
                   promises.push(venueImage.update());
                 } else {
-                  venueImage.venueId = this.$stateParams.venueId;
+                  venueImage.venueId = this.StateService.venue.id;
                   promises.push(
                     Preoday.VenueImage.create(venueImage)
                     .then((newImg)=>{

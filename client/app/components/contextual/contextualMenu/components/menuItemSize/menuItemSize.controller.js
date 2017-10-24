@@ -38,7 +38,7 @@ export default class menuItemSizeController {
           variant:1,
           maxChoices: 1,
           minChoices: 1,
-          venueId:this.$stateParams.venueId,
+          venueId: this.StateService.venue.id,
           name:"Choose a size",
           internalName:"Choose a size",
           items:[
@@ -61,6 +61,7 @@ export default class menuItemSizeController {
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
     this.FeatureService = FeatureService;
+    this.StateService = StateService;
 
     if (this.ngModel && this.ngModel.id){
       this.ngModel.$isMultiple = true;

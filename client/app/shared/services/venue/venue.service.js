@@ -16,7 +16,7 @@ export default class VenueService {
         // if (filtered.length){
         //   return resolve(filtered[0]);
         // }
-        if (this.UserService.isAdmin()){
+        // if (this.UserService.isAdmin()){
           Preoday.Venue.getById(venueId,'features,outlets,map')
             .then((newVenue)=>{
               if (newVenue){
@@ -28,9 +28,9 @@ export default class VenueService {
             },()=>{
               reject();
             })
-        } else {
-          reject();
-        }
+        // } else {
+          // reject();
+        // }
     });
   }
 
@@ -147,7 +147,7 @@ export default class VenueService {
     let venueId = this.getVenueIdParameter();
 
     if (venueId && Number(venueId) > 0){
-      this.$rootScope.$broadcast(this.BroadcastEvents._PREO_DO_VENUE_SELECT,this.$stateParams.venueId)
+      this.$rootScope.$broadcast(this.BroadcastEvents._PREO_DO_VENUE_SELECT,this.$stateParams.entityId)
     } else {
       venueId = this.venues[0].id;
       this.$state.go('main.dashboard', {
@@ -204,7 +204,7 @@ export default class VenueService {
 
   getVenueIdParameter() {
 
-    return this.venueId || this.$stateParams.venueId;
+    return this.venueId || this.$stateParams.entityId;
   }
 
   restore () {

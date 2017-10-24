@@ -127,6 +127,8 @@ export default class StateService {
       VenueService,
       UtilsService,
       BroadcastEvents,
+      isChannel,
+      entityId,
       $rootScope,
       $q
     } = this;
@@ -134,7 +136,11 @@ export default class StateService {
     const deferred = $q.defer();
 
     function done () {
-      this.navigateToVenue(this.venue.id);
+
+      if (isChannel || this.venue.id !== entityId) {
+        this.navigateToVenue(this.venue.id);
+      }
+
       deferred.resolve();
     }
 

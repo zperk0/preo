@@ -17,7 +17,7 @@ export default class contextualDrawerStyleController {
       let img = imageObject[0];
       if (img){
         if (img.$save) {
-          let p = Preoday.VenueImage.saveToCdn(img.$image, this.$stateParams.venueId)
+          let p = Preoday.VenueImage.saveToCdn(img.$image, this.StateService.venue.id)
             .then((itemImage) => {
               this.model[key] = itemImage.image;
           })
@@ -53,7 +53,7 @@ export default class contextualDrawerStyleController {
           return this.model.update(); //Preoday.VenueWebSettings.update()
         } else {
           this.model.primaryColourHover = this.model.primaryColour;
-          return Preoday.VenueWebSettings.save(this.model, this.$stateParams.venueId)
+          return Preoday.VenueWebSettings.save(this.model, this.StateService.venue.id)
             .then((webSettings)=>{
               this.model = webSettings
             })
@@ -112,7 +112,7 @@ export default class contextualDrawerStyleController {
   }
 
   getWebSettings(){
-    return Preoday.VenueWebSettings.get(this.$stateParams.venueId)
+    return Preoday.VenueWebSettings.get(this.StateService.venue.id)
       .then((webSettings)=>{
         this.model = webSettings;
         console.log("got spinner")
@@ -138,13 +138,14 @@ export default class contextualDrawerStyleController {
 
 
 
-  constructor($q, $scope, $mdSidenav, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout, gettextCatalog, $rootScope, LabelService) {
+  constructor($q, $scope, $mdSidenav, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout, gettextCatalog, $rootScope, LabelService, StateService) {
     "ngInject";
     this.$q = $q;
     this.LabelService = LabelService;
     this.contextualDrawer = contextualDrawer;
     Spinner.show('style-drawer');
     this.$stateParams = $stateParams;
+    this.StateService = StateService;
 
     this.getWebSettings().then(()=>{
       this._restoreImages();

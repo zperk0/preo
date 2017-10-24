@@ -22,7 +22,7 @@ export default class contextualDrawerStyleController {
       let img = imageObject[0];
       if (img){
         if (img.$save) {
-          let p = Preoday.VenueImage.saveToCdn(img.$image, this.$stateParams.venueId)
+          let p = Preoday.VenueImage.saveToCdn(img.$image, this.StateService.venue.id)
             .then((itemImage) => {
               angular.extend(this.StyleService.imagesModel[img.type], {src:itemImage.image});
           })
@@ -78,7 +78,7 @@ export default class contextualDrawerStyleController {
         if (t.id){
           promises.push(t.update());
         } else{
-          t.venueId=this.$stateParams.venueId;
+          t.venueId=this.StateService.venue.id;
           t.active = 1;
           promises.push(Preoday.TemplateFragment.create(t));
         }
@@ -104,7 +104,7 @@ export default class contextualDrawerStyleController {
             if(img.id){
               promises.push(img.update());
             } else {
-              img.venueId=this.$stateParams.venueId;
+              img.venueId=this.StateService.venue.id;
               promises.push(Preoday.VenueImage.create(img).then((newImg)=>{
                 angular.extend(this.StyleService.imagesModel[img.type], newImg);
               }))
@@ -170,7 +170,7 @@ export default class contextualDrawerStyleController {
 
 
   constructor($q, $scope, $mdSidenav, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout, $sanitize,
-    gettextCatalog, $rootScope, LabelService, UtilsService, DialogService, StyleService) {
+    gettextCatalog, StateService, $rootScope, LabelService, UtilsService, DialogService, StyleService) {
     "ngInject";
     this.$q = $q;
     this.StyleService = StyleService;
@@ -180,6 +180,7 @@ export default class contextualDrawerStyleController {
     this.$sanitize = $sanitize;
     this.contextualDrawer = contextualDrawer;
     this.gettextCatalog = gettextCatalog;
+    this.StateService = StateService;
 
       this.styles = [
         {

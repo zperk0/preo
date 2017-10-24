@@ -19,16 +19,16 @@ export default class contextualDrawerItemController {
 
     // return true;
     return !filterName || modifier.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1;
-  } 
+  }
 
-  constructor($scope, ModifierService, $stateParams, $mdSidenav, $state, contextualDrawer) {
+  constructor($scope, ModifierService, $stateParams, $mdSidenav, $state, contextualDrawer, StateService) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.$state = $state;
     this.contextualDrawer = contextualDrawer;
 
     this.cancelledModifiers = [];
-    ModifierService.getModifiers($stateParams.venueId).then((data)=>{
+    ModifierService.getModifiers(StateService.venue.id).then((data)=>{
       this.data = angular.copy(data);
     });
   }
