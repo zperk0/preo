@@ -52,6 +52,8 @@ export default class StateService {
       dashboardDeferred,
     } = this;
 
+    console.log('StateService [processDashboard] - entityId: ', entityId);
+
     if (entityId) {
       if (isChannel) {
         if (channels.length) {

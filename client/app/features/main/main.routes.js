@@ -19,7 +19,7 @@ export default function routes($stateProvider) {
     	authenticated: function ($q, $state, $stateParams, $timeout, UserService, StateService) {
 
     		// this is needed because the $stateParams is empty in a service inside of a resolve function
-    		StateService.entityId = $stateParams.entityId;
+    		StateService.entityId = +$stateParams.entityId;
     		if (UserService.isAuth()) {
           if (StateService.isLoaded()){
             return $q.when();

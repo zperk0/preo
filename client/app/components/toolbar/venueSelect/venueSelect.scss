@@ -31,13 +31,8 @@ $spanColor: #FAFAFA;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
 
-
-
-  md-icon{
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    margin-top: -12px;
+  .channel-icon {
+    margin-right: 12px;
   }
 
   &>div {
@@ -51,6 +46,7 @@ $spanColor: #FAFAFA;
     width: 100%;
       span{
         color:$spanColor;
+        margin-right: 8px;
       }
       &>button{
         @include venueSelectContainer();

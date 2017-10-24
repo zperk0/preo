@@ -77,6 +77,7 @@ export default class venueSelectController {
     this.$state = $state;
     this.UserService = UserService;
     this.Spinner = Spinner;
+    this.isChannel = StateService.isChannel;
 
     if (StateService.isLoaded()) {
       this.setVenue();
