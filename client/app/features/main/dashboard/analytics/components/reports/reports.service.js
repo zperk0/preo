@@ -328,11 +328,11 @@ export default class ReportsService {
   }
 
   getChartExportCsvUrl(){
-    return '/api/accounts/'+ this.accountId + '/exports/csv/post';
+    return '/api/venues/'+ this.venueId + '/exports/csv/post';
   }
 
   getChartExportPdfUrl(){
-    return '/api/accounts/'+ this.accountId + '/exports/pdfs/post';
+    return '/api/venues/'+ this.venueId + '/exports/pdfs/post';
   }
 
   exportReportToPdf(report, dataSelected){
@@ -342,7 +342,7 @@ export default class ReportsService {
       this.sendGAExportEvent('pdf', report.name);
       let udata = this.prepareDataToPdf(report, dataSelected);
 
-      var exportUrl = '/api/accounts/'+ this.accountId + '/exports/pdfs/report';
+      var exportUrl = '/api/venues/'+ this.venueId + '/exports/pdfs/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
       // ..
@@ -359,7 +359,7 @@ export default class ReportsService {
       this.sendGAExportEvent('csv', report.name);
       let udata = this.prepareDataToCsv(report, dataSelected);
 
-      var exportUrl = '/api/accounts/' + this.accountId + '/exports/csv/report';
+      var exportUrl = '/api/venues/' + this.venueId + '/exports/csv/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
       // ..
@@ -647,7 +647,7 @@ export default class ReportsService {
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.LabelService = LabelService;
-    this.accountId = StateService.venue.accountId;
+    this.venueId = StateService.venue.id;
     this.hasDobFeature = FeatureService.hasDateOfBirthFeature();
   }
 

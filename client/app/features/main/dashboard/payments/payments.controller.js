@@ -95,7 +95,7 @@ export default class paymentsController {
         return;
       }
       this.Spinner.show("venue-payments-save");
-        this.stripe.update()
+        this.stripe.update(this.venue.id)
           .then(()=>{
             this.Snack.show(this.LabelService.SNACK_VENUE_PAYMENTS_SUCCESS)
             this.Spinner.hide("venue-payments-save");
@@ -149,12 +149,11 @@ export default class paymentsController {
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.StateService.venue ;
-    this.account = this.StateService.account;
-    Preoday.PaymentProvider.getStripeConnectLink(this.account.id, this.stripeRedirectUri).then((stripeLink)=>{
+    this.venue = this.StateService.venue;
+    Preoday.PaymentProvider.getStripeConnectLink(this.venue.id, this.stripeRedirectUri).then((stripeLink)=>{
       this.stripeLink = stripeLink;
     })
-    this.account.getPaymentProviders().then((paymentProviders)=>{
+    this.venue.getPaymentProviders().then((paymentProviders)=>{
       this.paymentProviders = paymentProviders;
       this.setStripe();
       this.Spinner.hide("venue-details");

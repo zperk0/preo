@@ -7,7 +7,7 @@ export default class userController {
     this.Spinner.show("user-role-update");
     if (this.user && entity && entity.name){
       this.user = entity;
-      this.account.updateUserRole(this.user).then((newUser)=>{
+      this.venue.updateUserRole(this.user).then((newUser)=>{
 
         this.user.$deleted = false;
         this.user.$selected = false;
@@ -49,7 +49,7 @@ export default class userController {
     this.DialogService.delete(this.LabelService.TITLE_DELETE_USER, this.LabelService.CONTENT_DELETE_USER)
       .then(()=>{
           this.Spinner.show("user-role-delete");
-          this.account.removeUser(this.user)
+          this.venue.removeUser(this.user)
             .then(()=>{
               this.cardItemList.onItemDeleted(this.user);
               if (this.onItemDeleted){
@@ -92,12 +92,12 @@ export default class userController {
   }
 
    /* @ngInject */
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, VenueService, UserService, gettextCatalog) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, StateService, UserService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
     this.$timeout = $timeout;
     this.Spinner = Spinner;
-    this.account = VenueService.account;
+    this.venue = StateService.venue;
     this.Snack = Snack;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;

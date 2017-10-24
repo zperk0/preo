@@ -10,7 +10,7 @@ export default class menuCardListController {
   showCreateMenu($event, type) {
 
     let newMenu = {
-        accountId:this.StateService.venue.accountId,
+        venueId :this.StateService.venue.id,
         $selected:true,
         type: type,
         name:''
@@ -29,7 +29,7 @@ export default class menuCardListController {
 
   constructor(StateService, $state, FeatureService) {
     "ngInject";
-    this.StateService = StateService;
+    this.StateService=StateService;
     this.$state = $state;
 
     let menuTypes = ['MENU'];
