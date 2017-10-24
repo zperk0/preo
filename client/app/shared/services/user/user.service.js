@@ -69,14 +69,23 @@ export default class UserService {
 
   signout(shouldKeepInScreen) {
 
-    let deferred = this.$q.defer();
+    const {
+      StateConfig,
+      UtilsService,
+    } = this;
+    const deferred = this.$q.defer();
 
     Preoday.User.signout()
       .then(success => {
         deferred.resolve(success);
 
         if (!shouldKeepInScreen) {
-          this.$state.go('redirect', { destination: 'auth.signin', timeout: 1000, refresh: true });
+
+          if (StateConfig.isChannel) {
+            window.location.href = UtilsService.getHost() + '/#/auth/signin';
+          } else {
+            this.$state.go('redirect', { destination: 'auth.signin', timeout: 1000, refresh: true });
+          }
         }
       }, error => {
         deferred.reject(error);
@@ -127,13 +136,14 @@ export default class UserService {
     return deferred.promise;
   }
 
-  constructor($q, $rootScope, BroadcastEvents, UtilsService, PermissionService, $state) {
+  constructor($q, $rootScope, BroadcastEvents, UtilsService, PermissionService, StateConfig, $state) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
     this.UtilsService = UtilsService;
     this.PermissionService = PermissionService;
+    this.StateConfig = StateConfig;
     this.$state = $state;
 
     this.authDeferred = null;

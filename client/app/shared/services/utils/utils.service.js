@@ -154,6 +154,8 @@ export default class UtilsService {
     },false);
   }
 
+  getHost() { return window.location.protocol + "//" + window.location.host; }
+
   constructor($q, gettextCatalog, $injector) {
     "ngInject";
 

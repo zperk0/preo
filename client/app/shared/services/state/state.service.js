@@ -203,11 +203,12 @@ export default class StateService {
 
     const {
       isChannel,
+      UtilsService,
       $state,
     } = this;
 
     if (!isChannel) {
-      window.location.href = window.location.protocol + "//" + window.location.host + '/channel/#/' + channelId + '/main/dashboard';
+      window.location.href = UtilsService.getHost() + '/channel/#/' + channelId + '/main/dashboard';
     } else {
       $state.go('main.dashboard', {
         entityId: channelId
@@ -221,11 +222,12 @@ export default class StateService {
 
     const {
       isChannel,
+      UtilsService,
       $state,
     } = this;
 
     if (isChannel) {
-      window.location.href = window.location.protocol + "//" + window.location.host + '/#/' + venueId + '/main/dashboard';
+      window.location.href = UtilsService.getHost() + '/#/' + venueId + '/main/dashboard';
     } else {
       $state.go('main.dashboard', {
         entityId: venueId
