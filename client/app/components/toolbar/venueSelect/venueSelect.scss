@@ -13,7 +13,7 @@ $paddingHorizontal: 26px;
 
 @mixin venueSelectContainer(){
     margin: 0;
-    padding: 0 14px 0 26px;
+    padding: 0 14px 0 27px;
     width: 100%;
     text-align: left;
 }
@@ -75,7 +75,9 @@ $paddingHorizontal: 26px;
 }
 
 .venue-select-menu-content {
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1), 0 0 8px 0 rgba(0, 0, 0, 0.12);
   margin-left: -8px;
+  border-radius: 2px;
 
   &[width="6"] {
     min-width: 416px;

@@ -4,7 +4,10 @@
   </div>
   <md-menu ng-if="($venueSelect.venues && $venueSelect.venues.length>1) || $venueSelect.showSearch()"
            md-position-mode="left bottom">
-    <md-button layout="row" aria-label="{{'Open phone interactions menu' | translate}}" ng-click="$venueSelect.openMenu($mdOpenMenu, $event)" md-menu-origin>
+    <md-button layout="row"
+               aria-label="{{'Open phone interactions menu' | translate}}"
+               ng-click="$venueSelect.openMenu($mdOpenMenu, $event)"
+               md-menu-origin>
       <icon ng-if="$venueSelect.isChannel" class="channel-icon">public</icon>
       <span flex class='ellipsis'>{{ $venueSelect.entityName }}</span>
       <icon>arrow_drop_down</icon>
