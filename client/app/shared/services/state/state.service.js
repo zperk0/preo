@@ -207,7 +207,7 @@ export default class StateService {
     } = this;
 
     if (!isChannel) {
-      window.location.href = window.location.protocol + "//" + window.location.host + '/channel/#/' + channelId + '/main';
+      window.location.href = window.location.protocol + "//" + window.location.host + '/channel/#/' + channelId + '/main/dashboard';
     } else {
       $state.go('main.dashboard', {
         entityId: channelId
@@ -225,7 +225,7 @@ export default class StateService {
     } = this;
 
     if (isChannel) {
-      window.location.href = window.location.protocol + "//" + window.location.host + '/#/' + venueId + '/main';
+      window.location.href = window.location.protocol + "//" + window.location.host + '/#/' + venueId + '/main/dashboard';
     } else {
       $state.go('main.dashboard', {
         entityId: venueId
