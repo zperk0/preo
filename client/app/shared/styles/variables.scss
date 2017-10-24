@@ -1,8 +1,9 @@
 @import 'mixins.scss';
 
 /**************** TOOLBAR ****************/
+$sideNavWidth: 248px;
 $heightToolbar:64px;
-$widthVenueSelect: 320px;
+$widthVenueSelect: $sideNavWidth;
 $widthUserSelect: 286px;
 $borderToolbar: 1px solid #fafafa;
 
@@ -30,3 +31,5 @@ $heightScreen:calc(100vh - #{$heightToolbar});
 
 
 $signinButtonColor: #2488c6;
+
+$greyDefault: #757575;

@@ -1,6 +1,9 @@
 @import '../../../shared/styles/variables';
 
 $spanColor: #FAFAFA;
+$paddingHorizontal: 26px;
+
+
 @mixin venueSelectSpan() {
      text-transform: none;
       font-size:15px;
@@ -10,17 +13,29 @@ $spanColor: #FAFAFA;
 
 @mixin venueSelectContainer(){
     margin: 0;
-    padding: 0 14px;
+    padding: 0 14px 0 26px;
     width: 100%;
     text-align: left;
 }
 
 .searchbox{
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #cccccc;
   height: 64px;
   margin-top: -10px;
   md-input-container{
     width: 100%;
+
+    padding-left: 30px + $paddingHorizontal;
+
+    md-icon {
+      left: $paddingHorizontal;
+      top: 7px;
+      color: $greyDefault;
+    }
+
+    label {
+      left: 30px + $paddingHorizontal;
+    }
   }
   input{
     border-bottom: none;
@@ -44,11 +59,13 @@ $spanColor: #FAFAFA;
 
   &>md-menu {
     width: 100%;
+    height: 100%;
       span{
         color:$spanColor;
         margin-right: 8px;
       }
       &>button{
+        height: 100%;
         @include venueSelectContainer();
         &>span{
             @include venueSelectSpan();
@@ -58,10 +75,17 @@ $spanColor: #FAFAFA;
 }
 
 .venue-select-menu-content {
+  margin-left: -8px;
+
+  &[width="6"] {
+    min-width: 416px;
+  }
+
   md-menu-item {
     button {
       align-items: center;
       display: flex;
+      padding: 0 $paddingHorizontal;
 
       md-icon {
         margin-right: 12px;
