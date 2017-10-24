@@ -23,6 +23,9 @@ export default class UserInviteService {
 
     let deferred = this.$q.defer();
 
+    if(this.domainId && user)
+      user.domain = this.domainId;
+
     invitedUser.accept(user)
       .then((newUser) => {
 
@@ -38,5 +41,7 @@ export default class UserInviteService {
 
     this.$q = $q;
     this.UserService = UserService;
+
+    this.domainId = window._PREO_DATA._DOMAIN ? window._PREO_DATA._DOMAIN : null;
   }
 }
