@@ -33,8 +33,12 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
       return true;
     });
     $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
-        $rootScope.previousState = from.name;
-        $rootScope.currentState = to.name;
+      $rootScope.previousState = from.name;
+      $rootScope.currentState = to.name;
+
+      if (toParams.entityId && fromParams.entityId && +toParams.entityId !== +fromParams.entityId) {
+        window.location.reload();
+      }
     });
   }
 
