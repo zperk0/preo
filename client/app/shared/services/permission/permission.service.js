@@ -34,14 +34,14 @@ export default class PermissionService {
     return this.permissions && this.permissions[perm];
   }
 
-  loadPermissions(model){
+  loadPermissions(model, expand){
     let permissions = []
     angular.forEach(this.Permissions,function(p, key){
       permissions.push(p)
     });
 
     return this.$q((resolve, reject)=>{
-      model.getPermissions(permissions.join(","))
+      model.getPermissions(permissions.join(","), expand)
       .then((userPermissions)=>{
         console.log("PermissionService [loadPermissions] - got user permissions", userPermissions, userPermissions)
         this.permissions = userPermissions;

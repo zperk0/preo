@@ -67,7 +67,10 @@ export default class StateService {
       }
     } else {
       if (channels.length) {
-        this.selectChannel(channels[0].id);
+        isChannel
+        ? this.selectChannel(channels[0].id)
+        : this.navigateToChannel(channels[0].id);
+
         dashboardDeferred.resolve();
       } else if (venues.length) {
         const venueId = venues[0].id;
@@ -84,13 +87,35 @@ export default class StateService {
   selectChannel(channelId) {
 
     const {
-      channels
+      channels,
+      UtilsService,
+      $q,
     } = this;
-    const selected = channels.filter((c) => {
-      return +c.id === +channelId;
-    });
 
-    this.channel = selected.length ? selected[0] : channels[0];
+    if (channelId > 0) {
+      const selected = channels.filter((c) => {
+        return +c.id === +channelId;
+      });
+
+      this.channel = selected.length ? selected[0] : null;
+    } else {
+      this.channel = channels[0];
+    }
+
+    const deferred = $q.defer();
+
+    function done() {
+      UtilsService.updateLocale();
+      this.navigateToChannel(this.channel.id);
+      deferred.resolve();
+    }
+
+    // TODO: we should load the channel here, to allow load a channel that is not in the list [SUPERADMIN]
+
+    this.loadPermissions()
+      .then(done.bind(this), done.bind(this));
+
+    return deferred.promise;
   }
 
   selectVenue(venueId) {
@@ -127,6 +152,8 @@ export default class StateService {
         this.fetchPermissionsAndAccount()
           .then(done.bind(this), done.bind(this));
       }, (err) => {
+
+        UtilsService.updateLocale();
         // TODO: WHAT SHOULD WE DO HERE?
         console.warn('StateService [selectVenue] fetchById error', err);
         deferred.reject();
@@ -168,6 +195,26 @@ export default class StateService {
     return deferred.promise;
   }
 
+  navigateToChannel(channelId, shouldReload) {
+
+    console.log('StateService [navigateToChannel] - ', channelId, shouldReload);
+
+    const {
+      isChannel,
+      $state,
+    } = this;
+
+    if (!isChannel) {
+      window.location.href = window.location.protocol + "//" + window.location.host + '/channel/#/' + channelId + '/main';
+    } else {
+      $state.go('main.dashboard', {
+        entityId: channelId
+      }, {
+        reload: shouldReload || false
+      });
+    }
+  }
+
   navigateToVenue(venueId, shouldReload) {
 
     const {
@@ -206,7 +253,7 @@ export default class StateService {
     this.$rootScope.$broadcast(this.BroadcastEvents.ON_STATE_LOADED);
   }
 
-  loadPermissions() {
+  loadPermissions(expand) {
 
     const {
       PermissionService,
@@ -216,9 +263,9 @@ export default class StateService {
 
     if (channel) {
       // load permissions by channel
-      return PermissionService.loadPermissions(channel);
+      return PermissionService.loadPermissions(channel, expand);
     } else if (venue) {
-      return PermissionService.loadPermissions(venue);
+      return PermissionService.loadPermissions(venue, expand);
     } else {
       console.warn('StateService [loadPermissions] - there is no channel and venue set');
     }
