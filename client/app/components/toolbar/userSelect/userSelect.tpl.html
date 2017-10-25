@@ -6,18 +6,18 @@
     </md-button>
     <md-menu-content width="4">
       <md-menu-item>
-        <md-button ng-click="vm.navigateTo('main.account')" translate>
-          My account
+        <md-button ng-click="vm.navigateTo('main.account')">
+          {{'My account' | translate}}
         </md-button>
       </md-menu-item>
       <md-menu-item ng-if="vm.VenueService && vm.VenueService.account && vm.VenueService.account.billingDate">
-        <md-button ng-click="vm.navigateTo('main.billing')" translate>
-          Billing
+        <md-button ng-click="vm.navigateTo('main.billing')">
+          {{ 'Billing' | translate }}
         </md-button>
       </md-menu-item>
       <md-menu-item>
-        <md-button ng-click="vm.signout()" translate>
-          Signout
+        <md-button ng-click="vm.signout()">
+          {{ 'Signout' | translate}}
         </md-button>
       </md-menu-item>
     </md-menu-content>

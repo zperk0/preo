@@ -30,7 +30,7 @@
                 {{'Not connected' | translate}}
             </md-tooltip>
           </div>
-          <md-button class='md-raised' ng-click="paymentsCtrl.connectToStripe()" translate> Connect to stripe</md-button>
+          <md-button class='md-raised' ng-click="paymentsCtrl.connectToStripe()"> {{ 'Connect to stripe' | translate}}</md-button>
         </md-card-content>
         <md-card-content ng-class="{active:paymentsCtrl.stripe.visible}" flex layout="column" layout-align="center stretch" ng-if="paymentsCtrl.stripe.id">
           <div class='image-container'>
@@ -39,7 +39,7 @@
                 {{'Connected' | translate}}
             </md-tooltip>
           </div>
-          <md-button class='md-raised' ng-click="paymentsCtrl.goToStripe()" translate> Go to stripe </md-button>
+          <md-button class='md-raised' ng-click="paymentsCtrl.goToStripe()"> {{ 'Go to stripe' | translate}}</md-button>
         </md-card-content>
       </md-card>
   </div>

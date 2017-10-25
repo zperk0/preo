@@ -27,37 +27,37 @@
     </md-input-container>
     <md-input-container class="md-block input-label md-block-split-time checkbox-group">
       <div class='checkbox-label' translate>Please contact me about the following:</div>
-      <md-checkbox 
-        aria-label="{{'Marketing newsletters' | translate}}" 
+      <md-checkbox
+        aria-label="{{'Marketing newsletters' | translate}}"
         ng-model="signupCtrl.user.optinMarketing"
         ng-true-value="1"
         ng-false-value="0">
         {{'Marketing newsletters' | translate}}
       </md-checkbox>
-      <md-checkbox 
-        aria-label="{{'Product updates' | translate}}" 
+      <md-checkbox
+        aria-label="{{'Product updates' | translate}}"
         ng-model="signupCtrl.user.optinProduct"
         ng-true-value="1"
         ng-false-value="0">
         {{'Product updates' | translate}}
       </md-checkbox>
-      <md-checkbox 
-        aria-label="{{'Support updates' | translate}}" 
+      <md-checkbox
+        aria-label="{{'Support updates' | translate}}"
         ng-model="signupCtrl.user.optinSupport"
         ng-true-value="1"
         ng-false-value="0">
         {{'Support updates' | translate}}
       </md-checkbox>
-      <md-checkbox 
-        aria-label="{{'GDPR information' | translate}}" 
+      <md-checkbox
+        aria-label="{{'GDPR information' | translate}}"
         ng-model="signupCtrl.user.optinGdpr"
         ng-true-value="1"
         ng-false-value="0">
         {{'GDPR information' | translate}}
       </md-checkbox>
     </md-input-container>
-    <md-button  type='submit' class='md-raised md-block signin-button' translate>
-        Sign Up
+    <md-button  type='submit' class='md-raised md-block signin-button'>
+        {{ 'Sign Up' | translate}}
     </md-button>
 
     <div class="privacy-and-terms">
