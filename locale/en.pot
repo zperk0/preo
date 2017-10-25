@@ -31,6 +31,10 @@ msgstr ""
 msgid "+ VAT"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:743
+msgid "1 year"
+msgstr ""
+
 #: ./client/app/features/notFound/notFound.tpl.html:2
 msgid "404 - Page Not Found"
 msgstr ""
@@ -214,6 +218,10 @@ msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionServices/promotionServices.tpl.html:6
 msgid "All"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:116
+msgid "All Venues"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:852
@@ -447,6 +455,7 @@ msgstr ""
 
 #: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:6
 #: ./client/app/components/contextual/contextualDrawer/venueDetails/contextualDrawer.venueDetails.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/templates/event.tpl.html:3
 #: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:10
 #: ./client/app/components/contextual/contextualMenu/templates/tagAction.tpl.html:3
 msgid "Basics"
@@ -503,6 +512,10 @@ msgstr ""
 
 #: ./client/app/features/auth/signup/signup.tpl.html:64
 msgid "By continuing, you accept the"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:754
+msgid "By event"
 msgstr ""
 
 #: ./client/app/shared/translatedDynamic.html:27
@@ -726,6 +739,7 @@ msgid "Crustaceans"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:45
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:745
 msgid "Custom"
 msgstr ""
 
@@ -1241,6 +1255,7 @@ msgstr ""
 msgid "Error updating tag action"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:128
 #: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:28
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:708
 msgid "Event"
@@ -1500,6 +1515,7 @@ msgstr ""
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/BACKGROUND.tpl.html:3
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/HEADER.tpl.html:4
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/LOGO.tpl.html:3
+#: ./client/app/components/contextual/contextualMenu/templates/event.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:22
 msgid "Image"
 msgstr ""
@@ -1672,6 +1688,14 @@ msgstr ""
 
 #: ./client/app/features/main/account/components/userSettings/userSettings.controller.js:17
 msgid "Language saved"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:725
+msgid "Last 30 days"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:741
+msgid "Last 7 days"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:17
@@ -3098,6 +3122,10 @@ msgstr ""
 msgid "To seat rate"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:737
+msgid "Today"
+msgstr ""
+
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:719
 #: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:62
 msgid "Total"
@@ -3344,6 +3372,10 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:739
+msgid "Yesterday"
+msgstr ""
+
 #: ./client/app/features/redirect/redirect.tpl.html:2
 msgid "You are being redirected..."
 msgstr ""
@@ -3484,6 +3516,10 @@ msgstr ""
 
 #: ./client/app/features/main/dashboard/events/eventList/eventList.controller.js:36
 msgid "events"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:126
+msgid "events selected"
 msgstr ""
 
 #: ./client/app/components/toolbar/venueModeSelect/venueModeSelect.controller.js:71

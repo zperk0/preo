@@ -113,7 +113,7 @@ export default class customDatafiltersController {
     if(venueNames.length > 0)
       return venueNames.join(", ");
     else
-      return this.getTextCatalog.getString("All Venues"); // if there is NO venue selected, get ALL venues
+      return this.gettextCatalog.getString("All Venues"); // if there is NO venue selected, get ALL venues
   }
 
   getSelectedEventsNames(){
@@ -123,9 +123,9 @@ export default class customDatafiltersController {
     if(eventsCount > 0 && eventsCount <= 1)
       return this.filters.events[0].showName;
     if(eventsCount > 1)
-      return this.getTextCatalog.getString( eventsCount + " events selected");
+      return this.gettextCatalog.getString( eventsCount + " events selected");
     else
-      return this.getTextCatalog.getString("Event"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
+      return this.gettextCatalog.getString("Event"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
   }
 
   // Format Venue array to be returned to the Controller as an Object
@@ -722,7 +722,7 @@ export default class customDatafiltersController {
   }
 
   getDefaultDateRange() {
-    let defaultOpt = {id: 4, type: 'minus30days',name: this.getTextCatalog.getString('Last 30 days'),
+    let defaultOpt = {id: 4, type: 'minus30days',name: this.gettextCatalog.getString('Last 30 days'),
                         start: moment().subtract(30, 'days').format('L'), end: moment().format('L')};
     return defaultOpt;
   }
@@ -734,15 +734,15 @@ export default class customDatafiltersController {
       var today = moment().format('L');
 
       var ranges =[
-        {id: 1, type: 'today',      name: this.getTextCatalog.getString('Today'),
+        {id: 1, type: 'today',      name: this.gettextCatalog.getString('Today'),
          start: today, end: today},
-        {id: 2, type: 'minus1day',  name: this.getTextCatalog.getString('Yesterday'),
+        {id: 2, type: 'minus1day',  name: this.gettextCatalog.getString('Yesterday'),
          start: moment().subtract(1, 'days').format('L'), end: today},
-        {id: 3, type: 'minus7days', name: this.getTextCatalog.getString("Last 7 days"),
+        {id: 3, type: 'minus7days', name: this.gettextCatalog.getString("Last 7 days"),
          start: moment().subtract(7, 'days').format('L'), end: today},
-        {id: 5, type: 'minus1year', name: this.getTextCatalog.getString('1 year'),
+        {id: 5, type: 'minus1year', name: this.gettextCatalog.getString('1 year'),
          start: moment().subtract(1, 'year').format('L'), end: today},
-        {id: 7, type: 'custom',     name: this.getTextCatalog.getString('Custom')}
+        {id: 7, type: 'custom',     name: this.gettextCatalog.getString('Custom')}
       ];
 
       var defaultOpt = this.getDefaultDateRange();
@@ -751,7 +751,7 @@ export default class customDatafiltersController {
 
       //do not allow this option if has no Event venue selected
       if(venueTypes.hasEvent){
-        ranges.push({id: 6, type:'event', name: this.getTextCatalog.getString('By event')});
+        ranges.push({id: 6, type:'event', name: this.gettextCatalog.getString('By event')});
       }
 
       this.dateRangeOptions = ranges;
@@ -1199,7 +1199,7 @@ export default class customDatafiltersController {
     this.EventService = EventService;
     this.$q = $q;
     this.scope = $scope;
-    this.getTextCatalog = gettextCatalog;
+    this.gettextCatalog = gettextCatalog;
     this.ReportsService = ReportsService;
     this.init = angular.copy(this.initialValues);
 

@@ -123,6 +123,7 @@ export default class UtilsService {
     } else {
       moment.locale('en-gb');
     }
+    this.ErrorService.setStrings();
   }
 
   updateLocale () {
@@ -154,11 +155,12 @@ export default class UtilsService {
     },false);
   }
 
-  constructor($q, gettextCatalog, $injector) {
+  constructor($q, gettextCatalog, $injector, ErrorService) {
     "ngInject";
 
     this.$q = $q;
     this.gettextCatalog = gettextCatalog;
+    this.ErrorService = ErrorService;
     this.$injector = $injector;
   }
 }
