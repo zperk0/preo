@@ -56,13 +56,8 @@ export default class StateService {
 
     if (entityId) {
       if (isChannel) {
-        if (channels.length) {
-          this.selectChannel(entityId);
-        } else if (venues.length) {
-          this.navigateToVenue(venues[0].id);
-        } else {
-          console.warn('StateService [processDashboard] - there is no channel and venue set');
-        }
+        this.selectChannel(entityId)
+          .then(dashboardDeferred.resolve, dashboardDeferred.reject);
       } else {
         this.selectVenue(entityId)
           .then(dashboardDeferred.resolve, dashboardDeferred.reject);
@@ -81,7 +76,9 @@ export default class StateService {
           : this.selectVenue(venueId)
                 .then(dashboardDeferred.resolve, dashboardDeferred.reject);
       } else {
+
         console.warn('StateService [processDashboard] - there is no channel and venue set');
+        this.logout();
       }
     }
   }
@@ -112,12 +109,46 @@ export default class StateService {
       deferred.resolve();
     }
 
+    function _loadPermissions() {
+      this.loadPermissions()
+        .then(done.bind(this), done.bind(this));
+    }
+
+    if (!this.channel) {
+      Preoday.Channel.findById(channelId)
+        .then((channel) => {
+          this.channel = channel;
+          _loadPermissions.call(this);
+        }, () => {
+
+          if (channels.length) {
+            this.navigateToChannel(channels[0].id)
+          } else {
+            this.logout();
+          }
+        });
+    } else {
+      _loadPermissions.call(this);
+    }
+
     // TODO: we should load the channel here, to allow load a channel that is not in the list [SUPERADMIN]
 
-    this.loadPermissions()
-      .then(done.bind(this), done.bind(this));
+
 
     return deferred.promise;
+  }
+
+  logout() {
+    this.UserService.signout();
+  }
+
+  goToNotFound() {
+    const {
+      entityId
+    } = this;
+    $state.go('main.notFound', {
+      entityId: entityId
+    });
   }
 
   selectVenue(venueId) {
@@ -161,9 +192,10 @@ export default class StateService {
           .then(done.bind(this), done.bind(this));
       }, (err) => {
 
-        UtilsService.updateLocale();
+        // UtilsService.updateLocale();
         // TODO: WHAT SHOULD WE DO HERE?
         console.warn('StateService [selectVenue] fetchById error', err);
+        this.logout();
         deferred.reject();
       });
 
@@ -295,7 +327,7 @@ export default class StateService {
     return this.hasDashboardLoaded;
   }
 
-  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig) {
+  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig, UserService) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
@@ -308,6 +340,7 @@ export default class StateService {
     this.BroadcastEvents = BroadcastEvents;
     this.VenueService = VenueService;
     this.UtilsService = UtilsService;
+    this.UserService = UserService;
 
     this.hasDashboardLoaded = false;
     this.dashboardDeferred = null;
