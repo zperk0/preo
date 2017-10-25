@@ -19,8 +19,8 @@
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
-    <md-button  type='submit' class='md-raised md-block signin-button' translate>
-        Sign In
+    <md-button  type='submit' class='md-raised md-block signin-button'>
+        {{ 'Sign In' | translate}}
     </md-button>
     <md-button type="button" ng-click="signinCtrl.onForgotPassword()" class="md-primary" translate>I Forgot My Password</md-button>
   </form>
@@ -37,9 +37,9 @@
         <div ng-message="email">{{'Invalid email address.' | translate}}</div>
       </div>
     </md-input-container>
-    <md-button  type='submit' class='md-raised md-block signin-button' translate>
-        Reset password
+    <md-button  type='submit' class='md-raised md-block signin-button'>
+        {{ 'Reset Password' | translate}}
     </md-button>
-    <md-button type="button" ng-click="signinCtrl.onSignIn()" class="md-primary" translate>Sign in?</md-button>
+    <md-button type="button" ng-click="signinCtrl.onSignIn()" class="md-primary">{{ 'Sign in?' | translate}}</md-button>
   </form>
 </div>
