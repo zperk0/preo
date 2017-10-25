@@ -52,7 +52,16 @@ $paddingHorizontal: 26px;
 
   &>div {
     @include venueSelectContainer();
-    span{
+    height: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+
+    span {
+      color:$spanColor;
+    }
+
+    .entity-name {
       @include venueSelectSpan();
     }
   }

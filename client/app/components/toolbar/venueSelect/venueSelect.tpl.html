@@ -1,6 +1,9 @@
 <div class='venue-select' layout="row" layout-align="start center">
-  <div layout="row" ng-if="$venueSelect.venues && $venueSelect.venues.length===1 && !$venueSelect.showSearch()">
-    <span flex class='ellipsis'>{{ $venueSelect.entityName }}</span>
+  <div layout="row"
+       class="current-entity"
+       ng-if="$venueSelect.venues && $venueSelect.venues.length===1 && !$venueSelect.showSearch()">
+    <icon ng-if="$venueSelect.isChannel" class="channel-icon">public</icon>
+    <span flex class='ellipsis entity-name'>{{ $venueSelect.entityName }}</span>
   </div>
   <md-menu ng-if="($venueSelect.venues && $venueSelect.venues.length>1) || $venueSelect.showSearch()"
            md-position-mode="left bottom">
