@@ -43,7 +43,7 @@ export default class UserService {
       this.authDeferred = this.$q.defer();
     }
 
-    this.PermissionService.checkSystemPermission()
+    user.isAdmin()
       .then(() => {
         user.$admin = true;
         this.setCurrentUser(user);
