@@ -738,7 +738,7 @@ export default class customDatafiltersController {
          start: today, end: today},
         {id: 2, type: 'minus1day',  name: this.getTextCatalog.getString('Yesterday'),
          start: moment().subtract(1, 'days').format('L'), end: today},
-        {id: 3, type: 'minus7days', name: this.getTextCatalog.getString('Last 7 days'),
+        {id: 3, type: 'minus7days', name: this.getTextCatalog.getString("Last 7 days"),
          start: moment().subtract(7, 'days').format('L'), end: today},
         {id: 5, type: 'minus1year', name: this.getTextCatalog.getString('1 year'),
          start: moment().subtract(1, 'year').format('L'), end: today},

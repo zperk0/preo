@@ -1,11 +1,11 @@
 <div class="contextual-menu-event">
   <md-tabs md-dynamic-height md-stretch-tabs="always">
-    <md-tab label="Basics">
+    <md-tab label="{{'Basics' | translate}}">
       <md-card-content>
         <event-basic ng-model="contextualMenuCtrl.entity"></event-basic>
       </md-card-content>
     </md-tab>
-    <md-tab label="Image">
+    <md-tab label="{{'Image' | translate}}">
        <image-uploader
           viewport="{w:590,h:393}"
           output="{w:590,h:393}"
@@ -13,6 +13,6 @@
           keep-on-destroy="true"
           ng-model="contextualMenuCtrl.entity.$images">
         </image-uploader>
-    </md-tab>    
+    </md-tab>
   </md-tabs>
 </div>
