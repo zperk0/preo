@@ -365,6 +365,9 @@ msgstr "De mest aktiva evenemangen"
 msgid "Busiest time of day"
 msgstr "Den mest hektiska tiden på dagen"
 
+msgid "Button colour"
+msgstr "Knappfärg"
+
 msgid "Button label"
 msgstr "Knappetikett"
 
@@ -376,6 +379,12 @@ msgstr "Namn på knappar och sektioner"
 
 msgid "By continuing, you accept the"
 msgstr "Genom att fortsätta accepterar du våra"
+
+msgid "CARD"
+msgstr "KORT"
+
+msgid "CASH"
+msgstr "KONTANT"
 
 msgid "CVC"
 msgstr "CVC"
@@ -417,6 +426,12 @@ msgstr "Kassa"
 
 msgid "Choose a colour"
 msgstr "Välj en färg"
+
+msgid "Choose button colour"
+msgstr "Välj knappfärg"
+
+msgid "Choose button text colour"
+msgstr "Välj textfärg på knapp"
 
 msgid "Choose collection slots:"
 msgstr "Välj uthämtningstider:"
@@ -541,6 +556,9 @@ msgstr "Kunder som har gjort endast en beställning."
 msgid "Customers who signed up but haven't ordered"
 msgstr "Kunder som har signat upp sig men ännu inte gjort en beställning"
 
+msgid "D.O.B"
+msgstr "Födelsedatum"
+
 msgid "Daily"
 msgstr "Daglig"
 
@@ -580,6 +598,9 @@ msgstr "Standard leveranstid <small>(minuter)</small>"
 msgid "Delete"
 msgstr "Ta bort"
 
+msgid "Delete account"
+msgstr "Radera konto"
+
 msgid "Delete collection slot?"
 msgstr "Radera uthämtningstid?"
 
@@ -609,6 +630,9 @@ msgstr "Ta bort meny?"
 
 msgid "Delete modifier?"
 msgstr "Ta bort administratör?"
+
+msgid "Delete my account"
+msgstr "Radera mitt konto"
 
 msgid "Delete outlet location?"
 msgstr "Ta bort butikens plats?"
@@ -650,6 +674,13 @@ msgid ""
 msgstr ""
 "Om du tar bort den här etiketten tas den bort från alla varor och "
 "etikettfunktioner. Är du säker?"
+
+msgid ""
+"Deleting your account means you won't be able to access the dashboard any "
+"longer. This cannot be undone. Are you sure?"
+msgstr ""
+"Om du raderar ditt konto betyder det att du inte längre kan komma åt "
+"instrumentpanelen. Detta kan inte ångras. Är du säker?"
 
 msgid "Delivery"
 msgstr "Leverans"
@@ -750,6 +781,12 @@ msgstr "Ändra"
 msgid "Edit Mode"
 msgstr "Ändra läge"
 
+msgid "Edit background"
+msgstr "Redigera bakgrund"
+
+msgid "Edit button"
+msgstr "Redigera knapp"
+
 msgid "Edit footer"
 msgstr "Ändra sidfot"
 
@@ -798,6 +835,9 @@ msgstr "Ett fel uppstod när etiketten skapades"
 msgid "Error creating tag action"
 msgstr "Ett fel uppstod när etiketten skapades"
 
+msgid "Error deleting image."
+msgstr "Det gick inte att ta bort bilden."
+
 msgid "Error deleting outlet"
 msgstr "Problem med att radera butik"
 
@@ -830,6 +870,9 @@ msgstr "Fel vid sparandet av schema"
 
 msgid "Error saving tax Group"
 msgstr "Fel vid sparandet av momsgrupp"
+
+msgid "Error updating Mobile App styling."
+msgstr "Ett fel uppstod vid formgivningen av mobilappen."
 
 msgid "Error updating collection slot"
 msgstr "Det gick inte att uppdatera uthämtningstid"
@@ -884,6 +927,9 @@ msgstr "Exportera som CSV"
 
 msgid "Export as PDF"
 msgstr "Exportera som PDF"
+
+msgid "External ID"
+msgstr "Extern ID"
 
 msgid "External events"
 msgstr "Externt evenemang"
@@ -950,6 +996,9 @@ msgstr "Från {{inputDateFrom}}"
 
 msgid "Full client"
 msgstr "Kund"
+
+msgid "GDPR information"
+msgstr "GDPR information"
 
 msgid "GO TO DASHBOARD"
 msgstr "GÅ TILL ADMINSIDAN"
@@ -1027,6 +1076,9 @@ msgstr ""
 msgid "Image"
 msgstr "Bild"
 
+msgid "Image Deleted successfully."
+msgstr "Bilden har tagits bort."
+
 msgid "Image not found"
 msgstr "Bilden hittades inte"
 
@@ -1100,6 +1152,9 @@ msgstr "Det är inte möjligt att ange en plats som din butiksinställning."
 msgid "Item"
 msgstr "Produkt"
 
+msgid "Item cap per event"
+msgstr "Maxantal per evenemang"
+
 msgid "Item name"
 msgstr "Produktens namn"
 
@@ -1171,6 +1226,9 @@ msgstr "Obligatoriskt"
 
 msgid "Marketing"
 msgstr "Marknadsföring"
+
+msgid "Marketing newsletters"
+msgstr "Marknadsnyhetsbrev"
 
 msgid "Max file size"
 msgstr "Filens maxvikt"
@@ -1262,6 +1320,12 @@ msgstr "Minimum antal val måste vara mindre än max antalet"
 msgid "Mins"
 msgstr "Minuter"
 
+msgid "Mobile App"
+msgstr "Mobilapp"
+
+msgid "Mobile App styling saved with success."
+msgstr "Formgivningen av mobilappen har sparats."
+
 msgid "Modifiers"
 msgstr "Administratörer"
 
@@ -1279,6 +1343,9 @@ msgstr "Månadens beställningar "
 
 msgid "Monthly Revenue"
 msgstr "Månadsintäkt"
+
+msgid "More"
+msgstr "Mer"
 
 msgid "Move"
 msgstr "Flytta"
@@ -1412,6 +1479,12 @@ msgstr "Valfritt"
 msgid "Order #123456"
 msgstr "Order #123456"
 
+msgid "Order Type"
+msgstr "Beställningstyp"
+
+msgid "Order now"
+msgstr "Beställ nu"
+
 msgid "Order rejection"
 msgstr "Avbokning"
 
@@ -1517,6 +1590,9 @@ msgstr "Vänligen hämta från:"
 msgid "Please confirm your details and set a password."
 msgstr "Vänligen verifiera dina uppgifter och välj lösenord."
 
+msgid "Please contact me about the following:"
+msgstr "Vänligen kontakta mig om följande:"
+
 msgid ""
 "Please note, push notifications will only be received by users who have your "
 "mobile app installed."
@@ -1547,6 +1623,9 @@ msgstr "Pris (inkl moms)"
 
 msgid "Privacy Policy"
 msgstr "Integritetspolicy"
+
+msgid "Product updates"
+msgstr "Produktuppdateringar"
 
 msgid "Promotion code"
 msgstr "Kampanjkod"
@@ -1638,6 +1717,9 @@ msgstr "Schemat kunde inte raderas"
 msgid "Schedule updated"
 msgstr "Schemat uppdaterades"
 
+msgid "Search"
+msgstr "Sök"
+
 msgid "Search venue name"
 msgstr "Sök arenanamn"
 
@@ -1691,6 +1773,10 @@ msgstr "Tjänsterna sparade"
 
 msgid "Sesame Seeds"
 msgstr "Sesamfrön"
+
+msgid "Set a maximum number of times this item can be ordered for each event."
+msgstr ""
+"Ange maximalt antal gånger det här varan kan beställas för varje evenemang."
 
 msgid "Set area by:"
 msgstr "Ange område för:"
@@ -1801,6 +1887,9 @@ msgstr "Spanska"
 msgid "Spend"
 msgstr "Spendera"
 
+msgid "Splash screen background"
+msgstr "Splash screen-bakgrund"
+
 msgid "Split slot into segments"
 msgstr "Dela plats i olika segment"
 
@@ -1845,6 +1934,9 @@ msgstr "Svavel"
 
 msgid "Summary"
 msgstr "Sammanfattning"
+
+msgid "Support updates"
+msgstr "Supportuppdateringar"
 
 msgid "Swedish"
 msgstr "Svenska"
@@ -2104,6 +2196,9 @@ msgstr "Användarna anger en kampanjkod"
 
 msgid "User permissions:"
 msgstr "Användarbehörighet:"
+
+msgid "VAT Number"
+msgstr "Organisationsnummer"
 
 msgid "Value must be at least 1."
 msgstr "Värdet måste vara minst 1."
@@ -2375,6 +2470,9 @@ msgstr "Km"
 
 msgid "mins"
 msgstr "Minuter"
+
+msgid "n/a"
+msgstr "n/a"
 
 msgid "offline"
 msgstr "offline"

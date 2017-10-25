@@ -34,9 +34,9 @@
 	    	</div>
 	    </md-card-content>
 	    <md-card-actions layout="row" layout-align="end center">
-	      <md-button type="button" class='md-primary' ng-click="userEmailCtrl.showForm()" ng-show="!userEmailCtrl.shouldShowForm()" translate>Change email address</md-button>
-	      <md-button type="button" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()" ng-click="userEmailCtrl.cancel()" translate>Cancel</md-button>
-	      <md-button type="submit" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()" translate>Send confirmation</md-button>
+	      <md-button type="button" class='md-primary' ng-click="userEmailCtrl.showForm()" ng-show="!userEmailCtrl.shouldShowForm()">{{"Change email address" | translate}}</md-button>
+	      <md-button type="button" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()" ng-click="userEmailCtrl.cancel()">{{"Cancel" | translate}}</md-button>
+	      <md-button type="submit" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()">{{"Send confirmation" | translate}}</md-button>
 	    </md-card-actions>
     </form>
   </md-card>

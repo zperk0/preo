@@ -11,11 +11,11 @@
             ></outlet-location-tree>
         </div>
         <md-card-actions layout="row" layout-align="end center">
-        <md-button ng-click="drawerOutletLocationsCtrl.close()" class='md-primary' translate>
-            Cancel
+        <md-button ng-click="drawerOutletLocationsCtrl.close()" class='md-primary'>
+            {{ 'Cancel' | translate}}
         </md-button>
-        <md-button ng-click="drawerOutletLocationsCtrl.move()" ng-disabled="!drawerOutletLocationsCtrl.selectedOutletLocation" class='md-raised' translate>
-            Move
+        <md-button ng-click="drawerOutletLocationsCtrl.move()" ng-disabled="!drawerOutletLocationsCtrl.selectedOutletLocation" class='md-raised'>
+            {{ 'Move' | translate}}
         </md-button>
         </md-card-actions>
     </md-sidenav>
