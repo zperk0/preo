@@ -302,7 +302,7 @@ export default class VenueService {
     return this.PermissionService.loadPermissions(this.currentVenue);
   }
 
-  searchUsers(stringSearch) {
+  searchCustomers(stringSearch) {
     const deferred = this.$q.defer();
 
     if (!this.currentVenue) {
@@ -310,7 +310,7 @@ export default class VenueService {
       deferred.reject();
     } else {
 
-      this.currentVenue.searchUsers(stringSearch).then((data) => {
+      this.currentVenue.searchCustomers(stringSearch).then((data) => {
         deferred.resolve(data);
       }, (error) => {
         deferred.reject(error);

@@ -11,7 +11,7 @@ export default class userSelectListController {
   doSearch(){
 
     this.Spinner.show('user-search');
-    this.VenueService.searchUsers(this.searchLabel).then((data) => {
+    this.VenueService.searchCustomers(this.searchLabel).then((data) => {
       this.userList = data;
       this.alreadySearch = true;
       this.Spinner.hide('user-search');
