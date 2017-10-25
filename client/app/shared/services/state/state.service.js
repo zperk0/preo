@@ -131,10 +131,6 @@ export default class StateService {
       _loadPermissions.call(this);
     }
 
-    // TODO: we should load the channel here, to allow load a channel that is not in the list [SUPERADMIN]
-
-
-
     return deferred.promise;
   }
 
