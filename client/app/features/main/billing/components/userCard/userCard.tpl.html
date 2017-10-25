@@ -38,18 +38,18 @@
 			            </md-input-container>
 		            </div>
 			            <md-card-actions layout="row" layout-align="end center">
-			            <md-button type="button" ng-click="userCardCtrl.cancel()" ng-if="userCardCtrl.card.token" class="md-primary" translate>
-			                Cancel
+			            <md-button type="button" ng-click="userCardCtrl.cancel()" ng-if="userCardCtrl.card.token" class="md-primary">
+			                {{ 'Cancel' | translate}}
 			            </md-button>
-			            <md-button type="submit" class="md-primary" translate>
-			                Save
+			            <md-button type="submit" class="md-primary">
+			                {{ 'Save' | translate}}
 			            </md-button>
 			          </md-card-actions>
 	            </div>
       		</form>
       		<md-card-actions layout="row" layout-align="end center" ng-if="userCardCtrl.card.token && !userCardCtrl.showForm">
 	      		<md-button class="md-primary"  layout-align="center end" ng-click="userCardCtrl.addCard(true)">
-	      	  	Change card
+	      	  	{{ 'Change card' | translate}}
 	          </md-button>
           </md-card-actions>
         </md-card-content>
