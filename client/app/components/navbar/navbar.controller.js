@@ -111,7 +111,7 @@ export default class navbarController {
         return !isChannel && StateService.venue  && StateService.venue.isEvent() && PermissionService.hasPermission(Permissions.EVENTS);
       }},
       {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions",shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.OFFERS)
+        return !isChannel && PermissionService.hasPermission(Permissions.OFFERS)
       }},
       {name: gettextCatalog.getString("Notifications"), icon:"chat", id:"notifications",shouldShow:function(){
         return !isChannel && PermissionService.hasPermission(Permissions.VENUE_CREATE)
