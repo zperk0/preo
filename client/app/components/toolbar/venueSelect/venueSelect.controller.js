@@ -45,17 +45,50 @@ export default class venueSelectController {
     } = this;
 
     $timeout(()=>{
-      this.venues = StateService.venues;
-      this.channels = StateService.channels;
+      this.allVenues = StateService.venues || [];
+      this.allChannels = StateService.channels || [];
+      this.venues = StateService.venues || [];
+      this.channels = StateService.channels || [];
       this.entityName = StateService.getEntityName();
     });
   }
 
-  showSearch(){
+  shouldShowSearch(){
+
+    const {
+      allVenues,
+      allChannels,
+      UserService,
+    } = this;
+
+    const totalLength = allVenues.length + allChannels.length;
+
+    return totalLength > 1 || UserService.isAdmin();
+  }
+
+  isAdmin() {
     return this.UserService.isAdmin();
   }
 
-  doSearch(){
+  doUserSearch() {
+
+    const {
+      allVenues,
+      allChannels
+    } = this;
+
+    const value = this.searchLabel.toLowerCase();
+
+    this.venues = allVenues.filter((v) => {
+      return v.name.toLowerCase().indexOf(value) === 0;
+    });
+
+    this.channels = allChannels.filter((c) => {
+      return c.name.toLowerCase().indexOf(value) === 0;
+    });
+  }
+
+  doAdminSearch(){
     this.Spinner.show('venue-search');
     Preoday.Venue.search(this.searchLabel)
     .then((result)=>{
@@ -78,6 +111,18 @@ export default class venueSelectController {
     this.UserService = UserService;
     this.Spinner = Spinner;
     this.isChannel = StateService.isChannel;
+
+    this.allVenues = [];
+    this.allChannels = [];
+
+    this.venues = [];
+    this.channels = [];
+
+    if (UserService.isAdmin()) {
+      this.doSearch = this.doAdminSearch.bind(this);
+    } else {
+      this.doSearch = this.doUserSearch.bind(this);
+    }
 
     if (StateService.isLoaded()) {
       this.setVenue();

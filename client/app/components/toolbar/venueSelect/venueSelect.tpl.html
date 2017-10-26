@@ -1,11 +1,11 @@
 <div class='venue-select' layout="row" layout-align="start center">
   <div layout="row"
        class="current-entity"
-       ng-if="$venueSelect.venues && $venueSelect.venues.length===1 && !$venueSelect.showSearch()">
+       ng-if="!$venueSelect.shouldShowSearch()">
     <icon ng-if="$venueSelect.isChannel" class="channel-icon">public</icon>
     <span flex class='ellipsis entity-name'>{{ $venueSelect.entityName }}</span>
   </div>
-  <md-menu ng-if="($venueSelect.venues && $venueSelect.venues.length>1) || $venueSelect.showSearch()"
+  <md-menu ng-if="$venueSelect.shouldShowSearch()"
            md-position-mode="left bottom">
     <md-button layout="row"
                aria-label="{{'Open phone interactions menu' | translate}}"
@@ -16,26 +16,34 @@
       <icon>arrow_drop_down</icon>
     </md-button>
     <md-menu-content width="6" class="venue-select-menu-content">
-      <md-menu-item ng-if="$venueSelect.showSearch()" class="searchbox">
+      <md-menu-item ng-if="$venueSelect.shouldShowSearch()" class="searchbox">
       <form ng-submit="$venueSelect.doSearch()">
         <md-input-container>
           <icon>search</icon>
           <label translate>Search venue name</label>
-          <input flex name="search" ng-model="$venueSelect.searchLabel">
+          <input flex
+                 name="search"
+                 ng-if="::!$venueSelect.isAdmin()"
+                 ng-keyup="$venueSelect.doSearch()"
+                 ng-model="$venueSelect.searchLabel">
+          <input flex
+                 name="search"
+                 ng-if="::$venueSelect.isAdmin()"
+                 ng-model="$venueSelect.searchLabel">
         </md-input-container>
       </form>
       </md-menu-item>
       <md-menu-item ng-repeat="channel in $venueSelect.channels">
         <md-button ng-click="$venueSelect.switchChannel(channel)">
           <icon>public</icon>
-          <span flex ng-if="$venueSelect.showSearch()">{{channel.id}} - {{channel.name}} </span>
-          <span flex ng-if="!$venueSelect.showSearch()">{{channel.name}} </span>
+          <span flex ng-if="$venueSelect.isAdmin()">{{channel.id}} - {{channel.name}} </span>
+          <span flex ng-if="!$venueSelect.isAdmin()">{{channel.name}} </span>
         </md-button>
       </md-menu-item>
       <md-menu-item ng-repeat="venue in $venueSelect.venues">
         <md-button ng-click="$venueSelect.switchVenue(venue)">
-          <span ng-if="$venueSelect.showSearch()">{{venue.id}} - {{venue.name}} </span>
-          <span ng-if="!$venueSelect.showSearch()">{{venue.name}} </span>
+          <span ng-if="$venueSelect.isAdmin()">{{venue.id}} - {{venue.name}} </span>
+          <span ng-if="!$venueSelect.isAdmin()">{{venue.name}} </span>
         </md-button>
       </md-menu-item>
     </md-menu-content>
