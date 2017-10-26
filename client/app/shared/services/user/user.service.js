@@ -20,7 +20,7 @@ export default class UserService {
       data = {};
     }
 
-    data.permissions = 'system_update';
+    data.permissions = this.Permissions.ADMIN;
 
     Preoday.User.auth(data).then((user) => {
       console.log("doing auth", user);
@@ -51,7 +51,7 @@ export default class UserService {
 
     this.$timeout(() => {
 
-      if (user.permissions && user.permissions['system_update'] === true) {
+      if (user.permissions && user.permissions[this.Permissions.ADMIN] === true) {
         user.$admin = true;
       } else {
         user.$admin = false;
@@ -144,7 +144,7 @@ export default class UserService {
     return deferred.promise;
   }
 
-  constructor($q, $timeout, $rootScope, BroadcastEvents, UtilsService, PermissionService, StateConfig, $state) {
+  constructor($q, $timeout, $rootScope, BroadcastEvents, UtilsService, PermissionService, StateConfig, Permissions, $state) {
     "ngInject";
     this.$q = $q;
     this.$timeout = $timeout;
@@ -153,6 +153,7 @@ export default class UserService {
     this.UtilsService = UtilsService;
     this.PermissionService = PermissionService;
     this.StateConfig = StateConfig;
+    this.Permissions = Permissions;
     this.$state = $state;
 
     this.authDeferred = null;
