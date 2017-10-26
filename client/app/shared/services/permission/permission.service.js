@@ -4,20 +4,6 @@ export default class PermissionService {
     return "PermissionService"
   }
 
-  checkSystemPermission(){
-    return this.$q((resolve,reject)=>{
-      Preoday.Permission.check("system_update")
-        .then((perms)=>{
-          if (perms["system_update"]){
-            resolve();
-          }
-          reject();
-        },()=>{
-          reject();
-      })
-    });
-  }
-
   checkVenuesPermissions(permissions,venueIds){
     return this.$q((resolve,reject)=>{
       Preoday.Permission.check(permissions.join(","),venueIds.join(","))
