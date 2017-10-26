@@ -911,6 +911,9 @@ msgstr "Speichern"
 msgid "Saving..."
 msgstr "Wird gespeichert..."
 
+msgid "Search"
+msgstr "Suchen"
+
 msgid "Send"
 msgstr "Senden"
 

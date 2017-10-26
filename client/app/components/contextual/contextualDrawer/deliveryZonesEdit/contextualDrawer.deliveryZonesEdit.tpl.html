@@ -57,8 +57,8 @@
                       <span class='text-info' ng-if="!drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon || !drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon.length">
                         <icon>info</icon> {{'Click on the map to begin drawing your custom area. Connect the first and last points to finish.' | translate}}
                       </span>
-                      <md-button class='md-primary clear-button' ng-click="drawerDeliveryZonesEditCtrl.clearPolygon()" translate ng-if="drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon && drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon.length">
-                        Clear
+                      <md-button class='md-primary clear-button' ng-click="drawerDeliveryZonesEditCtrl.clearPolygon()" ng-if="drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon && drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon.length">
+                        {{ 'Clear' | translate}}
                       </md-button>
                     </div>
                 </md-tab>
@@ -91,11 +91,11 @@
             </md-tabs>
             </div>
             <md-card-actions layout="row" layout-align="end center">
-              <md-button class='md-primary'  ng-click="drawerDeliveryZonesEditCtrl.onCancel()" translate>
-                Cancel
+              <md-button class='md-primary'  ng-click="drawerDeliveryZonesEditCtrl.onCancel()">
+                {{'Cancel' | translate}}
             </md-button>
-              <md-button type="submit" class='md-raised' translate>
-                  Done
+              <md-button type="submit" class='md-raised'>
+                  {{'Done' | translate}}
               </md-button>
             </md-card-actions>
         </form>

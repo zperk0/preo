@@ -93,6 +93,12 @@ msgstr "Lisää uusi myyntipisteen sijainti"
 msgid "Add new schedule"
 msgstr "Lisää uusi aikataulu"
 
+msgid "Add new tag"
+msgstr "Lisää uusi tägi"
+
+msgid "Add new tag action"
+msgstr "Lisää uusi tägin toiminto"
+
 msgid "Add new tax group"
 msgstr "Lisää uusi veroryhmä"
 
@@ -119,6 +125,12 @@ msgstr "Lisää koko"
 
 msgid "Add sub group"
 msgstr "Lisää alaryhmä"
+
+msgid "Add to basket"
+msgstr "Lisää koriin"
+
+msgid "Add to event"
+msgstr "Lisää tilaisuuteen"
 
 msgid "Additional info"
 msgstr "Lisätietoa"
@@ -147,6 +159,9 @@ msgstr "Tilaisuuden alkamisajan jälkeen"
 msgid "All"
 msgstr "Kaikki"
 
+msgid "All customers"
+msgstr "Kaikki asiakkaat"
+
 msgid "All items sold"
 msgstr "Kaikki tuotteet myyty"
 
@@ -158,6 +173,9 @@ msgstr "Kaikki tilaukset"
 
 msgid "All paying customers"
 msgstr "Kaikki maksavat asiakkaat"
+
+msgid "All promotions"
+msgstr "Kaikki promootiot"
 
 msgid "All your service methods are currently disabled."
 msgstr "Kaikki palvelutapasi ovat tällä hetkellä poissa käytöstä"
@@ -1257,6 +1275,9 @@ msgstr "Aikataulua ei poistettu"
 
 msgid "Schedule updated"
 msgstr "Aikataulu päivitetty"
+
+msgid "Search"
+msgstr "Hae"
 
 msgid "Search venue name"
 msgstr "Etsi tapahtumapaikan nimeä"
