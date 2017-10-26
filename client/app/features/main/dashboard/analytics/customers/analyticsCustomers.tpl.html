@@ -7,6 +7,7 @@
       report-types="analyticsCustomersCtrl.reportTypes"
       on-filter="analyticsCustomersCtrl.onFilter(filters, typeChanged)"
       initial-values="analyticsCustomersCtrl.dataFilters"
+      on-init-error="analyticsCustomersCtrl.onInitError()"
       kyc="analyticsCustomersCtrl.hasKnowYourCustomersFeature">
     </custom-datafilters>
     </div>
@@ -58,7 +59,7 @@
 
     <div layout="row" class="content-spinner" ng-if="analyticsCustomersCtrl.loadingMoreData">
       <spinner></spinner>
-    </div> 
+    </div>
     </div>
 
   </div>

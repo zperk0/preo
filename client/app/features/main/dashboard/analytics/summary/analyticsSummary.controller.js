@@ -240,6 +240,10 @@ export default class analyticsSummaryController {
     }
   }
 
+  onInitError() {
+    this.hideSpinner();
+  }
+
   constructor($stateParams, $location, ReportsService, $state, $timeout, $window, Spinner, ReportTypes, LabelService, ErrorService, DialogService, hasKnowYourCustomersFeature) {
     "ngInject";
 

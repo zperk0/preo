@@ -1145,6 +1145,10 @@ export default class customDatafiltersController {
     .catch((err) => {
       console.log('Error initing DataFilters', err);
       this.spinner.hide('init-datafilters');
+
+      this.onInitError && this.onInitError({
+        error: err
+      });
     });
 
   }

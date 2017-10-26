@@ -7,6 +7,7 @@
       report-types="analyticsStockCtrl.reportTypes"
       on-filter="analyticsStockCtrl.onFilter(filters, typeChanged)"
       initial-values="analyticsStockCtrl.dataFilters"
+      on-init-error="analyticsStockCtrl.onInitError()"
       kyc="analyticsStockCtrl.hasKnowYourCustomersFeature">
     </custom-datafilters>
     </div>
@@ -52,8 +53,8 @@
 
     <div layout="row" class="content-spinner" ng-if="analyticsStockCtrl.loadingMoreData">
       <spinner></spinner>
-    </div> 
-    </div> 
-    
+    </div>
+    </div>
+
   </div>
 </div>

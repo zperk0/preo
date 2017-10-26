@@ -10,7 +10,8 @@ export default function customDatafilters(){
       reportTypes: '=?',
       onFilter: '&',
       initialValues: '=?',
-      kyc: '=?'
+      kyc: '=?',
+      onInitError: '&?'
     },
     template: require("./customDatafilters.tpl.html"),
     replace:true,
