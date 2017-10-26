@@ -1,5 +1,5 @@
 
-export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, Spinner, contextualMenu, contextualDrawer, PermissionService, FeatureService, $timeout){
+export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, $stateParams, Spinner, contextualMenu, contextualDrawer, PermissionService, FeatureService, $timeout){
   "ngInject";
 
   const notRequiresUser= ['auth.signin', 'auth.signup', 'auth.invite', 'error', 'emailSuccess'];
@@ -17,7 +17,9 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
       if (toState.requiresPermission){
         if (!PermissionService.hasPermission(toState.requiresPermission)){
-          $state.go("main.dashboard");
+          $state.go("main.dashboard", {
+            entityId: $stateParams.entityId
+          });
           event.preventDefault();
           return false;
         }
@@ -25,7 +27,9 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
       if (toState.requiresFeature){
         if (!FeatureService.hasFeature(toState.requiresFeature)){
-          $state.go("main.dashboard");
+          $state.go("main.dashboard", {
+            entityId: $stateParams.entityId
+          });
           event.preventDefault();
           return false;
         }
@@ -45,19 +49,19 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
   function redirectSignin(){
 
     if (notRequiresUser.indexOf($state.current.name) === -1){
-      $state.go("auth.signin");
+      UserService.goToSignin();
       Spinner.empty();
     }
 
     setupChangeEvent();
   }
 
-  $rootScope.$on(BroadcastEvents._ON_USER_AUTH,(event,user)=>{
+  // $rootScope.$on(BroadcastEvents._ON_USER_AUTH,(event,user)=>{
 
-    if ($state.includes('main')) {
-      VenueService.selectVenue();
-    }
-  });
+  //   if ($state.includes('main')) {
+  //     VenueService.selectVenue();
+  //   }
+  // });
 
   $rootScope.previousState = false;
   $rootScope.currentState = false;

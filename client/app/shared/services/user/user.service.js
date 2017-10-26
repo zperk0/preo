@@ -102,6 +102,20 @@ export default class UserService {
     return deferred.promise;
   }
 
+  goToSignin() {
+    const {
+      StateConfig,
+      UtilsService,
+      $state,
+    } = this;
+
+    if (StateConfig.isChannel) {
+      window.location.href = UtilsService.getHost() + '/#/auth/signin';
+    } else {
+      $state.go("auth.signin");
+    }
+  }
+
   getCurrent () {
 
     return this.user || Preoday.User.getCurrent();

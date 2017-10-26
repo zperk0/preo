@@ -35,7 +35,7 @@ export default function routes($stateProvider) {
     					.then(deferred.resolve, deferred.reject);
     			}, () => {
 	    			$timeout(() => {
-	    				$state.go('auth.signin');
+	    				UserService.goToSignin();
 	    			});
 
     				deferred.reject();
