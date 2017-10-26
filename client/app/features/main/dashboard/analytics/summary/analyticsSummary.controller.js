@@ -70,10 +70,10 @@ export default class analyticsSummaryController {
       bar.startDate = dates.start;
       bar.endDate = dates.end;
       bar.data = {};
-      
+
       if(data.hasOwnProperty(bar.id)){
         let apiData = data[bar.id];
-      
+
         if(apiData.daily){
           bar.data.daily = {
             x: apiData.daily.keys ,
@@ -81,7 +81,7 @@ export default class analyticsSummaryController {
           };
         }
 
-        if(apiData.weekly){         
+        if(apiData.weekly){
           bar.data.weekly = {
             x: this.formatKeysToBarChart(apiData.weekly.keys, 'week') ,
             y: this.hasKnowYourCustomersFeature ? apiData.weekly.values : this.getMockValues(apiData.weekly.keys)
@@ -92,18 +92,18 @@ export default class analyticsSummaryController {
           bar.data.monthly = {
             x: this.formatKeysToBarChart(apiData.monthly.keys, 'month')  ,
             y: this.hasKnowYourCustomersFeature ? apiData.monthly.values : this.getMockValues(apiData.monthly.keys)
-         }; 
+         };
         }
-                
+
       }
-      
+
     });
   }
 
   formatKeysToBarChart(keys, type){
-    
+
     let copyKeys = angular.copy(keys);
-    copyKeys.forEach( function(e, index) {      
+    copyKeys.forEach( function(e, index) {
       if(type === 'month')
       keys[index] = moment(e, 'YYYY-MM-DD').format('MMM YYYY');
     else if(type === 'week'){
@@ -235,7 +235,7 @@ export default class analyticsSummaryController {
       }
 
       if(params.eventIds){
-        this.dataFilters.events = params.eventIds;      
+        this.dataFilters.events = params.eventIds;
       }
     }
   }
@@ -263,7 +263,7 @@ export default class analyticsSummaryController {
     this.setInitialFilterValues();
 
     this.dataLoaded = false;
-    this.showSpinner();
+    // this.showSpinner();
 
     this._init();
   }

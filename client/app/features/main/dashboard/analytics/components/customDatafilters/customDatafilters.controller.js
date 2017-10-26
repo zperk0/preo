@@ -606,31 +606,41 @@ export default class customDatafiltersController {
     this.onVenueChange();
   }
 
-  checkPermissions(){
-    return this.$q((resolve,reject) => {
-      var venueIds = this.StateService.venues.map((x) => { return x.id});
-      var permissions = [this.Permissions.ANALYTICS];
-          this.PermissionService.checkVenuesPermissions( permissions ,venueIds)
-          .then((data) => {
+  fetchVenues() {
+    return this.StateService.fetchVenues('outlets', [this.Permissions.ANALYTICS]);
+  }
 
-            var venues = this.StateService.venues.filter((x) => {
-              if(data.hasOwnProperty(x.id) && data[x.id][this.Permissions.ANALYTICS] === true)
-                return x;
-            });
+  checkPermissions(data) {
+    console.log('CustomDataFiltersController [checkPermissions] - data:', data);
+    // return this.$q((resolve,reject) => {
+      // var venueIds = this.StateService.venues.map((x) => { return x.id});
+      // var permissions = [this.Permissions.ANALYTICS];
+          // this.PermissionService.checkVenuesPermissions( permissions ,venueIds)
+          // .then((data) => {
 
-            resolve(venues);
-          }, (err) => {
-            console.log("Error fetching venue permissions", err);
-            reject();
-          });
-    });
+            // var venues = this.StateService.venues.filter((x) => {
+              // if(data.hasOwnProperty(x.id) && data[x.id][this.Permissions.ANALYTICS] === true)
+                // return x;
+            // });
+
+            // resolve(venues);
+          // }, (err) => {
+          //   console.log("Error fetching venue permissions", err);
+          //   reject();
+          // });
+    // });
+
+    return this.$q.when(data.venues.filter((v) => {
+
+      return v.permissions && v.permissions[this.Permissions.ANALYTICS] === true;
+    }))
   }
 
 // To make Venues and Outlets selectable on the same MD-SELECT, the same array will contain venues + outlets
 // Fields: group -> to keep venues and it owns outlets grouped
 //         type -> to know which object in array is an outlet / venue
 //         selected -> default always come all selected. used to control Parent <-> child relation on VenueChange event
-  getVenues(venues){
+  buildDropdownOptions(venues){
 
     var localVenue = {};
     var localOutlet = {};
@@ -638,20 +648,20 @@ export default class customDatafiltersController {
     var isCurrentVenue = false;
 
     // SUPER ADMIN can see current venue selected too.
-    if(this.UserService.isAdmin()){
+    // if(this.UserService.isAdmin()){
 
-      let isVenuePresent = this.StateService.venues.filter((x) => {
-        if(x.id == this.StateService.venue.id)
-          return x;
-      });
+    //   let isVenuePresent = this.StateService.venues.filter((x) => {
+    //     if(x.id == this.StateService.venue.id)
+    //       return x;
+    //   });
 
-      if(isVenuePresent.length <= 0){
-        venues.push(this.StateService.venue);
-      }
-    }
+    //   if(isVenuePresent.length <= 0){
+    //     venues.push(this.StateService.venue);
+    //   }
+    // }
 
     venues.forEach((venue) => {
-      isCurrentVenue = (this.StateService.venue.id == venue.id) ? true : false;
+      // isCurrentVenue = (this.StateService.venue && this.StateService.venue.id == venue.id) ? true : false;
 
       venuesIds.push(venue.id);
       localVenue = {
@@ -661,7 +671,7 @@ export default class customDatafiltersController {
         hasApplication: false,
         type: 'venue',
         group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-        selected: isCurrentVenue,
+        selected: false,
         display: true,
         uniqueId: venue.name.substring(0,4).toUpperCase()+ venue.id
       };
@@ -1144,8 +1154,9 @@ export default class customDatafiltersController {
 
     this.spinner.show('init-datafilters');
 
-    this.checkPermissions()
-    .then(this.getVenues.bind(this))
+    this.fetchVenues()
+    .then(this.checkPermissions.bind(this))
+    .then(this.buildDropdownOptions.bind(this))
     .then(this.loadReports.bind(this))
     .then(this.loadDateRange.bind(this))
     .then(() => {

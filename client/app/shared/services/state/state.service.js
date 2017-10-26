@@ -309,6 +309,24 @@ export default class StateService {
     }
   }
 
+  fetchVenues(expand, permissions) {
+    const {
+      channel,
+      venue,
+      isChannel,
+      $q,
+      VenueService,
+    } = this;
+
+    if (!isChannel) {
+      return $q.when({
+        venues: [venue]
+      });
+    }
+
+    return VenueService.fetchVenuesByChannel(channel, expand, permissions);
+  }
+
   updateVenue() {
 
     return this.VenueService.updateVenue(this.venue);

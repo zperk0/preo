@@ -647,7 +647,7 @@ export default class ReportsService {
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.LabelService = LabelService;
-    this.venueId = StateService.venue.id;
+    this.venueId = StateService.venue && StateService.venue.id;
     this.hasDobFeature = FeatureService.hasDateOfBirthFeature();
   }
 

@@ -34,6 +34,28 @@ export default class VenueService {
     });
   }
 
+
+  /*
+  * @channel -> Channel object from JSCORE
+  * @expand  -> the venue expand. Eg: outlets,events
+  * @permissions -> the venue and groups permission array. Eg: ['analytics_read']
+  */
+  fetchVenuesByChannel(channel, expand, permissions) {
+
+    const deferred = this.$q.defer();
+
+    channel.getEntities(expand, permissions && permissions.join(','))
+      .then((data) => {
+
+        deferred.resolve(data);
+      }, (err) => {
+
+        deferred.reject(err);
+      });
+
+    return deferred.promise;
+  }
+
   // fetchUserVenues (user) {
 
   //   return this.$q((resolve,reject)=>{
