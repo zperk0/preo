@@ -9,8 +9,9 @@ export default class userSelectListController {
   }
 
   doSearch(){
+
     this.Spinner.show('user-search');
-    this.UserService.searchUsers(this.searchLabel).then((data) => {
+    this.VenueService.searchCustomers(this.searchLabel).then((data) => {
       this.userList = data;
       this.alreadySearch = true;
       this.Spinner.hide('user-search');
@@ -34,24 +35,21 @@ export default class userSelectListController {
     this.alreadySearch = false;
   }
 
-  constructor($scope, $stateParams, $timeout, Spinner, Snack, contextual, UserService, ErrorService) {
+  constructor($scope, $stateParams, $timeout, Spinner, Snack, contextual, VenueService, ErrorService) {
     "ngInject";
-
-    console.log("userSelectListController ", $scope);
 
     this.$scope = $scope;
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
     this.contextual = contextual;
     this.Spinner = Spinner;
-    this.UserService = UserService;
+    this.VenueService = VenueService;
     this.ErrorService = ErrorService;
     this.Snack = Snack;
 
     this.clean();
 
     $scope.$on('$onSideNavClose', () =>{
-      console.log("DRAWER CLOSED");
       this.clean();
     });
   }
