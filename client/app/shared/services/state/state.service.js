@@ -154,6 +154,7 @@ export default class StateService {
     const {
       entityId
     } = this;
+
     $state.go('main.notFound', {
       entityId: entityId
     });
@@ -207,7 +208,6 @@ export default class StateService {
       }, (err) => {
 
         // UtilsService.updateLocale();
-        // TODO: WHAT SHOULD WE DO HERE?
         console.warn('StateService [selectVenue] fetchById error', err);
         this.logout();
         deferred.reject();
@@ -343,6 +343,49 @@ export default class StateService {
     }
 
     return VenueService.fetchVenuesByChannel(channel, expand, permissions);
+  }
+
+  getPriceConfig () {
+
+    const {
+      channel,
+      venue,
+      venues,
+      isChannel,
+      VenueService,
+    } = this;
+
+    var config = {
+      thousand: ',',
+      decimal: '.',
+      format: '%s%v',
+      symbol: ''
+    };
+
+    function _buildConfig(entity) {
+      var countryCode = entity.country || 'GB';
+      config.symbol = entity.ccySymbol || entity.ccy || '';
+
+      if (["FR", "DE", "NO", "SE"].indexOf(countryCode) >= 0) {
+          config.thousand = " ";
+          config.decimal = ",";
+          config.format = "%v%s";
+          if(countryCode == 'NO') {
+            config.format = "%s %v";
+          } else if(countryCode == 'SE') {
+            config.format = "%v %s";
+          }
+      }
+    }
+
+    if (venue) {
+      _buildConfig(venue);
+    } else if (venues && venues.length) {
+      // how should we format the price for channel?
+      _buildConfig(venues[0]);
+    }
+
+    return config;
   }
 
   updateVenue() {
