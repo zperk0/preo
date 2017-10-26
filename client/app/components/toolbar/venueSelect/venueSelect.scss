@@ -2,6 +2,7 @@
 
 $spanColor: #FAFAFA;
 $paddingHorizontal: 26px;
+$searchBoxHeight: 64px;
 
 
 @mixin venueSelectSpan() {
@@ -20,11 +21,11 @@ $paddingHorizontal: 26px;
 
 .searchbox{
   border-bottom: 1px solid #cccccc;
-  height: 64px;
+  min-height: $searchBoxHeight;
+  height: $searchBoxHeight;
   margin-top: -10px;
   md-input-container{
     width: 100%;
-
     padding-left: 30px + $paddingHorizontal;
 
     md-icon {

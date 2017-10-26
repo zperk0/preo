@@ -17,21 +17,21 @@
     </md-button>
     <md-menu-content width="6" class="venue-select-menu-content">
       <md-menu-item ng-if="$venueSelect.shouldShowSearch()" class="searchbox">
-      <form ng-submit="$venueSelect.doSearch()">
-        <md-input-container>
-          <icon>search</icon>
-          <label translate>Search venue name</label>
-          <input flex
-                 name="search"
-                 ng-if="::!$venueSelect.isAdmin()"
-                 ng-keyup="$venueSelect.doSearch()"
-                 ng-model="$venueSelect.searchLabel">
-          <input flex
-                 name="search"
-                 ng-if="::$venueSelect.isAdmin()"
-                 ng-model="$venueSelect.searchLabel">
-        </md-input-container>
-      </form>
+        <form ng-submit="$venueSelect.doSearch()">
+          <md-input-container>
+            <icon>search</icon>
+            <label translate>Search venue name</label>
+            <input flex
+                   name="search"
+                   ng-if="::!$venueSelect.isAdmin()"
+                   ng-keyup="$venueSelect.doSearch()"
+                   ng-model="$venueSelect.searchLabel">
+            <input flex
+                   name="search"
+                   ng-if="::$venueSelect.isAdmin()"
+                   ng-model="$venueSelect.searchLabel">
+          </md-input-container>
+        </form>
       </md-menu-item>
       <md-menu-item ng-repeat="channel in $venueSelect.channels">
         <md-button ng-click="$venueSelect.switchChannel(channel)">
