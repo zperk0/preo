@@ -622,6 +622,7 @@ export default class customDatafiltersController {
       StateService,
     } = this;
 
+
     // SUPER ADMIN can see current venue selected too.
     // if(this.UserService.isAdmin()){
 

@@ -263,7 +263,7 @@ export default class analyticsSummaryController {
     this.setInitialFilterValues();
 
     this.dataLoaded = false;
-    // this.showSpinner();
+    this.showSpinner();
 
     this._init();
   }

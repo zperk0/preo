@@ -34,7 +34,6 @@ export default class VenueService {
     });
   }
 
-
   /*
   * @channel -> Channel object from JSCORE
   * @expand  -> the venue expand. Eg: outlets,events
@@ -42,7 +41,13 @@ export default class VenueService {
   */
   fetchVenuesByChannel(channel, expand, permissions) {
 
-    const deferred = this.$q.defer();
+    const {
+      cachePrefix,
+      UtilsService,
+      $q,
+    } = this;
+
+    const deferred = $q.defer();
 
     channel.getEntities(expand, permissions && permissions.join(','))
       .then((data) => {
@@ -342,6 +347,8 @@ export default class VenueService {
     this.ErrorService = ErrorService;
     this.UtilsService = UtilsService;
     this.Permissions = Permissions;
+
+    this.cachePrefix = 'venues';
 
     this.venuesDeferred = null;
     this.venues = null;

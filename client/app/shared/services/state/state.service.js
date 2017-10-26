@@ -88,6 +88,7 @@ export default class StateService {
     const {
       channels,
       UtilsService,
+      entityId,
       $q,
     } = this;
 
@@ -105,7 +106,10 @@ export default class StateService {
 
     function done() {
       UtilsService.updateLocale();
-      this.navigateToChannel(this.channel.id);
+
+      if (+this.channel.id !== +entityId) {
+        this.navigateToChannel(this.channel.id);
+      }
       deferred.resolve();
     }
 
