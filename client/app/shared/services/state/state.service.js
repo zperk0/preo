@@ -88,6 +88,7 @@ export default class StateService {
     const {
       channels,
       UtilsService,
+      UserService,
       entityId,
       $q,
     } = this;
@@ -119,6 +120,13 @@ export default class StateService {
     }
 
     if (!this.channel) {
+
+      if (entityId && !UserService.isAdmin()) {
+        UserService.signout();
+        return $q.reject();
+      }
+
+
       Preoday.Channel.findById(channelId)
         .then((channel) => {
           this.channel = channel;
@@ -156,6 +164,7 @@ export default class StateService {
     const {
       venues,
       VenueService,
+      UserService,
       UtilsService,
       BroadcastEvents,
       isChannel,
@@ -175,11 +184,16 @@ export default class StateService {
       deferred.resolve();
     }
 
-    // const selected = venues.filter((v) => {
-    //   return +v.id === +venueId;
-    // });
+    const selected = venues.filter((v) => {
+      return +v.id === +venueId;
+    });
 
-    // this.venue = selected.length ? selected[0] : venues[0];
+    const venue = selected.length ? selected[0] : null;
+
+    if (!venue && entityId && !UserService.isAdmin()) {
+      UserService.signout();
+      return $q.reject();
+    }
 
     VenueService.fetchById(venueId)
       .then((venue) => {
