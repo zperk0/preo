@@ -25,9 +25,11 @@ export default function promotionTabs(BroadcastEvents, StateService, EventServic
           );
       }
 
-      EventService.getLastWeekEvents().then((data)=>{
-        scope.events = data.events;
-      })
+      if (scope.venue && scope.venue.isEvent()) {
+        EventService.getLastWeekEvents().then((data)=>{
+          scope.events = data.events;
+        })
+      }
 
      scope.hasAdvancedTabErrors = function(){
         var form = scope.contextualMenuCtrl.contextualForm;
