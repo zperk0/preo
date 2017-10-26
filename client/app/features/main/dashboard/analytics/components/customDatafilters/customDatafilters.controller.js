@@ -610,42 +610,17 @@ export default class customDatafiltersController {
     return this.StateService.fetchVenues('outlets', [this.Permissions.ANALYTICS]);
   }
 
-  checkPermissions(data) {
-    console.log('CustomDataFiltersController [checkPermissions] - data:', data);
-    // return this.$q((resolve,reject) => {
-      // var venueIds = this.StateService.venues.map((x) => { return x.id});
-      // var permissions = [this.Permissions.ANALYTICS];
-          // this.PermissionService.checkVenuesPermissions( permissions ,venueIds)
-          // .then((data) => {
-
-            // var venues = this.StateService.venues.filter((x) => {
-              // if(data.hasOwnProperty(x.id) && data[x.id][this.Permissions.ANALYTICS] === true)
-                // return x;
-            // });
-
-            // resolve(venues);
-          // }, (err) => {
-          //   console.log("Error fetching venue permissions", err);
-          //   reject();
-          // });
-    // });
-
-    return this.$q.when(data.venues.filter((v) => {
-
-      return v.permissions && v.permissions[this.Permissions.ANALYTICS] === true;
-    }))
-  }
-
 // To make Venues and Outlets selectable on the same MD-SELECT, the same array will contain venues + outlets
 // Fields: group -> to keep venues and it owns outlets grouped
 //         type -> to know which object in array is an outlet / venue
 //         selected -> default always come all selected. used to control Parent <-> child relation on VenueChange event
-  buildDropdownOptions(venues){
+  buildDropdownOptions(data){
 
-    var localVenue = {};
-    var localOutlet = {};
-    var venuesIds = [];
-    var isCurrentVenue = false;
+    const venuesIds = [];
+    const venues = data.venues;
+    const {
+      StateService,
+    } = this;
 
     // SUPER ADMIN can see current venue selected too.
     // if(this.UserService.isAdmin()){
@@ -661,17 +636,19 @@ export default class customDatafiltersController {
     // }
 
     venues.forEach((venue) => {
-      // isCurrentVenue = (this.StateService.venue && this.StateService.venue.id == venue.id) ? true : false;
+      const isSelected = (StateService.venue && +StateService.venue.id === +venue.id)
+                         ? true
+                         : StateService.isChannel;
 
       venuesIds.push(venue.id);
-      localVenue = {
+      const localVenue = {
         id: venue.id,
         name: venue.name,
         isEventVenue: venue.eventFlag == 1 ? true : false,
         hasApplication: false,
         type: 'venue',
         group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-        selected: false,
+        selected: isSelected,
         display: true,
         uniqueId: venue.name.substring(0,4).toUpperCase()+ venue.id
       };
@@ -684,12 +661,12 @@ export default class customDatafiltersController {
       }
 
       venue.outlets.forEach((outlet) => {
-        localOutlet = {
+        const localOutlet = {
           id: outlet.id,
           name: outlet.name,
           type: 'outlet',
           group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-          selected: isCurrentVenue,
+          selected: isSelected,
           display: true,
           uniqueId: outlet.id + venue.name.substring(0,4).toUpperCase()+ venue.id
         };
@@ -1155,7 +1132,6 @@ export default class customDatafiltersController {
     this.spinner.show('init-datafilters');
 
     this.fetchVenues()
-    .then(this.checkPermissions.bind(this))
     .then(this.buildDropdownOptions.bind(this))
     .then(this.loadReports.bind(this))
     .then(this.loadDateRange.bind(this))
