@@ -302,6 +302,24 @@ export default class VenueService {
     return this.PermissionService.loadPermissions(this.currentVenue);
   }
 
+  searchCustomers(stringSearch) {
+    const deferred = this.$q.defer();
+
+    if (!this.currentVenue) {
+      console.log("Need to set current venue");
+      deferred.reject();
+    } else {
+
+      this.currentVenue.searchCustomers(stringSearch).then((data) => {
+        deferred.resolve(data);
+      }, (error) => {
+        deferred.reject(error);
+      });
+    }
+
+    return deferred.promise;
+  }
+
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, PermissionService, gettextCatalog, UserService, ErrorService, UtilsService, Permissions) {
     "ngInject";
     this.$q = $q;
