@@ -21,7 +21,7 @@ export default class StateService {
 
     this.dashboardDeferred = this.$q.defer();
 
-    Preoday.Dashboard.fetch()
+    Preoday.Dashboard.fetch('currency')
       .then((data) => {
 
         this.venues = data.venues;
@@ -127,7 +127,7 @@ export default class StateService {
       }
 
 
-      Preoday.Channel.findById(channelId)
+      Preoday.Channel.findById(channelId, 'currency')
         .then((channel) => {
           this.channel = channel;
           _loadPermissions.call(this);
@@ -380,9 +380,10 @@ export default class StateService {
 
     if (venue) {
       _buildConfig(venue);
-    } else if (venues && venues.length) {
-      // how should we format the price for channel?
-      _buildConfig(venues[0]);
+    } else if (channel) {
+      _buildConfig(channel);
+    } else {
+      console.warn("StateService [getPriceConfig] - why we don't have a venue or channel set?");
     }
 
     return config;
