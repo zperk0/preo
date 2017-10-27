@@ -6,8 +6,8 @@ export default class billingController {
 
   init(){
     this.Spinner.show("billing")
-    console.log("init billing controller", this.VenueService.account)
-    this.account = this.VenueService.account;
+    console.log("init billing controller", this.StateService.account)
+    this.account = this.StateService.account;
     var promises = []
     promises.push(this.$q((resolve, reject)=>{
       this.account.getCard().then((card)=>{
@@ -31,14 +31,14 @@ export default class billingController {
   }
 
   /* @ngInject */
-  constructor($q, Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService) {
+  constructor($q, Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, StateService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
     this.ErrorService = ErrorService;
     this.MapsService = MapsService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.LabelService = LabelService;
     this.isError = false;
     this.$timeout = $timeout;
