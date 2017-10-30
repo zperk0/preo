@@ -90,10 +90,11 @@ export default class venueSelectController {
 
   doAdminSearch(){
     this.Spinner.show('venue-search');
-    Preoday.Venue.search(this.searchLabel)
+    Preoday.Dashboard.search(this.searchLabel)
     .then((result)=>{
-      if (result && result.length){
-        this.venues = result
+      if (result) {
+        this.venues = result.venues;
+        this.channels = result.channels;
       }
     },()=>{
       // pass
