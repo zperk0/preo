@@ -89,7 +89,20 @@ export default class venueSelectController {
   }
 
   doAdminSearch(){
+
+    if (!this.searchLabel) {
+      const {
+        allVenues,
+        allChannels
+      } = this;
+
+      this.venues = allVenues;
+      this.channels = allChannels;
+      return;
+    }
+
     this.Spinner.show('venue-search');
+
     Preoday.Dashboard.search(this.searchLabel)
     .then((result)=>{
       if (result) {

@@ -105,6 +105,15 @@ $searchBoxHeight: 64px;
       }
     }
   }
+
+  .no-results-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0 $paddingHorizontal;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 4px;
+  }
 }
 
 @media screen and (min-width: 600px) {

@@ -46,6 +46,11 @@
           <span ng-if="!$venueSelect.isAdmin()">{{venue.name}} </span>
         </md-button>
       </md-menu-item>
+      <md-menu-item ng-if="$venueSelect.searchLabel && !$venueSelect.channels.length && !$venueSelect.venues.length">
+        <div class="no-results-wrapper">
+          <span>{{ 'No results found for ' | translate }}</span> <i>{{ $venueSelect.searchLabel }}</i>
+        </div>
+      </md-menu-item>
     </md-menu-content>
   </md-menu>
 </div>
