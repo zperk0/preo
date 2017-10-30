@@ -332,7 +332,7 @@ export default class ReportsService {
       isChannel
     } = this.StateService;
 
-    return isChannel ? 'channels' : 'venue';
+    return isChannel ? 'channels' : 'venues';
   }
 
   getChartExportCsvUrl(){
