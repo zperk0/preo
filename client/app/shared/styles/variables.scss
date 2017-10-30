@@ -1,9 +1,11 @@
 @import 'mixins.scss';
 
 /**************** TOOLBAR ****************/
+$sideNavWidthLarge: 320px;
 $sideNavWidth: 248px;
 $heightToolbar:64px;
 $widthVenueSelect: $sideNavWidth;
+$widthVenueSelectLarge: $sideNavWidthLarge;
 $widthUserSelect: 286px;
 $borderToolbar: 1px solid #fafafa;
 

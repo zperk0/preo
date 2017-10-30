@@ -43,7 +43,7 @@ $searchBoxHeight: 64px;
   }
 }
 .venue-select{
-  width:$widthVenueSelect;
+  width: $widthVenueSelect;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
 
@@ -104,5 +104,16 @@ $searchBoxHeight: 64px;
         margin-right: 12px;
       }
     }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .venue-select {
+    width: $widthVenueSelectLarge;
+  }
+}
+@media (max-width: 1280px) {
+  .venue-select {
+    width: $widthVenueSelect;
   }
 }
