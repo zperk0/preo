@@ -31,6 +31,7 @@ export default class promotionsListController {
       "firstOrder": 0,
       "visible": 0,
       "active": 1,
+      "global": 1,
       $selected:true
     });
 

@@ -1,6 +1,6 @@
 <div class='card-item-list'>
   {{cardItemListCtrl.collection.length | debug}}
-  <md-input-container class='search search-item' ng-if="cardItemListCtrl.searchLabel">
+  <md-input-container class='search search-list-container' ng-if="cardItemListCtrl.searchLabel">
     <icon>search</icon>
     <label translate>Search {{cardItemListCtrl.searchLabel}}</label>
     <input flex name="search" ng-model="cardItemListCtrl.searchFilter.name">

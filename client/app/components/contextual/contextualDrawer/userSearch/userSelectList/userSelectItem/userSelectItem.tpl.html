@@ -1,0 +1,12 @@
+<div class="user-item" ng-class="{'item-selected': userSelectItemCtrl.selected}" layout="row" layout-align="center starts">
+
+  <!-- <div> -->
+  <md-checkbox class="user-checkbox" ng-checked="userSelectItemCtrl.selected"></md-checkbox>
+  <!-- </div> -->
+  <div flex layout="column" layout-align="center starts" class="text-container">
+  	<div class="user-item-textsize">{{userSelectItemCtrl.user.name}}</div>
+  	<div class="user-email-phone user-item-textsize">{{userSelectItemCtrl.user.email}}</div>
+  	<div class="user-email-phone user-item-textsize">{{userSelectItemCtrl.user.phone}}</div>
+  </div>
+
+</div>
