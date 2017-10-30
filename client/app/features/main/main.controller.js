@@ -10,12 +10,6 @@ export default class mainController {
   hideSpinner(){
     this.Spinner.hide("main");
   }
-  setVenue($event, venueId){
-    console.log("setting venue",venueId)
-    this.VenueService.fetchById(venueId)
-      .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"VENUE_NOT_FOUND"))
-      .catch(this.handleError.bind(this));
-  }
 
   handleError(err){
     this.ErrorService.showError(err);
@@ -76,20 +70,6 @@ export default class mainController {
     this.Spinner = Spinner;
     this.$timeout = $timeout;
     this.BroadcastEvents = BroadcastEvents;
-    // this.showSpinner();
-
-    // $rootScope.$on(BroadcastEvents._PREO_DO_VENUE_SELECT,this.setVenue.bind(this));
-    // if (UserService.isAuth()){
-
-      // if (Number($stateParams.entityId) > 0) {
-      //   VenueService.fetchById($stateParams.entityId).then((venue)=>{
-      //     this.setVenue(null,venue.id)
-      //   }, this.handleError.bind(this,"VENUE_NOT_FOUND"));
-      // } else {
-      //   VenueService.selectVenue();
-      //   this.handleFinishLoading();
-      // }
-    // }
 
     this.handleFinishLoading();
 
