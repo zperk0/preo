@@ -20,6 +20,13 @@ export default function routes($stateProvider) {
 
     		// this is needed because the $stateParams is empty in a service inside of a resolve function
     		StateService.entityId = +$stateParams.entityId;
+
+        if (StateService.isChannel && StateService.entityId) {
+          Preoday.Api.headers({
+            'preo-channelid': StateService.entityId
+          });
+        }
+
     		if (UserService.isAuth()) {
           if (StateService.isLoaded()){
             return $q.when();
