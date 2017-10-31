@@ -160,8 +160,11 @@ msgstr "Etter arrangement start tid"
 msgid "All"
 msgstr "Alle"
 
+msgid "All customers"
+msgstr "Alle kunder"
+
 msgid "All items sold"
-msgstr "Alle solgt"
+msgstr "Alle solgte varer"
 
 msgid "All menus"
 msgstr "Alle menyer"
@@ -171,6 +174,9 @@ msgstr "Alle bestillinger"
 
 msgid "All paying customers"
 msgstr "Alle betalende kunder"
+
+msgid "All promotions"
+msgstr "Alle kampanjer"
 
 msgid "All your service methods are currently disabled."
 msgstr "Alle er nå deaktivert."
@@ -255,6 +261,12 @@ msgstr "Legg til rabatt på tjenester"
 
 msgid "Apply discount to specific event:"
 msgstr "Legg til rabatt på spesifikke arrangement:"
+
+msgid "Apply promotion"
+msgstr "Legg til kampanje"
+
+msgid "Apply to a customer account"
+msgstr "Bruk på en kundekonto"
 
 msgid "Are you sure you want to delete this collection slot?"
 msgstr "Vil du slette denne perioden for henting?"
@@ -364,6 +376,9 @@ msgstr "Travleste event"
 msgid "Busiest time of day"
 msgstr "Travleste tid på dagen"
 
+msgid "Button colour"
+msgstr "Farge på knapp"
+
 msgid "Button label"
 msgstr "Knappetikett"
 
@@ -376,6 +391,12 @@ msgstr "Knapper og seksjons navn"
 msgid "By continuing, you accept the"
 msgstr "Ved å fortsette godtar du"
 
+msgid "CARD"
+msgstr "KORT"
+
+msgid "CASH"
+msgstr "KONTANT"
+
 msgid "CVC"
 msgstr "CVC"
 
@@ -386,7 +407,7 @@ msgid "Cannot delete schedule"
 msgstr "Kan ikke slette tidsplan"
 
 msgid "Can’t delete this tax code while there are menu items using it."
-msgstr "Kan ikke slette momsgruppe, det er produkter som bruker den."
+msgstr "Kan ikke slette MVA gruppe, det er produkter som bruker den."
 
 msgid "Card"
 msgstr "Kort"
@@ -395,7 +416,7 @@ msgid "Card number"
 msgstr "Kortnummer"
 
 msgid "Cash"
-msgstr "Betal ved henting/levering"
+msgstr "Kontant"
 
 msgid "Celery"
 msgstr "Selleri"
@@ -414,6 +435,12 @@ msgstr "Gå til kassen"
 
 msgid "Choose a colour"
 msgstr "Velg en farge"
+
+msgid "Choose button colour"
+msgstr "Farge på knapp"
+
+msgid "Choose button text colour"
+msgstr "Tekstfarge på knapp"
 
 msgid "Choose collection slots:"
 msgstr "Velg henteperioder:"
@@ -536,6 +563,12 @@ msgstr "Kunder som kun har en bestilling"
 msgid "Customers who signed up but haven't ordered"
 msgstr "Kunder som har registrert seg, men ikke bestilt"
 
+msgid "Customers with no email address"
+msgstr "Kunder uten e-postadresse"
+
+msgid "D.O.B"
+msgstr "Fødselsdato"
+
 msgid "Daily"
 msgstr "Daglig"
 
@@ -575,6 +608,9 @@ msgstr "Standard leveringstid <small>(minutter)</small>"
 msgid "Delete"
 msgstr "Slett"
 
+msgid "Delete account"
+msgstr "Slett konto"
+
 msgid "Delete collection slot?"
 msgstr "Slette tidspunkt henting?"
 
@@ -604,6 +640,9 @@ msgstr "Slett meny?"
 
 msgid "Delete modifier?"
 msgstr "Slett variasjon?"
+
+msgid "Delete my account"
+msgstr "Slett min konto"
 
 msgid "Delete outlet location?"
 msgstr "Slett leveringsområdet?"
@@ -645,6 +684,12 @@ msgid ""
 msgstr ""
 "Dersom du sletter dette stikkordet vil det fjernes fra alle varer og "
 "aktiviteter for stikkord. Er du sikker?"
+
+msgid ""
+"Deleting your account means you won't be able to access the dashboard any "
+"longer. This cannot be undone. Are you sure?"
+msgstr ""
+"Denne brukeren vil heretter ikke få tilgang til dashbordet. Er du sikker?"
 
 msgid "Delivery"
 msgstr "Levering"
@@ -704,7 +749,7 @@ msgid "Discount for delivery orders (%)"
 msgstr "Rabatt ved ordre for levering (%)"
 
 msgid "Display Name"
-msgstr "Navn som vises (f.eks mva)"
+msgstr "Navn som vises"
 
 msgid "Display name"
 msgstr "Navn som vises (f.eks mva)"
@@ -744,6 +789,12 @@ msgstr "Rediger"
 
 msgid "Edit Mode"
 msgstr "Redigerings modus"
+
+msgid "Edit background"
+msgstr "Endre bakgrunn"
+
+msgid "Edit button"
+msgstr "Endre knapp"
 
 msgid "Edit footer"
 msgstr "Rediger footer"
@@ -793,6 +844,9 @@ msgstr "Feil ved opprettelse av stikkord"
 msgid "Error creating tag action"
 msgstr "Feil ved opprettelse av aktivitet for stikkord"
 
+msgid "Error deleting image."
+msgstr "Feil ved sletting av bilde."
+
 msgid "Error deleting outlet"
 msgstr "Feil ved sletting av utleveringssted"
 
@@ -825,6 +879,9 @@ msgstr "Feil ved lagring av tidsplan"
 
 msgid "Error saving tax Group"
 msgstr "Feil ved lagring av momsgruppe"
+
+msgid "Error updating Mobile App styling."
+msgstr "Feil ved oppdatering av Mobil App design"
 
 msgid "Error updating collection slot"
 msgstr "Feil ved oppdatering av tidspunkt for henting"
@@ -878,7 +935,10 @@ msgid "Export as CSV"
 msgstr "Eksporter som CSV"
 
 msgid "Export as PDF"
-msgstr "Eksporter som PDF"
+msgstr "Eksporter til PDF"
+
+msgid "External ID"
+msgstr "Ekstern ID"
 
 msgid "External events"
 msgstr "Eksterne arrangement"
@@ -945,6 +1005,9 @@ msgstr "Fra {{inputDateFrom}}"
 
 msgid "Full client"
 msgstr "Premium-bruker"
+
+msgid "GDPR information"
+msgstr "GDPR informasjon"
 
 msgid "GO TO DASHBOARD"
 msgstr "TIL KONTROLLPANEL"
@@ -1022,6 +1085,9 @@ msgstr ""
 msgid "Image"
 msgstr "Bilde"
 
+msgid "Image Deleted successfully."
+msgstr "Bilde slettet."
+
 msgid "Image not found"
 msgstr "Bilde ikke funnet"
 
@@ -1049,8 +1115,14 @@ msgstr "Ved kundehenvendelser kontakt:"
 msgid "Individially numbered locations"
 msgstr "Individuelt nummererte steder"
 
+msgid "Individual active promotions"
+msgstr "Aktive individuelle kampanjer"
+
+msgid "Individual historic promotions"
+msgstr "Historiske individuelle kampanjer"
+
 msgid "Individual item data (number sold)"
-msgstr "Enheter solgt"
+msgstr "Individuell data (antall solgte enheter)"
 
 msgid "Individual item data (revenue)"
 msgstr "Omsetning per enhet"
@@ -1095,6 +1167,12 @@ msgstr "Det er ikke mulig å velge kun ett område for ditt utleveringssted."
 msgid "Item"
 msgstr "Vare"
 
+msgid "Item cap per event"
+msgstr "Antall per arrangement"
+
+msgid "Item lead time"
+msgstr "Produksjonstid"
+
 msgid "Item name"
 msgstr "Varenavn"
 
@@ -1124,6 +1202,9 @@ msgstr "Språk"
 
 msgid "Language saved"
 msgstr "Språk lagret"
+
+msgid "Last order"
+msgstr "Siste bestilling"
 
 msgid "Lead Time"
 msgstr "Standard forberedelsestid"
@@ -1166,6 +1247,9 @@ msgstr "Påbudt"
 
 msgid "Marketing"
 msgstr "Markedsføring"
+
+msgid "Marketing newsletters"
+msgstr "Nyhetsbrev"
 
 msgid "Max file size"
 msgstr "Maks filstørrelse"
@@ -1257,6 +1341,12 @@ msgstr "Minimum valg må være lik eller lavere enn maks valg"
 msgid "Mins"
 msgstr "Min"
 
+msgid "Mobile App"
+msgstr "Mobil App"
+
+msgid "Mobile App styling saved with success."
+msgstr "Mobil App design lagret."
+
 msgid "Modifiers"
 msgstr "Variasjoner"
 
@@ -1274,6 +1364,9 @@ msgstr "Bestillinger per måned"
 
 msgid "Monthly Revenue"
 msgstr "Omsetning per måned"
+
+msgid "More"
+msgstr "Mer"
 
 msgid "Move"
 msgstr "Flytt"
@@ -1335,8 +1428,14 @@ msgstr "Ingen nye arrangement å importere."
 msgid "No results found..."
 msgstr "Ingen resultater funnet..."
 
+msgid "No results were found for this search"
+msgstr "Ingen resultater ble funnet for dette søket"
+
 msgid "No results..."
 msgstr "Ingen resultater..."
+
+msgid "No users selected"
+msgstr "Ingen kunder valgt"
 
 msgid "Norwegian"
 msgstr "Norsk"
@@ -1406,6 +1505,12 @@ msgstr "Valgfritt"
 
 msgid "Order #123456"
 msgstr "Ordre #123456"
+
+msgid "Order Type"
+msgstr "Ordretype"
+
+msgid "Order now"
+msgstr "Bestill nå"
 
 msgid "Order rejection"
 msgstr "Avvist bestilling"
@@ -1512,6 +1617,9 @@ msgstr "Hentes ved:"
 msgid "Please confirm your details and set a password."
 msgstr "Vennligst bekreft din informasjon og velg et passord."
 
+msgid "Please contact me about the following:"
+msgstr "Vennligst kontakt meg om følgende:"
+
 msgid ""
 "Please note, push notifications will only be received by users who have your "
 "mobile app installed."
@@ -1542,6 +1650,9 @@ msgstr "Pris (m/MVA)"
 
 msgid "Privacy Policy"
 msgstr "Personvern"
+
+msgid "Product updates"
+msgstr "Produktnyheter"
 
 msgid "Promotion code"
 msgstr "Kampanjekode"
@@ -1604,7 +1715,7 @@ msgid "Revenue last 30 days"
 msgstr "Omsetning siste 30 dager"
 
 msgid "Revenue previous 30 days"
-msgstr "Omsetning siste 30 dager"
+msgstr "Omsetning forrige 30 dager"
 
 msgid "Role"
 msgstr "Rolle"
@@ -1632,6 +1743,12 @@ msgstr "Tidsplan ikke slettet"
 
 msgid "Schedule updated"
 msgstr "Tidsplan oppdatert"
+
+msgid "Search"
+msgstr "Søk"
+
+msgid "Search for a customer account"
+msgstr "Søk etter kundekonto"
 
 msgid "Search venue name"
 msgstr "Søk etter navn"
@@ -1686,6 +1803,9 @@ msgstr "Tjenester lagret"
 
 msgid "Sesame Seeds"
 msgstr "Sesamfrø"
+
+msgid "Set a maximum number of times this item can be ordered for each event."
+msgstr "Maks antall salg per arrangement"
 
 msgid "Set area by:"
 msgstr "Sett området ved:"
@@ -1793,8 +1913,14 @@ msgstr "Soya"
 msgid "Spanish"
 msgstr "Spansk"
 
+msgid "Specific customers only"
+msgstr "Bare bestemte kunder"
+
 msgid "Spend"
 msgstr "Forbruk"
+
+msgid "Splash screen background"
+msgstr "Bakgrunn for velkomstbilde"
 
 msgid "Split slot into segments"
 msgstr "Splitt periode til segmenter"
@@ -1840,6 +1966,9 @@ msgstr "Svovel"
 
 msgid "Summary"
 msgstr "Oversikt"
+
+msgid "Support updates"
+msgstr "Support oppdateringer"
 
 msgid "Swedish"
 msgstr "Svensk"
@@ -1952,6 +2081,10 @@ msgstr ""
 "Det finnes allerede et stikkord med dette navnet. Er du sikker på at du "
 "opprette dette nye?"
 
+msgid "There was a problem deleting your account. Please contact support."
+msgstr ""
+"Det oppstod et problem ved sletting av din konto. Vennligst kontakt support."
+
 msgid ""
 "There was a problem loading this page. <span class=\"fake-link\" ng-click="
 "\"vm.reload()\" translate=\"\">Retry</span>"
@@ -2025,6 +2158,13 @@ msgstr "Dette vil slette innstillinger for alle undergrupper, er du sikker?"
 msgid "This will delete the modifier from all menus."
 msgstr "Dette vil slette variasjoner fra alle menyer."
 
+msgid ""
+"This will override your standard lead time for all orders that contain this "
+"item."
+msgstr ""
+"Dette vil overstyre normal produksjonstid for alle bestillinger som "
+"inneholder dette produktet."
+
 msgid "Time"
 msgstr "Tid"
 
@@ -2097,6 +2237,12 @@ msgstr "Brukeren skriver inn en kampanjekode"
 msgid "User permissions:"
 msgstr "Brukerrettigheter:"
 
+msgid "Users were applied to this promotion."
+msgstr "Kunder ble lagt til på denne kampanjen."
+
+msgid "VAT Number"
+msgstr "Organisasjonsnummer"
+
 msgid "Value must be at least 1."
 msgstr "Verdien må være minst 1."
 
@@ -2168,6 +2314,9 @@ msgstr "Gavekort type"
 
 msgid "Voucher value:"
 msgstr "Gavekort verdi:"
+
+msgid "WALLET"
+msgstr "WALLET"
 
 msgid "Warning"
 msgstr "Advarsel"
@@ -2297,6 +2446,9 @@ msgstr "Du må velge minst en periode for henting"
 msgid "You must select at least one date."
 msgstr "Du må velge minst en dato."
 
+msgid "You must select one or more users to apply the promotion."
+msgstr "Du må velge en eller flere kunder for å søke kampanjen."
+
 msgid "You need to select at least one voucher type."
 msgstr "Du må velge minst en gavekort type."
 
@@ -2345,6 +2497,9 @@ msgstr "Områdenavn"
 msgid "and"
 msgstr "og"
 
+msgid "by name or email address"
+msgstr "etter navn eller e-postadresse"
+
 msgid "click here"
 msgstr "klikk her"
 
@@ -2366,6 +2521,9 @@ msgstr "km"
 msgid "mins"
 msgstr "min"
 
+msgid "n/a"
+msgstr "Ikke tilgjengelig"
+
 msgid "offline"
 msgstr "offline"
 
@@ -2386,3 +2544,6 @@ msgstr "{{getBillingDate()}}"
 
 msgid "{{notificationsFormCtrl.title}}"
 msgstr "{{notificationsFormCtrl.title}}"
+
+msgid "{{userSelectListCtrl.selectedList.length}} customers selected"
+msgstr "{{userSelectListCtrl.selectedList.length}} kunder valgt"

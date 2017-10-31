@@ -1589,6 +1589,9 @@ msgstr "Tidsskema ikke slettet"
 msgid "Schedule updated"
 msgstr "Tidsskema opdateret"
 
+msgid "Search"
+msgstr "Søg"
+
 msgid "Search venue name"
 msgstr "Søg venue-navn"
 

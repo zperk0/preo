@@ -41,6 +41,7 @@ export default class promotionController {
       },reject)
     })
   }
+
   savePromotion(){
     return this.$q((resolve,reject)=>{
       this.Spinner.show("saving-promotion");
@@ -64,6 +65,14 @@ export default class promotionController {
         this.onPause();
       }
     }
+  }
+
+  onAddUser() {
+    this.$state.go("main.dashboard.promotions.users", {promotionId: this.promotion.id});
+  }
+
+  isAddUser(){
+    return this.promotion.global === 0;
   }
 
   contextualMenuSuccess(entity){
@@ -105,8 +114,6 @@ export default class promotionController {
       })
     }
   }
-
-
 
   onEdit ($event) {
     this.originalPromotion  = angular.copy(this.promotion);
@@ -163,15 +170,17 @@ export default class promotionController {
   }
 
   /* @ngInject */
-  constructor($q,$stateParams, Spinner, Snack, $timeout, DialogService, LabelService, contextual, contextualMenu, APIErrorCode) {
+  constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode) {
     "ngInject";
     this.$q = $q;
+    this.$state = $state;
     this.title = "I am a promotion component"
     this.Spinner = Spinner;
     this.$timeout = $timeout;
     this.Snack = Snack;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
+    this.ErrorService = ErrorService;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'promotion';

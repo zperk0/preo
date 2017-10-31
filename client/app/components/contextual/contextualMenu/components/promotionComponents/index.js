@@ -1,6 +1,7 @@
 // Import Style
 import './promotionDiscountValue/promotionDiscountValue.scss';
 import './promotionApply/promotionApply.scss';
+import './promotionCustomer/promotionCustomer.scss';
 import './promotionDisplay/promotionDisplay.scss';
 import './promotionDates/promotionDates.scss';
 import './promotionEvents/promotionEvents.scss';
@@ -11,6 +12,7 @@ import './promotionUsage/promotionUsage.scss';
 // Import internal modules
 import promotionDiscountValue from './promotionDiscountValue/promotionDiscountValue.directive';
 import promotionApply from './promotionApply/promotionApply.directive';
+import promotionCustomer from './promotionCustomer/promotionCustomer.directive';
 import promotionDisplay from './promotionDisplay/promotionDisplay.directive';
 import promotionDates from './promotionDates/promotionDates.directive';
 import promotionEvents from './promotionEvents/promotionEvents.directive';
@@ -25,6 +27,7 @@ export default angular.module("promotionComponents" , [])
 
   .directive("promotionDiscountValue", promotionDiscountValue)
   .directive("promotionApply", promotionApply)
+  .directive("promotionCustomer", promotionCustomer)
   .directive("promotionDisplay", promotionDisplay)
   .directive("promotionDates", promotionDates)
   .directive("promotionEvents", promotionEvents)

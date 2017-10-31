@@ -4,24 +4,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:707
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:727
+msgid "#"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:685
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:701
+msgid "% decrease"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:677
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:693
+msgid "% increase"
+msgstr ""
+
 #: ./client/app/features/main/dashboard/manageUsers/usersInviteList/userInvite/userInvite.tpl.html:8
 msgid "(pending)"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:35
+msgid "** Showing the next 100 events available. Events not displayed can be searched using field above."
 msgstr ""
 
 #: ./client/app/features/main/billing/components/billingInfo/billingInfo.tpl.html:15
 msgid "+ VAT"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:743
+msgid "1 year"
+msgstr ""
+
 #: ./client/app/features/notFound/notFound.tpl.html:2
 msgid "404 - Page Not Found"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueLocation/venueLocation.tpl.html:3
-msgid "<icon>info</icon> Drag and drop the pin to set the exact location of your venue"
+#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:4
+msgid "<icon>info</icon> Click on the map to drop a pin, or drag and drop the pin, to set the exact location of your venue"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:5
 msgid "Add Item"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:25
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:23
+msgid "Add Modifier"
 msgstr ""
 
 #: ./client/app/components/cardItem/cardItemNew/cardItemNew.tpl.html:3
@@ -32,7 +60,11 @@ msgstr ""
 msgid "Add Section"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:61
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:346
+msgid "Add custom fields at checkout"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:65
 msgid "Add delivery Zones"
 msgstr ""
 
@@ -41,11 +73,15 @@ msgid "Add delivery zone"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:8
-#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItemList.tpl.html:10
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemTypeNew.tpl.html:5
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemTypeNew.tpl.html:8
 msgid "Add item"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardList.tpl.html:5
+#: ./client/app/features/main/dashboard/events/components/eventList/event/eventNew.tpl.html:5
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardNew.tpl.html:5
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardNew.tpl.html:8
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardList.tpl.html:4
 msgid "Add menu"
 msgstr ""
 
@@ -57,12 +93,21 @@ msgstr ""
 msgid "Add new collection slot"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:109
+msgid "Add new custom field"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/eventNew.tpl.html:8
 #: ./client/app/features/main/dashboard/events/components/eventList/eventList.tpl.html:6
 msgid "Add new event"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationGroupList/outletLocationGroupList.tpl.html:5
 msgid "Add new group"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemTypeNew.directive.js:14
+msgid "Add new item"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/components/openingHoursList/openingHoursList.tpl.html:11
@@ -74,19 +119,31 @@ msgstr ""
 msgid "Add new outlet"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.tpl.html:9
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:110
 msgid "Add new outlet location"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventScheduleList.tpl.html:7
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventScheduleList.tpl.html:8
 msgid "Add new schedule"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/customTags/components/customTagList/customTagList.tpl.html:5
+msgid "Add new tag"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/customTags/components/tagActionList/tagActionList.tpl.html:4
+msgid "Add new tag action"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroupList.tpl.html:5
 msgid "Add new tax group"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:26
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemTypeNew.directive.js:20
+msgid "Add new voucher"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:27
 msgid "Add option"
 msgstr ""
 
@@ -98,7 +155,7 @@ msgstr ""
 msgid "Add promotion"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:254
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:280
 msgid "Add schedule"
 msgstr ""
 
@@ -106,27 +163,39 @@ msgstr ""
 msgid "Add section"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:56
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:59
 msgid "Add size"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:236
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:337
 msgid "Add sub group"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:27
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:31
+msgid "Add to basket"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.controller.js:138
+msgid "Add to event"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationGroupList/outletLocationGroup/outletLocationGroup.controller.js:117
+msgid "Additional info"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:19
 msgid "Address line 1"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:35
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:27
 msgid "Address line 2"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:42
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:34
 msgid "Address line 3"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:69
+#: ./client/app/features/error/error.service.js:72
 msgid "Address not found"
 msgstr ""
 
@@ -134,9 +203,11 @@ msgstr ""
 msgid "Administrator"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:63
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:65
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionTabs/promotionTabs.tpl.html:32
 #: ./client/app/components/contextual/contextualMenu/templates/collectionSlot.tpl.html:23
-#: ./client/app/components/contextual/contextualMenu/templates/promotion.tpl.html:18
+#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:47
+#: ./client/app/components/contextual/contextualMenu/templates/tagAction.tpl.html:8
 msgid "Advanced"
 msgstr ""
 
@@ -145,16 +216,58 @@ msgstr ""
 msgid "After event start time"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionServices/promotionServices.tpl.html:6
+msgid "All"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:116
+msgid "All Venues"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:852
+msgid "All items sold"
+msgstr ""
+
 #: ./client/app/shared/services/item/item.service.js:25
 msgid "All menus"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:901
+msgid "All orders"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:912
+msgid "All paying customers"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/venueOpeningHours.tpl.html:40
 msgid "All your service methods are currently disabled."
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:53
+msgid "Allow custom messages:"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/customers/analyticsCustomers.controller.js:142
+#: ./client/app/features/main/dashboard/analytics/orders/analyticsOrders.controller.js:137
+msgid "An error occurred sending your message. Please try again later."
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:38
+#: ./client/app/features/main/dashboard/events/components/eventList/eventList.controller.js:38
+msgid "An error occurred while importing events. Please try again."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.controller.js:124
+msgid "An error occurred while trying to fetch Ticket Master events. Please try again."
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.controller.js:71
+#: ./client/app/features/auth/signup/signup.controller.js:88
+msgid "An error ocurred in your signup, try again later"
+msgstr ""
+
 #: ./client/app/features/main/account/components/userEmail/userEmail.controller.js:62
-#: ./client/app/features/main/account/components/userEmail/userEmail.controller.test.js:221
 msgid "An error ocurred to change your email, try again later"
 msgstr ""
 
@@ -162,12 +275,23 @@ msgstr ""
 msgid "An error ocurred to change your language. Try again later"
 msgstr ""
 
-#: ./client/app/features/main/account/components/userPassword/userPassword.controller.js:80
-#: ./client/app/features/main/account/components/userPassword/userPassword.controller.test.js:241
+#: ./client/app/features/main/account/components/userPassword/userPassword.controller.js:81
 msgid "An error ocurred to change your password, try again later"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:60
+#: ./client/app/shared/services/label/label.service.js:176
+msgid "An error ocurred to delete the tag. Try again later."
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:138
+msgid "An error ocurred to fetch the fees. Try again later."
+msgstr ""
+
+#: ./client/app/features/main/dashboard/updateExternalMenus/venueList/venueItem/venueItem.controller.js:24
+msgid "An error ocurred updating the menu, please contact support"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:61
 msgid "An event must have at least one schedule."
 msgstr ""
 
@@ -179,7 +303,11 @@ msgstr ""
 msgid "An unexpected error occurred"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:54
+#: ./client/app/features/error/error.service.js:99
+msgid "An unexpected error occurred loading tags, please try again."
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:55
 msgid "An unexpected error occurred loading this page, please try again"
 msgstr ""
 
@@ -192,7 +320,12 @@ msgid "An unexpected error occurred while loading your venues"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:22
+#: ./client/app/components/navbar/navbar.controller.js:55
 msgid "Analytics"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:59
+msgid "Any voucher"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionApply/promotionApply.tpl.html:3
@@ -207,56 +340,84 @@ msgstr ""
 msgid "Apply discount to service methods"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:57
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionEvents/promotionEvents.tpl.html:2
+msgid "Apply discount to specific event:"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:73
 msgid "Are you sure you want to delete this collection slot?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:60
+#: ./client/app/shared/services/label/label.service.js:57
+msgid "Are you sure you want to delete this custom field?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:76
 msgid "Are you sure you want to delete this event?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:38
+#: ./client/app/shared/services/label/label.service.js:48
 msgid "Are you sure you want to delete this image?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:44
+#: ./client/app/shared/services/label/label.service.js:54
 msgid "Are you sure you want to delete this outlet location?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:50
+#: ./client/app/shared/services/label/label.service.js:66
 msgid "Are you sure you want to delete this outlet?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:63
+#: ./client/app/shared/services/label/label.service.js:82
 msgid "Are you sure you want to delete this schedule?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:22
+#: ./client/app/shared/services/label/label.service.js:29
 msgid "Are you sure you want to delete this section?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:66
+#: ./client/app/shared/services/label/label.service.js:153
+msgid "Are you sure you want to delete this tag action?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:150
+msgid "Are you sure you want to delete this tag?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:85
 msgid "Are you sure you want to delete this tax group?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:84
+#: ./client/app/shared/services/label/label.service.js:103
 msgid "Are you sure you want to permanently delete this delivery zone?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:25
+#: ./client/app/shared/services/label/label.service.js:32
 msgid "Are you sure you want to permanently delete this image?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:28
+#: ./client/app/shared/services/label/label.service.js:38
 msgid "Are you sure you want to permanently delete this item?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:106
+#: ./client/app/shared/services/label/label.service.js:131
 msgid "Are you sure you want to permanently delete this promotion?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:29
+#: ./client/app/shared/services/label/label.service.js:39
 msgid "Are you sure you want to remove this item from the section?"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:766
+msgid "Area"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:41
+msgid "Assign code type"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:30
+msgid "Assign code:"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:44
@@ -271,12 +432,32 @@ msgstr ""
 msgid "Autosave error. Invalid fields"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:938
+msgid "Average order value"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:939
+msgid "Average orders per customer"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:940
+msgid "Average revenue per customer"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.controller.js:137
+msgid "Back"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionTabs/promotionTabs.tpl.html:10
 #: ./client/app/components/contextual/contextualMenu/templates/collectionSlot.tpl.html:11
 msgid "Basic"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:5
-#: ./client/app/components/contextual/contextualMenu/templates/promotion.tpl.html:3
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:6
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/contextualDrawer.venueDetails.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/templates/event.tpl.html:3
+#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:10
+#: ./client/app/components/contextual/contextualMenu/templates/tagAction.tpl.html:3
 msgid "Basics"
 msgstr ""
 
@@ -285,7 +466,7 @@ msgstr ""
 msgid "Before event start time"
 msgstr ""
 
-#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:14
+#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:15
 msgid "Billing"
 msgstr ""
 
@@ -301,6 +482,26 @@ msgstr ""
 msgid "Billing info"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:876
+msgid "Busiest days"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:871
+msgid "Busiest events"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:906
+msgid "Busiest time of day"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleMobile.controller.js:280
+msgid "Button colour"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionAdvanced/tagActionAdvanced.tpl.html:9
+msgid "Button label"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:194
 msgid "Buttons Background"
 msgstr ""
@@ -309,29 +510,49 @@ msgstr ""
 msgid "Buttons and section names"
 msgstr ""
 
+#: ./client/app/features/auth/signup/signup.tpl.html:64
+msgid "By continuing, you accept the"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:754
+msgid "By event"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:27
+msgid "CARD"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:28
+msgid "CASH"
+msgstr ""
+
 #: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:23
 msgid "CVC"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:92
-#: ./client/app/components/contextual/contextualDrawer/eventOutletLocations/contextualDrawer.eventOutletLocations.tpl.html:12
-#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.tpl.html:13
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.tpl.html:8
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:8
-#: ./client/app/components/contextual/contextualMenu/contextualMenu.tpl.html:9
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:95
+#: ./client/app/components/contextual/contextualDrawer/eventOutletLocations/contextualDrawer.eventOutletLocations.tpl.html:14
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.controller.js:141
+#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.tpl.html:15
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.tpl.html:10
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:10
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleMobile.tpl.html:9
+#: ./client/app/components/contextual/contextualMenu/contextualMenu.tpl.html:10
 #: ./client/app/components/dialog/dialog.delete.tpl.html:9
+#: ./client/app/components/dialog/dialog.text.tpl.html:18
 #: ./client/app/components/dialog/dialog.tpl.html:9
 #: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:12
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:38
-#: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:41
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:61
+#: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:42
 msgid "Cancel"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:60
+#: ./client/app/features/error/error.service.js:61
 msgid "Cannot delete schedule"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:67
+#: ./client/app/features/error/error.service.js:70
 msgid "Can’t delete this tax code while there are menu items using it."
 msgstr ""
 
@@ -348,12 +569,32 @@ msgstr ""
 msgid "Cash"
 msgstr ""
 
+#: ./client/app/shared/translatedDynamic.html:2
+msgid "Celery"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:26
+msgid "Cereals"
+msgstr ""
+
+#: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:52
+msgid "Change card"
+msgstr ""
+
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:37
 msgid "Change email address"
 msgstr ""
 
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:6
+msgid "Change password"
+msgstr ""
+
 #: ./client/app/components/autoSave/autoSave.tpl.html:4
 msgid "Changes saved"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:32
+msgid "Checkout"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/BACKGROUND.tpl.html:6
@@ -365,11 +606,24 @@ msgstr ""
 msgid "Choose a colour"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:82
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/mobileButtons.tpl.html:2
+msgid "Choose button colour"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/mobileButtons.tpl.html:12
+msgid "Choose button text colour"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:52
+#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:21
 msgid "Choose collection slots:"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:58
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:30
+msgid "Choose events to import:"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:61
 msgid "Clear"
 msgstr ""
 
@@ -378,7 +632,11 @@ msgstr ""
 msgid "Click here"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:56
+#: ./client/app/features/error/error.tpl.html:4
+msgid "Click here to return to your dashboard"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:58
 msgid "Click on the map to begin drawing your custom area. Connect the first and last points to finish."
 msgstr ""
 
@@ -386,7 +644,13 @@ msgstr ""
 msgid "Closed"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionServices/promotionServices.tpl.html:5
+#: ./client/app/components/contextual/contextualMenu/templates/menu.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/templates/menu.tpl.html:14
+msgid "Collapse menu sections"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionServices/promotionServices.tpl.html:7
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:710
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:6
 msgid "Collection"
 msgstr ""
@@ -399,11 +663,16 @@ msgstr ""
 msgid "Collection Slot updated"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:45
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:46
+#: ./client/app/components/navbar/navbar.controller.js:107
+msgid "Collection Slots"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:46
 msgid "Collection time"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:44
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:45
 msgid "Collection time:"
 msgstr ""
 
@@ -416,7 +685,7 @@ msgstr ""
 msgid "Confirm new password"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:32
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:33
 msgid "Confirmation code:"
 msgstr ""
 
@@ -428,41 +697,147 @@ msgstr ""
 msgid "Connected"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:86
+#: ./client/app/shared/services/label/label.service.js:105
 msgid "Connection confirmed"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:72
+#: ./client/app/features/error/error.service.js:75
 msgid "Connection failed"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:18
+#: ./client/app/shared/services/label/label.service.js:22
 msgid "Could not save emails style"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:14
+#: ./client/app/shared/services/label/label.service.js:18
 msgid "Could not save weborders style"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:14
+msgid "Create"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/eventList.controller.js:9
+msgid "Create a slot"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/eventNew.directive.js:15
+#: ./client/app/features/main/dashboard/events/components/eventList/eventList.controller.js:54
+msgid "Create new event"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:12
 msgid "Create new item"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:43
+#: ./client/app/components/contextual/contextualMenu/components/tagSelect/tagSelect.tpl.html:19
+msgid "Create tag"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:4
+msgid "Crustaceans"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:45
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:745
 msgid "Custom"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:71
+msgid "Custom field created"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:79
+msgid "Custom field deleted"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:102
+msgid "Custom field updated"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:712
+msgid "Customer"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:58
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:740
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:748
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:758
+msgid "Customers"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/payments/payments.tpl.html:15
 msgid "Customers can choose to pay <br> cash on receipt of their order"
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:78
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:889
+msgid "Customers requesting delivery to a new area"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:883
+msgid "Customers who have only ordered once"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:882
+msgid "Customers who signed up but haven't ordered"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:795
+msgid "D.O.B"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:143
+msgid "Daily"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:950
+msgid "Daily Customers"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:947
+msgid "Daily Orders"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:944
+msgid "Daily Revenue"
+msgstr ""
+
+#: ./client/app/shared/services/utils/utils.service.js:81
 msgid "Dannish"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:31
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:25
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:5
+msgid "Data filters"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:711
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:738
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:755
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:26
 msgid "Date"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:774
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:786
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:808
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:819
+msgid "Date joined"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:20
+msgid "Date range"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:765
+msgid "Date requested"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:737
+msgid "Day"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:69
+msgid "Default delivery time <small>(minutes)</small>"
 msgstr ""
 
 #: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:45
@@ -470,65 +845,101 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:56
+#: ./client/app/shared/services/label/label.service.js:111
+msgid "Delete account"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:72
 msgid "Delete collection slot?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:83
+#: ./client/app/shared/services/label/label.service.js:56
+msgid "Delete custom field?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:102
 msgid "Delete delivery zone?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:59
+#: ./client/app/shared/services/label/label.service.js:75
 msgid "Delete event?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:46
-msgid "Delete group?"
-msgstr ""
-
-#: ./client/app/shared/services/label/label.service.js:24
-#: ./client/app/shared/services/label/label.service.js:37
-msgid "Delete image?"
-msgstr ""
-
-#: ./client/app/shared/services/label/label.service.js:27
-msgid "Delete item?"
-msgstr ""
-
-#: ./client/app/shared/services/label/label.service.js:34
-msgid "Delete menu?"
-msgstr ""
-
-#: ./client/app/shared/services/label/label.service.js:31
-msgid "Delete modifier?"
-msgstr ""
-
-#: ./client/app/shared/services/label/label.service.js:43
-msgid "Delete outlet location?"
-msgstr ""
-
-#: ./client/app/shared/services/label/label.service.js:49
-msgid "Delete outlet?"
-msgstr ""
-
-#: ./client/app/shared/services/label/label.service.js:105
-msgid "Delete promotion?"
+#: ./client/app/shared/services/label/label.service.js:78
+msgid "Delete external event?"
 msgstr ""
 
 #: ./client/app/shared/services/label/label.service.js:62
-msgid "Delete schedule?"
+msgid "Delete group?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:21
-msgid "Delete section?"
+#: ./client/app/shared/services/label/label.service.js:31
+#: ./client/app/shared/services/label/label.service.js:47
+msgid "Delete image?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:37
+msgid "Delete item?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:44
+msgid "Delete menu?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:41
+msgid "Delete modifier?"
+msgstr ""
+
+#: ./client/app/features/main/account/account.tpl.html:8
+msgid "Delete my account"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:53
+msgid "Delete outlet location?"
 msgstr ""
 
 #: ./client/app/shared/services/label/label.service.js:65
+msgid "Delete outlet?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:130
+msgid "Delete promotion?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:81
+msgid "Delete schedule?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:28
+msgid "Delete section?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:152
+msgid "Delete tag action?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:149
+msgid "Delete tag?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:84
 msgid "Delete tax group?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:89
+#: ./client/app/shared/services/label/label.service.js:108
 msgid "Delete user?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:60
+msgid "Deleting this outlet will also delete the custom fields at checkout. Are you sure?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:156
+msgid "Deleting this tag will remove it from all items and tag actions. Are you sure?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:112
+msgid "Deleting your account means you won't be able to access the dashboard any longer. This cannot be undone. Are you sure?"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionServices/promotionServices.tpl.html:8
@@ -536,16 +947,28 @@ msgstr ""
 msgid "Delivery"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:17
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:4
+msgid "Delivery Areas"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:18
 msgid "Delivery Fee"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:28
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:30
 msgid "Delivery Time"
 msgstr ""
 
 #: ./client/app/shared/services/deliveryZones/deliveryZones.service.js:142
 msgid "Delivery Zone"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:67
+msgid "Delivery Zones"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:43
+msgid "Delivery charge"
 msgstr ""
 
 #: ./client/app/shared/services/deliveryZones/deliveryZones.service.js:151
@@ -556,11 +979,11 @@ msgstr ""
 msgid "Delivery rate"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:81
+#: ./client/app/shared/services/label/label.service.js:100
 msgid "Delivery zone not saved"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:80
+#: ./client/app/shared/services/label/label.service.js:99
 msgid "Delivery zone saved"
 msgstr ""
 
@@ -568,11 +991,15 @@ msgstr ""
 msgid "Demo mode"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:12
 #: ./client/app/components/contextual/contextualMenu/components/eventBasic/eventBasic.tpl.html:11
-#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/components/menuItemBasic/menuItemBasic.tpl.html:10
 #: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:12
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:20
 msgid "Description"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:65
+msgid "Details"
 msgstr ""
 
 #: ./client/app/components/imageUploader/imageUploader.tpl.html:16
@@ -583,9 +1010,17 @@ msgstr ""
 msgid "Directions"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:717
+msgid "Discount"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDiscountValue/promotionDiscountValue.tpl.html:12
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDiscountValue/promotionDiscountValue.tpl.html:3
 msgid "Discount Value"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:81
+msgid "Discount for delivery orders (%)"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/taxGroup.tpl.html:13
@@ -593,6 +1028,7 @@ msgid "Display Name"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:11
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:15
 msgid "Display name"
 msgstr ""
 
@@ -604,17 +1040,19 @@ msgstr ""
 msgid "Display text"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:42
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:44
 msgid "Distance"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:95
-#: ./client/app/components/contextual/contextualDrawer/eventOutletLocations/contextualDrawer.eventOutletLocations.tpl.html:15
-#: ./client/app/components/contextual/contextualDrawer/items/contextualDrawer.items.tpl.html:24
-#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:22
-#: ./client/app/components/contextual/contextualDrawer/outlets/contextualDrawer.outlets.tpl.html:17
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.tpl.html:11
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:11
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:98
+#: ./client/app/components/contextual/contextualDrawer/eventOutletLocations/contextualDrawer.eventOutletLocations.tpl.html:17
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:67
+#: ./client/app/components/contextual/contextualDrawer/items/contextualDrawer.items.tpl.html:47
+#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:45
+#: ./client/app/components/contextual/contextualDrawer/outlets/contextualDrawer.outlets.tpl.html:19
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.tpl.html:13
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:13
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleMobile.tpl.html:12
 msgid "Done"
 msgstr ""
 
@@ -626,15 +1064,26 @@ msgstr ""
 msgid "Duplicate"
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:81
+#: ./client/app/features/error/error.service.js:83
+#: ./client/app/features/error/error.service.js:84
+#: ./client/app/features/error/error.service.js:85
+msgid "Duplicate modifier"
+msgstr ""
+
+#: ./client/app/shared/services/utils/utils.service.js:84
 msgid "Dutch"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:18
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:32
+msgid "E-voucher"
 msgstr ""
 
 #: ./client/app/features/error/error.service.js:29
 msgid "ERROR"
 msgstr ""
 
-#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:57
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:63
 msgid "Edit"
 msgstr ""
 
@@ -642,7 +1091,15 @@ msgstr ""
 msgid "Edit Mode"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:128
+#: ./client/app/features/main/dashboard/styling/mobileApp/mobileApp.tpl.html:16
+msgid "Edit background"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/styling/mobileApp/mobileApp.tpl.html:20
+msgid "Edit button"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:129
 msgid "Edit footer"
 msgstr ""
 
@@ -650,26 +1107,41 @@ msgstr ""
 msgid "Edit header"
 msgstr ""
 
+#: ./client/app/shared/translatedDynamic.html:5
+msgid "Eggs"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/templates/userInvite.tpl.html:12
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:767
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:777
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:787
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:799
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:810
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:820
 msgid "Email"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:75
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:67
 msgid "Email Address"
 msgstr ""
 
+#: ./client/app/features/auth/signin/signin.tpl.html:32
+#: ./client/app/features/auth/signin/signin.tpl.html:9
+#: ./client/app/features/auth/signup/signup.tpl.html:15
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:5
 msgid "Email address"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:63
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:35
+#: ./client/app/components/navbar/navbar.controller.js:123
+msgid "Emails"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:38
 msgid "End date"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:73
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:45
-msgid "End date need to be higher than start date."
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:48
+msgid "End date need to be after start date."
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:28
@@ -681,7 +1153,11 @@ msgstr ""
 msgid "End number need to be bigger than start number"
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:84
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:56
+msgid "End time"
+msgstr ""
+
+#: ./client/app/shared/services/utils/utils.service.js:87
 msgid "English"
 msgstr ""
 
@@ -689,11 +1165,23 @@ msgstr ""
 msgid "Error adding outlet to outlet location"
 msgstr ""
 
+#: ./client/app/shared/services/label/label.service.js:162
+msgid "Error creating tag"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:170
+msgid "Error creating tag action"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:35
+msgid "Error deleting image."
+msgstr ""
+
 #: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.controller.js:86
 msgid "Error deleting outlet"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:51
+#: ./client/app/features/error/error.service.js:52
 msgid "Error loading tax settings"
 msgstr ""
 
@@ -709,7 +1197,11 @@ msgstr ""
 msgid "Error saving collection slot"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:88
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:79
+msgid "Error saving custom field"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:106
 msgid "Error saving event"
 msgstr ""
 
@@ -718,12 +1210,11 @@ msgstr ""
 msgid "Error saving outlet"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:67
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:88
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:81
 msgid "Error saving outlet location"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:72
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:76
 msgid "Error saving schedule"
 msgstr ""
 
@@ -732,48 +1223,108 @@ msgstr ""
 msgid "Error saving tax Group"
 msgstr ""
 
+#: ./client/app/shared/services/label/label.service.js:26
+msgid "Error updating Mobile App styling."
+msgstr ""
+
 #: ./client/app/features/main/dashboard/events/components/collectionSlotsList/collectionSlotsItem/collectionSlotsItem.controller.js:78
 msgid "Error updating collection slot"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:106
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:111
+msgid "Error updating custom field"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:124
 msgid "Error updating event"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:96
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:113
+msgid "Error updating outlet location"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:99
 msgid "Error updating schedule"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:81
+#: ./client/app/shared/services/label/label.service.js:165
+msgid "Error updating tag"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:173
+msgid "Error updating tag action"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:128
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:28
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:708
+msgid "Event"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:99
 msgid "Event created"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/externalEventList/externalEventList.controller.js:18
+msgid "Event deleted successfully."
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/components/eventBasic/eventBasic.tpl.html:3
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionEvents/promotionEvents.tpl.html:4
 msgid "Event name"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:102
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:120
 msgid "Event updated"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:24
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:17
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:32
+#: ./client/app/components/navbar/navbar.controller.js:105
 msgid "Events"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.controller.js:66
+#: ./client/app/features/main/dashboard/events/components/eventList/eventList.controller.js:28
+msgid "Events imported successfully."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:10
+msgid "Events imported:"
 msgstr ""
 
 #: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:29
 msgid "Expiry:"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:133
+#: ./client/app/shared/services/label/label.service.js:141
+msgid "Export as CSV"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:142
+msgid "Export as PDF"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:20
+msgid "External ID"
+msgstr ""
+
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:51
+msgid "External events"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:176
 msgid "Failed duplicating outlet location"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:192
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:293
 msgid "Failed to move outlet location"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:164
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:223
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:242
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:247
 msgid "Failed to remove outlet"
 msgstr ""
 
@@ -781,11 +1332,19 @@ msgstr ""
 msgid "Failed to update the group"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:718
+msgid "Fees"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/customField.tpl.html:3
+msgid "Field name"
+msgstr ""
+
 #: ./client/app/components/imageUploader/imageUploader.tpl.html:18
 msgid "File type"
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:90
+#: ./client/app/shared/services/utils/utils.service.js:93
 msgid "Finnish"
 msgstr ""
 
@@ -793,7 +1352,15 @@ msgstr ""
 msgid "First purchase only"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.controller.js:193
+#: ./client/app/shared/translatedDynamic.html:6
+msgid "Fish"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardNew.directive.js:14
+msgid "Food and drink menu"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.controller.js:192
 msgid "Footer"
 msgstr ""
 
@@ -801,29 +1368,74 @@ msgstr ""
 msgid "Footer text"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:79
+#: ./client/app/features/auth/signin/signin.tpl.html:30
+msgid "Forgot Password"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:56
+msgid "Free delivery for orders above"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:81
 msgid "Free delivery order value"
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:87
+#: ./client/app/shared/services/utils/utils.service.js:90
 msgid "French"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:3
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:36
+msgid "Frequency is required."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:37
 msgid "Frequency:"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:149
+#: ./client/app/features/main/dashboard/analytics/components/customDatePicker/customDatePicker.tpl.html:4
+msgid "From {{inputDateFrom}}"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:96
+msgid "Full client"
+msgstr ""
+
+#: ./client/app/features/auth/signup/signup.tpl.html:52
+#: ./client/app/features/auth/signup/signup.tpl.html:56
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:37
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:42
+msgid "GDPR information"
+msgstr ""
+
+#: ./client/app/features/auth/invite/invite.controller.js:49
+msgid "GO TO DASHBOARD"
+msgstr ""
+
+#: ./client/app/features/auth/invite/invite.controller.js:49
+msgid "GO TO LOGIN"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.controller.js:136
+#: ./client/app/features/auth/signup/signup.controller.js:55
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:152
 msgid "GOT IT"
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:93
+#: ./client/app/shared/services/utils/utils.service.js:96
 msgid "German"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:20
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:35
 msgid "Gift Vouchers"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:3
+msgid "Gluten"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:16
+msgid "Gluten Free"
 msgstr ""
 
 #: ./client/app/features/notFound/notFound.tpl.html:4
@@ -834,12 +1446,13 @@ msgstr ""
 msgid "Go to stripe"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:144
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:151
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:162
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:169
+#: ./client/app/features/main/dashboard/manageUsers/usersList/user/user.controller.js:46
+#: ./client/app/features/main/dashboard/menus/components/menuSectionItemList/menuSectionItemList.controller.js:65
 #: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroup/taxGroup.controller.js:71
 #: ./client/app/features/main/dashboard/venueSettings/venueDeliveryZones/venueDeliveryZones.controller.js:16
 #: ./client/app/features/main/dashboard/venueSettings/venueDeliveryZones/venueDeliveryZones.controller.js:23
-#: ./client/app/features/main/dashboard/venueSettings/venueLocation/venueLocation.controller.js:53
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/components/openingHoursList/openingHour/openingHour.controller.js:49
 #: ./client/app/shared/services/label/label.service.js:10
 msgid "Got it"
@@ -850,12 +1463,16 @@ msgstr ""
 msgid "Group Bookings"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/templates/outletLocationGroup.tpl.html:3
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationGroupList/outletLocationGroup/outletLocationGroup.controller.js:118
 msgid "Group label"
 msgstr ""
 
+#: ./client/app/shared/translatedDynamic.html:21
+msgid "Halal"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:176
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.controller.js:188
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.controller.js:187
 msgid "Header"
 msgstr ""
 
@@ -863,34 +1480,80 @@ msgstr ""
 msgid "Hide delivery zone"
 msgstr ""
 
-#: ./client/app/components/cardItem/cardItemActions/cardItemActions.controller.js:8
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.controller.js:18
 msgid "Hide from menu"
 msgstr ""
 
-#: ./client/app/shared/services/style/style.service.js:67
+#: ./client/app/components/navbar/navbar.controller.js:54
+msgid "Home"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:20
+msgid "Hot"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:962
+msgid "How customers signed up"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:25
+msgid "I Forgot My Password"
+msgstr ""
+
+#: ./client/app/shared/services/style/style.service.js:122
 msgid "If there are any problems, please contact {{venue}} on {{contact}}"
 msgstr ""
 
-#: ./client/app/shared/services/style/style.service.js:65
+#: ./client/app/shared/services/style/style.service.js:120
 msgid "If there are any problems, please contact {{venue}}'s staff"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:57
+#: ./client/app/features/error/error.service.js:58
 msgid "If you delete this slot, it will be removed from all your events. <br /> Are you sure?"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/BACKGROUND.tpl.html:3
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/HEADER.tpl.html:4
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/LOGO.tpl.html:3
+#: ./client/app/components/contextual/contextualMenu/templates/event.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:22
 msgid "Image"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:34
+msgid "Image Deleted successfully."
 msgstr ""
 
 #: ./client/app/components/imageUploader/imageUploader.tpl.html:8
 msgid "Image not found"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.controller.js:142
+msgid "Import"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/eventList.controller.js:58
+msgid "Import Ticket Master event"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/eventNew.directive.js:19
+msgid "Import event(s)"
+msgstr ""
+
 #: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:13
 msgid "Import existing item"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:12
+msgid "Import new event"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:7
+msgid "Imported events"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:18
+msgid "In case of customer queries contact"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:12
@@ -898,52 +1561,65 @@ msgstr ""
 msgid "Individially numbered locations"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:73
-#: ./client/app/features/error/error.service.js:78
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:863
+msgid "Individual item data (number sold)"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:864
+msgid "Individual item data (revenue)"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:76
+#: ./client/app/features/error/error.service.js:81
 msgid "Invalid configuration"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:40
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:58
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:74
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:15
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:46
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:17
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:49
 msgid "Invalid date."
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:71
 #: ./client/app/components/contextual/contextualMenu/templates/userInvite.tpl.html:16
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:79
 msgid "Invalid email"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:26
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:30
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:60
+#: ./client/app/features/auth/signin/signin.tpl.html:37
+msgid "Invalid email address."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:32
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:63
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/components/openingHoursList/openingHour/openingHour.tpl.html:18
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/components/openingHoursList/openingHour/openingHour.tpl.html:32
 msgid "Invalid format."
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:23
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:72
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:84
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:12
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:48
-#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:19
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:24
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:74
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:86
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:9
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:15
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:51
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:20
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDiscountValue/promotionDiscountValue.tpl.html:7
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:36
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:49
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:62
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:39
 msgid "Invalid price."
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:12
+#: ./client/app/shared/services/label/label.service.js:16
 msgid "Invalid username and/or password"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:99
+#: ./client/app/shared/services/label/label.service.js:121
 msgid "Invitation not sent"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:101
+#: ./client/app/shared/services/label/label.service.js:123
 msgid "Invitation sent"
 msgstr ""
 
@@ -951,21 +1627,59 @@ msgstr ""
 msgid "Invite new user"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:63
+#: ./client/app/features/error/error.service.js:90
+msgid "It is not possible to delete your own user."
+msgstr ""
+
 #: ./client/app/features/error/error.service.js:64
+#: ./client/app/features/error/error.service.js:65
 msgid "It is not possible to select a single location as your outlet configuration."
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:59
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:60
 msgid "Item"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:6
+#: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:26
+msgid "Item cap per event"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:4
+msgid "Item lead time"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemBasic/menuItemBasic.tpl.html:3
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:70
 msgid "Item name"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:94
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:714
+msgid "Items"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:856
+msgid "Items decreasing in revenue"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:854
+msgid "Items descreasing in popularity"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:853
+msgid "Items increasing in popularity"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:855
+msgid "Items increasing in revenue"
 msgstr ""
 
 #: ./client/app/shared/services/item/item.service.js:25
 msgid "Just this menu"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:37
+msgid "Labels"
 msgstr ""
 
 #: ./client/app/features/main/account/components/userSettings/userSettings.tpl.html:11
@@ -976,6 +1690,14 @@ msgstr ""
 msgid "Language saved"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:725
+msgid "Last 30 days"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:741
+msgid "Last 7 days"
+msgstr ""
+
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:17
 msgid "Lead Time"
 msgstr ""
@@ -984,21 +1706,26 @@ msgstr ""
 msgid "Lead time"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/components/tagActionAdvanced/tagActionAdvanced.tpl.html:3
+#: ./client/app/components/contextual/contextualMenu/components/tagActionAdvanced/tagActionAdvanced.tpl.html:4
+msgid "Link to external URL"
+msgstr ""
+
 #: ./client/app/components/toolbar/venueModeSelect/venueModeSelect.tpl.html:14
 msgid "Live"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationTree/outletLocationTree.directive.js:30
-#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.controller.js:58
+#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.controller.js:59
 msgid "Location label"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:3
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:37
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:38
 msgid "Location name"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:70
+#: ./client/app/features/error/error.service.js:73
 msgid "Location not found"
 msgstr ""
 
@@ -1006,11 +1733,16 @@ msgstr ""
 msgid "Logo"
 msgstr ""
 
+#: ./client/app/shared/translatedDynamic.html:7
+msgid "Lupin"
+msgstr ""
+
 #: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:32
 msgid "MM"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:23
+#: ./client/app/components/navbar/navbar.controller.js:117
 msgid "Manage Users"
 msgstr ""
 
@@ -1022,15 +1754,41 @@ msgstr ""
 msgid "Mandatory"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:779
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:789
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:801
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:812
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:822
+msgid "Marketing"
+msgstr ""
+
+#: ./client/app/features/auth/signup/signup.tpl.html:31
+#: ./client/app/features/auth/signup/signup.tpl.html:35
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:13
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:18
+msgid "Marketing newsletters"
+msgstr ""
+
 #: ./client/app/components/imageUploader/imageUploader.tpl.html:17
 msgid "Max file size"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:10
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:11
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:15
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:44
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:52
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:61
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:70
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/components/eventBasic/eventBasic.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/components/tagActionAdvanced/tagActionAdvanced.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/templates/customField.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/templates/customTag.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/templates/menu.tpl.html:9
 #: ./client/app/components/contextual/contextualMenu/templates/menuSection.tpl.html:7
-#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:9
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:10
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:20
 #: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocationGroup.tpl.html:8
@@ -1043,36 +1801,50 @@ msgstr ""
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:26
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:40
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:47
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:16
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:23
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:52
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:60
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:69
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:78
 msgid "Max length is 100."
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:67
+msgid "Max length is 1000 chars."
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/components/eventBasic/eventBasic.tpl.html:14
+#: ./client/app/components/contextual/contextualMenu/templates/customField.tpl.html:16
 #: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:16
 #: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:24
 msgid "Max length is 255."
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:22
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:30
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:37
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:16
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:15
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:23
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:7
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:33
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:30
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:38
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:45
 msgid "Max length is 256."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionAdvanced/tagActionAdvanced.tpl.html:21
+msgid "Max length is 300."
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionApply/promotionApply.tpl.html:11
 msgid "Max length is 50."
 msgstr ""
 
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:11
+msgid "Max length is 500."
+msgstr ""
+
 #: ./client/app/features/main/dashboard/notifications/notificationsForm/notification.tpl.html:8
 msgid "Max length is 512."
+msgstr ""
+
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:87
+msgid "Max value is 100%."
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:23
@@ -1084,31 +1856,38 @@ msgstr ""
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotAdvanced/collectionSlotAdvanced.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:26
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:43
+#: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:29
+#: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:7
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:75
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:25
 msgid "Max value is 2147483646."
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:24
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:73
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:85
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:13
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:49
-#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:20
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:25
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:75
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:87
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:10
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:16
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:52
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:21
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDiscountValue/promotionDiscountValue.tpl.html:8
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:37
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:50
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:63
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:40
 msgid "Max value is {{ '99999999.99' | currency:true }}."
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:12
-#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:22
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:23
 msgid "Max value is {{ modifierSelectionCtrl.maxIntegerValue }}."
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:18
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:19
 msgid "Maximum Selection"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:23
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:24
 msgid "Maximum selection needs to be equal or bigger than minimum selection"
 msgstr ""
 
@@ -1118,6 +1897,10 @@ msgstr ""
 #: ./client/app/components/contextual/contextualMenu/templates/taxGroup.tpl.html:39
 #: ./client/app/components/contextual/contextualMenu/templates/taxGroup.tpl.html:46
 msgid "Maximum value is 100%"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:23
+msgid "Medium"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:28
@@ -1130,6 +1913,7 @@ msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:16
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:31
+#: ./client/app/components/navbar/navbar.controller.js:92
 msgid "Menus"
 msgstr ""
 
@@ -1137,38 +1921,89 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:19
+msgid "Message body"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:11
+msgid "Message title"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:19
+msgid "Mild"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:8
+msgid "Milk"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:8
 msgid "Minimum Selection"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:67
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:69
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/components/deliverySettingsFields/deliverySettingsFields.tpl.html:30
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:32
 msgid "Minimum order value"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:14
 msgid "Minimum selection needs to be equal or smaller than maximum selection"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:33
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:35
+#: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:10
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:22
 msgid "Mins"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:4
-msgid "Modifier name"
+#: ./client/app/components/navbar/navbar.controller.js:121
+msgid "Mobile App"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:25
+msgid "Mobile App styling saved with success."
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:95
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:667
+msgid "Modifiers"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:9
+msgid "Molluscs"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:145
+msgid "Monthly"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:950
+msgid "Monthly Customers"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:947
+msgid "Monthly Orders"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:944
+msgid "Monthly Revenue"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:57
+msgid "More"
 msgstr ""
 
 #: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:9
-#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.tpl.html:16
+#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.tpl.html:18
 msgid "Move"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:4
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:7
 msgid "Multiple Sizes"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:40
+#: ./client/app/shared/services/label/label.service.js:50
 msgid "Multiple instances found"
 msgstr ""
 
@@ -1176,21 +2011,55 @@ msgstr ""
 msgid "Multiple use"
 msgstr ""
 
-#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:9
+#: ./client/app/shared/translatedDynamic.html:10
+msgid "Mustard"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:106
+msgid "My Events"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:87
+msgid "My Outlets"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:100
+msgid "My Tags"
+msgstr ""
+
+#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:10
 msgid "My account"
 msgstr ""
 
+#: ./client/app/components/navbar/navbar.controller.js:93
 #: ./client/app/features/main/dashboard/menus/menu/menu.tpl.html:3
 msgid "My menus"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:33
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:36
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:5
 #: ./client/app/components/contextual/contextualMenu/templates/userInvite.tpl.html:3
+#: ./client/app/features/auth/signup/signup.tpl.html:8
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:666
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:674
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:682
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:690
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:698
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:754
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:772
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:784
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:794
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:806
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:817
 msgid "Name"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:172
 msgid "Navigation"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:895
+msgid "New customers"
 msgstr ""
 
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:12
@@ -1201,20 +2070,53 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:960
+msgid "New vs Returning customers"
+msgstr ""
+
 #: ./client/app/features/main/billing/components/billingInfo/billingInfo.tpl.html:10
 msgid "Next billing date:"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:267
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:309
+msgid "No"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:42
+msgid "No new events to import."
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:37
+msgid "No results found..."
 msgstr ""
 
 #: ./client/app/components/cardItemList/cardItemList.tpl.html:12
 msgid "No results..."
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:96
+#: ./client/app/shared/services/utils/utils.service.js:99
 msgid "Norwegian"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:12
+msgid "Not available"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/payments/payments.tpl.html:30
 msgid "Not connected"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:715
+msgid "Notes"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:114
+msgid "Notifications"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:11
+msgid "Nuts"
 msgstr ""
 
 #: ./client/app/components/toolbar/venueModeSelect/venueModeSelect.tpl.html:26
@@ -1225,8 +2127,29 @@ msgstr ""
 msgid "Old password"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.controller.js:42
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:41
+msgid "On every trigger"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:39
+msgid "Once only"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:40
+msgid "Once per order"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.controller.js:45
 msgid "One off"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:61
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:62
+msgid "Only display customers who have opted in to marketing"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:55
+msgid "Only e-voucher"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/components/openingHoursList/openingHour/openingHour.tpl.html:11
@@ -1249,6 +2172,10 @@ msgstr ""
 msgid "Opening hours"
 msgstr ""
 
+#: ./client/app/components/navbar/navbar.controller.js:70
+msgid "Operational hours"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:4
 msgid "Option"
 msgstr ""
@@ -1257,8 +2184,16 @@ msgstr ""
 msgid "Optional"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:24
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:25
 msgid "Order #123456"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:721
+msgid "Order Type"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/styling/mobileApp/mobileApp.tpl.html:19
+msgid "Order now"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/notifications/notifications.tpl.html:9
@@ -1275,7 +2210,30 @@ msgstr ""
 msgid "Order status"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.controller.js:51
+#: ./client/app/components/navbar/navbar.controller.js:136
+#: ./client/app/components/navbar/navbar.controller.js:59
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:739
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:747
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:757
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:775
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:797
+msgid "Orders"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:958
+msgid "Orders by channel"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:709
+msgid "Outlet"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:88
+msgid "Outlet Locations"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.controller.js:52
+#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.controller.js:61
 msgid "Outlet configuration"
 msgstr ""
 
@@ -1287,24 +2245,24 @@ msgstr ""
 msgid "Outlet deleted"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:64
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:73
 msgid "Outlet location created"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:76
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:81
 msgid "Outlet location deleted"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:128
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:171
 msgid "Outlet location duplicated"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:188
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:289
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:15
 msgid "Outlet location moved"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:84
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:104
 msgid "Outlet location updated"
 msgstr ""
 
@@ -1324,11 +2282,16 @@ msgstr ""
 msgid "Outlet updated"
 msgstr ""
 
+#: ./client/app/components/navbar/navbar.controller.js:86
+msgid "Outlets"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:198
 msgid "Page Background"
 msgstr ""
 
-#: ./client/app/features/auth/signin/signin.tpl.html:12
+#: ./client/app/features/auth/signin/signin.tpl.html:16
+#: ./client/app/features/auth/signup/signup.tpl.html:22
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:22
 msgid "Password"
 msgstr ""
@@ -1345,80 +2308,159 @@ msgstr ""
 msgid "Payment Card"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:78
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:720
+msgid "Payment Method"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:732
+msgid "Payment method"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:83
+msgid "Payments"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:97
 msgid "Payments not saved"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:77
+#: ./client/app/shared/services/label/label.service.js:96
 msgid "Payments saved"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:66
+#: ./client/app/shared/translatedDynamic.html:12
+msgid "Peanuts"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:58
 msgid "Phone number"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:36
+#: ./client/app/components/contextual/contextualMenu/templates/customField.tpl.html:12
+msgid "Placeholder text"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:37
 msgid "Please collect from:"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:82
+#: ./client/app/features/auth/signup/signup.tpl.html:6
+msgid "Please confirm your details and set a password."
+msgstr ""
+
+#: ./client/app/features/auth/signup/signup.tpl.html:29
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:11
+msgid "Please contact me about the following:"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/customers/analyticsCustomers.controller.js:118
+#: ./client/app/features/main/dashboard/analytics/orders/analyticsOrders.controller.js:113
+msgid "Please note, push notifications will only be received by users who have your mobile app installed."
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:101
 msgid "Please select a circle or draw a delivery area"
 msgstr ""
 
+#: ./client/app/features/auth/signin/signin.tpl.html:7
+msgid "Please sign in."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:21
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:35
+msgid "Post voucher"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:49
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:44
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:57
 msgid "Postcode/ZIP"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:42
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:8
-#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:11
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:45
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:14
 msgid "Price"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:730
+msgid "Price (ex. tax)"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:729
+msgid "Price (inc. tax)"
+msgstr ""
+
+#: ./client/app/features/auth/signup/signup.tpl.html:64
+msgid "Privacy Policy"
+msgstr ""
+
+#: ./client/app/features/auth/signup/signup.tpl.html:38
+#: ./client/app/features/auth/signup/signup.tpl.html:42
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:21
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:26
+msgid "Product updates"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionApply/promotionApply.tpl.html:7
 msgid "Promotion code"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:107
+#: ./client/app/shared/services/label/label.service.js:132
 msgid "Promotion deleted"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/templates/promotion.tpl.html:6
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionTabs/promotionTabs.tpl.html:16
 msgid "Promotion name"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:108
+#: ./client/app/shared/services/label/label.service.js:133
 msgid "Promotion not deleted"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:110
+#: ./client/app/shared/services/label/label.service.js:135
 msgid "Promotion not saved"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:109
+#: ./client/app/shared/services/label/label.service.js:134
 msgid "Promotion saved"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:18
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:33
+#: ./client/app/components/navbar/navbar.controller.js:111
 msgid "Promotions"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:60
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:61
 msgid "Qty"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.controller.js:45
-msgid "Repeat daily"
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:668
+msgid "Quantity"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:127
+msgid "Remove validity period?"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.controller.js:48
+msgid "Repeat daily"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.controller.js:51
 msgid "Repeat weekly"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:98
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:52
+msgid "Report"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:120
 msgid "Resend invite"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:41
+msgid "Reset Password"
 msgstr ""
 
 #: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:33
@@ -1428,6 +2470,27 @@ msgstr ""
 #: ./client/app/components/dialog/dialog.retry.tpl.html:9
 #: ./client/app/features/main/dashboard/styling/weborders/weborders.tpl.html:7
 msgid "Retry"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:669
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:741
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:749
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:759
+msgid "Revenue"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:956
+msgid "Revenue by channel"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:691
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:699
+msgid "Revenue last 30 days"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:692
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:700
+msgid "Revenue previous 30 days"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.tpl.html:2
@@ -1440,15 +2503,16 @@ msgid "Same as opening hours"
 msgstr ""
 
 #: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:13
-#: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:44
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:62
+#: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:45
 msgid "Save"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:19
+#: ./client/app/shared/services/label/label.service.js:23
 msgid "Saved emails style"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:15
+#: ./client/app/shared/services/label/label.service.js:19
 msgid "Saved weborders style"
 msgstr ""
 
@@ -1456,16 +2520,20 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventScheduleList.controller.js:41
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventScheduleList.controller.js:45
 msgid "Schedule created"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:140
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:143
 msgid "Schedule not deleted"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:90
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:94
 msgid "Schedule updated"
+msgstr ""
+
+#: ./client/app/components/toolbar/venueSelect/venueSelect.tpl.html:15
+msgid "Search venue name"
 msgstr ""
 
 #: ./client/app/components/cardItemList/cardItemList.tpl.html:5
@@ -1480,6 +2548,7 @@ msgstr ""
 msgid "Segment time"
 msgstr ""
 
+#: ./client/app/components/navbar/navbar.controller.js:78
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:9
 msgid "Seller Details"
 msgstr ""
@@ -1488,40 +2557,74 @@ msgstr ""
 msgid "Seller Name"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:54
+#: ./client/app/shared/services/label/label.service.js:70
 msgid "Seller details not saved"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:53
+#: ./client/app/shared/services/label/label.service.js:69
 msgid "Seller details saved"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/customers/analyticsCustomers.controller.js:119
+#: ./client/app/features/main/dashboard/analytics/orders/analyticsOrders.controller.js:114
+msgid "Send"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/customers/analyticsCustomers.controller.js:116
+#: ./client/app/features/main/dashboard/analytics/orders/analyticsOrders.controller.js:111
+msgid "Send a push notification..."
 msgstr ""
 
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:39
 msgid "Send confirmation"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:97
+#: ./client/app/shared/services/label/label.service.js:119
 msgid "Send invite"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:146
+msgid "Send push notification"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/venueOpeningHours.tpl.html:27
 msgid "Service hours"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:75
+#: ./client/app/components/navbar/navbar.controller.js:66
+msgid "Services"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:94
 msgid "Services not saved"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:74
+#: ./client/app/shared/services/label/label.service.js:93
 msgid "Services saved"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:40
+#: ./client/app/shared/translatedDynamic.html:24
+msgid "Sesame Seeds"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:35
+msgid "Set a maximum number of times this item can be ordered for each event."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:42
 msgid "Set area by:"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:245
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:271
 msgid "Set outlet configuration"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:2
+msgid "Set validity period"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:13
+msgid "Shellfish"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/notifications/notificationsForm/notification.tpl.html:12
@@ -1532,37 +2635,49 @@ msgstr ""
 msgid "Show delivery zone"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/menus/itemList/itemList.tpl.html:14
+#: ./client/app/features/main/dashboard/menus/itemList/itemList.tpl.html:16
 #: ./client/app/features/main/dashboard/menus/menu/menu.tpl.html:12
 msgid "Show modifiers"
 msgstr ""
 
-#: ./client/app/components/cardItem/cardItemActions/cardItemActions.controller.js:9
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.controller.js:19
 msgid "Show on menu"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/styling/weborders/weborders.tpl.html:4
-msgid "Show weborders"
+msgid "Show web orders"
 msgstr ""
 
-#: ./client/app/features/auth/signin/signin.tpl.html:18
+#: ./client/app/features/auth/signin/signin.tpl.html:23
 msgid "Sign In"
 msgstr ""
 
-#: ./client/app/features/auth/signin/signin.tpl.html:3
+#: ./client/app/features/auth/signup/signup.tpl.html:60
+msgid "Sign Up"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:6
 msgid "Sign in"
 msgstr ""
 
-#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:19
+#: ./client/app/features/auth/signin/signin.tpl.html:43
+msgid "Sign in?"
+msgstr ""
+
+#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:20
 msgid "Signout"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:3
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:6
 msgid "Single Size"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionUsage/promotionUsage.tpl.html:4
 msgid "Single use"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:884
+msgid "Sleeping customers"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:20
@@ -1577,23 +2692,63 @@ msgstr ""
 msgid "Slot starts"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:67
-#: ./client/app/features/error/error.service.js:75
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:675
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:683
+msgid "Sold last 30 days"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:676
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:684
+msgid "Sold previous 30 days"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:83
+msgid "Some modifiers are already applied at the section level. Duplicate modifiers will only appear once to the user. Do you still want to add?"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:85
+msgid "Some modifiers are already applied in some items in this section. Duplicate modifiers will only appear once to the user. Do you still want to add?"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:84
+msgid "Some modifiers on this item are already applied at section level. Duplicate modifiers will only appear once to the user."
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.controller.js:105
+msgid "Something went wrong, please try again"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:70
+#: ./client/app/features/error/error.service.js:78
+#: ./client/app/features/error/error.service.js:87
+#: ./client/app/features/error/error.service.js:91
 msgid "Sorry"
 msgstr ""
 
-#: ./client/app/features/main/account/components/userPassword/userPassword.controller.js:78
-#: ./client/app/features/main/account/components/userPassword/userPassword.controller.test.js:190
+#: ./client/app/features/main/account/components/userPassword/userPassword.controller.js:79
 msgid "Sorry, the old password you entered was incorrect. Please try again!"
 msgstr ""
 
 #: ./client/app/features/main/account/components/userEmail/userEmail.controller.js:56
-#: ./client/app/features/main/account/components/userEmail/userEmail.controller.test.js:176
 msgid "Sorry, the password you entered was incorrect. Please try again!"
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:99
+#: ./client/app/shared/translatedDynamic.html:14
+msgid "Soya"
+msgstr ""
+
+#: ./client/app/shared/services/utils/utils.service.js:102
 msgid "Spanish"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:776
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:798
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:809
+msgid "Spend"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleMobile.controller.js:275
+msgid "Splash screen background"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotAdvanced/collectionSlotAdvanced.tpl.html:20
@@ -1605,14 +2760,12 @@ msgstr ""
 msgid "Staff Member"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:47
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:4
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:6
 msgid "Start date"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:57
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:14
-msgid "Start date need to be smaller than end date."
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:16
+msgid "Start date need to be before end date."
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:18
@@ -1624,10 +2777,13 @@ msgstr ""
 msgid "Start number need to be smaller than end number"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:19
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:23
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:53
+#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:25
 msgid "Start time"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:57
+msgid "Stock"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:30
@@ -1638,20 +2794,100 @@ msgstr ""
 msgid "Stripe"
 msgstr ""
 
-#: ./client/app/shared/services/utils/utils.service.js:102
+#: ./client/app/components/navbar/navbar.controller.js:120
+msgid "Styling"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.controller.js:102
+msgid "Success! Please check your email for further instructions."
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:25
+msgid "Sulphites"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:15
+msgid "Sulphur"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:56
+msgid "Summary"
+msgstr ""
+
+#: ./client/app/features/auth/signup/signup.tpl.html:45
+#: ./client/app/features/auth/signup/signup.tpl.html:49
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:29
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:34
+msgid "Support updates"
+msgstr ""
+
+#: ./client/app/shared/services/utils/utils.service.js:105
 msgid "Swedish"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:107
+#: ./client/app/features/main/dashboard/updateExternalMenus/venueList/venueItem/venueItem.controller.js:49
+msgid "Sync menus"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:191
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:108
 msgid "TOTAL"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:101
+msgid "Tag Actions"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:169
+msgid "Tag action created"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:175
+msgid "Tag action deleted"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:3
+msgid "Tag action name"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:172
+msgid "Tag action updated"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:161
+msgid "Tag created"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:167
+msgid "Tag deleted"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/customTag.tpl.html:3
+msgid "Tag name"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:164
+msgid "Tag updated"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:99
+msgid "Tags"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/taxGroup.tpl.html:22
 msgid "Takeaway rate"
 msgstr ""
 
+#: ./client/app/components/navbar/navbar.controller.js:77
+msgid "Tax"
+msgstr ""
+
 #: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroup/taxGroup.controller.js:28
 msgid "Tax Group saved"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:79
+msgid "Tax Groups"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:16
@@ -1666,20 +2902,77 @@ msgstr ""
 msgid "Tax group name"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:731
+msgid "Tax paid"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:728
+msgid "Tax rate"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:902
+msgid "Tax report"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:778
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:788
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:800
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:811
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:821
+msgid "Tel"
+msgstr ""
+
+#: ./client/app/features/auth/signup/signup.tpl.html:64
+msgid "Terms of use"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/LOGO.tpl.html:2
 msgid "Text"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:28
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:29
 msgid "Thanks for your order"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:87
+msgid "That link appears to have expired. Please ask your administrator to send you a new one."
+msgstr ""
+
+#: ./client/app/features/main/dashboard/updateExternalMenus/venueList/venueItem/venueItem.controller.js:14
+msgid "The menu has been updated, please wait while the app refreshes to load new data"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/customers/analyticsCustomers.controller.js:139
+#: ./client/app/features/main/dashboard/analytics/orders/analyticsOrders.controller.js:134
+msgid "The message was sent successfully."
+msgstr ""
+
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.tpl.html:6
+msgid "There are no collection slots assigned to this schedule"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:7
+msgid "There is already an account with this email address."
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:159
+msgid "There is already another tag with the same name, are you sure you want to create this new tag?"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:91
+msgid "There was a problem deleting your account. Please contact support."
 msgstr ""
 
 #: ./client/app/features/main/dashboard/styling/weborders/weborders.tpl.html:7
 msgid "There was a problem loading this page. <span class=\"fake-link\" ng-click=\"vm.reload()\" translate=\"\">Retry</span>"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/items/contextualDrawer.items.tpl.html:18
-#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:17
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/externalEventList/externalEventList.controller.js:26
+msgid "There was an error deleting the event. Please try again."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/items/contextualDrawer.items.tpl.html:40
+#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:38
 msgid "This drawer is empty"
 msgstr ""
 
@@ -1687,59 +2980,78 @@ msgstr ""
 msgid "This email is already in use, please use another"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:11
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:22
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:36
+#: ./client/app/shared/services/label/label.service.js:79
+msgid "This event will no longer be linked to Preoday. Are you sure?"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:96
+msgid "This feature is only available for full clients. Please contact our sales team using the chat widget at the bottom of the page to activate it."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:12
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:23
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:38
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:23
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:45
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:53
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:62
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotAdvanced/collectionSlotAdvanced.tpl.html:29
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:15
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:25
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:42
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:6
 #: ./client/app/components/contextual/contextualMenu/components/eventBasic/eventBasic.tpl.html:6
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:11
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:25
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:39
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:56
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:72
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:11
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:23
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:36
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:47
-#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:18
+#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:12
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:48
+#: ./client/app/components/contextual/contextualMenu/components/menuItemBasic/menuItemBasic.tpl.html:6
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:14
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:26
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:39
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:50
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:19
 #: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:7
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionApply/promotionApply.tpl.html:10
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:13
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:29
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:44
-#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:59
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:15
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:31
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:47
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:62
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDiscountValue/promotionDiscountValue.tpl.html:15
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDiscountValue/promotionDiscountValue.tpl.html:6
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDisplay/promotionDisplay.tpl.html:9
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionTabs/promotionTabs.tpl.html:19
+#: ./client/app/components/contextual/contextualMenu/components/tagActionAdvanced/tagActionAdvanced.tpl.html:12
+#: ./client/app/components/contextual/contextualMenu/components/tagActionAdvanced/tagActionAdvanced.tpl.html:20
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:14
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:22
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:6
+#: ./client/app/components/contextual/contextualMenu/templates/customField.tpl.html:15
+#: ./client/app/components/contextual/contextualMenu/templates/customField.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/templates/customTag.tpl.html:7
 #: ./client/app/components/contextual/contextualMenu/templates/menu.tpl.html:8
-#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:9
 #: ./client/app/components/contextual/contextualMenu/templates/menuSection.tpl.html:6
-#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:19
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:9
 #: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:7
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:22
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:32
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:7
 #: ./client/app/components/contextual/contextualMenu/templates/outletLocationGroup.tpl.html:7
-#: ./client/app/components/contextual/contextualMenu/templates/promotion.tpl.html:9
 #: ./client/app/components/contextual/contextualMenu/templates/taxGroup.tpl.html:17
 #: ./client/app/components/contextual/contextualMenu/templates/taxGroup.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/templates/userInvite.tpl.html:15
 #: ./client/app/components/contextual/contextualMenu/templates/userInvite.tpl.html:7
-#: ./client/app/features/auth/signin/signin.tpl.html:15
-#: ./client/app/features/auth/signin/signin.tpl.html:8
+#: ./client/app/components/dialog/dialog.text.tpl.html:11
+#: ./client/app/features/auth/signin/signin.tpl.html:12
+#: ./client/app/features/auth/signin/signin.tpl.html:19
+#: ./client/app/features/auth/signin/signin.tpl.html:36
+#: ./client/app/features/auth/signup/signup.tpl.html:11
+#: ./client/app/features/auth/signup/signup.tpl.html:18
+#: ./client/app/features/auth/signup/signup.tpl.html:25
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:16
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:26
 #: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:16
 #: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:35
 #: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:54
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:31
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:53
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:61
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:70
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/components/openingHoursList/openingHour/openingHour.tpl.html:17
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/components/openingHoursList/openingHour/openingHour.tpl.html:31
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:38
@@ -1750,47 +3062,116 @@ msgstr ""
 msgid "This outlet location already has an outlet"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:57
+#: ./client/app/shared/services/label/label.service.js:59
+msgid "This outlet location has custom fields"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:136
+msgid "This promotion code is already being used."
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:128
+msgid "This promotion hasn't started yet or has ended. If you activate it manually, the start and end dates will be removed."
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:58
 msgid "This slot is being used"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:100
+#: ./client/app/shared/services/label/label.service.js:155
+msgid "This tag is in use"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:122
 msgid "This user already has an account"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:90
+#: ./client/app/shared/services/label/label.service.js:109
 msgid "This user will no longer be able to access the dashboard. Are you sure?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:35
+#: ./client/app/shared/services/label/label.service.js:45
 msgid "This will delete all section and item configurations for this menu. Are you sure?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:47
+#: ./client/app/shared/services/label/label.service.js:63
 msgid "This will delete the configuration of all sub-groups. Are you sure?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:32
+#: ./client/app/shared/services/label/label.service.js:42
 msgid "This will delete the modifier from all menus."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:14
+msgid "This will override your standard lead time for all orders that contain this item."
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:756
+msgid "Time"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:94
+msgid "Timeout"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:746
+msgid "Timeslot"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/taxGroup.tpl.html:36
 msgid "To seat rate"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:61
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:737
+msgid "Today"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:719
+#: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:62
 msgid "Total"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:937
+msgid "Total number of customers"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:936
+msgid "Total number of orders"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:935
+msgid "Total revenue"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.tpl.html:37
 msgid "Town / City"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:49
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:41
 msgid "Town/City"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:96
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:28
+msgid "Trigger is required."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionBasic/tagActionBasic.tpl.html:29
+msgid "Trigger:"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/tagActionAdvanced/tagActionAdvanced.tpl.html:17
+msgid "URL"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatePicker/customDatePicker.tpl.html:15
+msgid "Until {{inputDateEnd}}"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:139
+msgid "Update External Menus"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:118
 msgid "Update role"
 msgstr ""
 
@@ -1798,19 +3179,23 @@ msgstr ""
 msgid "Upload specs"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:93
+#: ./client/app/features/main/dashboard/home/home.tpl.html:4
+msgid "Use the navigation menu on the left to manage your platform"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:115
 msgid "User access not removed"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:95
+#: ./client/app/shared/services/label/label.service.js:117
 msgid "User access not updated"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:92
+#: ./client/app/shared/services/label/label.service.js:114
 msgid "User access removed"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:94
+#: ./client/app/shared/services/label/label.service.js:116
 msgid "User access updated"
 msgstr ""
 
@@ -1822,27 +3207,44 @@ msgstr ""
 msgid "User permissions:"
 msgstr ""
 
-#: ./client/app/features/auth/signin/signin.tpl.html:5
-msgid "Username"
+#: ./client/app/features/main/dashboard/taxes/sellerDetails/sellerDetails.controller.js:10
+msgid "VAT Number"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:20
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:13
+msgid "Value must be at least 1."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:23
 msgid "Variant Name"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:6
-msgid "Venue Details"
+#: ./client/app/shared/translatedDynamic.html:18
+msgid "Vegan"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:17
+msgid "Vegetarian"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:11
+msgid "Venue"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/contextualDrawer.venueDetails.tpl.html:11
+msgid "Venue Map"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:21
+#: ./client/app/components/navbar/navbar.controller.js:64
 msgid "Venue Settings"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:69
+#: ./client/app/shared/services/label/label.service.js:88
 msgid "Venue details not saved"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:68
+#: ./client/app/shared/services/label/label.service.js:87
 msgid "Venue details saved"
 msgstr ""
 
@@ -1850,25 +3252,29 @@ msgstr ""
 msgid "Venue is"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:72
+#: ./client/app/shared/services/label/label.service.js:91
 msgid "Venue location not saved"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:71
+#: ./client/app/shared/services/label/label.service.js:90
 msgid "Venue location saved"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:76
+#: ./client/app/features/error/error.service.js:79
 msgid "Venue mode not changed"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualDrawer/style/row/templates/LOGO.tpl.html:15
-#: ./client/app/features/main/dashboard/venueSettings/venueDetails/venueDetails.tpl.html:13
+#: ./client/app/components/contextual/contextualDrawer/venueDetails/components/venueDetailsForm/venueDetailsForm.tpl.html:5
 msgid "Venue name"
 msgstr ""
 
 #: ./client/app/features/error/error.service.js:32
 msgid "Venue not found"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:22
+msgid "Very Hot"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/events/eventList/eventList.tpl.html:4
@@ -1880,12 +3286,68 @@ msgstr ""
 msgid "View:"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionServices/promotionServices.tpl.html:9
+msgid "Voucher"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:64
+msgid "Voucher footer text"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardNew.directive.js:20
+msgid "Voucher menu"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/templates/taxGroup.tpl.html:43
 msgid "Voucher rate"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:72
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:16
+msgid "Voucher type"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:5
+msgid "Voucher value:"
+msgstr ""
+
+#: ./client/app/shared/translatedDynamic.html:29
+msgid "WALLET"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:158
+msgid "Warning"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:75
 msgid "We could not connect to your Stripe account. Please try again."
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.controller.js:108
+msgid "We could not find an account with that email address"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:122
+msgid "Web Orders"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:144
+msgid "Weekly"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:950
+msgid "Weekly Customers"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:947
+msgid "Weekly Orders"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:944
+msgid "Weekly Revenue"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/home/home.tpl.html:3
+msgid "Welcome to your dashboard"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:44
@@ -1896,8 +3358,26 @@ msgstr ""
 msgid "Write a valid email address."
 msgstr ""
 
+#: ./client/app/features/main/dashboard/analytics/customers/analyticsCustomers.controller.js:117
+#: ./client/app/features/main/dashboard/analytics/orders/analyticsOrders.controller.js:112
+msgid "Write here your message"
+msgstr ""
+
 #: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:36
 msgid "YY"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:265
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:307
+msgid "Yes"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:739
+msgid "Yesterday"
+msgstr ""
+
+#: ./client/app/features/redirect/redirect.tpl.html:2
+msgid "You are being redirected..."
 msgstr ""
 
 #: ./client/app/components/toolbar/venueModeSelect/venueModeSelect.controller.js:73
@@ -1906,6 +3386,10 @@ msgstr ""
 
 #: ./client/app/components/toolbar/venueModeSelect/venueModeSelect.controller.js:67
 msgid "You are ready to take orders"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:49
+msgid "You cannot add a custom field because this outlet location already has one"
 msgstr ""
 
 #: ./client/app/features/error/error.service.js:45
@@ -1920,11 +3404,15 @@ msgstr ""
 msgid "You cannot add a sub group because this outlet location is for seat"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:88
+msgid "You do not have permission to delete this custom field, please contact the support team"
+msgstr ""
+
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationGroupList/outletLocationGroup/outletLocationGroup.controller.js:72
 msgid "You do not have permission to delete this group, please contact the support team"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:80
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:90
 msgid "You do not have permission to delete this outlet, please contact the support team"
 msgstr ""
 
@@ -1932,15 +3420,15 @@ msgstr ""
 msgid "You do not have the necessary permissions to view this dashboard, please contact your administrator"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:248
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:274
 msgid "You don't have outlet locations yet"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:41
+#: ./client/app/shared/services/label/label.service.js:51
 msgid "You have edited an item that is in more than one menu. Where would you like to apply the changes?"
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:75
+#: ./client/app/features/error/error.service.js:78
 msgid "You must accept at least one payment method before going live."
 msgstr ""
 
@@ -1948,24 +3436,37 @@ msgstr ""
 msgid "You must add opening hours before specifying your service hours."
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:73
+#: ./client/app/features/error/error.service.js:67
+msgid "You must create at least one collection before you can add events"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:76
 msgid "You must have at least one active payment method."
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:78
+#: ./client/app/features/error/error.service.js:81
 msgid "You must have opening hours set for at least one day"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:80
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:49
+#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:18
 msgid "You must select at least one collection slot."
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:69
+#: ./client/app/components/contextual/contextualMenu/components/eventScheduleForm/eventScheduleForm.tpl.html:3
+msgid "You must select at least one date."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:24
+msgid "You need to select at least one voucher type."
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:72
 msgid "You need to set up your address before selecting your location.  You'll be redirected to your Details page to configure your address."
 msgstr ""
 
-#: ./client/app/features/error/error.service.js:70
-msgid "You need to set up your location before creating delivery zones.  You'll be redirected to your Location page to configure your location."
+#: ./client/app/features/error/error.service.js:73
+msgid "You need to set up your location before creating delivery zones.  You'll be redirected to your Details page to configure your location."
 msgstr ""
 
 #: ./client/app/features/error/error.service.js:48
@@ -1984,20 +3485,28 @@ msgstr ""
 msgid "Your new username is"
 msgstr ""
 
-#: ./client/app/features/main/account/components/userPassword/userPassword.controller.js:69
+#: ./client/app/features/main/account/components/userPassword/userPassword.controller.js:70
 msgid "Your password has been changed"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:94
+msgid "Your session has expired. Please login again."
 msgstr ""
 
 #: ./client/app/features/stripeSuccess/stripeSuccess.tpl.html:6
 msgid "Your stripe account has been connected!"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:87
+#: ./client/app/shared/services/label/label.service.js:106
 msgid "Your venue was successfully connected to your Stripe account"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:7
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:8
 msgid "Zone name"
+msgstr ""
+
+#: ./client/app/features/auth/signup/signup.tpl.html:64
+msgid "and"
 msgstr ""
 
 #: ./client/app/features/emailSuccess/emailSuccess.tpl.html:8
@@ -2005,15 +3514,19 @@ msgstr ""
 msgid "click here"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/events/eventList/eventList.controller.js:40
+#: ./client/app/features/main/dashboard/events/eventList/eventList.controller.js:36
 msgid "events"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:126
+msgid "events selected"
 msgstr ""
 
 #: ./client/app/components/toolbar/venueModeSelect/venueModeSelect.controller.js:71
 msgid "in demo mode"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.controller.js:35
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.controller.js:37
 msgid "kms"
 msgstr ""
 
@@ -2021,7 +3534,7 @@ msgstr ""
 msgid "live"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.controller.js:36
+#: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.controller.js:39
 msgid "miles"
 msgstr ""
 
@@ -2030,6 +3543,10 @@ msgstr ""
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:29
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotBasic/collectionSlotBasic.tpl.html:39
 msgid "mins"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:170
+msgid "n/a"
 msgstr ""
 
 #: ./client/app/components/toolbar/venueModeSelect/venueModeSelect.controller.js:74
@@ -2044,8 +3561,21 @@ msgstr ""
 msgid "to try again."
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:9
+msgid "{{ 'Cancel' | translate}}"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:44
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:12
+msgid "{{ 'Done' | translate}}"
+msgstr ""
+
 #: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.tpl.html:4
 msgid "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:52
+msgid "{{'Choose collection slots:' | translate }}"
 msgstr ""
 
 #: ./client/app/features/main/billing/components/billingInfo/billingInfo.tpl.html:11
