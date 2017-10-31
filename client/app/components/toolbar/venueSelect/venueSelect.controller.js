@@ -17,9 +17,13 @@ export default class venueSelectController {
 
     StateService.navigateToVenue(venueId);
 
-    $timeout(()=>{
-      window.location.reload();
-    }, 100);
+    // we need to reload only if we are in a venue,
+    // because we will change the base url when is changing from channel to venue
+    if (!StateService.isChannel) {
+      $timeout(()=>{
+        window.location.reload();
+      }, 100);
+    }
   }
 
   switchChannel (channel) {
@@ -32,9 +36,13 @@ export default class venueSelectController {
 
     StateService.navigateToChannel(channelId);
 
-    $timeout(()=>{
-      window.location.reload();
-    }, 100);
+    // we need to reload only if we aren't in a channel,
+    // because we will change the base url when is changing from venue to channel
+    if (StateService.isChannel) {
+      $timeout(()=>{
+        window.location.reload();
+      }, 100);
+    }
   }
 
   setVenue(){

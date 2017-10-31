@@ -87,7 +87,7 @@ $overrides .= "window._PREO_DATA._RESET_PASSWORD='$resetPasswordLink';";
 $overrides .= "window._PREO_DATA._SESSION='$sessionId';";
 $overrides .= "window._PREO_DATA._ROLLBAR_ENV='$rollbarEnv';";
 $overrides .= "window._PREO_DATA._ROLLBAR_CLIENT_TOKEN='$rollbarTokenClient';";
-$overrides .= "window._PREO_DATA._IS_CHANNEL='$isChannel';";
+$overrides .= "window._PREO_DATA._IS_CHANNEL=" . ($isChannel ? 1 : 0) . ";";
 $overrides .= "</script>";
 
 $contentsIndexHTML = str_replace("<!-- @@OVERRIDES -->",$overrides,$contentsIndexHTML);
