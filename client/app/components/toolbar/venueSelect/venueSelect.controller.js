@@ -12,6 +12,7 @@ export default class venueSelectController {
 
     const {
       StateService,
+      Spinner,
       $timeout,
     } = this;
 
@@ -23,6 +24,8 @@ export default class venueSelectController {
       $timeout(()=>{
         window.location.reload();
       }, 100);
+    } else {
+      Spinner.show('venue-select');
     }
   }
 
@@ -31,6 +34,7 @@ export default class venueSelectController {
 
     const {
       StateService,
+      Spinner,
       $timeout,
     } = this;
 
@@ -42,6 +46,8 @@ export default class venueSelectController {
       $timeout(()=>{
         window.location.reload();
       }, 100);
+    } else {
+      Spinner.show('venue-select');
     }
   }
 
