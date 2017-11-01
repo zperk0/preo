@@ -19,11 +19,11 @@ export default class userController {
           this.Snack.show(this.LabelService.SNACK_USER_ROLE_UPDATE);
         });
       }, (err)=>{
-        console.log('error on save tax-group', err);
+        console.log('error on save user role', err);
         this.Spinner.hide("user-role-update");
         this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
       }). catch((err)=>{
-        console.log('error on save tax-group', err);
+        console.log('error on save user role', err);
         this.Spinner.hide("user-role-update");
         this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
       })
