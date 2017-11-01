@@ -3,11 +3,12 @@
     <card-item-list
         has-new="true"
         tooltip="{{ 'Invite new user' | translate }}"
-        on-click-new="usersInviteListCtrl.showCreate()"
+        on-click-new="usersInviteListCtrl.onNew()"
         collection="usersInviteListCtrl.users">
         <user-invite
           has-actions="true"
           ng-repeat="user in usersInviteListCtrl.users | orderBy: id"
+          on-edit="usersInviteListCtrl.onEdit({invite: invite})"
           user="user">
         </user-invite>
     </card-item-list>

@@ -3,37 +3,34 @@ export default class userController {
     return "userController"
   }
 
-  contextualMenuSuccess(entity){
-    this.Spinner.show("user-role-update");
-    if (this.user && entity && entity.name){
-      this.user = entity;
-      this.venue.updateUserRole(this.user).then((newUser)=>{
+  // contextualMenuSuccess(entity){
+  //   this.Spinner.show("user-role-update");
+  //   if (this.user && entity && entity.name){
+  //     this.user = entity;
+  //     this.venue.updateUserRole(this.user).then((newUser)=>{
 
-        this.user.$deleted = false;
-        this.user.$selected = false;
+  //       this.user.$deleted = false;
+  //       this.user.$selected = false;
 
-        this.$timeout(() => {
-          angular.extend(this.user, newUser);
-          this.contextualMenu.hide();
-          this.Spinner.hide("user-role-update");
-          this.Snack.show(this.LabelService.SNACK_USER_ROLE_UPDATE);
-        });
-      }, (err)=>{
-        console.log('error on save tax-group', err);
-        this.Spinner.hide("user-role-update");
-        this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
-      }). catch((err)=>{
-        console.log('error on save tax-group', err);
-        this.Spinner.hide("user-role-update");
-        this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
-      })
-    }
-  }
+  //       this.$timeout(() => {
+  //         angular.extend(this.user, newUser);
+  //         this.contextualMenu.hide();
+  //         this.Spinner.hide("user-role-update");
+  //         this.Snack.show(this.LabelService.SNACK_USER_ROLE_UPDATE);
+  //       });
+  //     }, (err)=>{
+  //       console.log('error on save tax-group', err);
+  //       this.Spinner.hide("user-role-update");
+  //       this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
+  //     }). catch((err)=>{
+  //       console.log('error on save tax-group', err);
+  //       this.Spinner.hide("user-role-update");
+  //       this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
+  //     })
+  //   }
+  // }
 
-  isSelected() {
-
-    return this.user && +this.user.id === +this.$stateParams.userId;
-  }
+  isSelected() { return this.user && +this.user.id === +this.$stateParams.userId; }
 
 
   // onEdit ($event) {
@@ -73,28 +70,28 @@ export default class userController {
       });
   }
 
-  restoreOriginalValues() {
-    if (this.originalUser){
-      angular.extend(this.user, this.originalUser);
-      this.originalUser = false;
-    }
-  }
+  // restoreOriginalValues() {
+  //   if (this.originalUser){
+  //     angular.extend(this.user, this.originalUser);
+  //     this.originalUser = false;
+  //   }
+  // }
 
-  contextualMenuCancel() {
+  // contextualMenuCancel() {
 
-    this.restoreOriginalValues();
-    this.user.$selected = false;
+  //   this.restoreOriginalValues();
+  //   this.user.$selected = false;
 
-    if (this.user && !this.user.id) {
-      this.cardItemList.deleteItem(this.user);
-    }
-  }
+  //   if (this.user && !this.user.id) {
+  //     this.cardItemList.deleteItem(this.user);
+  //   }
+  // }
 
-  showContextual () {
-    this.contextual.showMenu(this.type, this.user, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
-        doneButtonText: this.LabelService.UPDATE_ROLE_BUTTON
-    });
-  }
+  // showContextual () {
+  //   this.contextual.showMenu(this.type, this.user, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
+  //       doneButtonText: this.LabelService.UPDATE_ROLE_BUTTON
+  //   });
+  // }
 
    /* @ngInject */
   constructor($q, $stateParams, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, StateService, UserService, gettextCatalog) {
@@ -113,8 +110,8 @@ export default class userController {
     this.UserService = UserService;
     this.gettextCatalog = gettextCatalog;
     this.type = 'user';
-     if (this.user && !this.user.id) {
-      this.showContextual();
-    }
+    //  if (this.user && !this.user.id) {
+    //   this.showContextual();
+    // }
   }
 }

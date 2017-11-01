@@ -1,6 +1,7 @@
 
 import controller from './manageUsers.controller';
 import usersDetailsController from './userDetails/userDetails.controller';
+import inviteController from './invite/invite.controller';
 import permissionsResolve from './permissions.resolve';
 import usersResolve from './users.resolve';
 import invitesResolve from './invites.resolve';
@@ -26,14 +27,58 @@ export default function routes($stateProvider, Permissions) {
     }
   });
 
-  $stateProvider.state("main.dashboard.manageUsers.invite", {
-    url: "/invite",
+  $stateProvider.state("main.dashboard.manageUsers.newInvite", {
+    url: "/invite/new",
     views: {
       'userDetailView': {
-        //template: require("./users/users.tpl.html"),
-        controller: usersDetailsController.UID,
-        requiresPermission:Permissions.OFFERS,
-        controllerAs: "$userDetails"
+        template: require("./invite/invite.tpl.html"),
+        controller: inviteController.UID,
+        requiresPermission: Permissions.OFFERS,
+        controllerAs: '$invite',
+        resolve: {
+          invite: (UserService, StateService,$rootScope, invites) => {
+            const invite = new Preoday.Invite({
+              venueId: StateService.venue.id,
+              role: 'ADMIN',
+              createdBy: UserService.user.id,
+            });
+
+            invites.push(invite);
+
+            return invite;
+          }
+        }
+      }
+    }
+  });
+
+  $stateProvider.state("main.dashboard.manageUsers.invite", {
+    url: "/invite/:inviteId",
+    views: {
+      'userDetailView': {
+        template: require("./invite/invite.tpl.html"),
+        controller: inviteController.UID,
+        requiresPermission: Permissions.OFFERS,
+        controllerAs: '$invite',
+        resolve: {
+          invite: ($q, invites, $stateParams, $state, $timeout) => {
+
+            const inviteId = $stateParams.inviteId;
+            const filtered = invites.filter((invite) => {
+              return +invite.id === +inviteId;
+            });
+
+            if (filtered.length) {
+              return $q.when(filtered[0]);
+            }
+
+            $timeout(() => {
+              $state.go("main.dashboard.manageUsers");
+            });
+
+            return $q.reject();
+          }
+        }
       }
     }
   });

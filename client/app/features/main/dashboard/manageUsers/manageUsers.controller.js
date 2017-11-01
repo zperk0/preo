@@ -15,6 +15,26 @@ export default class manageUsersController {
     });
   }
 
+  onEditInvite(invite) {
+
+    const {
+      $state
+    } = this;
+
+    $state.go('main.dashboard.manageUsers.invite', {
+      inviteId: invite.id
+    });
+  }
+
+  onNewInvite() {
+
+    const {
+      $state
+    } = this;
+
+    $state.go('main.dashboard.manageUsers.newInvite');
+  }
+
   /* @ngInject */
   constructor($state, users, invites) {
     "ngInject";

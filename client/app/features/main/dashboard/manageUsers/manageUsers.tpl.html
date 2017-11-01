@@ -6,6 +6,8 @@
           on-edit="manageUsersCtrl.onEditUser(user)">
        </users-list>
        <users-invite-list
+          on-new="manageUsersCtrl.onNewInvite()"
+          on-edit="manageUsersCtrl.onEditInvite(invite)"
           users="manageUsersCtrl.invites">
        </users-invite-list>
     </div>

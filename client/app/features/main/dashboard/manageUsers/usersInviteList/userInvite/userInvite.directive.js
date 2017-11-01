@@ -4,7 +4,8 @@ export default function userInvite(){
   return {
     restrict: 'E',
     scope: {
-      user:"=",
+      user: '=',
+      onEdit: '&',
     },
     template: require("./userInvite.tpl.html"),
     controller: controller.UID,

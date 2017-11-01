@@ -16,7 +16,9 @@ export default class usersDetailsController {
       $state,
     } = this;
 
-    Spinner.show("user-role-update");
+    const LOADER_KEY = 'user-role-update';
+
+    Spinner.show(LOADER_KEY);
     if (this.user && entity && entity.name){
       this.user = entity;
       StateService.venue.updateUserRole(this.user).then((newUser)=>{
@@ -27,16 +29,16 @@ export default class usersDetailsController {
           angular.extend(this.user, newUser);
           angular.extend(this.originalUser, newUser);
           $state.go("main.dashboard.manageUsers");
-          Spinner.hide("user-role-update");
+          Spinner.hide(LOADER_KEY);
           Snack.show(LabelService.SNACK_USER_ROLE_UPDATE);
         });
       }, (err)=>{
         console.log('error on save tax-group', err);
-        Spinner.hide("user-role-update");
+        Spinner.hide(LOADER_KEY);
         Snack.showError(LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
       }). catch((err)=>{
         console.log('error on save tax-group', err);
-        Spinner.hide("user-role-update");
+        Spinner.hide(LOADER_KEY);
         Snack.showError(LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
       })
     }
