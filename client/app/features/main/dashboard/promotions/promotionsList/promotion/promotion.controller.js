@@ -30,6 +30,10 @@ export default class promotionController {
     return !this.promotion.active || (this.promotion.startDate && this.promotion.endDate && !this.promotion.now);
   }
 
+  isSelected() {
+    return this.promotion && +this.promotion.id === +this.$stateParams.promotionId;
+  }
+
   updatePromotion(){
      return this.$q((resolve,reject)=>{
       this.Spinner.show("saving-promotion");
@@ -93,7 +97,7 @@ export default class promotionController {
           this.Spinner.hide("save-update-promotion");
           this.Snack.show(this.LabelService.SNACK_PROMOTION_SAVED);
         });
-        
+
       }, (err)=>{
         console.log('error on save promotions', err);
         this.Spinner.hide("save-update-promotion");
@@ -102,7 +106,7 @@ export default class promotionController {
         } else {
           this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
         }
-        
+
       }). catch((err)=>{
         console.error('error on save promotions', err);
         this.Spinner.hide("save-update-promotion");
@@ -173,6 +177,7 @@ export default class promotionController {
   constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode) {
     "ngInject";
     this.$q = $q;
+    this.$stateParams = $stateParams;
     this.$state = $state;
     this.title = "I am a promotion component"
     this.Spinner = Spinner;
