@@ -1,5 +1,9 @@
 
-import controller from './manageUsers.controller'
+import controller from './manageUsers.controller';
+import permissionsResolve from './permissions.resolve';
+import usersResolve from './users.resolve';
+import invitesResolve from './invites.resolve';
+
 
 /**
  * Routing function for manageUsers
@@ -14,32 +18,10 @@ export default function routes($stateProvider, Permissions) {
     controller: controller.UID,
     controllerAs: "manageUsersCtrl",
     requiresPermission: Permissions.ACCOUNT,
-    resolve:{
-      permissions: function($q, $stateParams, authenticated, StateService, PermissionService) {
-
-        if (!StateService.isChannel) {
-          return $q.when(PermissionService.permissions);
-        }
-
-        const deferred = $q.defer();
-
-        StateService.loadPermissions("venues,groups")
-          .then(() => {
-
-            deferred.resolve(PermissionService.permissions);
-          }, () => {
-
-            $timeout(() => {
-              $state.go('main.dashboard', {
-                entityId: $stateParams.entityId
-              });
-            });
-
-            deferred.reject();
-          });
-
-        return deferred.promise;
-      }
+    resolve: {
+      permissions: permissionsResolve,
+      users: usersResolve,
+      invites: invitesResolve,
     }
   });
 }
