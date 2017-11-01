@@ -3,14 +3,14 @@
       ng-class="{current: userCtrl.user.$current}">
   <card-item  has-actions="true"
               deleted="userCtrl.user.$deleted"
-              selected="userCtrl.user.$selected"
+              selected="userCtrl.isSelected()"
               class='small'>
     <card-item-title has-visible="false">
         <span>{{userCtrl.user.firstName}} {{userCtrl.user.lastName}} </span>
     </card-item-title>
 
     <card-item-actions on-delete="userCtrl.onDelete()"
-                       on-edit="userCtrl.onEdit($event)"
+                       on-edit="userCtrl.onEdit({ user: userCtrl.user })"
                         ></card-item-actions>
   </card-item>
 </div>

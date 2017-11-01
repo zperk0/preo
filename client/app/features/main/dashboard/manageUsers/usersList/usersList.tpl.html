@@ -7,6 +7,7 @@
         <user
           has-actions="true"
           ng-repeat="user in usersListCtrl.users | orderBy: id"
+          on-edit="usersListCtrl.onEdit({user: user})"
           user="user">
         </user>
     </card-item-list>

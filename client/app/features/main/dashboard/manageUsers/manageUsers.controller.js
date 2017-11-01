@@ -4,9 +4,23 @@ export default class manageUsersController {
     return "manageUsersController"
   }
 
+  onEditUser(user) {
+
+    const {
+      $state
+    } = this;
+
+    $state.go('main.dashboard.manageUsers.detail', {
+      userId: user.id
+    });
+  }
+
   /* @ngInject */
-  constructor(users, invites) {
+  constructor($state, users, invites) {
     "ngInject";
+
+    this.$state = $state;
+
     this.users = users;
     this.invites = invites;
   }

@@ -30,14 +30,19 @@ export default class userController {
     }
   }
 
+  isSelected() {
 
-  onEdit ($event) {
-
-    this.originalUser  = angular.copy(this.user);
-    this.cardItemList.selectItem(this.user);
-    this.showContextual();
-    $event.stopPropagation();
+    return this.user && +this.user.id === +this.$stateParams.userId;
   }
+
+
+  // onEdit ($event) {
+
+  //   this.originalUser  = angular.copy(this.user);
+  //   this.cardItemList.selectItem(this.user);
+  //   this.showContextual();
+  //   $event.stopPropagation();
+  // }
 
   onDelete(){
     var currentUser = this.UserService.getCurrent();
@@ -92,9 +97,10 @@ export default class userController {
   }
 
    /* @ngInject */
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, StateService, UserService, gettextCatalog) {
+  constructor($q, $stateParams, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, StateService, UserService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
+    this.$stateParams = $stateParams;
     this.$timeout = $timeout;
     this.Spinner = Spinner;
     this.venue = StateService.venue;

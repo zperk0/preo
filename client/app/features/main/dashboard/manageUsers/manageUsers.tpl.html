@@ -2,12 +2,14 @@
   <div class='layout-left-right'>
     <div class='main-content-left'>
       <users-list
-          users="manageUsersCtrl.users">
+          users="manageUsersCtrl.users"
+          on-edit="manageUsersCtrl.onEditUser(user)">
        </users-list>
        <users-invite-list
           users="manageUsersCtrl.invites">
        </users-invite-list>
     </div>
-    <div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div>
+
+    <ui-view name="userDetailView" class='main-content-right' media-query="min-width: 1024px" sticky offset="88"></ui-view>
   </div>
 </div>
