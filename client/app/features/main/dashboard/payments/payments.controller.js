@@ -117,6 +117,13 @@ export default class paymentsController {
     }
   }
 
+  buildProvider(type, visibleFlag) {
+    return { 
+      type: type,
+      visible: visibleFlag
+    };
+  }
+
   updateVenue(){
       if (this.venue.cashFlag === 0 && !this.canTurnOffMethod()){
         this.venue.cashFlag = 1;
@@ -124,9 +131,11 @@ export default class paymentsController {
       }
       this.Spinner.show("venue-payments-save");
       try {
-        this.VenueService.updateVenue()
+        var provider = this.buildProvider(this.PaymentType.CASH, this.venue.cashFlag);
+
+        this.VenueService.updatePaymentProvider(provider)
         .then((venue)=>{
-          angular.extend(this.venue,venue);
+            angular.extend(this.venue,venue);
             this.Spinner.hide("venue-payments-save");
             this.Snack.show(this.LabelService.SNACK_VENUE_PAYMENTS_SUCCESS)
           }, (err)=>{
@@ -166,7 +175,7 @@ export default class paymentsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, DialogService, $timeout, VenueService) {
+  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, PaymentType, DialogService, $timeout, VenueService) {
     "ngInject";
     this.isEdit = false;
     this.Spinner = Spinner;
@@ -176,6 +185,7 @@ export default class paymentsController {
     this.VenueService = VenueService;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
+    this.PaymentType = PaymentType;
     this.isError = false;
     this.$timeout = $timeout;
     this.stripeLink = 'https://stripe.com';

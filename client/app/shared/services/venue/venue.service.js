@@ -157,6 +157,15 @@ export default class VenueService {
     this.unsetVenuesDeferred();
   }
 
+  updatePaymentProvider(provider) {
+    return this.$q((resolve,reject)=>{
+      this.currentVenue.updatePaymentProvider(provider)
+      .then((data) => {
+        resolve(data);
+      }, reject);
+    });
+  }
+
   selectVenue () {
 
     if (this.venues) {
