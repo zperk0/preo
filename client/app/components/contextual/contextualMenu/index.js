@@ -5,6 +5,7 @@ import './contextualMenu.scss';
 // Import internal modules
 import controller from './contextualMenu.controller';
 import service from './contextualMenu.service';
+import contextualMenuValidation from './contextualMenuValidation.service';
 import directive from './contextualMenu.directive';
 import holderDirective from './contextualMenuHolder.directive';
 
@@ -70,6 +71,7 @@ export default angular.module("contextualMenu" , [
 
   .controller(controller.UID, controller)
   .service(service.UID, service)
+  .service(contextualMenuValidation.UID, contextualMenuValidation)
   .directive("contextualMenu", directive)
   .directive("contextualMenuHolder", holderDirective)
   .name;

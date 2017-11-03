@@ -42,7 +42,7 @@ export default class contextualMenuController {
     return this.contextualMenu.type === type;
   }
 
-  constructor($scope, $stateParams, UtilsService, contextualMenu, MenuService, FeatureService, CollectionSlotsService, ItemService, $timeout, BroadcastEvents) {
+  constructor($scope, $stateParams, UtilsService, contextualMenu, MenuService, FeatureService, ContextualMenuValidationService, ItemService, $timeout, BroadcastEvents) {
     "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);
     this.$scope = $scope;
@@ -53,7 +53,7 @@ export default class contextualMenuController {
     this.contextualMenu = contextualMenu;
     this.MenuService = MenuService;
     this.FeatureService = FeatureService;
-    this.CollectionSlotsService = CollectionSlotsService;
+    this.ValidationService = ContextualMenuValidationService;
     this.ItemService = ItemService;
     this.BroadcastEvents = BroadcastEvents;
   }
