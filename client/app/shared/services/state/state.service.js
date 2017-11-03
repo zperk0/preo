@@ -327,6 +327,38 @@ export default class StateService {
     }
   }
 
+  getUsers() {
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.getUsers();
+    } else if (venue) {
+      return venue.getUsers();
+    } else {
+      console.warn('StateService [getUsers] - there is no channel and venue set');
+    }
+  }
+
+  getInvites() {
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.getInvites();
+    } else if (venue) {
+      return venue.getInvites();
+    } else {
+      console.warn('StateService [getInvites] - there is no channel and venue set');
+    }
+  }
+
   fetchVenues(expand, permissions) {
     const {
       channel,

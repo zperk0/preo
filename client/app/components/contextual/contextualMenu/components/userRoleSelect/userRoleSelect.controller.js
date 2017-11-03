@@ -14,7 +14,7 @@ export default class userRoleSelectController {
         permissions:[
           gettextCatalog.getString("Order screen"),
           gettextCatalog.getString("Menus"),
-          venue.isEvent() ? gettextCatalog.getString("Events") : '',
+          venue && venue.isEvent() ? gettextCatalog.getString("Events") : '',
           gettextCatalog.getString("Promotions"),
           FeatureService.hasBookingFeature() ? gettextCatalog.getString("Group Bookings") : '',
           FeatureService.hasVoucherFeature() ? gettextCatalog.getString("Gift Vouchers") : '',
@@ -29,7 +29,7 @@ export default class userRoleSelectController {
         permissions:[
           gettextCatalog.getString("Order screen"),
           gettextCatalog.getString("Menus"),
-          venue.isEvent() ? gettextCatalog.getString("Events") : '',
+          venue && venue.isEvent() ? gettextCatalog.getString("Events") : '',
           gettextCatalog.getString("Promotions"),
           FeatureService.hasBookingFeature() ? gettextCatalog.getString("Group Bookings") : '',
           FeatureService.hasVoucherFeature() ? gettextCatalog.getString("Gift Vouchers") : '',

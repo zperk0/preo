@@ -7,8 +7,7 @@ export default function invitesResolve ($q, authenticated, StateService, Spinner
 
   Spinner.show(LOADER_KEY);
 
-  StateService.venue.getInvites()
-  .then((invites)=>{
+  StateService.getInvites().then((invites)=>{
     invites.forEach((u)=>{
       if (u.role === 'OWNER') {
         u.role = 'ADMIN';

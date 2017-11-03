@@ -8,8 +8,7 @@ export default function usersResolve ($q, authenticated, StateService, UserServi
   Spinner.show(LOADER_KEY);
 
   const currentUser = UserService.getCurrent();
-  StateService.venue.getUsers()
-  .then((users) => {
+  StateService.getUsers().then((users) => {
     users.forEach((u) => {
       u.$current = u.id === currentUser.id;
       if (u.role === 'OWNER'){
