@@ -1,0 +1,30 @@
+<div class="contextual-menu-user-invite">
+  <md-tabs md-dynamic-height
+          md-stretch-tabs="always"
+          class="md-tabs-with-errors"
+          ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}"
+          md-selected="contextualMenuCtrl.contextualForm.selectedTabIndex">
+    <md-tab tabindex="0">
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasUserTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+          <span>{{ 'User' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <user-detail user="contextualMenuCtrl.entity"></user-detail>
+      </md-tab-body>
+    </md-tab>
+    <md-tab tabindex="1">
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasUserVenuesTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+          <span>{{ 'Venues' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+      <md-card-content>
+
+      </md-card-content>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</div>
