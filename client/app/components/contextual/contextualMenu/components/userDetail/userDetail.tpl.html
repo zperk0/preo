@@ -3,18 +3,18 @@
       <label translate>Name</label>
       <input type="text" required name="entityName" ng-model="$user.user.name" ng-maxlength="100">
 
-      <div ng-messages="$user.contextualMenuCtrl.contextualForm.entityName.$error">
+      <div ng-messages="$user.contextualMenuCtrl.contextualForm.entityName.$error" ng-show="$user.contextualMenuCtrl.contextualForm.$submitted">
         <div ng-message="required" translate>This is required.</div>
         <div ng-message="maxlength" translate ng-class="{'activated': $user.contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
       </div>
   </md-input-container>
    <md-input-container class="md-block no-spacer">
       <label translate>Email</label>
-      <input type="email" required name="entityName" ng-model="$user.user.email" ng-maxlength="100">
-      <div ng-messages="$user.contextualMenuCtrl.contextualForm.entityName.$error">
+      <input type="email" required name="entityEmail" ng-model="$user.user.email" ng-maxlength="100">
+      <div ng-messages="$user.contextualMenuCtrl.contextualForm.entityEmail.$error" ng-show="$user.contextualMenuCtrl.contextualForm.$submitted">
         <div ng-message="required" translate>This is required.</div>
-        <div ng-message="email" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueEmail.$error.email}">Invalid email</div>
-        <div ng-message="maxlength" translate ng-class="{'activated': $user.contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+        <div ng-message="email" translate ng-class="{'activated': $user.contextualMenuCtrl.contextualForm.entityEmail.$error.email}">Invalid email</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': $user.contextualMenuCtrl.contextualForm.entityEmail.$error.maxlength}">Max length is 100.</div>
       </div>
   </md-input-container>
   <user-role-select ng-model="$user.user.role"></user-role-select>
