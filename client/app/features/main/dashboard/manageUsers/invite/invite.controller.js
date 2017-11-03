@@ -9,7 +9,7 @@ export default class manageInviteController {
     return this.invite.id ? this.invite.resend.bind(this.invite) : Preoday.Invite.create;
   }
 
-  onSuccess(entity) {
+  onSuccessForVenue(entity) {
 
     const {
       Spinner,
@@ -55,6 +55,20 @@ export default class manageInviteController {
     }
   }
 
+  onSuccessForChannel(entity) {
+
+    const {
+      Spinner,
+      Snack,
+      LabelService,
+      StateService,
+      $timeout,
+      $state,
+    } = this;
+
+    console.log('onSuccessForChannel');
+  }
+
   onCancel() {
 
     const {
@@ -79,6 +93,8 @@ export default class manageInviteController {
 
     this.originalInvite = angular.copy(invite);
     this.invite = invite;
+    this.template = StateService.isChannel ? 'userInvite.channel' : 'userInvite';
+    this.onSuccess = StateService.isChannel ? this.onSuccessForChannel.bind(this) : this.onSuccessForVenue.bind(this);
 
     $scope.$on('$destroy', () => {
       if (!this.hasSaved) {

@@ -7,7 +7,7 @@ export default function contextualMenu($compile, $timeout, $animate){
     template: require("./contextualMenu.tpl.html"),
     scope:{
       entity:"=",
-      template:"=",
+      template: "=",
       params: '=',
       onSuccess: '&?',
       onCancel: '&?',
@@ -18,7 +18,7 @@ export default function contextualMenu($compile, $timeout, $animate){
     replace:true,
     link: (scope, el, attr, ctrl) => {
 
-      const template = require("./templates/"+attr.template+".tpl.html")
+      const template = require("./templates/"+(ctrl.template || attr.template)+".tpl.html")
 
       let wrapper = angular.element(el[0].querySelector(".form-content"));
       $animate.addClass(el, 'rendered');
