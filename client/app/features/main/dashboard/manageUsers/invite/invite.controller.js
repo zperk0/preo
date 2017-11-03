@@ -30,6 +30,7 @@ export default class manageInviteController {
       this.sendOrResend()(this.invite).then((newInvite) => {
 
         this.invite.$deleted = false;
+        this.hasSaved = true;
 
         $timeout(() => {
           angular.extend(this.invite, newInvite);
@@ -74,14 +75,19 @@ export default class manageInviteController {
     this.Snack = Snack;
     this.LabelService = LabelService;
     this.StateService = StateService;
+    this.hasSaved = false;
 
-    this.originalInvite = invite;
-    this.invite = angular.copy(invite);
+    this.originalInvite = angular.copy(invite);
+    this.invite = invite;
 
     $scope.$on('$destroy', () => {
-      if (!this.invite.id) {
-        // it's a new invite and wasn't saved. So, we need to remove the empty item from the list
-        invites.splice(invites.indexOf(invite), 1);
+      if (!this.hasSaved) {
+        if (!this.invite.id) {
+          // it's a new invite and wasn't saved. So, we need to remove the empty item from the list
+          invites.splice(invites.indexOf(invite), 1);
+        } else {
+          angular.extend(this.invite, this.originalInvite);
+        }
       }
     });
 
