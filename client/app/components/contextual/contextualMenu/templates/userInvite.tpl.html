@@ -1,22 +1,2 @@
-<md-card-content>
-   <md-input-container class="md-block no-spacer">
-      <label translate>Name</label>
-      <input type="text" required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
 
-      <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
-        <div ng-message="required" translate>This is required.</div>
-        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
-      </div>
-  </md-input-container>
-   <md-input-container class="md-block no-spacer">
-      <label translate>Email</label>
-      <input type="email" required name="entityName" ng-model="contextualMenuCtrl.entity.email" ng-maxlength="100">
-      <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
-        <div ng-message="required" translate>This is required.</div>
-        <div ng-message="email" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueEmail.$error.email}">Invalid email</div>
-        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
-      </div>
-  </md-input-container>
-  <user-role-select ng-model="contextualMenuCtrl.entity.role"></user-role-select>
-</md-card-content>
-
+<user-detail user="contextualMenuCtrl.entity"></user-detail>
