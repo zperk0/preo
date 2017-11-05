@@ -85,6 +85,9 @@ export default class VenueService {
 
   loadAccount (venue) {
     return this.$q((resolve, reject) => {
+      if(!venue.accountId){
+        return resolve();
+      }
       return venue.getPermissions(this.Permissions.ACCOUNT_READ)
       .then(perms => {
         if (perms[this.Permissions.ACCOUNT_READ]) {
