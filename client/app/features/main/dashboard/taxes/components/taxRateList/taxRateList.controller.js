@@ -14,7 +14,7 @@ export default class taxRateListController {
     }
 
     let taxRate = new Preoday.TaxRate({
-      venueId: this.StateService.venue.id,
+      venueId: this.$stateParams.venueId,
       $selected: true,
     });
 

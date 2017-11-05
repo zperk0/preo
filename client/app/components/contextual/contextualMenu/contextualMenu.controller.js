@@ -4,7 +4,7 @@ export default class contextualMenuController {
   }
 
   //restore original state if user cancels
-  doCancel(){
+  onCancel(){
     console.log("cancel and reject")
 
     if (this.onCancel) {
