@@ -5,6 +5,7 @@ import inviteController from './invite/invite.controller';
 import permissionsResolve from './permissions.resolve';
 import usersResolve from './users.resolve';
 import invitesResolve from './invites.resolve';
+import entitiesResolve from './entities.resolve';
 
 
 /**
@@ -24,6 +25,7 @@ export default function routes($stateProvider, Permissions) {
       permissions: permissionsResolve,
       users: usersResolve,
       invites: invitesResolve,
+      entities: entitiesResolve,
     }
   });
 

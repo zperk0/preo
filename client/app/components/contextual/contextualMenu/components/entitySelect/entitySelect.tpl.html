@@ -1,0 +1,30 @@
+<div class="entity-select">
+	<div class="entity-group">
+		<div class="checkbox-wrapper" ng-if="$entity.entities.channel">
+	  	<md-checkbox  ng-click="$entity.toggleCheckbox()"
+	  								ng-checked="$entity.isSelected()"
+	  								name="channel"
+	  								class="md-primary">
+									{{ $entity.entities.channel.name }}
+	  						</md-checkbox>
+		</div>
+		<div class="checkbox-wrapper" ng-if="$entity.entities.venueGroups.length">
+	  	<md-checkbox  ng-repeat="group in $entity.entities.venueGroups track by group.id"
+	  								ng-click="$entity.toggleCheckbox()"
+	  								ng-checked="$entity.isSelected()"
+	  								name="venueGroups[]"
+	  								class="md-primary">
+									{{ group.name }}
+	  						</md-checkbox>
+		</div>
+		<div class="checkbox-wrapper" ng-if="$entity.entities.venues.length">
+	  	<md-checkbox  ng-repeat="venue in $entity.entities.venues track by venue.id"
+	  								ng-click="$entity.toggleCheckbox()"
+	  								ng-checked="$entity.isSelected()"
+	  								name="venues[]"
+	  								class="md-primary">
+									{{ venue.name }}
+	  						</md-checkbox>
+		</div>
+  </div>
+</div>

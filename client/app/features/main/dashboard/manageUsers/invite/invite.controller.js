@@ -79,7 +79,7 @@ export default class manageInviteController {
   }
 
   /* @ngInject */
-  constructor($timeout, $state, $scope, Spinner, Snack, LabelService, StateService, invite, invites) {
+  constructor($timeout, $state, $scope, Spinner, Snack, LabelService, StateService, invite, invites, entities) {
     "ngInject";
 
     this.$timeout = $timeout;
@@ -93,8 +93,18 @@ export default class manageInviteController {
 
     this.originalInvite = angular.copy(invite);
     this.invite = invite;
-    this.template = StateService.isChannel ? 'userInvite.channel' : 'userInvite';
-    this.onSuccess = StateService.isChannel ? this.onSuccessForChannel.bind(this) : this.onSuccessForVenue.bind(this);
+    this.params = {
+      entities: entities
+    };
+
+    if (StateService.isChannel) {
+      this.params.entities.channel = StateService.channel;
+      this.template = 'userInvite.channel';
+      this.onSuccess = this.onSuccessForChannel.bind(this);
+    } else {
+      this.template = 'userInvite';
+      this.onSuccess = this.onSuccessForVenue.bind(this);
+    }
 
     $scope.$on('$destroy', () => {
       if (!this.hasSaved) {
