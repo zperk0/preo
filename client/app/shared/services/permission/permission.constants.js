@@ -12,5 +12,6 @@ export default {
   TAXES:'tax_create',
   VENUE_CREATE:'venue_create',
   VENUE:'venue_update', //venue settings & switch venue mode
+  VENUE_OPERATE:'venue_operate',
   ADMIN: 'system_update'
 };
