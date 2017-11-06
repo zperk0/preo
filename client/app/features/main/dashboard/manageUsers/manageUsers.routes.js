@@ -40,7 +40,7 @@ export default function routes($stateProvider, Permissions) {
         resolve: {
           invite: (UserService, StateService,$rootScope, invites) => {
             const invite = new Preoday.Invite({
-              venueId: StateService.venue.id,
+              venueId: StateService.venue && StateService.venue.id,
               role: 'ADMIN',
               createdBy: UserService.user.id,
             });
