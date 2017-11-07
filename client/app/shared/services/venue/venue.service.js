@@ -85,6 +85,9 @@ export default class VenueService {
 
   loadAccount (venue) {
     return this.$q((resolve, reject) => {
+      if(!venue.accountId){
+        return resolve();
+      }
       return venue.getPermissions(this.Permissions.ACCOUNT_READ)
       .then(perms => {
         if (perms[this.Permissions.ACCOUNT_READ]) {
@@ -105,6 +108,12 @@ export default class VenueService {
     venue.setAsCurrent();
 
     this.UtilsService.updateLocale();
+
+    if (!venue.accountId) {
+      this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
+      this.account = {};
+      return this.$q.when(venue);
+    }
 
     this.loadAccount(venue)
     .then((account)=>{

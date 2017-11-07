@@ -18,6 +18,7 @@ export default class usersInviteListController {
       role:'ADMIN',
       createdBy:this.user.id,
       $selected: true,
+      domain: this.domainId
     });
 
     this.users.push(invite);
@@ -29,5 +30,7 @@ export default class usersInviteListController {
     this.title = "I am a usersList component"
     this.venue = VenueService.currentVenue;
     this.user = UserService.user;
+
+    this.domainId = window._PREO_DATA._DOMAIN ? window._PREO_DATA._DOMAIN : null;
   }
 }

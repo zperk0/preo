@@ -1,4 +1,4 @@
-/* THIS FILE WAS EDITED TO BEHAVE AS I WANTED. SEARCH FOR //#EDITED HERE TO FIND MY EDITS. (CAIO)*/
+/* THIS FILE WAS EDITED TO BEHAVE AS WE WANTED. SEARCH FOR //#EDITED HERE TO FIND OUR EDITS. (CAIO, RONALDO)*/
 
 /**
  * ngSticky - https://github.com/d-oliveros/ngSticky
@@ -377,7 +377,7 @@
             var valChange = (newVal !== oldVal || typeof stickyLine === 'undefined');
             var notSticking = (!isSticking && !isBottomedOut());
             // if (valChange && notSticking && newVal !== 0 && elemIsShowed) { //#EDITED HERE
-            if (valChange && notSticking && elemIsShowed) {
+            if (valChange && notSticking && elemIsShowed && $elem[0]) { //#EDITED HERE
               stickyLine = newVal - offset;
               //Update dimensions of sticky element when is showed
               if (elemIsShowed && elemWasHidden) {
@@ -393,6 +393,10 @@
 
               // Get Parent height, so we know when to bottom out for confined stickies
               var parent = $elem.parent()[0];
+
+              if (!parent) { //#EDITED HERE
+                return;
+              }
 
               // Offset parent height by the elements height, if we're not using a placeholder
               var parentHeight = parseInt (parent.offsetHeight) - (usePlaceholder ? 0 : $elem[0].offsetHeight);

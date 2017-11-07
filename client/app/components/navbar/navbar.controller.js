@@ -57,6 +57,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("Stock"), id:"analyticsStock"},
         {name: gettextCatalog.getString("Customers"), id:"analyticsCustomers"},
         {name: gettextCatalog.getString("Orders"), id:"analyticsOrders"}
+        // {name: gettextCatalog.getString("Promotions"), id:"analyticsPromotions"}
       ],
       shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ANALYTICS)
@@ -76,6 +77,7 @@ export default class navbarController {
       }},
       {name: gettextCatalog.getString("Tax"), icon:"account_balance", id:"taxes", children:[
         {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},
+        {name: gettextCatalog.getString("Tax Rates"), id:"taxRates"},
         {name: gettextCatalog.getString("Tax Groups"), id:"taxGroups"}
       ],shouldShow:function(){
         return PermissionService.hasPermission(Permissions.TAXES)

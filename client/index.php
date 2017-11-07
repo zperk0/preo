@@ -12,6 +12,7 @@ $analytics = '';
 $sessionId = session_id();
 $rollbarEnv = null;
 $rollbarTokenClient = '';
+$domain = '';
 $cssoverride = null;
 
 if(isset($_SERVER["PREO_CDN"]))
@@ -55,6 +56,11 @@ if(isset($_SERVER["PREO_CSS_OVERRIDE"]))
     $cssoverride = $_SERVER["PREO_CSS_OVERRIDE"];
 }
 
+if(isset($_SERVER["PREO_DOMAIN"]))
+{
+    $domain = $_SERVER["PREO_DOMAIN"];
+}
+
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .=" <script>";
     $analytics .="   window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;";
@@ -81,6 +87,7 @@ $overrides .= "window._PREO_DATA._RESET_PASSWORD='$resetPasswordLink';";
 $overrides .= "window._PREO_DATA._SESSION='$sessionId';";
 $overrides .= "window._PREO_DATA._ROLLBAR_ENV='$rollbarEnv';";
 $overrides .= "window._PREO_DATA._ROLLBAR_CLIENT_TOKEN='$rollbarTokenClient';";
+$overrides .= "window._PREO_DATA._DOMAIN='$domain';";
 $overrides .= "</script>";
 
 $contentsIndexHTML = str_replace("<!-- @@OVERRIDES -->",$overrides,$contentsIndexHTML);
