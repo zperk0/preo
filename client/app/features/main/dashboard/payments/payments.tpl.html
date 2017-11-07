@@ -3,7 +3,7 @@
     <md-card flex="30">
       <md-card-title>
         <h2 flex class="md-title" translate>Cash</h2>
-        <md-switch ng-model="paymentsCtrl.venue.cashFlag" ng-true-value="1" ng-false-value="0" ng-change="paymentsCtrl.updateVenue(venue)"></md-switch>
+        <md-switch ng-model="paymentsCtrl.venue.cashFlag" ng-true-value="1" ng-false-value="0" ng-change="paymentsCtrl.updateVenue(venue)" aria-label="{{'Enable payment with cash' | translate}}"></md-switch>
       </md-card-title>
       <md-card-content ng-class="{active: paymentsCtrl.venue.cashFlag}" >
         <div class="image-container">
@@ -15,7 +15,7 @@
     <md-card flex="30" class="stripe">
       <md-card-title>
         <h2 flex class="md-title" translate>Stripe</h2>
-        <md-switch ng-model="paymentsCtrl.stripe.visible" ng-true-value="1" ng-false-value="0" ng-change="paymentsCtrl.updateStripe()"></md-switch>
+        <md-switch ng-model="paymentsCtrl.stripe.visible" ng-true-value="1" ng-false-value="0" ng-change="paymentsCtrl.updateStripe()" aria-label="{{'Enable payment with stripe' | translate}}"></md-switch>
       </md-card-title>
       <md-card-content ng-class="{active: paymentsCtrl.stripe.visible}" ng-if="!paymentsCtrl.stripe.id">
         <div class="image-container">
