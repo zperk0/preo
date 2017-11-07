@@ -1,4 +1,6 @@
 
+import './customersPlaceholder.scss';
+
 // Import internal modules
 import directive from './customersPlaceholder.directive';
 

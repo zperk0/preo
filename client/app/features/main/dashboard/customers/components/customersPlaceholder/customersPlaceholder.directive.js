@@ -7,7 +7,6 @@ export default function customersPlaceholder(){
 
     },
     template: require("./customersPlaceholder.tpl.html"),
-    bindToController: true,
     replace:true,
     link: (scope, el, attr) => {
 
