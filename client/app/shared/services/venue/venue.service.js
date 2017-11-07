@@ -42,8 +42,10 @@ export default class VenueService {
       $q,
     } = this;
     const deferred = $q.defer();
+
     channel.getEntities(expand, permissions && permissions.join(','))
       .then((data) => {
+
         deferred.resolve(data);
       }, (err) => {
         deferred.reject(err);

@@ -15,13 +15,13 @@ export default class UserService {
     }
 
     this.authDeferred = this.$q.defer();
-    
+
     if (!data) {
       data = {};
     }
-
-    if(this.domainId && data)
-      data.domain = this.domainId;
+      
+    if(this.domainId)
+       data.domain = this.domainId;
 
     data.permissions = this.Permissions.ADMIN;
 
