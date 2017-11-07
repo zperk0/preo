@@ -28,7 +28,7 @@ export default class paymentsController {
     return false;
   }
 
-  showStripeSuccess(){
+  showStripeSuccess() {
     this.$connecting = false;
     this.DialogService.show(this.LabelService.TITLE_STRIPE_CONNECTED, this.LabelService.CONTENT_STRIPE_CONNECTED, [
       {name: this.LabelService.CONFIRMATION}
@@ -79,16 +79,17 @@ export default class paymentsController {
   }
 
   connectToStripe(){
-    console.log('[PaymentsController] connectToStripe:', this.stripeLink);
     if (this.$connecting) {
       return;
     }
 
+    console.log('[PaymentsController] connect link:', this.stripeLink);
     this.$connecting = true;
 
     this.stripeWindowReference = this.$window.open(this.stripeLink);
     this.stripeTimer = this.$window.setInterval(() => {
       if (this.stripeWindowReference.closed) {
+        this.stripeWindowReference = null;
         this.$window.clearInterval(this.stripeTimer);
         this.showStripeError();
       }
@@ -96,6 +97,14 @@ export default class paymentsController {
   }
 
   updateStripe() {
+    if (this.stripe && !this.stripe.visible && this.stripeWindowReference) {
+      this.stripeWindowReference.close();
+      this.stripeWindowReference = null;
+      this.$window.clearInterval(this.stripeTimer);
+      this.$connecting = false;
+      return;
+    }
+
     if (this.stripe && this.stripe.id) {
       if (this.stripe.visible === 0 && !this.canTurnOffMethod()) {
         this.stripe.visible = 1;
@@ -114,7 +123,7 @@ export default class paymentsController {
     }
   }
 
-  setStripe(){
+  setStripe() {
     for (var i = 0; i < this.paymentProviders.length; i++) {
       var pp = this.paymentProviders[i];
       if (pp.type === 'Stripe'){
@@ -125,7 +134,7 @@ export default class paymentsController {
     }
   }
 
-  updateVenue(){
+  updateVenue() {
       if (this.venue.cashFlag === 0 && !this.canTurnOffMethod()){
         this.venue.cashFlag = 1;
         return;
