@@ -45,6 +45,8 @@ export default class ErrorService {
 
     //TAXES
     this.TAXES_ERROR = {code:'FAILED_LOADING_TAXES', message:this.gettextCatalog.getString("Error loading tax settings")}
+    this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:this.gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: this.gettextCatalog.getString('Sorry')};
+    this.TAX_RATE_ASSIGNED_TO_GROUP = {code:'TAX_RATE_ASSIGNED_TO_GROUP', message:this.gettextCatalog.getString("Can’t delete this tax rate while there are groups using it."), title: this.gettextCatalog.getString('Sorry')};
 
 
     this.UNEXPECTED_ERROR = {code:'UNEXPECTED_ERROR', message:this.gettextCatalog.getString("An unexpected error occurred loading this page, please try again")};
@@ -61,8 +63,6 @@ export default class ErrorService {
 
     this.EVENT_NO_SLOTS = {code:'EVENT_NO_SLOTS', message:this.gettextCatalog.getString("You must create at least one collection before you can add events"), title: 'No collection slots'};
 
-    // EVENT OUTLET LOCATION
-    this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:this.gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: this.gettextCatalog.getString('Sorry')};
     // EVENT OUTLET LOCATION
     this.VENUE_WITHOUT_ADDRESS = {code:'VENUE_WITHOUT_ADDRESS', message:this.gettextCatalog.getString("You need to set up your address before selecting your location.  You'll be redirected to your Details page to configure your address."), title: this.gettextCatalog.getString('Address not found')};
     this.VENUE_WITHOUT_LOCATION = {code:'VENUE_WITHOUT_LOCATION', message:this.gettextCatalog.getString("You need to set up your location before creating delivery zones.  You'll be redirected to your Details page to configure your location."), title: this.gettextCatalog.getString('Location not found')};
@@ -93,10 +93,8 @@ export default class ErrorService {
     // CUSTOM TAGS
     this.FAILED_LOADING_TAGS = {code: 'FAILED_LOADING_TAGS', message:this.gettextCatalog.getString('An unexpected error occurred loading tags, please try again.')};
 
-    // PROMOTIONS
     this.EMPTY_ADD_USER_PROMO = {code: 'EMPTY_ADD_USER_PROMO', message:this.gettextCatalog.getString('You must select one or more users to apply the promotion.'), title:this.gettextCatalog.getString('No users selected')};
   }
-
 
   constructor(gettextCatalog, $state, DialogService) {
     "ngInject";

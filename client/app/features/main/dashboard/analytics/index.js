@@ -16,6 +16,7 @@ import Customers from './customers';
 import Summary from './summary';
 import Orders from './orders';
 import Stock from './stock';
+import Promotions from './promotions';
 
 import ReportsService from './components/reports';
 import analyticsFilters from './filters';
@@ -24,7 +25,7 @@ import analyticsFilters from './filters';
 
 import chartjs from 'chart.js/src/chart.js';
 
-angular.module("webapp.analytics" , ['ui.router', customDatafilters, barChart,dropdownActions,doughnutChart, Customers, Summary, Orders, Stock, ReportsService, analyticsFilters, cardOverlay, require('angular-material-data-table')])
+angular.module("webapp.analytics" , ['ui.router', customDatafilters, barChart,dropdownActions,doughnutChart, Customers, Summary, Orders, Stock, Promotions, ReportsService, analyticsFilters, cardOverlay, require('angular-material-data-table')])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

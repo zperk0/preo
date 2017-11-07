@@ -19,6 +19,9 @@ export default class UserService {
     if (!data) {
       data = {};
     }
+      
+    if(this.domainId)
+       data.domain = this.domainId;
 
     data.permissions = this.Permissions.ADMIN;
 
@@ -146,6 +149,10 @@ export default class UserService {
   forgotPassword (data) {
     const deferred = this.$q.defer();
     const that = this;
+    
+    if(this.domainId && data)
+      data.domain = this.domainId;
+
     Preoday.User.forgotPassword(data).then(
       function () {
         deferred.resolve();
@@ -169,6 +176,8 @@ export default class UserService {
     this.StateConfig = StateConfig;
     this.Permissions = Permissions;
     this.$state = $state;
+
+    this.domainId = window._PREO_DATA._DOMAIN ? window._PREO_DATA._DOMAIN : null;
 
     this.authDeferred = null;
   }

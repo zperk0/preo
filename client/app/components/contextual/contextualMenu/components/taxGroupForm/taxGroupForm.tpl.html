@@ -1,0 +1,30 @@
+<div class="tax-group-form">
+   <md-input-container class="md-block no-spacer">
+      <label translate>Tax group name</label>
+      <input type="text" required name="entityName" ng-model="taxGroupFormCtrl.taxGroup.name" ng-maxlength="100">
+
+      <div ng-messages="taxGroupFormCtrl.contextualForm.entityName.$error">
+        <div ng-message="required" translate>This is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': taxGroupFormCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+      </div>
+  </md-input-container>
+
+  <div class="tax-rate-select-content">
+    <label class="label-title" translate>Choose rates:</label>
+    <div class="tax-rate-select">
+      <div class="tax-rates" ng-if="!taxGroupFormCtrl.loading">
+        <md-checkbox  ng-repeat="taxRate in taxGroupFormCtrl.taxes"
+                      ng-click="taxGroupFormCtrl.toggleCheckbox(taxRate)"
+                      ng-checked="taxGroupFormCtrl.isSelected(taxRate)"
+                      name="taxRates[]"
+                      class="md-primary">
+                      {{ taxRate.name }}
+                  </md-checkbox>
+      </div>
+      <div class="content-spinner" ng-if="taxGroupFormCtrl.loading">
+        <spinner></spinner>
+      </div>
+    </div>
+  </div>
+</div>
+
