@@ -13,7 +13,7 @@ export default class taxGroupListController {
       return;
     }
 
-    let taxGroup = new Preoday.Tax({
+    let taxGroup = new Preoday.TaxGroup({
       venueId: this.StateService.venue.id,
       $selected: true,
     });
