@@ -216,25 +216,22 @@ export default class paymentsController {
   /* @ngInject */
   constructor(Spinner, Snack, ErrorService, LabelService, DialogService, $scope, $window, $timeout, VenueService) {
     'ngInject';
-    this.isEdit = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
     this.VenueService = VenueService;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
-    this.isError = false;
     this.$window = $window;
     this.$timeout = $timeout;
     this.stripeLink = 'https://stripe.com';
     this.stripeStorageKey = 'STRIPE_REDIRECT';
-    this.stripeRedirectUri = $window.location.origin + $window.location.pathname;
 
-    if (this.stripeRedirectUri[this.stripeRedirectUri.length - 1] !== '/') {
-      this.stripeRedirectUri += '/';
-    }
+    this.stripeRedirectUri = $window.location.origin
+      ? $window.location.origin
+      : $window.location.protocol + '//' + $window.location.host;
 
-    this.stripeRedirectUri += 'stripe-success.php';
+    this.stripeRedirectUri += '/stripe-success.php';
     console.log(this.stripeRedirectUri);
     this.paymentProviders = [];
     this.stripe = {visible: false};
