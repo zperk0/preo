@@ -25,10 +25,10 @@ export default class usersInviteListController {
   }
 
   /* @ngInject */
-  constructor(VenueService, UserService) {
+  constructor(StateService, UserService) {
     "ngInject"
     this.title = "I am a usersList component"
-    this.venue = VenueService.currentVenue;
+    this.venue = StateService.venue;
     this.user = UserService.user;
 
     this.domainId = window._PREO_DATA._DOMAIN ? window._PREO_DATA._DOMAIN : null;

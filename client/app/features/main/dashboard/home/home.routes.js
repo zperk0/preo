@@ -6,11 +6,11 @@ import controller from './home.controller';
  * @param  $stateProvider
  */
 
-export default function routes($stateProvider) {
+export default function routes($stateProvider, StateConfigProvider) {
   "ngInject";
   $stateProvider.state("main.dashboard.home", {
     url: "/home",
-    template: require("./home.tpl.html"),
+    template: StateConfigProvider.isChannel ? require("./home.channel.tpl.html") : require("./home.tpl.html"),
     controller: controller.UID,
     controllerAs: "homeCtrl"
   });

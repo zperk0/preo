@@ -23,7 +23,7 @@ import analyticsFilters from './filters';
 
 //import datatables from '../../../../../../node_modules/angular-datatables/bundles/angular-datatables.umd.js';
 
-import chartjs from '../../../../../../node_modules/chart.js/dist/Chart.min.js';
+import chartjs from 'chart.js/src/chart.js';
 
 angular.module("webapp.analytics" , ['ui.router', customDatafilters, barChart,dropdownActions,doughnutChart, Customers, Summary, Orders, Stock, Promotions, ReportsService, analyticsFilters, cardOverlay, require('angular-material-data-table')])
   .config(routes)

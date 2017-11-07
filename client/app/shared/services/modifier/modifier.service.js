@@ -128,7 +128,7 @@ export default class ModifierService {
           position:0
         }
         ],
-        venueId:this.$stateParams.venueId
+        venueId:this.StateService.venue.id
     };
 
     let isCreating = false;
@@ -251,11 +251,12 @@ export default class ModifierService {
 
 
 
-  constructor($q, $rootScope, $stateParams, BroadcastEvents) {
+  constructor($q, $rootScope, $stateParams, BroadcastEvents, StateService) {
     "ngInject";
     this.$rootScope = $rootScope;
     this.$stateParams = $stateParams;
     this.BroadcastEvents = BroadcastEvents;
+    this.StateService = StateService;
     this.$q =$q;
     this.data = {};
 

@@ -679,62 +679,50 @@ export default class customDatafiltersController {
     this.onVenueChange();
   }
 
-  checkPermissions(){
-    return this.$q((resolve,reject) => {
-      var venueIds = this.VenueService.venues.map((x) => { return x.id});
-      var permissions = [this.Permissions.ANALYTICS];
-          this.PermissionService.checkVenuesPermissions( permissions ,venueIds)
-          .then((data) => {
-
-            var venues = this.VenueService.venues.filter((x) => {
-              if(data.hasOwnProperty(x.id) && data[x.id][this.Permissions.ANALYTICS] === true)
-                return x;
-            });
-
-            resolve(venues);
-          }, (err) => {
-            console.log("Error fetching venue permissions", err);
-            reject();
-          });
-    });
+  fetchVenues() {
+    return this.StateService.fetchVenues('outlets', [this.Permissions.ANALYTICS]);
   }
 
 // To make Venues and Outlets selectable on the same MD-SELECT, the same array will contain venues + outlets
 // Fields: group -> to keep venues and it owns outlets grouped
 //         type -> to know which object in array is an outlet / venue
 //         selected -> default always come all selected. used to control Parent <-> child relation on VenueChange event
-  getVenues(venues){
+  buildDropdownOptions(data){
 
-    var localVenue = {};
-    var localOutlet = {};
-    var venuesIds = [];
-    var isCurrentVenue = false;
+    const venuesIds = [];
+    const venues = data.venues;
+    const {
+      StateService,
+    } = this;
+
 
     // SUPER ADMIN can see current venue selected too.
-    if(this.UserService.isAdmin()){
+    // if(this.UserService.isAdmin()){
 
-      let isVenuePresent = this.VenueService.venues.filter((x) => {
-        if(x.id == this.VenueService.currentVenue.id)
-          return x;
-      });
+    //   let isVenuePresent = this.StateService.venues.filter((x) => {
+    //     if(x.id == this.StateService.venue.id)
+    //       return x;
+    //   });
 
-      if(isVenuePresent.length <= 0){
-        venues.push(this.VenueService.currentVenue);
-      }
-    }
+    //   if(isVenuePresent.length <= 0){
+    //     venues.push(this.StateService.venue);
+    //   }
+    // }
 
     venues.forEach((venue) => {
-      isCurrentVenue = (this.VenueService.currentVenue.id == venue.id) ? true : false;
+      const isSelected = (StateService.venue && +StateService.venue.id === +venue.id)
+                         ? true
+                         : StateService.isChannel;
 
       venuesIds.push(venue.id);
-      localVenue = {
+      const localVenue = {
         id: venue.id,
         name: venue.name,
         isEventVenue: venue.eventFlag == 1 ? true : false,
         hasApplication: false,
         type: 'venue',
         group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-        selected: isCurrentVenue,
+        selected: isSelected,
         display: true,
         uniqueId: venue.name.substring(0,4).toUpperCase()+ venue.id
       };
@@ -747,12 +735,12 @@ export default class customDatafiltersController {
       }
 
       venue.outlets.forEach((outlet) => {
-        localOutlet = {
+        const localOutlet = {
           id: outlet.id,
           name: outlet.name,
           type: 'outlet',
           group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-          selected: isCurrentVenue,
+          selected: isSelected,
           display: true,
           uniqueId: outlet.id + venue.name.substring(0,4).toUpperCase()+ venue.id
         };
@@ -1217,8 +1205,8 @@ export default class customDatafiltersController {
 
     this.spinner.show('init-datafilters');
 
-    this.checkPermissions()
-    .then(this.getVenues.bind(this))
+    this.fetchVenues()
+    .then(this.buildDropdownOptions.bind(this))
     .then(this.loadReports.bind(this))
     .then(this.loadDateRange.bind(this))
     .then(() => {
@@ -1230,6 +1218,10 @@ export default class customDatafiltersController {
     .catch((err) => {
       console.log('Error initing DataFilters', err);
       this.spinner.hide('init-datafilters');
+
+      this.onInitError && this.onInitError({
+        error: err
+      });
     });
 
   }
@@ -1254,7 +1246,7 @@ export default class customDatafiltersController {
   }
 
   /* @ngInject */
-  constructor($q , $scope, Spinner, Snack, $timeout, VenueService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog, LabelService, ErrorService, DialogService) {
+  constructor($q , $scope, Spinner, Snack, $timeout, StateService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog, LabelService, ErrorService, DialogService) {
   	'ngInject';
 
     this.spinner = Spinner;
@@ -1267,7 +1259,7 @@ export default class customDatafiltersController {
     this.ErrorService = ErrorService;
     this.DialogService = DialogService;
 
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.Spinner = Spinner;
     this.EventService = EventService;
     this.$q = $q;

@@ -6,7 +6,7 @@ export default class manageUsersController {
 
    init(){
     this.Spinner.show("fetch-users");
-    console.log("initing");
+    console.log('ManagerUsersController [init] - venue:', this.venue);
     var currentUser = this.UserService.getCurrent();
     this.venue.getUsers()
     .then((users)=>{
@@ -40,7 +40,7 @@ export default class manageUsersController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack,ErrorService, VenueService, LabelService, UserService, $timeout) {
+  constructor(Spinner, Snack,ErrorService, StateService, LabelService, UserService, $timeout) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -49,7 +49,7 @@ export default class manageUsersController {
     this.UserService = UserService;
     this.users = [];
     this.invites = [];
-    this.venue = VenueService.currentVenue;
+    this.venue = StateService.venue;
     this.isError = false;
     this.$timeout = $timeout;
     this.init();

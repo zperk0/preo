@@ -17,7 +17,7 @@ export default class modifiersController {
     return this.FeatureService.hasNestedModifierFeature();
   }
 
-  constructor(ModifierService, FeatureService, Spinner, $stateParams) {
+  constructor(ModifierService, FeatureService, Spinner, $stateParams, StateService) {
     "ngInject";
 
     this.FeatureService = FeatureService;
@@ -27,7 +27,7 @@ export default class modifiersController {
 
     FeatureService.hasFeature(Preoday.constants.Feature.NESTED_MODIFIER);
 
-    ModifierService.getModifiers($stateParams.venueId).then((data)=>{
+    ModifierService.getModifiers(StateService.venue.id).then((data)=>{
       console.log("got data", data)
       this.data = data;
 

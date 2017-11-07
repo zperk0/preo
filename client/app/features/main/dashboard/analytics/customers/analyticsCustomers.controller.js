@@ -281,7 +281,7 @@ export default class analyticsCustomersController {
     else{
       sortBy = orderBy;
     }
-      
+
     this.currentReport = this.$filter('orderObj')( this.currentReport, sortBy ,'value');
     let newValues = this.currentReport.slice(0, this.infiniteScrollIndex);
 
@@ -316,7 +316,7 @@ export default class analyticsCustomersController {
             this.linesSelected.splice(i, 1);
           }
         }
-      });      
+      });
     }
   }
 
@@ -390,13 +390,17 @@ export default class analyticsCustomersController {
       }
 
       if(params.eventIds){
-        this.dataFilters.events = params.eventIds;       
+        this.dataFilters.events = params.eventIds;
       }
     }
 
     if(this.reportNameSelected){
       this.dataFilters.report = this.reportNameSelected;
     }
+  }
+
+  onInitError() {
+    this.hideSpinner();
   }
 
   constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, LabelService, FeatureService, hasKnowYourCustomersFeature) {

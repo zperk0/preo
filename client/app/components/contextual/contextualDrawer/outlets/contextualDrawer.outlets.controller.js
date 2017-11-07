@@ -11,13 +11,13 @@ export default class contextualDrawerOutletsController {
 
   }
 
-  constructor($scope, OutletService, $stateParams,$mdSidenav) {
+  constructor($scope, OutletService, $stateParams, $mdSidenav, StateService) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.cancelledOutlets = [];
 
     OutletService.getOutlets({
-      venueId: $stateParams.venueId
+      venueId: StateService.venue.id
     }).then((data)=>{
 
       console.log('outlet service data here', data);
@@ -25,6 +25,6 @@ export default class contextualDrawerOutletsController {
       this.data = data;
     }, () => {
       console.log('error outlet service');
-    })    
+    })
   }
 }

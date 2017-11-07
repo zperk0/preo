@@ -7,7 +7,7 @@ export default class OutletLocationService {
   save(newData) {
 
     return Preoday.OutletLocation.save(newData);
-  }  
+  }
 
   getOutletLocations(data){
 
@@ -69,8 +69,8 @@ export default class OutletLocationService {
 
     this.data.rootGroup = Preoday.OutletLocationGroup.createGroupByOutletLocation({
       id: null,
-      venueId: this.VenueService.currentVenue.id
-    });      
+      venueId: this.StateService.venue.id
+    });
   }
 
   resetGroups () {
@@ -87,15 +87,15 @@ export default class OutletLocationService {
 
   hasOutletLocations () {
 
-    return this.data.rootGroup 
+    return this.data.rootGroup
           && this.data.rootGroup.outletLocations
           && this.data.rootGroup.outletLocations.length > 0;
   }
 
-  constructor($q, $rootScope, $stateParams, VenueService) {
+  constructor($q, $rootScope, $stateParams, StateService) {
     "ngInject";
     this.$stateParams = $stateParams;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.$q =$q;
     this.data={
       rootGroup: null

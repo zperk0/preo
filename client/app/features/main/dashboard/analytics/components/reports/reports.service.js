@@ -327,12 +327,20 @@ export default class ReportsService {
     return pdfObj;
   }
 
+  getEntityBasePath() {
+    const {
+      isChannel
+    } = this.StateService;
+
+    return isChannel ? 'channels' : 'venues';
+  }
+
   getChartExportCsvUrl(){
-    return '/api/venues/'+ this.venueId + '/exports/csv/post';
+    return '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/csv/post';
   }
 
   getChartExportPdfUrl(){
-    return '/api/venues/'+ this.venueId + '/exports/pdfs/post';
+    return '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/pdfs/post';
   }
 
   exportReportToPdf(report, dataSelected){
@@ -342,7 +350,7 @@ export default class ReportsService {
       this.sendGAExportEvent('pdf', report.name);
       let udata = this.prepareDataToPdf(report, dataSelected);
 
-      var exportUrl = '/api/venues/'+ this.venueId + '/exports/pdfs/report';
+      var exportUrl = '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/pdfs/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
       // ..
@@ -359,7 +367,7 @@ export default class ReportsService {
       this.sendGAExportEvent('csv', report.name);
       let udata = this.prepareDataToCsv(report, dataSelected);
 
-      var exportUrl = '/api/venues/' + this.venueId + '/exports/csv/report';
+      var exportUrl = '/api/' + this.getEntityBasePath() + '/' + this.entityId + '/exports/csv/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
       // ..
@@ -648,7 +656,7 @@ export default class ReportsService {
   }
 
   // Everytime a search is done, this service keeps the last Param and Data returned.
-  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService, FeatureService) {
+  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, StateService, FeatureService) {
     "ngInject";
     this.$q = $q;
     this.$window = $window;
@@ -656,7 +664,8 @@ export default class ReportsService {
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.LabelService = LabelService;
-    this.venueId = VenueService.currentVenue.id;
+    this.StateService = StateService;
+    this.entityId = StateService.entityId;
     this.hasDobFeature = FeatureService.hasDateOfBirthFeature();
   }
 

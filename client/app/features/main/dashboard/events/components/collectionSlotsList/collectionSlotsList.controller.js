@@ -16,7 +16,7 @@ export default class collectionSlotsListController {
     }
 
     let slot = new Preoday.PickupSlot({
-      venueId: this.VenueService.currentVenue.id,
+      venueId: this.StateService.venue.id,
       $selected: true,
     });
 
@@ -42,11 +42,11 @@ export default class collectionSlotsListController {
   }
 
   /* @ngInject */
-  constructor($q, VenueService, CollectionSlotsService) {
+  constructor($q, StateService, CollectionSlotsService) {
   	'ngInject';
 
   	this.$q = $q;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.CollectionSlotsService = CollectionSlotsService;
   }
 }

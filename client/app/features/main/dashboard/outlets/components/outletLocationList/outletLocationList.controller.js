@@ -111,7 +111,7 @@ export default class outletLocationListController {
   }
 
   /* @ngInject */
-  constructor($timeout, $stateParams, $q, Spinner, Snack, OutletLocationService, gettextCatalog) {
+  constructor($timeout, $stateParams, $q, Spinner, Snack, OutletLocationService, gettextCatalog, StateService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -119,6 +119,6 @@ export default class outletLocationListController {
     this.$q = $q;
     this.$timeout = $timeout;
     this.gettextCatalog = gettextCatalog;
-    this.venueId = $stateParams.venueId;
+    this.venueId = StateService.venue.id;
   }
 }

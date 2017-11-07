@@ -10,7 +10,7 @@
           {{'My account' | translate}}
         </md-button>
       </md-menu-item>
-      <md-menu-item ng-if="vm.VenueService && vm.VenueService.account && vm.VenueService.account.billingDate">
+      <md-menu-item ng-if="vm.StateService && vm.StateService.account && vm.StateService.account.billingDate">
         <md-button ng-click="vm.navigateTo('main.billing')">
           {{ 'Billing' | translate }}
         </md-button>
