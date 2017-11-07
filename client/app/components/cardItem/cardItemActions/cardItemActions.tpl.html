@@ -69,6 +69,12 @@
           {{'Edit' | translate}}
         </md-tooltip>
       </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onNotes" class="md-icon-button" ng-click="cardItemActionsCtrl.onNotes({$event:$event})">
+        <icon>speaker_notes</icon>
+        <md-tooltip md-direction="bottom">
+          {{'Customer notes' | translate}}
+        </md-tooltip>
+      </md-button>
       <md-button ng-if="cardItemActionsCtrl.onAdd"
                  ng-show="cardItemActionsCtrl.shouldShowOnAdd()"
                  class="md-icon-button {{ cardItemActionsCtrl.disableAdd ? 'disabled' : '' }}"

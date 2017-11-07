@@ -6,7 +6,9 @@ export default function customerItem(){
   return {
     restrict: 'E',
     scope: {
-      customer: '='
+      customer: '=',
+      onEdit: '&?',
+      onNotes: '&?',
     },
     template: require("./customerItem.tpl.html"),
     controller: controller.UID,

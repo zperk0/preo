@@ -8,15 +8,15 @@
 
     <card-item-title>
       <div class="customer-item__details">
-        <span class="customer__name">{{$customer.customer.name}} </span>
-        <span class="customer__email">ronaldozanoni@hotmail.com</span>
-        <span class="customer__phone">014981427778</span>
+        <span class="customer__name ellipsis">{{$customer.customer.name}} </span>
+        <span class="customer__email ellipsis">ronaldozanoni@hotmail.com</span>
+        <span class="customer__phone ellipsis">014981427778</span>
       </div>
       <span class='customer-item__status' ng-if="$customer.customer.id" translate> (pending)</span>
     </card-item-title>
 
-    <card-item-actions on-delete="$customer.customer.onDelete()"
-                       on-edit="$customer.customer.onEdit($event)"
+    <card-item-actions on-edit="$customer.onEdit({ customer: $customer.customer })"
+                       on-notes="$customer.onNotes({ customer: $customer.customer })"
                         ></card-item-actions>
   </card-item>
 </div>

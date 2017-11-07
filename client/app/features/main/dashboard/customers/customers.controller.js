@@ -4,6 +4,14 @@ export default class customersController {
     return "customersController"
   }
 
+  onEditCustomer(customer) {
+		console.log('onEditCustomer', customer);
+  }
+
+  showCustomerNotes(customer) {
+		console.log('showCustomerNotes', customer);
+  }
+
   /* @ngInject */
   constructor() {
 

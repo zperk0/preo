@@ -8,7 +8,9 @@
 
     <div class='main-content-left'>
       <customer-list
-          		customers="$customers.customers">
+          		customers="$customers.customers"
+              on-edit="$customers.onEditCustomer(customer)"
+              on-notes="$customers.showCustomerNotes(customer)">
        </customer-list>
     </div>
 

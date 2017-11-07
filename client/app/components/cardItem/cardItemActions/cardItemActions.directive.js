@@ -23,6 +23,7 @@ export default function cardItemActions($parse){
       onAddLocation:'&?',
       onSync:'&?',
       onAddUser: '&?',
+      onNotes: '&?',
       disableAdd:'=?',
       disableAddCustomField:'=?',
       visibleMessage:'@',

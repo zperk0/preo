@@ -7,7 +7,8 @@ export default function customerList(){
     scope: {
       customers: '=',
       hasNew: '=',
-      onNew: '&'
+      onEdit: '&?',
+      onNotes: '&?',
     },
     template: require("./customerList.tpl.html"),
     controller: controller.UID,
