@@ -1,4 +1,6 @@
 
+import './customerItem.scss';
+
 // Import internal modules
 import controller from './customerItem.controller';
 import directive from './customerItem.directive';

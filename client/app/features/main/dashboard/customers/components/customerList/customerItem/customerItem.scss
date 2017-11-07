@@ -1,0 +1,51 @@
+
+@import "client/app/shared/styles/variables";
+
+.customer-item {
+	.card-item {
+		flex-direction: row;
+		padding: 15px 0;
+
+		& > .card-title {
+			width: 100%;
+
+			& > div {
+		    overflow: visible;
+		    white-space: normal;
+
+				.card-title-text {
+					line-height: 1.27;
+				}
+			}
+		}
+	}
+
+	md-card-actions {
+		left: 0;
+
+		.card-actions-leave-trap {
+			align-items: center;
+		}
+	}
+
+	&__details {
+
+	}
+
+  &__status {
+    font-size: $font-sm;
+    color: $light-red;
+    margin-left: 12px;
+  }
+
+  .customer {
+  	&__name, &__email, &__phone {
+			font-size: $font-sm;
+			display: block;
+  	}
+
+  	&__email, &__phone {
+			color: $greyDefault;
+  	}
+  }
+}
