@@ -56,8 +56,8 @@ export default class navbarController {
         {name: gettextCatalog.getString("Summary"), id:"analyticsSummary"},
         {name: gettextCatalog.getString("Stock"), id:"analyticsStock"},
         {name: gettextCatalog.getString("Customers"), id:"analyticsCustomers"},
-        {name: gettextCatalog.getString("Orders"), id:"analyticsOrders"},
-        {name: gettextCatalog.getString("Promotions"), id:"analyticsPromotions"}
+        {name: gettextCatalog.getString("Orders"), id:"analyticsOrders"}
+        // {name: gettextCatalog.getString("Promotions"), id:"analyticsPromotions"}
       ],
       shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ANALYTICS)
