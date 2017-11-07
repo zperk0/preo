@@ -1,5 +1,19 @@
-<div class='customers' layout="column">
+<div class='customers' layout="row">
 	<div class="search-panel-wrapper sub-toolbar">
 		<search-panel placeholder="{{ 'Search customers' | translate }}"></search-panel>
 	</div>
+
+  <div class='layout-left-right' layout="row">
+    <div class='main-content-left'>
+      <customer-list
+          		customers="$customers.customers">
+       </customer-list>
+    </div>
+
+    <ui-view name="customerDetailView"
+    				 class='main-content-right'
+    				 media-query="min-width: 1024px"
+    				 sticky
+    				 offset="88"></ui-view>
+  </div>
 </div>

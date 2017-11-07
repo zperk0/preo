@@ -1,0 +1,16 @@
+
+export default function customersPlaceholder(){
+  "ngInject";
+  return {
+    restrict: 'E',
+    scope: {
+
+    },
+    template: require("./customersPlaceholder.tpl.html"),
+    bindToController: true,
+    replace:true,
+    link: (scope, el, attr) => {
+
+    }
+  }
+}

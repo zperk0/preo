@@ -1,6 +1,16 @@
+
+@import "../../../../shared/styles/variables";
+
 .customers {
+	width: 100%;
+
 	.search-panel-wrapper {
 		display: flex;
 		align-items: center;
+	}
+
+	.layout-left-right {
+		padding-top: $searchBarHeight;
+		flex: 1;
 	}
 }
