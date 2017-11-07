@@ -1,6 +1,6 @@
-export default class analyticsCustomersController {
+export default class analyticsPromotionsController {
   static get UID(){
-    return "analyticsCustomersController";
+    return "analyticsPromotionsController";
   }
 
   debounce(func, wait, immediate) {
@@ -27,23 +27,54 @@ export default class analyticsCustomersController {
 
   updateReportData(){
 
+    if(this.dataFilters.report.isIndividual && !this.dataFilters.promotion){
+      return false;
+    }
+
     if(!this.spinnerRunning())
       this.showSpinner();
 
     this.ReportsService.getReportData(this.dataFilters)
     .then((data) => {
 
-     // this.reportsData = data;
+     //this.reportsData = data;
 
       this.updateView();
 
       this.hideSpinner();
 
     }, (err) => {
-      console.log('ReportService fetch Customers Error - ', err);
-      this.hideSpinner();
+     console.log('ReportService fetch promotions Error - ', err);
+     this.hideSpinner();
     });
 
+  }
+
+  getParamsDate(){
+    var response = {};
+    if(this.dataFilters.datesRange.startDate && this.dataFilters.datesRange.endDate){
+      response.start = this.dataFilters.datesRange.startDate;
+      response.end = this.dataFilters.datesRange.endDate;
+    }
+    else{
+      var events = [];
+
+      this.dataFilters.events.forEach((row) => {
+        events.push(row.startDate);
+      });
+
+      events.sort((a , b) => {
+        if(a > b) return 1;
+        if(a < b) return -1;
+
+        return 0;
+      });
+
+      response.start = moment(events[0]).format('L');
+      response.end = moment(events[events.length-1]).format('L');
+    }
+
+    return response;
   }
 
   getExportData(){
@@ -63,12 +94,7 @@ export default class analyticsCustomersController {
       data = this.linesSelected;
     }
     else{
-      if(this.dataFilters.customerMarketing){
-        data = this.$filter('marketingFilter')(this.currentReport, this.fieldToFilter, true);
-      }
-      else{
-        data = this.currentReport;
-      }
+      data = this.currentReport;
     }
 
     data = this.$filter('orderObj')( data, this.query.order ,'value');
@@ -104,51 +130,6 @@ export default class analyticsCustomersController {
     });
   }
 
-  onNotificationInput() {
-    let nonBMP = "[^\u0000-\uFFFF]";
-    if (this.$scope.diagCtrl.textArea) {
-      this.$scope.diagCtrl.textArea = this.$scope.diagCtrl.textArea.replace(new RegExp(nonBMP, 'gu'), '');
-    }
-  }
-
-  sendNotification(){
-    var modal = {
-      title: this.gettextCatalog.getString('Send a push notification...'),
-      placeholder: this.gettextCatalog.getString('Write here your message'),
-      titleMessage: this.gettextCatalog.getString('Please note, push notifications will only be received by users who have your mobile app installed.'),
-      buttons: [{name:this.gettextCatalog.getString('Send')}]
-    };
-
-    this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons, this.onNotificationInput)
-    .then(() => {
-
-      var usersSelected = [];
-      var textToPush = this.$scope.diagCtrl.textArea;
-
-      if(this.linesSelected.length > 0){
-        usersSelected = this.linesSelected;
-      }
-      else{
-        usersSelected = this.tableData.body;
-      }
-
-      this.showSpinner();
-
-      this.ReportsService.sendPushNotification( usersSelected,textToPush)
-      .then((data) => {
-        this.Snack.show(this.gettextCatalog.getString('The message was sent successfully.'));
-        this.hideSpinner();
-      }, (err) => {
-        this.Snack.showError(this.gettextCatalog.getString('An error occurred sending your message. Please try again later.'));
-        console.log('Error pushing notify -', err);
-        this.hideSpinner();
-      });
-
-    }, () => {
-      console.log('cancel dialog');
-    });
-  }
-
   onActions(item){
 
     switch(item.id){
@@ -159,20 +140,13 @@ export default class analyticsCustomersController {
       case this.LabelService.EXPORT_PDF.id:
       this.exportPdf();
       break;
-
-      case this.LabelService.NOTIFICATION.id:
-      this.sendNotification()
-      break;
     }
 
   }
 
   getReportTypes(){
 
-    var types = [this.ReportTypes.PAYINGCUSTOMERS,this.ReportTypes.NEWCUSTOMERS,this.ReportTypes.CUSTOMERS, this.ReportTypes.NEWAREADELIVERY];
-    if (this.FeatureService.hasCallCenterFeature()) {
-      types.push(this.ReportTypes.UNREGISTERED_CUSTOMERS);
-    }
+    var types = [this.ReportTypes.PROMOTIONS, this.ReportTypes.PROMOTIONS_INDIVIDUAL];
     return types;
   }
 
@@ -207,10 +181,6 @@ export default class analyticsCustomersController {
 
     this.currentReport = this.$filter('orderObj')( angular.copy(viewTable.body), this.query.order ,'value');
 
-    if (this.filterCustomerMarketing) {
-      this.currentReport = this.$filter('marketingFilter')(this.currentReport, this.fieldToFilter, true);
-    }
-
     this.tableData = {
       header: viewTable.header,
       body: this.currentReport.slice(0, this.valuesPerScrollPage)
@@ -219,9 +189,8 @@ export default class analyticsCustomersController {
     this.infiniteScrollIndex = this.valuesPerScrollPage;
   }
 
-  onFilter(filters , typeChanged){
-
-    this.dataFilters = filters;
+  onFilter(filters, typeChanged){
+    this.dataFilters = filters;  
 
     // view is loaded with empty report fitler, no search at first time
     if(!this.dataFilters.report){
@@ -229,31 +198,34 @@ export default class analyticsCustomersController {
       return;
     }
 
-    var isFilterCustomer = false;
-
-    // If typeChanged = customermarketing means that Report has this property
-    // So if value comes = TRUE filter table, ELSE do not filter (empty filter)
-    if(typeChanged == 'CustomerMarketing'){
-      isFilterCustomer = true;
-      if(filters.customerMarketing)
-        this.filterCustomerMarketing = true;
-      else
-        this.filterCustomerMarketing = false;// '!!'; //empty value
+    // If none item selected, do nothing.
+    if(this.dataFilters.report.isIndividual && !this.dataFilters.promotion){
+      this.$timeout(() => {
+        this.shouldShowdatatable = false;
+      });
+      return;
     }
 
     var paramsChanged = this.ReportsService.checkIfParamsChanged(this.dataFilters, true, [filters.report.id]);
 
-    //CustomerMarketing its only a filter, no need new search
-    if(!isFilterCustomer && paramsChanged){
+    //Fetch from Api when any filter, except Report is changed, or if report changed but has no data to show for it.
+    if(paramsChanged){
+      this.shouldShowdatatable = false;
       this.debounceFetch();
     }
     else{
       this.updateView();
-      if (this.tableData.body.length < this.valuesPerScrollPage) {
-        this.onInfiniteScroll();
-      }
     }
+  }
 
+  updateView(){
+
+    this.reportTitle = this.dataFilters.report.name;
+    this.getTableData();
+    this.getTableActionList(this.dataFilters.report.actions);
+
+    if(this.spinnerRunning())
+      this.hideSpinner();
   }
 
   // on Click is fired before query.order is changed by the lib. So cant use it here. AND cant change his value here..
@@ -281,7 +253,7 @@ export default class analyticsCustomersController {
     else{
       sortBy = orderBy;
     }
-
+      
     this.currentReport = this.$filter('orderObj')( this.currentReport, sortBy ,'value');
     let newValues = this.currentReport.slice(0, this.infiniteScrollIndex);
 
@@ -316,7 +288,7 @@ export default class analyticsCustomersController {
             this.linesSelected.splice(i, 1);
           }
         }
-      });
+      });      
     }
   }
 
@@ -330,7 +302,7 @@ export default class analyticsCustomersController {
 
       if(this.tableData.body.length !== this.currentReport.length){
         this.loadingMoreData = true;
-
+          
           var itemsLeft = this.currentReport.length - this.infiniteScrollIndex;
           var newPossibleValues = this.currentReport.slice(this.infiniteScrollIndex);
 
@@ -350,33 +322,20 @@ export default class analyticsCustomersController {
     }
   }
 
-  updateView(){
-
-    this.reportTitle = this.dataFilters.report.name;
-
-    this.getTableData();
-
-    this.getTableActionList(this.dataFilters.report.actions);
-
-    if(this.spinnerRunning())
-      this.hideSpinner();
-  }
-
   hideSpinner(){
-    this.spinner.hide('analytics-cutomer');
+    this.spinner.hide('analytics-promotions');
   }
 
   spinnerRunning(){
-    return this.spinner.isCodeVisible('analytics-cutomer');
+    return this.spinner.isCodeVisible('analytics-promotions');
   }
 
   showSpinner(){
-    this.spinner.show('analytics-cutomer');
+    this.spinner.show('analytics-promotions');
   }
 
   setInitialFilterValues(){
     if(this.ReportsService.data){
-     // let params = this.ReportsService.data;
       let params = this.ReportsService.getParamsFromData();
 
       this.dataFilters.venues = params.venueIds;
@@ -390,7 +349,7 @@ export default class analyticsCustomersController {
       }
 
       if(params.eventIds){
-        this.dataFilters.events = params.eventIds;
+        this.dataFilters.events = params.eventIds;      
       }
     }
 
@@ -399,39 +358,35 @@ export default class analyticsCustomersController {
     }
   }
 
-  onInitError() {
-    this.hideSpinner();
-  }
-
-  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, LabelService, FeatureService, hasKnowYourCustomersFeature) {
+  constructor($filter, $stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, LabelService, ReportTypes, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
     this.$scope = $scope;
     this.$timeout = $timeout;
     this.$filter = $filter;
-    this.Snack = Snack;
+
+    this.ReportsService = ReportsService;
+   // this.reportsData = ReportsService.data;
 
     this.LabelService = LabelService;
     this.ReportTypes = ReportTypes;
-    this.gettextCatalog = gettextCatalog;
-    this.ReportsService = ReportsService;
-    //this.reportsData = ReportsService.data;
-    this.DialogService = DialogService;
-    this.FeatureService = FeatureService;
 
     this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;
 
     this.reportTypes = this.getReportTypes();
-    this.fieldToFilter = 'customerMarketing';
 
     this.shouldShowActions = false;
     this.shouldShowdatatable = false;
+    this.shouldShowChart = false;
 
     this.infiniteScrollIndex = 0;
     this.valuesPerScrollPage = 20;
 
     this.loadingMoreData = false;
+
+    this.linesSelected = [];
+    this.tableData = {};
 
     if($stateParams.reportName){
 
@@ -440,26 +395,29 @@ export default class analyticsCustomersController {
 
     this.showSpinner();
 
-    $scope.$on('$scrollToEndOfPage', this.onInfiniteScroll.bind(this));
-
-    this.linesSelected = [];
-    this.tableData = {};
-
     this.dataFilters = {
       venues: null,
       report: null,
       datesRange: null,
-      events: null
+      events: null,
+      item: null
     };
 
     this.setInitialFilterValues();
+
+    $scope.$on('$scrollToEndOfPage', this.onInfiniteScroll.bind(this));
 
     this.reportTitle = "";
 
     this.query = {
       order: '',
-      //  limit: 5,
-       // page: 1
-     };
-  }
+    //  limit: 5,
+     // page: 1
+   };
+
 }
+
+}
+
+
+

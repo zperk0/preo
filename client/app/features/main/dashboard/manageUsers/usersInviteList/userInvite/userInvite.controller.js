@@ -115,6 +115,7 @@ export default class userInviteController {
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
+
     this.type = 'userInvite';
     //  if (this.user && !this.user.id) {
     //   this.showContextual();

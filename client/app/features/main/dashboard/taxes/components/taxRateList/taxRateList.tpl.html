@@ -1,0 +1,15 @@
+<div class="tax-rate-list">
+    <div>
+    <card-item-list
+        has-new="true"
+        tooltip="{{ 'Add new tax rate' | translate }}"
+        on-click-new="taxRateListCtrl.showCreate()"
+        collection="taxRateListCtrl.taxRates">
+        <tax-rate
+          has-actions="true"
+          ng-repeat="taxRate in taxRateListCtrl.taxRates | orderBy: id"
+          tax-rate="taxRate">
+        </tax-rate>
+    </card-item-list>
+  </div>
+</div>
