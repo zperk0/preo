@@ -1,0 +1,13 @@
+<div class="custom-tag-list">
+
+  <card-item-list
+      has-new="$customerList.hasNew"
+      tooltip="{{ 'Add new tag' | translate }}"
+      on-click-new="$customerList.onNew()"
+      collection="$customerList.customers">
+      <customer-item
+        ng-repeat="customer in $customerList.customers track by customer.id"
+        customer="customer">
+      </customer-item>
+  </card-item-list>
+</div>

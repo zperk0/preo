@@ -1,0 +1,16 @@
+<div class='customer-item'
+      ng-attr-data-id="{{$customer.customer.id}}">
+
+  <card-item  has-actions="true"
+              deleted="$customer.customer.$deleted"
+              selected="$customer.customer.$selected"
+              >
+    <card-item-title>
+      <span>{{$customer.customer.name}} </span>
+    </card-item-title>
+
+    <card-item-actions on-delete="$customer.customer.onDelete()"
+                       on-edit="$customer.customer.onEdit($event)"
+                        ></card-item-actions>
+  </card-item>
+</div>
