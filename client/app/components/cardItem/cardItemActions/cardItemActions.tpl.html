@@ -81,6 +81,12 @@
           {{'Place order' | translate}}
         </md-tooltip>
       </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onHistory" class="md-icon-button" ng-click="cardItemActionsCtrl.onHistory({$event:$event})">
+        <icon>restore</icon>
+        <md-tooltip md-direction="bottom">
+          {{'View order history' | translate}}
+        </md-tooltip>
+      </md-button>
       <md-button ng-if="cardItemActionsCtrl.onAdd"
                  ng-show="cardItemActionsCtrl.shouldShowOnAdd()"
                  class="md-icon-button {{ cardItemActionsCtrl.disableAdd ? 'disabled' : '' }}"

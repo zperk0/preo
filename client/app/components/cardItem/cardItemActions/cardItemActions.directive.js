@@ -25,6 +25,7 @@ export default function cardItemActions($parse){
       onAddUser: '&?',
       onNotes: '&?',
       onCart: '&?',
+      onHistory: '&?',
       disableAdd:'=?',
       disableAddCustomField:'=?',
       visibleMessage:'@',

@@ -10,6 +10,7 @@ export default function customerList(){
       onEdit: '&?',
       onNotes: '&?',
       onPlaceOrder: '&?',
+      onOrderHistory: '&?',
     },
     template: require("./customerList.tpl.html"),
     controller: controller.UID,

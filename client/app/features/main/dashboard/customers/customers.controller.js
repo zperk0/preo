@@ -16,6 +16,10 @@ export default class customersController {
 		console.log('onPlaceOrder', customer);
   }
 
+  onOrderHistory(customer) {
+		console.log('onOrderHistory', customer);
+  }
+
   /* @ngInject */
   constructor() {
 
