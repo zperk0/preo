@@ -9,6 +9,7 @@
         ng-repeat="customer in $customerList.customers track by customer.id"
         on-edit="$customerList.onEdit({customer: customer})"
         on-notes="$customerList.onNotes({customer: customer})"
+        on-place-order="$customerList.onPlaceOrder({customer: customer})"
         customer="customer">
       </customer-item>
   </card-item-list>

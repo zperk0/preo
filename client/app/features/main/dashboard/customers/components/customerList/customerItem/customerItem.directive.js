@@ -9,6 +9,7 @@ export default function customerItem(){
       customer: '=',
       onEdit: '&?',
       onNotes: '&?',
+      onPlaceOrder: '&?',
     },
     template: require("./customerItem.tpl.html"),
     controller: controller.UID,

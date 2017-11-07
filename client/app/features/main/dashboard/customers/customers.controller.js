@@ -12,6 +12,10 @@ export default class customersController {
 		console.log('showCustomerNotes', customer);
   }
 
+  onPlaceOrder(customer) {
+		console.log('onPlaceOrder', customer);
+  }
+
   /* @ngInject */
   constructor() {
 

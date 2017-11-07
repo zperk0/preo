@@ -9,6 +9,7 @@ export default function customerList(){
       hasNew: '=',
       onEdit: '&?',
       onNotes: '&?',
+      onPlaceOrder: '&?',
     },
     template: require("./customerList.tpl.html"),
     controller: controller.UID,

@@ -75,6 +75,12 @@
           {{'Customer notes' | translate}}
         </md-tooltip>
       </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onCart" class="md-icon-button" ng-click="cardItemActionsCtrl.onCart({$event:$event})">
+        <icon>shopping_cart</icon>
+        <md-tooltip md-direction="bottom">
+          {{'Place order' | translate}}
+        </md-tooltip>
+      </md-button>
       <md-button ng-if="cardItemActionsCtrl.onAdd"
                  ng-show="cardItemActionsCtrl.shouldShowOnAdd()"
                  class="md-icon-button {{ cardItemActionsCtrl.disableAdd ? 'disabled' : '' }}"
