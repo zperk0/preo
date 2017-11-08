@@ -4,22 +4,6 @@ export default class customersController {
     return "customersController"
   }
 
-  onEditCustomer(customer) {
-		console.log('onEditCustomer', customer);
-  }
-
-  showCustomerNotes(customer) {
-		console.log('showCustomerNotes', customer);
-  }
-
-  onPlaceOrder(customer) {
-		console.log('onPlaceOrder', customer);
-  }
-
-  onOrderHistory(customer) {
-		console.log('onOrderHistory', customer);
-  }
-
   onSearchChange () {
     this.searching = true;
     console.log('new value', this.customersSearch);
@@ -30,7 +14,8 @@ export default class customersController {
     if (this.customersSearch && this.customersSearch.length > 3) {
       this.makeSearch();
     } else {
-      this.$state.go('main.dashboard.customers');
+      this.searching = false;
+      this.$state.go('main.dashboard.customers.placeholder');
     }
   }
 
@@ -43,7 +28,8 @@ export default class customersController {
     } = this;
 
     $state.go('main.dashboard.customers.search', {
-      value: this.customersSearch
+      value: this.customersSearch,
+      skipResolve: true
     });
 
     StateService.channel.searchCustomers({
@@ -65,12 +51,11 @@ export default class customersController {
   }
 
   /* @ngInject */
-  constructor($scope, $state, StateService) {
+  constructor($scope, $state, $stateParams, StateService) {
     'ngInject';
 
     this.$scope = $scope;
     this.$state = $state;
     this.StateService = StateService;
-
   }
 }

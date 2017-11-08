@@ -6,29 +6,9 @@
                   on-debounce="$customers.onDebounceChange(value)"></search-panel>
 	</div>
 
-  <div class='layout-left-right' layout="row">
-		<customers-placeholder ng-if="!$customers.isSearchView()"></customers-placeholder>
-
-    <div class='main-content-left' ng-if="$customers.isSearchView()">
-      <div class="loader-wrapper">
-        <spinner ng-show="$customers.searching"></spinner>
-      </div>
-
-      <customer-list
-          		customers="$customers.customers"
-              on-edit="$customers.onEditCustomer(customer)"
-              on-notes="$customers.showCustomerNotes(customer)"
-              on-place-order="$customers.onPlaceOrder(customer)"
-              ng-show="!$customers.searching"
-              on-order-history="$customers.onOrderHistory(customer)">
-       </customer-list>
-    </div>
-
-    <ui-view name="customerDetailView"
-    				 class='main-content-right'
-    				 media-query="min-width: 1024px"
-    				 sticky
-             ng-show="$customers.isSearchView()"
-    				 offset="88"></ui-view>
+  <div class="loader-wrapper" ng-show="$customers.searching">
+    <spinner></spinner>
   </div>
+
+  <ui-view name="customerView" class="customers-child-view"></ui-view>
 </div>

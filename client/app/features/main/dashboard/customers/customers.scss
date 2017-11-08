@@ -4,18 +4,24 @@
 .customers {
 	width: 100%;
 
+	.customers-child-view {
+		width: 100%;
+		padding-top: $searchBarHeight;
+	}
+
 	.search-panel-wrapper {
 		display: flex;
 		align-items: center;
 	}
 
 	.layout-left-right {
-		padding-top: $searchBarHeight;
 		flex: 1;
 	}
 
 	.loader-wrapper {
+		width: 100%;
 		text-align: center;
+		padding-top: $searchBarHeight;
 
 		spinner {
 			margin: 0 auto;

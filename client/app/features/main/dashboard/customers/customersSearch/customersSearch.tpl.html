@@ -1,0 +1,20 @@
+
+<div class='layout-left-right' layout="row" ng-init="">
+  <div class='main-content-left'>
+
+    <customer-list
+        		customers="$search.customersCtrl.customers"
+            on-edit="$search.onEditCustomer(customer)"
+            on-notes="$search.showCustomerNotes(customer)"
+            on-place-order="$search.onPlaceOrder(customer)"
+            ng-show="!$search.customersCtrl.searching"
+            on-order-history="$search.onOrderHistory(customer)">
+     </customer-list>
+  </div>
+
+  <ui-view name="customerDetailView"
+  				 class='main-content-right'
+  				 media-query="min-width: 1024px"
+  				 sticky
+  				 offset="88"></ui-view>
+</div>
