@@ -21,24 +21,56 @@ export default class customersController {
   }
 
   onSearchChange () {
+    this.searching = true;
     console.log('new value', this.customersSearch);
   }
 
   onDebounceChange () {
 
-    this.StateService.channel.searchCustomers({
+    if (this.customersSearch && this.customersSearch.length > 3) {
+      this.makeSearch();
+    } else {
+      this.$state.go('main.dashboard.customers');
+    }
+  }
+
+  makeSearch() {
+
+    const {
+      $state,
+      $scope,
+      StateService,
+    } = this;
+
+    $state.go('main.dashboard.customers.search', {
+      value: this.customersSearch
+    });
+
+    StateService.channel.searchCustomers({
       search: this.customersSearch
     }).then((customers) => {
 
-      this.customers = customers;
+      $scope.$applyAsync(() => {
+        this.customers = customers;
+        this.searching = false;
+      });
     }, () => {
-
+      this.searching = false;
     });
   }
 
-  /* @ngInject */
-  constructor($scope, StateService) {
+  isSearchView() {
 
+    return this.$state.current.name.indexOf('main.dashboard.customers.search') === 0;
+  }
+
+  /* @ngInject */
+  constructor($scope, $state, StateService) {
+    'ngInject';
+
+    this.$scope = $scope;
+    this.$state = $state;
     this.StateService = StateService;
+
   }
 }

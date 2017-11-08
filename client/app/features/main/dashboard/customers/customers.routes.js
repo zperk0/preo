@@ -13,4 +13,11 @@ export default function routes($stateProvider) {
     controller: controller.UID,
     controllerAs: "$customers"
   });
+
+  $stateProvider.state("main.dashboard.customers.search", {
+    url: "/search/:value",
+    template: require("./customers.tpl.html"),
+    controller: controller.UID,
+    controllerAs: "$customers"
+  });
 }

@@ -13,4 +13,13 @@
 		padding-top: $searchBarHeight;
 		flex: 1;
 	}
+
+	.loader-wrapper {
+		text-align: center;
+
+		spinner {
+			margin: 0 auto;
+			display: inline-block;
+		}
+	}
 }

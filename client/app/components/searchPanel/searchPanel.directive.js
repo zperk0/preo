@@ -1,5 +1,5 @@
 
-export default function searchPanel(){
+export default function searchPanel($timeout) {
   "ngInject";
   return {
     restrict: 'E',
@@ -14,8 +14,6 @@ export default function searchPanel(){
     replace:true,
     link: _link
   };
-
-  let debounceTimeout = null;
 
   function _link(ng, el, attr, ctrl) {
 
@@ -46,16 +44,22 @@ export default function searchPanel(){
   }
 
   function debounce(func, wait, immediate) {
-    return () => {
+    let timeout = null;
+
+    return function() {
       const context = this, args = arguments;
       const later = function() {
-        debounceTimeout = null;
-        if (!immediate) func.apply(context, args);
+        timeout = null;
+        if (!immediate) {
+          func.apply(context, args);
+        }
       };
-      const callNow = immediate && !debounceTimeout;
-      clearTimeout(debounceTimeout);
-      debounceTimeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
+      const callNow = immediate && !timeout;
+      $timeout.cancel(timeout);
+      timeout = $timeout(later, wait);
+      if (callNow) {
+        func.apply(context, args);
+      }
     };
   };
 }
