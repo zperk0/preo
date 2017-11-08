@@ -21,22 +21,24 @@ export default class customersController {
   }
 
   onSearchChange () {
-    console.log('new value', this.searchCustomers);
+    console.log('new value', this.customersSearch);
   }
 
   onDebounceChange () {
-    console.log('debounce value', this.searchCustomers);
+
+    this.StateService.channel.searchCustomers({
+      search: this.customersSearch
+    }).then((customers) => {
+
+      this.customers = customers;
+    }, () => {
+
+    });
   }
 
   /* @ngInject */
-  constructor($scope) {
+  constructor($scope, StateService) {
 
-		this.customers = [{
-			id: 1,
-			name: 'test'
-		}, {
-			id: 2,
-			name: 'test 1'
-		}];
+    this.StateService = StateService;
   }
 }
