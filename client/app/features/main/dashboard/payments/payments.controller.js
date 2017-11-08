@@ -97,14 +97,6 @@ export default class paymentsController {
   }
 
   updateStripe() {
-    if (this.stripe && !this.stripe.visible && this.stripeWindowReference) {
-      this.stripeWindowReference.close();
-      this.stripeWindowReference = null;
-      this.$window.clearInterval(this.stripeTimer);
-      this.$connecting = false;
-      return;
-    }
-
     if (this.stripe && this.stripe.id) {
       if (this.stripe.visible === 0 && !this.canTurnOffMethod()) {
         this.stripe.visible = 1;
