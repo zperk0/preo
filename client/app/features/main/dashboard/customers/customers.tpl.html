@@ -1,6 +1,9 @@
 <div class='customers' layout="row">
 	<div class="search-panel-wrapper sub-toolbar">
-		<search-panel placeholder="{{ 'Search customers' | translate }}"></search-panel>
+		<search-panel placeholder="{{ 'Search customers' | translate }}"
+                  value="$customers.searchCustomers"
+                  on-change="$customers.onSearchChange(value)"
+                  on-debounce="$customers.onDebounceChange(value)"></search-panel>
 	</div>
 
   <div class='layout-left-right' layout="row">

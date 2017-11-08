@@ -2,8 +2,11 @@
 	<form action="">
 	  <md-input-container class='search' layout="row">
 	    <icon>search</icon>
-	    <label translate>{{ $search.placeholder }}</label>
-	    <input flex name="search" ng-model="cardItemListCtrl.searchFilter.name">
+	    <label translate>{{ placeholder }}</label>
+	    <input flex
+	    			 name="search"
+	    			 ng-model="value"
+	    			 ng-keyup="onKeyUp($event)" />
 	  </md-input-container>
   </form>
 </div>

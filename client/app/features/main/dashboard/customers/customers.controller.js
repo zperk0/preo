@@ -20,8 +20,16 @@ export default class customersController {
 		console.log('onOrderHistory', customer);
   }
 
+  onSearchChange () {
+    console.log('new value', this.searchCustomers);
+  }
+
+  onDebounceChange () {
+    console.log('debounce value', this.searchCustomers);
+  }
+
   /* @ngInject */
-  constructor() {
+  constructor($scope) {
 
 		this.customers = [{
 			id: 1,
@@ -29,6 +37,6 @@ export default class customersController {
 		}, {
 			id: 2,
 			name: 'test 1'
-		}]
+		}];
   }
 }
