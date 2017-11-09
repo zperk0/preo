@@ -6,12 +6,16 @@
 
 	.customers-child-view {
 		width: 100%;
-		padding-top: $searchBarHeight;
+		height: 100%;
+		overflow-y: scroll;
 	}
 
 	.search-panel-wrapper {
 		display: flex;
 		align-items: center;
+		position: relative;
+		top: 0;
+		padding-right: $spacer-x;
 	}
 
 	.layout-left-right {
@@ -21,11 +25,16 @@
 	.loader-wrapper {
 		width: 100%;
 		text-align: center;
-		padding-top: $searchBarHeight;
 
 		spinner {
 			margin: 0 auto;
 			display: inline-block;
 		}
+	}
+}
+
+[class*="main-dashboard-customers-"] {
+	.main-ui-view {
+		overflow-y: hidden;
 	}
 }
