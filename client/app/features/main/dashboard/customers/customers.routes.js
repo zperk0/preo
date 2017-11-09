@@ -1,6 +1,7 @@
 
 import controller from './customers.controller'
 import customersSearchController from './customersSearch/customersSearch.controller'
+import customerController from './customer/customer.controller'
 
 import customersResolve from './customers.resolve';
 
@@ -18,25 +19,47 @@ export default function routes($stateProvider) {
     controllerAs: "$customers"
   });
 
-  $stateProvider.state("main.dashboard.customers.placeholder", {
-    url: "",
+  $stateProvider.state('main.dashboard.customers.placeholder', {
+    url: '',
     views: {
     	'customerView': {
-    		template: require("./customersPlaceholder/customersPlaceholder.tpl.html"),
+    		template: require('./customersPlaceholder/customersPlaceholder.tpl.html'),
     	},
     }
   });
 
-  $stateProvider.state("main.dashboard.customers.search", {
-    url: "/search/:value",
+  $stateProvider.state('main.dashboard.customers.new', {
+    url: "/new",
+    params: {
+    	skipResolve: true
+    },
+    views: {
+    	'customerDetailView@main.dashboard.customers.new': {
+		    template: require('./customer/customer.tpl.html'),
+		    controller: customerController.UID,
+		    controllerAs: '$customer',
+		  },
+    	'customerView': {
+    		template: require('./customersSearch/customersSearch.tpl.html'),
+		    controller: customersSearchController.UID,
+		    controllerAs: '$search',
+		    resolve: {
+		    	customers: customersResolve
+		    }
+    	}
+    }
+  });
+
+  $stateProvider.state('main.dashboard.customers.search', {
+    url: '/search/:value',
     params: {
     	skipResolve: false
     },
     views: {
     	'customerView': {
-    		template: require("./customersSearch/customersSearch.tpl.html"),
+    		template: require('./customersSearch/customersSearch.tpl.html'),
 		    controller: customersSearchController.UID,
-		    controllerAs: "$search",
+		    controllerAs: '$search',
 		    resolve: {
 		    	customers: customersResolve
 		    }

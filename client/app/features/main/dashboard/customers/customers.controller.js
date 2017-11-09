@@ -57,5 +57,7 @@ export default class customersController {
     this.$scope = $scope;
     this.$state = $state;
     this.StateService = StateService;
+
+    this.customers = [];
   }
 }
