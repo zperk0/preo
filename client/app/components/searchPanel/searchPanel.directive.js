@@ -15,11 +15,12 @@ export default function searchPanel($timeout) {
     link: _link
   };
 
-  function _link(ng, el, attr, ctrl) {
+  function _link(ng, element, attr, ctrl) {
 
     const debounceInterval = typeof ng.debounce !== 'undefined' ? ng.debounce : 500;
     let onDebounce = null;
     let oldValue = undefined;
+    const $input = element.find('input');
 
     if (ng.onDebounce) {
       onDebounce = debounce(ng.onDebounce, debounceInterval);
@@ -41,6 +42,14 @@ export default function searchPanel($timeout) {
 
       oldValue = ng.value;
     };
+
+    const onRemoveFocus = ng.$on('searchPanel:removeFocus', () => {
+      $input.blur();
+    });
+
+    ng.$on('$destroy', () => {
+      onRemoveFocus && onRemoveFocus();
+    });
   }
 
   function debounce(func, wait, immediate) {

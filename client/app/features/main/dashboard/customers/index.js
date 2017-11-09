@@ -11,6 +11,7 @@ import customersPlaceholder from './components/customersPlaceholder';
 import controller from './customers.controller';
 import customersSearchController from './customersSearch/customersSearch.controller';
 import customerController from './customer/customer.controller';
+import customersPlaceholderController from './customersPlaceholder/customersPlaceholder.controller';
 import routes from './customers.routes';
 
 
@@ -24,4 +25,5 @@ export default angular.module("webapp.customers" , [
   .controller(controller.UID, controller)
   .controller(customersSearchController.UID, customersSearchController)
   .controller(customerController.UID, customerController)
+  .controller(customersPlaceholderController.UID, customersPlaceholderController)
   .name;

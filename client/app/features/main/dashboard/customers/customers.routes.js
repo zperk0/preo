@@ -2,6 +2,7 @@
 import controller from './customers.controller'
 import customersSearchController from './customersSearch/customersSearch.controller'
 import customerController from './customer/customer.controller'
+import customersPlaceholderController from './customersPlaceholder/customersPlaceholder.controller'
 
 import customersResolve from './customers.resolve';
 
@@ -24,6 +25,8 @@ export default function routes($stateProvider) {
     views: {
     	'customerView': {
     		template: require('./customersPlaceholder/customersPlaceholder.tpl.html'),
+        controller: customersPlaceholderController.UID,
+        controllerAs: '$placeholder'
     	},
     }
   });
