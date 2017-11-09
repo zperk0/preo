@@ -27,10 +27,16 @@ export default class customersController {
       StateService,
     } = this;
 
+    const stateData = {};
+
+    if ($state.current.name === 'main.dashboard.customers.search') {
+      stateData.location = 'replace';
+    }
+
     $state.go('main.dashboard.customers.search', {
       value: this.customersSearch,
       skipResolve: true
-    });
+    }, stateData);
 
     StateService.channel.searchCustomers({
       search: this.customersSearch
