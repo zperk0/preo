@@ -5,7 +5,12 @@ export default class customersSearchController {
   }
 
   onEditCustomer(customer) {
-		console.log('onEditCustomer', customer);
+
+    this.$state.go('main.dashboard.customers.search.details', {
+      value: this.$stateParams.value,
+      customerId: customer.id,
+      customers: this.customersCtrl.customers
+    });
   }
 
   showCustomerNotes(customer) {
@@ -26,6 +31,7 @@ export default class customersSearchController {
 
     this.$scope = $scope;
     this.$state = $state;
+    this.$stateParams = $stateParams;
     this.StateService = StateService;
 
     this.customersCtrl = $scope['$customers'];
