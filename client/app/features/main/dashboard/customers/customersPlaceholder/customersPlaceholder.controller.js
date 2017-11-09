@@ -4,6 +4,8 @@ export default class customersPlaceholderController {
     return "customersPlaceholderController"
   }
 
+
+
   /* @ngInject */
   constructor($scope) {
     'ngInject';
@@ -12,6 +14,7 @@ export default class customersPlaceholderController {
 
     this.customersCtrl = $scope['$customers'];
     this.customersCtrl.customersSearch = null;
+    this.customersCtrl.customers = [];
 
     this.customersCtrl['$scope'].$broadcast('searchPanel:removeFocus');
 
