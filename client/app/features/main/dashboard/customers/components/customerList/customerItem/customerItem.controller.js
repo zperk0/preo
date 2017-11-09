@@ -4,6 +4,10 @@ export default class customerItemController {
     return "customerItemController"
   }
 
+  getName() {
+    return [this.customer.firstName, this.customer.lastName].join(' ');
+  }
+
   isSelected() {
   	return this.customer &&
   					(+this.customer.id === +this.$stateParams.customerId) ||

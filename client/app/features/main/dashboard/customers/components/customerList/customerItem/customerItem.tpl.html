@@ -9,7 +9,7 @@
     <card-item-title>
       <div class="customer-item__details"
            ng-class="{'is-pending' : $customer.customer.isPending}">
-        <span class="customer__name ellipsis">{{$customer.customer.name}} </span>
+        <span class="customer__name ellipsis">{{$customer.getName()}} </span>
         <span class="customer__email ellipsis" ng-if="$customer.customer.email">{{ $customer.customer.email }}</span>
         <span class="customer__phone ellipsis" ng-if="$customer.customer.phone">{{ $customer.customer.phone }}</span>
       </div>
