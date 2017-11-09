@@ -19,6 +19,10 @@ export default class customersController {
     }
   }
 
+  onClear() {
+    this.$state.go('main.dashboard.customers.placeholder');
+  }
+
   makeSearch() {
 
     const {

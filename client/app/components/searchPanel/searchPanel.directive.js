@@ -9,6 +9,7 @@ export default function searchPanel($timeout) {
       debounce: '=?',
       onChange: '&?',
       onDebounce: '&?',
+      onClear: '&?',
       value: '='
     },
     replace:true,
@@ -26,7 +27,18 @@ export default function searchPanel($timeout) {
       onDebounce = debounce(ng.onDebounce, debounceInterval);
     }
 
-    ng.onKeyUp = ($event) => {
+    ng.onKeyUp = _onKeyUp;
+    ng.clear = _clear;
+
+    const onRemoveFocus = ng.$on('searchPanel:removeFocus', () => {
+      $input.blur();
+    });
+
+    ng.$on('$destroy', () => {
+      onRemoveFocus && onRemoveFocus();
+    });
+
+    function _onKeyUp($event) {
 
       if (oldValue === ng.value) {
         return;
@@ -43,13 +55,12 @@ export default function searchPanel($timeout) {
       oldValue = ng.value;
     };
 
-    const onRemoveFocus = ng.$on('searchPanel:removeFocus', () => {
+    function _clear() {
+      $input.val('');
       $input.blur();
-    });
 
-    ng.$on('$destroy', () => {
-      onRemoveFocus && onRemoveFocus();
-    });
+      ng.onClear && ng.onClear();
+    }
   }
 
   function debounce(func, wait, immediate) {

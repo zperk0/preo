@@ -2,13 +2,13 @@
 @import '../../shared/styles/variables';
 
 .search-panel {
-	flex: 0.7;
+	width: 100%;
 
 	md-input-container {
 		margin: -2px 0 0 0;
-		width: 90%;
 		color: $greyDefault;
 		font-size: 16px;
+		flex: 1;
 
 		&:not(.md-input-invalid) {
 			&.md-input-has-value, &.md-input-focused {
