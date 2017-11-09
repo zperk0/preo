@@ -1,0 +1,38 @@
+<md-card-content>
+   <md-input-container class="md-block no-spacer">
+      <label translate>First name</label>
+      <input type="text" required name="entityFirstName" ng-model="contextualMenuCtrl.entity.firstName" ng-maxlength="100">
+
+      <div ng-messages="contextualMenuCtrl.contextualForm.entityFirstName.$error">
+        <div ng-message="required" translate>This is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityFirstName.$error.maxlength}">Max length is 100.</div>
+      </div>
+  </md-input-container>
+   <md-input-container class="md-block no-spacer">
+      <label translate>Last name</label>
+      <input type="text" required name="entityLastName" ng-model="contextualMenuCtrl.entity.lastName" ng-maxlength="100">
+
+      <div ng-messages="contextualMenuCtrl.contextualForm.entityLastName.$error">
+        <div ng-message="required" translate>This is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityLastName.$error.maxlength}">Max length is 100.</div>
+      </div>
+  </md-input-container>
+   <md-input-container class="md-block no-spacer">
+      <label translate>Email address</label>
+      <input type="email" required name="entityEmail" ng-model="contextualMenuCtrl.entity.email" ng-maxlength="100">
+      <div ng-messages="contextualMenuCtrl.contextualForm.entityEmail.$error">
+        <div ng-message="required" translate>This is required.</div>
+        <div ng-message="email" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityEmail.$error.email}">Invalid email</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityEmail.$error.maxlength}">Max length is 100.</div>
+      </div>
+  </md-input-container>
+   <md-input-container class="md-block no-spacer">
+      <label translate>Phone number</label>
+      <input type="phone" required name="entityPhone" ng-model="contextualMenuCtrl.entity.phone" ng-maxlength="100">
+      <div ng-messages="contextualMenuCtrl.contextualForm.entityPhone.$error">
+        <div ng-message="required" translate>This is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityPhone.$error.maxlength}">Max length is 100.</div>
+      </div>
+  </md-input-container>
+</md-card-content>
+
