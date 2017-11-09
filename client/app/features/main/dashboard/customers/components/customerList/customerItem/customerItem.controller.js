@@ -4,7 +4,15 @@ export default class customerItemController {
     return "customerItemController"
   }
 
-  constructor() {
+  isSelected() {
+  	return this.customer &&
+  					(+this.customer.id === +this.$stateParams.customerId) ||
+  					(!this.customer.id && !this.$stateParams.customerId);
+  }
+
+  constructor($stateParams) {
   	"ngInject";
+
+  	this.$stateParams = $stateParams;
   }
 }
