@@ -422,5 +422,6 @@ export default class StateService {
     this.dashboardDeferred = null;
 
     this.isChannel = StateConfig.isChannel;
+    this.domainId = window._PREO_DATA._DOMAIN || null;
   }
 }
