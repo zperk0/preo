@@ -76,4 +76,16 @@
       </md-input-container>
     </md-card-content>
   </md-card>
+  <md-card class="full-card item-filter" md-theme="default" ng-show="vm.shouldShowPromotionsFilter && vm.reportPromotions.length">
+    <md-card-content layout="column">
+      <md-input-container flex>
+        <label>{{ 'Promotion name' | translate }}</label>
+        <md-select ng-model="vm.filters.promotion" ng-model-options="{trackBy: '$value.id'}" ng-change="vm.onPromotionChange()">
+          <md-option ng-repeat="promotion in vm.reportPromotions | orderBy: 'name' track by promotion.id" ng-value="promotion">
+            {{ promotion.name }}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </md-card-content>
+  </md-card>
 </div>

@@ -8,7 +8,7 @@ export default class taxGroupController {
       return this.taxGroup.update();
     }
     else {
-     return Preoday.Tax.create(this.taxGroup);
+     return Preoday.TaxGroup.create(this.taxGroup);
     }
   }
 

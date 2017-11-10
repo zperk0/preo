@@ -28,6 +28,7 @@ export default class signupController {
 
     this.user.username = invitedUser.email;
     this.user.name = invitedUser.name;
+    this.user.domain = invitedUser.domain;
   }
 
   checkInvitedUser () {
@@ -89,18 +90,20 @@ export default class signupController {
       });
   }
 
-  constructor($state, $stateParams, UserService, UserInviteService, Spinner, DialogService, ErrorService, gettextCatalog, Snack) {
+  constructor($state, $timeout, $stateParams, UserService, UserInviteService, Spinner, DialogService, ErrorService, LabelService, gettextCatalog, Snack) {
     "ngInject";
 
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.UserService = UserService;
     this.UserInviteService = UserInviteService;
+    this.LabelService = LabelService;
     this.Spinner = Spinner;
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
     this.Snack = Snack;
+    this.$timeout = $timeout;
 
     this.user = {
 
