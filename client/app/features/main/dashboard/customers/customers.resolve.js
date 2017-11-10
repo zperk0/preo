@@ -10,7 +10,7 @@ export default function customersResolve ($q, $state, $stateParams, authenticate
   const LOADER_KEY = 'fetch-customers';
 
   Spinner.show(LOADER_KEY);
-console.log('state params', $stateParams, $state);
+
   StateService.channel.searchCustomers({
     search: $stateParams.value
   }).then((customers) => {

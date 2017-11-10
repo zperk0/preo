@@ -12,7 +12,11 @@ import controller from './customers.controller';
 import customersSearchController from './customersSearch/customersSearch.controller';
 import customerController from './customer/customer.controller';
 import customersPlaceholderController from './customersPlaceholder/customersPlaceholder.controller';
-import routes from './customers.routes';
+
+import customersRoutes from './customers.routes';
+import customersSearchRoutes from './customersSearch/customersSearch.routes';
+import customersPlaceholderRoutes from './customersPlaceholder/customersPlaceholder.routes';
+import customerRoutes from './customer/customer.routes';
 
 
 export default angular.module("webapp.customers" , [
@@ -21,7 +25,10 @@ export default angular.module("webapp.customers" , [
 	customerList,
 	customersPlaceholder
 	])
-  .config(routes)
+  .config(customersRoutes)
+  .config(customersSearchRoutes)
+  .config(customersPlaceholderRoutes)
+  .config(customerRoutes)
   .controller(controller.UID, controller)
   .controller(customersSearchController.UID, customersSearchController)
   .controller(customerController.UID, customerController)
