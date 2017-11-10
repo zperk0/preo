@@ -14,7 +14,10 @@ export default function scrollToChildElement($document, $timeout) {
       function _scroll(elementSelector) {
         if (elementSelector) {
           console.log('scrollToChildElement - getting this element', elementSelector);
-          element.scrollToElement($document[0].querySelector(elementSelector), ng.scrollToChildElementOffset)
+          const $childElement = $document[0].querySelector(elementSelector);
+          if ($childElement) {
+            element.scrollToElement($childElement, ng.scrollToChildElementOffset)
+          }
         }
       }
 

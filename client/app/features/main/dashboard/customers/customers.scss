@@ -19,6 +19,32 @@
 		}
 	}
 
+	.no-results {
+		text-align: center;
+		padding-top: $spacer-x * 2.5;
+
+		&__icon {
+			svg {
+				color: $greyDefault;
+				fill: $greyDefault;
+				width: 150px;
+				height: 150px;
+
+				g, path {
+					color: $greyDefault;
+					fill: $greyDefault;
+				}
+			}
+		}
+
+		&__text {
+	    font-size: 15px;
+	    color: rgba(0, 0, 0, 0.87);
+	    margin-top: 1.5rem;
+	    line-height: 1.2;
+		}
+	}
+
 	.search-panel-wrapper {
 		display: flex;
 		align-items: center;
