@@ -4,10 +4,19 @@
 .customers {
 	width: 100%;
 
-	.customers-child-view {
+	sticky-scroll {
+		overflow-y: scroll;
+	}
+
+	.customers-child-view, sticky-scroll {
 		width: 100%;
 		height: 100%;
-		overflow-y: scroll;
+	}
+
+	.main-content-right {
+		&.preo-sticky {
+			right: 24px + $scrollBarWidth;
+		}
 	}
 
 	.search-panel-wrapper {

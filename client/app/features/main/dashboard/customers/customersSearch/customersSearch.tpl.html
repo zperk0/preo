@@ -11,9 +11,12 @@
      </customer-list>
   </div>
 
+  <!-- without use-placeholder, was thowing an exception when resizing the window -->
   <ui-view name="customerDetailView"
   				 class='main-content-right'
-  				 media-query="min-width: 1024px"
+           media-query="min-width: 1024px"
   				 sticky
-  				 offset="88"></ui-view>
+           sticky-class="preo-sticky"
+           use-placeholder="false"
+  				 offset="24"></ui-view>
 </div>
