@@ -11,5 +11,7 @@
     <spinner></spinner>
   </div>
 
-  <ui-view name="customerView" class="customers-child-view"></ui-view>
+  <ui-view name="customerView"
+           class="customers-child-view"
+           ng-show="!$customers.searching"></ui-view>
 </div>
