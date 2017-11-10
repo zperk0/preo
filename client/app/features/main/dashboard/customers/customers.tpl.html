@@ -11,9 +11,12 @@
     <spinner></spinner>
   </div>
 
-  <sticky-scroll>
+  <sticky-scroll scroll-to-child-element
+                 scroll-to-child-element-offset="8"
+                 scroll-on-init="false">
     <ui-view name="customerView"
              class="customers-child-view"
+             scroll-to-customer
              ng-show="!$customers.searching"></ui-view>
   </sticky-scroll>
 </div>

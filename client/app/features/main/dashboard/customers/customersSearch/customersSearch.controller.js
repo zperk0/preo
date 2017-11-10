@@ -26,7 +26,7 @@ export default class customersSearchController {
   }
 
   /* @ngInject */
-  constructor($scope, $state, $stateParams, StateService, customers) {
+  constructor($scope, $state, $stateParams, $timeout, StateService, customers) {
     'ngInject';
 
     this.$scope = $scope;
@@ -34,12 +34,21 @@ export default class customersSearchController {
     this.$stateParams = $stateParams;
     this.StateService = StateService;
 
+    this.disabledSticky = true;
+
     this.customersCtrl = $scope['$customers'];
 
     if (customers) {
       this.customersCtrl.customers = customers;
       this.customersCtrl.customersSearch = $stateParams.value;
     }
+
+
+    // we have an animation in our main-ui-view and we need to wait it to finish to start the sticky
+    // If we start the sticky before the animation finish, the sticky will calculate a wrong width for our contextual
+    $timeout(() => {
+      this.disabledSticky = false;
+    }, 700);
 
   }
 }

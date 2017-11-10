@@ -61,7 +61,7 @@ export default class customersController {
   }
 
   /* @ngInject */
-  constructor($scope, $state, $stateParams, StateService) {
+  constructor($scope, $state, StateService) {
     'ngInject';
 
     this.$scope = $scope;

@@ -7,6 +7,8 @@ import searchPanel from 'app/components/searchPanel';
 import customerList from './components/customerList';
 import customersPlaceholder from './components/customersPlaceholder';
 
+import scrollToCustomer from './components/scrollToCustomer/scrollToCustomer.directive';
+
 // Import internal modules
 import controller from './customers.controller';
 import customersSearchController from './customersSearch/customersSearch.controller';
@@ -33,4 +35,5 @@ export default angular.module("webapp.customers" , [
   .controller(customersSearchController.UID, customersSearchController)
   .controller(customerController.UID, customerController)
   .controller(customersPlaceholderController.UID, customersPlaceholderController)
+  .directive('scrollToCustomer', scrollToCustomer)
   .name;
