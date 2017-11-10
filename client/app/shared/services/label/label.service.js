@@ -126,9 +126,9 @@ export default class LabelService {
     this.SNACK_USER_INVITE_CONFLICT= gettextCatalog.getString("This user already has an account");
     this.SNACK_USER_INVITE_SUCCESS= gettextCatalog.getString("Invitation sent");
 
-    this.SNACK_CUSTOMER_ERROR = gettextCatalog.getString("Customer not created");
+    this.SNACK_CUSTOMER_ERROR = gettextCatalog.getString("Customer not saved");
     this.SNACK_CUSTOMER_CONFLICT = gettextCatalog.getString("This customer already has an account");
-    this.SNACK_CUSTOMER_SUCCESS = gettextCatalog.getString("Customer created");
+    this.SNACK_CUSTOMER_SUCCESS = gettextCatalog.getString("Customer saved");
 
     this.TITLE_INACTIVE_PROMOTION = gettextCatalog.getString("Remove validity period?");
     this.CONTENT_INACTIVE_PROMOTION = gettextCatalog.getString("This promotion hasn't started yet or has ended. If you activate it manually, the start and end dates will be removed.");

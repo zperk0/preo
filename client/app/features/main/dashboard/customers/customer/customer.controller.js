@@ -26,7 +26,15 @@ export default class customerController {
 
       this.customer = entity;
 
-      this.saveOrUpdate()(this.customer).then((newCustomer) => {
+      let queryParams = null;
+
+      if (!this.customer.id && this.customer.email) {
+        queryParams = {
+          invite: true
+        };
+      }
+
+      this.saveOrUpdate()(this.customer, queryParams).then((newCustomer) => {
 
         console.log('customerController [onSuccess] - newCustomer', newCustomer);
         this.customer.$deleted = false;
