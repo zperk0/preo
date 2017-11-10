@@ -144,7 +144,7 @@ export default class navbarController {
         return !isChannel && PermissionService.hasPermission(Permissions.MENUS)
                 && FeatureService.hasExternalMenusFeature();
       }},
-      {name: gettextCatalog.getString("Customers"), icon:"group", id:"customers.placeholder", shouldShow:function(){
+      {name: gettextCatalog.getString("Customers"), icon:"group", id:"customers.placeholder", path: "customers", shouldShow:function(){
         return isChannel && PermissionService.hasPermission(Permissions.CHANNEL_OPERATE);
       }},
     ];
