@@ -38,7 +38,7 @@ export default class menuItemSizeController {
           variant:1,
           maxChoices: 1,
           minChoices: 1,
-          venueId:this.$stateParams.venueId,
+          venueId: this.StateService.venue.id,
           name:"Choose a size",
           internalName:"Choose a size",
           items:[
@@ -56,11 +56,12 @@ export default class menuItemSizeController {
   }
 
   /* @ngInject */
-  constructor($scope, $stateParams, $timeout, FeatureService, VenueService) {
+  constructor($scope, $stateParams, $timeout, FeatureService, StateService) {
     'ngInject';
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
     this.FeatureService = FeatureService;
+    this.StateService = StateService;
 
     if (this.ngModel && this.ngModel.id){
       this.ngModel.$isMultiple = true;
@@ -68,7 +69,7 @@ export default class menuItemSizeController {
     } else {
       this.ngModel = {
         $isMultiple:false,
-        venueId: VenueService.hasVenueSet() && VenueService.currentVenue.id,
+        venueId: StateService.venue && StateService.venue.id,
         items:[]
       }
     }

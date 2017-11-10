@@ -83,7 +83,7 @@ export default class eventListController {
     }
 
     let event = new Preoday.Event({
-      venueId: this.VenueService.currentVenue.id,
+      venueId: this.StateService.venue.id,
       visible: 1,
       $images: [],
       schedules: [],
@@ -120,12 +120,12 @@ export default class eventListController {
   }
 
   /* @ngInject */
-  constructor(VenueService, $timeout, EventService, Spinner, ExternalService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
+  constructor(StateService, $timeout, EventService, Spinner, ExternalService, CollectionSlotsService, Snack, contextual, DialogService, ErrorService, FeatureService, gettextCatalog, $q, $state) {
   	'ngInject';
     this.contextual = contextual;
     this.Snack = Snack;
     this.Spinner = Spinner;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.EventService = EventService;
     this.CollectionSlotsService = CollectionSlotsService;
     this.DialogService = DialogService;

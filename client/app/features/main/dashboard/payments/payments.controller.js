@@ -124,7 +124,7 @@ export default class paymentsController {
       }
       this.Spinner.show("venue-payments-save");
       try {
-        this.VenueService.updateVenue()
+        this.StateService.updateVenue()
         .then((venue)=>{
           angular.extend(this.venue,venue);
             this.Spinner.hide("venue-payments-save");
@@ -149,7 +149,7 @@ export default class paymentsController {
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue;
+    this.venue = this.StateService.venue;
     Preoday.PaymentProvider.getStripeConnectLink(this.venue.id, this.stripeRedirectUri).then((stripeLink)=>{
       this.stripeLink = stripeLink;
     })
@@ -166,14 +166,14 @@ export default class paymentsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, DialogService, $timeout, VenueService) {
+  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, DialogService, $timeout, StateService) {
     "ngInject";
     this.isEdit = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
     this.MapsService = MapsService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.isError = false;

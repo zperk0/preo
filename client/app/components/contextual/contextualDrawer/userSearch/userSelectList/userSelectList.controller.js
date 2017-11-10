@@ -10,14 +10,21 @@ export default class userSelectListController {
 
   doSearch(){
 
-    this.Spinner.show('user-search');
-    this.VenueService.searchCustomers(this.searchLabel).then((data) => {
+    const {
+      StateService,
+      Spinner,
+      Snack,
+      ErrorService,
+    } = this;
+
+    Spinner.show('user-search');
+    StateService.venue.searchCustomers(this.searchLabel).then((data) => {
       this.userList = data;
       this.alreadySearch = true;
-      this.Spinner.hide('user-search');
+      Spinner.hide('user-search');
     }, () => {
-      this.Spinner.hide('user-search');
-      return this.Snack.showError(this.ErrorService.DEFAULT.message);
+      Spinner.hide('user-search');
+      return Snack.showError(ErrorService.DEFAULT.message);
     });
   }
 
@@ -28,14 +35,14 @@ export default class userSelectListController {
   showNoResults() {
     return this.alreadySearch === true && !this.userList.length;
   }
-  
+
   clean() {
     this.userList = [];
     this.searchLabel = "";
     this.alreadySearch = false;
   }
 
-  constructor($scope, $stateParams, $timeout, Spinner, Snack, contextual, VenueService, ErrorService) {
+  constructor($scope, $stateParams, $timeout, Spinner, Snack, contextual, StateService, ErrorService) {
     "ngInject";
 
     this.$scope = $scope;
@@ -43,7 +50,7 @@ export default class userSelectListController {
     this.$timeout = $timeout;
     this.contextual = contextual;
     this.Spinner = Spinner;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.ErrorService = ErrorService;
     this.Snack = Snack;
 

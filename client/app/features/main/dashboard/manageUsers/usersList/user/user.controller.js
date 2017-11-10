@@ -19,11 +19,11 @@ export default class userController {
           this.Snack.show(this.LabelService.SNACK_USER_ROLE_UPDATE);
         });
       }, (err)=>{
-        console.log('error on save tax-group', err);
+        console.log('error on save user role', err);
         this.Spinner.hide("user-role-update");
         this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
       }). catch((err)=>{
-        console.log('error on save tax-group', err);
+        console.log('error on save user role', err);
         this.Spinner.hide("user-role-update");
         this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
       })
@@ -92,12 +92,12 @@ export default class userController {
   }
 
    /* @ngInject */
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, VenueService, UserService, gettextCatalog) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, StateService, UserService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
     this.$timeout = $timeout;
     this.Spinner = Spinner;
-    this.venue = VenueService.currentVenue;
+    this.venue = StateService.venue;
     this.Snack = Snack;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;

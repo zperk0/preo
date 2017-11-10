@@ -6,19 +6,19 @@ export default class promotionsController {
 
   init(){
 
-    if (this.VenueService.currentVenue.isEvent()){ //pre-load events
-      this.EventService.getLastWeekEvents(this.VenueService.currentVenue.id)
+    if (this.StateService.venue.isEvent()){ //pre-load events
+      this.EventService.getLastWeekEvents(this.StateService.venue.id)
     }
   }
 
 
   /* @ngInject */
-  constructor($q, Spinner, Snack, VenueService, EventService,  $timeout, promotions) {
+  constructor($q, Spinner, Snack, StateService, EventService,  $timeout, promotions) {
     "ngInject";
     this.Spinner = Spinner;
     this.$q = $q;
     this.Snack = Snack;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.EventService = EventService;
     this.$timeout = $timeout;
     this.init();

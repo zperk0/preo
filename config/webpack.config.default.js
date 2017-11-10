@@ -4,7 +4,6 @@ var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
 function chunkSort (ca,cb){ //order scripts, angular and vendor first, then app last
   if (ca.names[0] == 'angular'){
@@ -101,7 +100,7 @@ module.exports = function(ENV, options) {
      * Devtool settings
      * Reference: http://webpack.github.io/docs/configuration.html#devtool
      */
-    devtool: '#eval-module-source-map',
+    devtool: '#source-map',
     /**
      * PostCSS
      * Reference: https://github.com/postcss/autoprefixer-core
@@ -144,7 +143,7 @@ module.exports = function(ENV, options) {
         // Reference: https://github.com/babel/babel-loader
         test: /\.(js|jsx)$/,
         loaders: ['ng-annotate','babel'],
-        // exclude: [/node_modules/, /bower_components/]
+        exclude: [/node_modules/, /bower_components/]
       },
       {
         // ASSET LOADER
@@ -214,90 +213,6 @@ module.exports = function(ENV, options) {
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['outlets','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'outlets/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['styling','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'styling/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['taxes','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'taxes/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['events','outlets','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'events/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['menus','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'menus/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['venueSettings','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'venueSettings/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['payments','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'payments/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['manageUsers','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'manageUsers/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['customTags','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'customTags/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['customers','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'customers/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['notifications','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'notifications/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['updateExternalMenus','app','vendor'],
-        chunksSortMode: chunkSort,
-        inject:true,
-        filename:'updateExternalMenus/index.php'
-      })
     ]
   }
 }

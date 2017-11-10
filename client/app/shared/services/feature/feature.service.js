@@ -72,6 +72,10 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.MENU_ITEM_EXTERNAL_ID);
   }
 
+  hasCallCenterFeature() {
+    return this.getLocalFeature(Preoday.constants.Feature.CALL_CENTER);
+  }
+
   getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
         return +item.id;
@@ -84,7 +88,7 @@ export default class FeatureService {
 
     return this.$q((resolve,reject)=> {
 
-        if (!this.VenueService.hasVenueSet()) {
+        if (!this.StateService.venue) {
             console.log('venue not set');
             return reject();
         }
@@ -95,8 +99,8 @@ export default class FeatureService {
             return resolve(localFeature);
         }
 
-        this.VenueService
-            .currentVenue
+        this.StateService
+            .venue
             .hasFeature(featureId)
             .then((feature) => {
 
@@ -108,16 +112,16 @@ export default class FeatureService {
 
   setLocalFeatures () {
 
-    this.localFeatures = this.VenueService.hasVenueSet() && this.VenueService.currentVenue.features || [];
+    this.localFeatures = this.StateService.venue && this.StateService.venue.features || [];
   }
 
-  constructor($q, $injector, $rootScope, UserService, VenueService, BroadcastEvents) {
+  constructor($q, $injector, $rootScope, UserService, StateService, BroadcastEvents) {
     "ngInject";
 
     this.$q = $q;
     this.$injector = $injector;
     this.UserService = UserService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
 
     this.setLocalFeatures();
 

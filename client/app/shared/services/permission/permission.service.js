@@ -4,25 +4,11 @@ export default class PermissionService {
     return "PermissionService"
   }
 
-  checkSystemPermission(){
-    return this.$q((resolve,reject)=>{
-      Preoday.Permission.check("system_update")
-        .then((perms)=>{
-          if (perms["system_update"]){
-            resolve();
-          }
-          reject();
-        },()=>{
-          reject();
-      })
-    });
-  }
-
   checkVenuesPermissions(permissions,venueIds){
     return this.$q((resolve,reject)=>{
       Preoday.Permission.check(permissions.join(","),venueIds.join(","))
-        .then((perms)=>{ 
-            resolve(perms);          
+        .then((perms)=>{
+            resolve(perms);
           reject();
         },()=>{
           reject();
@@ -34,16 +20,16 @@ export default class PermissionService {
     return this.permissions && this.permissions[perm];
   }
 
-  loadPermissions(venue){
+  loadPermissions(model, expand){
     let permissions = []
     angular.forEach(this.Permissions,function(p, key){
       permissions.push(p)
     });
 
     return this.$q((resolve, reject)=>{
-      venue.getPermissions(permissions.join(","))
+      model.getPermissions(permissions.join(","), expand)
       .then((userPermissions)=>{
-        console.log("got user permissions", userPermissions, userPermissions)
+        console.log("PermissionService [loadPermissions] - got user permissions", userPermissions, userPermissions)
         this.permissions = userPermissions;
         resolve(this.permissions);
       },reject);

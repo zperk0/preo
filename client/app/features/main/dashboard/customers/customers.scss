@@ -1,0 +1,75 @@
+
+@import "client/app/shared/styles/variables";
+
+.customers {
+	width: 100%;
+
+	sticky-scroll {
+		overflow-y: scroll;
+	}
+
+	.customers-child-view, sticky-scroll {
+		width: 100%;
+		height: 100%;
+	}
+
+	.main-content-right {
+		&.preo-sticky {
+			right: 24px + $scrollBarWidth;
+		}
+	}
+
+	.no-results {
+		text-align: center;
+		padding-top: $spacer-x * 2.5;
+
+		&__icon {
+			svg {
+				color: $greyDefault;
+				fill: $greyDefault;
+				width: 150px;
+				height: 150px;
+
+				g, path {
+					color: $greyDefault;
+					fill: $greyDefault;
+				}
+			}
+		}
+
+		&__text {
+	    font-size: 15px;
+	    color: rgba(0, 0, 0, 0.87);
+	    margin-top: 1.5rem;
+	    line-height: 1.2;
+		}
+	}
+
+	.search-panel-wrapper {
+		display: flex;
+		align-items: center;
+		position: relative;
+		top: 0;
+		padding-right: $spacer-x;
+	}
+
+	.layout-left-right {
+		flex: 1;
+	}
+
+	.loader-wrapper {
+		width: 100%;
+		text-align: center;
+
+		spinner {
+			margin: 0 auto;
+			display: inline-block;
+		}
+	}
+}
+
+[class*="main-dashboard-customers-"] {
+	.main-ui-view {
+		overflow-y: hidden;
+	}
+}

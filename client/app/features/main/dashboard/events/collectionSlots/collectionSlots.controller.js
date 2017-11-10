@@ -9,7 +9,7 @@ export default class collectionSlotsController {
   }
 
 
-  constructor($stateParams, Spinner, CollectionSlotsService) {
+  constructor($stateParams, Spinner, CollectionSlotsService, StateService) {
   	"ngInject";
 
     this.Spinner = Spinner;
@@ -18,12 +18,12 @@ export default class collectionSlotsController {
     this.Spinner.show('collectionSlots');
 
     CollectionSlotsService.getCollectionSlots({
-      venueId: $stateParams.venueId
+      venueId: StateService.venue.id
     }).then((data)=>{
 
       console.log('collection slot service data here', data);
 
-      this.data = data;   
+      this.data = data;
       this.loaded = true;
 
       this.hideSpinner();

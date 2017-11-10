@@ -12,7 +12,14 @@ $analytics = '';
 $sessionId = session_id();
 $rollbarEnv = null;
 $rollbarTokenClient = '';
+$domain = '';
+$isChannel = false;
 $cssoverride = null;
+
+if (strpos($_SERVER['REQUEST_URI'], '/channel') === 0) {
+    $isChannel = true;
+}
+
 
 if(isset($_SERVER["PREO_CDN"]))
 {
@@ -55,6 +62,11 @@ if(isset($_SERVER["PREO_CSS_OVERRIDE"]))
     $cssoverride = $_SERVER["PREO_CSS_OVERRIDE"];
 }
 
+if(isset($_SERVER["PREO_DOMAIN"]))
+{
+    $domain = $_SERVER["PREO_DOMAIN"];
+}
+
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .=" <script>";
     $analytics .="   window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;";
@@ -81,6 +93,8 @@ $overrides .= "window._PREO_DATA._RESET_PASSWORD='$resetPasswordLink';";
 $overrides .= "window._PREO_DATA._SESSION='$sessionId';";
 $overrides .= "window._PREO_DATA._ROLLBAR_ENV='$rollbarEnv';";
 $overrides .= "window._PREO_DATA._ROLLBAR_CLIENT_TOKEN='$rollbarTokenClient';";
+$overrides .= "window._PREO_DATA._DOMAIN='$domain';";
+$overrides .= "window._PREO_DATA._IS_CHANNEL=" . ($isChannel ? 1 : 0) . ";";
 $overrides .= "</script>";
 
 $contentsIndexHTML = str_replace("<!-- @@OVERRIDES -->",$overrides,$contentsIndexHTML);

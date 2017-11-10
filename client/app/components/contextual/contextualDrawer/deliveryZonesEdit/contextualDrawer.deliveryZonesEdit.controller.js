@@ -24,13 +24,13 @@ export default class ContextualDrawerDeliveryZonesEditController {
     this.editableDeliveryZone.polygon = [];
   }
 
-  constructor($scope, $stateParams, gettextCatalog, $mdSidenav, DeliveryZoneService, contextualDrawer, VenueService) {
+  constructor($scope, $stateParams, gettextCatalog, $mdSidenav, DeliveryZoneService, contextualDrawer, VenueService, StateService) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.DeliveryZoneService=DeliveryZoneService;
     this.contextualDrawer=contextualDrawer;
     this.editableData = DeliveryZoneService.editableData;
-    this.distanceUnit = VenueService.getKmOrMiles();
+    this.distanceUnit = VenueService.getKmOrMiles(StateService.venue);
     this.translatedDistanceUnit = "kms";
 
     if (this.distanceUnit === "kms") {

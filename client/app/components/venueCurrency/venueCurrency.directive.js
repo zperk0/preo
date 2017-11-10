@@ -1,5 +1,5 @@
 
-export default function venueCurrency(VenueService){
+export default function venueCurrency(StateService){
   "ngInject";
 
   return {
@@ -11,8 +11,8 @@ export default function venueCurrency(VenueService){
 
       function _getCurrency() {
 
-        if (VenueService.hasVenueSet()) {
-          return VenueService.currentVenue.ccy;
+        if (StateService.venue) {
+          return StateService.venue.ccy;
         }
 
         return '';

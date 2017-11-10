@@ -327,12 +327,20 @@ export default class ReportsService {
     return pdfObj;
   }
 
+  getEntityBasePath() {
+    const {
+      isChannel
+    } = this.StateService;
+
+    return isChannel ? 'channels' : 'venues';
+  }
+
   getChartExportCsvUrl(){
-    return '/api/venues/'+ this.venueId + '/exports/csv/post';
+    return '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/csv/post';
   }
 
   getChartExportPdfUrl(){
-    return '/api/venues/'+ this.venueId + '/exports/pdfs/post';
+    return '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/pdfs/post';
   }
 
   exportReportToPdf(report, dataSelected){
@@ -342,7 +350,7 @@ export default class ReportsService {
       this.sendGAExportEvent('pdf', report.name);
       let udata = this.prepareDataToPdf(report, dataSelected);
 
-      var exportUrl = '/api/venues/'+ this.venueId + '/exports/pdfs/report';
+      var exportUrl = '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/pdfs/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
       // ..
@@ -359,7 +367,7 @@ export default class ReportsService {
       this.sendGAExportEvent('csv', report.name);
       let udata = this.prepareDataToCsv(report, dataSelected);
 
-      var exportUrl = '/api/venues/' + this.venueId + '/exports/csv/report';
+      var exportUrl = '/api/' + this.getEntityBasePath() + '/' + this.entityId + '/exports/csv/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
       // ..
@@ -469,6 +477,11 @@ export default class ReportsService {
 
     if(!paramChanged && params.menuItemId){
       if(!this.data.menuItemId || params.menuItemId != this.data.menuItemId)
+        return true;
+    }
+
+    if(!paramChanged && params.promotionId){
+      if(!this.data.promotionId || params.promotionId != this.data.promotionId)
         return true;
     }
 
@@ -588,6 +601,10 @@ export default class ReportsService {
       response.menuItemId = parameters.item.menuItemId;
     }
 
+    if(parameters.promotion){
+      response.promotionId = parameters.promotion.id;
+    }
+
     if(parameters.venues){
 
       response.venueIds = [];
@@ -639,7 +656,7 @@ export default class ReportsService {
   }
 
   // Everytime a search is done, this service keeps the last Param and Data returned.
-  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService, FeatureService) {
+  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, StateService, FeatureService) {
     "ngInject";
     this.$q = $q;
     this.$window = $window;
@@ -647,7 +664,8 @@ export default class ReportsService {
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.LabelService = LabelService;
-    this.venueId = VenueService.currentVenue.id;
+    this.StateService = StateService;
+    this.entityId = StateService.entityId;
     this.hasDobFeature = FeatureService.hasDateOfBirthFeature();
   }
 
@@ -822,6 +840,45 @@ export default class ReportsService {
         {key:'customerMarketing', text:this.gettextCatalog.getString('Marketing'), fieldType:'icon'}
       ];
     }
+    else if(reportId== 'unregisteredCustomers'){
+      response = [
+        {key:'customerName' ,text:this.gettextCatalog.getString('Name')},
+       // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
+        {key:'lastOrder', text:this.gettextCatalog.getString('Last order'), fieldType: 'date'},
+        {key:'phone', text:this.gettextCatalog.getString('Tel')},
+      ];
+    }
+    // PROMOTIONS
+    else if(reportId == 'allPromotions'){
+      response = [
+        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
+        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+      ];
+    }
+    else if(reportId == 'individualActivePromotions'){
+      response = [
+        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
+        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+      ];
+    }
+    else if(reportId == 'individualHistoricPromotions'){
+      response = [
+        {key:'name' ,text:this.gettextCatalog.getString('Name')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
+        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+      ];
+    }
 
     return response;
   }
@@ -895,6 +952,12 @@ export default class ReportsService {
         {id: 'newCustomers', name:this.gettextCatalog.getString('New customers'), reportType: this.ReportTypes.NEWCUSTOMERS, hasCustomerMarketing: true, actions: actionNotify}
       ];
     }
+    else if(type == this.ReportTypes.UNREGISTERED_CUSTOMERS){
+      
+      response = [
+        {id: 'unregisteredCustomers', name:this.gettextCatalog.getString('Customers with no email address'), reportType: this.ReportTypes.UNREGISTERED_CUSTOMERS, actions: actionNotify}
+      ];
+    }
     else if(type == this.ReportTypes.ORDERS){
 
       response = [
@@ -912,6 +975,19 @@ export default class ReportsService {
         {id: 'allPayingCustomers', name:this.gettextCatalog.getString('All paying customers'), reportType: this.ReportTypes.PAYINGCUSTOMERS, hasCustomerMarketing: true, actions: actionNotify}
       ];
 
+    }
+    else if (type == this.ReportTypes.PROMOTIONS) {
+
+      response = [
+        {id: 'allPromotions', name:this.gettextCatalog.getString('All promotions'), reportType: this.ReportTypes.PROMOTIONS, actions: defaultActions},
+      ];
+    }
+    else if (type == this.ReportTypes.PROMOTIONS_INDIVIDUAL) {
+
+      response = [
+        {id: 'individualActivePromotions', name:this.gettextCatalog.getString('Individual active promotions'), isIndividual: true, hasPromotionsFilter: true, reportType: this.ReportTypes.PROMOTIONS_INDIVIDUAL,  actions: defaultActions},
+        {id: 'individualHistoricPromotions', name:this.gettextCatalog.getString('Individual historic promotions'), isIndividual: true, hasPromotionsFilter: true, deletedOnly: true, reportType: this.ReportTypes.PROMOTIONS_INDIVIDUAL, actions: defaultActions}
+      ];
     }
     else if(type == this.ReportTypes.SUMMARY || type == this.ReportTypes.SUMMARY_CARDS){
       response = this.getSummaryReports();

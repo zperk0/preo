@@ -170,6 +170,9 @@ export default class analyticsCustomersController {
   getReportTypes(){
 
     var types = [this.ReportTypes.PAYINGCUSTOMERS,this.ReportTypes.NEWCUSTOMERS,this.ReportTypes.CUSTOMERS, this.ReportTypes.NEWAREADELIVERY];
+    if (this.FeatureService.hasCallCenterFeature()) {
+      types.push(this.ReportTypes.UNREGISTERED_CUSTOMERS);
+    }
     return types;
   }
 
@@ -278,7 +281,7 @@ export default class analyticsCustomersController {
     else{
       sortBy = orderBy;
     }
-      
+
     this.currentReport = this.$filter('orderObj')( this.currentReport, sortBy ,'value');
     let newValues = this.currentReport.slice(0, this.infiniteScrollIndex);
 
@@ -313,7 +316,7 @@ export default class analyticsCustomersController {
             this.linesSelected.splice(i, 1);
           }
         }
-      });      
+      });
     }
   }
 
@@ -387,7 +390,7 @@ export default class analyticsCustomersController {
       }
 
       if(params.eventIds){
-        this.dataFilters.events = params.eventIds;       
+        this.dataFilters.events = params.eventIds;
       }
     }
 
@@ -396,7 +399,11 @@ export default class analyticsCustomersController {
     }
   }
 
-  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, LabelService, hasKnowYourCustomersFeature) {
+  onInitError() {
+    this.hideSpinner();
+  }
+
+  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, LabelService, FeatureService, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
@@ -411,6 +418,7 @@ export default class analyticsCustomersController {
     this.ReportsService = ReportsService;
     //this.reportsData = ReportsService.data;
     this.DialogService = DialogService;
+    this.FeatureService = FeatureService;
 
     this.hasKnowYourCustomersFeature = hasKnowYourCustomersFeature;
 

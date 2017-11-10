@@ -18,7 +18,7 @@ export default class menuSectionItemListController {
   showCreateItem($event, isImport){
 
     let currentMenu = this.section.getMenu();
-    let newItem = this.ItemService.getNewItemBase(this.$stateParams.venueId, currentMenu.isVoucher());
+    let newItem = this.ItemService.getNewItemBase(this.StateService.venue.id, currentMenu.isVoucher());
 
     if(!isImport){
       let isCreating = this.items.filter((s, index) => {
@@ -198,7 +198,7 @@ export default class menuSectionItemListController {
     }
     this.lastVal = this.section.$expanded;
     this.section.$expanding = true;
-    
+
     if (!this.section.$expanded) {
       this.setMaxHeight(this.getHeight() + 'px');
     }
@@ -222,7 +222,7 @@ export default class menuSectionItemListController {
     });
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual, ModifierService, DialogService, ErrorService, gettextCatalog, $element) {
+  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual, ModifierService, DialogService, ErrorService, gettextCatalog, StateService, $element) {
     "ngInject";
 
     this.$scope = $scope;
@@ -238,6 +238,7 @@ export default class menuSectionItemListController {
     this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.gettextCatalog = gettextCatalog;
+    this.StateService = StateService;
     this.$element = $element;
 
     this.setAnimation();

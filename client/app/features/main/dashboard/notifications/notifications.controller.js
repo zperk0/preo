@@ -65,13 +65,13 @@ export default class notificationsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, ErrorService, LabelService, VenueService,  $timeout) {
+  constructor(Spinner, Snack, ErrorService, LabelService, StateService,  $timeout) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
-    this.venue = VenueService.currentVenue;
+    this.venue = StateService.venue;
     this.isError = false;
     this.$timeout = $timeout;
     this.statusMessages = [];

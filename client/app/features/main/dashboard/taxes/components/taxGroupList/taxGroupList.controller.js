@@ -13,8 +13,8 @@ export default class taxGroupListController {
       return;
     }
 
-    let taxGroup = new Preoday.Tax({
-      venueId: this.$stateParams.venueId,
+    let taxGroup = new Preoday.TaxGroup({
+      venueId: this.StateService.venue.id,
       $selected: true,
     });
 
@@ -22,9 +22,10 @@ export default class taxGroupListController {
   }
 
   /* @ngInject */
-  constructor($stateParams) {
+  constructor($stateParams, StateService) {
     "ngInject";
     this.$stateParams = $stateParams;
+    this.StateService = StateService;
     this.title = "I am a taxGroupList component"
   }
 }

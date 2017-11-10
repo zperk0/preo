@@ -7,6 +7,7 @@
       report-types="analyticsOrdersCtrl.reportTypes"
       on-filter="analyticsOrdersCtrl.onFilter(filters, typeChanged)"
       initial-values="analyticsOrdersCtrl.dataFilters"
+      on-init-error="analyticsOrdersCtrl.onInitError()"
       kyc="analyticsOrdersCtrl.hasKnowYourCustomersFeature">
     </custom-datafilters>
     </div>
@@ -40,7 +41,7 @@
              <td md-cell ng-repeat="col in row track by $index" ng-if="!col.isHidden" ng-class="{'cell-truncate': col.shouldTruncate}">
               <span>{{col.displayValue}}</span>
             </td>
-          </tr>          
+          </tr>
         </tbody>
         </table>
       </md-table-container>
@@ -48,8 +49,8 @@
 
     <div layout="row" class="content-spinner" ng-if="analyticsOrdersCtrl.loadingMoreData">
       <spinner></spinner>
-    </div> 
     </div>
- 
-  </div>  
+    </div>
+
+  </div>
 </div>

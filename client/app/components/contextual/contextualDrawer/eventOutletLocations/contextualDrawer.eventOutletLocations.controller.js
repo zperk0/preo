@@ -12,14 +12,14 @@ export default class ContextualDrawerEventOutletLocationsController {
   fetchOutletLocations() {
 
     this.OutletLocationService.getOutletLocations({
-      venueId: this.VenueService.currentVenue.id
+      venueId: this.StateService.venue.id
     }).then((data) => {
 
       this.data = data;
     }, (err) => {
 
       this.data = {};
-    });        
+    });
   }
 
   selectOutletLocation (outletLocation) {
@@ -36,21 +36,22 @@ export default class ContextualDrawerEventOutletLocationsController {
     this.contextualDrawer.success(outletLocation);
   }
 
-  constructor($scope, OutletLocationService, VenueService, BroadcastEvents, $stateParams,contextualDrawer, Snack) {
+  constructor($scope, OutletLocationService, StateService, BroadcastEvents, $stateParams,contextualDrawer, Snack) {
     "ngInject";
-    this.OutletLocationService = OutletLocationService;  
-    this.VenueService = VenueService;  
-    this.contextualDrawer = contextualDrawer;  
-    this.Snack = Snack;  
+    this.OutletLocationService = OutletLocationService;
+    this.StateService = StateService;
+    this.contextualDrawer = contextualDrawer;
+    this.Snack = Snack;
     this.selectedOutletLocation = null;
 
-    if (VenueService.hasVenueSet()) {
-      this.fetchOutletLocations();
-    } else {
-      $scope.$on(BroadcastEvents.ON_CURRENT_VENUE, (event, venue) => {
-        
-        this.fetchOutletLocations();
-      });
-    }    
+    this.fetchOutletLocations();
+    // if (VenueService.hasVenueSet()) {
+    //   this.fetchOutletLocations();
+    // } else {
+    //   $scope.$on(BroadcastEvents.ON_CURRENT_VENUE, (event, venue) => {
+
+    //     this.fetchOutletLocations();
+    //   });
+    // }
   }
 }

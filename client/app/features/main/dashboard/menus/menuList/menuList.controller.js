@@ -35,7 +35,7 @@ export default class menuListController {
   }
 
 
-  constructor($stateParams,ErrorService, Spinner, $state, $rootScope, MenuService) {
+  constructor($stateParams,ErrorService, Spinner, $state, $rootScope, MenuService, StateService) {
     "ngInject";
     this.Spinner = Spinner;
     this.ErrorService = ErrorService;
@@ -44,6 +44,6 @@ export default class menuListController {
     this.$rootScope = $rootScope;
 
     this.showSpinner();
-    this.setMenus($stateParams.venueId);    
+    this.setMenus(StateService.venue.id);
   }
 }

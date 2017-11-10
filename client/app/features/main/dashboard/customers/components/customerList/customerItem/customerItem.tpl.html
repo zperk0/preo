@@ -1,0 +1,25 @@
+<div class='customer-item'
+      ng-attr-data-id="{{$customer.customer.id}}">
+
+  <card-item  has-actions="true"
+              deleted="$customer.customer.$deleted"
+              selected="$customer.isSelected()"
+              >
+
+    <card-item-title>
+      <div class="customer-item__details"
+           ng-class="{'is-pending' : $customer.customer.isPending}">
+        <span class="customer__name ellipsis">{{$customer.getName()}} </span>
+        <span class="customer__email ellipsis" ng-if="$customer.customer.email">{{ $customer.customer.email }}</span>
+        <span class="customer__phone ellipsis" ng-if="$customer.customer.phone">{{ $customer.customer.phone }}</span>
+      </div>
+      <span class='customer-item__status' ng-if="$customer.customer.isPending"> {{ '(pending)' | translate }} </span>
+    </card-item-title>
+
+    <card-item-actions on-edit="$customer.onEdit({ customer: $customer.customer })"
+                       on-notes="$customer.onNotes({ customer: $customer.customer })"
+                       on-cart="$customer.onPlaceOrder({ customer: $customer.customer })"
+                       on-history="$customer.onOrderHistory({ customer: $customer.customer })"
+                        ></card-item-actions>
+  </card-item>
+</div>

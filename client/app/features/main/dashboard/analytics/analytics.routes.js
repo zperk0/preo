@@ -17,9 +17,9 @@ export default function routes($stateProvider, Permissions) {
     requiresPermission: Permissions.ANALYTICS,
     resolve: {
 
-      hasKnowYourCustomersFeature: function($q, $state, $timeout, authenticated, FeatureService, ErrorService, LabelService, DialogService) {
+      hasKnowYourCustomersFeature: function(authenticated, FeatureService, StateService) {
 
-        return FeatureService.hasKnowYourCustomersFeature();
+        return StateService.isChannel || FeatureService.hasKnowYourCustomersFeature();
       }
     }
   });

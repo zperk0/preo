@@ -1,4 +1,4 @@
-export default function promotionTabs(BroadcastEvents, VenueService, EventService){
+export default function promotionTabs(BroadcastEvents, StateService, EventService){
   "ngInject";
   return {
     restrict: 'E',
@@ -12,7 +12,7 @@ export default function promotionTabs(BroadcastEvents, VenueService, EventServic
       scope.contextualMenuCtrl = contextualMenuCtrl;
       scope.selectedTabIndex = 0;
 
-      scope.venue = VenueService.currentVenue;
+      scope.venue = StateService.venue;
 
       scope.hasBasicTabErrors = function(){
         var form = scope.contextualMenuCtrl.contextualForm;
@@ -25,9 +25,11 @@ export default function promotionTabs(BroadcastEvents, VenueService, EventServic
           );
       }
 
-      EventService.getLastWeekEvents().then((data)=>{
-        scope.events = data.events;
-      })
+      if (scope.venue && scope.venue.isEvent()) {
+        EventService.getLastWeekEvents().then((data)=>{
+          scope.events = data.events;
+        })
+      }
 
      scope.hasAdvancedTabErrors = function(){
         var form = scope.contextualMenuCtrl.contextualForm;

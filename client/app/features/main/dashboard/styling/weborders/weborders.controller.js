@@ -66,7 +66,7 @@ export default class webordersController {
     window.location.reload();
   }
 
-  constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout, VenueService) {
+  constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout, StateService) {
     "ngInject";
     this.$timeout = $timeout;
     this.$window=$window;
@@ -75,11 +75,11 @@ export default class webordersController {
 
     if (this.webordersUrl.indexOf('://localhost') !== -1) {
 
-     this.webordersUrl += '?permalink=' + VenueService.currentVenue.permalink;
-     this.webordersEditUrl += '?permalink=' + VenueService.currentVenue.permalink + '&editor=true';
+     this.webordersUrl += '?permalink=' + StateService.venue.permalink;
+     this.webordersEditUrl += '?permalink=' + StateService.venue.permalink + '&editor=true';
     } else {
-      this.webordersUrl += VenueService.currentVenue.permalink;
-      this.webordersEditUrl += VenueService.currentVenue.permalink + '?editor=true';
+      this.webordersUrl += StateService.venue.permalink;
+      this.webordersEditUrl += StateService.venue.permalink + '?editor=true';
     }
 
     this.$scope = $scope;

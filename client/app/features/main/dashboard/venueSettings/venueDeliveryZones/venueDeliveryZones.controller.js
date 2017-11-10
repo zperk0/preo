@@ -38,13 +38,13 @@ export default class venueDeliveryZonesController {
 
   init(){
     this.Spinner.show("venue-delivery-zones");
-    this.venue = this.VenueService.currentVenue ;
+    this.venue = this.StateService.venue ;
     //TODO load delivery zones
     this.validateVenue();
   }
 
   /* @ngInject */
-  constructor($scope, Spinner, $state, Snack, ErrorService, DeliveryZoneService, LabelService, $timeout, VenueService, contextual, DialogService, gettextCatalog) {
+  constructor($scope, Spinner, $state, Snack, ErrorService, DeliveryZoneService, LabelService, $timeout, StateService, contextual, DialogService, gettextCatalog) {
     "ngInject";
     this.abc123 = 'abc,123';
     this.$scope = $scope;
@@ -56,7 +56,7 @@ export default class venueDeliveryZonesController {
     this.DeliveryZoneService = DeliveryZoneService;
     this.gettextCatalog = gettextCatalog;
     this.DialogService = DialogService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.LabelService = LabelService;
     this.isError = false;
     this.$timeout = $timeout;
