@@ -19,9 +19,8 @@
   </md-input-container>
    <md-input-container class="md-block no-spacer">
       <label translate>Email address</label>
-      <input type="email" required name="entityEmail" ng-model="contextualMenuCtrl.entity.email" ng-maxlength="100">
+      <input type="email" name="entityEmail" ng-model="contextualMenuCtrl.entity.email" ng-maxlength="100" />
       <div ng-messages="contextualMenuCtrl.contextualForm.entityEmail.$error">
-        <div ng-message="required" translate>This is required.</div>
         <div ng-message="email" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityEmail.$error.email}">Invalid email</div>
         <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityEmail.$error.maxlength}">Max length is 100.</div>
       </div>
