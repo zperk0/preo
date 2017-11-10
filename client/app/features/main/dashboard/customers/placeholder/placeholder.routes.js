@@ -1,5 +1,5 @@
 
-import customersPlaceholderController from './customersPlaceholder.controller';
+import controller from './placeholder.controller';
 
 /**
  * Routing function for customers
@@ -13,8 +13,8 @@ export default function placeholderRoutes($stateProvider) {
     url: '',
     views: {
     	'customerView': {
-    		template: require('./customersPlaceholder.tpl.html'),
-            controller: customersPlaceholderController.UID,
+    		template: require('./placeholder.tpl.html'),
+            controller: controller.UID,
             controllerAs: '$placeholder'
     	},
     }

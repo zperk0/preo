@@ -1,39 +1,29 @@
 // Import Style
 import './customers.scss';
 
+import placeholder from './placeholder';
+import search from './search';
+import customer from './customer';
+
 
 import angular from 'angular';
 import searchPanel from 'app/components/searchPanel';
-import customerList from './components/customerList';
-import customersPlaceholder from './components/customersPlaceholder';
 
 import scrollToCustomer from './components/scrollToCustomer/scrollToCustomer.directive';
 
 // Import internal modules
 import controller from './customers.controller';
-import customersSearchController from './customersSearch/customersSearch.controller';
-import customerController from './customer/customer.controller';
-import customersPlaceholderController from './customersPlaceholder/customersPlaceholder.controller';
-
-import customersRoutes from './customers.routes';
-import customersSearchRoutes from './customersSearch/customersSearch.routes';
-import customersPlaceholderRoutes from './customersPlaceholder/customersPlaceholder.routes';
-import customerRoutes from './customer/customer.routes';
+import routes from './customers.routes';
 
 
 export default angular.module("webapp.customers" , [
 	'ui.router',
-	searchPanel,
-	customerList,
-	customersPlaceholder
+  searchPanel,
+  placeholder,
+  search,
+	customer,
 	])
-  .config(customersRoutes)
-  .config(customersSearchRoutes)
-  .config(customersPlaceholderRoutes)
-  .config(customerRoutes)
+  .config(routes)
   .controller(controller.UID, controller)
-  .controller(customersSearchController.UID, customersSearchController)
-  .controller(customerController.UID, customerController)
-  .controller(customersPlaceholderController.UID, customersPlaceholderController)
   .directive('scrollToCustomer', scrollToCustomer)
   .name;

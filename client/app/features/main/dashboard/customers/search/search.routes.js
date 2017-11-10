@@ -1,5 +1,5 @@
 
-import customersSearchController from './customersSearch.controller';
+import controller from './search.controller';
 
 import customersResolve from '../customers.resolve';
 
@@ -18,8 +18,8 @@ export default function searchRoutes($stateProvider) {
     },
     views: {
         'customerView': {
-            template: require('./customersSearch.tpl.html'),
-            controller: customersSearchController.UID,
+            template: require('./search.tpl.html'),
+            controller: controller.UID,
             controllerAs: '$search',
         }
     },
