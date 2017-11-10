@@ -25,6 +25,12 @@ export default class customersSearchController {
 		console.log('onOrderHistory', customer);
   }
 
+  hasCustomersResults() {
+    return !this.customersCtrl.isSearchView() ||
+           (this.customersCtrl.customers &&
+            this.customersCtrl.customers.length);
+  }
+
   /* @ngInject */
   constructor($scope, $state, $stateParams, $timeout, StateService, customers) {
     'ngInject';
