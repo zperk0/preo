@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $cdnRoot = "https://cdn-demo.preoday.com/";
@@ -11,6 +12,14 @@ $analytics = '';
 $sessionId = session_id();
 $rollbarEnv = null;
 $rollbarTokenClient = '';
+$domain = '';
+$isChannel = false;
+$cssoverride = null;
+
+if (strpos($_SERVER['REQUEST_URI'], '/channel') === 0) {
+    $isChannel = true;
+}
+
 
 if(isset($_SERVER["PREO_CDN"]))
 {
@@ -48,6 +57,15 @@ if(isset($_SERVER["PREO_ROLLBAR_POST_CLIENT"]))
 {
     $rollbarTokenClient = $_SERVER["PREO_ROLLBAR_POST_CLIENT"];
 }
+if(isset($_SERVER["PREO_CSS_OVERRIDE"]))
+{
+    $cssoverride = $_SERVER["PREO_CSS_OVERRIDE"];
+}
+
+if(isset($_SERVER["PREO_DOMAIN"]))
+{
+    $domain = $_SERVER["PREO_DOMAIN"];
+}
 
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .=" <script>";
@@ -60,7 +78,6 @@ if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .="   ga('send', 'pageview');";
     $analytics .=" </script>";
 }
-
 
 $pathIndexHTML = './index.html';
 $contentsIndexHTML = file_get_contents($pathIndexHTML);
@@ -76,11 +93,23 @@ $overrides .= "window._PREO_DATA._RESET_PASSWORD='$resetPasswordLink';";
 $overrides .= "window._PREO_DATA._SESSION='$sessionId';";
 $overrides .= "window._PREO_DATA._ROLLBAR_ENV='$rollbarEnv';";
 $overrides .= "window._PREO_DATA._ROLLBAR_CLIENT_TOKEN='$rollbarTokenClient';";
+$overrides .= "window._PREO_DATA._DOMAIN='$domain';";
+$overrides .= "window._PREO_DATA._IS_CHANNEL=" . ($isChannel ? 1 : 0) . ";";
 $overrides .= "</script>";
 
 $contentsIndexHTML = str_replace("<!-- @@OVERRIDES -->",$overrides,$contentsIndexHTML);
 $contentsIndexHTML = str_replace("<!-- @@ANALYTICS -->",$analytics,$contentsIndexHTML);
 $contentsIndexHTML = str_replace("cdn/",$cdnRoot,$contentsIndexHTML);
+
+if($cssoverride)
+{
+    $overridePath = "./overrides/".$cssoverride."/override.css";
+    if (file_exists($overridePath)){
+    $contentsCssoverride = file_get_contents($overridePath);
+    $tempOverride =  '<style type="text/css">'.$contentsCssoverride.'</style>';
+    $contentsIndexHTML = str_replace("<!-- @@CSSOVERRIDE -->", $tempOverride, $contentsIndexHTML);
+    }
+}
 
 echo $contentsIndexHTML;
 

@@ -23,7 +23,7 @@ export default class UserInviteService {
 
     let deferred = this.$q.defer();
 
-    invitedUser.accept(user)
+    invitedUser.accept(user, this.Permissions.ADMIN)
       .then((newUser) => {
 
         this.UserService.checkAdmin(newUser)
@@ -33,10 +33,11 @@ export default class UserInviteService {
     return deferred.promise;
   }
 
-  constructor($q, UserService) {
+  constructor($q, UserService, Permissions) {
     "ngInject";
 
     this.$q = $q;
     this.UserService = UserService;
+    this.Permissions = Permissions;
   }
 }

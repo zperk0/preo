@@ -95,7 +95,7 @@ export default class paymentsController {
         return;
       }
       this.Spinner.show("venue-payments-save");
-        this.stripe.update()
+        this.stripe.update(this.venue.id)
           .then(()=>{
             this.Snack.show(this.LabelService.SNACK_VENUE_PAYMENTS_SUCCESS)
             this.Spinner.hide("venue-payments-save");
@@ -124,7 +124,7 @@ export default class paymentsController {
       }
       this.Spinner.show("venue-payments-save");
       try {
-        this.VenueService.updateVenue()
+        this.StateService.updateVenue()
         .then((venue)=>{
           angular.extend(this.venue,venue);
             this.Spinner.hide("venue-payments-save");
@@ -149,12 +149,11 @@ export default class paymentsController {
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue ;
-    this.account = this.VenueService.account;
-    Preoday.PaymentProvider.getStripeConnectLink(this.account.id, this.stripeRedirectUri).then((stripeLink)=>{
+    this.venue = this.StateService.venue;
+    Preoday.PaymentProvider.getStripeConnectLink(this.venue.id, this.stripeRedirectUri).then((stripeLink)=>{
       this.stripeLink = stripeLink;
     })
-    this.account.getPaymentProviders().then((paymentProviders)=>{
+    this.venue.getPaymentProviders().then((paymentProviders)=>{
       this.paymentProviders = paymentProviders;
       this.setStripe();
       this.Spinner.hide("venue-details");
@@ -167,14 +166,14 @@ export default class paymentsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, DialogService, $timeout, VenueService) {
+  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, DialogService, $timeout, StateService) {
     "ngInject";
     this.isEdit = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
     this.MapsService = MapsService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.isError = false;

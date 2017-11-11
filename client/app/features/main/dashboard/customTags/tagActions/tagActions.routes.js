@@ -22,10 +22,10 @@ export default function routes($stateProvider, Permissions) {
     resolve: {
 
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
-      tagActions:function($q, $state, authenticated, VenueService, Spinner, ErrorService) {
+      tagActions:function($q, $state, authenticated, StateService, Spinner, ErrorService) {
         return $q((resolve, reject) => {
           Spinner.show('fetch-tags');
-          Preoday.CustomTagAction.getByVenueId(VenueService.currentVenue.id)
+          Preoday.CustomTagAction.getByVenueId(StateService.venue.id)
           .then(tagActions => {
             resolve(tagActions);
             console.log('got tag actions', tagActions);
@@ -38,9 +38,9 @@ export default function routes($stateProvider, Permissions) {
           });
         });
       },
-      tagGroups:function($q, $state, authenticated, VenueService, Spinner, ErrorService) {
+      tagGroups:function($q, $state, authenticated, StateService, Spinner, ErrorService) {
         return $q((resolve, reject) => {
-          Preoday.CustomTagGroup.getByVenueId(VenueService.currentVenue.id)
+          Preoday.CustomTagGroup.getByVenueId(StateService.venue.id)
           .then(tagGroups => {
             resolve(tagGroups);
             console.log('got tag groups', tagGroups);

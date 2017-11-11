@@ -11,17 +11,17 @@ export default class venueOpeningHoursController {
 
   hasServiceMethods () {
 
-    return this.VenueService.currentVenue.isPickup() || this.VenueService.currentVenue.isDelivery();
+    return this.StateService.venue.isPickup() || this.StateService.venue.isDelivery();
   }
 
   hasCollectionService () {
 
-    return this.VenueService.currentVenue.isPickup();
+    return this.StateService.venue.isPickup();
   }
 
   hasDeliveryService () {
 
-    return this.VenueService.currentVenue.isDelivery();
+    return this.StateService.venue.isDelivery();
   }
 
   filterOpeningHours (hours) {
@@ -281,12 +281,12 @@ export default class venueOpeningHoursController {
     return true;
   }
 
-  constructor($timeout, Spinner, VenueService, DialogService, ErrorService, HoursService, gettextCatalog) {
+  constructor($timeout, Spinner, StateService, DialogService, ErrorService, HoursService, gettextCatalog) {
     "ngInject";
 
     this.$timeout = $timeout;
     this.Spinner = Spinner;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.HoursService = HoursService;
     this.gettextCatalog = gettextCatalog;
 
@@ -301,7 +301,7 @@ export default class venueOpeningHoursController {
     this.collectionHours = [];
     this.allHours = [];
 
-    VenueService.currentVenue.getHours()
+    StateService.venue.getHours()
       .then((hours) => {
 
         this.allHours = hours;

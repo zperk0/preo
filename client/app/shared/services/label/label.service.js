@@ -7,6 +7,8 @@ export default class LabelService {
   constructor(gettextCatalog) {
     "ngInject";
 
+    this.gettextCatalog = gettextCatalog;
+
     this.CONFIRMATION = gettextCatalog.getString("Got it");
 
     this.NOT_AVAILABLE = gettextCatalog.getString("Not available");
@@ -17,7 +19,6 @@ export default class LabelService {
 
     this.SNACK_WEBSETTINGS_ERROR = gettextCatalog.getString("Could not save weborders style");
     this.SNACK_WEBSETTINGS_SUCCESS = gettextCatalog.getString("Saved weborders style");
-
 
     this.SNACK_EMAILS_ERROR = gettextCatalog.getString("Could not save emails style");
     this.SNACK_EMAILS_SUCCESS = gettextCatalog.getString("Saved emails style");
@@ -84,6 +85,9 @@ export default class LabelService {
     this.TITLE_DELETE_TAX_GROUP = gettextCatalog.getString("Delete tax group?");
     this.CONTENT_DELETE_TAX_GROUP = gettextCatalog.getString("Are you sure you want to delete this tax group?");
 
+    this.TITLE_DELETE_TAX_RATE = gettextCatalog.getString("Delete tax rate?");
+    this.CONTENT_DELETE_TAX_RATE = gettextCatalog.getString("Are you sure you want to delete this tax rate?");
+
     this.SNACK_VENUE_DETAILS_SUCCESS = gettextCatalog.getString("Venue details saved");
     this.SNACK_VENUE_DETAILS_ERROR = gettextCatalog.getString("Venue details not saved");
 
@@ -122,7 +126,9 @@ export default class LabelService {
     this.SNACK_USER_INVITE_CONFLICT= gettextCatalog.getString("This user already has an account");
     this.SNACK_USER_INVITE_SUCCESS= gettextCatalog.getString("Invitation sent");
 
-
+    this.SNACK_CUSTOMER_ERROR = gettextCatalog.getString("Customer not saved");
+    this.SNACK_CUSTOMER_CONFLICT = gettextCatalog.getString("This customer already has an account");
+    this.SNACK_CUSTOMER_SUCCESS = gettextCatalog.getString("Customer saved");
 
     this.TITLE_INACTIVE_PROMOTION = gettextCatalog.getString("Remove validity period?");
     this.CONTENT_INACTIVE_PROMOTION = gettextCatalog.getString("This promotion hasn't started yet or has ended. If you activate it manually, the start and end dates will be removed.");
@@ -134,6 +140,7 @@ export default class LabelService {
     this.SNACK_PROMOTION_SAVED = gettextCatalog.getString("Promotion saved");
     this.SNACK_PROMOTION_SAVED_ERROR = gettextCatalog.getString("Promotion not saved");
     this.SNACK_PROMOTION_EXISTING_CODE = gettextCatalog.getString("This promotion code is already being used.");
+    this.SNACK_PROMOTION_ADD_USER = gettextCatalog.getString("Users were applied to this promotion.");
 
     this.SNACK_ERROR_FETCHING_FEES = gettextCatalog.getString("An error ocurred to fetch the fees. Try again later.");
 
@@ -157,21 +164,21 @@ export default class LabelService {
 
     this.TITLE_DUPLICATED_TAG_NAME = gettextCatalog.getString("Warning");
     this.CONTENT_DUPLICATED_TAG_NAME = gettextCatalog.getString("There is already another tag with the same name, are you sure you want to create this new tag?");
-  
+
     this.SNACK_TAG_CREATED = gettextCatalog.getString('Tag created');
     this.SNACK_TAG_CREATED_ERROR = gettextCatalog.getString('Error creating tag');
-    
+
     this.SNACK_TAG_UPDATED = gettextCatalog.getString('Tag updated');
     this.SNACK_TAG_UPDATED_ERROR = gettextCatalog.getString('Error updating tag');
-    
+
     this.SNACK_TAG_DELETED = gettextCatalog.getString('Tag deleted');
 
     this.SNACK_TAG_ACTION_CREATED = gettextCatalog.getString('Tag action created');
     this.SNACK_TAG_ACTION_CREATED_ERROR = gettextCatalog.getString('Error creating tag action');
-    
+
     this.SNACK_TAG_ACTION_UPDATED = gettextCatalog.getString('Tag action updated');
     this.SNACK_TAG_ACTION_UPDATED_ERROR = gettextCatalog.getString('Error updating tag action');
-    
+
     this.SNACK_TAG_ACTION_DELETED = gettextCatalog.getString('Tag action deleted');
     this.SNACK_TAG_ACTION_DELETED_ERROR = gettextCatalog.getString('An error ocurred to delete the tag. Try again later.');
 

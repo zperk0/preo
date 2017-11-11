@@ -5,20 +5,13 @@ import controller from './customers.controller';
  * Routing function for customers
  * @param  $stateProvider
  */
-
+/* @ngInject */
 export default function routes($stateProvider) {
-  "ngInject";
   $stateProvider.state("main.dashboard.customers", {
-    url: "/customers/:customerId",
+    url: "/customers",
     template: require("./customers.tpl.html"),
+    abstract: true,
     controller: controller.UID,
-    controllerAs: "customersCtrl",
-    resolve:{
-      // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
-      auth:function(authenticated){
-        "ngInject";
-        return authenticated;
-      }
-    }
+    controllerAs: "$customers"
   });
 }

@@ -31,19 +31,19 @@ export default class outletListController {
 
       return item.id === undefined;
     }).length;
-    
+
     if (isCreating){
       console.log("Not showing outlet location new, already showing")
       return;
     }
-    
+
     let outlet = {
       venueId: this.venueId,
       $selected:true,
     };
 
     this.outlets.push(outlet);
-  }  
+  }
 
   createOutlet(newData){
 
@@ -57,7 +57,7 @@ export default class outletListController {
 
     this.OutletService.save(newData)
         .then((outlet)=>{
-          
+
           deferred.resolve(outlet);
       }, (err) => {
         console.log('fail outlet saved', err);
@@ -65,7 +65,7 @@ export default class outletListController {
       });
 
     return deferred.promise;
-  }   
+  }
 
   deleteOutlet(outlet){
 
@@ -92,7 +92,7 @@ export default class outletListController {
   getNewOutletPosition () {
 
     return Math.max.apply(Math, this.outlets.map(function(o){return o.position || 0;})) + 1000;
-  } 
+  }
 
   getValidOutlets() {
 
@@ -107,7 +107,7 @@ export default class outletListController {
   }
 
   /* @ngInject */
-  constructor($timeout, $q, $stateParams, Spinner, OutletService, Snack, gettextCatalog) {
+  constructor($timeout, $q, $stateParams, Spinner, OutletService, Snack, gettextCatalog, StateService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -116,6 +116,6 @@ export default class outletListController {
     this.OutletService = OutletService;
     this.gettextCatalog = gettextCatalog;
 
-    this.venueId = $stateParams.venueId;
+    this.venueId = StateService.venue.id;
   }
 }

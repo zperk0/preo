@@ -21,6 +21,7 @@ export default function routes($stateProvider, Permissions) {
     resolve: {
 
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
+      // hasKnowYourCustomersFeature -> is from analytics.routes.js
       hasFeature: function($q, $state, $timeout, authenticated, ErrorService, LabelService, DialogService, hasKnowYourCustomersFeature) {
 
         if (hasKnowYourCustomersFeature) {

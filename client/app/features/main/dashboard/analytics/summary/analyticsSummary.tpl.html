@@ -1,10 +1,11 @@
 <div class='summary-view layout-left-right' flex layout="column" layout-align="stretch stretch">
   <div class='main-content-full' flex layout="column" layout-align="start start">
-  
+
   <div class="summary-filters">
   <custom-datafilters has-daterange="true"
       on-filter="analyticsSummaryCtrl.onFilter(filters, typeChanged)"
       initial-values="analyticsSummaryCtrl.dataFilters"
+      on-init-error="analyticsSummaryCtrl.onInitError()"
       kyc="analyticsSummaryCtrl.hasKnowYourCustomersFeature">
   </custom-datafilters>
   </div>

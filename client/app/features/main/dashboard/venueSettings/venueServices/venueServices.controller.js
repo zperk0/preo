@@ -11,7 +11,7 @@ export default class venueServicesController {
   doUpdate(){
     var promises = [];
     this.setDefaultLeadTime();
-    promises.push(this.VenueService.updateVenue())
+    promises.push(this.StateService.updateVenue())
     promises.push(this.venue.settings.update())
     this.$q.all(promises).then((results)=>{
       angular.extend(this.venue,results[0]);
@@ -59,7 +59,7 @@ export default class venueServicesController {
   updateVenue(){
       this.Spinner.show("venue-services-save");
       try {
-        this.VenueService.updateVenue()
+        this.StateService.updateVenue()
         .then((venue)=>{
           angular.extend(this.venue,venue);
             this.Spinner.hide("venue-services-save");
@@ -111,7 +111,7 @@ export default class venueServicesController {
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue;
+    this.venue = this.StateService.venue;
     this.$timeout(()=>{
       console.log(this.venue);
 
@@ -133,7 +133,7 @@ export default class venueServicesController {
   }
 
   /* @ngInject */
-  constructor($q, Spinner, $state, Snack, ErrorService, FeatureService, LabelService, $timeout, VenueService) {
+  constructor($q, Spinner, $state, Snack, ErrorService, FeatureService, LabelService, $timeout, StateService) {
     "ngInject";
     this.isSaving = false;
     this.isError = false;
@@ -142,7 +142,7 @@ export default class venueServicesController {
     this.Snack = Snack;
     this.$state = $state;
     this.ErrorService = ErrorService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.LabelService = LabelService;
     this.$timeout = $timeout;
     this.hasDeliveryZoneFeature = FeatureService.hasDeliveryZoneFeature()

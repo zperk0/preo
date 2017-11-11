@@ -6,8 +6,8 @@
     <form name="contextualMenuCtrl.contextualForm" ng-submit="contextualMenuCtrl.doSubmit()" novalidate>
         <div class='form-content'></div>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class='md-primary'  ng-click="contextualMenuCtrl.onCancel()" translate>
-            Cancel
+          <md-button class='md-primary'  ng-click="contextualMenuCtrl.doCancel()">
+            {{ 'Cancel' | translate}}
         </md-button>
         <md-button type="submit" class='md-raised'>
            {{ contextualMenuCtrl.params.doneButtonText || ('Done' | translate) }}

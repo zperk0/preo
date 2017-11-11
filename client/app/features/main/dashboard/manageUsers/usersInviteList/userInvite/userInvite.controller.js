@@ -96,21 +96,23 @@ export default class userInviteController {
   }
 
    /* @ngInject */
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, VenueService) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, StateService) {
     "ngInject";
     this.$q = $q;
     this.$timeout = $timeout;
     this.Spinner = Spinner;
-    this.account = VenueService.account;
+    this.venue = StateService.venue;
     this.Snack = Snack;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
+
     this.type = 'userInvite';
      if (this.user && !this.user.id) {
       this.showContextual();
     }
+
   }
 }

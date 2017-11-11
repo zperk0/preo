@@ -159,9 +159,9 @@ export default class analyticsStockController {
   }
 
   formatKeysToBarChart(keys, type){
-    
+
     let copyKeys = angular.copy(keys);
-    copyKeys.forEach( function(e, index) {      
+    copyKeys.forEach( function(e, index) {
       if(type === 'month')
       keys[index] = moment(e, 'YYYY-MM-DD').format('MMM YYYY');
     else if(type === 'week'){
@@ -178,8 +178,8 @@ export default class analyticsStockController {
   getChartData(){
 
     var report = this.dataFilters.report;
-    var dates = this.getParamsDate(); 
-    var apiData = this.ReportsService.getDataFromReport(report.id) ? this.ReportsService.getDataFromReport(report.id) : null;    
+    var dates = this.getParamsDate();
+    var apiData = this.ReportsService.getDataFromReport(report.id) ? this.ReportsService.getDataFromReport(report.id) : null;
     var data = {};
 
     if(apiData && apiData.daily){
@@ -244,22 +244,22 @@ export default class analyticsStockController {
     this.infiniteScrollIndex = this.valuesPerScrollPage;
   }
 
-  onFilter(filters , typeChanged){    
-    this.dataFilters = filters;  
+  onFilter(filters , typeChanged){
+    this.dataFilters = filters;
 
     // view is loaded with empty report fitler, no search at first time
     if(!this.dataFilters.report){
       this.shouldShowdatatable = false;
       return;
-    } 
+    }
 
-    var isChartReport = this.dataFilters.report.isChartType; 
+    var isChartReport = this.dataFilters.report.isChartType;
 
     // If none item selected, do nothing.
     if(isChartReport && !this.dataFilters.item){
      this.$timeout(() => {
         this.shouldShowChart = false;
-        this.shouldShowdatatable = false;        
+        this.shouldShowdatatable = false;
      });
       return;
     }
@@ -283,7 +283,7 @@ export default class analyticsStockController {
       this.$timeout(() => {
         this.getChartData();
         this.shouldShowChart = true;
-        this.shouldShowdatatable = false; 
+        this.shouldShowdatatable = false;
       });
     }
     else{
@@ -324,7 +324,7 @@ export default class analyticsStockController {
     else{
       sortBy = orderBy;
     }
-      
+
     this.currentReport = this.$filter('orderObj')( this.currentReport, sortBy ,'value');
     let newValues = this.currentReport.slice(0, this.infiniteScrollIndex);
 
@@ -359,7 +359,7 @@ export default class analyticsStockController {
             this.linesSelected.splice(i, 1);
           }
         }
-      });      
+      });
     }
   }
 
@@ -373,7 +373,7 @@ export default class analyticsStockController {
 
       if(this.tableData.body.length !== this.currentReport.length){
         this.loadingMoreData = true;
-          
+
           var itemsLeft = this.currentReport.length - this.infiniteScrollIndex;
           var newPossibleValues = this.currentReport.slice(this.infiniteScrollIndex);
 
@@ -420,13 +420,17 @@ export default class analyticsStockController {
       }
 
       if(params.eventIds){
-        this.dataFilters.events = params.eventIds;      
+        this.dataFilters.events = params.eventIds;
       }
     }
 
     if(this.reportNameSelected){
       this.dataFilters.report = this.reportNameSelected;
     }
+  }
+
+  onInitError() {
+    this.hideSpinner();
   }
 
   constructor($filter, $stateParams,ReportsService, $scope, $state, $timeout, $window, Spinner, LabelService, ReportTypes, hasKnowYourCustomersFeature) {

@@ -113,7 +113,7 @@ export default class customDatafiltersController {
     if(venueNames.length > 0)
       return venueNames.join(", ");
     else
-      return this.getTextCatalog.getString("All Venues"); // if there is NO venue selected, get ALL venues
+      return this.gettextCatalog.getString("All Venues"); // if there is NO venue selected, get ALL venues
   }
 
   getSelectedEventsNames(){
@@ -123,9 +123,9 @@ export default class customDatafiltersController {
     if(eventsCount > 0 && eventsCount <= 1)
       return this.filters.events[0].showName;
     if(eventsCount > 1)
-      return this.getTextCatalog.getString( eventsCount + " events selected");
+      return this.gettextCatalog.getString( eventsCount + " events selected");
     else
-      return this.getTextCatalog.getString("Event"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
+      return this.gettextCatalog.getString("Event"); // Fix for an bug with md-selected-text in Angular material < 1.1.1
   }
 
   // Format Venue array to be returned to the Controller as an Object
@@ -440,6 +440,18 @@ export default class customDatafiltersController {
       this.filters.item = null;
     }
 
+    //check if filter promotion should be visible: if report has this option
+    if(this.filters.report.hasPromotionsFilter){
+      this.getPromotionsFilter(this.filters.report.deletedOnly)
+      .then(() => {
+
+        this.shouldShowPromotionsFilter = true;
+      });
+    } else {
+      this.shouldShowPromotionsFilter = false;
+      this.filters.promotion = null;
+    }
+
     this.debounceUpdate('Report');
   }
 
@@ -489,6 +501,11 @@ export default class customDatafiltersController {
   onItemChange(){
 
     this.debounceUpdate('Item');
+  }
+
+  onPromotionChange(){
+    
+    this.debounceUpdate('Promotion');
   }
 
   compareObjectVenue(obj1, obj2){
@@ -601,67 +618,111 @@ export default class customDatafiltersController {
     });
   }
 
+  getPromotionsFilter(deletedOnly){
+    return this.$q((resolve, reject) => {
+      if (deletedOnly && this.deletedPromotions) {
+        this.filters.promotion = null;
+        this.reportPromotions = this.deletedPromotions;
+        resolve(this.filters.promotion);
+      }
+
+      if (!deletedOnly && this.activePromotions) {
+        this.filters.promotion = null;
+        this.reportPromotions = this.activePromotions;
+        resolve(this.filters.promotion);
+      }
+
+      this.showSpinner();
+
+      let venues = this.filters.venues || [],
+          params = {
+            venueIds: venues.map(v => v.id).join(','), 
+            deleted: deletedOnly 
+          },
+          oldPromotion = null;
+
+      if(this.filters.promotion) {
+        oldPromotion = angular.copy(this.filters.promotion);
+      }
+
+      Preoday.Report.getPromotionsByVenues(params)
+      .then((data) => {
+
+        this.reportPromotions = data;
+
+        if (deletedOnly) {
+          this.deletedPromotions = data;
+        } else {
+          this.activePromotions = data;
+        }
+
+        if (oldPromotion) {
+          if (data && (data.id == oldPromotion.id)) {
+            this.filters.promotion = oldPromotion;
+          } else {
+            this.filters.promotion = null;
+          }
+        }
+
+        this.hideSpinner();
+        resolve(this.filters.promotion);
+      }, (err) => {
+        console.log('Error fetching promotions from venues ', err);
+        reject();
+        this.hideSpinner();
+      });
+    });
+  }
+
   setVenues(venues){
     this.selectedVenues = venues;
     this.onVenueChange();
   }
 
-  checkPermissions(){
-    return this.$q((resolve,reject) => {
-      var venueIds = this.VenueService.venues.map((x) => { return x.id});
-      var permissions = [this.Permissions.ANALYTICS];
-          this.PermissionService.checkVenuesPermissions( permissions ,venueIds)
-          .then((data) => {
-
-            var venues = this.VenueService.venues.filter((x) => {
-              if(data.hasOwnProperty(x.id) && data[x.id][this.Permissions.ANALYTICS] === true)
-                return x;
-            });
-
-            resolve(venues);
-          }, (err) => {
-            console.log("Error fetching venue permissions", err);
-            reject();
-          });
-    });
+  fetchVenues() {
+    return this.StateService.fetchVenues('outlets', [this.Permissions.ANALYTICS]);
   }
 
 // To make Venues and Outlets selectable on the same MD-SELECT, the same array will contain venues + outlets
 // Fields: group -> to keep venues and it owns outlets grouped
 //         type -> to know which object in array is an outlet / venue
 //         selected -> default always come all selected. used to control Parent <-> child relation on VenueChange event
-  getVenues(venues){
+  buildDropdownOptions(data){
 
-    var localVenue = {};
-    var localOutlet = {};
-    var venuesIds = [];
-    var isCurrentVenue = false;
+    const venuesIds = [];
+    const venues = data.venues;
+    const {
+      StateService,
+    } = this;
+
 
     // SUPER ADMIN can see current venue selected too.
-    if(this.UserService.isAdmin()){
+    // if(this.UserService.isAdmin()){
 
-      let isVenuePresent = this.VenueService.venues.filter((x) => {
-        if(x.id == this.VenueService.currentVenue.id)
-          return x;
-      });
+    //   let isVenuePresent = this.StateService.venues.filter((x) => {
+    //     if(x.id == this.StateService.venue.id)
+    //       return x;
+    //   });
 
-      if(isVenuePresent.length <= 0){
-        venues.push(this.VenueService.currentVenue);
-      }
-    }
+    //   if(isVenuePresent.length <= 0){
+    //     venues.push(this.StateService.venue);
+    //   }
+    // }
 
     venues.forEach((venue) => {
-      isCurrentVenue = (this.VenueService.currentVenue.id == venue.id) ? true : false;
+      const isSelected = (StateService.venue && +StateService.venue.id === +venue.id)
+                         ? true
+                         : StateService.isChannel;
 
       venuesIds.push(venue.id);
-      localVenue = {
+      const localVenue = {
         id: venue.id,
         name: venue.name,
         isEventVenue: venue.eventFlag == 1 ? true : false,
         hasApplication: false,
         type: 'venue',
         group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-        selected: isCurrentVenue,
+        selected: isSelected,
         display: true,
         uniqueId: venue.name.substring(0,4).toUpperCase()+ venue.id
       };
@@ -674,12 +735,12 @@ export default class customDatafiltersController {
       }
 
       venue.outlets.forEach((outlet) => {
-        localOutlet = {
+        const localOutlet = {
           id: outlet.id,
           name: outlet.name,
           type: 'outlet',
           group: venue.name.substring(0,4).toUpperCase()+ venue.id,
-          selected: isCurrentVenue,
+          selected: isSelected,
           display: true,
           uniqueId: outlet.id + venue.name.substring(0,4).toUpperCase()+ venue.id
         };
@@ -722,7 +783,7 @@ export default class customDatafiltersController {
   }
 
   getDefaultDateRange() {
-    let defaultOpt = {id: 4, type: 'minus30days',name: this.getTextCatalog.getString('Last 30 days'),
+    let defaultOpt = {id: 4, type: 'minus30days',name: this.gettextCatalog.getString('Last 30 days'),
                         start: moment().subtract(30, 'days').format('L'), end: moment().format('L')};
     return defaultOpt;
   }
@@ -734,15 +795,15 @@ export default class customDatafiltersController {
       var today = moment().format('L');
 
       var ranges =[
-        {id: 1, type: 'today',      name: this.getTextCatalog.getString('Today'),
+        {id: 1, type: 'today',      name: this.gettextCatalog.getString('Today'),
          start: today, end: today},
-        {id: 2, type: 'minus1day',  name: this.getTextCatalog.getString('Yesterday'),
+        {id: 2, type: 'minus1day',  name: this.gettextCatalog.getString('Yesterday'),
          start: moment().subtract(1, 'days').format('L'), end: today},
-        {id: 3, type: 'minus7days', name: this.getTextCatalog.getString('Last 7 days'),
+        {id: 3, type: 'minus7days', name: this.gettextCatalog.getString("Last 7 days"),
          start: moment().subtract(7, 'days').format('L'), end: today},
-        {id: 5, type: 'minus1year', name: this.getTextCatalog.getString('1 year'),
+        {id: 5, type: 'minus1year', name: this.gettextCatalog.getString('1 year'),
          start: moment().subtract(1, 'year').format('L'), end: today},
-        {id: 7, type: 'custom',     name: this.getTextCatalog.getString('Custom')}
+        {id: 7, type: 'custom',     name: this.gettextCatalog.getString('Custom')}
       ];
 
       var defaultOpt = this.getDefaultDateRange();
@@ -751,7 +812,7 @@ export default class customDatafiltersController {
 
       //do not allow this option if has no Event venue selected
       if(venueTypes.hasEvent){
-        ranges.push({id: 6, type:'event', name: this.getTextCatalog.getString('By event')});
+        ranges.push({id: 6, type:'event', name: this.gettextCatalog.getString('By event')});
       }
 
       this.dateRangeOptions = ranges;
@@ -1144,8 +1205,8 @@ export default class customDatafiltersController {
 
     this.spinner.show('init-datafilters');
 
-    this.checkPermissions()
-    .then(this.getVenues.bind(this))
+    this.fetchVenues()
+    .then(this.buildDropdownOptions.bind(this))
     .then(this.loadReports.bind(this))
     .then(this.loadDateRange.bind(this))
     .then(() => {
@@ -1157,6 +1218,10 @@ export default class customDatafiltersController {
     .catch((err) => {
       console.log('Error initing DataFilters', err);
       this.spinner.hide('init-datafilters');
+
+      this.onInitError && this.onInitError({
+        error: err
+      });
     });
 
   }
@@ -1181,7 +1246,7 @@ export default class customDatafiltersController {
   }
 
   /* @ngInject */
-  constructor($q , $scope, Spinner, Snack, $timeout, VenueService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog, LabelService, ErrorService, DialogService) {
+  constructor($q , $scope, Spinner, Snack, $timeout, StateService , UserService, PermissionService, Permissions, EventService, ReportsService, gettextCatalog, LabelService, ErrorService, DialogService) {
   	'ngInject';
 
     this.spinner = Spinner;
@@ -1194,12 +1259,12 @@ export default class customDatafiltersController {
     this.ErrorService = ErrorService;
     this.DialogService = DialogService;
 
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.Spinner = Spinner;
     this.EventService = EventService;
     this.$q = $q;
     this.scope = $scope;
-    this.getTextCatalog = gettextCatalog;
+    this.gettextCatalog = gettextCatalog;
     this.ReportsService = ReportsService;
     this.init = angular.copy(this.initialValues);
 

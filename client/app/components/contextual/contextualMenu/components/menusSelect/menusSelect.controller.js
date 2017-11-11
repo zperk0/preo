@@ -6,7 +6,7 @@ export default class menusSelectController {
   fetchMenus() {
 
     this.MenuService.getMenus({
-      venueId: this.$stateParams.venueId
+      venueId: this.StateService.venue.id
     }).then((data) => {
 
       this.data.menus = data.menus;
@@ -18,17 +18,18 @@ export default class menusSelectController {
   getFilteredMenus() {
 
     return this.data.menus.filter(function (item) {
-      
+
       return item.id;
     });
   }
 
-  constructor($stateParams, MenuService) {
+  constructor($stateParams, MenuService, StateService) {
     "ngInject";
-    
+
     this.data = {};
     this.$stateParams = $stateParams;
     this.MenuService = MenuService;
+    this.StateService = StateService;
 
     this.fetchMenus();
   }

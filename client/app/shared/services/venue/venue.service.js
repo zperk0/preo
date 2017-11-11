@@ -10,13 +10,13 @@ export default class VenueService {
     return this.$q((resolve,reject)=>{
       //If i have a list, try to find it in the cached list
       console.log("loading", this.venues, venueId)
-        let filtered = this.venues.filter((v)=>{
-          return v.id===Number(venueId);
-        });
-        if (filtered.length){
-          return resolve(filtered[0]);
-        }
-        if (this.UserService.isAdmin()){
+        // let filtered = this.venues.filter((v)=>{
+        //   return v.id===Number(venueId);
+        // });
+        // if (filtered.length){
+        //   return resolve(filtered[0]);
+        // }
+        // if (this.UserService.isAdmin()){
           Preoday.Venue.getById(venueId,'features,outlets,map')
             .then((newVenue)=>{
               if (newVenue){
@@ -28,107 +28,37 @@ export default class VenueService {
             },()=>{
               reject();
             })
-        } else {
-          reject();
-        }
+        // } else {
+          // reject();
+        // }
     });
   }
 
-  fetchUserVenues (user) {
+  /*
+  * @channel -> Channel object from JSCORE
+  * @expand  -> the venue expand. Eg: outlets,events
+  * @permissions -> the venue and groups permission array. Eg: ['analytics_read']
+  */
+  fetchVenuesByChannel(channel, expand, permissions) {
 
-    return this.$q((resolve,reject)=>{
+    const {
+      cachePrefix,
+      UtilsService,
+      $q,
+    } = this;
 
-      function _resolvePromise(data) {
+    const deferred = $q.defer();
 
-        this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, data);
-        resolve(data);
-      }
+    channel.getEntities(expand, permissions && permissions.join(','))
+      .then((data) => {
 
-      Preoday.Venue.fetch({
-        adminId: user.id,
-        expand: 'features,outlets,map'
-      }).then((venues)=>{
+        deferred.resolve(data);
+      }, (err) => {
 
-        if (venues && venues.length){
-          this.venues = venues;
-
-          let venueId = this.getVenueIdParameter();
-
-          if (venueId && Number(venueId) > 0){
-            return this.fetchById(Number(venueId)).then((venue)=>{
-              this.setCurrentVenue(venue)
-                .then(() => {
-
-                  _resolvePromise.bind(this)(venues);
-                }, () => {
-
-                  _resolvePromise.bind(this)(venues);
-                });
-            },reject);
-          }
-
-          this.setCurrentVenue(venues[0])
-            .then(() => {
-
-              _resolvePromise.bind(this)(venues);
-            }, () => {
-
-              _resolvePromise.bind(this)(venues);
-            });
-
-        } else {
-          _resolvePromise.bind(this)(venues);
-        }
-      }, reject);
-    });
-  }
-
-  loadAccount (venue) {
-    return this.$q((resolve, reject) => {
-      return venue.getPermissions(this.Permissions.ACCOUNT_READ)
-      .then(perms => {
-        if (perms[this.Permissions.ACCOUNT_READ]) {
-          return resolve(Preoday.Account.get(venue.accountId));
-        } else {
-          return reject();
-        }
-      }, () => {
-        return reject();
-      });
-    });
-  }
-
-  setCurrentVenue (venue) {
-    let deferred = this.$q.defer();
-
-    this.currentVenue = venue;
-    venue.setAsCurrent();
-
-    this.UtilsService.updateLocale();
-
-    this.loadAccount(venue)
-    .then((account)=>{
-      console.log("loaded account", account);
-      this.account = account;
-    }, ()=>{
-      this.account = {};
-    })
-    .then(() => {
-
-        this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
-        deferred.resolve();
-      }, () => {
-
-        this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
-        deferred.resolve();
+        deferred.reject(err);
       });
 
     return deferred.promise;
-  }
-
-  hasVenueSet () {
-
-    return this.currentVenue && this.currentVenue.id > 0;
   }
 
   signout() {
@@ -136,103 +66,16 @@ export default class VenueService {
     window.location.reload();
   }
 
-  goToVenue () {
-
-    if (this.venues.length === 0 ){
-      this.venuesDeferred.resolve();
-      this.unsetVenuesDeferred();
-      return;
-    }
-
-    let venueId = this.getVenueIdParameter();
-
-    if (venueId && Number(venueId) > 0){
-      this.$rootScope.$broadcast(this.BroadcastEvents._PREO_DO_VENUE_SELECT,this.$stateParams.venueId)
-    } else {
-      venueId = this.venues[0].id;
-      this.$state.go('main.dashboard', {venueId});
-    }
-
-    this.venuesDeferred.resolve(this.venues);
-    this.unsetVenuesDeferred();
-  }
-
-  selectVenue () {
-
-    if (this.venues) {
-
-      this.venuesDeferred = this.$q.defer();
-      this.$timeout(() => {
-
-        this.goToVenue();
-      });
-      return this.venuesDeferred.promise;
-    }
-
-    if (this.venuesDeferred) {
-      return this.venuesDeferred.promise;
-    }
-
-    this.venuesDeferred = this.$q.defer();
-
-    let user = this.UserService.getCurrent();
-
-    this.hasSelectedVenues = true;
-
-    this.fetchUserVenues(user)
-      .then((venues)=>{
-
-        this.venues = venues;
-        this.goToVenue();
-      }, (err)=>{
-
-        this.ErrorService.showError('FAILED_LOADING_VENUES');
-
-        this.venuesDeferred.reject();
-        this.unsetVenuesDeferred();
-      });
-
-      return this.venuesDeferred.promise;
-  }
-
-  unsetVenuesDeferred () {
-
-    this.venuesDeferred = null;
-  }
-
-  getVenueIdParameter() {
-
-    return this.venueId || this.$stateParams.venueId;
-  }
-
-  restore () {
-
-    this.venuesDeferred = null;
-    this.venues = null;
-    this.hasSelectedVenues = false;
-  }
-
-  load(){
-    if (this.currentVenue && this.currentVenue.id>0){
-      return this.$q.resolve(this.currentVenue);
-    }
-    return this.$q((resolve,reject)=>{
-      this.selectVenue()
-        .then(resolve,reject)
-    })
-
-  }
-
-  updateVenue(){
-    var venueCopy = angular.copy(this.currentVenue);
+  updateVenue(venue){
+    var venueCopy = angular.copy(venue);
 
     delete venueCopy.ccySymbol;
     return venueCopy.update()
   }
 
-  saveImage (venueImage) {
+  saveImage (venue, venueImage) {
 
-    venueImage.venueId = this.currentVenue.id;
+    venueImage.venueId = venue.id;
 
     if (!venueImage.image && venueImage.$image) {
       venueImage.image = venueImage.$image;
@@ -262,44 +105,11 @@ export default class VenueService {
     });
   }
 
-  getVenuePriceConfig () {
-
-    var config = {
-      thousand: ',',
-      decimal: '.',
-      format: '%s%v',
-      symbol: ''
-    };
-
-    if (this.hasVenueSet()) {
-
-      var countryCode = this.currentVenue.country || 'GB';
-      config.symbol = this.currentVenue.ccySymbol || this.currentVenue.ccy || '';
-
-      if (["FR", "DE", "NO", "SE"].indexOf(countryCode) >= 0) {
-          config.thousand = " ";
-          config.decimal = ",";
-          config.format = "%v%s";
-          if(countryCode == 'NO') {
-            config.format = "%s %v";
-          } else if(countryCode == 'SE') {
-            config.format = "%v %s";
-          }
-      }
-    }
-
-    return config;
-  }
-
-  getKmOrMiles(){
+  getKmOrMiles(venue){
     var milesLocale =['en-US', 'en-GB']
-    if (this.currentVenue && milesLocale.indexOf(this.currentVenue.locale) !== -1)
+    if (venue && milesLocale.indexOf(venue.locale) !== -1)
       return "miles"
     return "kms"
-  }
-
-  getPermissions(){
-    return this.PermissionService.loadPermissions(this.currentVenue);
   }
 
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, PermissionService, gettextCatalog, UserService, ErrorService, UtilsService, Permissions) {
@@ -318,6 +128,8 @@ export default class VenueService {
     this.ErrorService = ErrorService;
     this.UtilsService = UtilsService;
     this.Permissions = Permissions;
+
+    this.cachePrefix = 'venues';
 
     this.venuesDeferred = null;
     this.venues = null;

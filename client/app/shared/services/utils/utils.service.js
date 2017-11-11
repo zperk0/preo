@@ -123,19 +123,20 @@ export default class UtilsService {
     } else {
       moment.locale('en-gb');
     }
+    this.ErrorService.setStrings();
   }
 
-  updateLocale () {
+  updateLocale (locale) {
 
     let UserService = this.$injector.get('UserService');
-    let VenueService = this.$injector.get('VenueService');
+    let StateService = this.$injector.get('StateService');
 
     if (UserService.isLogged() && UserService.getCurrent().locale) {
       return this.setLocale(UserService.getCurrent().locale);
     }
 
-    if (VenueService.hasVenueSet()) {
-      return this.setLocale(VenueService.currentVenue.locale);
+    if (StateService.venue) {
+      return this.setLocale(StateService.venue.locale);
     }
 
     return this.setLocale();
@@ -154,11 +155,15 @@ export default class UtilsService {
     },false);
   }
 
-  constructor($q, gettextCatalog, $injector) {
+  getHost() { return window.location.protocol + "//" + window.location.host; }
+
+
+  constructor($q, gettextCatalog, $injector, ErrorService) {
     "ngInject";
 
     this.$q = $q;
     this.gettextCatalog = gettextCatalog;
+    this.ErrorService = ErrorService;
     this.$injector = $injector;
   }
 }

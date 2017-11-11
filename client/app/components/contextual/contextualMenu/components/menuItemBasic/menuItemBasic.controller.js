@@ -4,7 +4,7 @@ export default class menuItemBasicController {
   }
 
   /* @ngInject */
-  constructor($scope, BroadcastEvents, ItemService, VenueService, $timeout) {
+  constructor($scope, BroadcastEvents, ItemService, $timeout) {
     'ngInject';
 
     this.tags = [];

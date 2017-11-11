@@ -41,14 +41,14 @@ export default class collectionSlotsSelectController {
     this.loading = false;
   }
 
-  constructor(CollectionSlotsService, VenueService) {
+  constructor(CollectionSlotsService, StateService) {
     "ngInject";
 
     this.loading = true;
     this.data = {};
 
     CollectionSlotsService.getCollectionSlots({
-      venueId: VenueService.currentVenue.id
+      venueId: StateService.venue.id
     }).then((data) => {
 
       this.buildData(data);

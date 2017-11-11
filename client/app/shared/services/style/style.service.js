@@ -8,7 +8,7 @@ export default class StyleService {
 
  getWebSettings(){
     return this.$q((resolve, reject)=>{
-      Preoday.VenueWebSettings.get(this.VenueService.currentVenue.id)
+      Preoday.VenueWebSettings.get(this.StateService.venue.id)
       .then((webSettings)=>{
         resolve(webSettings);
       },()=>{ //api returns 404 if not found
@@ -20,7 +20,7 @@ export default class StyleService {
   getTemplates(){
     console.log("getting templates");
     return this.$q((resolve, reject)=>{
-      Preoday.TemplateFragment.get(this.VenueService.currentVenue.id)
+      Preoday.TemplateFragment.get(this.StateService.venue.id)
         .then((templates)=>{
           if (templates && templates.length){
             let ts = templates.filter((t)=>t.type ==='ORDER_PLACED_EMAIL_FOOTER');
@@ -41,7 +41,7 @@ export default class StyleService {
 
   getMobileImages(type) {
     return this.$q((resolve, reject)=>{
-      return Preoday.VenueImage.get(this.VenueService.currentVenue.id)
+      return Preoday.VenueImage.get(this.StateService.venue.id)
         .then((images)=>{
           if (images && images.length){
             let ts = images.filter((t)=>t.type === type);
@@ -61,7 +61,7 @@ export default class StyleService {
   mobileExtendModels(data) {
     angular.forEach(data, (value, key) => {
 
-      if(key.indexOf('Image') >= 0){ 
+      if(key.indexOf('Image') >= 0){
         let newKey = key.substr(0, key.indexOf('Image'));
 
         if(value)
@@ -79,7 +79,7 @@ export default class StyleService {
 
   getMobileSettings() {
     return this.$q((resolve, reject)=>{
-      return Preoday.VenueMobileSettings.get(this.VenueService.currentVenue.id, "images")
+      return Preoday.VenueMobileSettings.get(this.StateService.venue.id, "images")
         .then((data)=>{
           if(data) {
             this.mobileExtendModels(data);
@@ -97,7 +97,7 @@ export default class StyleService {
   getImages(){
     console.log("getting images");
     return this.$q((resolve, reject)=>{
-      return Preoday.VenueImage.get(this.VenueService.currentVenue.id)
+      return Preoday.VenueImage.get(this.StateService.venue.id)
         .then((images)=>{
           if (images && images.length){
             let ts = images.filter((t)=>t.type ==='EMAIL_BANNER');
@@ -115,8 +115,8 @@ export default class StyleService {
   }
 
   initTemplates(){
-    var venue = this.VenueService.currentVenue.name;
-    var contact = this.VenueService.currentVenue.settings.deliveryPhone;
+    var venue = this.StateService.venue.name;
+    var contact = this.StateService.venue.settings.deliveryPhone;
     var msg = this.gettextCatalog.getString("If there are any problems, please contact {{venue}}'s staff",{venue:venue});
     if (contact){
       msg = this.gettextCatalog.getString("If there are any problems, please contact {{venue}} on {{contact}}",{venue:venue, contact:contact})
@@ -129,10 +129,10 @@ export default class StyleService {
     });
   }
 
-  constructor($q, VenueService, Spinner, Snack, LabelService, gettextCatalog) {
+  constructor($q, StateService, Spinner, Snack, LabelService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.LabelService = LabelService;
     this.gettextCatalog = gettextCatalog;
 

@@ -6,7 +6,7 @@ export default class SpinnerService {
   updateIsVisible(){
     this.$timeout(()=>{
       this.isVisible = this.visibleCodes.length > 0;
-      this.DEBUG && console.log("updated visible", this.isVisible);
+      this.DEBUG && console.log("SpinnerService [updateIsVisible] - updated visible", this.isVisible);
     })
   }
 
@@ -22,7 +22,7 @@ export default class SpinnerService {
 
 
   show(code){
-    this.DEBUG && console.log("SPINNER - showing spinner", code)
+    this.DEBUG && console.log("SpinnerService [show] - showing spinner", code)
     this.visibleCodes.push(code);
     this.updateIsVisible();
   }
@@ -33,7 +33,7 @@ export default class SpinnerService {
   }
 
   hide(code){
-    this.DEBUG && console.log("SPINNER - hiding spinner", code)
+    this.DEBUG && console.log("SpinnerService [hide] - hiding spinner", code)
     let index = this.visibleCodes.indexOf(code);
     if (index > -1) {
       this.visibleCodes.splice(index, 1);

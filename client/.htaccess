@@ -15,10 +15,13 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/invite
 RewriteCond %{REQUEST_URI} !^/internal
 RewriteCond %{REQUEST_URI} !^/internal-v2
+RewriteCond %{REQUEST_URI} !^/channel
 RewriteCond %{REQUEST_URI} !^/$
 RewriteRule ^(.*)$ / [R=301,L,QSA]
 
-RewriteRule ^index\.php$ / [R=301,L,QSA]
+RewriteCond %{THE_REQUEST} !/channel [NC]
+RewriteRule ^index\.php$ / [R=301,L,NE]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule !(\.\w+$) index.php [L]

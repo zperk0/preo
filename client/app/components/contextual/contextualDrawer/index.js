@@ -41,15 +41,19 @@ import styleMobileDirective from './style/contextualDrawer.styleMobile.directive
 import eventsImportController from './eventsImport/contextualDrawer.eventsImport.controller';
 import eventsImportDirective from './eventsImport/contextualDrawer.eventsImport.directive';
 
+import userSearchController from './userSearch/contextualDrawer.userSearch.controller';
+import userSearchDirective from './userSearch/contextualDrawer.userSearch.directive';
+
 import venueDetailsForm from './venueDetails/components/venueDetailsForm/venueDetailsForm.directive';
 
 import cardItemList from '../../cardItemList';
 
 import externalEventList from './eventsImport/externalEventList';
 
+import userSelectList from './userSearch/userSelectList';
 import GM from './GM';
 
-export default angular.module("contextualDrawer" , [cardItemList, externalEventList, GM])
+export default angular.module("contextualDrawer" , [cardItemList, externalEventList, userSelectList, GM])
   .service(service.UID, service)
 
   .controller(controller.UID, controller)
@@ -89,6 +93,9 @@ export default angular.module("contextualDrawer" , [cardItemList, externalEventL
 
   .controller(eventsImportController.UID, eventsImportController)
   .directive("contextualDrawerEventsImport", eventsImportDirective)
+
+  .controller(userSearchController.UID, userSearchController)
+  .directive("contextualDrawerUserSearch", userSearchDirective)
 
   .directive("venueDetailsForm", venueDetailsForm)
   .name;

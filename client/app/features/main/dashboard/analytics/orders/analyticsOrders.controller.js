@@ -230,7 +230,7 @@ export default class analyticsOrdersController {
 
 // on Click is fired before query.order is changed by the lib. So cant use it here. AND cant change his value here..
   onReorder(orderBy){
-    
+
     var currentOrder = null;
     var direction = true;
     var sortBy = orderBy;
@@ -253,7 +253,7 @@ export default class analyticsOrdersController {
     else{
       sortBy = orderBy;
     }
-    
+
     this.currentReport = this.$filter('orderObj')( this.currentReport, sortBy ,'value');
     let newValues = this.currentReport.slice(0, this.infiniteScrollIndex);
 
@@ -268,7 +268,7 @@ export default class analyticsOrdersController {
 
       let selected = angular.copy(this.linesSelected);
       for(var i=0; i <this.tableData.body.length; i++){
-        
+
         let foundRow = -1;
         for(var j=0; j < selected.length; j++) {
           if(this.compareRowAsJson(this.tableData.body[i], selected[j])){
@@ -283,14 +283,14 @@ export default class analyticsOrdersController {
         if(selected.length == 0)
           break;
       }
-     
+
       selected.forEach((rowNotFound) => {
         for(var i=0; i < this.linesSelected.length; i++){
           if(this.compareRowAsJson(this.linesSelected[i], rowNotFound)){
             this.linesSelected.splice(i, 1);
           }
         }
-      });      
+      });
     }
   }
 
@@ -304,16 +304,16 @@ export default class analyticsOrdersController {
 
       if(this.tableData.body.length !== this.currentReport.length){
         this.loadingMoreData = true;
-      
+
           var itemsLeft = this.currentReport.length - this.infiniteScrollIndex;
-          var newPossibleValues = this.currentReport.slice(this.infiniteScrollIndex);         
+          var newPossibleValues = this.currentReport.slice(this.infiniteScrollIndex);
 
           var newValues =[];
           if(itemsLeft < this.valuesPerScrollPage)
             newValues = newPossibleValues.slice(0, itemsLeft);
           else
             newValues = newPossibleValues.slice(0, this.valuesPerScrollPage);
-          
+
           this.$timeout(() => {
             this.tableData.body = this.tableData.body.concat(newValues);
             this.loadingMoreData = false;
@@ -364,13 +364,17 @@ export default class analyticsOrdersController {
       }
 
       if(params.eventIds){
-        this.dataFilters.events = params.eventIds;      
+        this.dataFilters.events = params.eventIds;
       }
     }
 
     if(this.reportNameSelected){
       this.dataFilters.report = this.reportNameSelected;
     }
+  }
+
+  onInitError() {
+    this.hideSpinner();
   }
 
   constructor($filter, Snack, $q, $scope, $stateParams, $state, $timeout, $window, Spinner, ReportTypes, ReportsService, LabelService, gettextCatalog, DialogService, hasKnowYourCustomersFeature) {

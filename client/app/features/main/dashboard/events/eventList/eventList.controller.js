@@ -144,7 +144,7 @@ export default class eventListViewController {
   }
 
   /* @ngInject */
-  constructor($scope, $q, $sce, $timeout, $compile, Spinner, EventService, VenueService, OutletLocationService, CollectionSlotsService, gettextCatalog, MaterialCalendarData, EventScheduleService) {
+  constructor($scope, $q, $sce, $timeout, $compile, Spinner, EventService, StateService, OutletLocationService, CollectionSlotsService, gettextCatalog, MaterialCalendarData, EventScheduleService) {
   	'ngInject';
 
     this.$scope = $scope;
@@ -159,7 +159,7 @@ export default class eventListViewController {
   	this.loaded = false;
     this.calendarMode = false;
     this.expandedSchedules = {};
-    
+
     this.Spinner.show('events');
 
     this.calendar = {
@@ -173,10 +173,10 @@ export default class eventListViewController {
 
 
     $q.all([
-        EventService.getLastWeekEvents(VenueService.currentVenue.id),
+        EventService.getLastWeekEvents(StateService.venue.id),
         OutletLocationService.getOutletLocations(),
         CollectionSlotsService.getCollectionSlots({
-          venueId: VenueService.currentVenue.id
+          venueId: StateService.venue.id
         })
       ]).then((results) => {
 

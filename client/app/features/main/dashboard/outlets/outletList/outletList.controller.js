@@ -10,7 +10,7 @@ export default class outletListViewController {
   }
 
 
-  constructor($stateParams, Spinner, OutletService) {
+  constructor($stateParams, Spinner, OutletService, StateService) {
   	"ngInject";
 
     this.Spinner = Spinner;
@@ -19,7 +19,7 @@ export default class outletListViewController {
     this.Spinner.show('outlets');
 
     OutletService.getOutlets({
-      venueId: $stateParams.venueId
+      venueId: StateService.venue.id
     }).then((data)=>{
 
       console.log('outlet service data here', data);

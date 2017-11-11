@@ -15,8 +15,30 @@ export default function routes($stateProvider, Permissions) {
     controllerAs: "manageUsersCtrl",
     requiresPermission: Permissions.ACCOUNT,
     resolve:{
-      auth:function(authenticated){
-        return authenticated
+      permissions: function($q, $stateParams, authenticated, StateService, PermissionService) {
+
+        if (!StateService.isChannel) {
+          return $q.when(PermissionService.permissions);
+        }
+
+        const deferred = $q.defer();
+
+        StateService.loadPermissions("venues,groups")
+          .then(() => {
+
+            deferred.resolve(PermissionService.permissions);
+          }, () => {
+
+            $timeout(() => {
+              $state.go('main.dashboard', {
+                entityId: $stateParams.entityId
+              });
+            });
+
+            deferred.reject();
+          });
+
+        return deferred.promise;
       }
     }
   });

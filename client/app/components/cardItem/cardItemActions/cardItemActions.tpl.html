@@ -21,7 +21,13 @@
           {{cardItemActionsCtrl.invisibleMessage}}
         </md-tooltip>
       </md-button>
-       <md-button ng-if="cardItemActionsCtrl.onPause" ng-show="!cardItemActionsCtrl.isPaused" class="md-icon-button" ng-click="cardItemActionsCtrl.onPause({newStatus:false})">
+      <md-button ng-if="cardItemActionsCtrl.onAddUser && cardItemActionsCtrl.isAddUser" class="md-icon-button" ng-click="cardItemActionsCtrl.onAddUser()">
+        <icon>person_add</icon> <!-- pause_circle_outline -->
+        <md-tooltip md-direction="bottom">
+          <span translate>Apply to a customer account</span>
+        </md-tooltip>
+      </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onPause" ng-show="!cardItemActionsCtrl.isPaused" class="md-icon-button" ng-click="cardItemActionsCtrl.onPause({newStatus:false})">
         <icon>pause_circle_outline</icon> <!-- pause_circle_outline -->
         <md-tooltip md-direction="bottom">
           <span translate>Pause this promotion</span>
@@ -61,6 +67,24 @@
         <icon>edit</icon>
         <md-tooltip md-direction="bottom">
           {{'Edit' | translate}}
+        </md-tooltip>
+      </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onNotes" class="md-icon-button" ng-click="cardItemActionsCtrl.onNotes({$event:$event})">
+        <icon>speaker_notes</icon>
+        <md-tooltip md-direction="bottom">
+          {{'Customer notes' | translate}}
+        </md-tooltip>
+      </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onCart" class="md-icon-button" ng-click="cardItemActionsCtrl.onCart({$event:$event})">
+        <icon>shopping_cart</icon>
+        <md-tooltip md-direction="bottom">
+          {{'Place order' | translate}}
+        </md-tooltip>
+      </md-button>
+      <md-button ng-if="cardItemActionsCtrl.onHistory" class="md-icon-button" ng-click="cardItemActionsCtrl.onHistory({$event:$event})">
+        <icon>restore</icon>
+        <md-tooltip md-direction="bottom">
+          {{'View order history' | translate}}
         </md-tooltip>
       </md-button>
       <md-button ng-if="cardItemActionsCtrl.onAdd"

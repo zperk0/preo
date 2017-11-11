@@ -4,9 +4,9 @@ export default class userRoleSelectController {
   }
 
 
- constructor(gettextCatalog, VenueService, FeatureService) {
+ constructor(gettextCatalog, StateService, FeatureService) {
     "ngInject";
-    let venue = VenueService.currentVenue;
+    let venue = StateService.venue;
     this.roles={
       ADMIN:{
         id:'ADMIN',

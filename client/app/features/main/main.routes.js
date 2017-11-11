@@ -9,33 +9,40 @@ import controller from './main.controller';
 export default function routes($stateProvider) {
   "ngInject";
   $stateProvider.state("main", {
-    url: "/:venueId/main",
+    url: "/:entityId/main",
     abstract: true,
     template: require("./main.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm",
     resolve: {
       // authenticated -> this makes sure there is an USER and a VENUE set in userService and venueService if you inject "authenticate" in any resolve routes
-    	authenticated: function ($q, $state, $stateParams, $timeout, UserService, VenueService) {
+    	authenticated: function ($q, $state, $stateParams, $timeout, UserService, StateService) {
 
     		// this is needed because the $stateParams is empty in a service inside of a resolve function
-    		VenueService.venueId = $stateParams.venueId;
+    		StateService.entityId = +$stateParams.entityId;
+
+        if (StateService.isChannel && StateService.entityId) {
+          Preoday.Api.headers({
+            'preo-channelid': StateService.entityId
+          });
+        }
+
     		if (UserService.isAuth()) {
-          if (VenueService.hasVenueSet()){
+          if (StateService.isLoaded()){
             return $q.when();
           } else {
-            return VenueService.selectVenue()
+            return StateService.start();
           }
     		}
 
         var deferred = $q.defer();
     		UserService.auth()
     			.then(() => {
-    				VenueService.selectVenue()
+    				StateService.start()
     					.then(deferred.resolve, deferred.reject);
     			}, () => {
 	    			$timeout(() => {
-	    				$state.go('auth.signin');
+	    				UserService.goToSignin();
 	    			});
 
     				deferred.reject();

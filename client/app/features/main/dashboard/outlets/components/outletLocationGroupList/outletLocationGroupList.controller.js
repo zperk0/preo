@@ -21,12 +21,12 @@ export default class outletLocationGroupListController {
     this.outletLocationGroup.$fromList = true;
 
     this.outletLocationGroups.push(this.outletLocationGroup);
-    
+
     this.contextual.showMenu(this.type, this.outletLocationGroup, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
   }
 
   contextualMenuCancel(){
-    
+
     this.outletLocationGroup = null;
     this.outletLocationGroups = [];
   }
@@ -42,7 +42,7 @@ export default class outletLocationGroupListController {
     }
   }
 
-  constructor($timeout, $stateParams, $q, contextual, contextualMenu, Spinner, Snack, OutletLocationService, gettextCatalog) {
+  constructor($timeout, $stateParams, $q, contextual, contextualMenu, Spinner, Snack, OutletLocationService, gettextCatalog, StateService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -52,7 +52,7 @@ export default class outletLocationGroupListController {
     this.contextual = contextual;
     this.contextualMenu = contextualMenu;
     this.gettextCatalog = gettextCatalog;
-    this.venueId = $stateParams.venueId;
+    this.venueId = StateService.venue.id;
     this.type = 'outletLocationGroup'; //type for contextual menu
 
     this.outletLocationGroups = [];
