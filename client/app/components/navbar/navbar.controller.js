@@ -27,8 +27,9 @@ export default class navbarController {
   toggleMenu() {
     this.toggleExpanded();
     this.$expanded = !this.$expanded;
+    this.NavbarService.expanded = this.$expanded;
     console.log("broadcasting");
-    this.$rootScope.$broadcast(this.BroadcastEvents._ON_NAVBAR_TOGGLE,this.expanded);
+    this.$rootScope.$broadcast(this.BroadcastEvents._ON_NAVBAR_TOGGLE,this.$expanded);
   }
 
   getActivedMenu() {
@@ -37,13 +38,14 @@ export default class navbarController {
     });
   }
 
-  constructor($state, gettextCatalog, FeatureService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions, StateService) {
+  constructor($state, gettextCatalog, FeatureService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions, StateService, NavbarService) {
     "ngInject";
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
     this.$timeout = $timeout;
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
+    this.NavbarService = NavbarService;
     this.$expanded = true;
 
     const isChannel = StateService.isChannel;
