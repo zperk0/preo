@@ -8,7 +8,9 @@ export default class contextualDrawerOrderDetailController {
   }
 
   done() {
-    this.$state.go('main.dashboard.customers', { userId: this.$stateParams.userId });
+    this.$state.go('main.dashboard.customers.search', {
+      value: this.$stateParams.value
+    });
   }
 
   amendOrder() {
@@ -30,7 +32,7 @@ export default class contextualDrawerOrderDetailController {
       let order = new Preoday.Order.constructor(this.order);
       order.statusReason = 'Cancelled by user';
       delete order.venue;
-    
+
       this.Spinner.show('cancel-order');
       order.cancel()
         .then(cancelledOrder => {
@@ -71,7 +73,7 @@ export default class contextualDrawerOrderDetailController {
 
   openReorder() {
     let path = this.$window._PREO_DATA._WEBORDERS;
-    
+
     if (this.order.permalink) {
       path += this.order.permalink + '?';
     } else {

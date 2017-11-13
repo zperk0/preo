@@ -4,7 +4,9 @@ export default class contextualDrawerOrderHistoryController {
   }
 
   done() {
-    this.$state.go('main.dashboard.customers', { userId: this.$stateParams.userId });
+    this.$state.go('main.dashboard.customers.search', {
+      value: this.$stateParams.value
+    });
   }
 
   constructor($state, $stateParams) {
