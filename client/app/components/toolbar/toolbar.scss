@@ -41,7 +41,7 @@
   width: 100%;
   font-size:14px;
   position: fixed;
-  z-index:21;
+  z-index: $subToolbarZIndex;
   top:64px;
   padding-left:24px;
 }
