@@ -11,7 +11,6 @@ import orders from './orders';
 import angular from 'angular';
 import searchPanel from 'app/components/searchPanel';
 
-
 import scrollToCustomer from './components/scrollToCustomer/scrollToCustomer.directive';
 
 // Import internal modules
