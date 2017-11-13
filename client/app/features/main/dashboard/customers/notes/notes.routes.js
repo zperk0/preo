@@ -8,15 +8,17 @@ import controllerNew from './notesNew.controller';
 /* @ngInject */
 export default function routes($stateProvider) {
   "ngInject";
-  $stateProvider.state("main.dashboard.customers.notes", {
-    url: "/notes",
-    parent: "main.dashboard.customers",
+  $stateProvider.state("main.dashboard.customers.search.notes", {
+    url: "/:customerId/notes",
     views: {
-    	customerDetailContent: {
+    	customerDetailView: {
         template: `<contextual-drawer-customer-notes collection="notesCtrl.notes" open="true" success="success()" error="error()"></contextual-drawer-customer-notes>`,
 		    controller: controller.UID,
 		    controllerAs: "notesCtrl"
     	}
+    },
+    params: {
+      customers: null
     },
     resolve: {
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
@@ -38,11 +40,10 @@ export default function routes($stateProvider) {
       }
     }
   });
-  $stateProvider.state("main.dashboard.customers.notes.new", {
-    url: "/notes/new",
-    parent: "main.dashboard.customers",
+  $stateProvider.state("main.dashboard.customers.search.notes.new", {
+    url: "/new",
     views: {
-    	customerDetailContent: {
+    	customerDetailView: {
         template: `<contextual-drawer-customer-notes-new orders="notesNewCtrl.orders" open="true" success="success()" error="error()"></contextual-drawer-customer-notes-new>`,
 		    controller: controllerNew.UID,
 		    controllerAs: "notesNewCtrl"

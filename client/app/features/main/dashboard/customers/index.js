@@ -27,12 +27,12 @@ export default angular.module("webapp.customers" , [
   searchPanel,
   placeholder,
   search,
-	customer,
-   notes,
-   orders,
-   customerNoteList,
-   orderList,
-   orderDetail
+  customer,
+  notes,
+  orders,
+  customerNoteList,
+  orderList,
+  orderDetail
 	])
   .config(routes)
   .controller(controller.UID, controller)

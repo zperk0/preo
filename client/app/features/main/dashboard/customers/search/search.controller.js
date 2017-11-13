@@ -5,7 +5,6 @@ export default class customersSearchController {
   }
 
   onEditCustomer(customer) {
-
     this.$state.go('main.dashboard.customers.search.details', {
       value: this.$stateParams.value,
       customerId: customer.id,
@@ -14,7 +13,11 @@ export default class customersSearchController {
   }
 
   showCustomerNotes(customer) {
-		console.log('showCustomerNotes', customer);
+    this.$state.go('main.dashboard.customers.search.notes', {
+      value: this.$stateParams.value,
+      customerId: customer.id,
+      customers: this.customersCtrl.customers
+    });
   }
 
   onPlaceOrder(customer) {
