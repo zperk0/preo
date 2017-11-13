@@ -1,6 +1,9 @@
 import controller from './notes.controller';
 import controllerNew from './notesNew.controller';
 
+import notesResolve from './notes.resolve';
+import ordersResolve from '../orders/orders.resolve';
+
 /**
  * Routing function for eventList
  * @param  $stateProvider
@@ -22,23 +25,7 @@ export default function routes($stateProvider) {
     },
     resolve: {
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
-      notes:function($q, $stateParams, authenticated, Spinner, ErrorService) {
-        return $q((resolve, reject) => {
-          Spinner.show('fetch-notes');
-          Preoday.CustomerNote.getByUserId($stateParams.customerId, 'operator')
-          .then(notes => {
-            resolve(notes);
-            Spinner.hide('fetch-notes');
-            console.log('got notes', notes);
-          }, error => {
-            reject(error);
-            Spinner.hide('fetch-notes');
-            $state.go('main.dashboard');
-            ErrorService.showRetry(ErrorService.FAILED_LOADING_NOTES);
-            console.log('error', error);
-          });
-        });
-      }
+      notes: notesResolve
     }
   });
 
@@ -53,23 +40,7 @@ export default function routes($stateProvider) {
     },
     resolve: {
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
-      orders:function($q, $stateParams, Spinner, ErrorService, authenticated) {
-        return $q((resolve, reject) => {
-          Spinner.show('fetch-orders');
-          Preoday.Order.getOrdersByUserId($stateParams.customerId)
-          .then(orders => {
-            resolve(orders);
-            Spinner.hide('fetch-orders');
-            console.log('got orders', orders);
-          }, error => {
-            reject(error);
-            Spinner.hide('fetch-orders');
-            $state.go('main.dashboard');
-            ErrorService.showRetry(ErrorService.FAILED_LOADING_ORDERS);
-            console.log('error', error);
-          });
-        });
-      }
+      orders: ordersResolve
     }
   });
 }
