@@ -3,9 +3,20 @@ export default class orderListController {
     return "orderListController"
   }
 
+  orderClick(order) {
+
+		this.$state.go('main.dashboard.customers.search.orders.detail', {
+			value: this.$stateParams.value,
+			orderId: order.id
+		});
+  }
+
   /* @ngInject */
-  constructor() {
+  constructor($state, $stateParams) {
     "ngInject";
+
+    this.$state = $state;
+    this.$stateParams = $stateParams;
 
   }
 }

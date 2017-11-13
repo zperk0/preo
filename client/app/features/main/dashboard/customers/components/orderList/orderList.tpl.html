@@ -1,3 +1,5 @@
 <div class="order-list">
-  <order ng-repeat="order in orderListCtrl.orders" order="order" ui-sref="main.dashboard.customers.orders.detail({orderId:order.id})"></order>
+  <order ng-repeat="order in orderListCtrl.orders"
+  			 order="order"
+  			 ng-click="orderListCtrl.orderClick(order)"></order>
 </div>
