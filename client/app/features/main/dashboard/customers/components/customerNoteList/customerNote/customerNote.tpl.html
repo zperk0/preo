@@ -1,22 +1,25 @@
-<div class="item-container">
+<div class="item-container customer-note-item">
   <div class="item">
     <div class="label label-sm">{{'Order' | translate}} #:</div>
-    <div class="value" ui-sref="vm.note.orderId" ng-bind="vm.note.orderId"></div>
+    <a class="value"
+       ng-href
+       ng-click="$noteItem.orderClick()"
+       ng-bind="$noteItem.note.orderId"></a>
   </div>
   <div class="item">
     <div class="label label-sm">{{'Date' | translate}}:</div>
-    <div class="value" ng-bind="vm.note.created | date:'EEE d MMM, y'"></div>
+    <div class="value" ng-bind="$noteItem.note.created | date:'EEE d MMM, y'"></div>
   </div>
   <div class="item">
     <div class="label label-sm">{{'Time' | translate}}:</div>
-    <div class="value" ng-bind="vm.note.created | date:'HH:mm'"></div>
+    <div class="value" ng-bind="$noteItem.note.created | date:'HH:mm'"></div>
   </div>
   <div class="item">
     <div class="label label-sm">{{'Operator' | translate}}:</div>
-    <div class="value" ng-bind="vm.note.operator.name"></div>
+    <div class="value" ng-bind="$noteItem.note.operator.name"></div>
   </div>
   <div class="item">
     <div class="label label-sm">{{'Note' | translate}}:</div>
-    <div class="value" ng-bind="vm.note.message"></div>
+    <div class="value" ng-bind="$noteItem.note.message"></div>
   </div>
 </div>

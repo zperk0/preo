@@ -9,7 +9,7 @@ export default function customerNote(){
     },
     template: require("./customerNote.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "$noteItem",
     replace: true,
     bindToController: true
   }

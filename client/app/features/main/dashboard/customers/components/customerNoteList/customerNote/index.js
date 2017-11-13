@@ -1,3 +1,6 @@
+
+import './customerNote.scss';
+
 // Import internal modules
 import controller from './customerNote.controller';
 import directive from './customerNote.directive';

@@ -3,8 +3,18 @@ export default class customerNoteController {
     return "customerNoteController"
   }
 
-  constructor() {
+  orderClick() {
+		this.$state.go('main.dashboard.customers.search.orders.detail', {
+			value: this.$stateParams.value,
+			customerId: this.$stateParams.customerId,
+			orderId: this.note.orderId
+		});
+  }
+
+  constructor($state, $stateParams) {
   	"ngInject";
 
+		this.$state = $state;
+		this.$stateParams = $stateParams;
   }
 }

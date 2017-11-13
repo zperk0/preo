@@ -1,0 +1,12 @@
+
+@import "client/app/shared/styles/variables";
+
+.customer-note-item {
+	a {
+		&.value {
+			color: $linkColor;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+}
