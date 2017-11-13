@@ -5,7 +5,8 @@ export default function contextualMenu(){
   return {
     restrict: 'E',
     scope: {
-      orders: '='
+      orders: '=',
+      notes: '=',
     },
     template: require('./contextualDrawer.customerNotesNew.tpl.html'),
     controller: controller.UID,

@@ -4,9 +4,10 @@ export default class notesNewController {
   }
 
   /* @ngInject */
-  constructor($timeout, contextual, orders) {
+  constructor($timeout, contextual, orders, notes) {
     'ngInject';
     this.orders = orders;
+    this.notes = notes;
 
     $timeout(() => {
       contextual.showDrawer('customerNotesNew')

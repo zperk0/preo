@@ -24,6 +24,7 @@ export default class contextualDrawerCustomerNotesNewController {
       Preoday.CustomerNote.save(this.note)
         .then(newNote => {
           this.note = newNote;
+          this.notes.push(newNote);
           this.Spinner.hide('save-note');
           this.Snack.show(this.LabelService.SNACK_CUSTOMER_NOTE_SAVE);
           this.close();
