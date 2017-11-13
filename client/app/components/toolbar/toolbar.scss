@@ -37,7 +37,7 @@
 .sub-toolbar{
   background: #EEEEEE;
   border-bottom:1px solid #CCCCCC;
-  min-height:50px;
+  min-height: $subToolbarHeight;
   width: 100%;
   font-size:14px;
   position: fixed;
