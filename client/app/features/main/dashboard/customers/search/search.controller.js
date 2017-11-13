@@ -25,7 +25,11 @@ export default class customersSearchController {
   }
 
   onOrderHistory(customer) {
-		console.log('onOrderHistory', customer);
+    this.$state.go('main.dashboard.customers.search.orders.history', {
+      value: this.$stateParams.value,
+      customerId: customer.id,
+      customers: this.customersCtrl.customers
+    });
   }
 
   hasCustomersResults() {
