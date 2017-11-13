@@ -4,7 +4,15 @@ export default class contextualDrawerCustomerNotesController {
   }
 
   done() {
-    this.$state.go('main.dashboard.customers', { userId: this.$stateParams.userId });
+    this.$state.go('main.dashboard.customers.search', {
+      value: this.$stateParams.value
+    });
+  }
+
+  onAddNotes() {
+    this.$state.go('main.dashboard.customers.search.notes.new', {
+      value: this.$stateParams.value
+    });
   }
 
   constructor($state, $stateParams) {

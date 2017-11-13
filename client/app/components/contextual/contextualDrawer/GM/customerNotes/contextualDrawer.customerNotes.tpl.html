@@ -1,6 +1,6 @@
 <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="customerNotes">
   <div class="contextual-header">
-    <md-button ui-sref="main.dashboard.customers.notes.new" class="md-primary" translate>Add note</md-button>
+    <md-button ng-click="drawerCustomerNotesCtrl.onAddNotes()" class="md-primary" translate>Add note</md-button>
   </div>
 
   <div class="contextual-list" ng-switch="drawerCustomerNotesCtrl.collection && drawerCustomerNotesCtrl.collection.length > 0" ng-class="{empty:!drawerCustomerNotesCtrl.collection || !drawerCustomerNotesCtrl.collection.length}">
