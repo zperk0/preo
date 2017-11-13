@@ -4,10 +4,8 @@ export default class notesNewController {
   }
 
   /* @ngInject */
-  constructor($timeout, contextual, orders, Spinner) {
+  constructor($timeout, contextual, orders) {
     'ngInject';
-
-    Spinner.hide('fetch-orders');
     this.orders = orders;
 
     $timeout(() => {

@@ -28,6 +28,7 @@ export default function routes($stateProvider) {
           Preoday.CustomerNote.getByUserId($stateParams.customerId, 'operator')
           .then(notes => {
             resolve(notes);
+            Spinner.hide('fetch-notes');
             console.log('got notes', notes);
           }, error => {
             reject(error);
@@ -40,10 +41,11 @@ export default function routes($stateProvider) {
       }
     }
   });
+
   $stateProvider.state("main.dashboard.customers.search.notes.new", {
     url: "/new",
     views: {
-    	customerDetailView: {
+    	'customerDetailView@main.dashboard.customers.search': {
         template: `<contextual-drawer-customer-notes-new orders="notesNewCtrl.orders" open="true" success="success()" error="error()"></contextual-drawer-customer-notes-new>`,
 		    controller: controllerNew.UID,
 		    controllerAs: "notesNewCtrl"
@@ -57,6 +59,7 @@ export default function routes($stateProvider) {
           Preoday.Order.getOrdersByUserId($stateParams.customerId)
           .then(orders => {
             resolve(orders);
+            Spinner.hide('fetch-orders');
             console.log('got orders', orders);
           }, error => {
             reject(error);
