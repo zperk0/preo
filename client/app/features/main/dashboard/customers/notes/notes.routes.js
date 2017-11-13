@@ -3,6 +3,7 @@ import controllerNew from './notesNew.controller';
 
 import notesResolve from './notes.resolve';
 import ordersResolve from '../orders/orders.resolve';
+import customerResolve from '../customer.resolve';
 
 /**
  * Routing function for eventList
@@ -25,7 +26,8 @@ export default function routes($stateProvider) {
     },
     resolve: {
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
-      notes: notesResolve
+      customer: customerResolve,
+      notes: notesResolve,
     }
   });
 

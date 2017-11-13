@@ -3,6 +3,7 @@ import ordersDetailController from './ordersDetail.controller';
 
 import ordersResolve from './orders.resolve';
 import orderDetailResolve from './order.resolve';
+import customerResolve from '../customer.resolve';
 
 /**
  * Routing function for eventList
@@ -18,6 +19,9 @@ export default function routes($stateProvider) {
       customerDetailView: {
         template: `<ui-view name="orderContent"></ui-view>`
       }
+    },
+    resolve: {
+      customer: customerResolve
     }
   });
   $stateProvider.state("main.dashboard.customers.search.orders.history", {

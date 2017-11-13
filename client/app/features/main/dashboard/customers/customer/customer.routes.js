@@ -3,6 +3,7 @@ import customersSearchController from '../search/search.controller';
 import customerController from './customer.controller'
 
 import customersResolve from '../customers.resolve';
+import customerResolve from '../customer.resolve';
 
 /**
  * Routing function for customers
@@ -53,25 +54,7 @@ export default function customerRoutes($stateProvider) {
             controller: customerController.UID,
             controllerAs: '$customer',
             resolve: {
-                customer: ($q, customers, $stateParams, $state, $timeout) => {
-                    console.log('customer resolve here', $stateParams);
-                    const customerId = $stateParams.customerId;
-                    // get customers results from search controller if sent
-                    const _customers = $stateParams.customers || customers;
-                    const filtered = _customers.filter((customer) => {
-                      return +customer.id === +customerId;
-                    });
-
-                    if (filtered.length) {
-                      return $q.when(filtered[0]);
-                    }
-
-                    $timeout(() => {
-                      $state.go("main.dashboard.customers.placeholder");
-                    });
-
-                    return $q.reject();
-                }
+                customer: customerResolve
             }
         },
     },
