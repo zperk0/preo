@@ -178,10 +178,7 @@ export default class StateService {
 
     function done () {
 
-      if (isChannel || this.venue.id !== entityId) {
-        this.navigateToVenue(this.venue.id);
-      }
-
+      this.navigateToVenue(this.venue.id);
       deferred.resolve();
     }
 
@@ -395,6 +392,8 @@ export default class StateService {
   }
 
   resetData() {
+    this.entityId = undefined;
+    this.isChannel = false;
     this.venues = [];
     this.channels = [];
   }
