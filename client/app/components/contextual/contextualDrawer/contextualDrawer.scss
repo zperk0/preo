@@ -147,6 +147,19 @@
     }
   }
 
+  &.contextual-drawer-customer-notes {
+    .contextual-list {
+      &.empty {
+        display: flex;
+      }
+
+      .contextual-empty {
+        position: static;
+        margin: auto;
+      }
+    }
+  }
+
   .contextual-list{
     overflow-y: auto;
     height: calc(100% - 49px); // 100% - footer cards
