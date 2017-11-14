@@ -26,10 +26,10 @@ export default function contentRightResize($document, $window, $timeout, Broadca
 
         const contentRightWidth = (layoutLeftRightWidth / 2) - 32;
 
-        console.log('contentRightResize - navBarWidth', navBarWidthLG);
-        console.log('contentRightResize - layoutLeftRightWidth', layoutLeftRightWidth);
-        console.log('contentRightResize - contentRightWidth', contentRightWidth);
-        console.log('contentRightResize - windowWidth', windowWidth);
+        // console.log('contentRightResize - navBarWidth', navBarWidthLG);
+        // console.log('contentRightResize - layoutLeftRightWidth', layoutLeftRightWidth);
+        // console.log('contentRightResize - contentRightWidth', contentRightWidth);
+        // console.log('contentRightResize - windowWidth', windowWidth);
 
         if (!shouldKeepTransition) {
           element.addClass('disable-transition');
