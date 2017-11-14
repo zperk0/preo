@@ -6,7 +6,7 @@ export default class orderListController {
   orderClick(order) {
 
 		this.$state.go('main.dashboard.customers.search.orders.detail', {
-			value: this.$stateParams.value,
+      value: this.$stateParams.value,
 			orderId: order.id
 		});
   }

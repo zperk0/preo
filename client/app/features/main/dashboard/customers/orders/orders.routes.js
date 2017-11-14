@@ -20,9 +20,6 @@ export default function routes($stateProvider) {
         template: `<ui-view name="orderContent"></ui-view>`
       }
     },
-    params: {
-      customers: null
-    },
     resolve: {
       customer: customerResolve
     }

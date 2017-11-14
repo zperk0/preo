@@ -21,9 +21,6 @@ export default function routes($stateProvider) {
 		    controllerAs: "notesCtrl"
     	}
     },
-    params: {
-      customers: null
-    },
     resolve: {
       // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
       customer: customerResolve,

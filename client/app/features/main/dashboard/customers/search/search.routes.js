@@ -14,7 +14,7 @@ export default function searchRoutes($stateProvider) {
   $stateProvider.state('main.dashboard.customers.search', {
     url: '/search/:value',
     params: {
-        skipResolve: false
+        customers: null
     },
     views: {
         'customerView': {
