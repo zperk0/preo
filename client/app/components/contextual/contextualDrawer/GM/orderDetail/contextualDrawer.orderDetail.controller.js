@@ -28,22 +28,33 @@ export default class contextualDrawerOrderDetailController {
       return this.showError();
     }
 
-    return this.$q((resolve, reject) => {
+    const {
+      $q,
+      Spinner,
+      $scope,
+    } = this;
+    const LOADER_KEY = 'cancel-order';
+
+    return $q((resolve, reject) => {
       let order = new Preoday.Order.constructor(this.order);
       order.statusReason = 'Cancelled by user';
       delete order.venue;
 
-      this.Spinner.show('cancel-order');
+      Spinner.show(LOADER_KEY);
       order.cancel()
         .then(cancelledOrder => {
-          Object.keys(cancelledOrder).forEach((key) => (cancelledOrder[key] == null) && delete cancelledOrder[key]);
-          Object.assign(this.order, cancelledOrder);
-          this.Spinner.hide('cancel-order');
-          resolve(cancelledOrder);
+          $scope.$applyAsync(() => {
+            Object.keys(cancelledOrder).forEach((key) => (cancelledOrder[key] == null) && delete cancelledOrder[key]);
+            Object.assign(this.order, cancelledOrder);
+            Spinner.hide(LOADER_KEY);
+            resolve(cancelledOrder);
+          });
         }, error => {
-          this.Spinner.hide('cancel-order');
-          this.showError();
-          reject(error);
+          $scope.$applyAsync(() => {
+            Spinner.hide(LOADER_KEY);
+            this.showError();
+            reject(error);
+          });
         });
     });
   }
@@ -89,9 +100,10 @@ export default class contextualDrawerOrderDetailController {
     this.newTab.close();
   }
 
-  constructor($window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService) {
+  constructor($scope, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService) {
     "ngInject";
 
+    this.$scope = $scope;
     this.$window = $window;
     this.$state = $state;
     this.$stateParams = $stateParams;

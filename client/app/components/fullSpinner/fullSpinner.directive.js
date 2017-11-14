@@ -1,6 +1,6 @@
 export default function fullSpinner(Spinner){
   "ngInject";
-  
+
   return {
     restrict: 'E',
     scope: {
