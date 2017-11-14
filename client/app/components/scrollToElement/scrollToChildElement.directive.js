@@ -13,7 +13,7 @@ export default function scrollToChildElement($document, $timeout) {
 
       function _scroll(elementSelector) {
         if (elementSelector) {
-          console.log('scrollToChildElement - getting this element', elementSelector);
+          // console.log('scrollToChildElement - getting this element', elementSelector);
           const $childElement = $document[0].querySelector(elementSelector);
           if ($childElement) {
             element.duScrollToElementAnimated($childElement, ng.scrollToChildElementOffset)
