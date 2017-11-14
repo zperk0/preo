@@ -1,15 +1,17 @@
 
-export default function customersResolve ($q, $state, $stateParams, authenticated, StateService, UserService, Spinner) {
+export default function customersResolve ($q, $state, $stateParams, $rootScope, authenticated, StateService, UserService, Spinner) {
   "ngInject";
 
-  if ($stateParams.skipResolve) {
-  	return $q.when(null);
+  if ($stateParams.customers) {
+    console.log('customersResolve - returning customers array form state params', $stateParams.customers);
+    return $q.when($stateParams.customers);
   }
 
   const deferred = $q.defer();
+  const shouldShowLoader = typeof $rootScope.previousState === undefined;
   const LOADER_KEY = 'fetch-customers';
 
-  Spinner.show(LOADER_KEY);
+  shouldShowLoader && Spinner.show(LOADER_KEY);
 
   StateService.channel.searchCustomers({
     search: $stateParams.value
@@ -17,15 +19,15 @@ export default function customersResolve ($q, $state, $stateParams, authenticate
 
 		console.log('Customers [customersResolve] - got customers', customers);
 		deferred.resolve(customers);
-		Spinner.hide(LOADER_KEY);
+		shouldShowLoader && Spinner.hide(LOADER_KEY);
   }, (err) => {
 
 		console.log('Customers [customersResolve] - error', err);
   	deferred.reject(customers);
-  	Spinner.hide(LOADER_KEY);
+  	shouldShowLoader && Spinner.hide(LOADER_KEY);
   }).catch((err) => {
 
-    Spinner.hide(LOADER_KEY);
+    shouldShowLoader && Spinner.hide(LOADER_KEY);
     console.log('Customers [customersResolve] - catch', err);
     deferred.reject(err);
   });

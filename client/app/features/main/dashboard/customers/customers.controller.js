@@ -39,20 +39,7 @@ export default class customersController {
 
     $state.go('main.dashboard.customers.search', {
       value: this.customersSearch,
-      skipResolve: true
     }, stateData);
-
-    StateService.channel.searchCustomers({
-      search: this.customersSearch
-    }).then((customers) => {
-
-      $scope.$applyAsync(() => {
-        this.customers = customers;
-        this.searching = false;
-      });
-    }, () => {
-      this.searching = false;
-    });
   }
 
   isSearchView() {
