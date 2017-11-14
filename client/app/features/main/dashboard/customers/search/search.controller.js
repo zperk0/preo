@@ -8,15 +8,18 @@ export default class customersSearchController {
     this.$state.go('main.dashboard.customers.search.details', {
       value: this.$stateParams.value,
       customerId: customer.id,
-      customers: this.customersCtrl.customers
+      skipResolve: false
+    }, {
+      reload: 'main.dashboard.customers.search.details'
     });
   }
 
   showCustomerNotes(customer) {
     this.$state.go('main.dashboard.customers.search.notes', {
       value: this.$stateParams.value,
-      customerId: customer.id,
-      customers: this.customersCtrl.customers
+      customerId: customer.id
+    }, {
+      reload: 'main.dashboard.customers.search.notes'
     });
   }
 
@@ -27,8 +30,9 @@ export default class customersSearchController {
   onOrderHistory(customer) {
     this.$state.go('main.dashboard.customers.search.orders.history', {
       value: this.$stateParams.value,
-      customerId: customer.id,
-      customers: this.customersCtrl.customers
+      customerId: customer.id
+    }, {
+      reload: 'main.dashboard.customers.search.orders'
     });
   }
 
@@ -54,10 +58,10 @@ export default class customersSearchController {
     if (customers) {
       this.customersCtrl.customers = customers;
       this.customersCtrl.customersSearch = $stateParams.value;
+      this.customersCtrl.searching = false;
     }
 
     const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
-console.log('from state here...', event, viewName);
       if (viewName.indexOf('customerDetailView') === 0) {
         // we have an animation in our main-ui-view and we need to wait it to finish to start the sticky
         // If we start the sticky before the animation finish, the sticky will calculate a wrong width for our contextual
