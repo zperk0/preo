@@ -394,6 +394,15 @@ export default class StateService {
     return this.VenueService.updateVenue(this.venue);
   }
 
+  searchCustomers(value) {
+
+    this.isSearchingCustomers = true;
+    return this.channel.searchCustomers(value)
+                .finally(() => {
+                  this.isSearchingCustomers = false;
+                });
+  }
+
   resetData() {
     this.venues = [];
     this.channels = [];
@@ -420,6 +429,7 @@ export default class StateService {
 
     this.hasDashboardLoaded = false;
     this.dashboardDeferred = null;
+    this.isSearchingCustomers = false;
 
     this.isChannel = StateConfig.isChannel;
     this.domainId = window._PREO_DATA._DOMAIN || null;

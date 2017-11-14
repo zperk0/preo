@@ -13,7 +13,7 @@ export default function customersResolve ($q, $state, $stateParams, $rootScope, 
 
   shouldShowLoader && Spinner.show(LOADER_KEY);
 
-  StateService.channel.searchCustomers({
+  StateService.searchCustomers({
     search: $stateParams.value
   }).then((customers) => {
 

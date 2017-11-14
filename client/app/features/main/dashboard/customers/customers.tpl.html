@@ -7,7 +7,7 @@
                   on-debounce="$customers.onDebounceChange(value)"></search-panel>
 	</div>
 
-  <div class="loader-wrapper" ng-show="$customers.searching">
+  <div class="loader-wrapper" ng-show="$customers.isSearching()">
     <spinner></spinner>
   </div>
 
@@ -17,6 +17,6 @@
     <ui-view name="customerView"
              class="customers-child-view"
              scroll-to-customer
-             ng-show="!$customers.searching"></ui-view>
+             ng-show="!$customers.isSearching()"></ui-view>
   </sticky-scroll>
 </div>

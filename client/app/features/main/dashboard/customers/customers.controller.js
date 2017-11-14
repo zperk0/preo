@@ -9,6 +9,10 @@ export default class customersController {
     console.log('new value', this.customersSearch);
   }
 
+  isSearching() {
+    return this.searching || this.StateService.isSearchingCustomers;
+  }
+
   onDebounceChange () {
 
     if (this.customersSearch && this.customersSearch.length > 3) {
@@ -33,7 +37,7 @@ export default class customersController {
 
     const stateData = {};
 
-    if ($state.current.name === 'main.dashboard.customers.search') {
+    if ($state.current.name === 'main.dashboard.customers.search' && this.StateService.isSearchingCustomers) {
       stateData.location = 'replace';
     }
 
