@@ -2,10 +2,10 @@
 export default function customerResolve ($q, $state, $stateParams, $timeout, customers) {
   "ngInject";
 
-  const _customers = ($stateParams.customers || customers);
+  console.log('[customerResolve] - Validating Customer Resolve - ', customers, $stateParams.customerId);
 
   const customerId = +$stateParams.customerId;
-  const filtered = customerId && _customers.filter((c) => {
+  const filtered = customerId && customers.filter((c) => {
     return +c.id === customerId;
   });
 
