@@ -16,7 +16,7 @@ export default function customerRoutes($stateProvider) {
   $stateProvider.state('main.dashboard.customers.new', {
     url: "/new",
     params: {
-    	skipResolve: true
+    	customers: []
     },
     views: {
     	'customerDetailView@main.dashboard.customers.new': {
@@ -44,10 +44,6 @@ export default function customerRoutes($stateProvider) {
 
   $stateProvider.state('main.dashboard.customers.search.details', {
     url: '/:customerId',
-    params: {
-    	skipResolve: false,
-        customers: null
-    },
     views: {
         'customerDetailView': {
             template: require('./customer.tpl.html'),
