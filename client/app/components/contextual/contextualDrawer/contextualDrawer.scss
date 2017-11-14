@@ -147,7 +147,7 @@
     }
   }
 
-  &.contextual-drawer-customer-notes {
+  &.contextual-drawer-customer-notes, &.contextual-drawer-order-history {
     .contextual-list {
       &.empty {
         display: flex;
