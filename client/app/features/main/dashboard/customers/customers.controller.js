@@ -6,7 +6,6 @@ export default class customersController {
 
   onSearchChange () {
     this.searching = true;
-    console.log('new value', this.customersSearch);
   }
 
   isSearching() {
