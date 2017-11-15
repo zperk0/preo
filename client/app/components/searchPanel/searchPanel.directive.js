@@ -56,6 +56,7 @@ export default function searchPanel($timeout) {
     };
 
     function _clear() {
+      ng.value = '';
       $input.val('');
       $input.blur();
 
