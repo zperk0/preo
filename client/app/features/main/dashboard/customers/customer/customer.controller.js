@@ -91,7 +91,7 @@ export default class customerController {
   }
 
   /* @ngInject */
-  constructor($scope, $state, $stateParams, $timeout, gettextCatalog, StateService, UserService, Spinner, Snack, LabelService, customer) {
+  constructor($scope, $state, $stateParams, $timeout, gettextCatalog, StateService, UserService, Spinner, Snack, LabelService, customers, customer) {
     'ngInject';
 
     this.$scope = $scope;
@@ -112,10 +112,11 @@ export default class customerController {
 
     this.customersCtrl = $scope['$customers'];
 
-    const customers = this.customersCtrl.customers;
-
     if (this.isNewCustomer()) {
-      customers.push(customer);
+      $scope.$applyAsync(() => {
+        customers.splice(0, customers.length);
+        customers.push(customer);
+      });
     } else if (customer.id && customer.email && customer.isPending) {
       this.params.doneButtonText = gettextCatalog.getString('Resend invite');
     }
