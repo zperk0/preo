@@ -6,6 +6,7 @@ export default class customersController {
 
   onSearchChange () {
     this.searching = true;
+    this.errorMessage = null;
   }
 
   isSearching() {
@@ -14,16 +15,28 @@ export default class customersController {
 
   onDebounceChange () {
 
-    if (this.customersSearch && this.customersSearch.length > 3) {
+    if (!this.customersSearch || this.customersSearch.length === 0) {
+      this.goToPlaceholder();
+      return;
+    }
+
+    if (this.customersSearch.length > 2) {
+      this.errorMessage = null;
       this.makeSearch();
     } else {
       this.searching = false;
-      this.$state.go('main.dashboard.customers.placeholder');
+      this.errorMessage = this.gettextCatalog.getString('Please enter a minimum of 3 characters to search.');
     }
   }
 
-  onClear() {
+  goToPlaceholder() {
+    this.searching = false;
+    this.errorMessage = null;
     this.$state.go('main.dashboard.customers.placeholder');
+  }
+
+  onClear() {
+    this.goToPlaceholder();
   }
 
   makeSearch() {
@@ -51,12 +64,16 @@ export default class customersController {
   }
 
   /* @ngInject */
-  constructor($scope, $state, StateService) {
+  constructor($scope, $state, StateService, gettextCatalog) {
     'ngInject';
 
     this.$scope = $scope;
     this.$state = $state;
     this.StateService = StateService;
+    this.gettextCatalog = gettextCatalog;
+
+    this.searching = false;
+    this.errorMessage = null;
 
     this.customers = [];
   }

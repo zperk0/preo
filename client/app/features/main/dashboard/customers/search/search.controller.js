@@ -56,9 +56,11 @@ export default class customersSearchController {
     this.customersCtrl = $scope['$customers'];
 
     if (customers) {
-      this.customersCtrl.customers = customers;
-      this.customersCtrl.customersSearch = $stateParams.value;
-      this.customersCtrl.searching = false;
+      $scope.$applyAsync(() => {
+        this.customersCtrl.customers = customers;
+        this.customersCtrl.customersSearch = $stateParams.value;
+        this.customersCtrl.searching = false;
+      });
     }
 
     const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {

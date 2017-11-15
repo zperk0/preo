@@ -23,7 +23,7 @@ export default function customersResolve ($q, $state, $stateParams, $rootScope, 
   }, (err) => {
 
 		console.log('Customers [customersResolve] - error', err);
-  	deferred.reject(customers);
+  	deferred.reject(err);
   	shouldShowLoader && Spinner.hide(LOADER_KEY);
   }).catch((err) => {
 

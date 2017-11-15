@@ -30,6 +30,12 @@
 		text-align: center;
 		padding-top: $spacer-x * 2.5;
 
+		&-left {
+			padding-top: $spacer-x;
+			padding-left: $spacer-x;
+			text-align: left;
+		}
+
 		&__icon {
 			svg {
 				color: $greyDefault;
