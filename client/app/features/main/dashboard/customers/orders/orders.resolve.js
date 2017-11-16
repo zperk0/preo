@@ -1,15 +1,19 @@
 
-export default function ordersResolve ($q, $state, $stateParams, authenticated, Spinner, ErrorService) {
+export default function ordersResolve ($q, $state, $stateParams, authenticated, Spinner, ErrorService, DialogService, gettextCatalog) {
   "ngInject";
 
-  function _onError() {
+  function _onError(error) {
     console.log('Customer orders [ordersResolve] - error', error);
     deferred.reject(error);
     Spinner.hide(LOADER_KEY);
     $state.go('main.dashboard.customers.search', {
       value: $stateParams.value
+    }, {
+      location: 'replace'
     });
-    ErrorService.showRetry(ErrorService.FAILED_LOADING_ORDERS);
+    DialogService.show(ErrorService.errorTitle, ErrorService.FAILED_LOADING_ORDERS.message, [{
+      name: gettextCatalog.getString('OK')
+    }]);
   }
 
   const deferred = $q.defer();
