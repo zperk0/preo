@@ -12,7 +12,7 @@ export default class venueSelectController {
     this.$state.go('main.dashboard.home' , {venueId} ,  {reload: true});
     this.$timeout(()=>{
       window.location.reload();
-    },100)
+    },1000)
   }
 
   setVenue(){
