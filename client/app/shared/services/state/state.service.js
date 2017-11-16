@@ -91,6 +91,7 @@ export default class StateService {
       UserService,
       entityId,
       $q,
+      $state
     } = this;
 
     if (channelId > 0) {
@@ -108,7 +109,8 @@ export default class StateService {
     function done() {
       UtilsService.updateLocale();
 
-      if (+this.channel.id !== +entityId) {
+      // check for `state` name to prevent the user from remaining on the sign in screen
+      if (+this.channel.id !== +entityId || ($state.current.name && $state.current.name.indexOf('main') !== 0)) {
         this.navigateToChannel(this.channel.id);
       }
       deferred.resolve();
@@ -171,14 +173,18 @@ export default class StateService {
       isChannel,
       entityId,
       $rootScope,
-      $q
+      $q,
+      $state
     } = this;
 
     const deferred = $q.defer();
 
     function done () {
 
-      this.navigateToVenue(this.venue.id);
+      // check for `state` name to prevent the user from remaining on the sign in screen
+      if (isChannel || this.venue.id !== entityId || ($state.current.name && $state.current.name.indexOf('main') !== 0)) {
+        this.navigateToVenue(this.venue.id);
+      }
       deferred.resolve();
     }
 
