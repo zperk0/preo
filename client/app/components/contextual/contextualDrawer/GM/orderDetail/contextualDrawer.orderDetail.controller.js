@@ -17,7 +17,7 @@ export default class contextualDrawerOrderDetailController {
     this.openNewTab();
     this.cancelOrder()
       .then(order => {
-        this.openReorder();
+        this.generateTokenAndGoToWeborders();
       }, err => {
         this.closeReorderTab();
       });
@@ -74,7 +74,49 @@ export default class contextualDrawerOrderDetailController {
 
   reorder() {
     this.openNewTab();
-    this.openReorder();
+    this.generateTokenAndGoToWeborders();
+  }
+
+  generateTokenAndGoToWeborders() {
+
+    const {
+      Spinner,
+      $q,
+      Snack,
+      gettextCatalog
+    } = this;
+    const LOADER_KEY = 'generate-token';
+
+    Spinner.show(LOADER_KEY);
+
+    return $q((resolve, reject) => {
+      Preoday.Operate.getCustomerToken(this.order.userId)
+        .then((token) => {
+
+          console.log('Customer Order Detail [getOperatorToken] - operate token', token);
+          this.openReorder(token);
+          this.hideSpinner(LOADER_KEY);
+          resolve(token);
+        }, (err) => {
+
+          console.log('Customer Order Detail [getOperatorToken] - error', err);
+          this.hideSpinner(LOADER_KEY);
+          Snack.showError(gettextCatalog.getString('An error occurred to open the weborders, try again later please'));
+          reject(err);
+        })
+        .catch((err) => {
+          console.log('Customer Order Detail [getOperatorToken] - catch', err);
+          this.hideSpinner(LOADER_KEY);
+          Snack.showError(gettextCatalog.getString('An error occurred to open the weborders, try again later please'));
+          reject(err);
+        });
+    });
+  }
+
+  hideSpinner(loaderKey) {
+    this.$rootScope.$applyAsync(() => {
+      this.Spinner.hide(loaderKey);
+    });
   }
 
   openNewTab() {
@@ -82,7 +124,7 @@ export default class contextualDrawerOrderDetailController {
     this.newTab.document.write('Loading...');
   }
 
-  openReorder() {
+  openReorder(token) {
     let path = this.$window._PREO_DATA._WEBORDERS;
 
     if (this.order.permalink) {
@@ -93,6 +135,10 @@ export default class contextualDrawerOrderDetailController {
 
     path += 'orderId=' + this.order.id;
 
+    if (token) {
+      path += '&impersonateToken=' + token;
+    }
+
     this.newTab.location.href = path;
   }
 
@@ -100,10 +146,11 @@ export default class contextualDrawerOrderDetailController {
     this.newTab.close();
   }
 
-  constructor($scope, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService) {
+  constructor($scope, $rootScope, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack) {
     "ngInject";
 
     this.$scope = $scope;
+    this.$rootScope = $rootScope;
     this.$window = $window;
     this.$state = $state;
     this.$stateParams = $stateParams;
@@ -112,5 +159,6 @@ export default class contextualDrawerOrderDetailController {
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
+    this.Snack = Snack;
   }
 }
