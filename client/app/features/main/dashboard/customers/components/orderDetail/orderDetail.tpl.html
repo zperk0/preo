@@ -49,7 +49,7 @@
       <div class="label label-sm">{{'Subtotal' | translate}}:</div>
       <div class="value end" ng-bind="orderDetailCtrl.order.subtotal | currency:false:2:orderDetailCtrl.order.venue.ccySymbol"></div>
     </div>
-    <div class="item">
+    <div class="item" ng-if="orderDetailCtrl.order.fees.length">
       <div class="label item flat label-sm">{{'Fees' | translate}}:</div>
       <div class="item flat value">
         <div class="item flat value block" ng-repeat="fee in orderDetailCtrl.order.fees">
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="item">
+    <div class="item" ng-if="orderDetailCtrl.order.discounts.length">
       <div class="label item flat label-sm">{{'Discounts' | translate}}:</div>
       <div class="item flat value">
         <div class="item flat value block" ng-repeat="discount in orderDetailCtrl.order.discounts">
