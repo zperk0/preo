@@ -100,6 +100,9 @@ export default class ErrorService {
     this.FAILED_LOADING_ORDER = {code: 'FAILED_LOADING_ORDER', message:this.gettextCatalog.getString('An unexpected error occurred loading the order, please try again.'), title:this.gettextCatalog.getString("Sorry")};
     this.FAILED_LOADING_ORDERS = {code: 'FAILED_LOADING_ORDERS', message:this.gettextCatalog.getString('An unexpected error occurred loading the customer orders, please try again.')};
 
+    // CUSTOMERS
+    this.FAILED_LOADING_CUSTOMERS = {code: 'FAILED_LOADING_CUSTOMERS', message:this.gettextCatalog.getString('An unexpected error occurred loading the customers, please try again.')};
+
     // PROMOTIONS
     this.EMPTY_ADD_USER_PROMO = {code: 'EMPTY_ADD_USER_PROMO', message:this.gettextCatalog.getString('You must select one or more users to apply the promotion.'), title:this.gettextCatalog.getString('No users selected')};
   }
