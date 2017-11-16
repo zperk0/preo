@@ -87,6 +87,14 @@ export default class contextualDrawerOrderDetailController {
     } = this;
     const LOADER_KEY = 'generate-token';
 
+    function _error() {
+      console.log('Customer Order Detail [getOperatorToken] - error', err);
+      this.hideSpinner(LOADER_KEY);
+      this.closeReorderTab();
+      Snack.showError(gettextCatalog.getString('An error occurred to open the weborders, try again later please'));
+      reject(err);
+    }
+
     Spinner.show(LOADER_KEY);
 
     return $q((resolve, reject) => {
@@ -97,19 +105,8 @@ export default class contextualDrawerOrderDetailController {
           this.openReorder(token);
           this.hideSpinner(LOADER_KEY);
           resolve(token);
-        }, (err) => {
-
-          console.log('Customer Order Detail [getOperatorToken] - error', err);
-          this.hideSpinner(LOADER_KEY);
-          Snack.showError(gettextCatalog.getString('An error occurred to open the weborders, try again later please'));
-          reject(err);
-        })
-        .catch((err) => {
-          console.log('Customer Order Detail [getOperatorToken] - catch', err);
-          this.hideSpinner(LOADER_KEY);
-          Snack.showError(gettextCatalog.getString('An error occurred to open the weborders, try again later please'));
-          reject(err);
-        });
+        }, _error.bind(this))
+        .catch(_error.bind(this));
     });
   }
 
@@ -121,7 +118,7 @@ export default class contextualDrawerOrderDetailController {
 
   openNewTab() {
     this.newTab = this.$window.open('', '_blank');
-    this.newTab.document.write('Loading...');
+    this.newTab.document.write(require('./loader.html'));
   }
 
   openReorder(token) {
@@ -146,11 +143,12 @@ export default class contextualDrawerOrderDetailController {
     this.newTab.close();
   }
 
-  constructor($scope, $rootScope, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack) {
+  constructor($scope, $rootScope, $timeout, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack) {
     "ngInject";
 
     this.$scope = $scope;
     this.$rootScope = $rootScope;
+    this.$timeout = $timeout;
     this.$window = $window;
     this.$state = $state;
     this.$stateParams = $stateParams;
