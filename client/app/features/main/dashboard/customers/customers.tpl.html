@@ -1,0 +1,26 @@
+<div class='customers' layout="column">
+	<div class="search-panel-wrapper sub-toolbar">
+		<search-panel placeholder="{{ 'Search customers (min 3 characters)' | translate }}"
+                  value="$customers.customersSearch"
+                  on-clear="$customers.onClear()"
+                  on-change="$customers.onSearchChange(value)"
+                  on-debounce="$customers.onDebounceChange(value)"></search-panel>
+	</div>
+
+  <div class="loader-wrapper" ng-show="$customers.isSearching()">
+    <spinner></spinner>
+  </div>
+
+  <div class="no-results no-results-left" ng-show="$customers.errorMessage">
+    <span class="no-results__text ">{{ $customers.errorMessage }}</span>
+  </div>
+
+  <sticky-scroll scroll-to-child-element
+                 scroll-to-child-element-offset="24"
+                 scroll-on-init="false">
+    <ui-view name="customerView"
+             class="customers-child-view"
+             scroll-to-customer
+             ng-show="!$customers.isSearching() && !$customers.errorMessage"></ui-view>
+  </sticky-scroll>
+</div>

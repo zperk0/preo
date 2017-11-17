@@ -71,6 +71,7 @@ module.exports = function(ENV, options) {
       manageUsers: './client/app/features/main/dashboard/manageUsers/index.js',
       updateExternalMenus: './client/app/features/main/dashboard/updateExternalMenus/index.js',
       customTags: './client/app/features/main/dashboard/customTags/index.js',
+      customers: './client/app/features/main/dashboard/customers/index.js',
       vendor: './client/app/vendor.js'
     },
     /**
@@ -142,7 +143,7 @@ module.exports = function(ENV, options) {
         // Reference: https://github.com/babel/babel-loader
         test: /\.(js|jsx)$/,
         loaders: ['ng-annotate','babel'],
-        // exclude: [/node_modules/, /bower_components/]
+        exclude: [/node_modules/, /bower_components/]
       },
       {
         // ASSET LOADER
@@ -208,7 +209,7 @@ module.exports = function(ENV, options) {
       new HtmlWebpackPlugin({
         template:'./client/index.html',
         chunksSortMode: chunkSort,
-        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'updateExternalMenus', 'customTags', 'app','vendor'],
+        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'updateExternalMenus', 'customTags', 'customers', 'app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),

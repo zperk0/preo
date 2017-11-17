@@ -1,0 +1,17 @@
+<div class="customer-list">
+
+  <card-item-list
+      has-new="$customerList.hasNew"
+      tooltip="{{ 'Add new tag' | translate }}"
+      on-click-new="$customerList.onNew()"
+      collection="$customerList.customers">
+      <customer-item
+        ng-repeat="customer in $customerList.customers track by customer.id"
+        on-edit="$customerList.onEdit({customer: customer})"
+        on-notes="$customerList.onNotes({customer: customer})"
+        on-place-order="$customerList.onPlaceOrder({customer: customer})"
+        on-order-history="$customerList.onOrderHistory({customer: customer})"
+        customer="customer">
+      </customer-item>
+  </card-item-list>
+</div>

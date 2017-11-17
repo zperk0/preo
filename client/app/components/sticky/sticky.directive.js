@@ -20,7 +20,8 @@
       return {
         restrict: 'A', // this directive can only be used as an attribute.
         scope: {
-          disabled: '=disabledSticky'
+          disabled: '=disabledSticky',
+          keepWidth: '=?'
         },
         link: function linkFn($scope, $elem, $attrs) {
 
@@ -36,6 +37,7 @@
           var placeholder;
           var stickyLine;
           var initialCSS;
+          var shouldKeepRealWidth = typeof $scope.keepWidth !== 'undefined' ? $scope.keepWidth : false;
 
           // Optional Classes
           var stickyClass = $attrs.stickyClass || '';
@@ -244,7 +246,10 @@
            * Unsticks the element
            */
           function unStickElement(fromDirection) {
-            $elem.attr('style', initialStyle);
+            if (!shouldKeepRealWidth) {
+              $elem.attr('style', initialStyle);
+            }
+
             isSticking = false;
 
             $body.removeClass(bodyClass);
@@ -269,9 +274,13 @@
               // In that case we should create a placeholder so the offsets don't get off.
               createPlaceholder();
 
+              // #EDITED HERE
+              if (!shouldKeepRealWidth) {
+                $elem.css('width', initialCSS.width)
+              }
+
               $elem
                 .css('z-index', 10)
-                .css('width', initialCSS.width)
                 .css('top', '')
                 .css('bottom', 0)
                 .css('position', 'absolute')
@@ -302,9 +311,12 @@
 
             createPlaceholder();
 
+            if (!shouldKeepRealWidth) {
+              $elem.css('width', $elem[0].offsetWidth + 'px')
+            }
+
             $elem
               .css('z-index', '10')
-              .css('width', $elem[0].offsetWidth + 'px')
               .css('position', 'fixed')
               .css('left', $elem.css('left').replace('px', '') + 'px')
               .css(anchor, (offset + elementsOffsetFromTop (scrollbar)) + 'px')

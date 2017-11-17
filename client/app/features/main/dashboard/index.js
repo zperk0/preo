@@ -24,6 +24,7 @@ angular.module("dashboard" , ['ui.router',
     'webapp.outlets',
     'webapp.updateExternalMenus',
     'webapp.customTags',
+    'webapp.customers',
     home
     ])
     .config(routes)

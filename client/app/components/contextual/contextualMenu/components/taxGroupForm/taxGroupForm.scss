@@ -1,0 +1,25 @@
+.tax-group-form {
+
+  .tax-rate-select-content {
+    margin-top: 24px;
+
+    .label-title {
+      color: #424242;
+      font-size: 16px;
+    }
+
+    .tax-rate-select {
+      margin-top: 12px;
+
+      md-checkbox {
+        display: block;
+        color: rgba(0,0,0,0.5);
+        margin-bottom: 12px;
+      }
+
+      .content-spinner {
+        text-align: center;
+      }
+    }
+  }
+}

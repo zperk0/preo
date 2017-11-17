@@ -1,0 +1,54 @@
+
+@import "client/app/shared/styles/variables";
+
+.customer-item {
+	.card-item {
+		flex-direction: row;
+		padding: 15px 0;
+
+		& > .card-title {
+			width: 100%;
+
+			& > div {
+		    overflow: hidden;
+		    white-space: normal;
+
+				.card-title-text {
+					line-height: 1.27;
+				}
+			}
+		}
+	}
+
+	md-card-actions {
+		left: 0;
+
+		.card-actions-leave-trap {
+			align-items: center;
+		}
+	}
+
+	&__details {
+		&.is-pending {
+			max-width: 70%;
+		}
+	}
+
+  &__status {
+    font-size: $font-sm;
+    color: $light-red;
+    margin-left: 12px;
+  }
+
+  .customer {
+  	&__name, &__email, &__phone {
+			font-size: $font-sm;
+			display: block;
+			max-width: 100%;
+  	}
+
+  	&__email, &__phone {
+			color: $greyDefault;
+  	}
+  }
+}

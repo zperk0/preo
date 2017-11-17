@@ -19,6 +19,7 @@ import collectionSlotsSelect from './components/collectionSlotsSelect';
 import eventBasic from './components/eventBasic';
 import eventScheduleForm from './components/eventScheduleForm';
 import taxGroupSelect from './components/taxGroupSelect';
+import taxGroupForm from './components/taxGroupForm';
 import menuItemAdvanced from './components/menuItemAdvanced';
 import menuItemMore from './components/menuItemMore';
 import userRoleSelect from './components/userRoleSelect';
@@ -49,6 +50,7 @@ export default angular.module("contextualMenu" , [
 	eventBasic,
   eventScheduleForm,
 	taxGroupSelect,
+	taxGroupForm,
 	menuItemAdvanced,
 	menuItemMore,
 	userRoleSelect,
