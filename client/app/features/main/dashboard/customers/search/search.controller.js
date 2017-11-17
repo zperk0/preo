@@ -71,6 +71,15 @@ export default class customersSearchController {
             this.customersCtrl.customers.length);
   }
 
+  isSearchingCustomer() {
+    return this.StateService.isSearchingCustomers;
+  }
+
+  shouldShowNoResults() {
+    return this.initialized &&
+           !this.hasCustomersResults();
+  }
+
   /* @ngInject */
   constructor($scope, $state, $stateParams, $timeout, $rootScope, StateService, BroadcastEvents, OperateService, Spinner, gettextCatalog, Snack, customers) {
     'ngInject';
@@ -83,6 +92,7 @@ export default class customersSearchController {
     this.Spinner = Spinner;
     this.gettextCatalog = gettextCatalog;
     this.Snack = Snack;
+    this.initialized = false;
 
     this.disabledSticky = true;
 
@@ -93,7 +103,10 @@ export default class customersSearchController {
         this.customersCtrl.customers = customers;
         this.customersCtrl.customersSearch = $stateParams.value;
         this.customersCtrl.searching = false;
+        this.initialized = true;
       });
+    } else {
+      this.initialized = true;
     }
 
     const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
