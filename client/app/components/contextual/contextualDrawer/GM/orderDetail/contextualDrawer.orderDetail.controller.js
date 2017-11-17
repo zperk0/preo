@@ -14,12 +14,11 @@ export default class contextualDrawerOrderDetailController {
   }
 
   amendOrder() {
-    this.openNewTab();
+
+    this.OperateService.openNewTab();
     this.cancelOrder()
       .then(order => {
         this.generateTokenAndGoToWeborders();
-      }, err => {
-        this.closeReorderTab();
       });
   }
 
@@ -73,7 +72,7 @@ export default class contextualDrawerOrderDetailController {
   }
 
   reorder() {
-    this.openNewTab();
+    this.OperateService.openNewTab();
     this.generateTokenAndGoToWeborders();
   }
 
@@ -81,33 +80,27 @@ export default class contextualDrawerOrderDetailController {
 
     const {
       Spinner,
-      $q,
       Snack,
-      gettextCatalog
+      gettextCatalog,
+      OperateService,
     } = this;
     const LOADER_KEY = 'generate-token';
 
-    function _error() {
-      console.log('Customer Order Detail [getOperatorToken] - error', err);
+    function _error(err) {
+      console.log('Customer Order Detail [generateTokenAndGoToWeborders] - error', err);
       this.hideSpinner(LOADER_KEY);
-      this.closeReorderTab();
       Snack.showError(gettextCatalog.getString('An error occurred to open the weborders, try again later please'));
-      reject(err);
     }
 
     Spinner.show(LOADER_KEY);
 
-    return $q((resolve, reject) => {
-      Preoday.Operate.getCustomerToken(this.order.userId)
-        .then((token) => {
+    OperateService.generateTokenAndGoToWeborders(this.order.userId, OperateService.getWebordersLinkByOrder(this.order))
+      .then(() => {
 
-          console.log('Customer Order Detail [getOperatorToken] - operate token', token);
-          this.openReorder(token);
-          this.hideSpinner(LOADER_KEY);
-          resolve(token);
-        }, _error.bind(this))
-        .catch(_error.bind(this));
-    });
+        console.log('Customer Order Detail [generateTokenAndGoToWeborders] - weborders opened');
+        this.hideSpinner(LOADER_KEY);
+      }, _error.bind(this))
+      .catch(_error.bind(this));
   }
 
   hideSpinner(loaderKey) {
@@ -116,34 +109,7 @@ export default class contextualDrawerOrderDetailController {
     });
   }
 
-  openNewTab() {
-    this.newTab = this.$window.open('', '_blank');
-    this.newTab.document.write(require('./loader.html'));
-  }
-
-  openReorder(token) {
-    let path = this.$window._PREO_DATA._WEBORDERS;
-
-    if (this.order.permalink) {
-      path += this.order.permalink + '?';
-    } else {
-      path += '?venueId=' + this.order.venueId + '&';
-    }
-
-    path += 'orderId=' + this.order.id;
-
-    if (token) {
-      path += '&impersonateToken=' + token;
-    }
-
-    this.newTab.location.href = path;
-  }
-
-  closeReorderTab() {
-    this.newTab.close();
-  }
-
-  constructor($scope, $rootScope, $timeout, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack) {
+  constructor($scope, $rootScope, $timeout, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack, OperateService) {
     "ngInject";
 
     this.$scope = $scope;
@@ -158,5 +124,6 @@ export default class contextualDrawerOrderDetailController {
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
     this.Snack = Snack;
+    this.OperateService = OperateService;
   }
 }
