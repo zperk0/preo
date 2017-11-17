@@ -24,7 +24,36 @@ export default class customersSearchController {
   }
 
   onPlaceOrder(customer) {
-		console.log('onPlaceOrder', customer);
+
+    const {
+      gettextCatalog,
+      Spinner,
+      Snack,
+      StateService,
+    } = this;
+
+    function _error(err) {
+      console.log('Customer Search Controller [onPlaceOrder] - error', err);
+      Spinner.hide(LOADER_KEY);
+      Snack.showError(gettextCatalog.getString('An error occurred to open the weborders, try again later please'));
+    }
+
+    if (!StateService.channel || !StateService.channel.operateUrl) {
+      return Snack.showError(gettextCatalog.getString('This app is not configured to place an order. Please contact the support team.'));
+    }
+
+    const LOADER_KEY = 'operate-token';
+    Spinner.show(LOADER_KEY);
+
+    this.OperateService.openNewTab();
+
+    this.OperateService.generateTokenAndGoToWeborders(customer.id, StateService.channel.operateUrl)
+      .then(() => {
+
+        console.log('Customer Search Controller [onPlaceOrder] - weborders opened');
+        Spinner.hide(LOADER_KEY);
+      }, _error.bind(this))
+      .catch(_error.bind(this));
   }
 
   onOrderHistory(customer) {
@@ -43,13 +72,17 @@ export default class customersSearchController {
   }
 
   /* @ngInject */
-  constructor($scope, $state, $stateParams, $timeout, $rootScope, StateService, BroadcastEvents, customers) {
+  constructor($scope, $state, $stateParams, $timeout, $rootScope, StateService, BroadcastEvents, OperateService, Spinner, gettextCatalog, Snack, customers) {
     'ngInject';
 
     this.$scope = $scope;
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.StateService = StateService;
+    this.OperateService = OperateService;
+    this.Spinner = Spinner;
+    this.gettextCatalog = gettextCatalog;
+    this.Snack = Snack;
 
     this.disabledSticky = true;
 
@@ -70,7 +103,6 @@ export default class customersSearchController {
         this.disabledSticky = false;
       }
     });
-
 
     $scope.$on('$destroy', () => {
       onViewContentLoaded && onViewContentLoaded();
