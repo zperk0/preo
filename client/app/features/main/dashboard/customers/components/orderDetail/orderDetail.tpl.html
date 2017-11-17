@@ -2,7 +2,9 @@
   <div class="item-container">
     <div class="item">
       <div class="label label-sm">{{'Order' | translate}} #:</div>
-      <div class="value" ui-sref="main.dashboard.customers.orders.detail({orderId:orderDetailCtrl.order.id})" ng-bind="orderDetailCtrl.order.id"></div>
+      <div class="value"
+           ng-click="orderDetailCtrl.clickOrder()"
+           ng-bind="orderDetailCtrl.order.id"></div>
     </div>
     <div class="item">
       <div class="label label-sm">{{'Status' | translate}}:</div>
