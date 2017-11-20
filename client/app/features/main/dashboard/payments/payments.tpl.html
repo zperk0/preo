@@ -4,11 +4,11 @@
         <md-card-title>
           <md-card-title-text flex layout="row" layout-align="center start">
             <h2 class="md-title" flex="90"  translate> Cash </h2>
-            <md-switch  ng-change="paymentsCtrl.updateVenue(venue)" flex="10" layout-align="center end" ng-true-value="1" ng-false-value="0" ng-model="paymentsCtrl.venue.cashFlag">
+            <md-switch  ng-change="paymentsCtrl.updateVenue(venue)" flex="10" layout-align="center end" ng-true-value="1" ng-false-value="0" ng-model="paymentsCtrl.cash.visible">
             </md-switch>
           </md-card-title-text>
         </md-card-title>
-        <md-card-content ng-class="{active:paymentsCtrl.venue.cashFlag}" layout="column" layout-align="center stretch">
+        <md-card-content ng-class="{active:paymentsCtrl.cash.visible}" layout="column" layout-align="center stretch">
         <div class='image-container'>
             <img src='/images/wallet.png'>
           </div>
