@@ -8,47 +8,11 @@ export default class venueSelectController {
   };
 
   switchVenue (venue) {
-    const venueId = venue.id;
-
-    const {
-      StateService,
-      Spinner,
-      $timeout,
-    } = this;
-
-    StateService.navigateToVenue(venueId);
-
-    // we need to reload only if we are in a venue,
-    // because we will change the base url when is changing from channel to venue
-    if (!StateService.isChannel) {
-      $timeout(()=>{
-        window.location.reload();
-      }, 100);
-    } else {
-      Spinner.show('venue-select');
-    }
-  }
-
-  switchChannel (channel) {
-    const channelId = channel.id;
-
-    const {
-      StateService,
-      Spinner,
-      $timeout,
-    } = this;
-
-    StateService.navigateToChannel(channelId);
-
-    // we need to reload only if we aren't in a channel,
-    // because we will change the base url when is changing from venue to channel
-    if (StateService.isChannel) {
-      $timeout(()=>{
-        window.location.reload();
-      }, 100);
-    } else {
-      Spinner.show('venue-select');
-    }
+    let venueId = venue.id;
+    this.$state.go('main.dashboard.home' , {venueId} ,  {reload: true});
+    this.$timeout(()=>{
+      window.location.reload();
+    },1000)
   }
 
   setVenue(){
