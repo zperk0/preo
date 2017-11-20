@@ -412,6 +412,10 @@ export default class StateService {
     return this.hasDashboardLoaded;
   }
 
+  isOperator() {
+    return this.channel && +this.channel.operatorFlag === 1;
+  }
+
   constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig, UserService) {
     "ngInject";
     this.$q = $q;
