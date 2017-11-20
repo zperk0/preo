@@ -1,76 +1,53 @@
-.venue-payments{
-  md-card{
-    min-width: 227px;
+// @view
+// Payments
 
-    // width:30%;
-    &.stripe{
-      button{
+.venue-payments {
+  md-card {
+    display: block;
+
+    &.stripe {
+      button {
        margin-top: 12px;
        margin-left:0;
        margin-right:0;
       }
     }
-    md-card-content{
-      max-height: 0px;
+
+    md-card-content {
+      max-height: 0;
       overflow: hidden;
-      padding-bottom:0;
+      padding-bottom: 0;
       padding-left: 24px;
       padding-right: 24px;
-      transition:max-height 0.5s ease-in-out;
+      transition: max-height .5s ease-in-out;
 
-      &>*:last-child{
-        margin-bottom: 24px;
-      }
+      & > *:last-child { margin-bottom: 24px; }
 
-      form{
-        button{
-          margin:0;
-        }
-        padding-bottom: 24px;
-        md-checkbox{
-          margin-top:6px;
-          margin-bottom: 0;
-          .md-label{
-            span{
-              position: relative;
-              top: 1px;
-              margin-right: 10px;
-            }
-          }
-        }
-      }
-
-      &.active{
-        max-height: 330px;
-      }
+      &.active { max-height: 330px; }
     }
-  }
-  md-card-title{
-    padding:0 24px 0 24px;
-    height:60px;
 
-    h2 {
-      line-height: 60px;
-    }
+    md-switch .md-container { margin-right: 0; }
   }
 
+  md-card-title {
+    height: 60px;
+    padding: 0 24px;
 
-  .minimum-order-value  {
-    .input-wrapper {
-      padding-right: 16px;
-    }
+    h2 { line-height: 60px; }
   }
 
-  .description{
-    margin-top:16px;
+  .description {
+    margin-top: 16px;
     text-align: center;
     font-size: 13px;
     color: #757575;
     line-height: 16px;
   }
-  .image-container{
-    img{
-      width:100%;
-    }
+
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none; // Remove the border on images inside links in IE 10-.
   }
 }
