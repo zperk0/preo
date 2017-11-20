@@ -165,7 +165,8 @@ export default class paymentsController {
     this.venue.getPaymentProviders().then((paymentProviders)=>{
       this.paymentProviders = paymentProviders;
 
-      this.cash = paymentProviders.filter((x) => { x.type === this.PaymentType.CASH})[0];
+      this.cash = paymentProviders.filter((x) => { return x.type === this.PaymentType.CASH})[0];
+
       this.setStripe();
       this.Spinner.hide("venue-details");
     },()=>{
