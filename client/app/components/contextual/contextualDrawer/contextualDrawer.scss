@@ -151,11 +151,13 @@
     .contextual-list {
       &.empty {
         display: flex;
+        overflow-y: auto;
       }
 
       .contextual-empty {
         position: static;
         margin: auto;
+        align-self: center;
       }
     }
   }
