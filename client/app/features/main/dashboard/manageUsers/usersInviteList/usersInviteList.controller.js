@@ -14,7 +14,7 @@ export default class usersInviteListController {
     }
 
     let invite = new Preoday.Invite({
-      venueId: this.venue.id,
+      venueIds: [this.venue.id],
       role:'ADMIN',
       createdBy:this.user.id,
       $selected: true,
