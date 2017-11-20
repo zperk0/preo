@@ -147,7 +147,9 @@ export default class navbarController {
                 && FeatureService.hasExternalMenusFeature();
       }},
       {name: gettextCatalog.getString("Customers"), icon:"group", id:"customers.placeholder", path: "customers", shouldShow:function(){
-        return isChannel && PermissionService.hasPermission(Permissions.CHANNEL_OPERATE);
+        return isChannel &&
+               StateService.isOperator() &&
+               PermissionService.hasPermission(Permissions.CHANNEL_OPERATE);
       }},
     ];
   }
