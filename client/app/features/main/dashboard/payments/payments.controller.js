@@ -7,7 +7,7 @@ export default class paymentsController {
   canTurnOffMethod(){
     var requiredCount = 1;
     var onCount = 0;
-    if (this.venue.cashFlag){
+    if (this.cash.visible){
       onCount++;
     }
 
@@ -125,13 +125,13 @@ export default class paymentsController {
   }
 
   updateVenue(){
-      if (this.venue.cashFlag === 0 && !this.canTurnOffMethod()){
-        this.venue.cashFlag = 1;
+      if (this.cash.visible === 0 && !this.canTurnOffMethod()){
+        this.cash.visible = 1;
         return;
       }
       this.Spinner.show("venue-payments-save");
       try {
-        var provider = this.buildProvider(this.PaymentType.CASH, this.venue.cashFlag);
+        var provider = this.buildProvider(this.PaymentType.CASH, this.cash.visible);
 
         this.StateService.venue.updatePaymentProvider(provider)
         .then((venue)=>{
@@ -164,6 +164,8 @@ export default class paymentsController {
     })
     this.venue.getPaymentProviders().then((paymentProviders)=>{
       this.paymentProviders = paymentProviders;
+
+      this.cash = paymentProviders.filter((x) => { x.type === this.PaymentType.CASH});
       this.setStripe();
       this.Spinner.hide("venue-details");
     },()=>{
