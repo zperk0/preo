@@ -11,29 +11,20 @@ export default class mainController {
     this.Spinner.hide("main");
   }
 
-  handleError(err){
+  handleError(err) {
     this.ErrorService.showError(err);
     this.hideSpinner();
   }
-  handleFinishLoading(){
 
-    const {
-      PermissionService,
-      $state,
-      $timeout,
-    } = this;
+  handleFinishLoading() {
+    const {$state, $timeout} = this;
 
-    if (!PermissionService.hasPermission(PermissionService.Permissions.DASHBOARD)) {
-      $state.go("main.account");
+    $timeout(() => {
       this.hideSpinner();
-    } else {
-      $timeout(()=>{
-        this.hideSpinner();
-        if ($state.current.name === 'main.dashboard') {
-          $state.go('main.dashboard.home');
-        }
-      })
-    }
+      if ($state.current.name === 'main.dashboard') {
+        $state.go('main.dashboard.home');
+      }
+    });
   }
 
   logout() {
