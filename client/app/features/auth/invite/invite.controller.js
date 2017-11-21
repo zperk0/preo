@@ -118,9 +118,9 @@ export default class inviteController {
 
   checkInviteUserId (invitedUser) {
 
-    if (invitedUser.userId) {
-      return this.goToSignIn(invitedUser);
-    }
+   // if (invitedUser.userId) {
+   //   return this.goToSignIn(invitedUser);
+   // }
 
     return this.goToSignUp(invitedUser);
   }

@@ -13,6 +13,16 @@ export default class signupController {
     });
   }
 
+  redirectSignIn() {
+    this.hideSpinner();
+
+    this.$state.go('auth.signin', {
+      inviteKey: this.$stateParams.inviteKey
+    }, {
+      location: 'replace'
+    });
+  }
+
   goToDashboard () {
 
     this.hideSpinner();
