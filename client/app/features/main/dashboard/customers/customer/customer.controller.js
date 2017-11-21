@@ -24,15 +24,15 @@ export default class customerController {
     Spinner.show(LOADER_KEY);
     if (this.customer && entity && entity.firstName) {
 
-      this.customer = entity;
-
       let queryParams = null;
 
-      if (!this.customer.id && this.customer.email) {
+      if (!this.originalCustomer.email && entity.email) {
         queryParams = {
           invite: true
         };
       }
+
+      this.customer = entity;
 
       this.saveOrUpdate()(this.customer, queryParams).then((newCustomer) => {
 
