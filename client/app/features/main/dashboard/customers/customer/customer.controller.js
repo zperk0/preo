@@ -26,7 +26,7 @@ export default class customerController {
 
       let queryParams = null;
 
-      if (!this.originalCustomer.email && entity.email) {
+      if ((!this.originalCustomer.email && entity.email) || (entity.email && entity.isPending)) {
         queryParams = {
           invite: true
         };
