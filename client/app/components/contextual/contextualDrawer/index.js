@@ -51,8 +51,9 @@ import cardItemList from '../../cardItemList';
 import externalEventList from './eventsImport/externalEventList';
 
 import userSelectList from './userSearch/userSelectList';
+import GM from './GM';
 
-export default angular.module("contextualDrawer" , [cardItemList, externalEventList, userSelectList])
+export default angular.module("contextualDrawer" , [cardItemList, externalEventList, userSelectList, GM])
   .service(service.UID, service)
 
   .controller(controller.UID, controller)

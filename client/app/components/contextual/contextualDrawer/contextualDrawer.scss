@@ -4,6 +4,125 @@
   width:657px;
   max-width: 657px;
 
+  .container {
+    height: 100%;
+    width: 100%;
+
+    md-input-container {
+      width: 100%;
+      padding: 0;
+      margin: 10px 0;
+
+      label {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .flex-table {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: $subToolbarHeight - 1px; // Ronaldo - I don't know why it has 1px more
+
+    .column {
+      font-family: Roboto;
+      font-size: 13px;
+      padding-left: 15px;
+      flex: 1 0 0;
+
+      &.date {
+        flex: 2 0 0;
+      }
+    }
+
+    &.row {
+      border-bottom: 1px solid #e0e0e0;
+      cursor: pointer;
+
+      &:active,
+      &:hover {
+        background-color: #e8e8e8;
+      }
+    }
+
+    md-icon {
+      color: #0288d1;
+      margin-right: 15px;
+
+      &.hidden {
+        visibility: hidden;
+        user-select: none;
+      }
+    }
+  }
+
+  .item-container {
+    padding: 18px;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .item {
+      font-family: Roboto;
+      font-size: 13px;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+
+      &:not(.flat) {
+        padding: 6px;
+      }
+
+      &.value:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
+
+      .label {
+        flex-basis: 65px;
+        margin-right: 10px;
+      }
+
+      .value {
+        flex: 1;
+
+        &.flex {
+          flex: 1 auto;
+        }
+
+        &.end {
+          text-align: right;
+        }
+
+        &.block {
+          flex-basis: 100%;
+        }
+
+        &.capitalize {
+          text-transform: lowercase;
+
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .modifier {
+        flex-basis: 100%;
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .label-sm {
+    font-size: 12px;
+    color: #757575;
+  }
+
+  .padded-content,
   md-tab-content > div{
     padding: 24px;
   }
@@ -28,11 +147,29 @@
     }
   }
 
+  &.contextual-drawer-customer-notes, &.contextual-drawer-order-history {
+    .contextual-list {
+      &.empty {
+        display: flex;
+        overflow-y: auto;
+      }
+
+      .contextual-empty {
+        position: static;
+        margin: auto;
+        align-self: center;
+      }
+    }
+  }
+
   .contextual-list{
     overflow-y: auto;
     height: calc(100% - 49px); // 100% - footer cards
     position: relative;
 
+    &.scroll-y {
+      overflow-y: scroll;
+    }
 
     .contextual-empty{
       display: none;
@@ -58,12 +195,30 @@
           color: #757575;
         }
       }
+      .empty-icon {
+        width: 72px;
+      }
     }
 
     &.empty {
       .contextual-empty{
         display: block;
       }
+    }
+  }
+
+  .contextual-header {
+    border-bottom: 1px solid #CCCCCC;
+    min-height: $subToolbarHeight;
+    display: flex;
+    justify-content: space-around;
+
+    &.scroll-y {
+      overflow-y: scroll;
+    }
+
+    & + .contextual-list {
+      height: calc(100% - 49px - 50px); // 100% - footer cards
     }
   }
 
@@ -78,6 +233,12 @@
     background:#F5F5F5;
     margin: 0;
     padding: 0px;
+
+    .md-button {
+      &.padded {
+        padding: 0 20px;
+      }
+    }
   }
 
   .card-title{
@@ -90,7 +251,7 @@
     background: white;
     padding-bottom: 8px;
     margin:0;
-    min-height: 50px;
+    min-height: $subToolbarHeight;
 
     md-icon{
       left:16px;
@@ -130,11 +291,11 @@
   .modifier-item{
    margin: 0px 22px 8px;
   }
-  
+
   .error {
     font-size:12px;
     color: rgb(221,44,0);
-  }   
+  }
 
   .label-title {
     color: #424242;
@@ -157,7 +318,7 @@
     .repeat-holder .sort-holder{
       padding-top: 4px;
     }
-   
+
     .event-edit-list{
       min-height: 0;
     }
@@ -174,7 +335,7 @@
         md-card-actions .md-button{
           padding-right: 0;
           padding-left: 0;
-        } 
+        }
       }
     }
 

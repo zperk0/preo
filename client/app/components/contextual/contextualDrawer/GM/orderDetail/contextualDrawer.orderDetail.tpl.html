@@ -1,0 +1,23 @@
+<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="orderDetail">
+  <div ng-if="drawerOrderDetailCtrl.isAmendOrCancelAvailable()" class="contextual-header">
+    <md-button ng-click="drawerOrderDetailCtrl.amendOrder()" class="md-primary" translate>Amend order</md-button>
+    <md-button ng-click="drawerOrderDetailCtrl.cancelOrder()" class="md-primary" translate>Cancel order</md-button>
+  </div>
+
+  <div ng-if="!drawerOrderDetailCtrl.isAmendOrCancelAvailable()" class="contextual-header">
+    <md-button ng-click="drawerOrderDetailCtrl.reorder()" class="md-primary" translate>Re-order</md-button>
+  </div>
+
+  <div class="contextual-list">
+    <order-detail order="drawerOrderDetailCtrl.order"></order-detail>
+  </div>
+
+  <md-card-actions layout="row" layout-align="space-between center">
+    <md-button ng-click="drawerOrderDetailCtrl.close()" class='md-primary' translate>
+      Back
+    </md-button>
+    <md-button ng-click="drawerOrderDetailCtrl.done()" class="md-raised" translate>
+      Done
+    </md-button>
+  </md-card-actions>
+</md-sidenav>
