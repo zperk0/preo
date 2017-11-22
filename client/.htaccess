@@ -8,7 +8,7 @@ RewriteEngine On
 
 #RewriteRule ^signup(.*)$ https://app-v1.preoday.com/signup$1 [R=301,L,QSA]
 RewriteRule ^invite(.*)$ /#/auth/invite$1 [R,NE,L]
-RewriteRule ^channel/([0-9]+)$ /channel/#/$1/main/dashboard$1 [R,NE,L]
+RewriteRule ^channel/([0-9]+)$ /channel/#/$1/main/dashboard [R,NE,L]
 
 
 RewriteCond %{REQUEST_FILENAME} !-f
