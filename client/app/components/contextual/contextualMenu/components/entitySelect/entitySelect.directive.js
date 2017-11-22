@@ -6,7 +6,8 @@ export default function entitySelectDirective(){
     template: require("./entitySelect.tpl.html"),
     controller: controller.UID,
     scope:{
-      entities: '='
+      entities: '=',
+      entity: '='
     },
     controllerAs: "$entity",
     bindToController: true,

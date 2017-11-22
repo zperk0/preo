@@ -43,6 +43,8 @@ export default function routes($stateProvider, Permissions) {
               venueIds: StateService.venue && StateService.venue.id ? [StateService.venue.id] : null,
               role: 'ADMIN',
               createdBy: UserService.user.id,
+              venueGroups: [],
+              venues: []
             });
 
             invites.push(invite);

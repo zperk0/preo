@@ -7,7 +7,7 @@ export default function entitiesResolve ($q, authenticated, StateService, UserSe
 
   Spinner.show(LOADER_KEY);
 
-  StateService.fetchVenues().then((entities) => {
+  StateService.fetchVenues('group_venueids').then((entities) => {
     console.log('ManageUsers [entitiesResolve] - got entities', entities);
     deferred.resolve(entities);
 
