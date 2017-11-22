@@ -8,6 +8,66 @@ export default class customerController {
     return this.customer.id ? this.customer.update.bind(this.customer) : Preoday.User.create;
   }
 
+  onCustomerSuccessCallback(customer, onSuccessMessage = null) {
+    const {
+      Spinner,
+      Snack,
+      $timeout,
+      LOADER_KEY,
+    } = this;
+
+    console.log('customerController [onCustomerSuccessCallback] - newCustomer', customer);
+    this.customer.$deleted = false;
+    this.hasSaved = true;
+
+    $timeout(() => {
+      angular.extend(this.customer, customer);
+      angular.extend(this.originalCustomer, customer);
+
+      this.goBack();
+      Spinner.hide(LOADER_KEY);
+
+      if (typeof onSuccessMessage === 'function') {
+        onSuccessMessage();
+      } else {
+        Snack.show(this.LabelService.SNACK_CUSTOMER_SUCCESS);
+      }
+
+    });
+  }
+
+  onCustomerErrorCallback(err) {
+    const {
+      Spinner,
+      Snack,
+      LabelService,
+      LOADER_KEY,
+    } = this;
+
+    console.log('customerController [onCustomerErrorCallback] - err', err);
+
+    Spinner.hide(LOADER_KEY);
+    if (err && err.status === 409){
+      Snack.showError(LabelService.SNACK_CUSTOMER_CONFLICT);
+    } else {
+      Snack.showError(LabelService.SNACK_CUSTOMER_ERROR);
+    }
+  }
+
+  onCustomerInviteErrorCallback(customer, err) {
+    const {
+      LabelService,
+      Snack,
+    } = this;
+
+    console.log('customerController [onCustomerInviteErrorCallback] - err', err);
+    this.onCustomerSuccessCallback(customer, () => {
+      Snack.showWarning(LabelService.SNACK_CUSTOMER_SUCCESS_WITH_FAILED_INVITE, {
+        hideDelay: 5000
+      });
+    });
+  }
+
   onSuccess(entity) {
 
     const {
@@ -17,50 +77,31 @@ export default class customerController {
       StateService,
       $timeout,
       $state,
+      LOADER_KEY,
     } = this;
-
-    const LOADER_KEY = 'customer-update';
 
     Spinner.show(LOADER_KEY);
     if (this.customer && entity && entity.firstName) {
 
-      let queryParams = null;
+      let shouldSendInvite = false;
 
       if ((!this.originalCustomer.email && entity.email) || (entity.email && entity.isPending)) {
-        queryParams = {
-          invite: true
-        };
+        shouldSendInvite = true;
       }
 
       this.customer = entity;
 
-      this.saveOrUpdate()(this.customer, queryParams).then((newCustomer) => {
+      this.saveOrUpdate()(this.customer)
+        .then((newCustomer) => {
 
-        console.log('customerController [onSuccess] - newCustomer', newCustomer);
-        this.customer.$deleted = false;
-        this.hasSaved = true;
-
-        $timeout(() => {
-          angular.extend(this.customer, newCustomer);
-          angular.extend(this.originalCustomer, newCustomer);
-
-          this.goBack();
-          Spinner.hide(LOADER_KEY);
-          Snack.show(LabelService.SNACK_CUSTOMER_SUCCESS);
-        });
-      }, (err) => {
-        console.log('CustomerController [onSuccess] - error on save customer', err);
-        Spinner.hide(LOADER_KEY);
-        if (err && err.status === 409){
-          Snack.showError(LabelService.SNACK_CUSTOMER_CONFLICT);
-        } else {
-          Snack.showError(LabelService.SNACK_CUSTOMER_ERROR);
-        }
-      }).catch((err) => {
-        console.error('CustomerController [onSuccess] - error on save customer', err);
-        Spinner.hide(LOADER_KEY);
-        Snack.showError(LabelService.SNACK_CUSTOMER_ERROR);
-      })
+          if (shouldSendInvite) {
+            return newCustomer.sendCustomerInvite()
+                      .then(this.onCustomerSuccessCallback.bind(this, newCustomer), this.onCustomerInviteErrorCallback.bind(this, newCustomer));
+          } else {
+            return this.onCustomerSuccessCallback(newCustomer);
+          }
+      }, this.onCustomerErrorCallback.bind(this))
+      .catch(this.onCustomerErrorCallback.bind(this));
     }
   }
 
@@ -109,6 +150,7 @@ export default class customerController {
     this.params = {
       doneButtonText: gettextCatalog.getString('Done')
     };
+    this.LOADER_KEY = 'customer-update';
 
     this.customersCtrl = $scope['$customers'];
 
