@@ -22,6 +22,15 @@ export default class Snack {
     });
   }
 
+  showWarning (content, options) {
+    var scope = this.$rootScope.$new();
+    scope.text = content;
+    this.$mdToast.show(angular.extend({
+      template: require("./snack.warning.tpl.html"),
+      scope: scope
+    }, options || {}));
+  }
+
 
   constructor( $mdToast, $rootScope) {
     "ngInject";
