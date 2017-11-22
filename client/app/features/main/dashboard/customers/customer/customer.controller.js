@@ -95,7 +95,7 @@ export default class customerController {
         .then((newCustomer) => {
 
           if (shouldSendInvite) {
-            return newCustomer.sendCustomerInvite()
+            return newCustomer.sendCustomerInvite(this.getRedirectUrl())
                       .then(this.onCustomerSuccessCallback.bind(this, newCustomer), this.onCustomerInviteErrorCallback.bind(this, newCustomer));
           } else {
             return this.onCustomerSuccessCallback(newCustomer);
@@ -109,6 +109,10 @@ export default class customerController {
     angular.extend(this.customer, this.originalCustomer);
 
     this.goBack();
+  }
+
+  getRedirectUrl() {
+    return this.UtilsService.getHost() + '/channel/' + this.StateService.channel.id;
   }
 
   goBack() {
@@ -132,7 +136,7 @@ export default class customerController {
   }
 
   /* @ngInject */
-  constructor($scope, $state, $stateParams, $timeout, gettextCatalog, StateService, UserService, Spinner, Snack, LabelService, customers, customer) {
+  constructor($scope, $state, $stateParams, $timeout, gettextCatalog, StateService, UserService, Spinner, Snack, LabelService, UtilsService, customers, customer) {
     'ngInject';
 
     this.$scope = $scope;
@@ -144,6 +148,7 @@ export default class customerController {
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.LabelService = LabelService;
+    this.UtilsService = UtilsService;
 
     this.originalCustomer = angular.copy(customer);
     this.customer = customer;
