@@ -2,29 +2,34 @@
 	<div class="entity-group">
 		<div class="checkbox-wrapper" ng-if="$entity.entities.channel">
 	  	<md-checkbox
-	  								ng-model="$entity.entities.channel.$selected"
-	  								name="channel"
-	  								class="md-primary">
-									{{ $entity.entities.channel.name }}
-	  						</md-checkbox>
+					ng-click="$entity.toggleChannel($entity.entities.channel)"
+					ng-checked="$entity.isChannelSelected($entity.entities.channel)"
+					name="channel"
+					class="md-primary">
+				{{ $entity.entities.channel.name }}
+			</md-checkbox>
 		</div>
 		<div class="checkbox-wrapper" ng-if="$entity.entities.venueGroups.length">
-	  	<md-checkbox  ng-repeat="group in $entity.entities.venueGroups track by group.id"
-	  								ng-click="$entity.toggleGroup(group)"
-	  								ng-checked="$entity.isGroupSelected(group)"
-	  								name="venueGroups[]"
-	  								class="md-primary">
-									{{ group.name }}
-	  						</md-checkbox>
+	  	<md-checkbox
+					ng-repeat="group in $entity.entities.venueGroups track by group.id"
+					ng-click="$entity.toggleGroup(group)"
+					ng-checked="$entity.isGroupSelected(group)"
+					ng-disabled="$entity.isGroupDisabled(group)"
+					name="venueGroups[]"
+					class="md-primary">
+				{{ group.name }}
+			</md-checkbox>
 		</div>
 		<div class="checkbox-wrapper" ng-if="$entity.entities.venues.length">
-	  	<md-checkbox  ng-repeat="venue in $entity.entities.venues track by venue.id"
-	  								ng-click="$entity.toggleVenue(venue)"
-	  								ng-checked="$entity.isVenueSelected(venue)"
-	  								name="venues[]"
-	  								class="md-primary">
-									{{ venue.name }}
-	  						</md-checkbox>
+	  	<md-checkbox
+					ng-repeat="venue in $entity.entities.venues track by venue.id"
+					ng-click="$entity.toggleVenue(venue)"
+					ng-checked="$entity.isVenueSelected(venue)"
+					ng-disabled="$entity.isVenueDisabled(venue)"
+					name="venues[]"
+					class="md-primary">
+				{{ venue.name }}
+			</md-checkbox>
 		</div>
   </div>
 </div>
