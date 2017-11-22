@@ -201,7 +201,7 @@ export default class paymentsController {
 
         const obj = paymentProviders.filter((x) => { return x.type === this.PaymentType.CASH});
 
-        if(obj && obj[0]) {
+        if(obj && obj.length) {
           this.cash = obj[0];
         }
 
@@ -244,7 +244,7 @@ export default class paymentsController {
     console.log(this.stripeRedirectUri);
     this.paymentProviders = [];
     this.stripe = {visible: false};
-    this.cash = {visible: false};
+    this.cash = {visible: 0};
     this.onInit();
 
     $scope.$on('$destroy', this.onDestroy.bind(this));
