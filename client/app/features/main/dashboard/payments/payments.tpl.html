@@ -3,9 +3,9 @@
     <md-card flex="30">
       <md-card-title>
         <h2 flex class="md-title" translate>Cash</h2>
-        <md-switch ng-model="paymentsCtrl.venue.cashFlag" ng-true-value="1" ng-false-value="0" ng-change="paymentsCtrl.updateVenue(venue)" aria-label="{{'Enable payment with cash' | translate}}"></md-switch>
+        <md-switch ng-model="paymentsCtrl.cash.visible" ng-true-value="1" ng-false-value="0" ng-change="paymentsCtrl.updateVenue(venue)" aria-label="{{'Enable payment with cash' | translate}}"></md-switch>
       </md-card-title>
-      <md-card-content ng-class="{active: paymentsCtrl.venue.cashFlag}" >
+      <md-card-content ng-class="{active: paymentsCtrl.cash.visible}" >
         <div class="image-container">
           <img src="/images/wallet.png">
         </div>
