@@ -144,7 +144,7 @@ export default class paymentsController {
       var provider = this.buildProvider(this.PaymentType.CASH, this.cash.visible);
 
       try {
-        this.VenueService.currentVenue.updatePaymentProvider()
+        this.venue.updatePaymentProvider(provider)
           .then((venue) => {
             angular.extend(this.venue,venue);
             this.Spinner.hide("venue-payments-save");
