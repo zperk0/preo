@@ -62,8 +62,8 @@ export default class customerController {
 
     console.log('customerController [onCustomerInviteErrorCallback] - err', err);
     this.onCustomerSuccessCallback(customer, () => {
-      Snack.showWarning(LabelService.SNACK_CUSTOMER_SUCCESS_WITH_FAILED_INVITE, {
-        hideDelay: 5000
+      Snack.showError(LabelService.SNACK_CUSTOMER_SUCCESS_WITH_FAILED_INVITE, {
+        hideDelay: 4000
       });
     });
   }
