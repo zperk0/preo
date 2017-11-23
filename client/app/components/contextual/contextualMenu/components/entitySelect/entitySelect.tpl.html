@@ -5,31 +5,33 @@
 					ng-click="$entity.toggleChannel($entity.entities.channel)"
 					ng-checked="$entity.isChannelSelected($entity.entities.channel)"
 					name="channel"
-					class="md-primary">
-				{{ $entity.entities.channel.name }}
+					class="md-primary channel-name">
+				<span class="ellipsis">{{ $entity.entities.channel.name }}</span>
 			</md-checkbox>
 		</div>
-		<div class="checkbox-wrapper" ng-if="$entity.entities.venueGroups.length">
-	  	<md-checkbox
-					ng-repeat="group in $entity.entities.venueGroups track by group.id"
-					ng-click="$entity.toggleGroup(group)"
-					ng-checked="$entity.isGroupSelected(group)"
-					ng-disabled="$entity.isGroupDisabled(group)"
-					name="venueGroups[]"
-					class="md-primary">
-				{{ group.name }}
-			</md-checkbox>
-		</div>
-		<div class="checkbox-wrapper" ng-if="$entity.entities.venues.length">
-	  	<md-checkbox
-					ng-repeat="venue in $entity.entities.venues track by venue.id"
-					ng-click="$entity.toggleVenue(venue)"
-					ng-checked="$entity.isVenueSelected(venue)"
-					ng-disabled="$entity.isVenueDisabled(venue)"
-					name="venues[]"
-					class="md-primary">
-				{{ venue.name }}
-			</md-checkbox>
+		<div class="channel-entities">
+			<div class="checkbox-wrapper" ng-if="$entity.entities.venueGroups.length">
+		  	<md-checkbox
+						ng-repeat="group in $entity.entities.venueGroups track by group.id"
+						ng-click="$entity.toggleGroup(group)"
+						ng-checked="$entity.isGroupSelected(group)"
+						ng-disabled="$entity.isGroupDisabled(group)"
+						name="venueGroups[]"
+						class="md-primary">
+					{{ group.name }}
+				</md-checkbox>
+			</div>
+			<div class="checkbox-wrapper" ng-if="$entity.entities.venues.length">
+		  	<md-checkbox
+						ng-repeat="venue in $entity.entities.venues track by venue.id"
+						ng-click="$entity.toggleVenue(venue)"
+						ng-checked="$entity.isVenueSelected(venue)"
+						ng-disabled="$entity.isVenueDisabled(venue)"
+						name="venues[]"
+						class="md-primary">
+					{{ venue.name }}
+				</md-checkbox>
+			</div>
 		</div>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <div class="content-spinner" ng-if="!rendered">
     <spinner></spinner>
   </div>
-  <md-card class='contextual-menu' ng-class="{'rendered' : rendered}">
+  <md-card class='contextual-menu {{ templateClass }} ' ng-class="{'rendered' : rendered}">
     <form name="contextualMenuCtrl.contextualForm" ng-submit="contextualMenuCtrl.doSubmit()" novalidate>
         <div class='form-content'></div>
         <md-card-actions layout="row" layout-align="end center">

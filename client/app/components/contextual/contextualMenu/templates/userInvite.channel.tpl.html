@@ -11,7 +11,9 @@
         </div>
       </md-tab-label>
       <md-tab-body>
-        <user-detail user="contextualMenuCtrl.entity"></user-detail>
+        <div class="userInvite-user-tab-content">
+          <user-detail user="contextualMenuCtrl.entity"></user-detail>
+        </div>
       </md-tab-body>
     </md-tab>
     <md-tab tabindex="1">
@@ -21,8 +23,10 @@
         </div>
       </md-tab-label>
       <md-tab-body>
-        <entity-select entities="contextualMenuCtrl.params.entities"
-                       entity="contextualMenuCtrl.entity.invites"></entity-select>
+        <div class="userInvite-venues-tab-content">
+          <entity-select entities="contextualMenuCtrl.params.entities"
+                         entity="contextualMenuCtrl.entity.invites"></entity-select>
+        </div>
       </md-tab-body>
     </md-tab>
   </md-tabs>
