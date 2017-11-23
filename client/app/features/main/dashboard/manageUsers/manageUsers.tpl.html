@@ -1,17 +1,29 @@
-<div flex class="manage-users">
-  <div class='layout-left-right'>
-    <div class='main-content-left'>
-      <users-list
-          users="manageUsersCtrl.users"
-          on-edit="manageUsersCtrl.onEditUser(user)">
-       </users-list>
-       <users-invite-list
-          on-new="manageUsersCtrl.onNewInvite()"
-          on-edit="manageUsersCtrl.onEditInvite(invite)"
-          users="manageUsersCtrl.invites">
-       </users-invite-list>
-    </div>
+<div class="manage-users" layout="column" flex>
+  <sticky-scroll>
+    <div class='layout-left-right' layout="row">
+      <div class='main-content-left'>
+        <users-list
+            users="manageUsersCtrl.users"
+            on-edit="manageUsersCtrl.onEditUser(user)">
+         </users-list>
+         <users-invite-list
+            on-new="manageUsersCtrl.onNewInvite()"
+            on-edit="manageUsersCtrl.onEditInvite(invite)"
+            users="manageUsersCtrl.invites">
+         </users-invite-list>
+      </div>
 
-    <ui-view name="userDetailView" class='main-content-right' media-query="min-width: 1024px" sticky offset="88"></ui-view>
-  </div>
+      <!-- without use-placeholder, was thowing an exception when resizing the window -->
+
+      <ui-view name="userDetailView"
+               class='main-content-right'
+               media-query="min-width: 1024px"
+               sticky
+               content-right-resize
+               use-placeholder="false"
+               sticky-class="preo-sticky"
+               keep-width="true"
+               offset="24"></ui-view>
+    </div>
+  </sticky-scroll>
 </div>
