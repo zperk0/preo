@@ -7,7 +7,7 @@ export default class paymentsController {
   canTurnOffMethod(){
     var requiredCount = 1;
     var onCount = 0;
-    if (this.venue.cashFlag){
+    if (this.cash.visible){
       onCount++;
     }
 
@@ -126,16 +126,25 @@ export default class paymentsController {
     }
   }
 
+  buildProvider(type, visibleFlag) {
+      return { 
+        type: type,
+        visible: visibleFlag
+      };
+  }
+
   updateVenue() {
-      if (this.venue.cashFlag === 0 && !this.canTurnOffMethod()){
-        this.venue.cashFlag = 1;
+     if (this.cash.visible === 0 && !this.canTurnOffMethod()){
+        this.cash.visible = 1;
         return;
       }
 
       this.Spinner.show("venue-payments-save");
 
+      var provider = this.buildProvider(this.PaymentType.CASH, this.cash.visible);
+
       try {
-        this.VenueService.updateVenue()
+        this.venue.updatePaymentProvider(provider)
           .then((venue) => {
             angular.extend(this.venue,venue);
             this.Spinner.hide("venue-payments-save");
@@ -189,6 +198,13 @@ export default class paymentsController {
       .then((paymentProviders) => {
         this.paymentProviders = paymentProviders;
         this.setStripe();
+
+        const obj = paymentProviders.filter((x) => { return x.type === this.PaymentType.CASH});
+
+        if(obj && obj.length) {
+          this.cash = obj[0];
+        }
+
         this.Spinner.hide("venue-details");
       }, () => {
         this.Spinner.hide("venue-details");
@@ -206,7 +222,7 @@ export default class paymentsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, ErrorService, LabelService, DialogService, $scope, $window, $timeout, VenueService) {
+  constructor(Spinner, Snack, ErrorService, LabelService, DialogService, $scope, $window, $timeout, VenueService, PaymentType) {
     'ngInject';
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -218,6 +234,7 @@ export default class paymentsController {
     this.$timeout = $timeout;
     this.stripeLink = 'https://stripe.com';
     this.stripeStorageKey = 'STRIPE_REDIRECT';
+    this.PaymentType = PaymentType;
 
     this.stripeRedirectUri = $window.location.origin
       ? $window.location.origin
@@ -227,6 +244,7 @@ export default class paymentsController {
     console.log(this.stripeRedirectUri);
     this.paymentProviders = [];
     this.stripe = {visible: false};
+    this.cash = {visible: 0};
     this.onInit();
 
     $scope.$on('$destroy', this.onDestroy.bind(this));
