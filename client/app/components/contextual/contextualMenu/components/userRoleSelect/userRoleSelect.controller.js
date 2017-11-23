@@ -7,7 +7,7 @@ export default class userRoleSelectController {
  constructor(gettextCatalog, StateService, FeatureService) {
     "ngInject";
     let venue = StateService.venue;
-    this.roles={
+    this.roles = {
       ADMIN:{
         id:'ADMIN',
         name:gettextCatalog.getString("Administrator"),
@@ -42,6 +42,17 @@ export default class userRoleSelectController {
           gettextCatalog.getString("Order screen"),
         ]
       }
+    };
+
+    if (StateService.isChannel) {
+      this.roles['OPERATOR'] = {
+        id:'OPERATOR',
+        name:gettextCatalog.getString("Operator"),
+        permissions:[
+          gettextCatalog.getString("Create new customers"),
+          gettextCatalog.getString("Place orders"),
+        ]
+      };
     }
   }
 }
