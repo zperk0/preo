@@ -112,7 +112,7 @@ export default class customerController {
   }
 
   getRedirectUrl() {
-    return this.UtilsService.getHost() + '/channel/' + this.StateService.channel.id;
+    return this.StateService.channel.inviteCustomerUrl || null;
   }
 
   goBack() {
