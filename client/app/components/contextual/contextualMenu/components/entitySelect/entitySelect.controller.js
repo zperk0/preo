@@ -97,7 +97,7 @@ export default class entitySelectController {
     this.invites = this.entity.invites;
 
     $scope.$watch(() => {
-      return this.entity.role;
+      return this.invites.role;
     }, () => {
       if (this.isOperator()) {
         this.invites.venueIds = [];
