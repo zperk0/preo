@@ -65,19 +65,6 @@ export default class manageInviteController {
       $state,
     } = this;
 
-    let venueIds = null;
-    let groupIds = null;
-    let channelId = null;
-    if (entity) {
-      venueIds = this.params.entities.venues ? this.params.entities.venues.filter(o => o.$selected == true).map(o => o.id) : null;
-      groupIds = this.params.entities.venueGroups ? this.params.entities.venueGroups.filter(o => o.$selected == true).map(o => o.id) : null;
-      channelId = this.params.entities.channel && this.params.entities.channel.$selected ? this.params.entities.channel.id : null;
-
-      venueIds.length > 0 ? entity.venueIds = venueIds : null;
-      groupIds.length > 0 ? entity.groupIds = groupIds : null;
-      channelId ? entity.channelId = channelId : null;
-    }
-
     this.onSuccessForVenue(entity);
   }
 
