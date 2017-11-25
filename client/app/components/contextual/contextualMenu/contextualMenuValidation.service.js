@@ -46,22 +46,13 @@ export default class ContextualMenuValidationService {
   /*Manager user contextual*/
   hasUserVenuesTabErrors (contextualForm, entity) {
 
-    let venues = null;
-    let groups = null;
-    let channel = null;
-    if (entity) {
-      venues = entity.venues ? entity.venues.filter(o => o.$selected == true) : null;
-      groups = entity.venueGroups ? entity.venueGroups.filter(o => o.$selected == true) : null;
-      channel = entity.channel ? entity.channel.$selected : null;
-    }
-
     const hasError = contextualForm
             && contextualForm.$submitted
             &&
             (
-              (venues.length < 1) &&
-              (groups.length < 1) &&
-              (!channel)
+              !entity.venueIds.length &&
+              entity.groupIds.length &&
+              !entity.channelId
             );
 
     if(hasError && contextualForm)
