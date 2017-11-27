@@ -105,6 +105,9 @@ export default class ErrorService {
 
     // PROMOTIONS
     this.EMPTY_ADD_USER_PROMO = {code: 'EMPTY_ADD_USER_PROMO', message:this.gettextCatalog.getString('You must select one or more users to apply the promotion.'), title:this.gettextCatalog.getString('No users selected')};
+
+    // CHANNEL ENTITIES
+    this.CHANNEL_ENTITIES_REQUIRED = {code: 'CHANNEL_ENTITIES_REQUIRED', message:this.gettextCatalog.getString('You must select at least one venue, group or channel to continue.'), title:this.gettextCatalog.getString('No venues, groups or channels selected')};
   }
 
   constructor(gettextCatalog, $state, DialogService) {

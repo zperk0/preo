@@ -71,10 +71,21 @@ export default class manageInviteController {
 
   onSuccessForChannel(entity) {
 
+    const {
+      DialogService,
+      ErrorService,
+      LabelService,
+    } = this;
+
     if (!entity.name || (
               !entity.invites.venueIds.length &&
               !entity.invites.groupIds.length &&
               !entity.invites.channelId)) {
+
+      DialogService.show(ErrorService.CHANNEL_ENTITIES_REQUIRED.title, ErrorService.CHANNEL_ENTITIES_REQUIRED.message, [{
+        name: LabelService.CONFIRMATION
+      }]);
+
       return;
     }
 
@@ -91,7 +102,7 @@ export default class manageInviteController {
   }
 
   /* @ngInject */
-  constructor($timeout, $state, $scope, Spinner, Snack, LabelService, StateService, APIErrorCode, invite, invites, entities) {
+  constructor($timeout, $state, $scope, Spinner, Snack, LabelService, StateService, DialogService, ErrorService, APIErrorCode, invite, invites, entities) {
     "ngInject";
 
     this.$timeout = $timeout;
@@ -101,6 +112,8 @@ export default class manageInviteController {
     this.Snack = Snack;
     this.LabelService = LabelService;
     this.StateService = StateService;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
     this.APIErrorCode = APIErrorCode;
 
     this.hasSaved = false;
