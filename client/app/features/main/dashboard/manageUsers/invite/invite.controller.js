@@ -5,12 +5,20 @@ export default class manageInviteController {
     return "manageInviteController";
   }
 
-  sendOrResend(){
-    return this.invite.id ? this.invite.resend.bind(this.invite) : Preoday.Invite.create;
+  sendOrResend() {
+
+    if (!this.invite.id) {
+      return Preoday.Invite.create;
+    }
+
+    if (this.StateService.isChannel) {
+      return this.invite.update.bind(this.invite);
+    }
+
+    return this.invite.resend.bind(this.invite);
   }
 
-  onSuccessForVenue(entity) {
-
+  onSuccess(entity) {
     const {
       Spinner,
       Snack,
@@ -23,49 +31,54 @@ export default class manageInviteController {
     const LOADER_KEY = 'user-role-update';
 
     Spinner.show(LOADER_KEY);
-    if (this.invite && entity && entity.name){
 
-      this.invite = entity;
-      this.sendOrResend()(this.invite).then((newInvite) => {
+    this.invite = entity;
+    this.sendOrResend()(this.invite).then((newInvite) => {
 
-        this.invite.$deleted = false;
-        this.hasSaved = true;
+      this.invite.$deleted = false;
+      this.hasSaved = true;
 
-        $timeout(() => {
-          angular.extend(this.invite, newInvite);
-          angular.extend(this.originalInvite, newInvite);
-          $state.go("main.dashboard.manageUsers");
-          Spinner.hide(LOADER_KEY);
-          Snack.show(LabelService.SNACK_USER_INVITE_SUCCESS);
-        });
-      }, (err) => {
-        console.log('error on save user-role', err);
+      $timeout(() => {
+        angular.extend(this.invite, newInvite);
+        angular.extend(this.originalInvite, newInvite);
+        $state.go("main.dashboard.manageUsers");
         Spinner.hide(LOADER_KEY);
-        if (err && err.status === 409){
-          Snack.showError(LabelService.SNACK_USER_INVITE_CONFLICT);
-        } else {
-          Snack.showError(LabelService.SNACK_USER_INVITE_ERROR);
-        }
-      }).catch((err) => {
-        console.error('error on save user-role', err);
-        Spinner.hide(LOADER_KEY);
+        Snack.show(LabelService.SNACK_USER_INVITE_SUCCESS);
+      });
+    }, (err) => {
+      console.log('InviteController [onSuccess] - error on save invite', err);
+      Spinner.hide(LOADER_KEY);
+      if (err && err.status === 409 && err.errorCode === this.APIErrorCode.INVITE_USER_EXISTS) {
+        Snack.showError(LabelService.SNACK_USER_INVITE_CONFLICT);
+      } else {
         Snack.showError(LabelService.SNACK_USER_INVITE_ERROR);
-      })
+      }
+    }).catch((err) => {
+      console.error('InviteController [onSuccess] - error on save invite', err);
+      Spinner.hide(LOADER_KEY);
+      Snack.showError(LabelService.SNACK_USER_INVITE_ERROR);
+    });
+  }
+
+  onSuccessForVenue(entity) {
+
+    if (!entity.name || !entity.invites.venueIds.length) {
+      return;
     }
+
+    this.onSuccess(entity);
   }
 
   onSuccessForChannel(entity) {
 
-    const {
-      Spinner,
-      Snack,
-      LabelService,
-      StateService,
-      $timeout,
-      $state,
-    } = this;
+    if (!entity.name || (
+              !entity.invites.venueIds.length &&
+              !entity.invites.groupIds.length &&
+              !entity.invites.channelId)) {
+      return;
+    }
 
-    this.onSuccessForVenue(entity);
+    this.onSuccess(entity);
   }
 
   onCancel() {
@@ -78,7 +91,7 @@ export default class manageInviteController {
   }
 
   /* @ngInject */
-  constructor($timeout, $state, $scope, Spinner, Snack, LabelService, StateService, invite, invites, entities) {
+  constructor($timeout, $state, $scope, Spinner, Snack, LabelService, StateService, APIErrorCode, invite, invites, entities) {
     "ngInject";
 
     this.$timeout = $timeout;
@@ -88,6 +101,8 @@ export default class manageInviteController {
     this.Snack = Snack;
     this.LabelService = LabelService;
     this.StateService = StateService;
+    this.APIErrorCode = APIErrorCode;
+
     this.hasSaved = false;
 
     this.originalInvite = angular.copy(invite);
@@ -99,10 +114,10 @@ export default class manageInviteController {
     if (StateService.isChannel) {
       this.params.entities.channel = StateService.channel;
       this.template = 'userInvite.channel';
-      this.onSuccess = this.onSuccessForChannel.bind(this);
+      this.onSuccessCallback = this.onSuccessForChannel.bind(this);
     } else {
       this.template = 'userInvite';
-      this.onSuccess = this.onSuccessForVenue.bind(this);
+      this.onSuccessCallback = this.onSuccessForVenue.bind(this);
     }
 
     $scope.$on('$destroy', () => {

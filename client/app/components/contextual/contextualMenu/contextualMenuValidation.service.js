@@ -51,12 +51,9 @@ export default class ContextualMenuValidationService {
             &&
             (
               !entity.venueIds.length &&
-              entity.groupIds.length &&
+              !entity.groupIds.length &&
               !entity.channelId
             );
-
-    if(hasError && contextualForm)
-      contextualForm.$valid = false;
 
     return hasError;
   }

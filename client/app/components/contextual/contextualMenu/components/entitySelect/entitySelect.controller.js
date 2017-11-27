@@ -84,7 +84,7 @@ export default class entitySelectController {
   }
 
   isOperator() {
-    return this.entity.role === this.UserRole.OPERATOR;
+    return this.invites.role === this.UserRole.OPERATOR;
   }
 
   /* @ngInject */
