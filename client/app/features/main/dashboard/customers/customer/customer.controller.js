@@ -8,6 +8,66 @@ export default class customerController {
     return this.customer.id ? this.customer.update.bind(this.customer) : Preoday.User.create;
   }
 
+  onCustomerSuccessCallback(customer, onSuccessMessage = null) {
+    const {
+      Spinner,
+      Snack,
+      $timeout,
+      LOADER_KEY,
+    } = this;
+
+    console.log('customerController [onCustomerSuccessCallback] - newCustomer', customer);
+    this.customer.$deleted = false;
+    this.hasSaved = true;
+
+    $timeout(() => {
+      angular.extend(this.customer, customer);
+      angular.extend(this.originalCustomer, customer);
+
+      this.goBack();
+      Spinner.hide(LOADER_KEY);
+
+      if (typeof onSuccessMessage === 'function') {
+        onSuccessMessage();
+      } else {
+        Snack.show(this.LabelService.SNACK_CUSTOMER_SUCCESS);
+      }
+
+    });
+  }
+
+  onCustomerErrorCallback(err) {
+    const {
+      Spinner,
+      Snack,
+      LabelService,
+      LOADER_KEY,
+    } = this;
+
+    console.log('customerController [onCustomerErrorCallback] - err', err);
+
+    Spinner.hide(LOADER_KEY);
+    if (err && err.status === 409){
+      Snack.showError(LabelService.SNACK_CUSTOMER_CONFLICT);
+    } else {
+      Snack.showError(LabelService.SNACK_CUSTOMER_ERROR);
+    }
+  }
+
+  onCustomerInviteErrorCallback(customer, err) {
+    const {
+      LabelService,
+      Snack,
+    } = this;
+
+    console.log('customerController [onCustomerInviteErrorCallback] - err', err);
+    this.onCustomerSuccessCallback(customer, () => {
+      Snack.showError(LabelService.SNACK_CUSTOMER_SUCCESS_WITH_FAILED_INVITE, {
+        hideDelay: 4000
+      });
+    });
+  }
+
   onSuccess(entity) {
 
     const {
@@ -17,50 +77,31 @@ export default class customerController {
       StateService,
       $timeout,
       $state,
+      LOADER_KEY,
     } = this;
-
-    const LOADER_KEY = 'customer-update';
 
     Spinner.show(LOADER_KEY);
     if (this.customer && entity && entity.firstName) {
 
-      let queryParams = null;
+      let shouldSendInvite = false;
 
       if ((!this.originalCustomer.email && entity.email) || (entity.email && entity.isPending)) {
-        queryParams = {
-          invite: true
-        };
+        shouldSendInvite = true;
       }
 
       this.customer = entity;
 
-      this.saveOrUpdate()(this.customer, queryParams).then((newCustomer) => {
+      this.saveOrUpdate()(this.customer)
+        .then((newCustomer) => {
 
-        console.log('customerController [onSuccess] - newCustomer', newCustomer);
-        this.customer.$deleted = false;
-        this.hasSaved = true;
-
-        $timeout(() => {
-          angular.extend(this.customer, newCustomer);
-          angular.extend(this.originalCustomer, newCustomer);
-
-          this.goBack();
-          Spinner.hide(LOADER_KEY);
-          Snack.show(LabelService.SNACK_CUSTOMER_SUCCESS);
-        });
-      }, (err) => {
-        console.log('CustomerController [onSuccess] - error on save customer', err);
-        Spinner.hide(LOADER_KEY);
-        if (err && err.status === 409){
-          Snack.showError(LabelService.SNACK_CUSTOMER_CONFLICT);
-        } else {
-          Snack.showError(LabelService.SNACK_CUSTOMER_ERROR);
-        }
-      }).catch((err) => {
-        console.error('CustomerController [onSuccess] - error on save customer', err);
-        Spinner.hide(LOADER_KEY);
-        Snack.showError(LabelService.SNACK_CUSTOMER_ERROR);
-      })
+          if (shouldSendInvite) {
+            return newCustomer.sendCustomerInvite(this.getRedirectUrl())
+                      .then(this.onCustomerSuccessCallback.bind(this, newCustomer), this.onCustomerInviteErrorCallback.bind(this, newCustomer));
+          } else {
+            return this.onCustomerSuccessCallback(newCustomer);
+          }
+      }, this.onCustomerErrorCallback.bind(this))
+      .catch(this.onCustomerErrorCallback.bind(this));
     }
   }
 
@@ -68,6 +109,10 @@ export default class customerController {
     angular.extend(this.customer, this.originalCustomer);
 
     this.goBack();
+  }
+
+  getRedirectUrl() {
+    return this.StateService.channel.inviteCustomerUrl || null;
   }
 
   goBack() {
@@ -91,7 +136,7 @@ export default class customerController {
   }
 
   /* @ngInject */
-  constructor($scope, $state, $stateParams, $timeout, gettextCatalog, StateService, UserService, Spinner, Snack, LabelService, customers, customer) {
+  constructor($scope, $state, $stateParams, $timeout, gettextCatalog, StateService, UserService, Spinner, Snack, LabelService, UtilsService, customers, customer) {
     'ngInject';
 
     this.$scope = $scope;
@@ -103,12 +148,14 @@ export default class customerController {
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.LabelService = LabelService;
+    this.UtilsService = UtilsService;
 
     this.originalCustomer = angular.copy(customer);
     this.customer = customer;
     this.params = {
       doneButtonText: gettextCatalog.getString('Done')
     };
+    this.LOADER_KEY = 'customer-update';
 
     this.customersCtrl = $scope['$customers'];
 

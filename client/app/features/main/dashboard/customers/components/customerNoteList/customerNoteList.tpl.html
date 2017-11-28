@@ -1,3 +1,4 @@
 <div class="customer-note-list">
-  <customer-note ng-repeat="note in customerNoteListCtrl.collection" note="note"></customer-note>
+  <customer-note ng-repeat="note in customerNoteListCtrl.collection | orderBy:customerNoteListCtrl.orderBy:true"
+  							 note="note"></customer-note>
 </div>
