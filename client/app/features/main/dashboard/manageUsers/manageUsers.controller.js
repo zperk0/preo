@@ -40,12 +40,26 @@ export default class manageUsersController {
   }
 
   /* @ngInject */
-  constructor($state, users, invites) {
+  constructor($state, $scope, users, invites) {
     "ngInject";
 
     this.$state = $state;
 
     this.users = users;
     this.invites = invites;
+
+    this.disabledSticky = true;
+
+    const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
+      if (viewName.indexOf('userDetailView') === 0) {
+        // we have an animation in our main-ui-view and we need to wait it to finish to start the sticky
+        // If we start the sticky before the animation finish, the sticky will calculate a wrong width for our contextual
+        this.disabledSticky = false;
+      }
+    });
+
+    $scope.$on('$destroy', () => {
+      onViewContentLoaded && onViewContentLoaded();
+    });
   }
 }
