@@ -1,5 +1,7 @@
 <div class="manage-users" layout="column" flex>
-  <sticky-scroll>
+  <sticky-scroll scroll-to-child-element
+                 scroll-to-child-element-offset="24"
+                 scroll-on-init="false">
     <div class='layout-left-right' layout="row">
       <div class='main-content-left'>
         <users-list
@@ -21,6 +23,7 @@
                media-query="min-width: 1024px"
                sticky
                content-right-resize
+               scroll-to-user
                use-placeholder="false"
                sticky-class="preo-sticky"
                keep-width="true"

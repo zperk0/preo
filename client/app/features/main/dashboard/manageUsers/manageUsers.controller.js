@@ -44,6 +44,7 @@ export default class manageUsersController {
     "ngInject";
 
     this.$state = $state;
+    this.$scope = $scope;
 
     this.users = users;
     this.invites = invites;

@@ -1,5 +1,5 @@
 <div class='user-invite'
-      ng-attr-data-id="{{userInviteCtrl.user.id}}">
+      ng-attr-data-id="{{userInviteCtrl.user.id || 'new'}}">
   <card-item  has-actions="true"
               deleted="userInviteCtrl.user.$deleted"
               selected="userInviteCtrl.isSelected()"
