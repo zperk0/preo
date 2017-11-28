@@ -33,8 +33,13 @@ input::-webkit-inner-spin-button {
   }
 }
 
-html{
+html {
   min-width: $paddedContentWidth;
+
+  &.auth-signup, &.auth-signin, &.auth-invite {
+    min-width: 100%;
+  }
+
   overflow-x: auto;
   overflow-y:hidden !important;
   background: #f5f5f5;

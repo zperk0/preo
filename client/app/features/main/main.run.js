@@ -3,7 +3,7 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
   "ngInject";
 
   const notRequiresUser= ['auth.signin', 'auth.signup', 'auth.invite', 'error', 'emailSuccess'];
-  const $body = angular.element(document.querySelector('body'));
+  const $html = angular.element(document.querySelector('html'));
 
   function setupChangeEvent() {
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
@@ -43,8 +43,8 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
       $rootScope.previousState = from.name;
       $rootScope.currentState = to.name;
 
-      $body.removeClass(from.name.replace(/\./g, '-'));
-      $body.addClass(to.name.replace(/\./g, '-'));
+      $html.removeClass(from.name.replace(/\./g, '-'));
+      $html.addClass(to.name.replace(/\./g, '-'));
 
       if (toParams.entityId && fromParams.entityId && +toParams.entityId !== +fromParams.entityId) {
         window.location.reload();
