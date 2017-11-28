@@ -8,6 +8,7 @@ export default function usersInviteList(){
       isInvite: '=?',
       onNew: '&?',
       onEdit: '&?',
+      onDeleted: '&?',
     },
     template: require("./usersInviteList.tpl.html"),
     controller: controller.UID,

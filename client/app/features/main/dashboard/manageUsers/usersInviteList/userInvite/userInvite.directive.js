@@ -6,6 +6,7 @@ export default function userInvite(){
     scope: {
       user: '=',
       onEdit: '&',
+      onItemDeleted: '&?',
     },
     template: require("./userInvite.tpl.html"),
     controller: controller.UID,

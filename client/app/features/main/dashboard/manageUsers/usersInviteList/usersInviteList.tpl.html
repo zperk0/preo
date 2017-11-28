@@ -9,6 +9,7 @@
           has-actions="true"
           ng-repeat="user in usersInviteListCtrl.users | orderBy: id"
           on-edit="usersInviteListCtrl.onEdit({invite: invite})"
+          on-item-deleted="usersInviteListCtrl.onDeleted({invite: item})"
           user="user">
         </user-invite>
     </card-item-list>

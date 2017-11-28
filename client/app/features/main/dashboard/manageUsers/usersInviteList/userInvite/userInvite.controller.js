@@ -15,8 +15,7 @@ export default class userInviteController {
           this.Spinner.show("user-role-delete");
           this.user.remove()
             .then(()=>{
-              this.cardItemList.onItemDeleted(this.user);
-              if (this.onItemDeleted){
+              if (this.onItemDeleted) {
                 this.onItemDeleted({item:this.user});
               }
               this.Snack.show(this.LabelService.SNACK_USER_DELETED);

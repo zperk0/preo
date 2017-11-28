@@ -35,6 +35,10 @@ export default class manageUsersController {
     $state.go('main.dashboard.manageUsers.newInvite');
   }
 
+  onInviteDeleted(invite) {
+    this.invites.splice(this.invites.indexOf(invite), 1);
+  }
+
   /* @ngInject */
   constructor($state, users, invites) {
     "ngInject";
