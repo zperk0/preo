@@ -254,16 +254,24 @@ export default class StateService {
 
   navigateToChannel(channelId, shouldReload) {
 
-    console.log('StateService [navigateToChannel] - ', channelId, shouldReload);
-
     const {
       isChannel,
       UtilsService,
       $state,
+      $timeout,
+      $window,
     } = this;
 
+    console.log('StateService [navigateToChannel] - ', channelId, shouldReload, isChannel);
+
     if (!isChannel) {
-      window.location.href = UtilsService.getHost() + '/channel/#/' + channelId + '/main/dashboard';
+      const url = UtilsService.getHost() + '/channel/#/' + channelId + '/main/dashboard';
+      $window.location.replace(url);
+      $timeout(() => {
+        // This is a hack because in some cases the url has not updated in the browser
+        $window.location.replace(url);
+      });
+      console.log('StateService [navigateToChannel] - going to url - ', UtilsService.getHost() + '/channel/#/' + channelId + '/main/dashboard');
     } else {
       $state.go('main.dashboard', {
         entityId: channelId
@@ -279,10 +287,17 @@ export default class StateService {
       isChannel,
       UtilsService,
       $state,
+      $timeout,
+      $window,
     } = this;
 
     if (isChannel) {
-      window.location.href = UtilsService.getHost() + '/#/' + venueId + '/main/dashboard';
+      const url = UtilsService.getHost() + '/#/' + venueId + '/main/dashboard';
+      $window.location.replace(url);
+      $timeout(() => {
+        // This is a hack because in some cases the url has not updated in the browser
+        $window.location.replace(url);
+      });
     } else {
       $state.go('main.dashboard', {
         entityId: venueId
@@ -453,7 +468,7 @@ export default class StateService {
     return this.channel && +this.channel.operatorFlag === 1;
   }
 
-  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig, UserService) {
+  constructor($q, $rootScope, $state, $stateParams, $timeout, $window, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig, UserService) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
@@ -461,6 +476,7 @@ export default class StateService {
     this.$stateParams = $stateParams;
     this.$state = $state;
     this.$timeout = $timeout;
+    this.$window = $window;
 
     this.PermissionService = PermissionService;
     this.BroadcastEvents = BroadcastEvents;
@@ -473,6 +489,6 @@ export default class StateService {
     this.isSearchingCustomers = false;
 
     this.isChannel = StateConfig.isChannel;
-    this.domainId = window._PREO_DATA._DOMAIN || null;
+    this.domainId = $window._PREO_DATA._DOMAIN || null;
   }
 }
