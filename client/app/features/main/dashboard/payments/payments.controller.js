@@ -127,7 +127,7 @@ export default class paymentsController {
   }
 
   buildProvider(type, visibleFlag) {
-      return { 
+      return {
         type: type,
         visible: visibleFlag
       };
@@ -188,7 +188,7 @@ export default class paymentsController {
 
   onInit() {
     this.Spinner.show("venue-details");
-    this.venue = this.StateService.currentVenue;
+    this.venue = this.StateService.venue;
     Preoday.PaymentProvider.getStripeConnectLink(this.venue.id, this.stripeRedirectUri)
       .then((stripeLink)=>{
         this.stripeLink = stripeLink;
