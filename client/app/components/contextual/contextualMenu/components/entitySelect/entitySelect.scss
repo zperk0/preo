@@ -26,6 +26,8 @@ $horizontalPadding: 24px;
 		}
 
 		md-checkbox {
+			display:block;
+
 			&[disabled="disabled"] {
 				cursor: not-allowed;
 			}
