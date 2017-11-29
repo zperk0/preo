@@ -335,7 +335,7 @@ export default class StateService {
     } = this;
 
     if (channel) {
-      return channel.getUsers();
+      return channel.getUsers('roles');
     } else if (venue) {
       return venue.getUsers();
     } else {
