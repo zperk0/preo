@@ -6,14 +6,14 @@ export default class DeliveryZoneService {
     return "DeliveryZoneService";
   }
 
-
-  saveEditableDeliveryZone(){
-    function _handleError(){
-      console.log("delivery-zones",err)
-      this.Spinner.hide("delivery-zones-save");
-      this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_ERROR)
+  saveEditableDeliveryZone() {
+    function _handleError() {
+      console.log('[saveEditableDeliveryZone] error', err);
+      this.Spinner.hide('delivery-zones-save');
+      this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_ERROR);
     }
-    return this.$q((resolve, reject)=>{
+
+    return this.$q((resolve, reject) => {
 
       if (this.editableDeliveryZone.type === 'CUSTOM'){
         if (!this.editableDeliveryZone.polygon || (this.editableDeliveryZone.polygon && this.editableDeliveryZone.polygon.length ===0)){
@@ -27,7 +27,6 @@ export default class DeliveryZoneService {
       //TODO save delivery zone
       // setTimeout(()=>{
         var dz  = angular.copy(this.editableDeliveryZone);
-        delete dz.editable;
         if (dz.polygon){
           dz.polygon = dz.polygon.toString();
         }
@@ -54,7 +53,6 @@ export default class DeliveryZoneService {
           this.Spinner.hide("delivery-zones-save");
           this.Snack.show(this.LabelService.SNACK_DELIVERY_ZONES_SUCCESS)
           resolve(dz);
-          delete this.editableDeliveryZone.editable;
           this.editableDeliveryZone = false;
           // }
         }, ()=>{
@@ -73,14 +71,13 @@ export default class DeliveryZoneService {
 
     this.editableDeliveryZone=dz;
     this.data.deliveryZones.forEach((dzz,i)=>{
-        if (dzz.id === dz.id){
-          dzz.editable = true;
-        }
-    })
-    console.log("set editable",dz.editable);
+      if (dzz.id === dz.id){
+        dzz.$editable = true;
+      }
+    });
+    console.log("set editable", dz.$editable);
     this.originalModel = angular.copy(dz);
-    dz.editable=true;
-
+    dz.$editable = true;
   }
 
   prepareZones(){
@@ -118,7 +115,7 @@ export default class DeliveryZoneService {
   }
   cancelEditing(){
     if (this.originalModel){
-      this.originalModel.editable = false; //trigger watch
+      this.originalModel.$editable = false; //trigger watch
       this.data.deliveryZones.forEach((dz,i)=>{
         if (dz.id === this.originalModel.id){
           this.data.deliveryZones[i]= this.originalModel;
@@ -129,9 +126,8 @@ export default class DeliveryZoneService {
       this.data.deliveryZones = this.data.deliveryZones.filter((dz,i)=>dz.id!==-1)
       this.originalModel = false;
     }
-    if (this.editableDeliveryZone && this.editableDeliveryZone.editable) {
-      this.editableDeliveryZone.editable = false; //trigger watch
-      delete this.editableDeliveryZone.editable; //remove for saving
+    if (this.editableDeliveryZone && this.editableDeliveryZone.$editable) {
+      this.editableDeliveryZone.$editable = false; //trigger watch
     }
     this.editableDeliveryZone=false;
   }

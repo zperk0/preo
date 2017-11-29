@@ -1,14 +1,11 @@
-<?php
-
-?>
-
+<?php ?>
 <html>
   <head></head>
   <body>
-    <script type="text/javascript">
-        setTimeout(function(){
-          window.close();
-        },1000)
-      </script>
+    <script>
+      window.onload = function () {
+        window.localStorage.setItem('STRIPE_REDIRECT', window.location.href);
+      };
+    </script>
   </body>
 </html>
