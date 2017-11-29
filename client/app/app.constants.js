@@ -3,6 +3,7 @@ import EventScheduleFrequency from './shared/constants/app.eventScheduleFrequenc
 import APIErrorCode from './shared/constants/app.apiErrorCode.constants';
 import ReportTypes from './shared/constants/app.reportTypes.constants';
 import VenueImageType from './shared/constants/app.venueImageType.constants';
+import PaymentType from './shared/constants/app.paymentType.constants';
 import UserRole from './shared/constants/userRole.constants';
 
 export default angular.module('webapp.constants', [])
@@ -12,5 +13,6 @@ export default angular.module('webapp.constants', [])
   .constant('APIErrorCode', APIErrorCode)
   .constant('ReportTypes', ReportTypes)
   .constant('VenueImageType', VenueImageType)
+  .constant('PaymentType', PaymentType)
   .constant('UserRole', UserRole)
   .name;

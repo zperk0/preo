@@ -114,9 +114,9 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
           shape.setRadius(radius);
         }else if(deliveryZone.type === 'CUSTOM') {
 
-          shape.setStyle({editable:deliveryZone.editable});
+          shape.setStyle({editable: deliveryZone.$editable});
 
-          if (deliveryZone.editable) {
+          if (deliveryZone.$editable) {
             deliveryZoneDrawingPolygon = deliveryZone;
           }
 
@@ -142,7 +142,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
 
           shape.setLatLngs(coords);
 
-          if(deliveryZone.editable){
+          if (deliveryZone.$editable) {
               scope.map.on('editable:drawing:end', function (e) {
               handlePolygonComplete(shape);
             });
