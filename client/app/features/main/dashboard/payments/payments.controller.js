@@ -127,7 +127,7 @@ export default class paymentsController {
   }
 
   buildProvider(type, visibleFlag) {
-      return { 
+      return {
         type: type,
         visible: visibleFlag
       };
