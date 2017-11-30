@@ -125,7 +125,7 @@ export default class signupController {
 
     function _showErrorAndGoToSignin() {
       this.hideSpinner();
-      this.Snack.showError(this.gettextCatalog.getString('There is already an account with this email, please try another one.'));
+      this.Snack.showError(this.gettextCatalog.getString('There is already an account with this email, you need to sign in to continue.'));
       this.redirectSignIn();
     }
 
