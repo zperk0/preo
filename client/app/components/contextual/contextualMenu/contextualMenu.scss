@@ -25,20 +25,20 @@ $channelNameHeight: 37px;
     overflow-y:auto;
   }
 
-  &.userInvite-channel {
+  &.userInvite-channel, &.user-channel {
     .form-content {
       overflow-y: hidden;
     }
 
-    .userInvite-user-tab-content {
+    .userInvite-user-tab-content, .user-tab-content{
       overflow-y:auto;
     }
 
-    .userInvite-user-tab-content {
+    .userInvite-user-tab-content, .user-tab-content {
       max-height: calc(100vh - #{$toolBarHeight} - #{$dashboardToolbarHeight} - #{$contextualTabsHeight} - #{$extraBottomSpacing} - 30px );
     }
 
-    .userInvite-venues-tab-content {
+    .userInvite-venues-tab-content, .user-venues-tab-content {
       .channel-entities {
         overflow-y:auto;
         max-height: calc(100vh - #{$toolBarHeight} - #{$dashboardToolbarHeight} - #{$contextualTabsHeight} - #{$channelNameHeight} - #{$spacer-x} - #{$extraBottomSpacing} - 30px );

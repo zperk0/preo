@@ -29,6 +29,7 @@ import tagActionBasic from './components/tagActionBasic';
 import tagActionAdvanced from './components/tagActionAdvanced';
 import tagSelect from './components/tagSelect';
 import inviteDetails from './components/inviteDetails';
+import userDetails from './components/userDetails';
 import entitySelect from './components/entitySelect';
 
 import services from '../../../shared';
@@ -69,6 +70,7 @@ export default angular.module("contextualMenu" , [
 	tagActionAdvanced,
 	tagSelect,
 	inviteDetails,
+	userDetails,
 	entitySelect,
 	venueCurrency
 ])
