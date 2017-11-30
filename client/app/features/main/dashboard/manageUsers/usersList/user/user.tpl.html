@@ -6,11 +6,11 @@
               selected="userCtrl.isSelected()"
               class='small'>
     <card-item-title has-visible="false">
-        <span>{{userCtrl.user.firstName}} {{userCtrl.user.lastName}} </span>
+        <span> {{ userCtrl.getDisplayName() }} </span>
     </card-item-title>
 
     <card-item-actions on-delete="userCtrl.onDelete()"
-                       on-edit="userCtrl.onEdit({ user: userCtrl.user })"
+                       on-edit="userCtrl.onEdit({ user: userCtrl.user, userRole: userCtrl.userRole })"
                         ></card-item-actions>
   </card-item>
 </div>

@@ -3,46 +3,34 @@ export default class userController {
     return "userController"
   }
 
-  // contextualMenuSuccess(entity){
-  //   this.Spinner.show("user-role-update");
-  //   if (this.user && entity && entity.name){
-  //     this.user = entity;
-  //     this.venue.updateUserRole(this.user).then((newUser)=>{
+  isSelected() {
+    return this.user && +this.user.id === +this.$stateParams.userId &&
+           this.userRole && this.userRole.role === this.$stateParams.role;
+  }
 
-  //       this.user.$deleted = false;
-  //       this.user.$selected = false;
+  getDisplayName() {
 
-  //       this.$timeout(() => {
-  //         angular.extend(this.user, newUser);
-  //         this.contextualMenu.hide();
-  //         this.Spinner.hide("user-role-update");
-  //         this.Snack.show(this.LabelService.SNACK_USER_ROLE_UPDATE);
-  //       });
-  //     }, (err)=>{
-  //       console.log('error on save tax-group', err);
-  //       this.Spinner.hide("user-role-update");
-  //       this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
-  //     }). catch((err)=>{
-  //       console.log('error on save tax-group', err);
-  //       this.Spinner.hide("user-role-update");
-  //       this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
-  //     })
-  //   }
-  // }
+    const {
+      user,
+      userRole,
+      isChannel,
+      UtilsService
+    } = this;
 
-  isSelected() { return this.user && +this.user.id === +this.$stateParams.userId; }
+    const displayName = [user.firstName];
+    if (user.lastName) {
+      displayName.push(user.lastName);
+    }
 
+    if (isChannel) {
+      displayName.push('- ' + UtilsService.getRoleAsString(userRole.role));
+    }
 
-  // onEdit ($event) {
-
-  //   this.originalUser  = angular.copy(this.user);
-  //   this.cardItemList.selectItem(this.user);
-  //   this.showContextual();
-  //   $event.stopPropagation();
-  // }
+    return displayName.join(' ');
+  }
 
   onDelete(){
-    var currentUser = this.UserService.getCurrent();
+    const currentUser = this.UserService.getCurrent();
     if (this.user.id === currentUser.id) {
       return this.DialogService.show(this.ErrorService.DELETE_CURRENT_USER.title, this.ErrorService.DELETE_CURRENT_USER.message, [{
         name: this.gettextCatalog.getString('Got it')
@@ -70,48 +58,23 @@ export default class userController {
       });
   }
 
-  // restoreOriginalValues() {
-  //   if (this.originalUser){
-  //     angular.extend(this.user, this.originalUser);
-  //     this.originalUser = false;
-  //   }
-  // }
-
-  // contextualMenuCancel() {
-
-  //   this.restoreOriginalValues();
-  //   this.user.$selected = false;
-
-  //   if (this.user && !this.user.id) {
-  //     this.cardItemList.deleteItem(this.user);
-  //   }
-  // }
-
-  // showContextual () {
-  //   this.contextual.showMenu(this.type, this.user, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
-  //       doneButtonText: this.LabelService.UPDATE_ROLE_BUTTON
-  //   });
-  // }
-
    /* @ngInject */
-  constructor($q, $stateParams, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, StateService, UserService, gettextCatalog) {
+  constructor($q, $stateParams, Spinner, Snack, DialogService, LabelService, ErrorService, StateService, UserService, gettextCatalog, UtilsService) {
     "ngInject";
     this.$q = $q;
     this.$stateParams = $stateParams;
-    this.$timeout = $timeout;
     this.Spinner = Spinner;
     this.venue = StateService.venue;
     this.Snack = Snack;
-    this.contextualMenu = contextualMenu;
-    this.contextual = contextual;
+
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
     this.UserService = UserService;
     this.gettextCatalog = gettextCatalog;
+    this.UtilsService = UtilsService;
+
+    this.isChannel = StateService.isChannel;
     this.type = 'user';
-    //  if (this.user && !this.user.id) {
-    //   this.showContextual();
-    // }
   }
 }

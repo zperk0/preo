@@ -1,5 +1,6 @@
 
-<contextual-menu template="user"
+<contextual-menu template="$userDetails.template"
 								 entity="$userDetails.user"
+								 params="$userDetails.params"
 								 on-success="$userDetails.onSuccess(entity)"
 								 on-cancel="$userDetails.onCancel()"></contextual-menu>

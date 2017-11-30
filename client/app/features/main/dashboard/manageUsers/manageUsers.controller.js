@@ -4,14 +4,16 @@ export default class manageUsersController {
     return "manageUsersController"
   }
 
-  onEditUser(user) {
+  onEditUser(user, userRole) {
+    console.log('manageUsersController [onEditUser] - userRole', userRole);
 
     const {
       $state
     } = this;
 
     $state.go('main.dashboard.manageUsers.detail', {
-      userId: user.id
+      userId: user.id,
+      role: userRole.role
     });
   }
 

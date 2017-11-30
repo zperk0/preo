@@ -5,6 +5,7 @@ export default function user(){
     restrict: 'E',
     scope: {
       user: '=',
+      userRole: '=',
       onEdit: '&',
     },
     template: require("./user.tpl.html"),

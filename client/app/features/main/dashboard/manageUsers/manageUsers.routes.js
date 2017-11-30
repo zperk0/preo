@@ -90,7 +90,7 @@ export default function routes($stateProvider, Permissions) {
   });
 
   $stateProvider.state("main.dashboard.manageUsers.detail", {
-    url: "/:userId",
+    url: "/:userId/:role",
     views: {
       'userDetailView': {
         template: require("./userDetails/userDetails.tpl.html"),

@@ -4,12 +4,15 @@
         has-new="false"
         on-click-new="usersListCtrl.showCreate()"
         collection="usersListCtrl.users">
-        <user
-          has-actions="true"
-          ng-repeat="user in usersListCtrl.users | orderBy: id"
-          on-edit="usersListCtrl.onEdit({user: user})"
-          user="user">
-        </user>
+        <div ng-repeat="user in usersListCtrl.users | orderBy: id">
+          <user
+            has-actions="true"
+            ng-repeat="userRole in user.userRoles track by $index"
+            on-edit="usersListCtrl.onEdit({user: user, userRole: userRole})"
+            user="user"
+            user-role="userRole">
+          </user>
+        </div>
     </card-item-list>
   </div>
 </div>

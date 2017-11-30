@@ -6,7 +6,7 @@
       <div class='main-content-left'>
         <users-list
             users="manageUsersCtrl.users"
-            on-edit="manageUsersCtrl.onEditUser(user)">
+            on-edit="manageUsersCtrl.onEditUser(user, userRole)">
          </users-list>
          <users-invite-list
             on-new="manageUsersCtrl.onNewInvite()"
