@@ -107,6 +107,15 @@ export default class UtilsService {
     }];
   }
 
+  getRoleAsString(role) {
+    return {
+      ADMIN: this.gettextCatalog.getString("Administrator"),
+      MANAGER: this.gettextCatalog.getString("Manager"),
+      STAFF: this.gettextCatalog.getString("Staff Member"),
+      OPERATOR: this.gettextCatalog.getString("Operator")
+    }[role] || role;
+  }
+
   setLocale (locale) {
 
     if(locale) {
@@ -163,7 +172,7 @@ export default class UtilsService {
 
     this.$q = $q;
     this.gettextCatalog = gettextCatalog;
-    this.ErrorService = ErrorService;
     this.$injector = $injector;
+    this.ErrorService = ErrorService;
   }
 }
