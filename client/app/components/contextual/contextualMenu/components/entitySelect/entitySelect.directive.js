@@ -7,7 +7,7 @@ export default function entitySelectDirective(){
     controller: controller.UID,
     scope:{
       entities: '=',
-      entity: '='
+      inviteUserRoles: '='
     },
     controllerAs: "$entity",
     bindToController: true,

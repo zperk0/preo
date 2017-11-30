@@ -5,20 +5,20 @@ export default class entitySelectController {
 
   toggleChannel(channel) {
     const {
-      invites
+      inviteUserRoles
     } = this;
 
-    if (invites.channelId !== null) {
-      invites.channelId = null;
+    if (inviteUserRoles.channelId !== null) {
+      inviteUserRoles.channelId = null;
     } else {
-      invites.channelId = channel.id;
-      invites.groupIds = [];
-      invites.venueIds = [];
+      inviteUserRoles.channelId = channel.id;
+      inviteUserRoles.groupIds = [];
+      inviteUserRoles.venueIds = [];
     }
   }
 
   isChannelSelected() {
-    return this.invites.channelId === this.channel.id;
+    return this.inviteUserRoles.channelId === this.channel.id;
   }
 
   toggleGroup(venueGroup) {
@@ -28,22 +28,22 @@ export default class entitySelectController {
     }
 
     const {
-      invites
+      inviteUserRoles
     } = this;
-    const index = invites.groupIds.indexOf(venueGroup.id);
+    const index = inviteUserRoles.groupIds.indexOf(venueGroup.id);
 
     if (index === -1) {
-      invites.groupIds.push(venueGroup.id);
-      invites.venueIds = invites.venueIds.filter((venueId) => {
+      inviteUserRoles.groupIds.push(venueGroup.id);
+      inviteUserRoles.venueIds = inviteUserRoles.venueIds.filter((venueId) => {
         return venueGroup.venueIds.indexOf(venueId) === -1;
       });
     } else {
-      invites.groupIds.splice(index, 1);
+      inviteUserRoles.groupIds.splice(index, 1);
     }
   }
 
   isGroupSelected(venueGroup) {
-    return this.invites.groupIds.indexOf(venueGroup.id) !== -1;
+    return this.inviteUserRoles.groupIds.indexOf(venueGroup.id) !== -1;
   }
 
   isGroupDisabled(venueGroup) {
@@ -58,33 +58,33 @@ export default class entitySelectController {
     }
 
   	const {
-  		invites
+  		inviteUserRoles
   	} = this;
-		const index = invites.venueIds.indexOf(venue.id);
+		const index = inviteUserRoles.venueIds.indexOf(venue.id);
 
 		if (index === -1) {
-			invites.venueIds.push(venue.id);
+			inviteUserRoles.venueIds.push(venue.id);
 		} else {
-			invites.venueIds.splice(index, 1);
+			inviteUserRoles.venueIds.splice(index, 1);
 		}
   }
 
   isVenueSelected(venue) {
-		return this.invites.venueIds.indexOf(venue.id) !== -1;
+		return this.inviteUserRoles.venueIds.indexOf(venue.id) !== -1;
   }
 
   isVenueDisabled(venue) {
     return this.isChannelSelected() ||
            this.isOperator() ||
            this.entities.venueGroups.filter((venueGroup) => {
-              return this.invites.groupIds.indexOf(venueGroup.id) !== -1;
+              return this.inviteUserRoles.groupIds.indexOf(venueGroup.id) !== -1;
            }).filter((venueGroup) => {
              return venueGroup.venueIds.indexOf(venue.id) !== -1;
            }).length > 0;
   }
 
   isOperator() {
-    return this.invites.role === this.UserRole.OPERATOR;
+    return this.inviteUserRoles.role === this.UserRole.OPERATOR;
   }
 
   /* @ngInject */
@@ -94,14 +94,13 @@ export default class entitySelectController {
     this.UserRole = UserRole;
 
     this.channel = this.entities.channel;
-    this.invites = this.entity.invites;
 
     $scope.$watch(() => {
-      return this.invites.role;
+      return this.inviteUserRoles.role;
     }, () => {
       if (this.isOperator()) {
-        this.invites.venueIds = [];
-        this.invites.groupIds = [];
+        this.inviteUserRoles.venueIds = [];
+        this.inviteUserRoles.groupIds = [];
       }
     })
   }
