@@ -121,7 +121,7 @@ export default class navbarController {
         return !isChannel && PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       {name: gettextCatalog.getString("Manage Users"), icon:"account_box", id:"manageUsers",shouldShow:function(){
-        return !isChannel && PermissionService.hasPermission(Permissions.ACCOUNT)
+        return PermissionService.hasPermission(Permissions.ACCOUNT)
       }},
       {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
       {name: gettextCatalog.getString("Mobile App"), id:"mobileApp"},

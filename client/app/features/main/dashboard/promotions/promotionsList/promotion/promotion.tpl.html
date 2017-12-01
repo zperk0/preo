@@ -2,7 +2,7 @@
       ng-attr-data-id="{{promotionCtrl.promotion.id}}">
   <card-item  has-actions="true"
               deleted="promotionCtrl.promotion.$deleted"
-              selected="promotionCtrl.promotion.$selected"
+              selected="promotionCtrl.isSelected()"
               class='small'>
     <card-item-title has-pause="true" has-visible="false" show-paused="promotionCtrl.isPaused()">
         <span>{{promotionCtrl.promotion.name}} </span>

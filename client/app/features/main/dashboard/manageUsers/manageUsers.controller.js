@@ -4,55 +4,73 @@ export default class manageUsersController {
     return "manageUsersController"
   }
 
-   init(){
-    this.Spinner.show("fetch-users");
-    console.log('ManagerUsersController [init] - venue:', this.venue);
-    var currentUser = this.UserService.getCurrent();
-    this.venue.getUsers()
-    .then((users)=>{
-      users.forEach((u)=>{
-        u.$current = u.id === currentUser.id;
-        if (u.role === 'OWNER'){
-          u.role = "ADMIN";
-        }
-      })
-      this.users = users
-      console.log("got users", users);
-    })
-    .then(this.venue.getInvites.bind(this.venue))
-    .then((invites)=>{
-      invites.forEach((u)=>{
-        if (u.role === 'OWNER'){
-          u.role = "ADMIN";
-        }
-      })
-      this.invites = invites;
-      console.log("got invites", invites);
-      this.Spinner.hide("fetch-users");
-    },(err)=>{
-      console.log("error", err)
-      this.Spinner.hide("fetch-users");
-    }).catch((err)=>{
-      this.Spinner.hide("fetch-users");
-      console.log("error", err)
-    })
+  onEditUser(user, userRole) {
+    console.log('manageUsersController [onEditUser] - userRole', userRole);
 
+    const {
+      $state
+    } = this;
+
+    $state.go('main.dashboard.manageUsers.detail', {
+      userId: user.id,
+      role: userRole.role
+    });
+  }
+
+  onUserDeleted(user, userRole) {
+    if (user.userRoles.length < 2) {
+      this.users.splice(this.users.indexOf(user), 1);
+    } else {
+      user.userRoles.splice(user.userRoles.indexOf(userRole), 1);
+    }
+  }
+
+  onEditInvite(invite) {
+
+    const {
+      $state
+    } = this;
+
+    $state.go('main.dashboard.manageUsers.invite', {
+      inviteId: invite.id
+    });
+  }
+
+  onNewInvite() {
+
+    const {
+      $state
+    } = this;
+
+    $state.go('main.dashboard.manageUsers.newInvite');
+  }
+
+  onInviteDeleted(invite) {
+    this.invites.splice(this.invites.indexOf(invite), 1);
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack,ErrorService, StateService, LabelService, UserService, $timeout) {
+  constructor($state, $scope, users, invites) {
     "ngInject";
-    this.Spinner = Spinner;
-    this.Snack = Snack;
-    this.ErrorService = ErrorService;
-    this.LabelService = LabelService;
-    this.UserService = UserService;
-    this.users = [];
-    this.invites = [];
-    this.venue = StateService.venue;
-    this.isError = false;
-    this.$timeout = $timeout;
-    this.init();
 
+    this.$state = $state;
+    this.$scope = $scope;
+
+    this.users = users;
+    this.invites = invites;
+
+    this.disabledSticky = true;
+
+    const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
+      if (viewName.indexOf('userDetailView') === 0) {
+        // we have an animation in our main-ui-view and we need to wait it to finish to start the sticky
+        // If we start the sticky before the animation finish, the sticky will calculate a wrong width for our contextual
+        this.disabledSticky = false;
+      }
+    });
+
+    $scope.$on('$destroy', () => {
+      onViewContentLoaded && onViewContentLoaded();
+    });
   }
 }

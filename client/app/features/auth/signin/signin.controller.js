@@ -16,6 +16,16 @@ export default class signinController {
     this.Spinner.show("signin")
   }
 
+  redirectSignUp() {
+    this.hideSpinner();
+
+    this.$state.go('auth.signup', {
+     inviteKey: this.$stateParams.inviteKey
+    }, {
+      location: 'replace'
+    });
+  }
+
   handleSuccess(){
 
     this.StateService.start()

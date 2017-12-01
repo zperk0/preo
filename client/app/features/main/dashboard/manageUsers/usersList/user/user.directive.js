@@ -4,7 +4,10 @@ export default function user(){
   return {
     restrict: 'E',
     scope: {
-      user:"=",
+      user: '=',
+      userRole: '=',
+      onEdit: '&',
+      onItemDeleted: '&?',
     },
     template: require("./user.tpl.html"),
     controller: controller.UID,
