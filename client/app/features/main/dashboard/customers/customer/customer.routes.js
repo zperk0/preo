@@ -35,6 +35,7 @@ export default function customerRoutes($stateProvider) {
         customer: (StateService, UserService) => {
           const customer = new Preoday.User({
             venueId: StateService.venue && StateService.venue.id,
+            domain: StateService.getDomain()
           });
 
           return customer;

@@ -492,6 +492,19 @@ export default class StateService {
     return this.channel && +this.channel.operatorFlag === 1;
   }
 
+  getDomain() {
+    const {
+      venue,
+      channel,
+    } = this;
+
+    if (channel) {
+      return channel.domain;
+    }
+
+    return venue && venue.domainId;
+  }
+
   constructor($q, $rootScope, $state, $stateParams, $timeout, $window, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig, UserService) {
     "ngInject";
     this.$q = $q;
