@@ -127,7 +127,7 @@ export default class paymentsController {
   }
 
   buildProvider(type, visibleFlag) {
-    return { 
+    return {
       type: type,
       visible: visibleFlag
     };
@@ -141,12 +141,11 @@ export default class paymentsController {
 
       this.Spinner.show("venue-payments-save");
 
-      var provider = this.buildProvider(this.PaymentType.CASH, this.cash.visible);
-
       try {
         var provider = this.buildProvider(this.PaymentType.CASH, this.cash.visible);
 
         this.StateService.venue.updatePaymentProvider(provider)
+         .then((venue) => {
             angular.extend(this.venue,venue);
             this.Spinner.hide("venue-payments-save");
             this.Snack.show(this.LabelService.SNACK_VENUE_PAYMENTS_SUCCESS)
