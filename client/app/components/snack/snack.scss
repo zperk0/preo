@@ -21,4 +21,10 @@ md-toast{
       background-color: #E62A10;
     }
   }
+
+  &.warning{
+    .md-toast-content{
+      background-color: #fbb30b;
+    }
+  }
 }

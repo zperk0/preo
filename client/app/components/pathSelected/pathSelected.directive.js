@@ -6,7 +6,7 @@ export default function pathSelected($state, $rootScope){
       pathSelected:"="
     },
     link: (scope, el, attr) => {
-      const pathName = scope.pathSelected ? scope.pathSelected.id : attr.pathSelected;
+      const pathName = scope.pathSelected ? (scope.pathSelected.path || scope.pathSelected.id) : attr.pathSelected;
       const exclusions = scope.pathSelected ? scope.pathSelected.exclusions : false;
       const setSelected = (state) => {
         var re = new RegExp("\\."+pathName+"(\\.|$)");

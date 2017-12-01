@@ -1,15 +1,18 @@
 <div class='user-invite'
-      ng-attr-data-id="{{userInviteCtrl.user.id}}">
+      ng-attr-data-id="{{userInviteCtrl.user.id || 'new'}}">
   <card-item  has-actions="true"
               deleted="userInviteCtrl.user.$deleted"
-              selected="userInviteCtrl.user.$selected"
+              selected="userInviteCtrl.isSelected()"
               class='small'>
     <card-item-title has-visible="false">
-        <span>{{userInviteCtrl.user.name}} </span><span class='invite-status' ng-if="userInviteCtrl.user.id" translate> (pending)</span>
+      <div class="user-invite-wrapper">
+        <span class="user-invite-name ellipsis" ng-class="{'is-pending': userInviteCtrl.user.id}">{{userInviteCtrl.user.name}} </span>
+        <span class='invite-status' ng-if="userInviteCtrl.user.id" translate> (pending)</span>
+      </div>
     </card-item-title>
 
     <card-item-actions on-delete="userInviteCtrl.onDelete()"
-                       on-edit="userInviteCtrl.onEdit($event)"
+                       on-edit="userInviteCtrl.onEdit({ invite: userInviteCtrl.user })"
                         ></card-item-actions>
   </card-item>
 </div>

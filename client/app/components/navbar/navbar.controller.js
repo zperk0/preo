@@ -27,8 +27,9 @@ export default class navbarController {
   toggleMenu() {
     this.toggleExpanded();
     this.$expanded = !this.$expanded;
+    this.NavbarService.expanded = this.$expanded;
     console.log("broadcasting");
-    this.$rootScope.$broadcast(this.BroadcastEvents._ON_NAVBAR_TOGGLE,this.expanded);
+    this.$rootScope.$broadcast(this.BroadcastEvents._ON_NAVBAR_TOGGLE,this.$expanded);
   }
 
   getActivedMenu() {
@@ -37,13 +38,14 @@ export default class navbarController {
     });
   }
 
-  constructor($state, gettextCatalog, FeatureService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions, StateService) {
+  constructor($state, gettextCatalog, FeatureService, $rootScope, $timeout, BroadcastEvents, PermissionService, Permissions, StateService, NavbarService) {
     "ngInject";
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
     this.$timeout = $timeout;
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
+    this.NavbarService = NavbarService;
     this.$expanded = true;
 
     const isChannel = StateService.isChannel;
@@ -119,7 +121,7 @@ export default class navbarController {
         return !isChannel && PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       {name: gettextCatalog.getString("Manage Users"), icon:"account_box", id:"manageUsers",shouldShow:function(){
-        return !isChannel && PermissionService.hasPermission(Permissions.ACCOUNT)
+        return PermissionService.hasPermission(Permissions.ACCOUNT)
       }},
       {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
       {name: gettextCatalog.getString("Mobile App"), id:"mobileApp"},
@@ -143,6 +145,11 @@ export default class navbarController {
       {name: gettextCatalog.getString("Update External Menus"), icon:"sync", id:"updateExternalMenus", shouldShow:function(){
         return !isChannel && PermissionService.hasPermission(Permissions.MENUS)
                 && FeatureService.hasExternalMenusFeature();
+      }},
+      {name: gettextCatalog.getString("Customers"), icon:"group", id:"customers.placeholder", path: "customers", shouldShow:function(){
+        return isChannel &&
+               StateService.isOperator() &&
+               PermissionService.hasPermission(Permissions.CHANNEL_OPERATE);
       }},
     ];
   }

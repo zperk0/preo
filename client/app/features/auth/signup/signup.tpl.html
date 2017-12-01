@@ -63,5 +63,8 @@
     <div class="privacy-and-terms">
       {{ 'By continuing, you accept the' | translate }} <a href="http://api.preoday.com/terms/terms.html" target="_blank">{{ 'Terms of use' | translate }}</a> {{ 'and' | translate }} <a href="http://api.preoday.com/terms/privacy.html" target="_blank">{{ 'Privacy Policy' | translate }}</a>
     </div>
+
+    <md-button type="button" ng-click="signupCtrl.redirectSignIn()" class="md-primary">{{ 'I already have an account' | translate}}</md-button>
   </form>
+
 </div>

@@ -1,0 +1,43 @@
+
+@import "client/app/shared/styles/variables";
+
+.manage-users {
+	sticky-scroll {
+		overflow-y: scroll;
+		width: 100%;
+		height: 100%;
+	}
+
+	.layout-left-right {
+		flex: 1;
+	}
+
+	.main-content-right {
+		transition: width 0.2s linear, max-width 0.2s linear;
+		z-index: $subToolbarZIndex + 1 !important;
+
+		&.disable-transition {
+			transition: none;
+		}
+
+		&.preo-sticky {
+			right: 24px + $scrollBarWidth;
+		}
+	}
+}
+
+[class*="main-dashboard-manageUsers"] {
+	.main-ui-view {
+		overflow-y: hidden;
+	}
+}
+
+@media (max-width: 1280px) {
+	.manage-users {
+		.main-content-right {
+			&.preo-sticky {
+				padding-left: 1px; // hotfix to keep the contextual in the same position when scroll
+			}
+		}
+	}
+}

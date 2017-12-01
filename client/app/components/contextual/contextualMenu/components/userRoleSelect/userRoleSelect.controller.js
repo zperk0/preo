@@ -4,17 +4,17 @@ export default class userRoleSelectController {
   }
 
 
- constructor(gettextCatalog, StateService, FeatureService) {
+ constructor(gettextCatalog, StateService, FeatureService, UserRole, UtilsService) {
     "ngInject";
     let venue = StateService.venue;
-    this.roles={
+    this.roles = {
       ADMIN:{
-        id:'ADMIN',
-        name:gettextCatalog.getString("Administrator"),
+        id: UserRole.ADMIN,
+        name: UtilsService.getRoleAsString(UserRole.ADMIN),
         permissions:[
           gettextCatalog.getString("Order screen"),
           gettextCatalog.getString("Menus"),
-          venue.isEvent() ? gettextCatalog.getString("Events") : '',
+          venue && venue.isEvent() ? gettextCatalog.getString("Events") : '',
           gettextCatalog.getString("Promotions"),
           FeatureService.hasBookingFeature() ? gettextCatalog.getString("Group Bookings") : '',
           FeatureService.hasVoucherFeature() ? gettextCatalog.getString("Gift Vouchers") : '',
@@ -24,24 +24,35 @@ export default class userRoleSelectController {
         ]
       },
       MANAGER:{
-        id:'MANAGER',
-        name:gettextCatalog.getString("Manager"),
+        id: UserRole.MANAGER,
+        name: UtilsService.getRoleAsString(UserRole.MANAGER),
         permissions:[
           gettextCatalog.getString("Order screen"),
           gettextCatalog.getString("Menus"),
-          venue.isEvent() ? gettextCatalog.getString("Events") : '',
+          venue && venue.isEvent() ? gettextCatalog.getString("Events") : '',
           gettextCatalog.getString("Promotions"),
           FeatureService.hasBookingFeature() ? gettextCatalog.getString("Group Bookings") : '',
           FeatureService.hasVoucherFeature() ? gettextCatalog.getString("Gift Vouchers") : '',
         ]
       },
       STAFF:{
-        id:'STAFF',
-        name:gettextCatalog.getString("Staff Member"),
+        id: UserRole.STAFF,
+        name: UtilsService.getRoleAsString(UserRole.STAFF),
         permissions:[
           gettextCatalog.getString("Order screen"),
         ]
       }
+    };
+
+    if (StateService.isChannel) {
+      this.roles['OPERATOR'] = {
+        id: UserRole.OPERATOR,
+        name: UtilsService.getRoleAsString(UserRole.OPERATOR),
+        permissions: [
+          gettextCatalog.getString("Create new customers"),
+          gettextCatalog.getString("Place orders"),
+        ]
+      };
     }
   }
 }

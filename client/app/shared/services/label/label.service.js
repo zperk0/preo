@@ -126,6 +126,11 @@ export default class LabelService {
     this.SNACK_USER_INVITE_CONFLICT= gettextCatalog.getString("This user already has an account");
     this.SNACK_USER_INVITE_SUCCESS= gettextCatalog.getString("Invitation sent");
 
+    this.SNACK_CUSTOMER_ERROR = gettextCatalog.getString("Customer not saved");
+    this.SNACK_CUSTOMER_CONFLICT = gettextCatalog.getString("This customer already has an account");
+    this.SNACK_CUSTOMER_SUCCESS = gettextCatalog.getString("Customer saved");
+    this.SNACK_CUSTOMER_SUCCESS_WITH_FAILED_INVITE = gettextCatalog.getString("Sorry, there was a problem sending this invitation, please try again");
+
     this.TITLE_INACTIVE_PROMOTION = gettextCatalog.getString("Remove validity period?");
     this.CONTENT_INACTIVE_PROMOTION = gettextCatalog.getString("This promotion hasn't started yet or has ended. If you activate it manually, the start and end dates will be removed.");
 
@@ -160,22 +165,26 @@ export default class LabelService {
 
     this.TITLE_DUPLICATED_TAG_NAME = gettextCatalog.getString("Warning");
     this.CONTENT_DUPLICATED_TAG_NAME = gettextCatalog.getString("There is already another tag with the same name, are you sure you want to create this new tag?");
-  
+
     this.SNACK_TAG_CREATED = gettextCatalog.getString('Tag created');
     this.SNACK_TAG_CREATED_ERROR = gettextCatalog.getString('Error creating tag');
-    
+
     this.SNACK_TAG_UPDATED = gettextCatalog.getString('Tag updated');
     this.SNACK_TAG_UPDATED_ERROR = gettextCatalog.getString('Error updating tag');
-    
+
     this.SNACK_TAG_DELETED = gettextCatalog.getString('Tag deleted');
 
     this.SNACK_TAG_ACTION_CREATED = gettextCatalog.getString('Tag action created');
     this.SNACK_TAG_ACTION_CREATED_ERROR = gettextCatalog.getString('Error creating tag action');
-    
+
     this.SNACK_TAG_ACTION_UPDATED = gettextCatalog.getString('Tag action updated');
     this.SNACK_TAG_ACTION_UPDATED_ERROR = gettextCatalog.getString('Error updating tag action');
-    
+
     this.SNACK_TAG_ACTION_DELETED = gettextCatalog.getString('Tag action deleted');
     this.SNACK_TAG_ACTION_DELETED_ERROR = gettextCatalog.getString('An error ocurred to delete the tag. Try again later.');
+
+    // CUSTOMERS
+    this.SNACK_CUSTOMER_NOTE_SAVE = gettextCatalog.getString('Note created successfully');
+    this.SNACK_CUSTOMER_NOTE_SAVE_ERROR = gettextCatalog.getString('An error ocurred while creating the note. Try again later.');
   }
 }

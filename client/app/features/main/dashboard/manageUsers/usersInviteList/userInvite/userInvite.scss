@@ -1,8 +1,47 @@
 .user-invite{
+	.card-item {
+		flex-direction: row;
+
+		& > .card-title {
+			width: 100%;
+
+			& > div {
+		    overflow: hidden;
+		    white-space: normal;
+
+				.card-title-text {
+					line-height: 1.27;
+				}
+			}
+		}
+	}
+
+	md-card-actions {
+		left: 0;
+
+		.card-actions-leave-trap {
+			align-items: center;
+		}
+	}
+
   .invite-status{
     font-size: 13px;
     color: #E02C00;
     line-height: 13px;
     margin-left:12px;
+  }
+
+  .user-invite-wrapper {
+  	width: 100%;
+  	display: flex;
+  	align-items: center;
+
+		.user-invite-name {
+			max-width: 100%;
+
+			&.is-pending {
+				max-width: 70%;
+			}
+		}
   }
 }

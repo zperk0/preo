@@ -3,12 +3,14 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
   "ngInject";
 
   const notRequiresUser= ['auth.signin', 'auth.signup', 'auth.invite', 'error', 'emailSuccess'];
+  const $html = angular.element(document.querySelector('html'));
 
-  function setupChangeEvent(){
+  function setupChangeEvent() {
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
 
       contextualDrawer.close();
       contextualMenu.close();
+
       if (notRequiresUser.indexOf(toState.name) === -1 && !UserService.user){
         $state.go("auth.signin");
         event.preventDefault();
@@ -36,9 +38,13 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
       }
       return true;
     });
+
     $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
       $rootScope.previousState = from.name;
       $rootScope.currentState = to.name;
+
+      $html.removeClass(from.name.replace(/\./g, '-'));
+      $html.addClass(to.name.replace(/\./g, '-'));
 
       if (toParams.entityId && fromParams.entityId && +toParams.entityId !== +fromParams.entityId) {
         window.location.reload();

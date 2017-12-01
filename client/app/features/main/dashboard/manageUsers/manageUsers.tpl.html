@@ -1,13 +1,35 @@
-<div flex class="manage-users">
-  <div class='layout-left-right'>
-    <div class='main-content-left'>
-      <users-list
-          users="manageUsersCtrl.users">
-       </users-list>
-       <users-invite-list
-          users="manageUsersCtrl.invites">
-       </users-invite-list>
+<div class="manage-users" layout="column" flex>
+  <sticky-scroll scroll-to-child-element
+                 scroll-to-child-element-offset="24"
+                 scroll-on-init="false">
+    <div class='layout-left-right' layout="row">
+      <div class='main-content-left'>
+        <users-list
+            users="manageUsersCtrl.users"
+            on-edit="manageUsersCtrl.onEditUser(user, userRole)"
+            on-deleted="manageUsersCtrl.onUserDeleted(user, userRole)">
+         </users-list>
+         <users-invite-list
+            on-new="manageUsersCtrl.onNewInvite()"
+            on-edit="manageUsersCtrl.onEditInvite(invite)"
+            on-deleted="manageUsersCtrl.onInviteDeleted(invite)"
+            users="manageUsersCtrl.invites">
+         </users-invite-list>
+      </div>
+
+      <!-- without use-placeholder, was thowing an exception when resizing the window -->
+
+      <ui-view name="userDetailView"
+               class='main-content-right'
+               media-query="min-width: 1024px"
+               sticky
+               content-right-resize
+               scroll-to-user
+               use-placeholder="false"
+               sticky-class="preo-sticky"
+               keep-width="true"
+               disabled-sticky="manageUsersCtrl.disabledSticky"
+               offset="24"></ui-view>
     </div>
-    <div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div>
-  </div>
+  </sticky-scroll>
 </div>

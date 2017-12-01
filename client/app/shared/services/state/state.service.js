@@ -254,16 +254,24 @@ export default class StateService {
 
   navigateToChannel(channelId, shouldReload) {
 
-    console.log('StateService [navigateToChannel] - ', channelId, shouldReload);
-
     const {
       isChannel,
       UtilsService,
       $state,
+      $timeout,
+      $window,
     } = this;
 
+    console.log('StateService [navigateToChannel] - ', channelId, shouldReload, isChannel);
+
     if (!isChannel) {
-      window.location.href = UtilsService.getHost() + '/channel/#/' + channelId + '/main/dashboard';
+      const url = UtilsService.getHost() + '/channel/#/' + channelId + '/main/dashboard';
+      $window.location.replace(url);
+      $timeout(() => {
+        // This is a hack because in some cases the url has not updated in the browser
+        $window.location.replace(url);
+      });
+      console.log('StateService [navigateToChannel] - going to url - ', UtilsService.getHost() + '/channel/#/' + channelId + '/main/dashboard');
     } else {
       $state.go('main.dashboard', {
         entityId: channelId
@@ -279,10 +287,17 @@ export default class StateService {
       isChannel,
       UtilsService,
       $state,
+      $timeout,
+      $window,
     } = this;
 
     if (isChannel) {
-      window.location.href = UtilsService.getHost() + '/#/' + venueId + '/main/dashboard';
+      const url = UtilsService.getHost() + '/#/' + venueId + '/main/dashboard';
+      $window.location.replace(url);
+      $timeout(() => {
+        // This is a hack because in some cases the url has not updated in the browser
+        $window.location.replace(url);
+      });
     } else {
       $state.go('main.dashboard', {
         entityId: venueId
@@ -327,6 +342,62 @@ export default class StateService {
       return PermissionService.loadPermissions(venue, expand);
     } else {
       console.warn('StateService [loadPermissions] - there is no channel and venue set');
+    }
+  }
+
+  getUsers() {
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.getUsers('roles');
+    } else if (venue) {
+      return venue.getUsers();
+    } else {
+      console.warn('StateService [getUsers] - there is no channel and venue set');
+    }
+  }
+
+  getInvites() {
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.getInvites();
+    } else if (venue) {
+      return venue.getInvites();
+    } else {
+      console.warn('StateService [getInvites] - there is no channel and venue set');
+    }
+  }
+
+  removeUser(user, userRole) {
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      const userToDelete = angular.copy(user);
+      userToDelete.userRoles = angular.copy(userToDelete.userRoles);
+      const userRoleToDelete = userToDelete.userRoles.filter((ur) => {
+        return ur.role === userRole.role;
+      });
+      if (userRoleToDelete.length) {
+        userToDelete.userRoles.splice(userRoleToDelete[0], 1);
+      }
+      return userToDelete.updateRoles(userToDelete.userRoles);
+    } else if (venue) {
+      return venue.removeUser(user);
+    } else {
+      console.warn('StateService [removeUser] - there is no channel and venue set');
     }
   }
 
@@ -397,6 +468,15 @@ export default class StateService {
     return this.VenueService.updateVenue(this.venue);
   }
 
+  searchCustomers(value) {
+
+    this.isSearchingCustomers = true;
+    return this.channel.searchCustomers(value)
+                .finally(() => {
+                  this.isSearchingCustomers = false;
+                });
+  }
+
   resetData() {
     this.entityId = undefined;
     this.isChannel = false;
@@ -408,7 +488,24 @@ export default class StateService {
     return this.hasDashboardLoaded;
   }
 
-  constructor($q, $rootScope, $state, $stateParams, $timeout, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig, UserService) {
+  isOperator() {
+    return this.channel && +this.channel.operatorFlag === 1;
+  }
+
+  getDomain() {
+    const {
+      venue,
+      channel,
+    } = this;
+
+    if (channel) {
+      return channel.domain;
+    }
+
+    return venue && venue.domainId;
+  }
+
+  constructor($q, $rootScope, $state, $stateParams, $timeout, $window, PermissionService, BroadcastEvents, VenueService, UtilsService, StateConfig, UserService) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
@@ -416,6 +513,7 @@ export default class StateService {
     this.$stateParams = $stateParams;
     this.$state = $state;
     this.$timeout = $timeout;
+    this.$window = $window;
 
     this.PermissionService = PermissionService;
     this.BroadcastEvents = BroadcastEvents;
@@ -425,7 +523,9 @@ export default class StateService {
 
     this.hasDashboardLoaded = false;
     this.dashboardDeferred = null;
+    this.isSearchingCustomers = false;
 
     this.isChannel = StateConfig.isChannel;
+    this.domainId = $window._PREO_DATA._DOMAIN || null;
   }
 }
