@@ -30,31 +30,47 @@ export default class userController {
   }
 
   onDelete(){
-    const currentUser = this.UserService.getCurrent();
+
+    const {
+      DialogService,
+      ErrorService,
+      LabelService,
+      gettextCatalog,
+      Spinner,
+      Snack,
+      UserService,
+      StateService,
+    } = this;
+
+    const currentUser = UserService.getCurrent();
     if (this.user.id === currentUser.id) {
-      return this.DialogService.show(this.ErrorService.DELETE_CURRENT_USER.title, this.ErrorService.DELETE_CURRENT_USER.message, [{
-        name: this.gettextCatalog.getString('Got it')
+      return DialogService.show(ErrorService.DELETE_CURRENT_USER.title, ErrorService.DELETE_CURRENT_USER.message, [{
+        name: gettextCatalog.getString('Got it')
       }]);
     }
-    this.DialogService.delete(this.LabelService.TITLE_DELETE_USER, this.LabelService.CONTENT_DELETE_USER)
+
+    const LOADER_KEY = 'user-role-delete';
+
+    DialogService.delete(LabelService.TITLE_DELETE_USER, LabelService.CONTENT_DELETE_USER)
       .then(()=>{
-          this.Spinner.show("user-role-delete");
-          this.venue.removeUser(this.user)
-            .then(()=>{
-              this.cardItemList.onItemDeleted(this.user);
-              if (this.onItemDeleted){
-                this.onItemDeleted({item:this.user});
-              }
-              this.Snack.show(this.LabelService.SNACK_USER_DELETED);
-              this.Spinner.hide("user-role-delete");
-          }, (error)=>{
-            this.Spinner.hide("user-role-delete")
-            this.Snack.showError(this.LabelService.SNACK_USER_DELETED_ERROR);
-          })
-          .catch((err)=>{
-            this.Spinner.hide("user-role-delete")
-            this.Snack.showError(this.LabelService.SNACK_USER_DELETED_ERROR);
-          });
+        Spinner.show(LOADER_KEY);
+        StateService.removeUser(this.user, this.userRole)
+          .then((user)=>{
+            if (this.onItemDeleted) {
+              this.onItemDeleted({user: this.user, userRole: this.userRole});
+            }
+            Snack.show(LabelService.SNACK_USER_DELETED);
+            Spinner.hide(LOADER_KEY);
+        }, (error) => {
+          console.log('UserController [onDelete] - error', error);
+          Spinner.hide(LOADER_KEY)
+          Snack.showError(LabelService.SNACK_USER_DELETED_ERROR);
+        })
+        .catch((err) => {
+          console.log('UserController [onDelete] - catch', err);
+          Spinner.hide(LOADER_KEY)
+          Snack.showError(LabelService.SNACK_USER_DELETED_ERROR);
+        });
       });
   }
 
@@ -64,15 +80,14 @@ export default class userController {
     this.$q = $q;
     this.$stateParams = $stateParams;
     this.Spinner = Spinner;
-    this.venue = StateService.venue;
-    this.Snack = Snack;
-
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
     this.UserService = UserService;
     this.gettextCatalog = gettextCatalog;
     this.UtilsService = UtilsService;
+    this.StateService = StateService;
+    this.Snack = Snack;
 
     this.isChannel = StateService.isChannel;
     this.type = 'user';

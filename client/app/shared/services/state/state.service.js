@@ -377,6 +377,30 @@ export default class StateService {
     }
   }
 
+  removeUser(user, userRole) {
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      const userToDelete = angular.copy(user);
+      userToDelete.userRoles = angular.copy(userToDelete.userRoles);
+      const userRoleToDelete = userToDelete.userRoles.filter((ur) => {
+        return ur.role === userRole.role;
+      });
+      if (userRoleToDelete.length) {
+        userToDelete.userRoles.splice(userRoleToDelete[0], 1);
+      }
+      return userToDelete.updateRoles(userToDelete.userRoles);
+    } else if (venue) {
+      return venue.removeUser(user);
+    } else {
+      console.warn('StateService [removeUser] - there is no channel and venue set');
+    }
+  }
+
   fetchVenues(expand, permissions) {
     const {
       channel,

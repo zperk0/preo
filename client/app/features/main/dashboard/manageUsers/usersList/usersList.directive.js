@@ -5,7 +5,8 @@ export default function usersList(){
     restrict: 'E',
     scope: {
       users: '=',
-      onEdit: '&?'
+      onEdit: '&?',
+      onDeleted: '&?',
     },
     template: require("./usersList.tpl.html"),
     controller: controller.UID,

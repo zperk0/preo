@@ -7,6 +7,7 @@ export default function user(){
       user: '=',
       userRole: '=',
       onEdit: '&',
+      onItemDeleted: '&?',
     },
     template: require("./user.tpl.html"),
     controller: controller.UID,

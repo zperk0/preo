@@ -4,11 +4,12 @@
         has-new="false"
         on-click-new="usersListCtrl.showCreate()"
         collection="usersListCtrl.users">
-        <div ng-repeat="user in usersListCtrl.users | orderBy: id">
+        <div ng-repeat="user in usersListCtrl.users | orderBy: ['firstName', 'lastName']">
           <user
             has-actions="true"
-            ng-repeat="userRole in user.userRoles track by $index"
+            ng-repeat="userRole in user.userRoles | orderBy: 'role' track by $index "
             on-edit="usersListCtrl.onEdit({user: user, userRole: userRole})"
+            on-item-deleted="usersListCtrl.onDeleted({user: user, userRole: userRole})"
             user="user"
             user-role="userRole">
           </user>

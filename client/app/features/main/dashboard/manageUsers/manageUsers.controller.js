@@ -17,6 +17,14 @@ export default class manageUsersController {
     });
   }
 
+  onUserDeleted(user, userRole) {
+    if (user.userRoles.length < 2) {
+      this.users.splice(this.users.indexOf(user), 1);
+    } else {
+      user.userRoles.splice(user.userRoles.indexOf(userRole), 1);
+    }
+  }
+
   onEditInvite(invite) {
 
     const {
