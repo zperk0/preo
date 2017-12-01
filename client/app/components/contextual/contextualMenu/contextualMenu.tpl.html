@@ -10,7 +10,7 @@
             {{ 'Cancel' | translate}}
         </md-button>
         <md-button type="submit" class='md-raised'>
-           {{ contextualMenuCtrl.params.doneButtonText || ('Done' | translate) }}
+           {{  contextualMenuCtrl.getButtonName() }}
         </md-button>
       </md-card-actions>
     </form>

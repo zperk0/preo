@@ -102,7 +102,7 @@ export default class manageInviteController {
   }
 
   /* @ngInject */
-  constructor($timeout, $state, $scope, Spinner, Snack, LabelService, StateService, DialogService, ErrorService, APIErrorCode, invite, invites, entities) {
+  constructor($timeout, $state, $scope, Spinner, Snack, LabelService, StateService, DialogService, ErrorService, APIErrorCode, gettextCatalog, invite, invites, entities) {
     "ngInject";
 
     this.$timeout = $timeout;
@@ -128,8 +128,44 @@ export default class manageInviteController {
       this.params.entities.channel = StateService.channel;
       this.template = 'userInvite.channel';
       this.onSuccessCallback = this.onSuccessForChannel.bind(this);
+
+      if (!this.invite.id || !this.invite.accepted) {
+        this.params.onBeforeSuccess = function() {
+          // The 'this' here is the ContextualMenuController.
+          // because there we are calling this.params.onBeforeSuccess.call(this); and it is changing the function scope
+          if (this.contextualForm.selectedTabIndex === 1) {
+            return this._complete();
+          }
+
+          this.contextualForm.selectedTabIndex = 1;
+        };
+      }
+
+      if (!this.invite.id) {
+        this.params.doneButtonText = function () {
+          // The 'this' here is the ContextualMenuController.
+          // because there we are calling this.params.doneButtonText.call(this); and it is changing the function scope
+          if (this.contextualForm.selectedTabIndex === 1) {
+            return this.gettextCatalog.getString('Send Invite');
+          }
+
+          return this.gettextCatalog.getString('Choose Venues');
+        };
+      } else if (!this.invite.accepted) {
+        this.params.doneButtonText = function () {
+          // The 'this' here is the ContextualMenuController.
+          // because there we are calling this.params.doneButtonText.call(this); and it is changing the function scope
+          if (this.contextualForm.selectedTabIndex === 1) {
+            return this.gettextCatalog.getString('Resend Invite');
+          }
+
+          return this.gettextCatalog.getString('Choose Venues');
+        };
+      }
+
     } else {
       this.template = 'userInvite';
+      this.params.doneButtonText = this.invite.id ? gettextCatalog.getString('Resend Invite') : gettextCatalog.getString('Send Invite');
       this.onSuccessCallback = this.onSuccessForVenue.bind(this);
     }
 

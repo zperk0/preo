@@ -15,17 +15,27 @@ export default class contextualMenuController {
   }
 
   doSubmit(){
-    if (this.contextualForm.$valid){
-      if (this.onSuccess) {
-        this.onSuccess({
-          entity: this.entity
-        });
+    if (this.contextualForm.$valid) {
+
+      if (this.params && typeof this.params.onBeforeSuccess === 'function') {
+        this.params.onBeforeSuccess.call(this);
       } else {
-        this.contextualMenu.resolve(this.entity);
+        this._complete();
       }
+
     } else {
       // this is to the child directive redirect to error tab for example.
       this.$scope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED);
+    }
+  }
+
+  _complete() {
+    if (this.onSuccess) {
+      this.onSuccess({
+        entity: this.entity
+      });
+    } else {
+      this.contextualMenu.resolve(this.entity);
     }
   }
 
@@ -42,7 +52,20 @@ export default class contextualMenuController {
     return this.contextualMenu.type === type;
   }
 
-  constructor($scope, $stateParams, UtilsService, contextualMenu, MenuService, FeatureService, ContextualMenuValidationService, ItemService, $timeout, BroadcastEvents) {
+  getButtonName() {
+
+    if (this.params && this.params.doneButtonText) {
+      if (typeof this.params.doneButtonText === 'function') {
+        return this.params.doneButtonText.call(this);
+      }
+
+      return this.params.doneButtonText;
+    }
+
+    return this.gettextCatalog.getString('Done');
+  }
+
+  constructor($scope, $stateParams, UtilsService, contextualMenu, MenuService, FeatureService, ContextualMenuValidationService, ItemService, $timeout, BroadcastEvents, gettextCatalog) {
     "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);
     this.$scope = $scope;
@@ -56,5 +79,6 @@ export default class contextualMenuController {
     this.ValidationService = ContextualMenuValidationService;
     this.ItemService = ItemService;
     this.BroadcastEvents = BroadcastEvents;
+    this.gettextCatalog = gettextCatalog;
   }
 }
