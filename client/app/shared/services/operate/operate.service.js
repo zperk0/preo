@@ -35,14 +35,8 @@ export default class OperateService {
   }
 
   getWebordersLinkByOrder(order) {
-    let path = this.$window._PREO_DATA._WEBORDERS;
-
-    if (order.permalink) {
-      path += order.permalink + '?';
-    } else {
-      path += '?venueId=' + order.venueId + '&';
-    }
-
+    let path = this.StateService.channel.operateUrl;
+    path += '?venueId=' + order.venueId + '&';
     path += 'orderId=' + order.id;
 
     return path;
@@ -91,10 +85,11 @@ export default class OperateService {
     return deferred.promise;
   }
 
-  constructor($window, $q) {
+  constructor($window, $q, StateService) {
     "ngInject";
 
     this.$window = $window;
     this.$q = $q;
+    this.StateService = StateService;
   }
 }

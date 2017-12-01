@@ -105,6 +105,9 @@ export default class ErrorService {
 
     // PROMOTIONS
     this.EMPTY_ADD_USER_PROMO = {code: 'EMPTY_ADD_USER_PROMO', message:this.gettextCatalog.getString('You must select one or more users to apply the promotion.'), title:this.gettextCatalog.getString('No users selected')};
+
+    // OPERATOR
+    this.REQUIRED_CHANNEL_OPERATOR_URL = {code: 'REQUIRED_CHANNEL_OPERATOR_URL', message: this.gettextCatalog.getString('This app is not configured to place an order. Please contact the support team.')};
   }
 
   constructor(gettextCatalog, $state, DialogService) {

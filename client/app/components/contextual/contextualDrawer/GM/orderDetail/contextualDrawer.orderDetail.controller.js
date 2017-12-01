@@ -14,8 +14,18 @@ export default class contextualDrawerOrderDetailController {
   }
 
   amendOrder() {
+    const {
+      StateService,
+      Snack,
+      ErrorService,
+      OperateService
+    } = this;
 
-    this.OperateService.openNewTab();
+    if (!StateService.channel || !StateService.channel.operateUrl) {
+      return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
+    }
+
+    OperateService.openNewTab();
     this.cancelOrder()
       .then(order => {
         this.generateTokenAndGoToWeborders();
@@ -31,7 +41,15 @@ export default class contextualDrawerOrderDetailController {
       $q,
       Spinner,
       $scope,
+      StateService,
+      Snack,
+      ErrorService,
     } = this;
+
+    if (!StateService.channel || !StateService.channel.operateUrl) {
+      return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
+    }
+
     const LOADER_KEY = 'cancel-order';
 
     return $q((resolve, reject) => {
@@ -72,7 +90,18 @@ export default class contextualDrawerOrderDetailController {
   }
 
   reorder() {
-    this.OperateService.openNewTab();
+    const {
+      StateService,
+      Snack,
+      ErrorService,
+      OperateService
+    } = this;
+
+    if (!StateService.channel || !StateService.channel.operateUrl) {
+      return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
+    }
+
+    OperateService.openNewTab();
     this.generateTokenAndGoToWeborders();
   }
 
@@ -109,7 +138,7 @@ export default class contextualDrawerOrderDetailController {
     });
   }
 
-  constructor($scope, $rootScope, $timeout, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack, OperateService) {
+  constructor($scope, $rootScope, $timeout, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack, OperateService, StateService) {
     "ngInject";
 
     this.$scope = $scope;
@@ -125,5 +154,6 @@ export default class contextualDrawerOrderDetailController {
     this.ErrorService = ErrorService;
     this.Snack = Snack;
     this.OperateService = OperateService;
+    this.StateService = StateService;
   }
 }
