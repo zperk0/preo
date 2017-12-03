@@ -28,7 +28,7 @@ export default function routes($stateProvider) {
     url: "/history",
     views: {
     	orderContent: {
-        template: `<contextual-drawer-order-history orders="orderHistoryCtrl.orders" open="true" success="success()" error="error()"></contextual-drawer-order-history>`,
+        template: `<contextual-drawer-order-history orders="orderHistoryCtrl.orders"></contextual-drawer-order-history>`,
 		    controller: ordersHistoryController.UID,
 		    controllerAs: "orderHistoryCtrl"
     	}
@@ -42,7 +42,7 @@ export default function routes($stateProvider) {
     url: "/:orderId",
     views: {
     	orderContent: {
-        template: `<contextual-drawer-order-detail order="orderDetailCtrl.order" open="true" success="success()" error="error()"></contextual-drawer-order-detail>`,
+        template: `<contextual-drawer-order-detail order="orderDetailCtrl.order"></contextual-drawer-order-detail>`,
 		    controller: ordersDetailController.UID,
 		    controllerAs: "orderDetailCtrl"
     	}
