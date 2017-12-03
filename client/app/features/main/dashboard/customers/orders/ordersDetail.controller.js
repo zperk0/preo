@@ -4,7 +4,7 @@ export default class ordersDetailController {
   }
 
   /* @ngInject */
-  constructor($timeout, contextual, order) {
+  constructor($window, $timeout, contextual, order) {
     "ngInject";
 
     this.order = order;
@@ -12,7 +12,11 @@ export default class ordersDetailController {
     $timeout(() => {
       contextual.showDrawer('orderDetail')
         .then((order) => {
-        }, () => {
+        }, (err) => {
+          if (err && err.isEscape) {
+            $window.history.back();
+          }
+
           console.log('Drawer customer order cancelled');
         })
       .catch((err) => {
