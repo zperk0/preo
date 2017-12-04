@@ -14,6 +14,7 @@ export default function customersResolve ($q, $state, $stateParams, $rootScope, 
     $state.go('main.dashboard.customers.placeholder', {}, {
       location: 'replace'
     });
+    $rootScope.$broadcast('$customers:resolve:error');
     DialogService.show(ErrorService.errorTitle, ErrorService.FAILED_LOADING_CUSTOMERS.message, [{
       name: gettextCatalog.getString('OK')
     }]);

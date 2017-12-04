@@ -1,5 +1,5 @@
 
-export default function ordersResolve ($q, $state, $stateParams, authenticated, Spinner, ErrorService, DialogService, gettextCatalog) {
+export default function ordersResolve ($rootScope, $q, $state, $stateParams, authenticated, Spinner, ErrorService, DialogService, gettextCatalog) {
   "ngInject";
 
   function _onError(error) {
@@ -11,6 +11,7 @@ export default function ordersResolve ($q, $state, $stateParams, authenticated, 
     }, {
       location: 'replace'
     });
+    $rootScope.$broadcast('$customer-orders:resolve:error');
     DialogService.show(ErrorService.errorTitle, ErrorService.FAILED_LOADING_ORDERS.message, [{
       name: gettextCatalog.getString('OK')
     }]);
