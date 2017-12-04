@@ -93,10 +93,12 @@ export default class customersSearchController {
     this.gettextCatalog = gettextCatalog;
     this.Snack = Snack;
     this.initialized = false;
-
     this.disabledSticky = true;
-
     this.customersCtrl = $scope['$customers'];
+
+    function hideCustomersSearch() {
+      this.customersCtrl.searching = false;
+    }
 
     if (customers) {
       $scope.$applyAsync(() => {
@@ -108,6 +110,9 @@ export default class customersSearchController {
     } else {
       this.initialized = true;
     }
+
+    $scope.$on('$customer-orders:resolve:error', hideCustomersSearch.bind(this));
+    $scope.$on('$customer-notes:resolve:error', hideCustomersSearch.bind(this));
 
     const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
       if (viewName.indexOf('customerDetailView') === 0) {

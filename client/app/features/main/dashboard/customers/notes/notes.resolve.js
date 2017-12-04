@@ -1,5 +1,5 @@
 
-export default function notesResolve ($q, $state, $stateParams, authenticated, Spinner, ErrorService, DialogService, gettextCatalog) {
+export default function notesResolve ($rootScope,  $q, $state, $stateParams, authenticated, Spinner, ErrorService, DialogService, gettextCatalog) {
   "ngInject";
 
   function _onError(error) {
@@ -11,6 +11,7 @@ export default function notesResolve ($q, $state, $stateParams, authenticated, S
     }, {
       location: 'replace'
     });
+    $rootScope.$broadcast('$customer-notes:resolve:error');
     DialogService.show(ErrorService.errorTitle, ErrorService.FAILED_LOADING_NOTES.message, [{
       name: gettextCatalog.getString('OK')
     }]);
