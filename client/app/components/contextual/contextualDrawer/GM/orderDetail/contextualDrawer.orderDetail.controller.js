@@ -29,6 +29,8 @@ export default class contextualDrawerOrderDetailController {
     this.cancelOrder()
       .then(order => {
         this.generateTokenAndGoToWeborders();
+      }, () => {
+        OperateService.closeReorderTab();
       });
   }
 
@@ -58,7 +60,7 @@ export default class contextualDrawerOrderDetailController {
       delete order.venue;
 
       Spinner.show(LOADER_KEY);
-      order.cancel()
+      Preoday.Operate.cancelOrder(order)
         .then(cancelledOrder => {
           $scope.$applyAsync(() => {
             Object.keys(cancelledOrder).forEach((key) => (cancelledOrder[key] == null) && delete cancelledOrder[key]);
@@ -66,22 +68,37 @@ export default class contextualDrawerOrderDetailController {
             Spinner.hide(LOADER_KEY);
             resolve(cancelledOrder);
           });
-        }, error => {
+        }, (error) => {
+          console.log('OrderDetail Drawer [cancelOrder] - error', error);
           $scope.$applyAsync(() => {
             Spinner.hide(LOADER_KEY);
-            this.showError();
+            this.showError(error);
             reject(error);
           });
         });
     });
   }
 
-  showError() {
-    return this.DialogService.show(this.ErrorService.FAILED_LOADING_ORDER.title, this.ErrorService.FAILED_LOADING_ORDER.message, [{
-      name: this.LabelService.CONFIRMATION
-    }]).then(() => {
-      this.close();
-    });
+  showError(error) {
+
+    const {
+      APIErrorCode,
+      DialogService,
+      LabelService,
+      ErrorService,
+    } = this;
+
+    if (error && error.errorCode === APIErrorCode.ORDER_STATUS_NOT_CANCELLABLE) {
+      return DialogService.show(ErrorService.ORDER_STATUS_NOT_CANCELLABLE.title, ErrorService.ORDER_STATUS_NOT_CANCELLABLE.message, [{
+        name: LabelService.CONFIRMATION
+      }]);
+    } else {
+      return DialogService.show(ErrorService.FAILED_LOADING_ORDER.title, ErrorService.FAILED_LOADING_ORDER.message, [{
+        name: LabelService.CONFIRMATION
+      }]).then(() => {
+        this.close();
+      });
+    }
   }
 
   isAmendOrCancelAvailable() {
@@ -138,7 +155,7 @@ export default class contextualDrawerOrderDetailController {
     });
   }
 
-  constructor($scope, $rootScope, $timeout, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack, OperateService, StateService) {
+  constructor($scope, $rootScope, $timeout, $window, $state, $stateParams, $q, Spinner, DialogService, LabelService, ErrorService, Snack, OperateService, StateService, APIErrorCode) {
     "ngInject";
 
     this.$scope = $scope;
@@ -155,5 +172,6 @@ export default class contextualDrawerOrderDetailController {
     this.Snack = Snack;
     this.OperateService = OperateService;
     this.StateService = StateService;
+    this.APIErrorCode = APIErrorCode;
   }
 }

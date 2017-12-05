@@ -111,6 +111,7 @@ export default class ErrorService {
 
     // OPERATOR
     this.REQUIRED_CHANNEL_OPERATOR_URL = {code: 'REQUIRED_CHANNEL_OPERATOR_URL', message: this.gettextCatalog.getString('This app is not configured to place an order. Please contact the support team.')};
+    this.ORDER_STATUS_NOT_CANCELLABLE = {code: 'ORDER_STATUS_NOT_CANCELLABLE', message: this.gettextCatalog.getString('This order can no longer be changed or cancelled. Please contact the venue directly.'), title:this.gettextCatalog.getString('Function not available')};
   }
 
   constructor(gettextCatalog, $state, DialogService) {
