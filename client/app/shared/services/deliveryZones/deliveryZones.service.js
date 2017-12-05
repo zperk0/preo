@@ -139,7 +139,7 @@ export default class DeliveryZoneService {
       id:-1,
       distance:2,
       visible:1,
-      editable:true,
+      $editable:true,
       venueId:this.StateService.venue.id,
       type:'DISTANCE',
 
