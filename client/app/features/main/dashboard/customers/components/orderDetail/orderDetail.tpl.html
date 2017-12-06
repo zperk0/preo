@@ -46,6 +46,12 @@
       </div>
     </div>
   </div>
+  <div class="item-container" ng-if="orderDetailCtrl.order.notes">
+    <div class="item">
+      <div class="label label-sm">{{'Special requests' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.notes"></div>
+    </div>
+  </div>
   <div class="item-container">
     <div class="item">
       <div class="label label-sm">{{'Subtotal' | translate}}:</div>
