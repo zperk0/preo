@@ -17,7 +17,7 @@ export default function orderResolve ($q, $state, $stateParams, authenticated, S
 
   Spinner.show(LOADER_KEY);
 
-  Preoday.Order.get($stateParams.orderId, 'venue,paymentNumber')
+  Preoday.Order.get($stateParams.orderId, 'venue,paymentNumber,trackingUrl')
   .then(order => {
     console.log('Customer orders [orderResolve] - got order', order);
     deferred.resolve(order);

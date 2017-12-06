@@ -26,6 +26,20 @@
       <div class="label label-sm">{{'Type' | translate}}:</div>
       <div class="value capitalize" ng-bind="orderDetailCtrl.order.type"></div>
     </div>
+    <div class="item" ng-if="orderDetailCtrl.order.trackingUrl">
+      <div class="label label-sm">{{'Track order' | translate}}:</div>
+      <div class="value value-link truncate">
+        <a ng-href="{{::orderDetailCtrl.order.trackingUrl}}" target="_blank">{{::orderDetailCtrl.order.trackingUrl}}</a>
+      </div>
+    </div>
+    <div class="item" ng-if="orderDetailCtrl.order.type === 'DELIVERY' && orderDetailCtrl.order.address">
+      <div class="label label-sm">{{'Address' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.address"></div>
+    </div>
+    <div class="item" ng-if="orderDetailCtrl.order.type === 'DELIVERY' && orderDetailCtrl.order.postcode">
+      <div class="label label-sm">{{'Postcode' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.postcode"></div>
+    </div>
     <div class="item">
       <div class="label label-sm">{{'Payment' | translate}}:</div>
       <div class="value capitalize">
