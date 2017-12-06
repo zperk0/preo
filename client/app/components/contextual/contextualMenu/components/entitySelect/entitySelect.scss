@@ -1,6 +1,7 @@
 
 $verticalPadding: 16px;
 $horizontalPadding: 24px;
+$disabledCheckboxOpacity: 0.8;
 
 .entity-select {
 	padding-top: 24px;
@@ -30,6 +31,7 @@ $horizontalPadding: 24px;
 
 			&[disabled="disabled"] {
 				cursor: not-allowed;
+				opacity: $disabledCheckboxOpacity;
 			}
 
 			.md-label {
