@@ -8,7 +8,9 @@
     </md-input-container>
   </form>
 
-  <div class="user-list" ng-if="userSelectListCtrl.userList.length">
+  <div class="user-list"
+       ng-if="userSelectListCtrl.userList.length"
+       ng-class="{'with-selected': userSelectListCtrl.selectedList.length}">
     <user-select-item
       ng-click="userSelectListCtrl.onToogle({user:user})"
       ng-repeat="user in userSelectListCtrl.userList | orderBy: 'id'"
@@ -18,12 +20,12 @@
 
   <span class='customers-count'
         ng-click="userSelectListCtrl.showSelectedUsers()"
-        ng-if="userSelectListCtrl.selectedList.length" translate> 
+        ng-if="userSelectListCtrl.selectedList.length" translate>
     {{userSelectListCtrl.selectedList.length}} customers selected
   </span>
 
   <div class="empty-list" ng-if="!userSelectListCtrl.alreadySearch">
-    <img src='/images/finduser.png'>  
+    <img src='/images/finduser.png'>
     <div class='text-content' translate> Search for a customer account </div>
     <div class='text-content' translate> by name or email address </div>
   </div>
