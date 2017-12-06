@@ -145,7 +145,7 @@ export default class manageInviteController {
         this.params.doneButtonText = function () {
           // The 'this' here is the ContextualMenuController.
           // because there we are calling this.params.doneButtonText.call(this); and it is changing the function scope
-          if (this.contextualForm.selectedTabIndex === 1) {
+          if (this.contextualForm && this.contextualForm.selectedTabIndex === 1) {
             return this.gettextCatalog.getString('Send Invite');
           }
 
@@ -155,7 +155,7 @@ export default class manageInviteController {
         this.params.doneButtonText = function () {
           // The 'this' here is the ContextualMenuController.
           // because there we are calling this.params.doneButtonText.call(this); and it is changing the function scope
-          if (this.contextualForm.selectedTabIndex === 1) {
+          if (this.contextualForm && this.contextualForm.selectedTabIndex === 1) {
             return this.gettextCatalog.getString('Resend Invite');
           }
 
