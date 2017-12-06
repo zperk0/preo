@@ -10,6 +10,7 @@ export default class LabelService {
     this.gettextCatalog = gettextCatalog;
 
     this.CONFIRMATION = gettextCatalog.getString("Got it");
+		this.CONFIRMATION_TITLE = gettextCatalog.getString('Please confirm');
 
     this.NOT_AVAILABLE = gettextCatalog.getString("Not available");
 
@@ -186,5 +187,8 @@ export default class LabelService {
     // CUSTOMERS
     this.SNACK_CUSTOMER_NOTE_SAVE = gettextCatalog.getString('Note created successfully');
     this.SNACK_CUSTOMER_NOTE_SAVE_ERROR = gettextCatalog.getString('An error ocurred while creating the note. Try again later.');
+
+		this.CONTENT_CANCEL_CUSTOMER_ORDER = gettextCatalog.getString('Are you sure you want to cancel this order?');
+		this.CONTENT_AMEND_CUSTOMER_ORDER = gettextCatalog.getString('Are you sure you want to amend this order?');
   }
 }
