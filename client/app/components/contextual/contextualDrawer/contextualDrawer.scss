@@ -108,6 +108,25 @@
             text-transform: uppercase;
           }
         }
+
+        &.truncate {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        // Modifier for `values` link
+        &.value-link {
+          color: $colorPrimary;
+
+          a {
+            color: $colorPrimary;
+            text-decoration: none;
+
+            &:hover { text-decoration: underline; }
+          }
+
+          &.truncate a { white-space: nowrap; }
+        }
       }
 
       .modifier {
