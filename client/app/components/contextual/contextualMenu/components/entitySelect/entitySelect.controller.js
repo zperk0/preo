@@ -43,7 +43,8 @@ export default class entitySelectController {
   }
 
   isGroupSelected(venueGroup) {
-    return this.inviteUserRoles.groupIds.indexOf(venueGroup.id) !== -1;
+    return this.inviteUserRoles.groupIds.indexOf(venueGroup.id) !== -1 ||
+           this.isGroupDisabled(venueGroup);
   }
 
   isGroupDisabled(venueGroup) {
@@ -70,7 +71,8 @@ export default class entitySelectController {
   }
 
   isVenueSelected(venue) {
-		return this.inviteUserRoles.venueIds.indexOf(venue.id) !== -1;
+		return this.inviteUserRoles.venueIds.indexOf(venue.id) !== -1 ||
+           this.isVenueDisabled(venue);
   }
 
   isVenueDisabled(venue) {
