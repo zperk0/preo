@@ -17,6 +17,8 @@ export default class contextualDrawerOrderDetailController {
     const {
       StateService,
       Snack,
+      DialogService,
+      LabelService,
       ErrorService,
       OperateService
     } = this;
@@ -25,13 +27,20 @@ export default class contextualDrawerOrderDetailController {
       return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
     }
 
-    OperateService.openNewTab();
-    this.cancelOrder()
-      .then(order => {
-        this.generateTokenAndGoToWeborders();
-      }, () => {
-        OperateService.closeReorderTab();
-      });
+    // Callback when tap `YES` in confirmation dialog
+    function openNewTab() {
+      OperateService.openNewTab();
+
+      this.handleConfirmCancelOrder()
+        .then(this.generateTokenAndGoToWeborders.bind(this))
+        .catch(() => {
+          OperateService.closeReorderTab();
+        });
+    }
+
+    DialogService.confirm(LabelService.CONFIRMATION_TITLE, LabelService.CONTENT_AMEND_CUSTOMER_ORDER, {
+      onConfirm: openNewTab.bind(this)
+    });
   }
 
   cancelOrder() {
@@ -40,11 +49,10 @@ export default class contextualDrawerOrderDetailController {
     }
 
     const {
-      $q,
-      Spinner,
-      $scope,
       StateService,
       Snack,
+      DialogService,
+      LabelService,
       ErrorService,
     } = this;
 
@@ -52,6 +60,13 @@ export default class contextualDrawerOrderDetailController {
       return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
     }
 
+    DialogService.confirm(LabelService.CONFIRMATION_TITLE, LabelService.CONTENT_CANCEL_CUSTOMER_ORDER)
+      .then(this.handleConfirmCancelOrder.bind(this));
+  }
+
+  handleConfirmCancelOrder() {
+
+    const {$q, $scope, Spinner} = this;
     const LOADER_KEY = 'cancel-order';
 
     return $q((resolve, reject) => {
