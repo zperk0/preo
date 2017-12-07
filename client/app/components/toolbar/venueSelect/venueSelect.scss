@@ -69,8 +69,10 @@ $searchBoxHeight: 64px;
   }
 
   &>md-menu {
+    display: block;
     width: 100%;
     height: 100%;
+
       span{
         color:$spanColor;
         margin-right: 8px;
@@ -83,9 +85,12 @@ $searchBoxHeight: 64px;
           }
       }
   }
+
+  .ellipsis { display: block; }
 }
 
 .venue-select-menu-content {
+  display: block;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1), 0 0 8px 0 rgba(0, 0, 0, 0.12);
   margin-left: -8px;
   border-radius: 2px;
