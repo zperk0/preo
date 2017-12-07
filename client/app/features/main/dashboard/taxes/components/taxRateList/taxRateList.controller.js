@@ -14,7 +14,7 @@ export default class taxRateListController {
     }
 
     let taxRate = new Preoday.TaxRate({
-      venueId: this.$stateParams.venueId,
+      venueId: this.StateService.venue.id,
       $selected: true,
     });
 
@@ -22,9 +22,9 @@ export default class taxRateListController {
   }
 
   /* @ngInject */
-  constructor($stateParams) {
+  constructor(StateService) {
     "ngInject";
-    this.$stateParams = $stateParams;
+    this.StateService = StateService;
     this.title = "I am a taxRateList component"
   }
 }
