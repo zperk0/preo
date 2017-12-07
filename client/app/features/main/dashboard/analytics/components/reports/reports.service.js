@@ -142,6 +142,7 @@ export default class ReportsService {
         colObj.key = head.key;
         colObj.isHidden = head.isHidden ? head.isHidden : false;
         colObj.shouldTruncate = head.shouldTruncate ? head.shouldTruncate : false;
+        colObj.shouldBreak = head.shouldBreak ? head.shouldBreak : false;
 
         switch(colObj.fieldType){
           case "currency":
@@ -852,30 +853,30 @@ export default class ReportsService {
     else if(reportId == 'allPromotions'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
-        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue'), shouldBreak: true},
         {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
-        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
       ];
     }
     else if(reportId == 'individualActivePromotions'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
-        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue'), shouldBreak: true},
         {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
-        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
       ];
     }
     else if(reportId == 'individualHistoricPromotions'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
-        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue'), shouldBreak: true},
         {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
-        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
       ];
     }
@@ -953,7 +954,7 @@ export default class ReportsService {
       ];
     }
     else if(type == this.ReportTypes.UNREGISTERED_CUSTOMERS){
-      
+
       response = [
         {id: 'unregisteredCustomers', name:this.gettextCatalog.getString('Customers with no email address'), reportType: this.ReportTypes.UNREGISTERED_CUSTOMERS, actions: actionNotify}
       ];
