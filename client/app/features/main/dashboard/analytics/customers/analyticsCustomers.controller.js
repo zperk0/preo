@@ -170,7 +170,8 @@ export default class analyticsCustomersController {
   getReportTypes(){
 
     var types = [this.ReportTypes.PAYINGCUSTOMERS,this.ReportTypes.NEWCUSTOMERS,this.ReportTypes.CUSTOMERS, this.ReportTypes.NEWAREADELIVERY];
-    if (this.FeatureService.hasCallCenterFeature()) {
+    debugger;
+    if (this.StateService.isOperator()) {
       types.push(this.ReportTypes.UNREGISTERED_CUSTOMERS);
     }
     return types;
@@ -403,7 +404,8 @@ export default class analyticsCustomersController {
     this.hideSpinner();
   }
 
-  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, DialogService, ReportsService, gettextCatalog, LabelService, FeatureService, hasKnowYourCustomersFeature) {
+  constructor($filter, Snack, $stateParams, $state, $scope, $timeout, $window, Spinner, ReportTypes, StateService,
+    DialogService, ReportsService, gettextCatalog, LabelService, FeatureService, hasKnowYourCustomersFeature) {
     "ngInject";
 
     this.spinner = Spinner;
@@ -411,6 +413,7 @@ export default class analyticsCustomersController {
     this.$timeout = $timeout;
     this.$filter = $filter;
     this.Snack = Snack;
+    this.StateService = StateService;
 
     this.LabelService = LabelService;
     this.ReportTypes = ReportTypes;
