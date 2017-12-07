@@ -1,5 +1,5 @@
 .promotions-analytics-view{
-	padding: 16px 4px 24px 16px;	 
+	padding: 16px 4px 24px 16px;
 
 	md-card-title{
 		max-height: 60px;
@@ -12,15 +12,15 @@
 
 	.align-action-top{
 		margin-top: -15px;
-		    max-width: 40px;
+		max-width: 40px;
 	}
 
 	.promotions-filters{
-		 width: 100%;		
+		width: 100%;
 	}
 
 	.promotions-table{
-		width: 100%;	
+		width: 100%;
 		> md-card{
 			margin: 8px;
       margin-bottom: 75px;
@@ -37,17 +37,22 @@
   .content-spinner {
     text-align: center;
     width: 100%;
-        justify-content: center;
-        align-items: center;
-        height: 40px;      
-        position: fixed;
-        bottom: 0;
-        left: 10%;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 10%;
     //    background-color: rgba(0,0,0,0.2);
   }
 
-	table.md-table{
+	.cell-break {
+		min-width: 200px; // Define `min-width` for screens <= 1024px
+		max-width: 200px;
+		word-wrap: break-word;
+	}
 
+	table.md-table {
 		color: rgba(0, 0, 0, 0.87);
 	}
 
