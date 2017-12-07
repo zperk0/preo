@@ -858,6 +858,7 @@ export default class ReportsService {
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
         {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+        {key:'paid', text:this.gettextCatalog.getString('Paid'), fieldType: 'currency'},
       ];
     }
     else if(reportId == 'individualActivePromotions'){
@@ -868,6 +869,7 @@ export default class ReportsService {
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
         {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+        {key:'paid', text:this.gettextCatalog.getString('Paid'), fieldType: 'currency'},
       ];
     }
     else if(reportId == 'individualHistoricPromotions'){
@@ -878,6 +880,7 @@ export default class ReportsService {
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
         {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+        {key:'paid', text:this.gettextCatalog.getString('Paid'), fieldType: 'currency'},
       ];
     }
 
