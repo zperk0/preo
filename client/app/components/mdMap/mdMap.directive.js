@@ -1,4 +1,4 @@
-export default function mdMap(MapsService, UtilsService, VenueService, $timeout, $q, $rootScope, BroadcastEvents, $state){
+export default function mdMap(MapsService, UtilsService, VenueService, $timeout, $q, $rootScope, BroadcastEvents, $state, StateService){
   'ngInject';
   return {
     restrict: 'E',
@@ -15,7 +15,8 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
     link: (scope, el, attr) => {
 
 
-      var distanceMultiplier =  VenueService.getKmOrMiles() && VenueService.getKmOrMiles()=="miles"?  1.6 : 1;
+      const kmOrMiles = VenueService.getKmOrMiles(StateService.venue);
+      var distanceMultiplier =  kmOrMiles && kmOrMiles == "miles" ?  1.6 : 1;
       var deliveryZoneDrawingPolygon;
       var shapes = {};
       var polygonDrawer = {};

@@ -13,6 +13,18 @@ export default class signupController {
     });
   }
 
+  redirectSignIn() {
+    this.hideSpinner();
+
+    this.$state.go('auth.signin', {
+      inviteKey: this.$stateParams.inviteKey,
+      invitedUser: this.invitedUser,
+      isUserAuthChecked: true
+    }, {
+      location: 'replace'
+    });
+  }
+
   goToDashboard () {
 
     this.hideSpinner();
@@ -82,12 +94,50 @@ export default class signupController {
 
     this.user.email = this.user.username;
 
-    this.UserInviteService.doInvite(this.invitedUser, this.user)
-      .then(this.goToDashboard.bind(this), () => {
+    this.doInvite(this.user, (err) => {
+      console.log('SignupController [doSignup] - error ', err);
 
+      if (err && err.status === 409) {
+        if (this.$stateParams.inviteKey) {
+          this.tryAutomaticInviteSignin();
+        } else {
+          this.hideSpinner();
+          this.Snack.showError(this.gettextCatalog.getString('There is already an account with this email, please try another one.'));
+        }
+      } else {
         this.hideSpinner();
         this.Snack.showError(this.gettextCatalog.getString('An error ocurred in your signup, try again later'));
-      });
+      }
+    });
+  }
+
+  doInvite(user, callbackError) {
+
+    if (!callbackError) {
+      callbackError = () => {};
+    }
+
+    this.UserInviteService.doInvite(this.invitedUser, user)
+      .then(this.goToDashboard.bind(this), callbackError.bind(this));
+  }
+
+  tryAutomaticInviteSignin() {
+
+    function _showErrorAndGoToSignin() {
+      this.hideSpinner();
+      this.Snack.showError(this.gettextCatalog.getString('There is already an account with this email, you need to sign in to continue.'));
+      this.redirectSignIn();
+    }
+
+
+    this.UserService.auth(this.user, true)
+      .then((user) => {
+
+        this.doInvite(user, (err) => {
+          this.UserService.signout(true)
+            .then(_showErrorAndGoToSignin.bind(this), _showErrorAndGoToSignin.bind(this));
+        });
+      }, _showErrorAndGoToSignin.bind(this));
   }
 
   constructor($state, $timeout, $stateParams, UserService, UserInviteService, Spinner, DialogService, ErrorService, LabelService, gettextCatalog, Snack) {

@@ -15,7 +15,7 @@ export default class promotionsListController {
     }
 
     let promotion = new Preoday.Offer({
-      "venueId": this.VenueService.currentVenue.id,
+      "venueId": this.StateService.venue.id,
       "type": "FIXED",
       "name": "",
       "displayName":"",
@@ -39,8 +39,8 @@ export default class promotionsListController {
   }
 
   /* @ngInject */
-  constructor(VenueService) {
+  constructor(StateService) {
     "ngInject";
-    this.VenueService = VenueService
+    this.StateService = StateService
   }
 }

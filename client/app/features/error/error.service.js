@@ -93,7 +93,25 @@ export default class ErrorService {
     // CUSTOM TAGS
     this.FAILED_LOADING_TAGS = {code: 'FAILED_LOADING_TAGS', message:this.gettextCatalog.getString('An unexpected error occurred loading tags, please try again.')};
 
+    // USER NOTES
+    this.FAILED_LOADING_NOTES = {code: 'FAILED_LOADING_NOTES', message:this.gettextCatalog.getString('An unexpected error occurred loading the customer notes, please try again.')};
+
+    // USER ORDERS
+    this.FAILED_LOADING_ORDER = {code: 'FAILED_LOADING_ORDER', message:this.gettextCatalog.getString('An unexpected error occurred loading the order, please try again.'), title:this.gettextCatalog.getString("Sorry")};
+    this.FAILED_LOADING_ORDERS = {code: 'FAILED_LOADING_ORDERS', message:this.gettextCatalog.getString('An unexpected error occurred loading the customer orders, please try again.')};
+
+    // CUSTOMERS
+    this.FAILED_LOADING_CUSTOMERS = {code: 'FAILED_LOADING_CUSTOMERS', message:this.gettextCatalog.getString('An unexpected error occurred loading the customers, please try again.')};
+
+    // PROMOTIONS
     this.EMPTY_ADD_USER_PROMO = {code: 'EMPTY_ADD_USER_PROMO', message:this.gettextCatalog.getString('You must select one or more users to apply the promotion.'), title:this.gettextCatalog.getString('No users selected')};
+
+    // CHANNEL ENTITIES
+    this.CHANNEL_ENTITIES_REQUIRED = {code: 'CHANNEL_ENTITIES_REQUIRED', message:this.gettextCatalog.getString('You must select at least one venue, group or channel to continue.'), title:this.gettextCatalog.getString('No venues, groups or channels selected')};
+
+    // OPERATOR
+    this.REQUIRED_CHANNEL_OPERATOR_URL = {code: 'REQUIRED_CHANNEL_OPERATOR_URL', message: this.gettextCatalog.getString('This app is not configured to place an order. Please contact the support team.')};
+    this.ORDER_STATUS_NOT_CANCELLABLE = {code: 'ORDER_STATUS_NOT_CANCELLABLE', message: this.gettextCatalog.getString('This order can no longer be changed or cancelled. Please contact the venue directly.'), title:this.gettextCatalog.getString('Function not available')};
   }
 
   constructor(gettextCatalog, $state, DialogService) {

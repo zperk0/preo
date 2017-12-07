@@ -1,0 +1,99 @@
+<div class="order-detail">
+  <div class="item-container">
+    <div class="item">
+      <div class="label label-sm">{{'Order' | translate}} #:</div>
+      <div class="value"
+           ng-click="orderDetailCtrl.clickOrder()"
+           ng-bind="orderDetailCtrl.order.id"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Status' | translate}}:</div>
+      <div class="value capitalize" ng-bind="orderDetailCtrl.getOrderStatus(orderDetailCtrl.order.status)"></div>
+    </div>
+    <div ng-if="orderDetailCtrl.order.venue" class="item">
+      <div class="label label-sm">{{'Venue' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.venue.name"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Date' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.created | date:'EEE d MMM, y'"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Time' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.created | date:'HH:mm'"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Type' | translate}}:</div>
+      <div class="value capitalize" ng-bind="orderDetailCtrl.order.type"></div>
+    </div>
+    <div class="item" ng-if="orderDetailCtrl.order.trackingUrl">
+      <div class="label label-sm">{{'Track order' | translate}}:</div>
+      <div class="value value-link truncate">
+        <a ng-href="{{::orderDetailCtrl.order.trackingUrl}}" target="_blank">{{::orderDetailCtrl.order.trackingUrl}}</a>
+      </div>
+    </div>
+    <div class="item" ng-if="orderDetailCtrl.order.type === 'DELIVERY' && orderDetailCtrl.order.address">
+      <div class="label label-sm">{{'Address' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.address"></div>
+    </div>
+    <div class="item" ng-if="orderDetailCtrl.order.type === 'DELIVERY' && orderDetailCtrl.order.postcode">
+      <div class="label label-sm">{{'Postcode' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.postcode"></div>
+    </div>
+    <div class="item">
+      <div class="label label-sm">{{'Payment' | translate}}:</div>
+      <div class="value capitalize">
+        {{orderDetailCtrl.order.paymentType}}
+        <span ng-if="orderDetailCtrl.order.paymentNumber"> ****{{orderDetailCtrl.order.paymentNumber}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <div class="label item flat label-sm">{{'Items' | translate}}:</div>
+      <div class="item flat value">
+        <div ng-repeat="item in orderDetailCtrl.order.items" class="item flat value block">
+          <div class="value flex">{{item.qty}} x {{item.name}}</div>
+          <div class="value end">{{item.total | currency:false:2:orderDetailCtrl.order.venue.ccySymbol}}</div>
+          <div class="modifier" ng-repeat="modifier in item.modifiers">- {{modifier.name}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item-container" ng-if="orderDetailCtrl.order.notes">
+    <div class="item">
+      <div class="label label-sm">{{'Special requests' | translate}}:</div>
+      <div class="value" ng-bind="orderDetailCtrl.order.notes"></div>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <div class="label label-sm">{{'Subtotal' | translate}}:</div>
+      <div class="value end" ng-bind="orderDetailCtrl.order.subtotal | currency:false:2:orderDetailCtrl.order.venue.ccySymbol"></div>
+    </div>
+    <div class="item" ng-if="orderDetailCtrl.order.fees.length">
+      <div class="label item flat label-sm">{{'Fees' | translate}}:</div>
+      <div class="item flat value">
+        <div class="item flat value block" ng-repeat="fee in orderDetailCtrl.order.fees">
+          <div class="value flex" ng-bind="fee.name"></div>
+          <div class="value end">{{fee.total | currency:false:2:orderDetailCtrl.order.venue.ccySymbol}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="item" ng-if="orderDetailCtrl.order.discounts.length">
+      <div class="label item flat label-sm">{{'Discounts' | translate}}:</div>
+      <div class="item flat value">
+        <div class="item flat value block" ng-repeat="discount in orderDetailCtrl.order.discounts">
+          <div class="value flex" ng-bind="discount.name"></div>
+          <div class="value end">- {{discount.discount | currency:false:2:orderDetailCtrl.order.venue.ccySymbol}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <div class="label label-sm">{{'TOTAL' | translate}}</div>
+      <div class="value end" ng-bind="orderDetailCtrl.order.total | currency:false:2:orderDetailCtrl.order.venue.ccySymbol"></div>
+    </div>
+  </div>
+</div>

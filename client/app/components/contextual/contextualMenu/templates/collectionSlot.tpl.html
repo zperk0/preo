@@ -7,7 +7,7 @@
           md-selected="contextualMenuCtrl.contextualForm.selectedTabIndex">
     <md-tab>
       <md-tab-label>
-        <div ng-class="{'has-error': contextualMenuCtrl.CollectionSlotsService.hasBasicTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+        <div ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasSlotBasicTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
           <span>{{ 'Basic' | translate }}</span>
         </div>
       </md-tab-label>
@@ -19,7 +19,7 @@
     </md-tab>
     <md-tab>
       <md-tab-label>
-        <div ng-class="{'has-error': contextualMenuCtrl.CollectionSlotsService.hasAdvancedTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+        <div ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasSlotAdvancedTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
           <span>{{ 'Advanced' | translate }}</span>
         </div>
       </md-tab-label>

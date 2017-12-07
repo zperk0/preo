@@ -1,0 +1,40 @@
+<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="customerNotesNew">
+  <form name="drawerCustomerNotesNewCtrl.newNoteForm" ng-submit="drawerCustomerNotesNewCtrl.submit()" class="container" novalidate>
+    <div class="contextual-list">
+      <div class="padded-content">
+        <md-autocomplete flex
+          md-input-name="orderNumber"
+          md-selected-item="drawerCustomerNotesNewCtrl.selectedOrder"
+          md-search-text="drawerCustomerNotesNewCtrl.searchText"
+          md-items="order in drawerCustomerNotesNewCtrl.querySearch(drawerCustomerNotesNewCtrl.searchText)"
+          md-item-text="order.id"
+          md-selected-item-change="drawerCustomerNotesNewCtrl.onOrderIdChange(order)"
+          md-floating-label="{{'Order number' | translate}}"
+          ng-model-options="{debounce: 300}">
+          <md-item-template>
+            <span md-highlight-text="drawerCustomerNotesNewCtrl.searchText">{{order.id}}</span>
+          </md-item-template>
+          <div ng-messages="drawerCustomerNotesNewCtrl.newNoteForm.orderNumber.$error">
+            <div ng-message="md-require-match" translate>Please select an existing order.</div>
+          </div>
+        </md-autocomplete>
+        <md-input-container>
+          <label translate>Type customer note here...</label>
+          <textarea flex name="noteMessage" required ng-model="drawerCustomerNotesNewCtrl.note.message" md-maxlength="2048"></textarea>
+          <div ng-messages="drawerCustomerNotesNewCtrl.newNoteForm.noteMessage.$error">
+            <div ng-message="required" translate>This is required.</div>
+            <div ng-message="md-maxlength" translate>Max length is 2048.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </div>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-click="drawerCustomerNotesNewCtrl.close()" class="md-primary" translate>
+        Cancel
+      </md-button>
+      <md-button type="submit" class="md-raised padded" translate>
+        Save note
+      </md-button>
+    </md-card-actions>
+  </form>
+</md-sidenav>

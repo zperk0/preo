@@ -34,8 +34,8 @@
           </thead>
           <tbody md-body>
             <tr md-row md-select="row" md-select-id="id" md-auto-select ng-repeat="row in analyticsPromotionsCtrl.tableData.body track by $index">
-              <td md-cell ng-repeat="col in row track by $index" ng-if="!col.isHidden">
-                <span >{{col.displayValue}}</span>
+              <td md-cell ng-repeat="col in row track by $index" ng-if="!col.isHidden" ng-class="{'cell-break': col.shouldBreak}">
+                <span>{{col.displayValue}}</span>
               </td>
             </tr>
           </tbody>
@@ -44,7 +44,7 @@
       </md-card>
       <div layout="row" class="content-spinner" ng-if="analyticsPromotionsCtrl.loadingMoreData">
         <spinner></spinner>
-      </div> 
-    </div> 
+      </div>
+    </div>
   </div>
 </div>

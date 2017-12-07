@@ -11,5 +11,7 @@ export default {
   ANALYTICS:'analytics_read',
   TAXES:'tax_create',
   VENUE_CREATE:'venue_create',
-  VENUE:'venue_update' //venue settings & switch venue mode
+  VENUE:'venue_update', //venue settings & switch venue mode
+  ADMIN: 'system_update',
+  CHANNEL_OPERATE:'channel_operate'
 };

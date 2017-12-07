@@ -7,7 +7,7 @@ export default class VoucherService {
   }
 
   getAssignCodeTypes() {
-    var venueId = this.VenueService.currentVenue.id;
+    var venueId = this.StateService.venue.id;
 
     console.log("VoucherService - Fetching external voucher code types");
     return this.$q((resolve,reject)=>{
@@ -26,10 +26,10 @@ export default class VoucherService {
     });
   }
 
-  constructor($q, VenueService) {
+  constructor($q, StateService) {
     "ngInject";
 
     this.$q = $q;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
   }
 }

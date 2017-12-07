@@ -1,10 +1,17 @@
 @import 'mixins.scss';
 
 /**************** TOOLBAR ****************/
+$sideNavWidthLarge: 320px;
+$sideNavWidth: 248px;
 $heightToolbar:64px;
-$widthVenueSelect: 320px;
+$widthVenueSelect: $sideNavWidth;
+$widthVenueSelectLarge: $sideNavWidthLarge;
 $widthUserSelect: 286px;
 $borderToolbar: 1px solid #fafafa;
+$searchBarHeight: 50px;
+$scrollBarWidth: 15px;
+$subToolbarZIndex: 21;
+$subToolbarHeight: 50px;
 
 
 /**************** Navbar ****************/
@@ -24,9 +31,18 @@ $redDefault: rgb(221,44,0);
 
 $blueDefault: #1893d6;
 $lightGrey: #808080;
+$linkColor: #1f73b9;
+$light-red: #e02c00;
+$spacer-x: 24px;
 
 
 $heightScreen:calc(100vh - #{$heightToolbar});
 
 
 $signinButtonColor: #2488c6;
+
+$greyDefault: #757575;
+
+
+/************ FONT *******/
+$font-sm: 13px;

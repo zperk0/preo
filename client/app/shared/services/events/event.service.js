@@ -15,7 +15,7 @@ export default class EventService {
   getByVenuesIdsAndName(venueIds, searchName, offset, limit){
 
     var params = {
-      venueIds: venueIds      
+      venueIds: venueIds
     };
 
     if(searchName)
@@ -30,7 +30,7 @@ export default class EventService {
     return this.$q((resolve, reject)=>{
 
       Preoday.Event.getByVenuesAndName(params).then((events)=> {
-        
+
         resolve(events);
       },(err)=>{
 
@@ -99,16 +99,16 @@ export default class EventService {
     var deferred = this.$q.defer();
 
     if (imageToCdn) {
-      Preoday.Event.saveImageToCdn(imageToCdn, this.VenueService.currentVenue.id)
+      Preoday.Event.saveImageToCdn(imageToCdn, this.StateService.venue.id)
         .then((imagePath) => {
 
           data.image = imagePath;
 
-          Preoday.Event.create(this.VenueService.currentVenue.id, data)
+          Preoday.Event.create(this.StateService.venue.id, data)
             .then(deferred.resolve, deferred.reject);
         }, deferred.reject);
     } else {
-      Preoday.Event.create(this.VenueService.currentVenue.id, data)
+      Preoday.Event.create(this.StateService.venue.id, data)
             .then(deferred.resolve, deferred.reject);
     }
 
@@ -126,7 +126,7 @@ export default class EventService {
     var deferred = this.$q.defer();
 
     if (imageToCdn && imageToCdn !== event.image) {
-      Preoday.Event.saveImageToCdn(imageToCdn, this.VenueService.currentVenue.id)
+      Preoday.Event.saveImageToCdn(imageToCdn, this.StateService.venue.id)
         .then((imagePath) => {
 
           event.image = imagePath;
@@ -163,13 +163,13 @@ export default class EventService {
     }
   }
 
-  constructor($q, $rootScope, $stateParams, VenueService) {
+  constructor($q, $rootScope, $stateParams, StateService) {
     "ngInject";
 
     this.$stateParams = $stateParams;
     this.$q = $q;
     this.data = {};
 
-    this.VenueService = VenueService;
+    this.StateService = StateService;
   }
 }

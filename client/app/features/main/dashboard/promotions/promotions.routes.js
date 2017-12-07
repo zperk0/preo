@@ -16,11 +16,15 @@ export default function routes($stateProvider, Permissions) {
     requiresPermission:Permissions.OFFERS,
     controllerAs: "promotionsCtrl",
     resolve: {
-      promotions: ($q, Spinner, VenueService, authenticated) => {
+      promotions: ($q, Spinner, StateService, authenticated) => {
+
+        if (!StateService.venue) {
+          return $q.reject();
+        }
 
         const deferred = $q.defer()
         Spinner.show("fetch-promo");
-        Preoday.Offer.getByVenueId(VenueService.venueId).then((promotions)=>{
+        Preoday.Offer.getByVenueId(StateService.venue.id).then((promotions)=>{
 
             Spinner.hide("fetch-promo");
             deferred.resolve(promotions);
@@ -42,7 +46,7 @@ export default function routes($stateProvider, Permissions) {
   });
   $stateProvider.state("main.dashboard.promotions.users", {
     url: "/:promotionId/users",
-    
+
     views: {"userSearchView": {
       //template: require("./users/users.tpl.html"),
       controller: usersController.UID,

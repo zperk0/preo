@@ -1,0 +1,36 @@
+<div class="contextual-menu-user">
+  <md-tabs md-dynamic-height
+          md-stretch-tabs="always"
+          class="md-tabs-with-errors"
+          ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}"
+          md-selected="contextualMenuCtrl.contextualForm.selectedTabIndex">
+    <md-tab tabindex="0">
+      <md-tab-label>
+        <div class="md-tab-label">
+          <span>{{ 'User' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <div class="user-tab-content">
+          <md-card-content>
+            <user-details user="contextualMenuCtrl.entity"
+                          user-role="contextualMenuCtrl.params.userRole"></user-details>
+          </md-card-content>
+        </div>
+      </md-tab-body>
+    </md-tab>
+    <md-tab tabindex="1">
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasUserVenuesTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.params.userRole)}" class="md-tab-label">
+          <span>{{ 'Venues' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <div class="user-venues-tab-content">
+          <entity-select entities="contextualMenuCtrl.params.entities"
+                         invite-user-roles="contextualMenuCtrl.params.userRole"></entity-select>
+        </div>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</div>

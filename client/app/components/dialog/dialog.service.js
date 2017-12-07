@@ -4,6 +4,40 @@ export default class DialogService {
     return "DialogService";
   }
 
+  confirm(title, content, options) {
+    function DialogConfirmController($scope, $mdDialog) {
+      'ngInject';
+
+      $scope.cancel = function() {
+        if (angular.isFunction($scope.onCancel)) {
+          $scope.onCancel();
+        }
+        $mdDialog.cancel();
+      };
+
+      $scope.confirm = function() {
+        if (angular.isFunction($scope.onConfirm)) {
+          $scope.onConfirm();
+        }
+        $mdDialog.hide(true);
+      };
+    }
+
+    const newScope = this.$rootScope.$new();
+    newScope.title = title;
+    newScope.content = content;
+    options = options || {};
+    angular.extend(newScope, options);
+
+    return this.$mdDialog.show({
+      template: require('./dialog.confirm.tpl.html'),
+      scope: newScope,
+      escapeToClose: false,
+      clickOutsideToClose: false,
+      controller: DialogConfirmController
+    });
+  }
+
   delete (title, content) {
 
     function DeleteController($scope, $mdDialog) {
@@ -79,7 +113,7 @@ export default class DialogService {
 
     function DialogController($scope, $mdDialog) {
       "ngInject";
-     
+
       this.cancel = function() {
         $mdDialog.cancel();
       };
@@ -88,7 +122,7 @@ export default class DialogService {
         if (this.areaForm.$invalid) {
           return;
         }
-        
+
         $mdDialog.hide(buttonId);
       };
       this.onInput = typeof onInput === 'function' ? onInput : function() {};

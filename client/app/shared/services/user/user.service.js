@@ -16,8 +16,14 @@ export default class UserService {
 
     this.authDeferred = this.$q.defer();
 
-    if(this.domainId && data)
-      data.domain = this.domainId;
+    if (!data) {
+      data = {};
+    }
+      
+    if(this.domainId)
+       data.domain = this.domainId;
+
+    data.permissions = this.Permissions.ADMIN;
 
     Preoday.User.auth(data).then((user) => {
       console.log("doing auth", user);
@@ -46,14 +52,16 @@ export default class UserService {
       this.authDeferred = this.$q.defer();
     }
 
-    this.PermissionService.checkSystemPermission()
-      .then(() => {
+    this.$timeout(() => {
+
+      if (user.permissions && user.permissions[this.Permissions.ADMIN] === true) {
         user.$admin = true;
-        this.setCurrentUser(user);
-      }, () => {
+      } else {
         user.$admin = false;
-        this.setCurrentUser(user);
-      });
+      }
+
+      this.setCurrentUser(user);
+    });
 
     return this.authDeferred.promise;
   }
@@ -72,20 +80,43 @@ export default class UserService {
 
   signout(shouldKeepInScreen) {
 
-    let deferred = this.$q.defer();
+    const {
+      StateConfig,
+      UtilsService,
+    } = this;
+    const deferred = this.$q.defer();
 
     Preoday.User.signout()
       .then(success => {
         deferred.resolve(success);
 
         if (!shouldKeepInScreen) {
-          this.$state.go('redirect', { destination: 'auth.signin', timeout: 1000, refresh: true });
+
+          if (StateConfig.isChannel) {
+            window.location.href = UtilsService.getHost() + '/#/auth/signin';
+          } else {
+            this.$state.go('redirect', { destination: 'auth.signin', timeout: 1000, refresh: true });
+          }
         }
       }, error => {
         deferred.reject(error);
       });
 
     return deferred.promise;
+  }
+
+  goToSignin() {
+    const {
+      StateConfig,
+      UtilsService,
+      $state,
+    } = this;
+
+    if (StateConfig.isChannel) {
+      window.location.href = UtilsService.getHost() + '/#/auth/signin';
+    } else {
+      $state.go("auth.signin");
+    }
   }
 
   getCurrent () {
@@ -134,13 +165,16 @@ export default class UserService {
     return deferred.promise;
   }
 
-  constructor($q, $rootScope, BroadcastEvents, UtilsService, PermissionService, $state) {
+  constructor($q, $timeout, $rootScope, BroadcastEvents, UtilsService, PermissionService, StateConfig, Permissions, $state) {
     "ngInject";
     this.$q = $q;
+    this.$timeout = $timeout;
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
     this.UtilsService = UtilsService;
     this.PermissionService = PermissionService;
+    this.StateConfig = StateConfig;
+    this.Permissions = Permissions;
     this.$state = $state;
 
     this.domainId = window._PREO_DATA._DOMAIN ? window._PREO_DATA._DOMAIN : null;

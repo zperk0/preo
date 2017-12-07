@@ -7,7 +7,7 @@ export default class TaxesService {
   }
 
   getTaxGroups(forceRefresh = false){
-    var venueId = this.VenueService.currentVenue.id;
+    var venueId = this.StateService.venue.id;
     console.log("TaxesService - Fetching taxe groups")
     return this.$q((resolve,reject)=>{
       if (!forceRefresh && this.taxGroups){
@@ -31,7 +31,7 @@ export default class TaxesService {
   }
 
   getTaxRates(forceRefresh = false){
-    var venueId = this.VenueService.currentVenue.id;
+    var venueId = this.StateService.venue.id;
     console.log("TaxesService - Fetching taxes")
     return this.$q((resolve,reject)=>{
       if (!forceRefresh && this.taxRates){
@@ -54,10 +54,10 @@ export default class TaxesService {
 
   }
 
-  constructor($q, VenueService) {
+  constructor($q, StateService) {
     "ngInject";
     this.$q = $q;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.taxGroups = false
     this.taxRates = false
   }

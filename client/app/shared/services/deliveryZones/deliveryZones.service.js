@@ -95,7 +95,7 @@ export default class DeliveryZoneService {
   getDeliveryZones(){
 
     return this.$q((resolve,reject)=>{
-      Preoday.DeliveryZone.getByVenueId(this.VenueService.currentVenue.id)
+      Preoday.DeliveryZone.getByVenueId(this.StateService.venue.id)
         .then((dz)=>{
           this.data = {
             deliveryZones:dz
@@ -139,8 +139,8 @@ export default class DeliveryZoneService {
       id:-1,
       distance:2,
       visible:1,
-      editable:true,
-      venueId:this.VenueService.currentVenue.id,
+      $editable:true,
+      venueId:this.StateService.venue.id,
       type:'DISTANCE',
 
       fee:{
@@ -176,11 +176,11 @@ export default class DeliveryZoneService {
     return this.colors.length;
   }
 
-  constructor($q, VenueService, Spinner, Snack, LabelService, gettextCatalog, contextual) {
+  constructor($q, VenueService, StateService, Spinner, Snack, LabelService, gettextCatalog, contextual) {
     "ngInject";
     this.$q = $q;
-    this.VenueService = VenueService;
-    var milesOrKms = this.VenueService.getKmOrMiles();
+    this.StateService = StateService;
+    var milesOrKms = VenueService.getKmOrMiles(StateService.venue);
     this.distanceMultiplier =  milesOrKms && milesOrKms=="miles"?  1.6 : 1;
     this.LabelService = LabelService;
     this.contextual = contextual;

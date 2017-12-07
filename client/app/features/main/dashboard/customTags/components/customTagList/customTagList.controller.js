@@ -9,19 +9,19 @@ export default class customTagListController {
 
       return !item.id;
     }).length;
-    
+
     if (isCreating){
       console.log("Already showing new custom tag");
       return;
     }
-    
+
     let customTag = new Preoday.CustomTag({
-      venueId: this.VenueService.currentVenue.id,
+      venueId: this.StateService.venue.id,
       $selected:true,
     });
 
     this.customTags.push(customTag);
-  }  
+  }
 
   createCustomTag(newData){
 
@@ -29,7 +29,7 @@ export default class customTagListController {
 
     Preoday.CustomTag.create(newData)
       .then((customTag)=>{
-        
+
         deferred.resolve(customTag);
       }, (err) => {
         console.log('error creating custom tag', err);
@@ -37,7 +37,7 @@ export default class customTagListController {
       });
 
     return deferred.promise;
-  }   
+  }
 
   deleteCustomTag(customTag){
 
@@ -58,15 +58,15 @@ export default class customTagListController {
     let deferred = this.$q.defer();
 
     this.Spinner.show("custom-tag-candelete");
-    
+
     customTag.canDelete()
       .then(canDelete => {
         this.Spinner.hide("custom-tag-candelete");
-        
+
         return this.confirmDeleteCustomTag(deferred, customTag, this.LabelService.TITLE_DELETE_TAG, this.LabelService.CONTENT_DELETE_TAG);
       }, error => {
         this.Spinner.hide("custom-tag-candelete");
-        
+
         if (!error || !(error instanceof Object)) {
           return reject(error);
         }
@@ -81,19 +81,19 @@ export default class customTagListController {
     this.DialogService.delete(title, content)
       .then(response => {
         this.Spinner.show("custom-tag-delete");
-        
+
         return customTag.remove()
           .then(response => {
             this.Spinner.hide("custom-tag-delete");
-            
+
             deferred.resolve(response);
           }, err => {
             this.Spinner.hide("custom-tag-delete");
-            
+
             deferred.reject(err);
           }).catch((e) => {
             this.Spinner.hide("custom-tag-delete");
-            
+
             deferred.reject(e);
           });
       }, error => {
@@ -110,7 +110,7 @@ export default class customTagListController {
   }
 
   /* @ngInject */
-  constructor($timeout, $q, Spinner, Snack, LabelService, DialogService, VenueService) {
+  constructor($timeout, $q, Spinner, Snack, LabelService, DialogService, StateService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -118,7 +118,7 @@ export default class customTagListController {
     this.$timeout = $timeout;
     this.LabelService = LabelService;
     this.DialogService = DialogService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
 
     this.customTags = this.customTags || [];
   }

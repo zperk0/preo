@@ -3,112 +3,93 @@ export default class userController {
     return "userController"
   }
 
-  contextualMenuSuccess(entity){
-    this.Spinner.show("user-role-update");
-    if (this.user && entity && entity.name){
-      this.user = entity;
-      this.venue.updateUserRole(this.user).then((newUser)=>{
-
-        this.user.$deleted = false;
-        this.user.$selected = false;
-
-        this.$timeout(() => {
-          angular.extend(this.user, newUser);
-          this.contextualMenu.hide();
-          this.Spinner.hide("user-role-update");
-          this.Snack.show(this.LabelService.SNACK_USER_ROLE_UPDATE);
-        });
-      }, (err)=>{
-        console.log('error on save user role', err);
-        this.Spinner.hide("user-role-update");
-        this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
-      }). catch((err)=>{
-        console.log('error on save user role', err);
-        this.Spinner.hide("user-role-update");
-        this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
-      })
-    }
+  isSelected() {
+    return this.user && +this.user.id === +this.$stateParams.userId &&
+           this.userRole && this.userRole.role === this.$stateParams.role;
   }
 
+  getDisplayName() {
 
-  onEdit ($event) {
+    const {
+      user,
+      userRole,
+      isChannel,
+      UtilsService
+    } = this;
 
-    this.originalUser  = angular.copy(this.user);
-    this.cardItemList.selectItem(this.user);
-    this.showContextual();
-    $event.stopPropagation();
+    const displayName = [user.firstName];
+    if (user.lastName) {
+      displayName.push(user.lastName);
+    }
+
+    if (isChannel) {
+      displayName.push('- ' + UtilsService.getRoleAsString(userRole.role));
+    }
+
+    return displayName.join(' ');
   }
 
   onDelete(){
-    var currentUser = this.UserService.getCurrent();
+
+    const {
+      DialogService,
+      ErrorService,
+      LabelService,
+      gettextCatalog,
+      Spinner,
+      Snack,
+      UserService,
+      StateService,
+    } = this;
+
+    const currentUser = UserService.getCurrent();
     if (this.user.id === currentUser.id) {
-      return this.DialogService.show(this.ErrorService.DELETE_CURRENT_USER.title, this.ErrorService.DELETE_CURRENT_USER.message, [{
-        name: this.gettextCatalog.getString('Got it')
+      return DialogService.show(ErrorService.DELETE_CURRENT_USER.title, ErrorService.DELETE_CURRENT_USER.message, [{
+        name: gettextCatalog.getString('Got it')
       }]);
     }
-    this.DialogService.delete(this.LabelService.TITLE_DELETE_USER, this.LabelService.CONTENT_DELETE_USER)
+
+    const LOADER_KEY = 'user-role-delete';
+
+    DialogService.delete(LabelService.TITLE_DELETE_USER, LabelService.CONTENT_DELETE_USER)
       .then(()=>{
-          this.Spinner.show("user-role-delete");
-          this.venue.removeUser(this.user)
-            .then(()=>{
-              this.cardItemList.onItemDeleted(this.user);
-              if (this.onItemDeleted){
-                this.onItemDeleted({item:this.user});
-              }
-              this.Snack.show(this.LabelService.SNACK_USER_DELETED);
-              this.Spinner.hide("user-role-delete");
-          }, (error)=>{
-            this.Spinner.hide("user-role-delete")
-            this.Snack.showError(this.LabelService.SNACK_USER_DELETED_ERROR);
-          })
-          .catch((err)=>{
-            this.Spinner.hide("user-role-delete")
-            this.Snack.showError(this.LabelService.SNACK_USER_DELETED_ERROR);
-          });
+        Spinner.show(LOADER_KEY);
+        StateService.removeUser(this.user, this.userRole)
+          .then((user)=>{
+            if (this.onItemDeleted) {
+              this.onItemDeleted({user: this.user, userRole: this.userRole});
+            }
+            Snack.show(LabelService.SNACK_USER_DELETED);
+            Spinner.hide(LOADER_KEY);
+        }, (error) => {
+          console.log('UserController [onDelete] - error', error);
+          Spinner.hide(LOADER_KEY)
+          Snack.showError(LabelService.SNACK_USER_DELETED_ERROR);
+        })
+        .catch((err) => {
+          console.log('UserController [onDelete] - catch', err);
+          Spinner.hide(LOADER_KEY)
+          Snack.showError(LabelService.SNACK_USER_DELETED_ERROR);
+        });
       });
   }
 
-  restoreOriginalValues() {
-    if (this.originalUser){
-      angular.extend(this.user, this.originalUser);
-      this.originalUser = false;
-    }
-  }
-
-  contextualMenuCancel() {
-
-    this.restoreOriginalValues();
-    this.user.$selected = false;
-
-    if (this.user && !this.user.id) {
-      this.cardItemList.deleteItem(this.user);
-    }
-  }
-
-  showContextual () {
-    this.contextual.showMenu(this.type, this.user, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
-        doneButtonText: this.LabelService.UPDATE_ROLE_BUTTON
-    });
-  }
-
    /* @ngInject */
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, VenueService, UserService, gettextCatalog) {
+  constructor($q, $stateParams, Spinner, Snack, DialogService, LabelService, ErrorService, StateService, UserService, gettextCatalog, UtilsService) {
     "ngInject";
     this.$q = $q;
-    this.$timeout = $timeout;
+    this.$stateParams = $stateParams;
     this.Spinner = Spinner;
-    this.venue = VenueService.currentVenue;
-    this.Snack = Snack;
-    this.contextualMenu = contextualMenu;
-    this.contextual = contextual;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
     this.UserService = UserService;
     this.gettextCatalog = gettextCatalog;
+    this.UtilsService = UtilsService;
+    this.StateService = StateService;
+    this.Snack = Snack;
+
+    this.isChannel = StateService.isChannel;
     this.type = 'user';
-     if (this.user && !this.user.id) {
-      this.showContextual();
-    }
   }
 }

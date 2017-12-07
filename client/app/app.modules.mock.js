@@ -15,6 +15,7 @@
   'webapp.taxes',
   'webapp.updateExternalMenus',
   'webapp.customTags',
+  'webapp.customers',
 ].forEach(function (item) {
 
   try {

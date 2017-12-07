@@ -1,6 +1,12 @@
 @import '../../../shared/styles/variables';
 @import './contextualMenu.animations.scss';
 
+$toolBarHeight: 64px;
+$dashboardToolbarHeight: 50px;
+$extraBottomSpacing: 90px;
+$contextualTabsHeight: 48px;
+$channelNameHeight: 37px;
+
 .contextual-menu-wrapper{
  .content-spinner{
     md-progress-circular{
@@ -9,15 +15,35 @@
   }
 }
 .contextual-menu {
-  max-height: calc(100vh - 64px - 50px - 5vh); //100% - toolbar - optional dashboard toolbar - extra spacing for bottom padding
+  max-height: calc(100vh - #{$toolBarHeight} - #{$dashboardToolbarHeight} - 5vh); //100% - toolbar - optional dashboard toolbar - extra spacing for bottom padding
   margin:0;
   @include materialRaisedShadow();
   border-radius: 2px;
 
   .form-content{
-    max-height: calc(100vh - 64px - 50px - 90px - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
+    max-height: calc(100vh - #{$toolBarHeight} - #{$dashboardToolbarHeight} - #{$extraBottomSpacing} - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
     overflow-y:auto;
+  }
 
+  &.userInvite-channel, &.user-channel {
+    .form-content {
+      overflow-y: hidden;
+    }
+
+    .userInvite-user-tab-content, .user-tab-content{
+      overflow-y:auto;
+    }
+
+    .userInvite-user-tab-content, .user-tab-content {
+      max-height: calc(100vh - #{$toolBarHeight} - #{$dashboardToolbarHeight} - #{$contextualTabsHeight} - #{$extraBottomSpacing} - 30px );
+    }
+
+    .userInvite-venues-tab-content, .user-venues-tab-content {
+      .channel-entities {
+        overflow-y:auto;
+        max-height: calc(100vh - #{$toolBarHeight} - #{$dashboardToolbarHeight} - #{$contextualTabsHeight} - #{$channelNameHeight} - #{$spacer-x} - #{$extraBottomSpacing} - 30px );
+      }
+    }
   }
 
   md-card-content{
@@ -246,7 +272,7 @@
 
         &+.md-ripple-container {
           &[style] {
-            background-color: rgba(2,136,209, 0.0980392) !important;
+            // background-color: rgba(2,136,209, 0.0980392) !important;
           }
 
           .md-ripple-placed {

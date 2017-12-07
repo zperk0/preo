@@ -1,0 +1,13 @@
+<div class="user-details">
+  <md-input-container class="md-block no-spacer">
+    <div class='user-label'>
+    	<icon>person</icon>
+      {{$user.user.firstName}} {{$user.user.lastName}}
+    </div>
+    <div class='user-label'>
+    	<icon>mail</icon>
+      {{$user.user.email}}
+    </div>
+  </md-input-container>
+  <user-role-select ng-model="$user.userRole.role"></user-role-select>
+</div>

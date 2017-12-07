@@ -68,14 +68,14 @@ export default class contextualDrawerService {
     this.id = id;
 
     this.$rootScope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_DRAWER_OPEN, {id: this.id});
-    this.deferred = this.$q.defer();    
+    this.deferred = this.$q.defer();
 
     this.parentElement = angular.element(document.querySelectorAll("md-sidenav[md-component-id='" + this.id + "']")).parent();
 
     this.$mdSidenav(id)
       .toggle()
       .then(function (argument) {
-        
+
         console.log(arguments);
       }.bind(this));
 
@@ -108,7 +108,9 @@ export default class contextualDrawerService {
     var isEscape = (ev.keyCode === this.$mdConstant.KEY_CODE.ESCAPE);
 
     if (isEscape) {
-      this.cancel();
+      this.cancel({
+        isEscape: isEscape
+      });
     }
   }
 

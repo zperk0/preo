@@ -6,7 +6,7 @@ export default class userCardController {
 
   addCard(newToken){
     this.originalCard = angular.copy(this.card);
-    this.card = {accountId:this.VenueService.account.id, token:newToken}
+    this.card = {accountId:this.StateService.account.id, token:newToken}
     this.showForm=true;
   }
 
@@ -21,7 +21,7 @@ export default class userCardController {
       return;
     }
     this.Spinner.show('user-card');
-    this.VenueService.account.updateCard(this.card)
+    this.StateService.account.updateCard(this.card)
       .then((newCard)=>{
         this.card = newCard;
         this.originalCard = newCard;
@@ -44,12 +44,12 @@ export default class userCardController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, $timeout, VenueService) {
+  constructor(Spinner, Snack, $timeout, StateService) {
   	'ngInject';
 
     this.Spinner = Spinner;
     this.Snack = Snack;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.$timeout = $timeout;
     this.showForm = false;
   }

@@ -1,3 +1,6 @@
+
+$selectedUsersHeight: 24px;
+
 .user-select-list {
 
 	.search-list-container {
@@ -9,14 +12,18 @@
     overflow-y: scroll;
     height: 100%;
     padding-top: 49px;
+
+    &.with-selected {
+      padding-bottom: $selectedUsersHeight;
+    }
   }
 
   .customers-count {
     cursor: pointer;
     position: fixed;
     bottom: 49px;
-    height: 24px;
-    line-height: 24px;
+    height: $selectedUsersHeight;
+    line-height: $selectedUsersHeight;
     background: #0288d1;
     width: 100%;
     color: white;

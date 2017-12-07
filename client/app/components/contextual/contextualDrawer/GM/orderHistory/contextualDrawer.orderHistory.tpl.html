@@ -1,0 +1,25 @@
+<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-order-history md-whiteframe-4dp" md-component-id="orderHistory">
+  <div ng-if="drawerOrderHistoryCtrl.orders && drawerOrderHistoryCtrl.orders.length > 0" class="contextual-header scroll-y">
+    <div class="flex-table">
+      <div class="column id label-sm">{{'Order' | translate}} #</div>
+      <div class="column date label-sm">{{'Date' | translate}}</div>
+      <div class="column time label-sm">{{'Time' | translate}}</div>
+      <icon class="hidden">chevron_right</icon>
+    </div>
+  </div>
+
+  <div class="contextual-list scroll-y" ng-switch="drawerOrderHistoryCtrl.orders && drawerOrderHistoryCtrl.orders.length > 0" ng-class="{empty:!drawerOrderHistoryCtrl.orders || !drawerOrderHistoryCtrl.orders.length}">
+    <order-list ng-switch-when="true" orders="drawerOrderHistoryCtrl.orders"></order-list>
+
+    <div ng-switch-default class="contextual-empty">
+      <img src="/images/emptydrawer.png">
+      <div class="header" translate>There are no orders for this customer.</div>
+    </div>
+  </div>
+
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button ng-click="drawerOrderHistoryCtrl.done()" class="md-raised" translate>
+        Done
+    </md-button>
+  </md-card-actions>
+</md-sidenav>

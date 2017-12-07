@@ -17,9 +17,9 @@ export default function routes($stateProvider) {
         controllerAs: "venueOpeningHoursCtrl"
       }
     },
-    isTakeAway: function ($q, $state, $stateParams, $timeout, authenticated, VenueService) {
+    isTakeAway: function ($q, $state, $stateParams, $timeout, authenticated, StateService) {
 
-      if (VenueService.hasVenueSet() && !VenueService.currentVenue.isEvent()) {
+      if (StateService.venue && !StateService.venue.isEvent()) {
 
         return $q.when();
       } else {

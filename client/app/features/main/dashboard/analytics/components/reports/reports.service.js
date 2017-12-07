@@ -142,6 +142,7 @@ export default class ReportsService {
         colObj.key = head.key;
         colObj.isHidden = head.isHidden ? head.isHidden : false;
         colObj.shouldTruncate = head.shouldTruncate ? head.shouldTruncate : false;
+        colObj.shouldBreak = head.shouldBreak ? head.shouldBreak : false;
 
         switch(colObj.fieldType){
           case "currency":
@@ -327,12 +328,20 @@ export default class ReportsService {
     return pdfObj;
   }
 
+  getEntityBasePath() {
+    const {
+      isChannel
+    } = this.StateService;
+
+    return isChannel ? 'channels' : 'venues';
+  }
+
   getChartExportCsvUrl(){
-    return '/api/venues/'+ this.venueId + '/exports/csv/post';
+    return '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/csv/post';
   }
 
   getChartExportPdfUrl(){
-    return '/api/venues/'+ this.venueId + '/exports/pdfs/post';
+    return '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/pdfs/post';
   }
 
   exportReportToPdf(report, dataSelected){
@@ -342,7 +351,7 @@ export default class ReportsService {
       this.sendGAExportEvent('pdf', report.name);
       let udata = this.prepareDataToPdf(report, dataSelected);
 
-      var exportUrl = '/api/venues/'+ this.venueId + '/exports/pdfs/report';
+      var exportUrl = '/api/' + this.getEntityBasePath() + '/'+ this.entityId + '/exports/pdfs/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
       // ..
@@ -359,7 +368,7 @@ export default class ReportsService {
       this.sendGAExportEvent('csv', report.name);
       let udata = this.prepareDataToCsv(report, dataSelected);
 
-      var exportUrl = '/api/venues/' + this.venueId + '/exports/csv/report';
+      var exportUrl = '/api/' + this.getEntityBasePath() + '/' + this.entityId + '/exports/csv/report';
       // ..
       // TO DO - Create a post method to dont need to Use Form request on Controller.
       // ..
@@ -648,7 +657,7 @@ export default class ReportsService {
   }
 
   // Everytime a search is done, this service keeps the last Param and Data returned.
-  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, VenueService, FeatureService) {
+  constructor($q , ReportTypes, $filter, gettextCatalog, LabelService, $window, StateService, FeatureService) {
     "ngInject";
     this.$q = $q;
     this.$window = $window;
@@ -656,7 +665,8 @@ export default class ReportsService {
     this.ReportTypes = ReportTypes;
     this.gettextCatalog = gettextCatalog;
     this.LabelService = LabelService;
-    this.venueId = VenueService.currentVenue.id;
+    this.StateService = StateService;
+    this.entityId = StateService.entityId;
     this.hasDobFeature = FeatureService.hasDateOfBirthFeature();
   }
 
@@ -843,31 +853,34 @@ export default class ReportsService {
     else if(reportId == 'allPromotions'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
-        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue'), shouldBreak: true},
         {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
-        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+        {key:'paid', text:this.gettextCatalog.getString('Paid'), fieldType: 'currency'},
       ];
     }
     else if(reportId == 'individualActivePromotions'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
-        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue'), shouldBreak: true},
         {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
-        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+        {key:'paid', text:this.gettextCatalog.getString('Paid'), fieldType: 'currency'},
       ];
     }
     else if(reportId == 'individualHistoricPromotions'){
       response = [
         {key:'name' ,text:this.gettextCatalog.getString('Name')},
-        {key:'venueName', text:this.gettextCatalog.getString('Venue')},
+        {key:'venueName', text:this.gettextCatalog.getString('Venue'), shouldBreak: true},
         {key:'time', text:this.gettextCatalog.getString('Time'), fieldType: 'timeOfDay'},
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
-        {key:'customerName', text:this.gettextCatalog.getString('Customer')},
+        {key:'customerName', text:this.gettextCatalog.getString('Customer'), shouldBreak: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
+        {key:'paid', text:this.gettextCatalog.getString('Paid'), fieldType: 'currency'},
       ];
     }
 
@@ -944,7 +957,7 @@ export default class ReportsService {
       ];
     }
     else if(type == this.ReportTypes.UNREGISTERED_CUSTOMERS){
-      
+
       response = [
         {id: 'unregisteredCustomers', name:this.gettextCatalog.getString('Customers with no email address'), reportType: this.ReportTypes.UNREGISTERED_CUSTOMERS, actions: actionNotify}
       ];

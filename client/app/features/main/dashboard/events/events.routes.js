@@ -17,9 +17,9 @@ export default function routes($stateProvider, Permissions) {
     resolve: {
 
     	// authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
-    	isEvent: function ($q, $state, $stateParams, $timeout, authenticated, VenueService) {
+    	isEvent: function ($q, $state, $stateParams, $timeout, authenticated, StateService) {
 
-    		if (VenueService.hasVenueSet() && VenueService.currentVenue.isEvent()) {
+    		if (StateService.venue && StateService.venue.isEvent()) {
 
     			return $q.when();
     		} else {

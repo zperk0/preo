@@ -16,22 +16,32 @@ export default class signinController {
     this.Spinner.show("signin")
   }
 
+  redirectSignUp() {
+    this.hideSpinner();
+
+    this.$state.go('auth.signup', {
+     inviteKey: this.$stateParams.inviteKey
+    }, {
+      location: 'replace'
+    });
+  }
+
   handleSuccess(){
 
-    this.VenueService.selectVenue()
-      .then((venues) => {
-        console.log("venue selected",  venues)
-        if (venues && venues.length){
+    this.StateService.start()
+      .then(() => {
+        // console.log("venue selected",  venues)
+        // if (venues && venues.length){
           this.hideSpinner(2000);
-          this.$state.go('main.dashboard', {}, {
-            location: 'replace'
-          });
-        } else {
-          console.log("doing signout")
-          Preoday.User.signout();
+          // this.$state.go('main.dashboard', {}, {
+          //   location: 'replace'
+          // });
+        // } else {
+        //   console.log("doing signout")
+        //   Preoday.User.signout();
 
-          this.handleError()
-        }
+        //   this.handleError()
+        // }
       }, () => {
         console.log("handle error error")
         this.handleError()
@@ -176,7 +186,7 @@ export default class signinController {
     window.location.reload();
   }
 
-  constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, VenueService, gettextCatalog, UserInviteService, DialogService, ErrorService) {
+  constructor($state, $stateParams, UserService, Spinner, Snack, $timeout, LabelService, StateService, gettextCatalog, UserInviteService, DialogService, ErrorService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -185,7 +195,7 @@ export default class signinController {
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.UserService = UserService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.gettextCatalog = gettextCatalog;
     this.UserInviteService = UserInviteService;
     this.DialogService = DialogService;

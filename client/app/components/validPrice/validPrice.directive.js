@@ -1,5 +1,5 @@
 
-export default function validPrice($timeout, $filter, $compile, VenueService){
+export default function validPrice($timeout, $filter, $compile, StateService){
   "ngInject";
 
   var accounting = require("accounting");
@@ -25,7 +25,7 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
 
         var el = element[0];
 
-        var config = VenueService.getVenuePriceConfig();
+        var config = StateService.getPriceConfig();
         var numberVal = accounting.unformat(val, config.decimal);
 
         var valString = String(val || '');

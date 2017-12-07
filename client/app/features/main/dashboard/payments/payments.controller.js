@@ -127,25 +127,25 @@ export default class paymentsController {
   }
 
   buildProvider(type, visibleFlag) {
-      return { 
-        type: type,
-        visible: visibleFlag
-      };
+    return {
+      type: type,
+      visible: visibleFlag
+    };
   }
 
-  updateVenue() {
-     if (this.cash.visible === 0 && !this.canTurnOffMethod()){
+  updateVenue(){
+      if (this.cash.visible === 0 && !this.canTurnOffMethod()){
         this.cash.visible = 1;
         return;
       }
 
       this.Spinner.show("venue-payments-save");
 
-      var provider = this.buildProvider(this.PaymentType.CASH, this.cash.visible);
-
       try {
-        this.venue.updatePaymentProvider(provider)
-          .then((venue) => {
+        var provider = this.buildProvider(this.PaymentType.CASH, this.cash.visible);
+
+        this.StateService.venue.updatePaymentProvider(provider)
+         .then((venue) => {
             angular.extend(this.venue,venue);
             this.Spinner.hide("venue-payments-save");
             this.Snack.show(this.LabelService.SNACK_VENUE_PAYMENTS_SUCCESS)
@@ -188,7 +188,7 @@ export default class paymentsController {
 
   onInit() {
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue;
+    this.venue = this.StateService.venue;
     Preoday.PaymentProvider.getStripeConnectLink(this.venue.id, this.stripeRedirectUri)
       .then((stripeLink)=>{
         this.stripeLink = stripeLink;
@@ -222,15 +222,18 @@ export default class paymentsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, ErrorService, LabelService, DialogService, $scope, $window, $timeout, VenueService, PaymentType) {
-    'ngInject';
+  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, $scope, $window,PaymentType, DialogService, $timeout, StateService) {
+    "ngInject";
+    this.isEdit = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
-    this.VenueService = VenueService;
+    this.StateService = StateService;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.$window = $window;
+    this.PaymentType = PaymentType;
+    this.isError = false;
     this.$timeout = $timeout;
     this.stripeLink = 'https://stripe.com';
     this.stripeStorageKey = 'STRIPE_REDIRECT';

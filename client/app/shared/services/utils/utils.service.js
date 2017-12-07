@@ -107,6 +107,15 @@ export default class UtilsService {
     }];
   }
 
+  getRoleAsString(role) {
+    return {
+      ADMIN: this.gettextCatalog.getString("Administrator"),
+      MANAGER: this.gettextCatalog.getString("Manager"),
+      STAFF: this.gettextCatalog.getString("Staff Member"),
+      OPERATOR: this.gettextCatalog.getString("Operator")
+    }[role] || role;
+  }
+
   setLocale (locale) {
 
     if(locale) {
@@ -126,17 +135,17 @@ export default class UtilsService {
     this.ErrorService.setStrings();
   }
 
-  updateLocale () {
+  updateLocale (locale) {
 
     let UserService = this.$injector.get('UserService');
-    let VenueService = this.$injector.get('VenueService');
+    let StateService = this.$injector.get('StateService');
 
     if (UserService.isLogged() && UserService.getCurrent().locale) {
       return this.setLocale(UserService.getCurrent().locale);
     }
 
-    if (VenueService.hasVenueSet()) {
-      return this.setLocale(VenueService.currentVenue.locale);
+    if (StateService.venue) {
+      return this.setLocale(StateService.venue.locale);
     }
 
     return this.setLocale();
@@ -155,12 +164,15 @@ export default class UtilsService {
     },false);
   }
 
+  getHost() { return window.location.protocol + "//" + window.location.host; }
+
+
   constructor($q, gettextCatalog, $injector, ErrorService) {
     "ngInject";
 
     this.$q = $q;
     this.gettextCatalog = gettextCatalog;
-    this.ErrorService = ErrorService;
     this.$injector = $injector;
+    this.ErrorService = ErrorService;
   }
 }

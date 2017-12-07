@@ -5,6 +5,7 @@ import './contextualMenu.scss';
 // Import internal modules
 import controller from './contextualMenu.controller';
 import service from './contextualMenu.service';
+import contextualMenuValidation from './contextualMenuValidation.service';
 import directive from './contextualMenu.directive';
 import holderDirective from './contextualMenuHolder.directive';
 
@@ -27,6 +28,9 @@ import promotionComponents from './components/promotionComponents';
 import tagActionBasic from './components/tagActionBasic';
 import tagActionAdvanced from './components/tagActionAdvanced';
 import tagSelect from './components/tagSelect';
+import inviteDetails from './components/inviteDetails';
+import userDetails from './components/userDetails';
+import entitySelect from './components/entitySelect';
 
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
@@ -65,11 +69,15 @@ export default angular.module("contextualMenu" , [
 	tagActionBasic,
 	tagActionAdvanced,
 	tagSelect,
+	inviteDetails,
+	userDetails,
+	entitySelect,
 	venueCurrency
 ])
 
   .controller(controller.UID, controller)
   .service(service.UID, service)
+  .service(contextualMenuValidation.UID, contextualMenuValidation)
   .directive("contextualMenu", directive)
   .directive("contextualMenuHolder", holderDirective)
   .name;
