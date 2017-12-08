@@ -170,7 +170,6 @@ export default class analyticsCustomersController {
   getReportTypes(){
 
     var types = [this.ReportTypes.PAYINGCUSTOMERS,this.ReportTypes.NEWCUSTOMERS,this.ReportTypes.CUSTOMERS, this.ReportTypes.NEWAREADELIVERY];
-    debugger;
     if (this.StateService.isOperator()) {
       types.push(this.ReportTypes.UNREGISTERED_CUSTOMERS);
     }
