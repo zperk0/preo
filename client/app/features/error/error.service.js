@@ -107,7 +107,7 @@ export default class ErrorService {
     this.EMPTY_ADD_USER_PROMO = {code: 'EMPTY_ADD_USER_PROMO', message:this.gettextCatalog.getString('You must select one or more users to apply the promotion.'), title:this.gettextCatalog.getString('No users selected')};
 
     // CHANNEL ENTITIES
-    this.CHANNEL_ENTITIES_REQUIRED = {code: 'CHANNEL_ENTITIES_REQUIRED', message:this.gettextCatalog.getString('You must select at least one venue, group or channel to continue.'), title:this.gettextCatalog.getString('No venues, groups or channels selected')};
+    this.CHANNEL_ENTITIES_REQUIRED = {code: 'CHANNEL_ENTITIES_REQUIRED', message:this.gettextCatalog.getString('You must select at least one venue, group or channel to continue.'), title:this.gettextCatalog.getString('No venues selected')};
 
     // OPERATOR
     this.REQUIRED_CHANNEL_OPERATOR_URL = {code: 'REQUIRED_CHANNEL_OPERATOR_URL', message: this.gettextCatalog.getString('This app is not configured to place an order. Please contact the support team.')};
