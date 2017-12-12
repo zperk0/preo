@@ -370,6 +370,14 @@ md-autocomplete {
       color: rgba(0, 0, 0, 0.26) !important;
     }
   }
+
+  &.no-spacer {
+    md-input-container {
+      .md-errors-spacer {
+        display: none;
+      }
+    }
+  }
 }
 
 .preo-ng-messages {

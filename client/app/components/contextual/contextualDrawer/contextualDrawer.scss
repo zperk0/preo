@@ -1,5 +1,13 @@
 @import '../../../shared/styles/variables';
 
+.form-label-style {
+  margin-bottom: 8px;
+}
+
+.form-label-style-focused {
+  margin-bottom: 4px;
+}
+
 .contextual-drawer {
   width:657px;
   max-width: 657px;
@@ -15,6 +23,32 @@
 
       label {
         margin-bottom: 10px;
+
+        &.form-label {
+          @extend .form-label-style;
+        }
+      }
+
+      &.md-input-has-value, &.md-input-focused {
+        label {
+          &.form-label {
+            @extend .form-label-style-focused;
+          }
+        }
+      }
+    }
+
+    .md-autocomplete-form-label {
+      md-input-container {
+        label {
+          @extend .form-label-style;
+        }
+
+        &.md-input-has-value, &.md-input-focused {
+          label {
+            @extend .form-label-style-focused;
+          }
+        }
       }
     }
   }

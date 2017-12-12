@@ -8,6 +8,7 @@
           md-search-text="drawerCustomerNotesNewCtrl.searchText"
           md-items="order in drawerCustomerNotesNewCtrl.querySearch(drawerCustomerNotesNewCtrl.searchText)"
           md-item-text="order.id"
+          class="no-spacer md-autocomplete-form-label"
           md-selected-item-change="drawerCustomerNotesNewCtrl.onOrderIdChange(order)"
           md-floating-label="{{'Order number' | translate}}"
           ng-model-options="{debounce: 300}">
@@ -18,8 +19,8 @@
             <div ng-message="md-require-match" translate>Please select an existing order.</div>
           </div>
         </md-autocomplete>
-        <md-input-container>
-          <label translate>Type customer note here...</label>
+        <md-input-container class="no-spacer">
+          <label translate class="form-label">Type customer note here...</label>
           <textarea flex name="noteMessage" required ng-model="drawerCustomerNotesNewCtrl.note.message" md-maxlength="2048"></textarea>
           <div ng-messages="drawerCustomerNotesNewCtrl.newNoteForm.noteMessage.$error">
             <div ng-message="required" translate>This is required.</div>
