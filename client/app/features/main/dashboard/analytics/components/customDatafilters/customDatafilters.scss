@@ -3,7 +3,7 @@
 
 	md-select{
 		height: 48px;
-  }	
+  }
 
    &.main-content-full {
     flex-flow: row wrap;
@@ -13,29 +13,29 @@
       &.full-card {
         flex: 1 100%;
       }
-    }    
+    }
   }
-	
+
 	md-card-content{
-    
+
 		&:not(:last-of-type){
 			padding-bottom: 0;
 		}
-		> md-input-container{		
+		> md-input-container{
 		  margin:  0;
 			&:not(:first-of-type):not(.md-checkbox-market){
 				margin-left: 15px;
-			}	
-				
+			}
+
 			label{
 				top: 0;
 			}
-		}	
+		}
 	}
- 	
+
 	.md-checkbox-market md-checkbox{
 		margin-bottom: 0;
-		margin-top: 16px;	 
+		margin-top: 16px;
 	}
 
   .item-filter{
@@ -55,7 +55,7 @@
     outline: none;
     height: 100%;
     width: 100%;
-    padding: 0; 
+    padding: 0;
   }
   .eventselect label{
     font-size: 9px;
@@ -77,18 +77,54 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: auto; 
+    width: auto;
   }
   .eventselect md-content._md {
-    max-height: 240px; 
+    max-height: 240px;
   }
 
 .md-customfix-container{
 
   /* Overwrite Angular Materials < 1.1.1 Bug with select-menu */
-	md-select-menu .md-checkbox-enabled.md-default-theme[selected] .md-icon:after ,
-	md-select-menu .md-checkbox-enabled[selected] .md-icon:after {
-		border-color: white;
+	md-select-menu .md-checkbox-enabled {
+    &.md-default-theme {
+      &[selected], &.is-selected {
+        .md-icon:after {
+          border-color: white;
+        }
+      }
+    }
+  }
+
+	md-select-menu {
+    .md-checkbox-enabled {
+      &[selected], &.is-selected {
+        color: rgba(0, 0, 0, 0.87);
+        background-color: #eeeeee;
+
+        .md-icon {
+          border: none;
+
+          &:after {
+            border-color: white;
+            box-sizing: border-box;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+            left: 6.67px;
+            top: 2.22px;
+            display: table;
+            width: 6.67px;
+            height: 13.33px;
+            border-width: 2px;
+            border-style: solid;
+            border-top: 0;
+            border-left: 0;
+            content: '';
+          }
+        }
+      }
+    }
 	}
 
 	md-select-menu[multiple] md-option.md-checkbox-enabled {
@@ -97,12 +133,17 @@
 		}
 
 		&.childmargin .md-text{
-			padding-left: 25px;			
+			padding-left: 25px;
 		}
 	}
 
-	md-select-menu .md-checkbox-enabled[selected] .md-icon{
-		background-color: #0288D1;
-	}	
-	
+	md-select-menu {
+    .md-checkbox-enabled {
+      &[selected], &.is-selected {
+        .md-icon {
+          background-color: #0288D1;
+        }
+      }
+    }
+	}
 }

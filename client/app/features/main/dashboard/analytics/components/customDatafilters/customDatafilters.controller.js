@@ -227,6 +227,8 @@ export default class customDatafiltersController {
 
   onVenueClose(){
 
+    console.log('CustomDataFilters [onVenueClose]');
+
     if(!this.checkIfVenueChanged())
       return;
 
@@ -308,6 +310,8 @@ export default class customDatafiltersController {
   onVenueChange(){
 
     var filteredVenues = angular.copy(this.selectedVenues);
+
+    console.log('CustomDataFilters [onVenueChange] - filteredVenues', filteredVenues);
 
     // get venues Checked on last onChange callback TO compare with new values coming
     var venuesRootOld = this.selectedVenuesOld.filter((x) => {
@@ -504,11 +508,11 @@ export default class customDatafiltersController {
   }
 
   onPromotionChange(){
-    
+
     this.debounceUpdate('Promotion');
   }
 
-  compareObjectVenue(obj1, obj2){
+  compareObjectVenue(obj1, obj2) {
 
     if(obj1.group > obj2.group)
         return 1;
@@ -636,8 +640,8 @@ export default class customDatafiltersController {
 
       let venues = this.filters.venues || [],
           params = {
-            venueIds: venues.map(v => v.id).join(','), 
-            deleted: deletedOnly 
+            venueIds: venues.map(v => v.id).join(','),
+            deleted: deletedOnly
           },
           oldPromotion = null;
 
@@ -683,6 +687,31 @@ export default class customDatafiltersController {
     return this.StateService.fetchVenues('outlets', [this.Permissions.ANALYTICS]);
   }
 
+  onSelectAll($event) {
+    console.log('CustomDataFilters [onSelectAll]');
+
+    $event.stopPropagation();
+
+    let selected = true;
+
+    // uncomment this if we allow unselect all logic
+    // if (this.isAllSelected()) {
+    //   selected = false;
+    // }
+
+    this.scope.$applyAsync(() => {
+      this.venues.forEach((v) => {
+        v.selected = selected;
+      });
+
+      this.selectedVenues = selected ? angular.copy(this.venues) : [];
+
+      this.onVenueChange();
+    });
+  }
+
+  isAllSelected() { return this.venues.length === this.selectedVenues.length; }
+
 // To make Venues and Outlets selectable on the same MD-SELECT, the same array will contain venues + outlets
 // Fields: group -> to keep venues and it owns outlets grouped
 //         type -> to know which object in array is an outlet / venue
@@ -693,6 +722,7 @@ export default class customDatafiltersController {
     const venues = data.venues;
     const {
       StateService,
+      gettextCatalog,
     } = this;
 
 

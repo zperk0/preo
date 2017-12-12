@@ -6,16 +6,27 @@
       </md-card-title-text>
     </md-card-title>
     <md-card-content layout="row">
-    
+
       <md-input-container flex="50" layout-wrap class="select-venue">
         <label>{{'Venue' | translate }}</label>
-        <md-select ng-model="vm.selectedVenues" ng-model-options="{trackBy: '$value.uniqueId'}" multiple md-selected-text="vm.getSelectedVenuesNames()" md-container-class="md-customfix-container venueselect" ng-change="vm.onVenueChange()" md-on-open="vm.onOpenVenue()" md-on-close="vm.onVenueClose()" >
+        <md-select ng-model="vm.selectedVenues"
+                   ng-model-options="{trackBy: '$value.uniqueId'}"
+                   multiple
+                   md-selected-text="vm.getSelectedVenuesNames()"
+                   md-container-class="md-customfix-container venueselect"
+                   ng-change="vm.onVenueChange()"
+                   md-on-open="vm.onOpenVenue()"
+                   md-on-close="vm.onVenueClose()" >
+          <md-option ng-click="vm.onSelectAll($event)"
+                     ng-class="{'is-selected': vm.isAllSelected()}">
+            {{ 'Select All' | translate }}
+          </md-option>
           <md-option md-truncate ng-repeat="venue in vm.venues" ng-class="{'childmargin': (venue.type === 'outlet')}" ng-value="venue" ng-if="venue.display">
             {{ venue.name }}
           </md-option>
         </md-select>
       </md-input-container>
-      
+
       <md-input-container flex ng-if="vm.shouldShowDaterange">
         <label>{{'Date range' | translate }}</label>
         <md-select ng-model="vm.selectedDaterange" ng-model-options="{trackBy: '$value.id'}" ng-change="vm.onDaterangeChange()">
@@ -32,7 +43,7 @@
                        type="text"
                        placeholder="Search for an event..."
                        class="eventselect-searchbox md-text" ng-keyup="vm.eventSearchUp()" ng-keydown="vm.eventSearchDown($event)">
-                <label>{{'** Showing the next 100 events available. Events not displayed can be searched using field above.' | translate }}</label>               
+                <label>{{'** Showing the next 100 events available. Events not displayed can be searched using field above.' | translate }}</label>
           </md-select-header>
           <div flex class="no-events" ng-show="vm.noEventsFound"><span> {{'No results found...' | translate}} </span></div>
           <md-optgroup>
@@ -42,7 +53,7 @@
           </md-optgroup>
         </md-select>
       </md-input-container>
-      
+
       <div flex="30" ng-if="vm.shouldShowCustomDate">
         <custom-date-picker dates-range="vm.datesRange" options="vm.datesRangeOptions"> </custom-date-picker>
       </div>
