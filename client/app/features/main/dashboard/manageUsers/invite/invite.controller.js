@@ -130,11 +130,17 @@ export default class manageInviteController {
       this.onSuccessCallback = this.onSuccessForChannel.bind(this);
 
       if (!this.invite.id || !this.invite.accepted) {
-        this.params.onBeforeSuccess = function() {
+        this.params.onBeforeSubmit = function() {
           // The 'this' here is the ContextualMenuController.
           // because there we are calling this.params.onBeforeSuccess.call(this); and it is changing the function scope
+
+          if (this.contextualForm.$invalid) {
+            this.contextualForm.submitted = true;
+            return this.$scope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED);
+          }
+
           if (this.contextualForm.selectedTabIndex === 1) {
-            return this._complete();
+            return this.onSubmit();
           }
 
           this.contextualForm.selectedTabIndex = 1;

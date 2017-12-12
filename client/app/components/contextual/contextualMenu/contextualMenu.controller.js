@@ -15,6 +15,17 @@ export default class contextualMenuController {
   }
 
   doSubmit(){
+    if (this.params && typeof this.params.onBeforeSubmit === 'function') {
+      this.params.onBeforeSubmit.call(this);
+    } else {
+      this.onSubmit();
+    }
+  }
+
+  onSubmit() {
+    // we are using a custom submitted flag because we has pre-submit functions,
+    // and we don't want to set the $submitted flag to true when call the onBeforeSubmit function
+    this.contextualForm.submitted = true;
     if (this.contextualForm.$valid) {
 
       if (this.params && typeof this.params.onBeforeSuccess === 'function') {

@@ -9,7 +9,7 @@ export default class ContextualMenuValidationService {
   hasSlotBasicTabErrors (contextualForm, entity) {
 
     return  contextualForm
-            && contextualForm.$submitted
+            && contextualForm.submitted
             &&
             (
               contextualForm.entityName.$invalid
@@ -23,7 +23,7 @@ export default class ContextualMenuValidationService {
   hasSlotAdvancedTabErrors (contextualForm, entity) {
 
     return  contextualForm
-            && contextualForm.$submitted
+            && contextualForm.submitted
             &&
             (
               contextualForm.entityStart.$invalid
@@ -35,7 +35,7 @@ export default class ContextualMenuValidationService {
   hasUserTabErrors (contextualForm, entity) {
 
     return  contextualForm
-            && contextualForm.$submitted
+            && contextualForm.submitted
             &&
             (
               contextualForm.entityName.$invalid
@@ -47,7 +47,7 @@ export default class ContextualMenuValidationService {
   hasUserVenuesTabErrors (contextualForm, entity) {
 
     const hasError = contextualForm
-            && contextualForm.$submitted
+            && contextualForm.submitted
             &&
             (
               !entity.venueIds.length &&
