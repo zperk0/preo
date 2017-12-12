@@ -783,6 +783,7 @@ export default class customDatafiltersController {
 
     });
 
+    this.shouldShowSelectAllOption = venues.length > 1;
     this.venues.sort(this.compareObjectVenue);
     return this.getVenuesApplications(venuesIds);
   }

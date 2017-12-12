@@ -18,6 +18,7 @@
                    md-on-open="vm.onOpenVenue()"
                    md-on-close="vm.onVenueClose()" >
           <md-option ng-click="vm.onSelectAll($event)"
+                     ng-if="vm.shouldShowSelectAllOption"
                      ng-class="{'is-selected': vm.isAllSelected()}">
             {{ 'Select All' | translate }}
           </md-option>
