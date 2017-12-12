@@ -174,9 +174,11 @@
       }
 
       .contextual-empty {
-        position: static;
-        margin: auto;
-        align-self: center;
+        top: 65px;
+
+        .content {
+          line-height: 1.23;
+        }
       }
     }
   }

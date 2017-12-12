@@ -8,8 +8,11 @@
 
     <div ng-switch-default class="contextual-empty">
       <img class="empty-icon" src="/images/notes.svg">
-      <div class="header" translate>There are no notes for this customer.</div>
-      <div class="content" translate>Click the button above to add a new note</div>
+      <div class="content">
+        {{ 'There are no notes for this customer.' | translate }}
+        <br />
+        {{ 'Click the button above to add a new note' | translate }}
+      </div>
     </div>
   </div>
 
