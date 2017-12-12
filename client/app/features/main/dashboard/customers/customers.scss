@@ -1,6 +1,8 @@
 
 @import "client/app/shared/styles/variables";
 
+$noResultsIconSize: 68px;
+
 .customers {
 	width: 100%;
 
@@ -28,7 +30,7 @@
 
 	.no-results {
 		text-align: center;
-		padding-top: $spacer-x * 2.5;
+		padding-top: 133px;
 
 		&-left {
 			padding-top: $spacer-x;
@@ -40,8 +42,8 @@
 			svg {
 				color: $greyDefault;
 				fill: $greyDefault;
-				width: 150px;
-				height: 150px;
+				width: $noResultsIconSize;
+				height: $noResultsIconSize;
 
 				g, path {
 					color: $greyDefault;
@@ -51,9 +53,9 @@
 		}
 
 		&__text {
-	    font-size: 15px;
-	    color: rgba(0, 0, 0, 0.87);
-	    margin-top: 1.5rem;
+	    font-size: 13px;
+	    color: $greyDefault;
+	    margin-top: 21px;
 	    line-height: 1.2;
 		}
 	}
