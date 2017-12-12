@@ -1,21 +1,28 @@
 
 @import "client/app/shared/styles/variables";
 
+$placeholderWidth: 250px;
+
+$placeholderTextFontSize: 13px;
+$placeholderTextMarginTop: 14px;
+
+$placeholderLinkMarginTop: 47px;
+
 .customers-placeholder {
 	flex: 1;
 	text-align: center;
-	max-width: 300px;
+	max-width: $placeholderWidth;
 	margin: 0 auto;
 	padding-top: 8.375rem;
 
 	&__text {
-		font-size: 13px;
+		font-size: $placeholderTextFontSize;
 		line-height: 1.23;
 		color: $greyDefault;
-		margin-top: 14px;
+		margin-top: $placeholderTextMarginTop;
+	}
 
-		a {
-			color: $linkColor;
-		}
+	&__link {
+		margin-top: $placeholderLinkMarginTop !important;
 	}
 }
