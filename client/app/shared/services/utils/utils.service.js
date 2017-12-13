@@ -104,6 +104,9 @@ export default class UtilsService {
     },{
       name: this.gettextCatalog.getString('Swedish'),
       value: 'sv-SE'
+    },{
+      name: this.gettextCatalog.getString('Portuguese'),
+      value: 'pt-BR'
     }];
   }
 
@@ -133,6 +136,15 @@ export default class UtilsService {
       moment.locale('en-gb');
     }
     this.ErrorService.setStrings();
+    this.translateStrings();
+  }
+
+  translateStrings() {
+    this.$mdpTimePicker.setOKButtonLabel(this.gettextCatalog.getString('OK'));
+    this.$mdpTimePicker.setCancelButtonLabel(this.gettextCatalog.getString('Cancel'));
+
+    this.$mdpDatePicker.setOKButtonLabel(this.gettextCatalog.getString('OK'));
+    this.$mdpDatePicker.setCancelButtonLabel(this.gettextCatalog.getString('Cancel'));
   }
 
   updateLocale (locale) {
@@ -167,12 +179,14 @@ export default class UtilsService {
   getHost() { return window.location.protocol + "//" + window.location.host; }
 
 
-  constructor($q, gettextCatalog, $injector, ErrorService) {
+  constructor($q, gettextCatalog, $injector, ErrorService, $mdpTimePicker, $mdpDatePicker) {
     "ngInject";
 
     this.$q = $q;
     this.gettextCatalog = gettextCatalog;
     this.$injector = $injector;
     this.ErrorService = ErrorService;
+    this.$mdpTimePicker = $mdpTimePicker;
+    this.$mdpDatePicker = $mdpDatePicker;
   }
 }

@@ -31,6 +31,7 @@ require('moment/locale/sv.js');
 require('moment/locale/fr.js');
 require('moment/locale/de.js');
 require('moment/locale/es.js');
+require('moment/locale/pt.js');
 
 export default angular.module('webapp.vendors', [
     'ui.router',
