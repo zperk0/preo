@@ -43,12 +43,12 @@ export default class menuCardItemController {
           this.onItemCreated({item:newMenu});
         }
         this.Spinner.hide("menu-clone")
-        this.Snack.show('Menu created');
+        this.Snack.show(this.gettextCatalog.getString('Menu created'));
         this.contextualMenu.hide();
       }, (err)=>{
         console.log("failed duplicating menu", err)
         this.Spinner.hide("menu-clone")
-        this.Snack.showError('Menu duplicated');
+        this.Snack.showError(this.gettextCatalog.getString('Menu duplicated'));
       })
       $event.stopPropagation();
   }
@@ -68,12 +68,12 @@ export default class menuCardItemController {
           this.onItemCreated({item:newMenu});
         }
         this.Spinner.hide("menu-create")
-        this.Snack.show('Menu created');
+        this.Snack.show(this.gettextCatalog.getString('Menu created'));
         this.contextualMenu.hide();
       }, (err)=>{
         console.log("failed creating menu", err)
         this.Spinner.hide("menu-create")
-        this.Snack.showError('Menu not created');
+        this.Snack.showError(this.gettextCatalog.getString('Menu not created'));
       })
   }
 
@@ -83,13 +83,13 @@ export default class menuCardItemController {
       .then((updatedMenu)=>{
         this.restoreValues(updatedMenu);
         this.menu.$selected =false;
-        this.Snack.show('Menu saved');
+        this.Snack.show(this.gettextCatalog.getString('Menu saved'));
         this.Spinner.hide("menu-updated")
         this.contextualMenu.hide();
       })
       .catch((err)=>{
         console.log("error", err)
-        this.Snack.showError('Menu not saved');
+        this.Snack.showError(this.gettextCatalog.getString('Menu not saved'));
         this.Spinner.hide("menu-updated")
       })
   }
@@ -106,23 +106,23 @@ export default class menuCardItemController {
               if (this.onItemDeleted){
                 this.onItemDeleted({item:this.menu});
               }
-              this.Snack.show('Menu deleted');
+              this.Snack.show(this.gettextCatalog.getString('Menu deleted'));
               this.Spinner.hide("menu-delete");
           })
           .catch((err)=>{
             this.Spinner.hide("menu-delete")
 
             if (err && err instanceof Object && err.message.indexOf('outlet') !== -1) {
-              this.Snack.showError('An outlet is using this menu. You need remove it before');
+              this.Snack.showError(this.gettextCatalog.getString('An outlet is using this menu. You need remove it before'));
             } else {
-              this.Snack.showError('Menu not deleted');
+              this.Snack.showError(this.gettextCatalog.getString('Menu not deleted'));
             }
           });
       });
       $event.stopPropagation();
   }
 
-  constructor($scope, LabelService, DialogService, Spinner, contextual, contextualMenu, $stateParams, Snack, $timeout) {
+  constructor($scope, LabelService, DialogService, Spinner, contextual, contextualMenu, $stateParams, Snack, $timeout, gettextCatalog) {
     "ngInject";
     this.DialogService=DialogService;
     this.LabelService=LabelService;
@@ -131,6 +131,7 @@ export default class menuCardItemController {
     this.contextual=contextual;
     this.contextualMenu=contextualMenu;
     this.Snack=Snack;
+    this.gettextCatalog = gettextCatalog;
     this.type="menu";
 
     if (this.menu && !this.menu.id) {

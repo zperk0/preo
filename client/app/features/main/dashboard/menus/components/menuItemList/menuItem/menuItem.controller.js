@@ -7,7 +7,7 @@ export default class menuItemController {
 
     //item has modifier?
     if (this.ModifierService.isModifiersDuplicated($modifiers, this.item)){
-      return this.Snack.showError("One or more modifiers already in item");
+      return this.Snack.showError(this.gettextCatalog.getString("One or more modifiers already in item"));
     }
 
     if (this.section && this.section.modifiers && this.section.modifiers.length) {
@@ -41,7 +41,7 @@ export default class menuItemController {
 
         this.ItemService.addModifiersToItem(this.item.id, modifiers);
 
-        this.Snack.show("Added modifiers to item");
+        this.Snack.show(this.gettextCatalog.getString("Added modifiers to item"));
 
         this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_UPDATED, this.item);
       })
@@ -52,7 +52,7 @@ export default class menuItemController {
     }
 
     if (this.item.isVoucher()){
-      return this.Snack.showError("You cannot add a modifier to a voucher");
+      return this.Snack.showError(this.gettextCatalog.getString("You cannot add a modifier to a voucher"));
     }
 
     return this.checkMultipleOccurrences(this.item)
@@ -74,7 +74,7 @@ export default class menuItemController {
     })
     .catch((err)=>{
        console.log("error", err);
-        this.Snack.showError("Error adding modifiers to item");
+        this.Snack.showError(this.gettextCatalog.getString("Error adding modifiers to item"));
     })
   }
 
@@ -103,7 +103,7 @@ export default class menuItemController {
           let imageIndex = this.item.images.indexOf(image);
           this.item.images.splice(imageIndex, 1);
           this.originalItem.images.splice(imageIndex, 1);
-          this.Snack.show('Image deleted');
+          this.Snack.show(this.gettextCatalog.getString('Image deleted'));
           this.Spinner.hide("item-image-delete");
 
           this.$rootScope.$broadcast(this.BroadcastEvents.ON_ITEM_UPDATED, this.item);
@@ -111,7 +111,7 @@ export default class menuItemController {
         .catch((err)=>{
           console.log("Failed deleting item image", err)
           this.Spinner.hide("item-image-delete")
-          this.Snack.showError('Image not deleted');
+          this.Snack.showError(this.gettextCatalog.getString('Image not deleted'));
         })
       });
   }
@@ -132,7 +132,7 @@ export default class menuItemController {
         this.cardItemList.selectItem();
       })
       .catch(()=>{
-          this.Snack.showError('Item visibility not changed');
+          this.Snack.showError(this.gettextCatalog.getString('Item visibility not changed'));
       })
   }
 
@@ -163,11 +163,11 @@ export default class menuItemController {
 
         this.watchModifiers();
         this.Spinner.hide("item-create")
-        this.Snack.show('Item created');
+        this.Snack.show(this.gettextCatalog.getString('Item created'));
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-create")
-        this.Snack.showError('Failed creating item');
+        this.Snack.showError(this.gettextCatalog.getString('Failed creating item'));
       })
       .catch((err) => {
 
@@ -206,7 +206,7 @@ export default class menuItemController {
     })
     .then(()=>{
         this.Spinner.hide("item-updated")
-        this.Snack.show('Item updated');
+        this.Snack.show(this.gettextCatalog.getString('Item updated'));
         this.contextualMenu.hide();
         this.cardItemList.onItemUpdated(this.item);
         if (this.onItemUpdated){
@@ -215,7 +215,7 @@ export default class menuItemController {
     }, (err)=>{
       console.log("Failed updating item", err)
       this.Spinner.hide("item-updated")
-      this.Snack.showError('Item not updated');
+      this.Snack.showError(this.gettextCatalog.getString('Item not updated'));
     })
   }
 
@@ -314,13 +314,13 @@ export default class menuItemController {
               if (this.onItemDeleted){
                 this.onItemDeleted({item:this.item});
               }
-              this.Snack.show('Item deleted');
+              this.Snack.show(this.gettextCatalog.getString('Item deleted'));
               this.Spinner.hide("item-delete");
           })
           .catch((err)=>{
             console.log("Failed deleting item", err)
             this.Spinner.hide("item-delete")
-            this.Snack.showError('Item not deleted');
+            this.Snack.showError(this.gettextCatalog.getString('Item not deleted'));
           })
       });
   }
