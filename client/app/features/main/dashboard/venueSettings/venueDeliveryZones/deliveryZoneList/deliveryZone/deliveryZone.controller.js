@@ -27,20 +27,19 @@ export default class deliveryZoneController {
     const msg = this.DialogService.delete(this.LabelService.TITLE_DELETE_DELIVERY_ZONE, this.LabelService.CONTENT_DELETE_DELIVERY_ZONE)
         .then(()=>{
             this.Spinner.show("item-delete");
-console.log('DELETE OK - sTEP 0');
+
             this.DeliveryZoneService.delete(this.deliveryZone).then(()=>{
-              console.log('DELETE OK - sTEP 1');
                 this.cardItemList.onItemDeleted(this.deliveryZone);
                 if (this.onItemDeleted){
                   this.onItemDeleted({item:this.deliveryZone});
                 }
-                this.Snack.show('Delivery zone deleted');
+                this.Snack.show(this.gettextCatalog.getString('Delivery zone deleted'));
                 this.Spinner.hide("item-delete");
             })
             .catch((err)=>{
               console.log("Failed deleting delivery zone", err)
               this.Spinner.hide("item-delete")
-              this.Snack.showError('Delivery zone not deleted');
+              this.Snack.showError(this.gettextCatalog.getString('Delivery zone not deleted'));
             })
         });
   }
@@ -59,15 +58,15 @@ console.log('DELETE OK - sTEP 0');
         }
         angular.extend(this.deliveryZone,newDz);
         this.Spinner.hide("dz-update");
-        this.Snack.show('Delivery zone visibility updated');
+        this.Snack.show(this.gettextCatalog.getString('Delivery zone visibility updated'));
     }).catch(()=>{
         // this.deliveryZone = angular.copy(this.dz)
         this.Spinner.hide("dz-update");
-        this.Snack.showError('Delivery zone visibility not changed');
+        this.Snack.showError(this.gettextCatalog.getString('Delivery zone visibility not changed'));
     })
   }
 
-  constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, DeliveryZoneService) {
+  constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, DeliveryZoneService, gettextCatalog) {
     "ngInject";
     this.$q =$q;
     this.$scope =$scope;
@@ -78,6 +77,8 @@ console.log('DELETE OK - sTEP 0');
     this.contextual = contextual;
     this.DeliveryZoneService = DeliveryZoneService;
     this.$timeout = $timeout;
+    this.gettextCatalog = gettextCatalog;
+
     this.newModifiers = [];
   }
 }
