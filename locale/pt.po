@@ -25,7 +25,7 @@ msgstr "% de aumento"
 msgid "(pending)"
 msgstr "(pendente)"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:47
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:35
 msgid ""
 "** Showing the next 100 events available. Events not displayed can be "
 "searched using field above."
@@ -33,7 +33,7 @@ msgstr ""
 "** Mostrando os próximos 100 eventos disponíveis. Eventos que não aparecem "
 "pode ser pesquisados usando o campo acima."
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:835
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:804
 msgid "1 year"
 msgstr "1 ano"
 
@@ -44,6 +44,10 @@ msgid ""
 msgstr ""
 " <icon>info</icon> Clique no mapa para arrastar o pino, ou arraste e solte o "
 "pino para definir a localização exata do seu estabelecimento"
+
+#: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:7
+msgid "Add Card"
+msgstr "Adicionar cartão"
 
 #: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:5
 msgid "Add Item"
@@ -66,7 +70,7 @@ msgstr "Adicionar seção"
 msgid "Add custom fields at checkout"
 msgstr "Adicionar campos específicos ao finalizar pedido"
 
-#: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:65
+#: ./client/app/features/main/dashboard/venueSettings/venueServices/venueServices.tpl.html:68
 msgid "Add delivery Zones"
 msgstr "Adicionar zonas de entrega"
 
@@ -121,6 +125,10 @@ msgstr "Adicionar novo horário de funcionamento"
 msgid "Add new outlet"
 msgstr "Adicionar novo ponto de coleta"
 
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:110
+msgid "Add new outlet location"
+msgstr "Adicionar nova localização"
+
 #: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventScheduleList.tpl.html:8
 msgid "Add new schedule"
 msgstr "Adicionar nova data"
@@ -154,7 +162,7 @@ msgstr "Adicionar nota"
 msgid "Add option"
 msgstr "Adicionar opção"
 
-#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.tpl.html:18
+#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.tpl.html:20
 msgid "Add outlets"
 msgstr "Adicionar ponto de coleta"
 
@@ -186,6 +194,18 @@ msgstr "Adicionar no carrinho"
 msgid "Add to event"
 msgstr "Adicionar no evento"
 
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:44
+msgid "Added modifiers to item"
+msgstr "Adicionar complementos para o item"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:31
+msgid "Added modifiers to modifier"
+msgstr "Adicionar opções para o complemento"
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:38
+msgid "Added modifiers to section"
+msgstr "Adicionar complementos para a seção"
+
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationGroupList/outletLocationGroup/outletLocationGroup.controller.js:117
 msgid "Additional info"
 msgstr "Informação adicional"
@@ -210,7 +230,7 @@ msgstr "Complemento"
 msgid "Address not found"
 msgstr "Endereço não encontrado"
 
-#: ./client/app/shared/services/utils/utils.service.js:112
+#: ./client/app/shared/services/utils/utils.service.js:115
 msgid "Administrator"
 msgstr "Administrador"
 
@@ -340,10 +360,16 @@ msgstr ""
 msgid "An event must have at least one schedule."
 msgstr "Um evento deve ter ao menos uma data."
 
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:116
+msgid "An outlet is using this menu. You need remove it before"
+msgstr ""
+"Um ponto de coleta está usando este menu. Você precisa removê-lo antes"
+
 #: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.controller.js:84
 msgid "An outlet location is using this outlet. You need remove it before"
 msgstr ""
-"Um local esta utilizando este ponto de coleta. Você precisa removê-lo antes"
+"Uma localização esta utilizando este ponto de coleta. Você precisa removê-la "
+"antes"
 
 #: ./client/app/features/error/error.service.js:36
 msgid "An unexpected error occurred"
@@ -412,13 +438,21 @@ msgstr "Aplicar desconto para os serviços"
 msgid "Apply discount to specific event:"
 msgstr "Aplicar desconto para um evento específico:"
 
-#: ./client/app/components/contextual/contextualDrawer/userSearch/contextualDrawer.userSearch.tpl.html:9
+#: ./client/app/components/contextual/contextualDrawer/userSearch/contextualDrawer.userSearch.tpl.html:10
 msgid "Apply promotion"
 msgstr "Aplicar promoção"
 
 #: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:27
 msgid "Apply to a customer account"
 msgstr "Aplicar para um cliente"
+
+#: ./client/app/shared/services/label/label.service.js:192
+msgid "Are you sure you want to amend this order?"
+msgstr "Você tem deseja que corrigir este pedido?"
+
+#: ./client/app/shared/services/label/label.service.js:191
+msgid "Are you sure you want to cancel this order?"
+msgstr "Você tem certeza que deseja cancela este pedido?"
 
 #: ./client/app/shared/services/label/label.service.js:75
 msgid "Are you sure you want to delete this collection slot?"
@@ -438,7 +472,7 @@ msgstr "Você tem certeza que deseja deletar esta imagem?"
 
 #: ./client/app/shared/services/label/label.service.js:56
 msgid "Are you sure you want to delete this outlet location?"
-msgstr "Você tem certeza que deseja deletar este outlet location?"
+msgstr "Você tem certeza que deseja deletar esta localização?"
 
 #: ./client/app/shared/services/label/label.service.js:68
 msgid "Are you sure you want to delete this outlet?"
@@ -524,7 +558,7 @@ msgstr "Média de pedidos por cliente"
 msgid "Average revenue per customer"
 msgstr "Média de receitas por cliente"
 
-#: ./client/app/components/contextual/contextualDrawer/GM/orderDetail/contextualDrawer.orderDetail.tpl.html:16
+#: ./client/app/components/contextual/contextualDrawer/GM/orderDetail/contextualDrawer.orderDetail.tpl.html:17
 #: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.controller.js:137
 msgid "Back"
 msgstr "Voltar"
@@ -595,7 +629,7 @@ msgstr "Botões e nome das seções"
 msgid "By continuing, you accept the"
 msgstr "Continuando, você aceita o"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:846
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:815
 msgid "By event"
 msgstr "Por evento"
 
@@ -618,8 +652,8 @@ msgstr "CVV"
 #: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.tpl.html:15
 #: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.tpl.html:10
 #: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:10
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleMobile.tpl.html:9
-#: ./client/app/components/contextual/contextualDrawer/userSearch/contextualDrawer.userSearch.tpl.html:6
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleMobile.tpl.html:10
+#: ./client/app/components/contextual/contextualDrawer/userSearch/contextualDrawer.userSearch.tpl.html:7
 #: ./client/app/components/contextual/contextualMenu/contextualMenu.tpl.html:10
 #: ./client/app/components/dialog/dialog.delete.tpl.html:9
 #: ./client/app/components/dialog/dialog.text.tpl.html:18
@@ -628,12 +662,18 @@ msgstr "CVV"
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:38
 #: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:61
 #: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:42
+#: ./client/app/shared/services/utils/utils.service.js:144
+#: ./client/app/shared/services/utils/utils.service.js:147
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: ./client/app/components/contextual/contextualDrawer/GM/orderDetail/contextualDrawer.orderDetail.tpl.html:4
 msgid "Cancel order"
 msgstr "Cancelar pedido"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:20
+msgid "Cannot create cyclic set of modifiers"
+msgstr "Você não pode criar complementos cíclicos"
 
 #: ./client/app/features/error/error.service.js:58
 msgid "Cannot delete schedule"
@@ -664,6 +704,10 @@ msgstr "Número do cartão"
 msgid "Cash"
 msgstr "Dinheiro"
 
+#: ./client/app/shared/translatedDynamic.html:2
+msgid "Celery"
+msgstr "Aipo"
+
 #: ./client/app/shared/translatedDynamic.html:26
 msgid "Cereals"
 msgstr "Cereais"
@@ -688,8 +732,8 @@ msgstr "Alterações salvas"
 msgid "Checkout"
 msgstr "Ao finalizar pedido"
 
-#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:158
-#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:168
+#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:152
+#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:162
 msgid "Choose Venues"
 msgstr "Selecionar estabelecimentos"
 
@@ -744,7 +788,7 @@ msgstr ""
 "Clique no mapa para começar a desenhar sua zona de entrega.\n"
 "Conecte o primeiro com o último ponto para finalizar."
 
-#: ./client/app/components/contextual/contextualDrawer/GM/customerNotes/contextualDrawer.customerNotes.tpl.html:14
+#: ./client/app/components/contextual/contextualDrawer/GM/customerNotes/contextualDrawer.customerNotes.tpl.html:12
 msgid "Click the button above to add a new note"
 msgstr "Clique no botão acima para adicionar uma nova nota"
 
@@ -767,6 +811,10 @@ msgstr "Retirada"
 msgid "Collection Slot created"
 msgstr "Horário de retirada criado"
 
+#: ./client/app/features/main/dashboard/events/components/collectionSlotsList/collectionSlotsItem/collectionSlotsItem.controller.js:117
+msgid "Collection Slot deleted"
+msgstr "Horário de coleta deletado "
+
 #: ./client/app/features/main/dashboard/events/components/collectionSlotsList/collectionSlotsItem/collectionSlotsItem.controller.js:74
 msgid "Collection Slot updated"
 msgstr "Horário de retirada atualizado"
@@ -775,6 +823,15 @@ msgstr "Horário de retirada atualizado"
 #: ./client/app/components/navbar/navbar.controller.js:113
 msgid "Collection Slots"
 msgstr "Horários de coleta"
+
+#: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/venueOpeningHours.tpl.html:46
+msgid "Collection service:"
+msgstr "Serviço de retirada:"
+
+#: ./client/app/features/main/dashboard/events/components/collectionSlotsList/collectionSlotsItem/collectionSlotsItem.controller.js:124
+#: ./client/app/features/main/dashboard/events/components/collectionSlotsList/collectionSlotsItem/collectionSlotsItem.controller.js:146
+msgid "Collection slot not deleted"
+msgstr "Ocorreu um erro ao deletar o horário de colera"
 
 #: ./client/app/features/main/dashboard/styling/emails/emails.tpl.html:46
 msgid "Collection time"
@@ -855,7 +912,7 @@ msgid "Crustaceans"
 msgstr "Crustáceos"
 
 #: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:45
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:837
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:806
 msgid "Custom"
 msgstr "Personalizado"
 
@@ -918,6 +975,10 @@ msgstr "Clientes que se cadastraram mas não realizaram pedidos"
 msgid "Customers with no email address"
 msgstr "Cliente sem endereço de email"
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:814
+msgid "D.O.B"
+msgstr "D.O.B"
+
 #: ./client/app/shared/services/label/label.service.js:152
 msgid "Daily"
 msgstr "Diariamente"
@@ -933,6 +994,10 @@ msgstr "Pedidos diários"
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:1024
 msgid "Daily Revenue"
 msgstr "Receita diária"
+
+#: ./client/app/shared/services/utils/utils.service.js:81
+msgid "Dannish"
+msgstr "Dinamarquês"
 
 #: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:5
 msgid "Data filters"
@@ -958,7 +1023,7 @@ msgstr "Data"
 msgid "Date joined"
 msgstr "Data que se cadastrou"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:32
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:20
 msgid "Date range"
 msgstr "Intervalo de datas"
 
@@ -1030,7 +1095,7 @@ msgstr "Deletar minha conta"
 
 #: ./client/app/shared/services/label/label.service.js:55
 msgid "Delete outlet location?"
-msgstr "Deletar ponto de coleta?"
+msgstr "Deletar localização?"
 
 #: ./client/app/shared/services/label/label.service.js:67
 msgid "Delete outlet?"
@@ -1129,6 +1194,18 @@ msgstr "Taxa de entrega"
 msgid "Delivery rate"
 msgstr "Taxa de entrega"
 
+#: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/venueOpeningHours.tpl.html:60
+msgid "Delivery service:"
+msgstr "Serviço de entrega:"
+
+#: ./client/app/features/main/dashboard/venueSettings/venueDeliveryZones/deliveryZoneList/deliveryZone/deliveryZone.controller.js:36
+msgid "Delivery zone deleted"
+msgstr "Zone de entrega deletada"
+
+#: ./client/app/features/main/dashboard/venueSettings/venueDeliveryZones/deliveryZoneList/deliveryZone/deliveryZone.controller.js:42
+msgid "Delivery zone not deleted"
+msgstr "Ocorreu um erro ao deletar a zona de entrega"
+
 #: ./client/app/shared/services/label/label.service.js:105
 msgid "Delivery zone not saved"
 msgstr "Ocorreu um erro ao salvar a zona de entrega"
@@ -1136,6 +1213,14 @@ msgstr "Ocorreu um erro ao salvar a zona de entrega"
 #: ./client/app/shared/services/label/label.service.js:104
 msgid "Delivery zone saved"
 msgstr "Zona de entrega salva com sucesso"
+
+#: ./client/app/features/main/dashboard/venueSettings/venueDeliveryZones/deliveryZoneList/deliveryZone/deliveryZone.controller.js:65
+msgid "Delivery zone visibility not changed"
+msgstr "Ocorreu um erro ao alterar a visibilidade da zona de entrega"
+
+#: ./client/app/features/main/dashboard/venueSettings/venueDeliveryZones/deliveryZoneList/deliveryZone/deliveryZone.controller.js:61
+msgid "Delivery zone visibility updated"
+msgstr "Visibilidade da zona de entrega atualizada"
 
 #: ./client/app/components/toolbar/venueModeSelect/venueModeSelect.tpl.html:20
 msgid "Demo mode"
@@ -1201,9 +1286,9 @@ msgstr "Texto de exibição"
 msgid "Distance"
 msgstr "Distância"
 
-#: ./client/app/components/contextual/contextualDrawer/GM/customerNotes/contextualDrawer.customerNotes.tpl.html:20
-#: ./client/app/components/contextual/contextualDrawer/GM/orderDetail/contextualDrawer.orderDetail.tpl.html:19
-#: ./client/app/components/contextual/contextualDrawer/GM/orderHistory/contextualDrawer.orderHistory.tpl.html:21
+#: ./client/app/components/contextual/contextualDrawer/GM/customerNotes/contextualDrawer.customerNotes.tpl.html:17
+#: ./client/app/components/contextual/contextualDrawer/GM/orderDetail/contextualDrawer.orderDetail.tpl.html:20
+#: ./client/app/components/contextual/contextualDrawer/GM/orderHistory/contextualDrawer.orderHistory.tpl.html:22
 #: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:98
 #: ./client/app/components/contextual/contextualDrawer/eventOutletLocations/contextualDrawer.eventOutletLocations.tpl.html:17
 #: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:67
@@ -1212,8 +1297,8 @@ msgstr "Distância"
 #: ./client/app/components/contextual/contextualDrawer/outlets/contextualDrawer.outlets.tpl.html:19
 #: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.tpl.html:13
 #: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:13
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleMobile.tpl.html:12
-#: ./client/app/components/contextual/contextualMenu/contextualMenu.controller.js:76
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleMobile.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/contextualMenu.controller.js:65
 #: ./client/app/features/main/dashboard/customers/customer/customer.controller.js:156
 msgid "Done"
 msgstr "Pronto"
@@ -1332,9 +1417,25 @@ msgstr "Horário final"
 msgid "English"
 msgstr "Inglês"
 
+#: ./client/app/features/main/dashboard/menus/components/menuSectionItemList/menuSectionItemList.controller.js:105
+msgid "Error adding item"
+msgstr "Ocorreu um erro ao adicionar o item"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:77
+msgid "Error adding modifiers to item"
+msgstr "Ocorreu um erro ao adicionar complementos para o item"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:33
+msgid "Error adding modifiers to modifier"
+msgstr "Ocorreu um erro ao adicionar opções para o complemento"
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:40
+msgid "Error adding modifiers to section"
+msgstr "Ocorreu um erro ao adicionar complementos para a seção"
+
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:32
 msgid "Error adding outlet to outlet location"
-msgstr "Ocorreu um erro ao adicionar o ponto de coleta"
+msgstr "Ocorreu um erro ao adicionar a localização"
 
 #: ./client/app/shared/services/label/label.service.js:171
 msgid "Error creating tag"
@@ -1352,9 +1453,21 @@ msgstr "Ocorreu um erro ao deletar a imagem."
 msgid "Error deleting outlet"
 msgstr "Ocorreu um erro ao deletar o ponto de coleta"
 
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSectionList.controller.js:51
+msgid "Error deleting section"
+msgstr "Ocorreu um erro ao deletar a seção"
+
 #: ./client/app/features/error/error.service.js:47
 msgid "Error loading tax settings"
 msgstr "Ocorreu um erro ao carregar as configurações das taxas"
+
+#: ./client/app/features/main/dashboard/menus/components/menuSectionItemList/menuSectionItemList.controller.js:119
+msgid "Error moving item"
+msgstr "Ocorreu um erro ao mover o item"
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:99
+msgid "Error moving items to section"
+msgstr "Ocorreu um erro ao mover os items para a seção"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.controller.js:22
 msgid "Error moving outlet"
@@ -1362,7 +1475,11 @@ msgstr "Ocorreu um erro ao mover este ponto de coleta"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:17
 msgid "Error moving outlet location"
-msgstr "Ocorreu um erro ao mover este ponto de coleta"
+msgstr "Ocorreu um erro ao mover esta localização"
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSectionList.controller.js:13
+msgid "Error moving section"
+msgstr "Ocorreu um erro ao mover a seção"
 
 #: ./client/app/features/main/dashboard/events/components/collectionSlotsList/collectionSlotsItem/collectionSlotsItem.controller.js:56
 msgid "Error saving collection slot"
@@ -1383,11 +1500,16 @@ msgstr "Ocorreu um erro ao salvar o ponto de coleta"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:81
 msgid "Error saving outlet location"
-msgstr "Ocorreu um erro ao salvar o ponto de coleta"
+msgstr "Ocorreu um erro ao salvar a localização"
 
 #: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:76
 msgid "Error saving schedule"
 msgstr "Ocorreu um erro ao salvar a agenda"
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:134
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:211
+msgid "Error saving section"
+msgstr "Ocorreu um erro ao salvar a seção"
 
 #: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroup/taxGroup.controller.js:33
 #: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroup/taxGroup.controller.js:37
@@ -1417,7 +1539,7 @@ msgstr "Ocorreu um erro ao atualizar o evento"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:113
 msgid "Error updating outlet location"
-msgstr "Ocorreu um erro ao atualizar o ponto de coleta"
+msgstr "Ocorreu um erro ao atualizar a localização"
 
 #: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:99
 msgid "Error updating schedule"
@@ -1432,7 +1554,7 @@ msgid "Error updating tag action"
 msgstr "Ocorreu um erro ao atualizar a ação da tag"
 
 #: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:128
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:40
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:28
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:727
 msgid "Event"
 msgstr "Evento"
@@ -1440,6 +1562,10 @@ msgstr "Evento"
 #: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:99
 msgid "Event created"
 msgstr "Evento criado"
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:235
+msgid "Event deleted"
+msgstr "Evento deletado"
 
 #: ./client/app/components/contextual/contextualDrawer/eventsImport/externalEventList/externalEventList.controller.js:18
 msgid "Event deleted successfully."
@@ -1449,6 +1575,10 @@ msgstr "Evento foi deletado com sucesso"
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionEvents/promotionEvents.tpl.html:4
 msgid "Event name"
 msgstr "Nome do evento"
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:241
+msgid "Event not deleted"
+msgstr "Ocorreu um erro ao deletar o evento"
 
 #: ./client/app/features/main/dashboard/events/components/eventList/event/event.controller.js:120
 msgid "Event updated"
@@ -1490,13 +1620,30 @@ msgstr "ID Externo"
 msgid "External events"
 msgstr "Eventos externos"
 
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:170
+msgid "Failed creating item"
+msgstr "Ocorreu um erro ao criar o item"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:99
+msgid "Failed creating modifier"
+msgstr "Ocorreu um erro ao criar o complemento"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItemList.controller.js:48
+#: ./client/app/features/main/dashboard/menus/components/menuSectionItemList/menuSectionItemList.controller.js:172
+msgid "Failed duplicating item"
+msgstr "Ocorreu um erro ao duplicar o item"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:163
+msgid "Failed duplicating modifier"
+msgstr "Ocorreu um erro ao duplicar o complemento"
+
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:176
 msgid "Failed duplicating outlet location"
-msgstr "Ocorreu um erro ao duplicar o ponto de coleta"
+msgstr "Ocorreu um erro ao duplicar a localização"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:293
 msgid "Failed to move outlet location"
-msgstr "Ocorreu um erro ao mover o ponto de coleta"
+msgstr "Ocorreu um erro ao mover a localização"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:223
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:242
@@ -1722,6 +1869,16 @@ msgstr "Imagem"
 msgid "Image Deleted successfully."
 msgstr "Imagem deletada com sucesso"
 
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.controller.js:56
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:106
+msgid "Image deleted"
+msgstr "Imagem deletada"
+
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.controller.js:62
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:114
+msgid "Image not deleted"
+msgstr "Ocorreu um erro ao deletar a imagem"
+
 #: ./client/app/components/imageUploader/imageUploader.tpl.html:8
 msgid "Image not found"
 msgstr "Imagem não encontrada"
@@ -1854,20 +2011,58 @@ msgstr "Item"
 msgid "Item cap per event"
 msgstr "Item cap por evento"
 
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:166
+msgid "Item created"
+msgstr "Item criado"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:317
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:75
+msgid "Item deleted"
+msgstr "Item deletado"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItemList.controller.js:39
+#: ./client/app/features/main/dashboard/menus/components/menuSectionItemList/menuSectionItemList.controller.js:163
+msgid "Item duplicated"
+msgstr "Item duplicado"
+
 #: ./client/app/components/contextual/contextualMenu/components/menuItemMore/menuItemMore.tpl.html:4
 msgid "Item lead time"
 msgstr "Tempo de preparo"
 
+#: ./client/app/features/main/dashboard/menus/components/menuSectionItemList/menuSectionItemList.controller.js:116
+msgid "Item moved"
+msgstr "Item movido"
+
 #: ./client/app/components/contextual/contextualMenu/components/menuItemBasic/menuItemBasic.tpl.html:3
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:82
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:70
 msgid "Item name"
 msgstr "Nome do item"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:323
+msgid "Item not deleted"
+msgstr "Ocorreu um erro ao deletar o item"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:218
+msgid "Item not updated"
+msgstr "Ocorreu um erro ao atualizar o item"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:209
+msgid "Item updated"
+msgstr "Item atualizado"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:135
+msgid "Item visibility not changed"
+msgstr "Ocorreu um erro ao alterar a visibilidade do item"
 
 #: ./client/app/components/navbar/navbar.controller.js:100
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:733
 #: ./client/app/features/main/dashboard/customers/components/orderDetail/orderDetail.tpl.html:53
 msgid "Items"
 msgstr "Items"
+
+#: ./client/app/features/main/dashboard/menus/components/menuSectionItemList/menuSectionItemList.controller.js:100
+msgid "Items added"
+msgstr "Items adicionados"
 
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:917
 msgid "Items decreasing in revenue"
@@ -1885,6 +2080,11 @@ msgstr "Items crescendo em popularidade"
 msgid "Items increasing in revenue"
 msgstr "Items crescendo em receita"
 
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:114
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:118
+msgid "Items moved to section"
+msgstr "Items movidos para a seção"
+
 #: ./client/app/shared/services/item/item.service.js:25
 msgid "Just this menu"
 msgstr "Somente este cardápio"
@@ -1901,11 +2101,11 @@ msgstr "Idioma"
 msgid "Language saved"
 msgstr "Idioma salvo"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:817
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:786
 msgid "Last 30 days"
 msgstr "Últimos 30 dias"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:833
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:802
 msgid "Last 7 days"
 msgstr "Últimos 7 dias"
 
@@ -1952,6 +2152,10 @@ msgstr "Localização não encontrada"
 msgid "Logo"
 msgstr "Logo"
 
+#: ./client/app/shared/translatedDynamic.html:7
+msgid "Lupin"
+msgstr "Tremoço"
+
 #: ./client/app/features/main/billing/components/userCard/userCard.tpl.html:32
 msgid "MM"
 msgstr "MM"
@@ -1961,7 +2165,7 @@ msgstr "MM"
 msgid "Manage Users"
 msgstr "Gerenciar usuários"
 
-#: ./client/app/shared/services/utils/utils.service.js:113
+#: ./client/app/shared/services/utils/utils.service.js:116
 msgid "Manager"
 msgstr "Gerente"
 
@@ -2028,7 +2232,7 @@ msgstr "Quantidade máxima de 100 caracteres"
 msgid "Max length is 1000 chars."
 msgstr "Quantidade máxima de 1000 caracteres"
 
-#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:27
+#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:26
 msgid "Max length is 2048."
 msgstr "Quantidade máxima de 2048 caracteres"
 
@@ -2127,6 +2331,19 @@ msgstr "Valor máximo é 100%"
 msgid "Medium"
 msgstr "Médio"
 
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:46
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:71
+msgid "Menu created"
+msgstr "Cardápio criado"
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:109
+msgid "Menu deleted"
+msgstr "Cardápio deletado"
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:51
+msgid "Menu duplicated"
+msgstr "Cardápio duplicado"
+
 #: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:28
 msgid "Menu is required."
 msgstr "Cardápio é obrigatório"
@@ -2134,6 +2351,22 @@ msgstr "Cardápio é obrigatório"
 #: ./client/app/components/contextual/contextualMenu/templates/menu.tpl.html:4
 msgid "Menu name"
 msgstr "Nome do cardápio"
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:76
+msgid "Menu not created"
+msgstr "Ocorreu um erro ao criar o cardápio"
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:118
+msgid "Menu not deleted"
+msgstr "Ocorreu um erro ao deletar o cardápio"
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:92
+msgid "Menu not saved"
+msgstr "Ocorreu um erro ao salvar o cardápio"
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardItem/menuCardItem.controller.js:86
+msgid "Menu saved"
+msgstr "Cardápio salvo"
 
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:16
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:31
@@ -2188,6 +2421,26 @@ msgstr "Mobile App"
 #: ./client/app/shared/services/label/label.service.js:27
 msgid "Mobile App styling saved with success."
 msgstr "Estilos do aplicativo foram salvos com sucesso."
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:94
+msgid "Modifier created"
+msgstr "Complemento criado"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:158
+msgid "Modifier duplicated"
+msgstr "Complemento duplicado"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:81
+msgid "Modifier not deleted"
+msgstr "Ocorreu um erro ao deletar o complemento"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:118
+msgid "Modifier not updated"
+msgstr "Ocorreu um erro ao atualizar o complemento"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:112
+msgid "Modifier updated"
+msgstr "Complemento atualizado"
 
 #: ./client/app/components/navbar/navbar.controller.js:101
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:686
@@ -2320,7 +2573,7 @@ msgstr "Nenhum evento novo para importar."
 msgid "No results found for"
 msgstr "Nenhum resultado encontrado para"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:49
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:37
 msgid "No results found..."
 msgstr "Nenhum resultado encontrado..."
 
@@ -2339,6 +2592,14 @@ msgstr "Nenhum resultado..."
 #: ./client/app/features/error/error.service.js:107
 msgid "No users selected"
 msgstr "Nenhum usuário selecionado"
+
+#: ./client/app/features/error/error.service.js:110
+msgid "No venues, groups or channels selected"
+msgstr "Nenhum estabelecimento, grupo ou canal selecionado"
+
+#: ./client/app/components/contextual/contextualMenu/components/taxGroupSelect/taxGroupSelect.tpl.html:4
+msgid "None"
+msgstr "Nenhum"
 
 #: ./client/app/shared/services/utils/utils.service.js:99
 msgid "Norwegian"
@@ -2365,6 +2626,7 @@ msgid "Notes"
 msgstr "Anotações"
 
 #: ./client/app/components/navbar/navbar.controller.js:120
+#: ./client/app/features/main/account/components/userNotifications/userNotifications.tpl.html:5
 msgid "Notifications"
 msgstr "Notificações"
 
@@ -2375,6 +2637,8 @@ msgstr "Nozes"
 #: ./client/app/features/main/dashboard/customers/customers.resolve.js:19
 #: ./client/app/features/main/dashboard/customers/notes/notes.resolve.js:16
 #: ./client/app/features/main/dashboard/customers/orders/orders.resolve.js:16
+#: ./client/app/shared/services/utils/utils.service.js:143
+#: ./client/app/shared/services/utils/utils.service.js:146
 msgid "OK"
 msgstr "OK"
 
@@ -2402,8 +2666,29 @@ msgstr "Uma vez por pedido"
 msgid "One off"
 msgstr "Uma vez"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:73
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:74
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:74
+msgid "One or more items already in section"
+msgstr "Um ou mais items já estão na seção"
+
+#: ./client/app/features/main/dashboard/menus/components/menuSectionItemList/menuSectionItemList.controller.js:49
+msgid "One or more items are already in section"
+msgstr "Um ou mais items já estão na seção"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:10
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:52
+msgid "One or more modifiers already in item"
+msgstr "Um ou mais complementos já estão no item"
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierItem/modifierItem.controller.js:15
+msgid "One or more modifiers already in modifier"
+msgstr "Uma ou mais opções já estão no complemento"
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:8
+msgid "One or more modifiers already in section"
+msgstr "Um ou mais complementos já estão na seção"
+
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:61
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:62
 msgid "Only display customers who have opted in to marketing"
 msgstr "Somente mostrar clientes que  recebem marketing "
 
@@ -2436,7 +2721,7 @@ msgid "Operational hours"
 msgstr "Horário de funcionamento"
 
 #: ./client/app/features/main/dashboard/customers/components/customerNoteList/customerNote/customerNote.tpl.html:18
-#: ./client/app/shared/services/utils/utils.service.js:115
+#: ./client/app/shared/services/utils/utils.service.js:118
 msgid "Operator"
 msgstr "Operador"
 
@@ -2466,7 +2751,7 @@ msgstr "Tipo do pedido"
 msgid "Order now"
 msgstr "Pedir agora"
 
-#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:13
+#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:12
 msgid "Order number"
 msgstr "Número do pedido"
 
@@ -2521,24 +2806,24 @@ msgstr "Ponto de coleta deletado"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:73
 msgid "Outlet location created"
-msgstr "Ponto de coleta criado"
+msgstr "Localização criada"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:81
 msgid "Outlet location deleted"
-msgstr "Ponto de coleta deletado"
+msgstr "Localiação deletada"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:171
 msgid "Outlet location duplicated"
-msgstr "Ponto de coleta duplicado"
+msgstr "Localização duplicada"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:289
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:15
 msgid "Outlet location moved"
-msgstr "Ponto de coleta movido"
+msgstr "Localização movida"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:104
 msgid "Outlet location updated"
-msgstr "Ponto de coleta atualizado"
+msgstr "Localização atualizada"
 
 #: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:31
 msgid "Outlet menu:"
@@ -2573,6 +2858,7 @@ msgstr "Paga"
 #: ./client/app/features/auth/signin/signin.tpl.html:16
 #: ./client/app/features/auth/signup/signup.tpl.html:22
 #: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:22
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:5
 msgid "Password"
 msgstr "Senha"
 
@@ -2667,9 +2953,17 @@ msgstr ""
 msgid "Please select a circle or draw a delivery area"
 msgstr "Por favor selecione um círculo ou desenha uma área de entrega"
 
-#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:19
+#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:18
 msgid "Please select an existing order."
 msgstr "Por favor selecione um pedido existente"
+
+#: ./client/app/features/auth/signin/signin.tpl.html:7
+msgid "Please sign in."
+msgstr "Por favor entre."
+
+#: ./client/app/shared/services/utils/utils.service.js:108
+msgid "Portuguese"
+msgstr "Português"
 
 #: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:21
 #: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:35
@@ -2719,7 +3013,7 @@ msgid "Promotion deleted"
 msgstr "Promoção deletada"
 
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionTabs/promotionTabs.tpl.html:16
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:94
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:82
 msgid "Promotion name"
 msgstr "Nome da promoção"
 
@@ -2766,12 +3060,12 @@ msgstr "Repetir diariamente"
 msgid "Repeat weekly"
 msgstr "Repetir semanalmente"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:64
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.tpl.html:52
 msgid "Report"
 msgstr "Relatório"
 
-#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:165
-#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:174
+#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:159
+#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:168
 msgid "Resend Invite"
 msgstr "Reenviar Convite"
 
@@ -2821,7 +3115,7 @@ msgstr "Cargo"
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/venueOpeningHours.tpl.html:52
 #: ./client/app/features/main/dashboard/venueSettings/venueOpeningHours/venueOpeningHours.tpl.html:66
 msgid "Same as opening hours"
-msgstr "Mesmo que os horários de funcionamento"
+msgstr "O mesmo que os horários de funcionamento"
 
 #: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:13
 #: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:62
@@ -2849,6 +3143,10 @@ msgstr "Salvando..."
 msgid "Schedule created"
 msgstr "Agenda criada"
 
+#: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:133
+msgid "Schedule deleted"
+msgstr "Agenda deletada"
+
 #: ./client/app/features/main/dashboard/events/components/eventScheduleList/eventSchedule/eventSchedule.controller.js:143
 msgid "Schedule not deleted"
 msgstr "Ocorreu um erro ao deletar esta agenda"
@@ -2869,6 +3167,11 @@ msgstr "Pesquisar clientes (min 3 caracteres)"
 msgid "Search for a customer account"
 msgstr "Pesquisar uma conta de um cliente"
 
+#: ./client/app/features/main/dashboard/customers/components/customersPlaceholder/customersPlaceholder.tpl.html:5
+msgid ""
+"Search for a customer account by name, email address or phone number, or"
+msgstr "Pesquisar por nome da conta do cliente, email ou telefone, ou"
+
 #: ./client/app/components/toolbar/venueSelect/venueSelect.tpl.html:23
 msgid "Search venue name"
 msgstr "Pesquisar nome do estabelecimento"
@@ -2877,9 +3180,21 @@ msgstr "Pesquisar nome do estabelecimento"
 msgid "Search {{cardItemListCtrl.searchLabel}}"
 msgstr "Pesquisar {{cardItemListCtrl.searchLabel}}"
 
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:208
+msgid "Section created"
+msgstr "Seção criada"
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSectionList.controller.js:11
+msgid "Section moved"
+msgstr "Seção movida"
+
 #: ./client/app/components/contextual/contextualMenu/templates/menuSection.tpl.html:3
 msgid "Section name"
 msgstr "Nome da seção"
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSection.controller.js:130
+msgid "Section updated"
+msgstr "Seção atualizada"
 
 #: ./client/app/components/contextual/contextualMenu/components/collectionSlotAdvanced/collectionSlotAdvanced.tpl.html:25
 msgid "Segment time"
@@ -2907,8 +3222,8 @@ msgstr "Detalhes do vendedor salvos com sucesso"
 msgid "Send"
 msgstr "Enviar"
 
-#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:155
-#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:174
+#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:149
+#: ./client/app/features/main/dashboard/manageUsers/invite/invite.controller.js:168
 msgid "Send Invite"
 msgstr "Enviar Convite"
 
@@ -2964,6 +3279,10 @@ msgstr "Definir configurações de coleta"
 #: ./client/app/components/contextual/contextualMenu/components/promotionComponents/promotionDates/promotionDates.tpl.html:2
 msgid "Set validity period"
 msgstr "Definir período de validade"
+
+#: ./client/app/features/main/account/components/userSettings/userSettings.tpl.html:5
+msgid "Settings"
+msgstr "Configurações"
 
 #: ./client/app/shared/translatedDynamic.html:13
 msgid "Shellfish"
@@ -3132,7 +3451,7 @@ msgstr "Fundo da tela de abertura"
 msgid "Split slot into segments"
 msgstr "Quebrar o slot em intervalos"
 
-#: ./client/app/shared/services/utils/utils.service.js:114
+#: ./client/app/shared/services/utils/utils.service.js:117
 msgid "Staff Member"
 msgstr "Funcionário"
 
@@ -3185,6 +3504,10 @@ msgstr "Subtotal"
 #: ./client/app/features/auth/signin/signin.controller.js:112
 msgid "Success! Please check your email for further instructions."
 msgstr "Sucesso! Por favor verifique seu email para mais informações."
+
+#: ./client/app/shared/translatedDynamic.html:25
+msgid "Sulphites"
+msgstr "Sulfitos"
 
 #: ./client/app/shared/translatedDynamic.html:15
 msgid "Sulphur"
@@ -3261,7 +3584,12 @@ msgstr "Taxa para coletar"
 
 #: ./client/app/components/navbar/navbar.controller.js:82
 msgid "Tax"
-msgstr "Impost"
+msgstr "Impostos"
+
+#: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroup/taxGroup.controller.js:68
+#: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroup/taxGroup.controller.js:77
+msgid "Tax Group not deleted"
+msgstr "Ocorreu um erro ao deletar o grupo de taxas"
 
 #: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroup/taxGroup.controller.js:28
 msgid "Tax Group saved"
@@ -3283,6 +3611,10 @@ msgstr "Taxa de impostos"
 msgid "Tax group"
 msgstr "Grupo de impostos"
 
+#: ./client/app/features/main/dashboard/taxes/components/taxGroupList/taxGroup/taxGroup.controller.js:63
+msgid "Tax group deleted"
+msgstr "Grupo de taxas deletado"
+
 #: ./client/app/components/contextual/contextualMenu/components/taxGroupForm/taxGroupForm.tpl.html:3
 msgid "Tax group name"
 msgstr "Nome do grupo de imposto"
@@ -3295,9 +3627,18 @@ msgstr "Imposto pago"
 msgid "Tax rate"
 msgstr "Taxa de imposto"
 
+#: ./client/app/features/main/dashboard/taxes/components/taxRateList/taxRate/taxRate.controller.js:63
+msgid "Tax rate deleted"
+msgstr "Taxa de imposto deletada"
+
 #: ./client/app/components/contextual/contextualMenu/templates/taxRate.tpl.html:4
 msgid "Tax rate name"
 msgstr "Nome da taxa de impsoto"
+
+#: ./client/app/features/main/dashboard/taxes/components/taxRateList/taxRate/taxRate.controller.js:68
+#: ./client/app/features/main/dashboard/taxes/components/taxRateList/taxRate/taxRate.controller.js:77
+msgid "Tax rate not deleted"
+msgstr "Ocorreu um erro ao deletar a taxa de imposto"
 
 #: ./client/app/features/main/dashboard/taxes/components/taxRateList/taxRate/taxRate.controller.js:28
 msgid "Tax rate saved"
@@ -3353,13 +3694,17 @@ msgstr "A mensagem foi enviada com sucesso."
 msgid "There are no collection slots assigned to this schedule"
 msgstr "Não existe horários de retirada atribuídos a esta agenda"
 
-#: ./client/app/components/contextual/contextualDrawer/GM/customerNotes/contextualDrawer.customerNotes.tpl.html:12
+#: ./client/app/components/contextual/contextualDrawer/GM/customerNotes/contextualDrawer.customerNotes.tpl.html:11
 msgid "There are no notes for this customer."
 msgstr "Não há anotações para este cliente."
 
 #: ./client/app/components/contextual/contextualDrawer/GM/orderHistory/contextualDrawer.orderHistory.tpl.html:16
 msgid "There are no orders for this customer."
 msgstr "Não há pedidos para este cliente."
+
+#: ./client/app/features/main/dashboard/events/components/eventList/event/event.tpl.html:14
+msgid "There are schedules in this event without a collection slot"
+msgstr "Existem agendas neste evento sem um horário de coleta"
 
 #: ./client/app/features/auth/signin/signin.tpl.html:7
 msgid "There is already an account with this email address."
@@ -3437,7 +3782,7 @@ msgstr ""
 "favor entre em contato com a equipe de vendas usando o chat no final da "
 "página para ativá-la."
 
-#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:26
+#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:25
 #: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:12
 #: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:23
 #: ./client/app/components/contextual/contextualDrawer/deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.tpl.html:38
@@ -3520,9 +3865,13 @@ msgstr ""
 "Este pedido não pode ser alterado ou cancelado. Por favor entre em contato "
 "com o estabelecimento diretamente."
 
+#: ./client/app/features/error/error.service.js:42
+msgid "This outlet location already has an outlet"
+msgstr "Esta localização já possui um ponto de coleta"
+
 #: ./client/app/shared/services/label/label.service.js:61
 msgid "This outlet location has custom fields"
-msgstr "Este ponto de coleta possui campos customizados"
+msgstr "Esta localização possui campos customizados"
 
 #: ./client/app/shared/services/label/label.service.js:144
 msgid "This promotion code is already being used."
@@ -3592,11 +3941,15 @@ msgstr "Tempo"
 msgid "Timeout"
 msgstr "Tempo esgotado"
 
+#: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:765
+msgid "Timeslot"
+msgstr "Intervalo de tempo"
+
 #: ./client/app/components/contextual/contextualMenu/templates/taxRate.tpl.html:36
 msgid "To seat rate"
 msgstr "Taxa para assento"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:829
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:798
 msgid "Today"
 msgstr "Hoje"
 
@@ -3645,7 +3998,7 @@ msgstr "Tente navegar no menu lateral ou"
 msgid "Type"
 msgstr "Tipo"
 
-#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:23
+#: ./client/app/components/contextual/contextualDrawer/GM/customerNotesNew/contextualDrawer.customerNotesNew.tpl.html:22
 msgid "Type customer note here..."
 msgstr "Digite as anotações do cliente aqui..."
 
@@ -3741,7 +4094,7 @@ msgstr "Mapa do estabelecimento"
 #: ./client/app/components/contextual/contextualMenu/components/userRoleSelect/userRoleSelect.controller.js:21
 #: ./client/app/components/navbar/navbar.controller.js:69
 msgid "Venue Settings"
-msgstr "Configurações do estabelecimento"
+msgstr "Configurações"
 
 #: ./client/app/shared/services/label/label.service.js:93
 msgid "Venue details not saved"
@@ -3895,7 +4248,7 @@ msgstr "YY"
 msgid "Yes"
 msgstr "Sim"
 
-#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:831
+#: ./client/app/features/main/dashboard/analytics/components/customDatafilters/customDatafilters.controller.js:800
 msgid "Yesterday"
 msgstr "Ontem"
 
@@ -3911,31 +4264,42 @@ msgstr "Você não está aceitando pedidos agora"
 msgid "You are ready to take orders"
 msgstr "Você está pronto para receber pedidos"
 
+#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.controller.js:47
+msgid "You can not add children for an outlet location with an outlet"
+msgstr ""
+"Voce não pode adicionar um filho para uma localização sem ponto de coleta"
+
+#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.controller.js:42
+msgid "You can not add children for seat outlet location"
+msgstr "Você não pode adicionar um filho para assentos"
+
 #: ./client/app/features/error/error.service.js:44
 msgid ""
 "You cannot add a custom field because this outlet location already has one"
 msgstr ""
-"Você não pode adicionar um campo customizado porque este ponto de coleta já "
+"Você não pode adicionar um campo customizado porque esta localização já "
 "possui um"
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItem.controller.js:55
+msgid "You cannot add a modifier to a voucher"
+msgstr "Você não pode adicionar complementos para um voucher"
 
 #: ./client/app/features/error/error.service.js:40
 msgid ""
 "You cannot add a sub group because this outlet location already has one"
 msgstr ""
-"Você não pode adicionar um sub grupo porque este ponto de coleta já possui "
-"um"
+"Você não pode adicionar um sub grupo porque esta localização já possui um"
 
 #: ./client/app/features/error/error.service.js:39
 msgid "You cannot add a sub group because this outlet location has an outlet"
 msgstr ""
-"Você não pode adicionar um sub grupo porque este ponto de coleta já possui "
-"um outlet"
+"Você não pode adicionar um sub grupo porque esta localização já possui um "
+"outlet"
 
 #: ./client/app/features/error/error.service.js:41
 msgid "You cannot add a sub group because this outlet location is for seat"
 msgstr ""
-"Você não pode adicionar um sub grupo porque este ponto de coleta é para "
-"assento"
+"Você não pode adicionar um sub grupo porque esta localização é para assento"
 
 #: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:88
 msgid ""
@@ -4025,6 +4389,11 @@ msgstr ""
 msgid "You must select one or more users to apply the promotion."
 msgstr "Você deve selecionar um ou mais usuários para aplicar a promoção."
 
+#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.controller.js:32
+#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.controller.js:37
+msgid "You need select a different outlet location destination"
+msgstr "Você precisa selecionar um local de destino diferente"
+
 #: ./client/app/components/contextual/contextualMenu/components/menuItemAdvanced/menuItemAdvanced.tpl.html:24
 msgid "You need to select at least one voucher type."
 msgstr "Você deve selecionar ao menos um tipo de voucher."
@@ -4094,6 +4463,10 @@ msgstr "por nome ou email"
 msgid "click here"
 msgstr "clique aqui"
 
+#: ./client/app/features/main/dashboard/customers/components/customersPlaceholder/customersPlaceholder.tpl.html:6
+msgid "create a new customer"
+msgstr "criar um novo cliente"
+
 #: ./client/app/features/main/dashboard/events/eventList/eventList.controller.js:36
 msgid "events"
 msgstr "eventos"
@@ -4129,6 +4502,10 @@ msgstr "milhas"
 msgid "mins"
 msgstr "mins"
 
+#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:15
+msgid "modifiers"
+msgstr "complementos"
+
 #: ./client/app/features/main/dashboard/analytics/components/reports/reports.service.js:171
 msgid "n/a"
 msgstr "n/a"
@@ -4144,15 +4521,6 @@ msgstr "para ativá-los"
 #: ./client/app/components/autoSave/autoSave.tpl.html:6
 msgid "to try again."
 msgstr "para tentar novamente."
-
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:9
-msgid "{{ 'Cancel' | translate}}"
-msgstr "{{ 'Cancelar' | translate}}"
-
-#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:44
-#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.styleEmails.tpl.html:12
-msgid "{{ 'Done' | translate}}"
-msgstr "{{ 'Pronto' | translate}}"
 
 #: ./client/app/components/contextual/contextualDrawer/eventsImport/contextualDrawer.eventsImport.tpl.html:52
 msgid "{{'Choose collection slots:' | translate }}"
