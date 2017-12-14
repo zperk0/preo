@@ -5,7 +5,7 @@
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo) {
 
      if (this.ModifierService.isModifiersDuplicated($modifiers, this.section)){
-      return this.Snack.showError("One or more modifiers already in section");
+      return this.Snack.showError(this.gettextCatalog.getString("One or more modifiers already in section"));
     }
 
     if (this.items && this.items.length) {
@@ -35,9 +35,9 @@
     let promises = this.ModifierService.addModifiersToParent($modifiers, this.section);
 
     this.$q.all(promises).then(()=>{
-      this.Snack.show("Added modifiers to section");
+      this.Snack.show(this.gettextCatalog.getString("Added modifiers to section"));
     },()=>{
-      this.Snack.showError("Error adding modifiers to section");
+      this.Snack.showError(this.gettextCatalog.getString("Error adding modifiers to section"));
     })
     .then(()=>{
       this.Spinner.hide("moving-section-modifiers");
@@ -71,7 +71,7 @@
   onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin) {
 
      if (this.isItemDuplicated($items)){
-        this.Snack.showError('One or more items already in section');
+        this.Snack.showError(this.gettextCatalog.getString('One or more items already in section'));
         // $partTo.splice($indexTo,$items.length);
         return;
       }
@@ -96,7 +96,7 @@
             this.items.unshift(newItem);
           }).catch((err)=>{
 
-            this.Snack.showError("Error moving items to section")
+            this.Snack.showError(this.gettextCatalog.getString("Error moving items to section"));
             console.log("Error moving items to section", err);
           })
           promises.push(p);
@@ -111,11 +111,11 @@
       this.updateItemsPosition()
         .then(() => {
 
-          this.Snack.show("Items moved to section")
+          this.Snack.show(this.gettextCatalog.getString("Items moved to section"));
           this.Spinner.hide("moving-section-item");
         }, () => {
 
-          this.Snack.show("Items moved to section")
+          this.Snack.show(this.gettextCatalog.getString("Items moved to section"));
           this.Spinner.hide("moving-section-item");
         });
     })
@@ -127,11 +127,11 @@
     return this.$q((resolve, reject)=>{
       this.section.update()
         .then((s)=>{
-          this.Snack.show('Section updated');
+          this.Snack.show(this.gettextCatalog.getString('Section updated'));
           resolve(s);
       },()=>{
         reject();
-        this.Snack.showError('Error saving section');
+        this.Snack.showError(this.gettextCatalog.getString('Error saving section'));
       }).then(()=>{
         this.Spinner.hide("section-save");
       })
@@ -205,10 +205,10 @@
             this.cardItemList.onUpdateItem(this.section, section);
             this.contextualMenu.hide();
             this.Spinner.hide("section-create");
-            this.Snack.show('Section created');
+            this.Snack.show(this.gettextCatalog.getString('Section created'));
           }, () => {
 
-            this.Snack.showError('Error saving section');
+            this.Snack.showError(this.gettextCatalog.getString('Error saving section'));
           });
 
       } else {
@@ -235,7 +235,7 @@
   }
 
   checkUpdatedItem (event, updatedItem) {
-    
+
     if (updatedItem.sectionId === this.section.id) {
       return;
     }

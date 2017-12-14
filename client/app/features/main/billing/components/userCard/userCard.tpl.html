@@ -4,7 +4,7 @@
           <md-card-title-text flex layout="row" layout-align="center start">
             <h2 class="md-title" flex="grow"  translate> Payment Card </h2>
             <md-button class="md-primary add-card" ng-if="!userCardCtrl.card.token && !userCardCtrl.showForm" flex="10" layout-align="center end" ng-click="userCardCtrl.addCard(false)">
-            	Add Card
+            	{{ 'Add Card' | translate }}
             </md-button>
           </md-card-title-text>
         </md-card-title>

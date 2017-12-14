@@ -8,9 +8,9 @@ export default class menuSectionListController {
     this.Spinner.show("section-move");
     console.log("on section moved, updating", this.cardItemList);
     this.cardItemList.onSimpleSort().then(()=>{
-      this.Snack.show('Section moved');
+      this.Snack.show(this.gettextCatalog.getString('Section moved'));
     }, ()=>{
-      this.Snack.showError('Error moving section');
+      this.Snack.showError(this.gettextCatalog.getString('Error moving section'));
     }).then(()=>{
       this.Spinner.hide("section-move");
     })
@@ -48,7 +48,7 @@ export default class menuSectionListController {
       }).then(()=>{
         this.Spinner.hide("section-delete");
       }).catch(()=>{
-        this.Snack.showError('Error deleting section');
+        this.Snack.showError(this.gettextCatalog.getString('Error deleting section'));
         this.Spinner.hide("section-delete");
       })
   }
@@ -60,12 +60,14 @@ export default class menuSectionListController {
   }
 
   /* @ngInject */
-  constructor($timeout, $q, Spinner, Snack) {
+  constructor($timeout, $q, Spinner, Snack, gettextCatalog) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
     this.$timeout = $timeout;
+    this.gettextCatalog = gettextCatalog;
+
     if (this.sections && this.sections.length){
       this.sections.forEach((s)=>s.$expanded = false)
       this.Spinner.show("section-loading");

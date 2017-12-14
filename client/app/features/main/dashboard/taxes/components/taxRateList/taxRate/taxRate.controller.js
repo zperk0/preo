@@ -60,12 +60,12 @@ export default class taxRateController {
               if (this.onItemDeleted){
                 this.onItemDeleted({item:this.taxRate});
               }
-              this.Snack.show('Tax rate deleted');
+              this.Snack.show(this.gettextCatalog.getString('Tax rate deleted'));
               this.Spinner.hide("tax-rate-delete");
           }, (error)=>{
             console.log("error");
             this.Spinner.hide("tax-rate-delete")
-            this.Snack.showError('Tax rate not deleted');
+            this.Snack.showError(this.gettextCatalog.getString('Tax rate not deleted'));
             if (error.status && error.status == 409){
               this.DialogService.show(this.ErrorService.TAX_RATE_ASSIGNED_TO_GROUP.title, this.ErrorService.TAX_RATE_ASSIGNED_TO_GROUP.message, [{
                 name: this.gettextCatalog.getString('Got it')
@@ -74,7 +74,7 @@ export default class taxRateController {
           })
           .catch((err)=>{
             this.Spinner.hide("tax-rate-delete")
-            this.Snack.showError('Tax rate not deleted');
+            this.Snack.showError(this.gettextCatalog.getString('Tax rate not deleted'));
           });
       });
   }

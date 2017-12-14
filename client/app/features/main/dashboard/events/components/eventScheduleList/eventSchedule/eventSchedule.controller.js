@@ -130,7 +130,7 @@ export default class eventScheduleController {
           if (this.onItemDeleted) {
             this.onItemDeleted({ item: this.schedule });
           }
-          this.Snack.show('Schedule deleted');
+          this.Snack.show(this.gettextCatalog.getString('Schedule deleted'));
           this.Spinner.hide("event-schedule-delete");
         })
           .catch((err) => {

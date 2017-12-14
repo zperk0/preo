@@ -11,7 +11,7 @@
                     has-visible="true">
                       <md-button class="md-icon-button warning-button" ng-if="eventCtrl.hasAnyScheduleWithoutSlots()">
                         <icon class="warning-icon">report_problem</icon>
-                        <md-tooltip>{{ 'There are schedules in this event without a collection slot' }}</md-tooltip>
+                        <md-tooltip>{{ 'There are schedules in this event without a collection slot' | translate }}</md-tooltip>
                       </md-button>
                       <span>{{eventCtrl.event.name}} </span>
                       <icon class='arrow-icon' flex>{{eventCtrl.event.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
@@ -34,7 +34,7 @@
     <!-- <card-item-actions ng-if="!eventCtrl.event.externalEvents.length" is-visible="eventCtrl.event.visible"
                        on-delete="eventCtrl.onDelete()"
                        on-edit="eventCtrl.onEdit($event)"
-                       on-add-location="eventCtrl.onAddOutletLocation($event)"                       
+                       on-add-location="eventCtrl.onAddOutletLocation($event)"
                        add-location-message="eventCtrl.getAddOutletLocationMessage()"
                         ></card-item-actions>
     <card-item-actions ng-if="eventCtrl.event.externalEvents.length" is-visible="eventCtrl.event.visible"

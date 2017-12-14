@@ -65,7 +65,7 @@
             <md-button class='md-raised md-primary'
                        ng-click="venueServicesCtrl.loadDeliveryZones()"
                        ng-if="venueServicesCtrl.hasDeliveryZoneFeature"
-                       flex translate> Add delivery Zones </md-button>
+                       flex> {{ 'Add delivery Zones' | translate }} </md-button>
 
 
             <delivery-settings-fields venue="venueServicesCtrl.venue" ng-if="!venueServicesCtrl.hasDeliveryZoneFeature"></delivery-settings-fields>

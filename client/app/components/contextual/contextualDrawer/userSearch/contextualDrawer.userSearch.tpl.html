@@ -1,13 +1,13 @@
-<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="userSearch"> 
+<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="userSearch">
 
   <user-select-list on-toogle="drawerUserSearchCtrl.toogle(user)" selected-list="drawerUserSearchCtrl.selectedList"></user-select-list>
-  
+
   <md-card-actions layout="row" layout-align="end center">
-    <md-button class='md-primary'  ng-click="drawerUserSearchCtrl.onCancel()" translate>
-      Cancel
-  </md-button>
-    <md-button type="submit" ng-click="drawerUserSearchCtrl.apply()" class='md-raised' translate>
-      Apply promotion
+    <md-button class='md-primary'  ng-click="drawerUserSearchCtrl.onCancel()">
+      {{ 'Cancel' | translate }}
+  	</md-button>
+    <md-button type="submit" ng-click="drawerUserSearchCtrl.apply()" class='md-raised'>
+      {{ 'Apply promotion' | translate }}
     </md-button>
   </md-card-actions>
 

@@ -60,12 +60,12 @@ export default class taxGroupController {
               if (this.onItemDeleted){
                 this.onItemDeleted({item:this.taxGroup});
               }
-              this.Snack.show('Tax group deleted');
+              this.Snack.show(this.gettextCatalog.getString('Tax group deleted'));
               this.Spinner.hide("tax-group-delete");
           }, (error)=>{
             console.log("error");
             this.Spinner.hide("tax-group-delete")
-            this.Snack.showError('Tax Group not deleted');
+            this.Snack.showError(this.gettextCatalog.getString('Tax Group not deleted'));
             if (error.status && error.status == 409){
               this.DialogService.show(this.ErrorService.TAX_GROUP_ASSIGNED_TO_ITEM.title, this.ErrorService.TAX_GROUP_ASSIGNED_TO_ITEM.message, [{
                 name: this.gettextCatalog.getString('Got it')
@@ -74,7 +74,7 @@ export default class taxGroupController {
           })
           .catch((err)=>{
             this.Spinner.hide("tax-group-delete")
-            this.Snack.showError('Tax Group not deleted');
+            this.Snack.showError(this.gettextCatalog.getString('Tax Group not deleted'));
           });
       });
   }

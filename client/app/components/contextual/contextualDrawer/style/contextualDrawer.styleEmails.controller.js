@@ -53,13 +53,13 @@ export default class contextualDrawerStyleController {
           this.StyleService.imagesModel.$images[key]= [];
           this.originalModel.images[image.type] = new Preoday.VenueImage({type:image.type});
           this.originalModel.images.$images[key]= [];
-          this.Snack.show('Image deleted');
+          this.Snack.show(this.gettextCatalog.getString('Image deleted'));
           this.Spinner.hide("venue-image-delete");
         })
         .catch((err)=>{
           console.log("Failed deleting item image", err)
           this.Spinner.hide("venue-image-delete")
-          this.Snack.showError('Image not deleted');
+          this.Snack.showError(this.gettextCatalog.getString('Image not deleted'));
         })
       });
     }
