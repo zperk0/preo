@@ -4,18 +4,22 @@ export default function datelocale(){
 
   return function(number, typeOfFormat) {
 
-    if(!moment(number).isValid())
-      return;
+    if (!moment(number).isValid()) {
+      return null;
+    }
 
-    var momentString = null;
+    let formatted = null;
 
-    if(typeOfFormat == 'timeOfDay')
-      momentString = moment(number).format('LT');
-    else if(typeOfFormat == 'dayOfWeek')
-      momentString = moment(number).format('dddd');
-    else
-      momentString = moment(number).format('L');
+    if (typeOfFormat === 'dateMin') {
+      formatted = moment(number).format('DD MMM YY');
+    } else if (typeOfFormat == 'timeOfDay') {
+      formatted = moment(number).format('LT');
+    } else if(typeOfFormat == 'dayOfWeek') {
+      formatted = moment(number).format('dddd');
+    } else {
+      formatted = moment(number).format('L');
+    }
 
-    return momentString;
+    return formatted;
   };
 }

@@ -128,7 +128,7 @@ export default class ReportsService {
         if (row.hasOwnProperty(head.key)) {
           // Events are exported to pdf/csv as Date Time - Event name, so need treat it here.
           if (head.key == 'eventName' && row['eventTime']) {
-            colObj.value = moment(row['eventTime']).format('DD MMM LT') + ' - ' + row[head.key];
+            colObj.value = moment(row['eventTime']).format('DD MMM YY - LT') + ' - ' + row[head.key];
           } else {
             colObj.value = row[head.key];
           }
@@ -139,7 +139,7 @@ export default class ReportsService {
         if (head.key === 'pickup') {
           colObj.value = row.pickupSlot
             ? row.pickupSlot
-            : moment(row.pickupTime).format('L LT');
+            : moment(row.pickupTime).format('DD MMM LT');
         }
 
         colObj.fieldType = head.fieldType;
@@ -166,6 +166,9 @@ export default class ReportsService {
             break;
           case "timeOfDay":
             colObj.displayValue = this.$filter('datelocale')(colObj.value, 'timeOfDay');
+            break;
+          case "dateMin":
+            colObj.displayValue = this.$filter('datelocale')(colObj.value, 'dateMin');
             break;
           default:
             colObj.displayValue = colObj.value;
@@ -786,7 +789,7 @@ export default class ReportsService {
         {key:'outletName' ,text:this.gettextCatalog.getString('Outlet'), isHidden: true},
         // {key:'pickupSlot' ,text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
         {key:'pickup', text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
-        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'dateMin'},
         {key:'customerName', text:this.gettextCatalog.getString('Customer')},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'items', text:this.gettextCatalog.getString('Items') , shouldTruncate: true},
