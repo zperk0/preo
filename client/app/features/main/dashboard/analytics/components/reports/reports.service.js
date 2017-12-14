@@ -125,17 +125,21 @@ export default class ReportsService {
       let rowObj = [];
       viewTable.header.forEach((head) => {
         let colObj = {};
-        if(row.hasOwnProperty(head.key)){
-
+        if (row.hasOwnProperty(head.key)) {
           // Events are exported to pdf/csv as Date Time - Event name, so need treat it here.
-          if(head.key == 'eventName' && row['eventTime'])
-            colObj.value = moment(row['eventTime']).format('L') +" "+moment(row['eventTime']).format('LT') +' - ' + row[head.key];
-          else
+          if (head.key == 'eventName' && row['eventTime']) {
+            colObj.value = moment(row['eventTime']).format('DD MMM LT') + ' - ' + row[head.key];
+          } else {
             colObj.value = row[head.key];
-
+          }
+        } else {
+          colObj.value = '-';
         }
-        else{
-          colObj.value = "-";
+
+        if (head.key === 'pickup') {
+          colObj.value = row.pickupSlot
+            ? row.pickupSlot
+            : moment(row.pickupTime).format('L LT');
         }
 
         colObj.fieldType = head.fieldType;
@@ -780,7 +784,8 @@ export default class ReportsService {
         {key:'id' ,text:this.gettextCatalog.getString('#') },
         {key:'eventName' ,text:this.gettextCatalog.getString('Event'), isHidden: true , showToEventsOnly: true},
         {key:'outletName' ,text:this.gettextCatalog.getString('Outlet'), isHidden: true},
-        {key:'pickupSlot' ,text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
+        // {key:'pickupSlot' ,text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
+        {key:'pickup', text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
         {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
         {key:'customerName', text:this.gettextCatalog.getString('Customer')},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
