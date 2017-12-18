@@ -1,14 +1,16 @@
 
 export default class authController {
   static get UID(){
-    return "authController";
+    return 'authController';
   }
 
-
   constructor(UtilsService) {
-    "ngInject";
+    'ngInject';
 
-    this.backgroundImage = UtilsService.getImagePath('/images/webapp/sign-in-bg.png');
-    this.preodayLogo = UtilsService.getImagePath('/images/webapp/logo-white.svg');
+    // get `cdn` domain images path
+    const path = UtilsService.getDomainImagesPath();
+
+    this.logo = UtilsService.getImagePath(path + 'logo.svg');
+    this.backgroundImage = UtilsService.getImagePath(path + 'webapp-auth-bg.png');
   }
 }

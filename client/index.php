@@ -12,60 +12,68 @@ $analytics = '';
 $sessionId = session_id();
 $rollbarEnv = null;
 $rollbarTokenClient = '';
-$domain = '';
+$domain = 'preoday';
 $isChannel = false;
-$cssoverride = null;
+$cssOverride = null;
+$FAVICON_ICO = '/favicon.ico';
 
 if (strpos($_SERVER['REQUEST_URI'], '/channel') === 0) {
     $isChannel = true;
 }
 
-
-if(isset($_SERVER["PREO_CDN"]))
+if (isset($_SERVER["PREO_CDN"]))
 {
     $cdnRoot = $_SERVER["PREO_CDN"];
 }
 
-if(isset($_SERVER["PREO_WEBORDERS"]))
+if (isset($_SERVER["PREO_WEBORDERS"]))
 {
     $weborders = $_SERVER["PREO_WEBORDERS"];
 }
-if(isset($_SERVER["PREO_WEBORDERS_EDIT"]))
+
+if (isset($_SERVER["PREO_WEBORDERS_EDIT"]))
 {
     $webordersEdit = $_SERVER["PREO_WEBORDERS_EDIT"];
 }
 
-if(isset($_SERVER["PREO_ORDERSAPP"]))
+if (isset($_SERVER["PREO_ORDERSAPP"]))
 {
     $ordersapp = $_SERVER["PREO_ORDERSAPP"];
 }
 
-if(isset($_SERVER["PREO_WEBAPP_V1"]))
+if (isset($_SERVER["PREO_WEBAPP_V1"]))
 {
     $webappV1 = $_SERVER["PREO_WEBAPP_V1"];
 }
 
-if(isset($_SERVER["PREO_RESET_PASSWORD"]))
+if (isset($_SERVER["PREO_RESET_PASSWORD"]))
 {
     $resetPasswordLink = $_SERVER["PREO_RESET_PASSWORD"];
 }
-if(isset($_SERVER["PREO_ROLLBAR_ENV"]))
+
+if (isset($_SERVER["PREO_ROLLBAR_ENV"]))
 {
     $rollbarEnv = $_SERVER["PREO_ROLLBAR_ENV"];
 }
-if(isset($_SERVER["PREO_ROLLBAR_POST_CLIENT"]))
+
+if (isset($_SERVER["PREO_ROLLBAR_POST_CLIENT"]))
 {
     $rollbarTokenClient = $_SERVER["PREO_ROLLBAR_POST_CLIENT"];
 }
-if(isset($_SERVER["PREO_CSS_OVERRIDE"]))
-{
-    $cssoverride = $_SERVER["PREO_CSS_OVERRIDE"];
-}
 
-if(isset($_SERVER["PREO_DOMAIN"]))
+if (isset($_SERVER["PREO_DOMAIN"]))
 {
     $domain = $_SERVER["PREO_DOMAIN"];
 }
+
+if (isset($_SERVER["PREO_CSS_OVERRIDE"])) {
+    $cssOverride = $_SERVER["PREO_CSS_OVERRIDE"];
+} else {
+    $cssOverride = $domain;
+}
+
+// SET domain favicon
+$favicon = $cdnRoot . 'images/' . $domain . $FAVICON_ICO;
 
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .=" <script>";
@@ -97,19 +105,17 @@ $overrides .= "window._PREO_DATA._DOMAIN='$domain';";
 $overrides .= "window._PREO_DATA._IS_CHANNEL=" . ($isChannel ? 1 : 0) . ";";
 $overrides .= "</script>";
 
-$contentsIndexHTML = str_replace("<!-- @@OVERRIDES -->",$overrides,$contentsIndexHTML);
-$contentsIndexHTML = str_replace("<!-- @@ANALYTICS -->",$analytics,$contentsIndexHTML);
-$contentsIndexHTML = str_replace("cdn/",$cdnRoot,$contentsIndexHTML);
+$contentsIndexHTML = str_replace('@@FAVICON', $favicon, $contentsIndexHTML);
+$contentsIndexHTML = str_replace('<!-- @@OVERRIDES -->', $overrides, $contentsIndexHTML);
+$contentsIndexHTML = str_replace('<!-- @@ANALYTICS -->', $analytics, $contentsIndexHTML);
+$contentsIndexHTML = str_replace('cdn/', $cdnRoot, $contentsIndexHTML);
 
-if($cssoverride)
-{
-    $overridePath = "./overrides/".$cssoverride."/override.css";
-    if (file_exists($overridePath)){
-    $contentsCssoverride = file_get_contents($overridePath);
-    $tempOverride =  '<style type="text/css">'.$contentsCssoverride.'</style>';
-    $contentsIndexHTML = str_replace("<!-- @@CSSOVERRIDE -->", $tempOverride, $contentsIndexHTML);
-    }
+// CSS Override Styles
+$cssOverridePath = './overrides/'. $cssOverride . '/override.css';
+if (file_exists($cssOverridePath)) {
+    $contentsCssOverride = file_get_contents($cssOverridePath);
+    $tempOverride = '<style type="text/css">'. $contentsCssOverride. '</style>';
+    $contentsIndexHTML = str_replace('<!-- @@CSSOVERRIDE -->', $tempOverride, $contentsIndexHTML);
 }
 
 echo $contentsIndexHTML;
-

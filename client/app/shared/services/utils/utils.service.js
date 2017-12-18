@@ -37,8 +37,12 @@ export default class UtilsService {
   }
 
   getDomain() {
-    return "preoday";
+		return window._PREO_DATA && window._PREO_DATA._DOMAIN || 'preoday';
   }
+
+	getDomainImagesPath() {
+		return '/images/' + this.getDomain() + '/';
+	}
 
   getImagePath (imgUrl) {
     if(!imgUrl)
