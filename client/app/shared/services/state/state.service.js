@@ -489,7 +489,11 @@ export default class StateService {
   }
 
   isOperator() {
-    return this.channel && +this.channel.operatorFlag === 1;
+    return this.channel && this.channel.callCenter && +this.channel.callCenter.operatorFlag === 1;
+  }
+
+  getOperateUrl() {
+    return this.channel && this.channel.callCenter && this.channel.callCenter.operateUrl;
   }
 
   getDomain() {

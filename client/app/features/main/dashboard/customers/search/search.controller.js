@@ -38,7 +38,7 @@ export default class customersSearchController {
       Snack.showError(gettextCatalog.getString('An error occurred to open the weborders, try again later please'));
     }
 
-    if (!StateService.channel || !StateService.channel.operateUrl) {
+    if (!StateService.getOperateUrl()) {
       return Snack.showError(gettextCatalog.getString('This app is not configured to place an order. Please contact the support team.'));
     }
 
@@ -47,7 +47,7 @@ export default class customersSearchController {
 
     this.OperateService.openNewTab();
 
-    this.OperateService.generateTokenAndGoToWeborders(customer.id, StateService.channel.operateUrl)
+    this.OperateService.generateTokenAndGoToWeborders(customer.id, StateService.getOperateUrl())
       .then(() => {
 
         console.log('Customer Search Controller [onPlaceOrder] - weborders opened');
