@@ -112,7 +112,7 @@ export default class customerController {
   }
 
   getRedirectUrl() {
-    return this.StateService.channel.callCenter.inviteCustomerUrl || null;
+    return this.StateService.channel.callCenter && this.StateService.channel.callCenter.inviteCustomerUrl || null;
   }
 
   goBack() {
