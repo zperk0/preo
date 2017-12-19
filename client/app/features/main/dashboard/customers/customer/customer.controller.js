@@ -85,7 +85,7 @@ export default class customerController {
 
       let shouldSendInvite = false;
 
-      if ((!this.originalCustomer.email && entity.email) || (entity.email && entity.isPending)) {
+      if (entity.email && entity.isPending) {
         shouldSendInvite = true;
       }
 
