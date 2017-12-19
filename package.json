@@ -9,6 +9,7 @@
     "build-demo": "rm -rf dist && webpack --bail -p --type build  --env demo --progress && npm run release-v1",
     "build-prod": "rm -rf dist && webpack --bail -p --type build  --env prod --progress && npm run release-v1",
     "serve": "webpack-dev-server --inline --type serve",
+    "serve:deliver-eats": "webpack-dev-server --inline --type serve --override deliver-eats",
     "serve:dev": "webpack-dev-server --env dev --type serve --inline",
     "serve:prod": "webpack-dev-server --env prod --type serve --inline",
     "test": "pwd",
