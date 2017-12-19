@@ -59,20 +59,17 @@ export default class analyticsCustomersController {
   getRowsToExport(){
     var data = [];
 
-    if(this.linesSelected.length > 0){
+    if (this.linesSelected.length) {
       data = this.linesSelected;
-    }
-    else{
-      if(this.dataFilters.customerMarketing){
+    } else {
+      if (this.dataFilters.customerMarketing) {
         data = this.$filter('marketingFilter')(this.currentReport, this.fieldToFilter, true);
-      }
-      else{
+      } else {
         data = this.currentReport;
       }
     }
 
-    data = this.$filter('orderObj')( data, this.query.order ,'value');
-
+    data = this.$filter('orderObj')(data, this.query.order, 'value');
     return data;
   }
 
@@ -122,19 +119,12 @@ export default class analyticsCustomersController {
     this.DialogService.showTextDialog(this.$scope, modal.title, modal.placeholder, modal.titleMessage,modal.buttons, this.onNotificationInput)
     .then(() => {
 
-      var usersSelected = [];
+      var usersSelected = this.getRowsToExport();
       var textToPush = this.$scope.diagCtrl.textArea;
-
-      if(this.linesSelected.length > 0){
-        usersSelected = this.linesSelected;
-      }
-      else{
-        usersSelected = this.tableData.body;
-      }
 
       this.showSpinner();
 
-      this.ReportsService.sendPushNotification( usersSelected,textToPush)
+      this.ReportsService.sendPushNotification(usersSelected, textToPush)
       .then((data) => {
         this.Snack.show(this.gettextCatalog.getString('The message was sent successfully.'));
         this.hideSpinner();
