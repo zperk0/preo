@@ -14,7 +14,6 @@ $rollbarEnv = null;
 $rollbarTokenClient = '';
 $domain = 'preoday';
 $isChannel = false;
-$cssOverride = null;
 $FAVICON_ICO = '/favicon.ico';
 
 if (strpos($_SERVER['REQUEST_URI'], '/channel') === 0) {
@@ -66,12 +65,6 @@ if (isset($_SERVER["PREO_DOMAIN"]))
     $domain = $_SERVER["PREO_DOMAIN"];
 }
 
-if (isset($_SERVER["PREO_CSS_OVERRIDE"])) {
-    $cssOverride = $_SERVER["PREO_CSS_OVERRIDE"];
-} else {
-    $cssOverride = $domain;
-}
-
 // SET domain favicon
 $favicon = $cdnRoot . 'images/' . $domain . $FAVICON_ICO;
 
@@ -111,7 +104,7 @@ $contentsIndexHTML = str_replace('<!-- @@ANALYTICS -->', $analytics, $contentsIn
 $contentsIndexHTML = str_replace('cdn/', $cdnRoot, $contentsIndexHTML);
 
 // CSS Override Styles
-$cssOverridePath = './overrides/'. $cssOverride . '/override.css';
+$cssOverridePath = './overrides/'. $domain . '/override.css';
 if (file_exists($cssOverridePath)) {
     $contentsCssOverride = file_get_contents($cssOverridePath);
     $tempOverride = '<style type="text/css">'. $contentsCssOverride. '</style>';

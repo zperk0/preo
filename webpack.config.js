@@ -9,7 +9,7 @@ program
   .option('-bail, --bail', 'Whether to bail on error')
   .option('-type, --type <type>', 'Whether to build as module', 'default')
   .option('-env, --env <env>', 'The environment to run it in', 'local')
-  .option('-override, --override <override>', 'The override content', 'preoday')
+  .option('-override, --override <override>', 'The override content')
   .parse(process.argv);
 
 /**

@@ -17,7 +17,7 @@ module.exports = function makeWebpackConfig(options) {
   var TYPE = options.TYPE;
   var ENV = options.ENVIRONMENT;
   var configOptions = {
-    override: options.OVERRIDE,
+    override: options.OVERRIDE || 'preoday',
     devServerPort: 3128
   };
 
