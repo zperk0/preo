@@ -29,22 +29,22 @@ console.log('errrrr', err);
     let outletLocationToMove = this.OutletLocationService.getOutletLocationToMove();
 
     if (outletLocationToMove.id === outletLocation.id) {
-      this.Snack.showError('You need select a different outlet location destination');
+      this.Snack.showError(this.gettextCatalog.getString('You need select a different outlet location destination'));
       return;
     }
 
     if (outletLocation.path && outletLocation.path.indexOf('/' + outletLocationToMove.id + '/') !== -1) {
-      this.Snack.showError('You need select a different outlet location destination');
+      this.Snack.showError(this.gettextCatalog.getString('You need select a different outlet location destination'));
       return;
     }
 
     if (!outletLocation.isGroup && outletLocation.isSeat()) {
-      this.Snack.showError('You can not add children for seat outlet location');
+      this.Snack.showError(this.gettextCatalog.getString('You can not add children for seat outlet location'));
       return;
     }
 
     if (outletLocation.outletId) {
-      this.Snack.showError('You can not add children for an outlet location with an outlet');
+      this.Snack.showError(this.gettextCatalog.getString('You can not add children for an outlet location with an outlet'));
       return;
     }
 
@@ -65,23 +65,15 @@ console.log('errrrr', err);
     this.contextualDrawer.success(groupToMove);
   }
 
-  constructor($scope, OutletLocationService, StateService, BroadcastEvents, $stateParams,contextualDrawer, Snack) {
+  constructor($scope, OutletLocationService, StateService, BroadcastEvents, $stateParams,contextualDrawer, Snack, gettextCatalog) {
     "ngInject";
     this.OutletLocationService = OutletLocationService;
     this.StateService = StateService;
     this.contextualDrawer = contextualDrawer;
     this.Snack = Snack;
     this.selectedOutletLocation = null;
+    this.gettextCatalog = gettextCatalog;
 
     this.fetchOutletLocations();
-
-    // if (VenueService.hasVenueSet()) {
-    //   this.fetchOutletLocations();
-    // } else {
-    //   $scope.$on(BroadcastEvents.ON_CURRENT_VENUE, (event, venue) => {
-
-    //     this.fetchOutletLocations();
-    //   });
-    // }
   }
 }

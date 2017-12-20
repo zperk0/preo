@@ -12,7 +12,7 @@
           <card-item-list
                 collection="::drawerModifiersCtrl.data.modifiers"
                 search-filter="drawerModifiersCtrl.searchText"
-                search-label="modifiers">
+                search-label="{{ 'modifiers' | translate }}">
                 <div class='sort-holder'
                   sv-part="::drawerModifiersCtrl.data.modifiers"
                   sv-part-origin="::drawerModifiersCtrl.data.modifiers"
@@ -41,8 +41,8 @@
     </div>
 
     <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="drawerModifiersCtrl.close()" class='md-raised' translate>
-          {{ 'Done' | translate}}
+      <md-button ng-click="drawerModifiersCtrl.close()" class='md-raised'>
+        {{ 'Done' | translate}}
       </md-button>
     </md-card-actions>
 </md-sidenav>

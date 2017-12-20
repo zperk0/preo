@@ -37,7 +37,7 @@ export default class userEmailController {
     }).then(() => {
 
       if (user.username === user.email) {
-        this.Snack.show(this.gettextCatalog.getString('Your new username is ') + this.data.email);
+        this.Snack.show(this.gettextCatalog.getString('Your new username is') + ' ' + this.data.email);
       } else {
         this.Snack.show(this.gettextCatalog.getString('Your email has been changed'));
       }

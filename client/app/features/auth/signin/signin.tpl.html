@@ -22,7 +22,7 @@
     <md-button  type='submit' class='md-raised md-block signin-button'>
         {{ 'Sign In' | translate}}
     </md-button>
-    <md-button type="button" ng-click="signinCtrl.onForgotPassword()" class="md-primary" translate>I Forgot My Password</md-button>
+    <md-button type="button" ng-click="signinCtrl.onForgotPassword()" class="md-primary">{{ 'I Forgot My Password' | translate }}</md-button>
     <md-button type="button" ng-if="signinCtrl.$stateParams.inviteKey" ng-click="signinCtrl.redirectSignUp()" class="md-primary">{{ 'Create a new account' | translate}}</md-button>
   </form>
 

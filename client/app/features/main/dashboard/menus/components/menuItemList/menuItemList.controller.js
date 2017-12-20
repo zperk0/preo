@@ -36,7 +36,7 @@ export default class menuItemListController {
 
         createdItem.$show = true; //need show for animation
         this.Spinner.hide("item-clone")
-        this.Snack.show('Item duplicated');
+        this.Snack.show(this.gettextCatalog.getString('Item duplicated'));
         console.log("cloned", createdItem, this.item);
 
         this.items.push(createdItem);
@@ -45,7 +45,7 @@ export default class menuItemListController {
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-clone")
-        this.Snack.showError('Failed duplicating item');
+        this.Snack.showError(this.gettextCatalog.getString('Failed duplicating item'));
       });
   }
 
@@ -61,7 +61,7 @@ export default class menuItemListController {
     return !filterName || (item.name && item.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1);
   }
 
-  constructor($scope, $stateParams, Spinner, Snack, StateService, ItemService, FeatureService) {
+  constructor($scope, $stateParams, Spinner, Snack, StateService, ItemService, FeatureService, gettextCatalog) {
     "ngInject";
 
     $scope.results = this.items;
@@ -71,6 +71,7 @@ export default class menuItemListController {
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.StateService = StateService;
+    this.gettextCatalog = gettextCatalog;
 
     this.items = this.items === undefined ? [] : this.items;
     this.ItemService = ItemService;

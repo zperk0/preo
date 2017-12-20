@@ -13,7 +13,7 @@ export default class eventController {
   }
 
   onExternalEvents($event){
-  
+
     this.event.$expanded = false;
     //contextualDrawer rceives zero param, so need to set entity on Service, so its possible to use on contextual init
     this.ExternalService.setEntityEvent(this.event);
@@ -22,15 +22,15 @@ export default class eventController {
 
         if(data.hasChanges){
           this.event.schedules = data.event.schedules;
-          this.event.externalEvents = data.event.externalEvents;               
-        }       
+          this.event.externalEvents = data.event.externalEvents;
+        }
 
         this.ExternalService.cleanEntityEvent();
-       
+
       }, () => {
         this.ExternalService.cleanEntityEvent();
         console.log('Drawer Event Import cancelled');
-        
+
       })
     .catch((err) => {
       this.ExternalService.cleanEntityEvent();
@@ -221,7 +221,7 @@ export default class eventController {
           this.Spinner.show("event-delete");
 
           //contextualDrawer rceives zero param, so need to set changes on Service, so its possible to use on contextual init
-          if(this.event.externalEvents && this.event.externalEvents.length){           
+          if(this.event.externalEvents && this.event.externalEvents.length){
             this.ExternalService.setHasChanges(true);
           }
 
@@ -232,13 +232,13 @@ export default class eventController {
           promise.then(()=>{
 
               this.removeEventItem();
-              this.Snack.show('Event deleted');
+              this.Snack.show(this.gettextCatalog.getString('Event deleted'));
               this.Spinner.hide("event-delete");
           })
           .catch((err)=>{
             this.Spinner.hide("event-delete")
 
-            this.Snack.showError('Event not deleted');
+            this.Snack.showError(this.gettextCatalog.getString('Event not deleted'));
           });
       });
   }

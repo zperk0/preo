@@ -43,7 +43,7 @@
 
 					<div ng-if="venueOpeningHoursCtrl.hasOpeningHours() && venueOpeningHoursCtrl.hasServiceMethods()">
 			    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasCollectionService()">
-				    	<p>Collection service:</p>
+				    	<p>{{ 'Collection service:' | translate }}</p>
 
 			        <md-checkbox class="service-type-toogle"
 			        						ng-change="venueOpeningHoursCtrl.toggleServiceHours()"
@@ -57,7 +57,7 @@
 				    											on-update="venueOpeningHoursCtrl.updateHours()"></opening-hours-list>
 			    	</div>
 			    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasDeliveryService()">
-				    	<p>Delivery service:</p>
+				    	<p>{{ 'Delivery service:' | translate }}</p>
 
 			        <md-checkbox class="service-type-toogle"
 			        						ng-change="venueOpeningHoursCtrl.toggleServiceHours()"

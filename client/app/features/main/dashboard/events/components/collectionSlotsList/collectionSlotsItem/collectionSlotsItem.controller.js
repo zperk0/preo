@@ -114,14 +114,14 @@ export default class collectionSlotsItemController {
       if (this.onItemDeleted){
         this.onItemDeleted({item: this.collectionSlot});
       }
-      this.Snack.show('Collection Slot deleted');
+      this.Snack.show(this.gettextCatalog.getString('Collection Slot deleted'));
       this.Spinner.hide("collection-slot-delete");
     })
     .catch((err)=>{
       console.log('error on delete,', err);
       this.Spinner.hide("collection-slot-delete")
 
-      this.Snack.showError('Collection slot not deleted');
+      this.Snack.showError(this.gettextCatalog.getString('Collection slot not deleted'));
     });
   }
 
@@ -143,7 +143,7 @@ export default class collectionSlotsItemController {
             }, () => {
 
               this.Spinner.hide("collection-slot-delete")
-              this.Snack.showError('Collection slot not deleted');
+              this.Snack.showError(this.gettextCatalog.getString('Collection slot not deleted'));
             });
 
       });

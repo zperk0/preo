@@ -6,7 +6,7 @@
     <card-item-list
           collection="menuItemListCtrl.items"
           search-filter="menuItemListCtrl.searchText"
-          search-label="{{menuItemListCtrl.hasSearch ? 'items' : ''}}">
+          search-label="{{menuItemListCtrl.hasSearch ? ('items' | translate) : ''}}">
           <div class='sort-holder'
             sv-part="menuItemListCtrl.items"
             sv-part-origin="menuItemListCtrl.items"

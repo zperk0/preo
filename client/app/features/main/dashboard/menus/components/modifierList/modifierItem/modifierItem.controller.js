@@ -12,12 +12,12 @@ export default class modifierItemController {
 
     //has modifier?
     if (this.ModifierService.isModifiersDuplicated($modifiers, this.modifier)){
-      return this.Snack.showError("One or more modifiers already in modifier");
+      return this.Snack.showError(this.gettextCatalog.getString("One or more modifiers already in modifier"));
     }
 
     //is cyclic reference?
     if (this.ModifierService.canAddModifiers($modifiers, this.modifier)){
-      return this.Snack.showError("Cannot create cyclic set of modifiers");
+      return this.Snack.showError(this.gettextCatalog.getString("Cannot create cyclic set of modifiers"));
     }
 
     this.Spinner.show("moving-modifier-modifiers");
@@ -28,9 +28,9 @@ export default class modifierItemController {
       Array.prototype.push.apply(this.modifier.modifiers, modifiers);
       Array.prototype.push.apply(this.modifiers, modifiers);
 
-      this.Snack.show("Added modifiers to modifier");
+      this.Snack.show(this.gettextCatalog.getString("Added modifiers to modifier"));
     },()=>{
-      this.Snack.showError("Error adding modifiers to modifier");
+      this.Snack.showError(this.gettextCatalog.getString("Error adding modifiers to modifier"));
     })
     .then(()=>{
       this.Spinner.hide("moving-modifier-modifiers");
@@ -49,7 +49,7 @@ export default class modifierItemController {
           found++;
           // sort list adds the item in the new list, if we find it we must remove it
           if (found){
-            return 'One or more modifiers already in item';
+            return this.gettextCatalog.getString('One or more modifiers already in item');
           }
         }
       }
@@ -72,13 +72,13 @@ export default class modifierItemController {
           promise.then(()=>{
               // this.cardItemList.onItemDeleted(this.modifier);
               this.ItemService.populateModifiers();
-              this.Snack.show('Item deleted');
+              this.Snack.show(this.gettextCatalog.getString('Item deleted'));
               this.Spinner.hide("modifier-delete");
           })
           .catch((err)=>{
             console.log("Failed deleting Modifier", err)
             this.Spinner.hide("modifier-delete")
-            this.Snack.showError('Modifier not deleted');
+            this.Snack.showError(this.gettextCatalog.getString('Modifier not deleted'));
           });
       });
   }
@@ -91,12 +91,12 @@ export default class modifierItemController {
           this.modifier = createdModifier;
           this.cardItemList.onItemCreated(this.modifier);
           this.Spinner.hide("modifier-create")
-          this.Snack.show('Modifier created');
+          this.Snack.show(this.gettextCatalog.getString('Modifier created'));
           this.contextualMenu.hide();
         }, (err)=>{
           console.log("failed creating item", err)
           this.Spinner.hide("modifier-create")
-          this.Snack.showError('Failed creating modifier');
+          this.Snack.showError(this.gettextCatalog.getString('Failed creating modifier'));
         })
     }
 
@@ -109,13 +109,13 @@ export default class modifierItemController {
         })
       .then(()=>{
           this.Spinner.hide("modifier-update")
-          this.Snack.show('Modifier updated');
+          this.Snack.show(this.gettextCatalog.getString('Modifier updated'));
           this.contextualMenu.hide();
           this.cardItemList.onItemUpdated(this.modifier);
       }, (err)=>{
         console.log("Failed updating Modifier", err)
         this.Spinner.hide("modifier-update")
-        this.Snack.showError('Modifier not updated');
+        this.Snack.showError(this.gettextCatalog.getString('Modifier not updated'));
       })
     }
 
@@ -155,12 +155,12 @@ export default class modifierItemController {
     this.ModifierService.cloneModifier(this.modifier)
       .then((createdItem)=>{
         this.Spinner.hide("modifier-clone")
-        this.Snack.show('Modifier duplicated');
+        this.Snack.show(this.gettextCatalog.getString('Modifier duplicated'));
         this.cardItemList.onItemCreated(createdItem);
       }, (err)=>{
         console.log("failed duplicating modifier", err)
         this.Spinner.hide("modifier-clone")
-        this.Snack.showError('Failed duplicating modifier');
+        this.Snack.showError(this.gettextCatalog.getString('Failed duplicating modifier'));
     })
   }
 
@@ -195,7 +195,7 @@ export default class modifierItemController {
     });
   }
 
-  constructor($scope, $q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService, BroadcastEvents, ItemService) {
+  constructor($scope, $q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService, BroadcastEvents, ItemService, gettextCatalog) {
     'ngInject';
 
     this.Spinner = Spinner;
@@ -208,6 +208,7 @@ export default class modifierItemController {
     this.ModifierService = ModifierService;
     this.BroadcastEvents = BroadcastEvents;
     this.ItemService = ItemService;
+    this.gettextCatalog = gettextCatalog;
 
     this.showCardActions = false;
     this.type = "modifier";

@@ -46,7 +46,7 @@ export default class menuSectionItemListController {
   onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo) {
        //must check because library appends the item in the array before calling callback
       if (this.cardItemList.isItemDuplicated($items, 0)){
-        this.Snack.showError('One or more items are already in section');
+        this.Snack.showError(this.gettextCatalog.getString('One or more items are already in section'));
         return;
       }
 
@@ -97,12 +97,12 @@ export default class menuSectionItemListController {
       });
       return this.doSimpleSort($partTo);
     }).then(()=>{
-      this.Snack.show('Items added');
+      this.Snack.show(this.gettextCatalog.getString('Items added'));
       this.Spinner.hide("item-move");
     })
     .catch((err)=>{
       console.log("error", err);
-      this.Snack.showError('Error adding item');
+      this.Snack.showError(this.gettextCatalog.getString('Error adding item'));
       this.Spinner.hide("item-move");
     })
   }
@@ -113,10 +113,10 @@ export default class menuSectionItemListController {
       this.Spinner.show("item-move");
       this.doSimpleSort($partTo).then(() => {
 
-        this.Snack.show('Item moved');
+        this.Snack.show(this.gettextCatalog.getString('Item moved'));
       }, () => {
 
-        this.Snack.showError('Error moving item');
+        this.Snack.showError(this.gettextCatalog.getString('Error moving item'));
       }).then(() => {
 
         this.Spinner.hide("item-move");
@@ -160,7 +160,7 @@ export default class menuSectionItemListController {
 
         createdItem.$show = true; //need show for animation
         this.Spinner.hide("item-clone")
-        this.Snack.show('Item duplicated');
+        this.Snack.show(this.gettextCatalog.getString('Item duplicated'));
         console.log("cloned", createdItem, this.item);
 
         this.cardItemList.insert(item, createdItem, this.section);
@@ -169,7 +169,7 @@ export default class menuSectionItemListController {
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-clone")
-        this.Snack.showError('Failed duplicating item');
+        this.Snack.showError(this.gettextCatalog.getString('Failed duplicating item'));
       });
   }
 

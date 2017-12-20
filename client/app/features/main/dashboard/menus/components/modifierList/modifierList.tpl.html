@@ -9,7 +9,7 @@
         tooltip="{{'Add modifier' | translate}}"
         on-click-new="modifierListCtrl.onClickNew()"
         search-filter="modifierListCtrl.searchText"
-        search-label="{{modifierListCtrl.hasSearch ? 'modifiers' : ''}}">
+        search-label="{{modifierListCtrl.hasSearch ? ('modifiers' | translate) : ''}}">
         <div class='sort-holder'
           sv-part="modifierListCtrl.modifiers"
           sv-part-origin="modifierListCtrl.modifiers"
