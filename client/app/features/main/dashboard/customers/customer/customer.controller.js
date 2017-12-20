@@ -83,18 +83,12 @@ export default class customerController {
     Spinner.show(LOADER_KEY);
     if (this.customer && entity && entity.firstName) {
 
-      let shouldSendInvite = false;
-
-      if (entity.email && entity.isPending) {
-        shouldSendInvite = true;
-      }
-
       this.customer = entity;
 
       this.saveOrUpdate()(this.customer)
         .then((newCustomer) => {
 
-          if (shouldSendInvite) {
+          if (newCustomer && newCustomer.email && newCustomer.isPending) {
             return newCustomer.sendCustomerInvite(this.getRedirectUrl())
                       .then(this.onCustomerSuccessCallback.bind(this, newCustomer), this.onCustomerInviteErrorCallback.bind(this, newCustomer));
           } else {
