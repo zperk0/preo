@@ -23,7 +23,7 @@ export default class contextualDrawerOrderDetailController {
       OperateService
     } = this;
 
-    if (!StateService.channel || !StateService.channel.operateUrl) {
+    if (!StateService.getOperateUrl()) {
       return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
     }
 
@@ -56,7 +56,7 @@ export default class contextualDrawerOrderDetailController {
       ErrorService,
     } = this;
 
-    if (!StateService.channel || !StateService.channel.operateUrl) {
+    if (!StateService.getOperateUrl()) {
       return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
     }
 
@@ -129,7 +129,7 @@ export default class contextualDrawerOrderDetailController {
       OperateService
     } = this;
 
-    if (!StateService.channel || !StateService.channel.operateUrl) {
+    if (StateService.getOperateUrl()) {
       return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
     }
 

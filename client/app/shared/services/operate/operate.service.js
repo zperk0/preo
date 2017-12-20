@@ -35,7 +35,7 @@ export default class OperateService {
   }
 
   getWebordersLinkByOrder(order) {
-    let path = this.StateService.channel.operateUrl;
+    let path = this.StateService.getOperateUrl();
     path += '?venueId=' + order.venueId + '&';
     path += 'orderId=' + order.id;
 
