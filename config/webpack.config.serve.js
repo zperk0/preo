@@ -45,7 +45,7 @@ module.exports = function(ENV, options) {
                   overrides += "_ORDERSAPP : 'http://local.orders.preoday.com/',",
                   overrides += "_WEBAPP_V1 : 'http://local.app.preoday.com/',",
                   overrides += "_RESET_PASSWORD : 'http://local.app.preoday.com/reset',",
-                  overrides += "_DOMAIN : '"+ options.override +"',",
+                  overrides += "_DOMAIN : 'preoday',",
                   overrides += "_IS_CHANNEL : false",
                   overrides += "};";
                   overrides += "</script>";
@@ -68,6 +68,13 @@ module.exports = function(ENV, options) {
                     return '<style>'+ cssOverride + '</style>';
                   }
                   return cssOverride;
+                }
+              },
+              {
+                // Change `cdn/images/` for cdn root url (local)
+                pattern: /cdn\//g,
+                replacement: function (match, p1, offset, string) {
+                  return 'http://cdn-local.preoday.com/';
                 }
               },
               {

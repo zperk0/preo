@@ -12,9 +12,10 @@ $analytics = '';
 $sessionId = session_id();
 $rollbarEnv = null;
 $rollbarTokenClient = '';
-$domain = 'preoday';
+$domain = '';
 $isChannel = false;
 $FAVICON_ICO = '/favicon.ico';
+$cssOverride = 'preoday';
 
 if (strpos($_SERVER['REQUEST_URI'], '/channel') === 0) {
     $isChannel = true;
@@ -65,8 +66,13 @@ if (isset($_SERVER["PREO_DOMAIN"]))
     $domain = $_SERVER["PREO_DOMAIN"];
 }
 
+if (isset($_SERVER["PREO_CSS_OVERRIDE"]))
+{
+    $cssOverride = $_SERVER["PREO_CSS_OVERRIDE"];
+}
+
 // SET domain favicon
-$favicon = $cdnRoot . 'images/' . $domain . $FAVICON_ICO;
+$favicon = $cdnRoot . 'images/' . $cssOverride . $FAVICON_ICO;
 
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .=" <script>";
@@ -101,14 +107,16 @@ $overrides .= "</script>";
 $contentsIndexHTML = str_replace('@@FAVICON', $favicon, $contentsIndexHTML);
 $contentsIndexHTML = str_replace('<!-- @@OVERRIDES -->', $overrides, $contentsIndexHTML);
 $contentsIndexHTML = str_replace('<!-- @@ANALYTICS -->', $analytics, $contentsIndexHTML);
-$contentsIndexHTML = str_replace('cdn/', $cdnRoot, $contentsIndexHTML);
 
 // CSS Override Styles
-$cssOverridePath = './overrides/'. $domain . '/override.css';
+$cssOverridePath = './overrides/'. $cssOverride . '/override.css';
 if (file_exists($cssOverridePath)) {
     $contentsCssOverride = file_get_contents($cssOverridePath);
     $tempOverride = '<style type="text/css">'. $contentsCssOverride. '</style>';
     $contentsIndexHTML = str_replace('<!-- @@CSSOVERRIDE -->', $tempOverride, $contentsIndexHTML);
 }
+
+// Change `cdn/` url to `cdn root` url
+$contentsIndexHTML = str_replace('cdn/', $cdnRoot, $contentsIndexHTML);
 
 echo $contentsIndexHTML;

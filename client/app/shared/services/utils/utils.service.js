@@ -40,11 +40,7 @@ export default class UtilsService {
 		return window._PREO_DATA && window._PREO_DATA._DOMAIN || 'preoday';
   }
 
-	getDomainImagesPath() {
-		return '/images/' + this.getDomain() + '/';
-	}
-
-  getImagePath (imgUrl) {
+	getImagePath (imgUrl) {
     if(!imgUrl)
       return;
     var outputUrl = window._PREO_DATA._CDNROOT;

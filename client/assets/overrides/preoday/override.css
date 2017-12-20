@@ -1,0 +1,16 @@
+
+.auth .signin,
+.auth .signup,
+.auth .invite {
+  background-image: url('cdn/images/preoday/webapp-auth-bg.png');
+}
+
+.auth .signin .logo,
+.auth .signup .logo,
+.auth .invite .logo {
+  width: 154px;
+  height: 35px;
+  margin-top: 172px;
+  margin-bottom: 40px;
+  background-image: url('cdn/images/preoday/logo.svg');
+}

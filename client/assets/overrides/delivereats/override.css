@@ -1,0 +1,16 @@
+
+.auth .signin,
+.auth .signup,
+.auth .invite {
+  background-image: url('cdn/images/delivereats/webapp-auth-bg.png');
+}
+
+.auth .signin .logo,
+.auth .signup .logo,
+.auth .invite .logo {
+  width: 280px;
+  height: 60px;
+  margin-top: 150px;
+  margin-bottom: 30px;
+  background-image: url('cdn/images/delivereats/logo.svg');
+}
