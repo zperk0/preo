@@ -125,17 +125,21 @@ export default class ReportsService {
       let rowObj = [];
       viewTable.header.forEach((head) => {
         let colObj = {};
-        if(row.hasOwnProperty(head.key)){
-
+        if (row.hasOwnProperty(head.key)) {
           // Events are exported to pdf/csv as Date Time - Event name, so need treat it here.
-          if(head.key == 'eventName' && row['eventTime'])
-            colObj.value = moment(row['eventTime']).format('L') +" "+moment(row['eventTime']).format('LT') +' - ' + row[head.key];
-          else
+          if (head.key == 'eventName' && row['eventTime']) {
+            colObj.value = moment(row['eventTime']).format('DD MMM YY - LT') + ' - ' + row[head.key];
+          } else {
             colObj.value = row[head.key];
-
+          }
+        } else {
+          colObj.value = '-';
         }
-        else{
-          colObj.value = "-";
+
+        if (head.key === 'pickup') {
+          colObj.value = row.pickupSlot
+            ? row.pickupSlot
+            : moment(row.pickupTime).format('DD MMM LT');
         }
 
         colObj.fieldType = head.fieldType;
@@ -162,6 +166,9 @@ export default class ReportsService {
             break;
           case "timeOfDay":
             colObj.displayValue = this.$filter('datelocale')(colObj.value, 'timeOfDay');
+            break;
+          case "dateMin":
+            colObj.displayValue = this.$filter('datelocale')(colObj.value, 'dateMin');
             break;
           default:
             colObj.displayValue = colObj.value;
@@ -207,13 +214,25 @@ export default class ReportsService {
 
   // need to show/ hide some fields based on Events/Takeaway properties from header. AND based on Filters used to search
   prepareDataToCsv(report, dataSelected){
-    var minDate = moment(this.params.minCreated).format("L");
-    var maxDate = moment(this.params.maxCreated).format("L");
+    let minDate = null;
+    let maxDate = null;
+    let dateText = '';
+
+    if (angular.isObject(this.params.datesEvent)) {
+      const datesEvent = this.params.datesEvent;
+      minDate = datesEvent.startDate ? moment(datesEvent.startDate).format('L') : null;
+      maxDate = datesEvent.endDate ? moment(datesEvent.endDate).format('L') : null;
+    } else {
+      minDate = moment(this.params.minCreated).format('L');
+      maxDate = moment(this.params.maxCreated).format('L');
+    }
+
+    dateText = (minDate && maxDate) ? [minDate, maxDate].join(' - ') : minDate;
 
     var header = this.getReportHeader(report.id);
     var reportTitle = report.name;
 
-    var response = [[minDate +' - '+ maxDate],[reportTitle]];
+    var response = [[dateText], [reportTitle]];
 
     var itemData = [];
 
@@ -312,18 +331,23 @@ export default class ReportsService {
             response[headerCol.text].push(col.displayValue);
         }
       });
-
     });
 
-    var pdfObj = {
-        title: reportTitle,
-        startDate:moment( this.params.minCreated).valueOf(),
-        endDate:moment( this.params.maxCreated).valueOf(),
-        dataJson:JSON.stringify(response)
+    let pdfObj = {
+      title: reportTitle,
+      startDate: moment(this.params.minCreated).valueOf(),
+      endDate: moment(this.params.maxCreated).valueOf(),
+      dataJson: JSON.stringify(response)
     };
 
-    if(report.orientation)
+    if (angular.isObject(this.params.datesEvent)) {
+      const datesEvent = this.params.datesEvent;
+      angular.extend(pdfObj, datesEvent);
+    }
+
+    if (report.orientation) {
       pdfObj.orientation = report.orientation;
+    }
 
     return pdfObj;
   }
@@ -569,33 +593,70 @@ export default class ReportsService {
     return paramChanged;
   }
 
+  getEventDatesRange(events) {
+
+    let startDate = null;
+    let endDate = null;
+    let dateObj = {startDate: null, endDate: null};
+
+    const dates = events.map((ev) => {
+      const date = moment(ev.startDate);
+      if (angular.isObject(date) && date.isValid()) {
+        return date;
+      }
+    }).sort((a, b) => {
+      return a.diff(b);
+    });
+
+    if (dates.length) {
+      startDate = dates[0];
+      dateObj.startDate = startDate.startOf('day').valueOf();
+
+      if (dates.length > 1) {
+        endDate = dates[dates.length -1];
+
+        if (startDate.isSame(endDate, 'day')) {
+          return dateObj;
+        }
+
+        dateObj.endDate = endDate.endOf('day').valueOf();
+        return dateObj;
+      }
+    }
+
+    return dateObj;
+  }
+
   formatDataFilters(parameters, saveParams){
 
     var response = {};
 
-    if(parameters.report)
+    if (parameters.report) {
       response.reportType = parameters.report.reportType;
-
-    if(parameters.datesRange && parameters.datesRange.endDate && parameters.datesRange.startDate){
-      response.minCreated = moment(parameters.datesRange.startDate, "L").startOf('day').format('YYYY-MM-DD[T]HH:mm:ss');
-      response.maxCreated = moment(parameters.datesRange.endDate, "L").endOf('day').format('YYYY-MM-DD[T]HH:mm:ss');
     }
-    else{
+
+    if (parameters.datesRange && parameters.datesRange.endDate && parameters.datesRange.startDate) {
+      response.minCreated = moment(parameters.datesRange.startDate, 'L').startOf('day').format('YYYY-MM-DD[T]HH:mm:ss');
+      response.maxCreated = moment(parameters.datesRange.endDate, 'L').endOf('day').format('YYYY-MM-DD[T]HH:mm:ss');
+    } else {
       response.minCreated = null;
       response.maxCreated = null;
     }
 
-    if(parameters.events && parameters.events.length > 0){
+    if (angular.isArray(parameters.events) && parameters.events.length) {
+
       response.events = [];
 
       parameters.events.forEach((ev) => {
-        let event = {};
-        event.eventId = ev.id;
-        event.eventName = ev.name;
-        event.eventTime = ev.startDate;
-        event.occurrenceId = ev.occurId;
-        response.events.push(event);
+        response.events.push({
+          eventId: ev.id,
+          eventName: ev.name,
+          eventTime: ev.startDate,
+          occurrenceId: ev.occurId
+        });
       });
+
+      response.datesEvent = this.getEventDatesRange(parameters.events);
     }
 
     if(parameters.item){
@@ -726,12 +787,13 @@ export default class ReportsService {
         {key:'id' ,text:this.gettextCatalog.getString('#') },
         {key:'eventName' ,text:this.gettextCatalog.getString('Event'), isHidden: true , showToEventsOnly: true},
         {key:'outletName' ,text:this.gettextCatalog.getString('Outlet'), isHidden: true},
-        {key:'pickupSlot' ,text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
-        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'date'},
+        // {key:'pickupSlot' ,text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
+        {key:'pickup', text:this.gettextCatalog.getString('Collection'), isHidden: true , showToEventsOnly: true},
+        {key:'date', text:this.gettextCatalog.getString('Date'), fieldType: 'dateMin'},
         {key:'customerName', text:this.gettextCatalog.getString('Customer')},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'items', text:this.gettextCatalog.getString('Items') , shouldTruncate: true},
-        {key:'notes', text:this.gettextCatalog.getString('Notes') , isHidden: true, isOnlyCsv: true},
+        {key:'notes', text:this.gettextCatalog.getString('Notes') , isHidden: true},
         //{key:'subtotal' ,text:this.gettextCatalog.getString('Subtotal'),fieldType: 'currency', isHidden: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
         {key:'fee', text:this.gettextCatalog.getString('Fees'), fieldType: 'currency'},
