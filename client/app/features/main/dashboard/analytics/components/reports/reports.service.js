@@ -86,16 +86,16 @@ export default class ReportsService {
     var data = {
       venueIds: this.data.venueIds,
       users: []
-    }
+    };
 
     rowsSelected.forEach((row) => {
-      let colCustomer = row.filter((col) => {
-        if( col.key == 'customerName' && col.userId)
-          return col;
+      const customer = row.find((column) => {
+        return column.key === 'customerName' && column.userId;
       });
 
-      if(colCustomer[0])
-        data.users.push(colCustomer[0].userId);
+      if (angular.isObject(customer) && data.users.indexOf(customer.userId) === -1) {
+        data.users.push(customer.userId);
+      }
     });
 
     return data;
