@@ -14,3 +14,5 @@
   margin-bottom: 30px;
   background-image: url('cdn/images/delivereats/logo.svg');
 }
+
+.auth .signup .logo { margin-top: 80px; }

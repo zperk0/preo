@@ -14,3 +14,5 @@
   margin-bottom: 40px;
   background-image: url('cdn/images/preoday/logo.svg');
 }
+
+.auth .signup .logo { margin-top: 80px; }
