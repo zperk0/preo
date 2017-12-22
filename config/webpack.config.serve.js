@@ -45,6 +45,7 @@ module.exports = function(ENV, options) {
                   overrides += "_ORDERSAPP : 'http://local.orders.preoday.com/',",
                   overrides += "_WEBAPP_V1 : 'http://local.app.preoday.com/',",
                   overrides += "_RESET_PASSWORD : 'http://local.app.preoday.com/reset',",
+                  overrides += "_BASE_URL : 'http://local.app.preoday.com',",
                   overrides += "_DOMAIN : 'preoday',",
                   overrides += "_IS_CHANNEL : false",
                   overrides += "};";

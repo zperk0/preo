@@ -527,5 +527,6 @@ export default class StateService {
 
     this.isChannel = StateConfig.isChannel;
     this.domainId = $window._PREO_DATA._DOMAIN || null;
+    this.baseUrl = $window._PREO_DATA._BASE_URL || '';
   }
 }

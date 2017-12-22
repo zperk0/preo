@@ -8,6 +8,7 @@ $weborders = "https://menus-v2-demo.preoday.com/";
 $webordersEdit = "https://menus-v2-demo.preoday.com/";
 $webappV1 = "https://app-demo.preoday.com/";
 $resetPasswordLink = "https://app-demo.preoday.com/reset";
+$preoBaseUrl = '';
 $analytics = '';
 $sessionId = session_id();
 $rollbarEnv = null;
@@ -24,6 +25,11 @@ if (strpos($_SERVER['REQUEST_URI'], '/channel') === 0) {
 if (isset($_SERVER["PREO_CDN"]))
 {
     $cdnRoot = $_SERVER["PREO_CDN"];
+}
+
+if (isset($_SERVER["PREO_BASE_URL"]))
+{
+    $preoBaseUrl = $_SERVER["PREO_BASE_URL"];
 }
 
 if (isset($_SERVER["PREO_WEBORDERS"]))
@@ -97,6 +103,7 @@ $overrides .= "window._PREO_DATA._WEBORDERS='$weborders';";
 $overrides .= "window._PREO_DATA._WEBORDERS_EDIT='$webordersEdit';";
 $overrides .= "window._PREO_DATA._WEBAPP_V1='$webappV1';";
 $overrides .= "window._PREO_DATA._RESET_PASSWORD='$resetPasswordLink';";
+$overrides .= "window._PREO_DATA._BASE_URL='$preoBaseUrl';";
 $overrides .= "window._PREO_DATA._SESSION='$sessionId';";
 $overrides .= "window._PREO_DATA._ROLLBAR_ENV='$rollbarEnv';";
 $overrides .= "window._PREO_DATA._ROLLBAR_CLIENT_TOKEN='$rollbarTokenClient';";
