@@ -1,8 +1,16 @@
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var StringReplacePlugin = require("string-replace-webpack-plugin");
 var path = require("path");
+var fs = require('fs');
+var cssOverride = '';
+var cssOverridePath = process.cwd() + '/client/assets/overrides/';
 
 module.exports = function(ENV, options) {
+
+  if (fs.existsSync(cssOverridePath + options.override + '/override.css')) {
+    cssOverride = fs.readFileSync(cssOverridePath + options.override + '/override.css', 'utf8');
+  }
+
   return {
     devServer:{
       proxy: {
@@ -37,11 +45,37 @@ module.exports = function(ENV, options) {
                   overrides += "_ORDERSAPP : 'http://local.orders.preoday.com/',",
                   overrides += "_WEBAPP_V1 : 'http://local.app.preoday.com/',",
                   overrides += "_RESET_PASSWORD : 'http://local.app.preoday.com/reset',",
+                  overrides += "_BASE_URL : 'http://local.app.preoday.com',",
                   overrides += "_DOMAIN : 'preoday',",
                   overrides += "_IS_CHANNEL : false",
                   overrides += "};";
                   overrides += "</script>";
                   return overrides;
+                }
+              },
+              {
+                pattern: /@@FAVICON/ig,
+                replacement: function (match, p1, offset, string) {
+                  const CDN_ROOT = 'http://cdn-local.preoday.com/images/';
+                  const FAV_ICON = '/favicon.ico';
+
+                  return CDN_ROOT + options.override + FAV_ICON;
+                }
+              },
+              {
+                pattern: /\<\!\-\- @@CSSOVERRIDE \-\-\>/ig,
+                replacement: function (match, p1, offset, string) {
+                  if (cssOverride) {
+                    return '<style>'+ cssOverride + '</style>';
+                  }
+                  return cssOverride;
+                }
+              },
+              {
+                // Change `cdn/images/` for cdn root url (local)
+                pattern: /cdn\//g,
+                replacement: function (match, p1, offset, string) {
+                  return 'http://cdn-local.preoday.com/';
                 }
               },
               {

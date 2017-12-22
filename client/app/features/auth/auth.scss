@@ -16,14 +16,13 @@
     height: 100%;
     overflow-y: auto;
 
-    .preoday-logo {
-      background-position: 50% 50%;
+		.logo {
+      display: block;
+			margin-right: auto;
+			margin-left: auto;
+			background-position: 50% 50%;
       background-size: 100%;
       background-repeat: no-repeat;
-      display: block;
-      width: 154px;
-      height: 34.8px;
-      margin: 172px auto 40px;
     }
 
     form, .auth-card {

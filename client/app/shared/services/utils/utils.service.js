@@ -37,10 +37,10 @@ export default class UtilsService {
   }
 
   getDomain() {
-    return "preoday";
+		return window._PREO_DATA && window._PREO_DATA._DOMAIN || 'preoday';
   }
 
-  getImagePath (imgUrl) {
+	getImagePath (imgUrl) {
     if(!imgUrl)
       return;
     var outputUrl = window._PREO_DATA._CDNROOT;

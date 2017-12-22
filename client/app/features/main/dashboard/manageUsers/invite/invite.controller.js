@@ -7,6 +7,9 @@ export default class manageInviteController {
 
   sendOrResend() {
 
+    const {StateService} = this;
+    this.invite.baseUrl = StateService.baseUrl;
+
     if (!this.invite.id) {
       return Preoday.Invite.create;
     }
