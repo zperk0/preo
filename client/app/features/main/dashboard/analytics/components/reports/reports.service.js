@@ -815,7 +815,7 @@ export default class ReportsService {
         {key:'customerName', text:this.gettextCatalog.getString('Customer')},
        // {key:'userid' ,text:this.gettextCatalog.getString('#') , isHidden: true},
         {key:'items', text:this.gettextCatalog.getString('Items') , shouldTruncate: true},
-        {key:'notes', text:this.gettextCatalog.getString('Notes') , isHidden: true},
+        {key:'notes', text:this.gettextCatalog.getString('Notes') , isHidden: true, isOnlyCsv: true},
         {key:'subtotal' ,text:this.gettextCatalog.getString('Subtotal'),fieldType: 'currency', isHidden: true, isOnlyCsv: true},
         {key:'discount', text:this.gettextCatalog.getString('Discount'), fieldType: 'currency'},
         {key:'fee', text:this.gettextCatalog.getString('Fees'), fieldType: 'currency'},
