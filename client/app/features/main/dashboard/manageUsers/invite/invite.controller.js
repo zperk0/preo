@@ -12,10 +12,10 @@ export default class manageInviteController {
     }
 
     // if (this.StateService.isChannel) {
-      return this.invite.update.bind(this.invite);
+    //  return this.invite.update.bind(this.invite);
     // }
 
-    // return this.invite.resend.bind(this.invite);
+    return this.invite.resend.bind(this.invite);
   }
 
   onSuccess(entity) {
