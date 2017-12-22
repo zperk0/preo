@@ -11,10 +11,6 @@ export default class manageInviteController {
       return Preoday.Invite.create;
     }
 
-    // if (this.StateService.isChannel) {
-    //  return this.invite.update.bind(this.invite);
-    // }
-
     return this.invite.resend.bind(this.invite);
   }
 
