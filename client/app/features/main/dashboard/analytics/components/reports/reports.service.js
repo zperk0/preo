@@ -223,8 +223,16 @@ export default class ReportsService {
       minDate = datesEvent.startDate ? moment(datesEvent.startDate).format('L') : null;
       maxDate = datesEvent.endDate ? moment(datesEvent.endDate).format('L') : null;
     } else {
-      minDate = moment(this.params.minCreated).format('L');
-      maxDate = moment(this.params.maxCreated).format('L');
+      minDate = moment(this.params.minCreated);
+      maxDate = moment(this.params.maxCreated);
+
+      if (minDate.isSame(maxDate, 'day')) {
+        maxDate = null;
+      } else {
+        maxDate = maxDate.format('L');
+      }
+
+      minDate = minDate.format('L');
     }
 
     dateText = (minDate && maxDate) ? [minDate, maxDate].join(' - ') : minDate;
@@ -333,10 +341,24 @@ export default class ReportsService {
       });
     });
 
+    // Set `moment` dates
+    let momentMinDate = moment(this.params.minCreated);
+    let momentMaxDate = moment(this.params.maxCreated);
+
+    if (momentMinDate.isValid()) {
+      if (momentMinDate.isSame(momentMaxDate, 'day')) {
+        momentMaxDate = null;
+      } else {
+        momentMaxDate = momentMaxDate.valueOf();
+      }
+
+      momentMinDate = momentMinDate.valueOf();
+    }
+
     let pdfObj = {
       title: reportTitle,
-      startDate: moment(this.params.minCreated).valueOf(),
-      endDate: moment(this.params.maxCreated).valueOf(),
+      startDate: momentMinDate,
+      endDate: momentMaxDate,
       dataJson: JSON.stringify(response)
     };
 
