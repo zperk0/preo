@@ -46,7 +46,6 @@ export default function routes($stateProvider, Permissions) {
                 groupIds: [],
                 channelId: null,
               },
-              baseUrl: StateService.baseUrl,
               venueId: StateService.venue && StateService.venue.id,
               channelId: StateService.channel && StateService.channel.id,
               createdBy: UserService.user.id,
