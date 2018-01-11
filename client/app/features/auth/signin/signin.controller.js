@@ -82,7 +82,7 @@ export default class signinController {
       });
   }
 
-  getCurrentDomain () {
+  getCurrentHost () {
 
     if (!window.location.origin) {
       window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
@@ -91,10 +91,6 @@ export default class signinController {
     return window.location.origin;
   }
 
-  buildForgotLink () {
-
-    return window._PREO_DATA._RESET_PASSWORD + '?url=' + (this.getCurrentDomain() + '/') + '&code=';
-  }
 
   doForgotPassword () {
 
@@ -102,7 +98,7 @@ export default class signinController {
       return;
     }
 
-    this.forgotPassword.link = this.buildForgotLink();
+    this.forgotPassword.redirectUrl = this.getCurrentHost();
 
     this.showSpinner();
     this.UserService.forgotPassword(this.forgotPassword)
