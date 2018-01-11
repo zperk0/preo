@@ -12,6 +12,26 @@
   width:657px;
   max-width: 657px;
 
+  // Override `import menu items` drawer
+  // to support cross-browsers
+  &.contextual-drawer-import-items {
+    // Useful to hide scrollbar-x in Firefox versions
+    overflow-x: hidden;
+
+    .contextual-list { overflow-y: hidden; }
+
+    // Override search input `fixed` position
+    .search { position: relative; }
+
+    .search + .repeat-holder .sort-holder {
+      padding-top: 20px;
+      min-height: auto;
+      // 49px refers to footer card actions
+      height: calc(100vh - 49px - #{$heightToolbar} - #{$subToolbarHeight});
+      overflow-y: auto;
+    }
+  }
+
   .container {
     height: 100%;
     width: 100%;
