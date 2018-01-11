@@ -44,7 +44,7 @@ import v2Redirect from './features/redirect';
 import imageUploader from './components/imageUploader';
 import contextual from './components/contextual';
 
-window._release = 'webapp-v2 1.0.45';
+window._release = 'webapp-v2 1.0.46';
 
 require('ng-rollbar');
 import rollbar from './rollbar.config.js';
