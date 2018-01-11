@@ -23,10 +23,13 @@ $heightMenuItemCard:48px;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+
+        // Apply max-width to truncate name
+        &.truncate-85 { max-width: 85%; }
       }
 
       .price {
-        padding-top:2px;
+        // padding-top: 2px;
         float: right;
 
         &.from {
@@ -65,4 +68,3 @@ $heightMenuItemCard:48px;
   }
 
 }
-
