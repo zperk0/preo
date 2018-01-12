@@ -14,11 +14,9 @@
 
   // Override `import menu items` drawer
   // to support cross-browsers
-  &.contextual-drawer-import-items {
+  &.contextual-drawer-search {
     // Useful to hide scrollbar-x in Firefox versions
-    overflow-x: hidden;
-
-    .contextual-list { overflow-y: hidden; }
+    .contextual-list { overflow: hidden; }
 
     // Override search input `fixed` position
     .search { position: relative; }
