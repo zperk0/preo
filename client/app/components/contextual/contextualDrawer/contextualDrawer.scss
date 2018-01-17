@@ -12,6 +12,10 @@
   width:657px;
   max-width: 657px;
 
+  &.contextual-drawer-entities {
+    max-width: 350px;
+  }
+
   .container {
     height: 100%;
     width: 100%;
