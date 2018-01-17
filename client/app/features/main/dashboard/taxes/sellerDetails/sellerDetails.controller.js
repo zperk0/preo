@@ -4,20 +4,20 @@ export default class sellerDetailsController {
     return "sellerDetailsController"
   }
 
-  saveNewSettings(){
-
-    //Pre populate taxName with default value
+  onCreate() {
+    // Pre populate taxName with default value
     this.taxSettings.taxName = this.gettextCatalog.getString('VAT Number');
-
-    return Preoday.VenueTaxSettings.save(angular.extend({},this.taxSettings, {venueId:this.StateService.venue.id})); //extend so if this fails for any reason it still triggers a save instead of update
+    return Preoday.TaxSettings.save(this.taxSettings);
   }
 
-  updateSettings(){
+  onUpdate() {
     return this.taxSettings.update();
   }
 
-  saveOrUpdate(){
-    return this.taxSettings.venueId ? this.updateSettings.bind(this) : this.saveNewSettings.bind(this);
+  onSave() {
+    return this.taxSettings.$editing
+      ? this.onUpdate.bind(this)
+      : this.onCreate.bind(this);
   }
 
    debounce(func, wait, immediate) {
@@ -51,20 +51,16 @@ export default class sellerDetailsController {
     }
 
   doUpdate(){
-    var saveOrUpdate = this.saveOrUpdate();
+    const onSave = this.onSave();
     try {
-        saveOrUpdate()
+        onSave()
         .then((taxSettings)=>{
           angular.extend(this.taxSettings,taxSettings);
+          this.taxSettings.$editing = true;
+
           this.$timeout(()=>{
               this.isSaving = false;
               this.isError = false;
-            })
-          }, (err)=>{
-            console.error(err)
-            this.$timeout(()=>{
-              this.isSaving = false;
-              this.isError = true;
             })
           }).catch((err)=>{
             console.error(err)
@@ -80,23 +76,35 @@ export default class sellerDetailsController {
           this.isError = true;
         })
       }
-    return saveOrUpdate;
+    return onSave;
   }
 
-  init(){
-    this.Spinner.show("seller-details");
-    return Preoday.VenueTaxSettings.get(this.StateService.venue.id)
-      .then((taxSettings)=>{
-        this.taxSettings = taxSettings;
-        this.Spinner.hide("seller-details");
-      }, (err)=>{
-        if (err && err.status && err.status == 404){
-          this.taxSettings = new Preoday.VenueTaxSettings();
+  init() {
+    const {StateService, Spinner} = this;
+
+    let params = null;
+    if (StateService.isChannel) {
+      params = {channelId: StateService.channel.id};
+    } else {
+      params = {venueId: StateService.venue.id};
+    }
+
+    Spinner.show('seller-details');
+    Preoday.TaxSettings.get(params)
+      .then(data => {
+        this.taxSettings = data;
+        this.taxSettings.$editing = true;
+        Spinner.hide('seller-details');
+      })
+      .catch(err => {
+        Spinner.hide('seller-details');
+        if (err && err.status && err.status == 404) {
+          this.taxSettings = new Preoday.TaxSettings();
+          angular.extend(this.taxSettings, params);
         } else {
           this.showError();
         }
-        this.Spinner.hide("seller-details");
-      })
+      });
   }
 
   showError(){
@@ -125,4 +133,3 @@ export default class sellerDetailsController {
     this.init();
   }
 }
-
