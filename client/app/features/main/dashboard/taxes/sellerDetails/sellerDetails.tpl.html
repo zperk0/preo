@@ -27,14 +27,28 @@
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block no-spacer">
-                    <label>{{ 'Street name & number' | translate }}</label>
+                    <label translate>Address 1</label>
                     <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="sellerAddress1" ng-model="sellerDetailsCtrl.taxSettings.sellerAddress1"  ng-maxlength="256">
                     <div ng-messages="sellerDetailsCtrl.sellerForm.sellerAddress1.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.sellerAddress1.$error.maxlength}">Max length is 256.</div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block no-spacer">
-                    <label translate>Town / City</label>
+                    <label translate>Address 2</label>
+                    <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="sellerAddress2" ng-model="sellerDetailsCtrl.taxSettings.sellerAddress2" ng-maxlength="256">
+                    <div ng-messages="sellerDetailsCtrl.sellerForm.sellerAddress2.$error">
+                      <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.sellerAddress2.$error.maxlength}">Max length is 256.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block no-spacer">
+                    <label translate>Address 3</label>
+                    <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="sellerAddress3" ng-model="sellerDetailsCtrl.taxSettings.sellerAddress3" ng-maxlength="256">
+                    <div ng-messages="sellerDetailsCtrl.sellerForm.sellerAddress3.$error">
+                      <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.sellerAddress3.$error.maxlength}">Max length is 256.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block no-spacer">
+                    <label translate>Town/City</label>
                     <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="city" ng-model="sellerDetailsCtrl.taxSettings.city"  ng-maxlength="100">
                     <div ng-messages="sellerDetailsCtrl.sellerForm.city.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.city.$error.maxlength}">Max length is 100.</div>
