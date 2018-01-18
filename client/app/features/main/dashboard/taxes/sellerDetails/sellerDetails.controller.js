@@ -94,7 +94,7 @@ export default class sellerDetailsController {
     }
 
     Spinner.show('seller-details');
-    Preoday.TaxSettings.get(params)
+    Preoday.TaxSettings.findOne(params)
       .then(data => {
         this.taxSettings = data;
         this.taxSettings.$editing = true;
@@ -121,10 +121,6 @@ export default class sellerDetailsController {
   /* @ngInject */
   constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout, gettextCatalog, StateService, entities) {
     "ngInject";
-    this.showError = false;
-    this.isError = false;
-    this.isSaving = false;
-    this.debounceTimeout = null;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$stateParams = $stateParams;
@@ -133,6 +129,13 @@ export default class sellerDetailsController {
     this.StateService = StateService;
     this.$timeout = $timeout;
     this.gettextCatalog = gettextCatalog;
+
+    // Defaults
+    this.showError = false;
+    this.isError = false;
+    this.isSaving = false;
+    this.isChannel = StateService.isChannel;
+    this.debounceTimeout = null;
 
     // Entities
     this.entities = entities;

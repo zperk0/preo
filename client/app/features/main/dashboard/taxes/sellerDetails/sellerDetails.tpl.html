@@ -1,5 +1,5 @@
-<div class="seller-details layout-left-right with-toolbar">
-  <div class="sub-toolbar menu-toolbar" layout="row" layout-align="start center">
+<div class="seller-details layout-left-right" ng-class="{'with-toolbar': sellerDetailsCtrl.isChannel}">
+  <div class="sub-toolbar menu-toolbar" layout="row" layout-align="start center" ng-if="sellerDetailsCtrl.isChannel">
     <publish-venues></publish-venues>
   </div>
   <div class='error' ng-if="sellerDetailsCtrl.showError">
@@ -56,5 +56,9 @@
       </md-card-content>
     </md-card>
   </div>
-  <contextual-drawer-entities entities="sellerDetailsCtrl.entities" selected="sellerDetailsCtrl.selected" callback="sellerDetailsCtrl.onPublish()"></contextual-drawer-entities>
+  <contextual-drawer-entities ng-if="sellerDetailsCtrl.isChannel"
+    entities="sellerDetailsCtrl.entities"
+    selected="sellerDetailsCtrl.selected"
+    callback="sellerDetailsCtrl.onPublish()">
+  </contextual-drawer-entities>
 </div>
