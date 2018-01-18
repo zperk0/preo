@@ -1,0 +1,9 @@
+<md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-entities md-whiteframe-4dp" md-component-id="entities">
+   <div class="contextual-list">
+     <entity-select entities="drawerEntitiesCtrl.entities" invite-user-roles="drawerEntitiesCtrl.selected"></entity-select>
+   </div>
+   <md-card-actions layout="row" layout-align="end center">
+     <md-button ng-click="drawerEntitiesCtrl.close()" class="md-primary">{{'Cancel' | translate}}</md-button>
+     <md-button ng-click="drawerEntitiesCtrl.click()" class="md-raised">{{'Publish' | translate}}</md-button>
+   </md-card-actions>
+</md-sidenav>
