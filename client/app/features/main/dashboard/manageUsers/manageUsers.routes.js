@@ -5,7 +5,7 @@ import inviteController from './invite/invite.controller';
 import permissionsResolve from './permissions.resolve';
 import usersResolve from './users.resolve';
 import invitesResolve from './invites.resolve';
-import entitiesResolve from './entities.resolve';
+import entitiesResolve from 'app/components/contextual/contextualDrawer/entities/entities.resolve';
 
 
 /**
