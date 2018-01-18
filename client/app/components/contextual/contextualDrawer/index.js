@@ -44,8 +44,8 @@ import eventsImportDirective from './eventsImport/contextualDrawer.eventsImport.
 import userSearchController from './userSearch/contextualDrawer.userSearch.controller';
 import userSearchDirective from './userSearch/contextualDrawer.userSearch.directive';
 
-import entityController from './entities/contextualDrawer.entities.controller';
-import entityDirective from './entities/contextualDrawer.entities.directive';
+import entitiesController from './entities/contextualDrawer.entities.controller';
+import entitiesDirective from './entities/contextualDrawer.entities.directive';
 
 import venueDetailsForm from './venueDetails/components/venueDetailsForm/venueDetailsForm.directive';
 
@@ -100,8 +100,8 @@ export default angular.module("contextualDrawer" , [cardItemList, externalEventL
   .controller(userSearchController.UID, userSearchController)
   .directive("contextualDrawerUserSearch", userSearchDirective)
 
-  .controller(entityController.UID, entityController)
-  .directive("contextualDrawerEntity", entityDirective)
+  .controller(entitiesController.UID, entitiesController)
+  .directive("contextualDrawerEntities", entitiesDirective)
 
   .directive("venueDetailsForm", venueDetailsForm)
   .name;
