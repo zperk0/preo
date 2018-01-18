@@ -20,6 +20,10 @@ export default class sellerDetailsController {
       : this.onCreate.bind(this);
   }
 
+  onPublish() {
+    console.log('[SellerDetailsCtrl] onPublish', this.selected);
+  }
+
    debounce(func, wait, immediate) {
       console.log("debouncing");
       return () => {
@@ -115,7 +119,7 @@ export default class sellerDetailsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout, gettextCatalog, StateService) {
+  constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout, gettextCatalog, StateService, entities) {
     "ngInject";
     this.showError = false;
     this.isError = false;
@@ -130,6 +134,10 @@ export default class sellerDetailsController {
     this.$timeout = $timeout;
     this.gettextCatalog = gettextCatalog;
 
+    // Entities
+    this.entities = entities;
+    this.entities.channel = StateService.channel;
+    this.selected = {channelId: null, groupIds: [], venueIds: []};
     this.init();
   }
 }

@@ -1,5 +1,6 @@
 
 import controller from './sellerDetails.controller'
+import entitiesResolve from 'app/components/contextual/contextualDrawer/entities/entities.resolve';
 
 /**
  * Routing function for sellerDetails
@@ -11,6 +12,9 @@ export default function routes($stateProvider, Permissions) {
   $stateProvider.state("main.dashboard.taxes.sellerDetails", {
     url: "/sellerDetails",
     requiresPermission:Permissions.TAXES,
+    resolve: {
+      entities: entitiesResolve
+    },
      views:{
       taxesContent:{
         template: require("./sellerDetails.tpl.html"),

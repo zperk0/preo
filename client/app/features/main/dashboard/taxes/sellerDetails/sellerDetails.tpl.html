@@ -1,4 +1,7 @@
-<div class='seller-details layout-left-right'>
+<div class="seller-details layout-left-right with-toolbar">
+  <div class="sub-toolbar menu-toolbar" layout="row" layout-align="start center">
+    <publish-venues></publish-venues>
+  </div>
   <div class='error' ng-if="sellerDetailsCtrl.showError">
       {{sellerDetailsCtrl.ErrorService.TAXES_ERROR.message}}
   </div>
@@ -12,14 +15,14 @@
       <md-card-content>
         <form name="sellerDetailsCtrl.sellerForm" ng-submit="sellerDetailsCtrl.submit()" novalidate>
             <div class='form-content'>
-                 <md-input-container class="md-block no-spacer">
+                <md-input-container class="md-block no-spacer">
                     <label translate>Tax ID</label>
                     <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="taxId" ng-model="sellerDetailsCtrl.taxSettings.taxId" ng-maxlength="100">
                     <div ng-messages="sellerDetailsCtrl.sellerForm.taxId.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.taxId.$error.maxlength}">Max length is 100.</div>
                     </div>
                 </md-input-container>
-                  <md-input-container class="md-block no-spacer">
+                <md-input-container class="md-block no-spacer">
                     <label translate>Seller Name</label>
                     <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="sellerName" ng-model="sellerDetailsCtrl.taxSettings.sellerName"  ng-maxlength="100">
                     <div ng-messages="sellerDetailsCtrl.sellerForm.sellerName.$error">
@@ -27,24 +30,10 @@
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block no-spacer">
-                    <label translate>Address 1</label>
+                    <label>{{'Street name & number' | translate}}</label>
                     <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="sellerAddress1" ng-model="sellerDetailsCtrl.taxSettings.sellerAddress1"  ng-maxlength="256">
                     <div ng-messages="sellerDetailsCtrl.sellerForm.sellerAddress1.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.sellerAddress1.$error.maxlength}">Max length is 256.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block no-spacer">
-                    <label translate>Address 2</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="sellerAddress2" ng-model="sellerDetailsCtrl.taxSettings.sellerAddress2" ng-maxlength="256">
-                    <div ng-messages="sellerDetailsCtrl.sellerForm.sellerAddress2.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.sellerAddress2.$error.maxlength}">Max length is 256.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block no-spacer">
-                    <label translate>Address 3</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="sellerDetailsCtrl.debounceUpdate()" type="text" name="sellerAddress3" ng-model="sellerDetailsCtrl.taxSettings.sellerAddress3" ng-maxlength="256">
-                    <div ng-messages="sellerDetailsCtrl.sellerForm.sellerAddress3.$error">
-                      <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.sellerAddress3.$error.maxlength}">Max length is 256.</div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block no-spacer">
@@ -67,4 +56,5 @@
       </md-card-content>
     </md-card>
   </div>
+  <contextual-drawer-entities entities="sellerDetailsCtrl.entities" selected="sellerDetailsCtrl.selected" callback="sellerDetailsCtrl.onPublish()"></contextual-drawer-entities>
 </div>
