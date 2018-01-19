@@ -129,7 +129,7 @@ export default class contextualDrawerOrderDetailController {
       OperateService
     } = this;
 
-    if (StateService.getOperateUrl()) {
+    if (!StateService.getOperateUrl()) {
       return Snack.showError(ErrorService.REQUIRED_CHANNEL_OPERATOR_URL.message);
     }
 
