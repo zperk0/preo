@@ -15,7 +15,14 @@ export default class promotionsListController {
     }
 
     let promotion = new Preoday.Offer({
-      "venueId": this.StateService.venue.id,
+      entitiesInvited: {
+        venueIds: this.StateService.venue && this.StateService.venue.id ? [this.StateService.venue.id] : [],
+        groupIds: [],
+        channelId: null
+       // channelId: this.StateService.channel && this.StateService.channel.id,
+      },
+      venueId: this.StateService.venue && this.StateService.venue.id,
+      channelId: this.StateService.channel && this.StateService.channel.id,
       "type": "FIXED",
       "name": "",
       "displayName":"",

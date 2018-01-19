@@ -6,7 +6,7 @@ export default class promotionsController {
 
   init(){
 
-    if (this.StateService.venue.isEvent()){ //pre-load events
+    if (this.StateService.venue && this.StateService.venue.isEvent()){ //pre-load events
       this.EventService.getLastWeekEvents(this.StateService.venue.id)
     }
   }

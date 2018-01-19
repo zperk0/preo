@@ -10,7 +10,8 @@ export default class usersPromotionsController {
     this.contextual.showDrawer("userSearch").then((data) => {
 
       this.Spinner.show("add-users-promotion");
-      this.promotion.addUsers(data.users).then(() => {
+      const venueId = this.StateService.venue && this.StateService.venue.id;
+      this.promotion.addUsers(data.users, venueId).then(() => {
 
         this.Snack.show(this.LabelService.SNACK_PROMOTION_ADD_USER);
         this.Spinner.hide("add-users-promotion");
@@ -33,7 +34,7 @@ export default class usersPromotionsController {
   }
 
   /* @ngInject */
-  constructor($q, $state, $timeout, Spinner, Snack, DialogService, ErrorService, LabelService, contextual, promotion) {
+  constructor($q, $state, $timeout, Spinner, Snack, DialogService, ErrorService, LabelService, contextual, promotion, StateService) {
     "ngInject";
     this.$state = $state;
     this.Spinner = Spinner;
@@ -44,6 +45,7 @@ export default class usersPromotionsController {
     this.LabelService = LabelService;
     this.contextual = contextual;
     this.promotion = promotion;
+    this.StateService = StateService;
 
     $timeout(() => {
       this.init();

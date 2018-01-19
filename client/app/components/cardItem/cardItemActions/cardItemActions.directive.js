@@ -34,7 +34,8 @@ export default function cardItemActions($parse){
       onExternalEvents: '&?',
       addCustomFieldMessage: '=?',
       addLocationMessage: '=?',
-      syncMessage: '=?'
+      syncMessage: '=?',
+      isBlockedForEdit: '=?',
     },
     template: require("./cardItemActions.tpl.html"),
     replace:true,

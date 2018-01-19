@@ -10,7 +10,7 @@ export default function promotionTabs(BroadcastEvents, StateService, EventServic
     require:'^contextualMenu',
     link: (scope, el, attr, contextualMenuCtrl) => {
       scope.contextualMenuCtrl = contextualMenuCtrl;
-      scope.selectedTabIndex = 0;
+      scope.contextualMenuCtrl.contextualForm.selectedTabIndex = 0;
 
       scope.venue = StateService.venue;
 
@@ -46,9 +46,9 @@ export default function promotionTabs(BroadcastEvents, StateService, EventServic
       scope.$on(BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED, () => {
         console.log("form submitted", scope.selectedTabIndex, scope.hasBasicTabErrors(), scope.hasAdvancedTabErrors())
         if (scope.selectedTabIndex === 1 && scope.hasBasicTabErrors() && !scope.hasAdvancedTabErrors()) {
-          scope.selectedTabIndex = 0;
+          scope.contextualMenuCtrl.contextualForm.selectedTabIndex = 0;
         } else if (scope.selectedTabIndex === 0 && scope.hasAdvancedTabErrors() && !scope.hasBasicTabErrors()){
-          scope.selectedTabIndex = 1;
+          scope.contextualMenuCtrl.contextualForm.selectedTabIndex = 1;
         }
       });
 

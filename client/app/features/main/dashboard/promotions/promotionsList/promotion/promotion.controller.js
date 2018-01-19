@@ -79,6 +79,38 @@ export default class promotionController {
     return this.promotion.global === 0;
   }
 
+  onSuccessForVenue(entity) {
+
+    this.contextualMenuSuccess(entity);
+  }
+
+  isBlockedForVenue() {
+    return this.promotion.parentId && this.promotion.parentId > 0 && this.StateService.venue && this.StateService.venue.id;
+  }
+
+  onSuccessForChannel(entity) {
+
+    const {
+      DialogService,
+      ErrorService,
+      LabelService,
+    } = this;
+
+    if (!entity.name || (
+              !entity.entitiesInvited.venueIds.length &&
+              !entity.entitiesInvited.groupIds.length &&
+              !entity.entitiesInvited.channelId)) {
+
+      DialogService.show(ErrorService.CHANNEL_ENTITIES_REQUIRED.title, ErrorService.CHANNEL_ENTITIES_REQUIRED.message, [{
+        name: LabelService.CONFIRMATION
+      }]);
+
+      return;
+    }
+
+    this.contextualMenuSuccess(entity);
+  }
+
   contextualMenuSuccess(entity){
     this.Spinner.show("save-update-promotion");
     if (this.promotion && entity && entity.name){
@@ -170,11 +202,11 @@ export default class promotionController {
   }
 
   showContextual () {
-    this.contextual.showMenu(this.type, this.promotion, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+    this.contextual.showMenu(this.type, this.promotion, this.onSuccessCallback.bind(this), this.contextualMenuCancel.bind(this), this.params);
   }
 
   /* @ngInject */
-  constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode) {
+  constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode, StateService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
     this.$stateParams = $stateParams;
@@ -190,7 +222,48 @@ export default class promotionController {
     this.contextual = contextual;
     this.type = 'promotion';
     this.APIErrorCode = APIErrorCode;
+    this.StateService = StateService;
     console.log("state params, ", $stateParams.promotionId, this.promotion.id);
+
+    this.params = {};
+
+    if (StateService.isChannel) {
+      this.params.entities = StateService.channel.entities;
+      this.params.entities.channel = StateService.channel;
+      this.onSuccessCallback = this.onSuccessForChannel;
+
+      if (!this.promotion.id) {
+        this.params.onBeforeSubmit = function() {
+          // The 'this' here is the ContextualMenuController.
+          // because there we are calling this.params.onBeforeSuccess.call(this); and it is changing the function scope
+          if (this.contextualForm.$invalid) {
+            this.contextualForm.submitted = true;
+            return this.$scope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED);
+          }
+
+          if (this.contextualForm.selectedTabIndex === 2) {
+            return this.onSubmit();
+          }
+
+          this.contextualForm.selectedTabIndex = 2;
+        };
+
+        this.params.doneButtonText = function () {
+          // The 'this' here is the ContextualMenuController.
+          // because there we are calling this.params.doneButtonText.call(this); and it is changing the function scope
+          if (this.contextualForm && this.contextualForm.selectedTabIndex === 2) {
+            return this.gettextCatalog.getString('Done');
+          }
+
+          return this.gettextCatalog.getString('Choose Venues');
+        };
+      }
+
+    } else {
+      this.params.doneButtonText = gettextCatalog.getString('Done');
+      this.onSuccessCallback = this.onSuccessForVenue;
+    }
+
     if (this.promotion && !this.promotion.id || $stateParams.promotionId && $stateParams.promotionId == this.promotion.id) {
       this.showContextual();
     }

@@ -121,6 +121,23 @@ export default class StateService {
         .then(done.bind(this), done.bind(this));
     }
 
+    function _loadVenues() {
+        const deferred = $q.defer();
+
+          this.VenueService.fetchVenuesByChannel(this.channel, 'group_venueids')
+          .then((entities) => {
+              console.log('StateService [entitiesResolve] - got entities', entities);
+              this.channel.entities = entities;
+              deferred.resolve(entities);
+            }, (err) => {
+              console.log('StateService [entitiesResolve] - error', err)
+              deferred.reject(err);
+            }).catch((err) => {
+              console.log('StateService [entitiesResolve] - catch', err);
+              deferred.reject(err);
+          });
+    }
+
     if (!this.channel) {
 
       if (entityId && !UserService.isAdmin()) {
@@ -132,6 +149,7 @@ export default class StateService {
       Preoday.Channel.findById(channelId, 'currency')
         .then((channel) => {
           this.channel = channel;
+          _loadVenues.call(this);
           _loadPermissions.call(this);
         }, () => {
 
@@ -142,6 +160,7 @@ export default class StateService {
           }
         });
     } else {
+      _loadVenues.call(this);
       _loadPermissions.call(this);
     }
 
@@ -377,6 +396,21 @@ export default class StateService {
     }
   }
 
+  getOffers() {
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.getOffers();
+    } else if (venue) {
+      return venue.getOffers();
+    } else {
+      console.warn('StateService [getOffers] - there is no channel and venue set');
+    }
+  }
+
   removeUser(user, userRole) {
 
     const {
@@ -414,6 +448,8 @@ export default class StateService {
       return $q.when({
         venues: [venue]
       });
+    } else if(channel && channel.entities){
+      return $q.when(channel.entities);
     }
 
     return VenueService.fetchVenuesByChannel(channel, expand, permissions);
@@ -466,6 +502,27 @@ export default class StateService {
   updateVenue() {
 
     return this.VenueService.updateVenue(this.venue);
+  }
+
+  searchUser(value) {
+    const obj = {
+      search: value,
+      orderBy: 'firstName'
+    };
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.searchCustomers(obj);
+    } else if (venue) {
+      return venue.searchCustomers(value);
+    } else {
+      console.warn('StateService [searchUser] - there is no channel and venue set');
+    }
+
   }
 
   searchCustomers(value) {

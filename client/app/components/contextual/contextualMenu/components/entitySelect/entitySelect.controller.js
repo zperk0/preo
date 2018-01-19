@@ -85,6 +85,7 @@ export default class entitySelectController {
            }).length > 0;
   }
 
+  // this method is used only by inviteUsers screen because if the user being add is an operator, its only allowed select Channel option.
   isOperator() {
     return this.inviteUserRoles.role === this.UserRole.OPERATOR;
   }

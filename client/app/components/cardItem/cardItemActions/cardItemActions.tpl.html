@@ -27,7 +27,7 @@
           <span translate>Apply to a customer account</span>
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItemActionsCtrl.onPause" ng-show="!cardItemActionsCtrl.isPaused" class="md-icon-button" ng-click="cardItemActionsCtrl.onPause({newStatus:false})">
+      <md-button ng-if="cardItemActionsCtrl.onPause && !cardItemActionsCtrl.isBlockedForEdit" ng-show="!cardItemActionsCtrl.isPaused" class="md-icon-button" ng-click="cardItemActionsCtrl.onPause({newStatus:false})">
         <icon>pause_circle_outline</icon> <!-- pause_circle_outline -->
         <md-tooltip md-direction="bottom">
           <span translate>Pause this promotion</span>
@@ -45,7 +45,7 @@
           {{'Duplicate' | translate}}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItemActionsCtrl.onDelete" class="md-icon-button delete" ng-click="cardItemActionsCtrl.onDelete({$event:$event})">
+      <md-button ng-if="cardItemActionsCtrl.onDelete && !cardItemActionsCtrl.isBlockedForEdit" class="md-icon-button delete" ng-click="cardItemActionsCtrl.onDelete({$event:$event})">
         <icon>delete</icon>
         <md-tooltip md-direction="bottom">
           {{'Delete' | translate}}
@@ -63,7 +63,7 @@
           {{ cardItemActionsCtrl.addLocationMessage }}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItemActionsCtrl.onEdit" class="md-icon-button" ng-click="cardItemActionsCtrl.onEdit({$event:$event})">
+      <md-button ng-if="cardItemActionsCtrl.onEdit && !cardItemActionsCtrl.isBlockedForEdit" class="md-icon-button" ng-click="cardItemActionsCtrl.onEdit({$event:$event})">
         <icon>edit</icon>
         <md-tooltip md-direction="bottom">
           {{'Edit' | translate}}
@@ -111,6 +111,23 @@
         <icon>sync</icon>
         <md-tooltip md-direction="bottom">
           {{ cardItemActionsCtrl.syncMessage }}
+        </md-tooltip>
+      </md-button>
+
+      <md-button ng-if="cardItemActionsCtrl.isBlockedForEdit"
+                 class="md-icon-button"
+                 >
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <path d="M0 0h24v24H0V0z" id="a"/>
+            </defs>
+            <clipPath id="b">
+                <use overflow="visible" xlink:href="#a"/>
+            </clipPath>
+            <path clip-path="url(#b)" d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10z"/>
+        </svg>
+        <md-tooltip md-direction="bottom">
+          {{ 'This item can only be edited at channel level' | translate }}
         </md-tooltip>
       </md-button>
     </div>

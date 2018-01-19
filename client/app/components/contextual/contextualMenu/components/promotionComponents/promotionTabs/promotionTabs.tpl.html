@@ -3,8 +3,8 @@
     md-stretch-tabs="always"
     class="md-tabs-with-errors"
     ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}"
-    md-selected="selectedTabIndex">
-    <md-tab>
+    md-selected="contextualMenuCtrl.contextualForm.selectedTabIndex">
+    <md-tab tabindex="0">
       <md-tab-label>
         <div ng-class="{'has-error': hasBasicTabErrors()}" class="md-tab-label">
           <span>{{ 'Basic' | translate }}</span>
@@ -29,7 +29,7 @@
         </md-card-content>
       </md-tab-body>
     </md-tab>
-    <md-tab>
+    <md-tab tabindex="1">
       <md-tab-label>
         <div ng-class="{'has-error': hasAdvancedTabErrors()}" class="md-tab-label">
           <span>{{ 'Advanced' | translate }}</span>
@@ -48,6 +48,17 @@
         </md-card-content>
       </md-tab-body>
     </md-tab>
+    <md-tab tabindex="2" ng-if="contextualMenuCtrl.params.entities.channel">
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasUserVenuesTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity.entitiesInvited)}" class="md-tab-label">
+          <span>{{ 'Venues' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <div class="userInvite-venues-tab-content">
+          <entity-select entities="contextualMenuCtrl.params.entities" invite-user-roles="contextualMenuCtrl.entity.entitiesInvited"></entity-select>
+        </div>
+      </md-tab-body>
     </md-tab>
   </md-tabs>
 </div>
