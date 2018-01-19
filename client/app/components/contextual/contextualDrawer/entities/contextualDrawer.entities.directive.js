@@ -11,7 +11,6 @@ export default function contextualMenu() {
     scope: {},
     bindToController: {
       entities: '=?',
-      selected: '=?',
       callback: '&?'
     },
     template: require('./contextualDrawer.entities.tpl.html')

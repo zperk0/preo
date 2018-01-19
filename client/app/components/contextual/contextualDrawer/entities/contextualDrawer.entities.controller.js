@@ -5,24 +5,30 @@ export default class contextualDrawerEntityController {
   }
 
   click() {
-    const {DialogService, ErrorService, LabelService, selected} = this;
+    const {DialogService, ErrorService, LabelService, model} = this;
 
-    if (!selected.channelId
-     && !selected.venueIds.length
-     && !selected.groupIds.length) {
+    if (!model.channelId
+     && !model.venueIds.length
+     && !model.groupIds.length) {
       return DialogService.show(ErrorService.CHANNEL_ENTITIES_REQUIRED.title, ErrorService.CHANNEL_ENTITIES_REQUIRED.message, [{
         name: LabelService.CONFIRMATION
       }]);
     }
 
-    this.callback && this.callback();
+    this.callback && this.callback({
+      model: this.model
+    });
   }
 
   close() {
     this.contextualDrawer.close();
   }
 
-  constructor(StateService, DialogService, ErrorService, LabelService, contextualDrawer) {
+  resetModel() {
+    this.model = {channelId: null, groupIds: [], venueIds: []};
+  }
+
+  constructor($scope, StateService, DialogService, ErrorService, LabelService, contextualDrawer, BroadcastEvents) {
     'ngInject';
     this.StateService = StateService;
     this.DialogService = DialogService;
@@ -32,7 +38,11 @@ export default class contextualDrawerEntityController {
 
     // Create new object if `entities` is undefined
     this.entities = this.entities || {};
-    // Create new object if `selected` is undefined
-    this.selected = this.selected || {channelId: null, groupIds: [], venueIds: []};
+
+    this.resetModel();
+
+    $scope.$on(BroadcastEvents.ON_CONTEXTUAL_DRAWER_OPEN, () => {
+      this.resetModel();
+    });
   }
 }
