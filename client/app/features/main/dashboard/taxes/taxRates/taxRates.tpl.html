@@ -1,10 +1,16 @@
 <div flex class="tax-rates">
-  <div class='layout-left-right'>
-    <div class='main-content-left'>
+  <div class="layout-left-right">
+    <div class="main-content-left">
       <tax-rate-list
-           tax-rates="taxRatesCtrl.taxRates">
-       </tax-rate-list>
+        tax-rates="$taxRates.taxRates"
+        on-create="$taxRates.onCreate()"
+        on-edit="$taxRates.onEdit(taxRate)"
+        on-after-delete="$taxRates.onAfterDelete(taxRate)">
+      </tax-rate-list>
     </div>
-    <div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div>
+    <ui-view name="taxDetailsView" sticky offset="88"
+      class="main-content-right"
+      media-query="min-width: 1024px">
+    </ui-view>
   </div>
 </div>

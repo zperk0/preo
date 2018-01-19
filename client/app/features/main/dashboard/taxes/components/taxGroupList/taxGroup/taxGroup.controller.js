@@ -31,9 +31,8 @@ export default class taxGroupController {
   }
 
   /* @ngInject */
-  constructor($stateParams, DialogService, LabelService, ErrorService, Spinner, Snack, gettextCatalog) {
+  constructor(DialogService, LabelService, ErrorService, Spinner, Snack, gettextCatalog) {
     'ngInject';
-    this.$stateParams = $stateParams;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;

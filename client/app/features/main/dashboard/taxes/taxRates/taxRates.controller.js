@@ -1,38 +1,32 @@
 
 export default class taxRatesController {
   static get UID(){
-    return "taxRatesController"
+    return 'taxRatesController';
   }
 
+  onCreate() {
+    this.$state.go('main.dashboard.taxes.taxRates.create');
+  }
 
-  init(){
-    this.Spinner.show("fetch-tax-rates");
-    this.TaxesService.getTaxRates(true)
-      .then((taxRates)=>{
-        this.taxRates = taxRates;
-        this.Spinner.hide("fetch-tax-rates");
-      }, (err)=>{
-        this.Spinner.hide("fetch-tax-rates");
-        console.log("error", err)
-        this.isError = true;
-      }) .catch((err)=>{
-        this.Spinner.hide("fetch-tax-rates");
-        console.log("error", err)
-        this.isError = true;
-      })
+  onEdit(taxRate) {
+    this.$state.go('main.dashboard.taxes.taxRates.edit', {
+      taxRateId: taxRate.id
+    });
+  }
+
+  onAfterDelete(taxRate) {
+    const indexTaxRate = this.taxRates.indexOf(taxRate);
+    if (indexTaxRate > -1) {
+      this.taxRates.splice(indexTaxRate, 1);
+    }
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack,ErrorService, LabelService, TaxesService,  $timeout) {
-    "ngInject";
-    this.Spinner = Spinner;
-    this.Snack = Snack;
-    this.ErrorService = ErrorService;
-    this.LabelService = LabelService;
-    this.TaxesService = TaxesService;
-    this.isError = false;
-    this.$timeout = $timeout;
-    this.init();
-
+  constructor($state, taxRates) {
+    'ngInject';
+    // Dependencies
+    this.$state = $state;
+    // Resolves and Defaults
+    this.taxRates = taxRates;
   }
 }
