@@ -1,13 +1,18 @@
 // Import Style
 import './taxGroups.scss';
 
-// Import internal modules
-import controller from './taxGroups.controller';
+// Controllers
+import taxGroupsController from './taxGroups.controller';
+import taxGroupDetailsController from './taxGroupDetails/taxGroupDetails.controller';
+
+// Routes
 import routes from './taxGroups.routes';
 
+// Components
 import taxGroupList from '../components/taxGroupList';
 
-export default angular.module("taxGroups" , [taxGroupList])
+export default angular.module('taxGroups' , [taxGroupList])
   .config(routes)
-  .controller(controller.UID, controller)
+  .controller(taxGroupsController.UID, taxGroupsController)
+  .controller(taxGroupDetailsController.UID, taxGroupDetailsController)
   .name;

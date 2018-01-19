@@ -1,10 +1,16 @@
 <div flex class="tax-groups">
-  <div class='layout-left-right'>
-    <div class='main-content-left'>
+  <div class="layout-left-right">
+    <div class="main-content-left">
       <tax-group-list
-           tax-groups="taxGroupsCtrl.taxGroups">
-       </tax-group-list>
+        tax-groups="$taxGroups.taxGroups"
+        on-create="$taxGroups.onCreate()"
+        on-edit="$taxGroups.onEdit(taxGroup)"
+        on-after-delete="$taxGroups.onAfterDelete(taxGroup)">
+      </tax-group-list>
     </div>
-    <div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div>
+    <ui-view name="taxDetailsView" sticky offset="88"
+      class="main-content-right"
+      media-query="min-width: 1024px">
+    </ui-view>
   </div>
 </div>
