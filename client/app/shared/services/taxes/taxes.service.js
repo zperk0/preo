@@ -2,60 +2,66 @@
 
 export default class TaxesService {
 
-  static get UID(){
-    return "TaxesService";
+  static get UID() {
+    return 'TaxesService';
   }
 
-  getTaxGroups(forceRefresh = false){
-    var venueId = this.StateService.venue.id;
-    console.log("TaxesService - Fetching taxe groups")
-    return this.$q((resolve,reject)=>{
-      if (!forceRefresh && this.taxGroups){
-        console.log("TaxesService - Skip fetching tax groups")
+  getTaxGroups(forceRefresh = false) {
+    console.log('[TaxesService] fetching tax groups');
+    return this.$q((resolve, reject) => {
+      if (!forceRefresh && angular.isObject(this.taxGroups)) {
         return resolve(this.taxGroups);
       }
-      Preoday.TaxGroup.getByVenueId(venueId)
-        .then((taxGroups)=>{
-          this.taxGroups = taxGroups;
-          console.log("TaxesService - resolve fetching tax groups")
-          resolve(taxGroups);
-        }, (err)=>{
-          console.error("Error fetching taxGroups : ", err)
-          reject();
-      }).catch((err)=>{
-        console.error("Error fetching taxGroups : ", err)
-        reject();
-      })
-    })
 
+      this.getTaxGroupsBy()
+        .then(taxGroups => {
+          console.log('[TaxesService] resolve fetching tax groups');
+          this.taxGroups = taxGroups;
+          resolve(taxGroups);
+        }).catch(err => {
+          console.log('[TaxesService] error fetching tax groups');
+          reject(err);
+        });
+    });
   }
 
-  getTaxRates(forceRefresh = false){
-    var venueId = this.StateService.venue.id;
-    console.log("TaxesService - Fetching taxes")
-    return this.$q((resolve,reject)=>{
-      if (!forceRefresh && this.taxRates){
-        console.log("TaxesService - Skip fetching tax rates")
+  getTaxRates(forceRefresh = false) {
+    console.log('TaxesService - Fetching tax rates')
+    return this.$q((resolve, reject) => {
+      if (!forceRefresh && angular.isObject(this.taxRates)) {
         return resolve(this.taxRates);
       }
-      Preoday.TaxRate.getByVenueId(venueId)
-        .then((taxGroups)=>{
-          this.taxGroups = taxGroups;
-          console.log("TaxesService - resolve fetching tax rates")
-          resolve(taxGroups);
-        }, (err)=>{
-          console.error("Error fetching taxRates : ", err)
-          reject();
-      }).catch((err)=>{
-        console.error("Error fetching taxRates : ", err)
-        reject();
-      })
-    })
 
+      this.getTaxRatesBy()
+        .then(taxRates => {
+          console.log('[TaxesService] resolve fetching tax rates');
+          this.taxRates = taxRates;
+          resolve(taxRates);
+        }).catch(err => {
+          console.log('[TaxesService] error fetching tax rates', err);
+          reject(err);
+        });
+    });
+  }
+
+  getTaxGroupsBy() {
+    const {StateService} = this;
+    if (StateService.isChannel) {
+      return Preoday.TaxGroup.getByChannelId(StateService.channel.id);
+    }
+    return Preoday.TaxGroup.getByVenueId(StateService.venue.id);
+  }
+
+  getTaxRatesBy() {
+    const {StateService} = this;
+    if (StateService.isChannel) {
+      return Preoday.TaxRate.getByChannelId(StateService.channel.id);
+    }
+    return Preoday.TaxRate.getByVenueId(StateService.venue.id);
   }
 
   constructor($q, StateService) {
-    "ngInject";
+    'ngInject';
     this.$q = $q;
     this.StateService = StateService;
     this.taxGroups = false
