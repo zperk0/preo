@@ -6,7 +6,7 @@
         <icon class='visibility' ng-if="::!staticMenuItemCtrl.item.visible">visibility_off</icon>
         <md-icon ng-show="staticMenuItemCtrl.showActionIcon()" class="action-icon">label</md-icon>
         <span class='card-title-text' flex ayout="row" layout-align="start center">
-          <span class='name' flex>{{ ::staticMenuItemCtrl.item.name }} </span>
+          <span class='name truncate-85' flex>{{ ::staticMenuItemCtrl.item.name }} </span>
           <span class='price'> {{ ::staticMenuItemCtrl.formattedPrice }}</span>
         </span>
       </div>
