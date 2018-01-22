@@ -31,6 +31,7 @@ import tagSelect from './components/tagSelect';
 import inviteDetails from './components/inviteDetails';
 import userDetails from './components/userDetails';
 import entitySelect from './components/entitySelect';
+import marketingCheckbox from './components/marketingCheckbox';
 
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
@@ -72,6 +73,7 @@ export default angular.module("contextualMenu" , [
 	inviteDetails,
 	userDetails,
 	entitySelect,
+	marketingCheckbox,
 	venueCurrency
 ])
 
