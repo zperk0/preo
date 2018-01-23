@@ -19,11 +19,11 @@ import promotionEvents from './promotionEvents/promotionEvents.directive';
 import promotionServices from './promotionServices/promotionServices.directive';
 import promotionPayments from './promotionPayments/promotionPayments.directive';
 import promotionUsage from './promotionUsage/promotionUsage.directive';
-import promotionTabs from './promotionTabs/promotionTabs.directive';
+import promotionTabs from './promotionTabs';
 
 
 
-export default angular.module("promotionComponents" , [])
+export default angular.module("promotionComponents" , [promotionTabs])
 
   .directive("promotionDiscountValue", promotionDiscountValue)
   .directive("promotionApply", promotionApply)
@@ -33,6 +33,6 @@ export default angular.module("promotionComponents" , [])
   .directive("promotionEvents", promotionEvents)
   .directive("promotionServices", promotionServices)
   .directive("promotionPayments", promotionPayments)
-  .directive("promotionTabs", promotionTabs)
+ // .directive("promotionTabs", promotionTabs)
   .directive("promotionUsage", promotionUsage)
   .name;

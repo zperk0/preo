@@ -2,10 +2,17 @@
   <div class='layout-left-right'>
     <div class='main-content-left'>
        <promotions-list
-          promotions="promotionsCtrl.promotions">
+          promotions="promotionsCtrl.promotions"
+          on-create="promotionsCtrl.onCreate()"
+          on-edit="promotionsCtrl.onEdit(promotion)"
+          on-after-delete="promotionsCtrl.onAfterDelete(promotion)">
        </promotions-list>
     </div>
-    <div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div>
+   <!--  <div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div> -->
+    <ui-view name="promotionsView" sticky offset="88"
+         class="main-content-right"
+          media-query="min-width: 1024px">
+    </ui-view>
   </div>
 </div>
 

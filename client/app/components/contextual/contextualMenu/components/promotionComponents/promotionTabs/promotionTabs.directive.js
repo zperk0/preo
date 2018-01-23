@@ -1,15 +1,21 @@
+import controller from './promotionTabs.controller'
+
 export default function promotionTabs(BroadcastEvents, StateService, EventService){
-  "ngInject";
+  //"ngInject";
   return {
     restrict: 'E',
     scope: {
       promotion:"=",
     },
     template: require("./promotionTabs.tpl.html"),
-    replace:true,
-    require:'^contextualMenu',
-    link: (scope, el, attr, contextualMenuCtrl) => {
-      scope.contextualMenuCtrl = contextualMenuCtrl;
+    controller: controller.UID,
+    controllerAs: "$promotionDetails",
+    bindToController: true,
+   // replace:true,
+    require:['promotionTabs', '^contextualMenu'],
+    link: (scope, el, attr, ctrls) => {
+      ctrls[0].contextualMenuCtrl = ctrls[1];
+      scope.contextualMenuCtrl = ctrls[1];
       scope.contextualMenuCtrl.contextualForm.selectedTabIndex = 0;
 
       scope.venue = StateService.venue;

@@ -9,7 +9,7 @@
     </card-item-title>
 
     <card-item-actions on-delete="promotionCtrl.onDelete()"
-                       on-edit="promotionCtrl.onEdit($event)"
+                       on-edit="promotionCtrl.onEdit({promotion: promotionCtrl.promotion})"
                        on-pause="promotionCtrl.onPause(newStatus)"
                        is-paused="promotionCtrl.isPaused()"
                        on-add-user="promotionCtrl.onAddUser()"

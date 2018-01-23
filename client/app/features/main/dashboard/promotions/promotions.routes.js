@@ -3,6 +3,7 @@ import controller from './promotions.controller';
 import usersController from './users/users.controller';
 import permissionsResolve from './permissions.resolve';
 import promotionsResolve from './promotions.resolve';
+import promotionsDetailsController from './promotionsList/promotionDetails/promotionDetails.controller';
 // import entitiesResolve from './entities.resolve';
 
 /**
@@ -24,6 +25,22 @@ export default function routes($stateProvider, Permissions) {
     //  entities: entitiesResolve
     }
   });
+  // $stateProvider.state('main.dashboard.promotions', {
+  //     url: '/promotions',
+  //     requiresPermission: Permissions.OFFERS,
+  //     views: {
+  //       promotionsContent: {
+  //         controller: controller.UID,
+  //         controllerAs: 'promotionsCtrl',
+  //         template: require('./promotions.tpl.html')
+  //       }
+  //     },
+  //     resolve: {
+  //       promotions: promotionsResolve,
+  //       permissions: permissionsResolve,
+  //     }
+  // });
+
   $stateProvider.state("main.dashboard.promotions.users", {
     url: "/:promotionId/users",
 
@@ -53,4 +70,83 @@ export default function routes($stateProvider, Permissions) {
     }
     }}
   });
+
+  $stateProvider.state('main.dashboard.promotions.new', {
+      url: '/new',
+      views: {
+        promotionsView:  {
+          controller: promotionsDetailsController.UID,
+          controllerAs: '$promotionDetails',
+          template: require('./promotionsList/promotionDetails/promotionDetails.tpl.html')
+        }
+      },
+      resolve: {
+        promotion: (StateService, promotions, authenticated) => {
+          'ngInject';
+
+          const taxGroup = new Preoday.Offer({
+            entitiesInvited: {
+              venueIds: StateService.venue && StateService.venue.id ? [StateService.venue.id] : [],
+              groupIds: [],
+              channelId: null
+             // channelId: this.StateService.channel && this.StateService.channel.id,
+            },
+            venueId: StateService.venue && StateService.venue.id,
+            channelId: StateService.channel && StateService.channel.id,
+            "type": "FIXED",
+            "name": "",
+            "displayName":"",
+            "paymentType": null,
+            "items": null,
+            "amount": null,
+            "startDate":null,
+            "endDate": null,
+            "minBasket": 0,
+            "maxUserClaims": null,
+            "apply": "ALWAYS",
+            "now":true,
+            "firstOrder": 0,
+            "visible": 0,
+            "active": 1,
+            "global": 1,
+            $selected:true
+          });
+
+          promotions.push(taxGroup);
+          return taxGroup;
+        }
+      }
+    });
+
+    $stateProvider.state('main.dashboard.promotions.edit', {
+      url: '/:offerId',
+      views: {
+        promotionsView:  {
+          controller: promotionsDetailsController.UID,
+          controllerAs: '$promotionDetails',
+          template: require('./promotionsList/promotionDetails/promotionDetails.tpl.html')
+        }
+      },
+      resolve: {
+        promotion: ($q, $state, $stateParams, $timeout, promotions) => {
+          'ngInject';
+
+          const offerId = parseInt($stateParams.offerId, 10);
+          const offer = promotions.find((promotionItem) => {
+            return promotionItem.id === offerId;
+          });
+
+          if (angular.isObject(offer)) {
+            offer.$selected = true;
+            return $q.when(offer);
+          }
+
+          $timeout(() => {
+            $state.go('main.dashboard.promotions');
+          });
+
+          return $q.reject();
+        }
+      }
+    });
 }
