@@ -4,6 +4,7 @@
 	  	<md-checkbox
 					ng-click="$entity.toggleChannel($entity.entities.channel)"
 					ng-checked="$entity.isChannelSelected($entity.entities.channel)"
+					ng-disabled="$entity.isChannelDisabled()"
 					name="channel"
 					class="md-primary channel-name">
 				<span class="ellipsis">{{ $entity.entities.channel.name }}</span>

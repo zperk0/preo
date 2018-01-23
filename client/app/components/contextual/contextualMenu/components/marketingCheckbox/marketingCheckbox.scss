@@ -1,0 +1,7 @@
+
+// Contextual Menu wrapper
+.contextual-menu {
+  // Override checkbox line-height
+  .checkbox-customer-marketing .md-label,
+  .checkbox-customer-marketing .md-label span { line-height: 20px !important; }
+}
