@@ -10,7 +10,6 @@ import promotionsDetailsController from './promotionsList/promotionDetails/promo
  * Routing function for promotions
  * @param  $stateProvider
  */
-
 export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.promotions", {
@@ -25,21 +24,6 @@ export default function routes($stateProvider, Permissions) {
     //  entities: entitiesResolve
     }
   });
-  // $stateProvider.state('main.dashboard.promotions', {
-  //     url: '/promotions',
-  //     requiresPermission: Permissions.OFFERS,
-  //     views: {
-  //       promotionsContent: {
-  //         controller: controller.UID,
-  //         controllerAs: 'promotionsCtrl',
-  //         template: require('./promotions.tpl.html')
-  //       }
-  //     },
-  //     resolve: {
-  //       promotions: promotionsResolve,
-  //       permissions: permissionsResolve,
-  //     }
-  // });
 
   $stateProvider.state("main.dashboard.promotions.users", {
     url: "/:promotionId/users",

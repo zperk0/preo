@@ -40,22 +40,10 @@ export default class promotionDetailsController {
     }
   }
 
-  // onAddUser() {
-  //   this.$state.go("main.dashboard.promotions.users", {promotionId: this.promotion.id});
-  // }
-
-  // isAddUser(){
-  //   return this.promotion.global === 0;
-  // }
-
   onSuccessForVenue(entity) {
 
     this.contextualMenuSuccess(entity);
   }
-
-  // isBlockedForVenue() {
-  //   return this.promotion.parentId && this.promotion.parentId > 0 && this.StateService.venue && this.StateService.venue.id;
-  // }
 
   onSuccessForChannel(entity) {
 
@@ -90,11 +78,13 @@ export default class promotionDetailsController {
 
         this.promotion.$deleted = false;
         this.promotion.$selected = false;
+        this.hasSaved = true;
 
         this.$timeout(() => {
           angular.extend(this.promotion, newPromotion);
           this.checkPromotionValidity();
-          this.contextualMenu.hide();
+          this.$state.go("main.dashboard.promotions");
+         // this.contextualMenu.hide();
           this.Spinner.hide("save-update-promotion");
           this.Snack.show(this.LabelService.SNACK_PROMOTION_SAVED);
         });
@@ -120,58 +110,13 @@ export default class promotionDetailsController {
     }
   }
 
-  onEdit ($event) {
-    this.originalPromotion  = angular.copy(this.promotion);
-    this.cardItemList.selectItem(this.promotion);
-    this.showContextual();
-    $event.stopPropagation();
-  }
+  onCancel() {
 
-// TODO make resume button active when promotion is active but expiration date has ended
-
-
-  onPause(newStatus){
-
-    const updateActiveStatus = ()=>{
-      this.promotion.active = newStatus ? 1 : 0;
-      this.updatePromotion();
-    }
-
-    if (newStatus){
-        this.DialogService.show(this.LabelService.TITLE_INACTIVE_PROMOTION, this.LabelService.CONTENT_INACTIVE_PROMOTION, [{
-        name: this.LabelService.CONFIRMATION
-      }], {
-        hasCancel: true
-      }).then(()=>{
-        this.promotion.startDate = null;
-        this.promotion.endDate = null;
-        this.promotion.now = true;
-        updateActiveStatus();
-      })
-    } else {
-      updateActiveStatus();
-    }
-  }
-
-  restoreOriginalValues() {
-    if (this.originalPromotion){
-      angular.extend(this.promotion, this.originalPromotion);
-      this.originalPromotion = false;
-    }
-  }
-
-  contextualMenuCancel() {
-
-    this.restoreOriginalValues();
-    this.promotion.$selected = false;
-
-    if (this.promotion && !this.promotion.id) {
-      this.cardItemList.deleteItem(this.promotion);
-    }
+    this.$state.go('main.dashboard.promotions');
   }
 
   /* @ngInject */
-  constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode, StateService, gettextCatalog, promotion) {
+  constructor($q, $scope, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, APIErrorCode, StateService, gettextCatalog, promotion, promotions) {
     "ngInject";
     this.$q = $q;
     this.$stateParams = $stateParams;
@@ -183,17 +128,14 @@ export default class promotionDetailsController {
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
-    this.contextualMenu = contextualMenu;
-    this.contextual = contextual;
     this.APIErrorCode = APIErrorCode;
     this.StateService = StateService;
     this.promotion = promotion;
     console.log("state params, ", $stateParams.promotionId, promotion.id);
 
     this.params = {};
-
+    this.hasSaved = false;
     this.originalPromotion = angular.copy(promotion);
-
     this.template = 'promotion';
     if (StateService.isChannel) {
       this.params.entities = StateService.channel.entities;
@@ -232,8 +174,15 @@ export default class promotionDetailsController {
       this.onSuccessCallback = this.onSuccessForVenue;
     }
 
-    // if (this.promotion && !this.promotion.id || $stateParams.promotionId && $stateParams.promotionId == this.promotion.id) {
-    //   this.showContextual();
-    // }
+    $scope.$on('$destroy', () => {
+      if (!this.hasSaved) {
+        if (!this.promotion.id) {
+          // it's a new invite and wasn't saved. So, we need to remove the empty item from the list
+          promotions.splice(promotions.indexOf(promotion), 1);
+        } else {
+          angular.extend(this.promotion, this.originalPromotion);
+        }
+      }
+    });
   }
 }

@@ -40,21 +40,4 @@ export default class promotionsController {
 
      this.init();
    }
-
-
-
-
-  // /* @ngInject */
-  // constructor($q, Spinner, Snack, StateService, EventService,  $timeout, promotions) {
-  //   "ngInject";
-  //   this.Spinner = Spinner;
-  //   this.$q = $q;
-  //   this.Snack = Snack;
-  //   this.StateService = StateService;
-  //   this.EventService = EventService;
-  //   this.$timeout = $timeout;
-  //   this.init();
-  //   this.promotions = promotions;
-
-  // }
 }
