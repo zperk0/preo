@@ -550,6 +550,7 @@ export default class StateService {
   }
 
   getOperateUrl() {
+    console.log('dexa bri -->>', this.channel && this.channel.callCenter && this.channel.callCenter.operateUrl);
     return this.channel && this.channel.callCenter && this.channel.callCenter.operateUrl;
   }
 
