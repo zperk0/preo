@@ -45,6 +45,7 @@ export default class ErrorService {
 
     //TAXES
     this.TAXES_ERROR = {code:'FAILED_LOADING_TAXES', message:this.gettextCatalog.getString("Error loading tax settings")}
+    this.TAX_SETTINGS_REQUIRED_ID_TO_PUBLISH = {code: 'TAX_SETTINGS_REQUIRED_ID_TO_PUBLISH', message: this.gettextCatalog.getString('You cannot publish to venues without create a tax settings to channel.'), title: this.gettextCatalog.getString('Sorry')};
     this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:this.gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: this.gettextCatalog.getString('Sorry')};
     this.TAX_RATE_ASSIGNED_TO_GROUP = {code:'TAX_RATE_ASSIGNED_TO_GROUP', message:this.gettextCatalog.getString("Can’t delete this tax rate while there are groups using it."), title: this.gettextCatalog.getString('Sorry')};
 

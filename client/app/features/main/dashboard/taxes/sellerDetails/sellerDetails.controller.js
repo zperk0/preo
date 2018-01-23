@@ -21,8 +21,17 @@ export default class sellerDetailsController {
   }
 
   onPublish(selected) {
-    const {taxSettings, Spinner, Snack, gettextCatalog, contextual} = this;
+    const {taxSettings, DialogService, ErrorService, LabelService, Spinner, Snack, gettextCatalog, contextual} = this;
     angular.extend(taxSettings, {entities: selected});
+
+    if (angular.isUndefined(taxSettings.id)) {
+      // Hide drawer
+      contextual.hide();
+      // Display error message
+      return DialogService.show(ErrorService.TAX_SETTINGS_REQUIRED_ID_TO_PUBLISH.title, ErrorService.TAX_SETTINGS_REQUIRED_ID_TO_PUBLISH.message, [{
+        name: LabelService.CONFIRMATION
+      }]);
+    }
 
     const LOADER_KEY = 'tax-settings-publish';
 
@@ -137,9 +146,12 @@ export default class sellerDetailsController {
   }
 
   /* @ngInject */
-  constructor(StateService, Spinner, Snack, $timeout, gettextCatalog, contextual, entities) {
+  constructor(StateService, DialogService, ErrorService, LabelService, Spinner, Snack, $timeout, gettextCatalog, contextual, entities) {
     "ngInject";
     this.StateService = StateService;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
+    this.LabelService = LabelService;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$timeout = $timeout;
