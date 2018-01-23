@@ -6,18 +6,37 @@ export default class TaxesService {
     return 'TaxesService';
   }
 
+  getTaxSettings(forceRefresh = false) {
+    console.log('[TaxesService] resolve fetching tax settings');
+    return this.$q((resolve, reject) => {
+      if (!forceRefresh && angular.isObject(this.settings)) {
+        return resolve(this.settings);
+      }
+
+      this.fetchSettings()
+        .then(settings => {
+          console.log('[TaxesService] resolve fetching tax settings');
+          this.settings = settings;
+          resolve(settings);
+        }).catch(err => {
+          console.log('[TaxesService] error fetching tax settings');
+          reject(err);
+        });
+    });
+  }
+
   getTaxGroups(forceRefresh = false) {
     console.log('[TaxesService] fetching tax groups');
     return this.$q((resolve, reject) => {
-      if (!forceRefresh && angular.isObject(this.taxGroups)) {
-        return resolve(this.taxGroups);
+      if (!forceRefresh && angular.isArray(this.groups)) {
+        return resolve(this.groups);
       }
 
-      this.getTaxGroupsBy()
-        .then(taxGroups => {
+      this.fetchGroups()
+        .then(groups => {
           console.log('[TaxesService] resolve fetching tax groups');
-          this.taxGroups = taxGroups;
-          resolve(taxGroups);
+          this.groups = groups;
+          resolve(groups);
         }).catch(err => {
           console.log('[TaxesService] error fetching tax groups');
           reject(err);
@@ -28,15 +47,15 @@ export default class TaxesService {
   getTaxRates(forceRefresh = false) {
     console.log('TaxesService - Fetching tax rates')
     return this.$q((resolve, reject) => {
-      if (!forceRefresh && angular.isObject(this.taxRates)) {
-        return resolve(this.taxRates);
+      if (!forceRefresh && angular.isArray(this.rates)) {
+        return resolve(this.rates);
       }
 
-      this.getTaxRatesBy()
-        .then(taxRates => {
+      this.fetchRates()
+        .then(rates => {
           console.log('[TaxesService] resolve fetching tax rates');
-          this.taxRates = taxRates;
-          resolve(taxRates);
+          this.rates = rates;
+          resolve(rates);
         }).catch(err => {
           console.log('[TaxesService] error fetching tax rates', err);
           reject(err);
@@ -44,27 +63,36 @@ export default class TaxesService {
     });
   }
 
-  getTaxGroupsBy() {
+  fetchSettings() {
     const {StateService} = this;
     if (StateService.isChannel) {
-      return Preoday.TaxGroup.getByChannelId(StateService.channel.id);
+      return StateService.channel.getTaxSettings();
     }
-    return Preoday.TaxGroup.getByVenueId(StateService.venue.id);
+    return StateService.venue.getTaxSettings();
   }
 
-  getTaxRatesBy() {
+  fetchGroups() {
     const {StateService} = this;
     if (StateService.isChannel) {
-      return Preoday.TaxRate.getByChannelId(StateService.channel.id);
+      return StateService.channel.getTaxGroups();
     }
-    return Preoday.TaxRate.getByVenueId(StateService.venue.id);
+    return StateService.venue.getTaxGroups();
+  }
+
+  fetchRates() {
+    const {StateService} = this;
+    if (StateService.isChannel) {
+      return StateService.channel.getTaxRates();
+    }
+    return StateService.venue.getTaxRates();
   }
 
   constructor($q, StateService) {
     'ngInject';
     this.$q = $q;
     this.StateService = StateService;
-    this.taxGroups = false
-    this.taxRates = false
+    this.settings = null;
+    this.groups = null;
+    this.rates = null;
   }
 }

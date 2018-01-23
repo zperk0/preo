@@ -1,6 +1,9 @@
-
-import controller from './sellerDetails.controller'
+// Resolves
 import entitiesResolve from 'app/components/contextual/contextualDrawer/entities/entities.resolve';
+import taxSettingsResolve from './sellerDetails.resolve';
+
+// Controllers
+import controller from './sellerDetails.controller'
 
 /**
  * Routing function for sellerDetails
@@ -8,18 +11,19 @@ import entitiesResolve from 'app/components/contextual/contextualDrawer/entities
  */
 /* @ngInject */
 export default function routes($stateProvider, Permissions) {
-  "ngInject";
-  $stateProvider.state("main.dashboard.taxes.sellerDetails", {
-    url: "/sellerDetails",
-    requiresPermission:Permissions.TAXES,
+  'ngInject';
+  $stateProvider.state('main.dashboard.taxes.sellerDetails', {
+    url: '/sellerDetails',
+    requiresPermission: Permissions.TAXES,
     resolve: {
-      entities: entitiesResolve
+      entities: entitiesResolve,
+      taxSettings: taxSettingsResolve
     },
-     views:{
-      taxesContent:{
-        template: require("./sellerDetails.tpl.html"),
+    views: {
+      taxesContent: {
+        template: require('./sellerDetails.tpl.html'),
         controller: controller.UID,
-        controllerAs: "sellerDetailsCtrl"
+        controllerAs: 'sellerDetailsCtrl'
       }
     }
   });
