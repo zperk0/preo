@@ -58,7 +58,6 @@
   </div>
   <contextual-drawer-entities ng-if="sellerDetailsCtrl.isChannel"
     entities="sellerDetailsCtrl.entities"
-    selected="sellerDetailsCtrl.selected"
-    callback="sellerDetailsCtrl.onPublish()">
+    callback="sellerDetailsCtrl.onPublish(model)">
   </contextual-drawer-entities>
 </div>

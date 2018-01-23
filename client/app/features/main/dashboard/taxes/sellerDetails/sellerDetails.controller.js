@@ -20,8 +20,26 @@ export default class sellerDetailsController {
       : this.onCreate.bind(this);
   }
 
-  onPublish() {
-    console.log('[SellerDetailsCtrl] onPublish', this.selected);
+  onPublish(selected) {
+    const {taxSettings, Spinner, Snack, gettextCatalog, contextual} = this;
+    angular.extend(taxSettings, {entities: selected});
+
+    const LOADER_KEY = 'tax-settings-publish';
+
+    Spinner.show(LOADER_KEY);
+    taxSettings.publish()
+      .then((res) => {
+        // Published success
+        Snack.show(gettextCatalog.getString('Seller details published'));
+        contextual.hide();
+      })
+      .catch((err) => {
+        // Failed to publish
+        Snack.showError(gettextCatalog.getString('Error publishing to venues'));
+      })
+      .finally(() => {
+        Spinner.hide(LOADER_KEY);
+      });
   }
 
    debounce(func, wait, immediate) {
@@ -119,16 +137,14 @@ export default class sellerDetailsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout, gettextCatalog, StateService, entities) {
+  constructor(StateService, Spinner, Snack, $timeout, gettextCatalog, contextual, entities) {
     "ngInject";
+    this.StateService = StateService;
     this.Spinner = Spinner;
     this.Snack = Snack;
-    this.$stateParams = $stateParams;
-    this.ErrorService = ErrorService;
-    this.LabelService = LabelService;
-    this.StateService = StateService;
     this.$timeout = $timeout;
     this.gettextCatalog = gettextCatalog;
+    this.contextual = contextual;
 
     // Defaults
     this.showError = false;
@@ -140,7 +156,6 @@ export default class sellerDetailsController {
     // Entities
     this.entities = entities;
     this.entities.channel = StateService.channel;
-    this.selected = {channelId: null, groupIds: [], venueIds: []};
     this.init();
   }
 }
