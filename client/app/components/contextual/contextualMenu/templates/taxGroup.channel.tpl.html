@@ -1,0 +1,37 @@
+<div class="contextual-menu-tax-group">
+  <md-tabs class="md-tabs-with-errors"
+    md-dynamic-height
+    md-stretch-tabs="always"
+    ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}"
+    md-selected="contextualMenuCtrl.contextualForm.selectedTabIndex">
+    <md-tab tabindex="0">
+      <md-tab-label>
+        <div class="md-tab-label" ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}">
+          <span>{{'Basics' | translate}}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <div class="tax-group-tab-content">
+          <md-card-content>
+            <tax-group-form ng-model="contextualMenuCtrl.entity"></tax-group-form>
+          </md-card-content>
+        </div>
+      </md-tab-body>
+    </md-tab>
+    <md-tab tabindex="1">
+      <md-tab-label>
+        <div class="md-tab-label" ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasUserVenuesTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.params.selected)}">
+          <span>{{'Venues' | translate}}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <div class="tax-group-venues-tab-content">
+          <entity-select
+            entities="contextualMenuCtrl.params.entities"
+            invite-user-roles="contextualMenuCtrl.params.selected">
+          </entity-select>
+        </div>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</div>

@@ -5,6 +5,14 @@ export default class taxGroupDetailsController {
     return 'taxGroupDetailsController';
   }
 
+  setEntities() {
+    const {StateService, taxGroup, params} = this;
+    if (StateService.isChannel && angular.isObject(params)) {
+      // Set entities to replicate it for venues
+      angular.extend(taxGroup, {entities: params.selected});
+    }
+  }
+
   createOrUpdate() {
     const {taxGroup} = this;
     if (taxGroup.id) {
@@ -13,13 +21,18 @@ export default class taxGroupDetailsController {
     return Preoday.TaxGroup.create(taxGroup);
   }
 
-  onSaveVenue(entity) {
+  onSave(entity) {
     const {taxGroup, Spinner, Snack, $timeout, $state, gettextCatalog} = this;
     const LOADER_KEY = 'tax-group-save';
 
-    if (!angular.isObject(taxGroup) || !angular.isObject(entity) || !entity.name) {
-      return;
+    if (!angular.isObject(taxGroup)
+     || !angular.isObject(entity)
+     || !entity.name) {
+       return;
     }
+
+    // Set `entities` for channel
+    this.setEntities();
 
     Spinner.show(LOADER_KEY);
     this.createOrUpdate()
@@ -32,6 +45,7 @@ export default class taxGroupDetailsController {
 
         $timeout(() => {
           angular.extend(taxGroup, data);
+          this.setEntities();
           Snack.show(gettextCatalog.getString('Tax group saved'));
           $state.go('main.dashboard.taxes.taxGroups');
         });
@@ -46,24 +60,60 @@ export default class taxGroupDetailsController {
     this.$state.go('main.dashboard.taxes.taxGroups');
   }
 
-  constructor($scope, $state, $timeout, Spinner, Snack, gettextCatalog, taxGroups, taxGroup) {
+  constructor($scope, $state, $timeout, StateService, BroadcastEvents, Spinner, Snack, gettextCatalog, taxGroups, taxGroup, entities) {
     'ngInject';
     // Dependencies
     this.$state = $state;
     this.$timeout = $timeout;
+    this.StateService = StateService;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.gettextCatalog = gettextCatalog;
     // Resolves and defaults
     this.taxGroups = taxGroups;
     this.taxGroup = taxGroup;
-    this.template = 'taxGroup';
 
     // Set default `$saved` property
     this.$saved = false;
 
     // Create a copy of the original data
     this.originalTaxGroup = angular.copy(taxGroup);
+
+    if (StateService.isChannel) {
+      // Set channel into `entities`
+      entities.channel = StateService.channel;
+      // Set template
+      this.template = 'taxGroup.channel';
+      // Set params
+      this.params = {
+        entities: entities,
+        selected: taxGroup.entities
+      };
+
+      if (angular.isUndefined(taxGroup.id)) {
+        this.params.onBeforeSubmit = function() {
+          if (this.contextualForm.$invalid) {
+            this.contextualForm.submitted = true;
+            return $scope.$broadcast(BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED);
+          }
+
+          if (this.contextualForm.selectedTabIndex === 1) {
+            return this.onSubmit();
+          }
+
+          this.contextualForm.selectedTabIndex = 1;
+        };
+
+        this.params.doneButtonText = function() {
+          if (this.contextualForm && this.contextualForm.selectedTabIndex === 1) {
+            return gettextCatalog.getString('Done');
+          }
+          return gettextCatalog.getString('Choose Venues');
+        };
+      }
+    } else {
+      this.template = 'taxGroup';
+    }
 
     $scope.$on('$destroy', () => {
       if (angular.isObject(this.taxGroup)) {

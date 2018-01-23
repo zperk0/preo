@@ -1,5 +1,6 @@
 // Resolves
 import taxGroupsResolve from './taxGroups.resolve';
+import entitiesResolve from 'app/components/contextual/contextualDrawer/entities/entities.resolve';
 
 // Controllers
 import taxGroupsController from './taxGroups.controller';
@@ -24,6 +25,7 @@ export default function routes($stateProvider, Permissions) {
       }
     },
     resolve: {
+      entities: entitiesResolve,
       taxGroups: taxGroupsResolve
     }
   });
@@ -44,6 +46,7 @@ export default function routes($stateProvider, Permissions) {
         const taxGroup = new Preoday.TaxGroup({
           venueId: StateService.venue && StateService.venue.id,
           channelId: StateService.channel && StateService.channel.id,
+          entities: {channelId: null, groupIds: [], venueIds: []},
           $selected: true
         });
 
