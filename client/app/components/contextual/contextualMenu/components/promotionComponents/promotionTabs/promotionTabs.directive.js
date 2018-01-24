@@ -1,7 +1,7 @@
 import controller from './promotionTabs.controller'
 
 export default function promotionTabs(BroadcastEvents, StateService, EventService){
-  //"ngInject";
+  "ngInject";
   return {
     restrict: 'E',
     scope: {
