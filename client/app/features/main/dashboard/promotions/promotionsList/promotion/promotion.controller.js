@@ -31,7 +31,9 @@ export default class promotionController {
   }
 
   isSelected() {
-    return this.promotion && +this.promotion.id === +this.$stateParams.promotionId;
+    return this.promotion
+        && (+this.promotion.id === +this.$stateParams.promotionId ||
+            (!this.promotion.id && !this.$stateParams.promotionId));
   }
 
   updatePromotion(){
@@ -55,11 +57,11 @@ export default class promotionController {
   }
 
   isBlockedForVenue() {
-    return this.promotion.parentId && this.promotion.parentId > 0 && this.StateService.venue && this.StateService.venue.id;
+    return this.promotion.sourceId && this.promotion.sourceId > 0 && this.StateService.venue && this.StateService.venue.id;
   }
 
 // TODO make resume button active when promotion is active but expiration date has ended
-  onPause(newStatus){ console.log('pausedddd ----');
+  onPause(newStatus){
 
     const updateActiveStatus = ()=>{
       this.promotion.active = newStatus ? 1 : 0;

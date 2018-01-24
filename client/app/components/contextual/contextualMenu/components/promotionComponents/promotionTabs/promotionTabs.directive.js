@@ -11,10 +11,9 @@ export default function promotionTabs(BroadcastEvents, StateService, EventServic
     controller: controller.UID,
     controllerAs: "$promotionDetails",
     bindToController: true,
-   // replace:true,
     require:['promotionTabs', '^contextualMenu'],
     link: (scope, el, attr, ctrls) => {
-      ctrls[0].contextualMenuCtrl = ctrls[1];
+     // ctrls[0].contextualMenuCtrl = ctrls[1];
       scope.contextualMenuCtrl = ctrls[1];
       scope.contextualMenuCtrl.contextualForm.selectedTabIndex = 0;
 

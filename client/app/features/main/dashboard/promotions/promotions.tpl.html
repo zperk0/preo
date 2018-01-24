@@ -1,19 +1,30 @@
 <div flex class="promotions">
-  <div class='layout-left-right'>
-    <div class='main-content-left'>
-       <promotions-list
-          promotions="promotionsCtrl.promotions"
-          on-create="promotionsCtrl.onCreate()"
-          on-edit="promotionsCtrl.onEdit(promotion)"
-          on-after-delete="promotionsCtrl.onAfterDelete(promotion)">
-       </promotions-list>
-    </div>
+  <sticky-scroll scroll-to-child-element
+                 scroll-to-child-element-offset="24"
+                 scroll-on-init="false">
+    <div class='layout-left-right'>
+      <div class='main-content-left'>
+         <promotions-list
+            promotions="promotionsCtrl.promotions"
+            on-create="promotionsCtrl.onCreate()"
+            on-edit="promotionsCtrl.onEdit(promotion)"
+            on-after-delete="promotionsCtrl.onAfterDelete(promotion)">
+         </promotions-list>
+      </div>
 
-    <ui-view name="promotionsView" sticky offset="88"
-         class="main-content-right"
-          media-query="min-width: 1024px">
-    </ui-view>
-  </div>
+      <ui-view name="promotionsView" sticky offset="24"
+           class="main-content-right"
+           sticky
+           content-right-resize
+           scroll-to-promotion
+           use-placeholder="false"
+           sticky-class="preo-sticky"
+           keep-width="true"
+           disabled-sticky="promotionsCtrl.disabledSticky"
+            media-query="min-width: 1024px">
+      </ui-view>
+    </div>
+  </sticky-scroll>
 </div>
 
 <ui-view name="userSearchView"></ui-view>

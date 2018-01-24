@@ -10,15 +10,14 @@ export default class usersPromotionsController {
     this.contextual.showDrawer("userSearch").then((data) => {
 
       this.Spinner.show("add-users-promotion");
-      const venueId = this.StateService.venue && this.StateService.venue.id;
-      this.promotion.addUsers(data.users, venueId).then(() => {
+      this.promotion.addUsers(data.users).then(() => {
 
         this.Snack.show(this.LabelService.SNACK_PROMOTION_ADD_USER);
         this.Spinner.hide("add-users-promotion");
         this.$state.go("main.dashboard.promotions");
         this.contextual.close();
       }, () => {
-
+        this.$state.go("main.dashboard.promotions");
         this.Snack.showError(this.ErrorService.DEFAULT.message);
         this.Spinner.hide("add-users-promotion");
       });

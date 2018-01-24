@@ -68,7 +68,7 @@ export default function routes($stateProvider, Permissions) {
         promotion: (StateService, promotions, authenticated) => {
           'ngInject';
 
-          const taxGroup = new Preoday.Offer({
+          const offer = new Preoday.Offer({
             entitiesInvited: {
               venueIds: StateService.venue && StateService.venue.id ? [StateService.venue.id] : [],
               groupIds: [],
@@ -96,14 +96,14 @@ export default function routes($stateProvider, Permissions) {
             $selected:true
           });
 
-          promotions.push(taxGroup);
-          return taxGroup;
+          promotions.push(offer);
+          return offer;
         }
       }
     });
 
     $stateProvider.state('main.dashboard.promotions.edit', {
-      url: '/:offerId',
+      url: '/:promotionId',
       views: {
         promotionsView:  {
           controller: promotionsDetailsController.UID,
@@ -115,9 +115,9 @@ export default function routes($stateProvider, Permissions) {
         promotion: ($q, $state, $stateParams, $timeout, promotions) => {
           'ngInject';
 
-          const offerId = parseInt($stateParams.offerId, 10);
+          const promotionId = parseInt($stateParams.promotionId, 10);
           const offer = promotions.find((promotionItem) => {
-            return promotionItem.id === offerId;
+            return promotionItem.id === promotionId;
           });
 
           if (angular.isObject(offer)) {

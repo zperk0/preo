@@ -1,5 +1,5 @@
 <div class='promotion'
-      ng-attr-data-id="{{promotionCtrl.promotion.id}}">
+      ng-attr-data-id="{{promotionCtrl.promotion.id || 'new'}}">
   <card-item  has-actions="true"
               deleted="promotionCtrl.promotion.$deleted"
               selected="promotionCtrl.isSelected()"

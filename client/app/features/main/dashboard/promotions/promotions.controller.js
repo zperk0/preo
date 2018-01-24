@@ -10,7 +10,7 @@ export default class promotionsController {
 
    onEdit(promotion) {
      this.$state.go('main.dashboard.promotions.edit', {
-       offerId: promotion.id
+       promotionId: promotion.id
      });
    }
 
@@ -33,11 +33,22 @@ export default class promotionsController {
      'ngInject';
      // Dependencies
      this.$state = $state;
+     this.$scope = $scope;
      // Resolves and Defaults
      this.promotions = promotions;
      this.EventService = EventService;
      this.StateService = StateService;
 
      this.init();
+
+     this.disabledSticky = true;
+
+     const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
+       if (viewName.indexOf('promotionsView') === 0) {
+         // we have an animation in our main-ui-view and we need to wait it to finish to start the sticky
+         // If we start the sticky before the animation finish, the sticky will calculate a wrong width for our contextual
+         this.disabledSticky = false;
+       }
+     });
    }
 }
