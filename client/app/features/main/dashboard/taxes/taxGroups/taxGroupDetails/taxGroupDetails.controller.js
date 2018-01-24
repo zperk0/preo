@@ -13,6 +13,15 @@ export default class taxGroupDetailsController {
     }
   }
 
+  validateEntities() {
+    // Retrieve selected entities on drawer
+    const entity = this.params.selected;
+    // Validate if has at least one channel, venue group or venue
+    return entity.venueIds.length
+      || entity.groupIds.length
+      || entity.channelId;
+  }
+
   createOrUpdate() {
     const {taxGroup} = this;
     if (taxGroup.id) {
@@ -22,13 +31,18 @@ export default class taxGroupDetailsController {
   }
 
   onSave(entity) {
-    const {taxGroup, Spinner, Snack, $timeout, $state, gettextCatalog} = this;
+    const {taxGroup, StateService, Spinner, Snack, $timeout, $state, gettextCatalog} = this;
     const LOADER_KEY = 'tax-group-save';
 
     if (!angular.isObject(taxGroup)
      || !angular.isObject(entity)
      || !entity.name) {
        return;
+    }
+
+    if (StateService.isChannel && !this.validateEntities()) {
+      // Extra validation for channels to check any selected entity before save
+      return;
     }
 
     // Set `entities` for channel
