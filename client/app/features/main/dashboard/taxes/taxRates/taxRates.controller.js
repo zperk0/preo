@@ -10,7 +10,7 @@ export default class taxRatesController {
 
   onEdit(taxRate) {
     this.$state.go('main.dashboard.taxes.taxRates.edit', {
-      taxRateId: taxRate.id
+      taxId: taxRate.id
     });
   }
 
@@ -22,11 +22,23 @@ export default class taxRatesController {
   }
 
   /* @ngInject */
-  constructor($state, taxRates) {
+  constructor($scope, $state, taxRates) {
     'ngInject';
     // Dependencies
+    this.$scope = $scope;
     this.$state = $state;
     // Resolves and Defaults
     this.taxRates = taxRates;
+    this.disabledSticky = true;
+
+    const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
+      if (viewName.indexOf('taxDetailsView') === 0) {
+        this.disabledSticky = false;
+      }
+    });
+
+    $scope.$on('$destroy', () => {
+      onViewContentLoaded && onViewContentLoaded();
+    });
   }
 }

@@ -54,7 +54,7 @@ export default function routes($stateProvider, Permissions) {
   });
 
   $stateProvider.state('main.dashboard.taxes.taxRates.edit', {
-    url: '/:taxRateId',
+    url: '/:taxId',
     views: {
       taxDetailsView:  {
         controller: taxRateDetailsController.UID,
@@ -66,7 +66,7 @@ export default function routes($stateProvider, Permissions) {
       taxRate: ($q, $state, $stateParams, $timeout, taxRates) => {
         'ngInject';
 
-        const taxRateId = parseInt($stateParams.taxRateId, 10);
+        const taxRateId = parseInt($stateParams.taxId, 10);
         const taxRate = taxRates.find((taxRateItem) => {
           return taxRateItem.id === taxRateId;
         });

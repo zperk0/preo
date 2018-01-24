@@ -1,17 +1,15 @@
-<div class="tax-rate-list">
-  <div>
-    <card-item-list
-      has-new="true"
-      tooltip="{{'Add new tax rate' | translate}}"
-      on-click-new="taxRateListCtrl.onCreate()"
-      collection="taxRateListCtrl.taxRates">
-      <tax-rate
-        has-actions="true"
-        ng-repeat="taxRate in taxRateListCtrl.taxRates | orderBy: id"
-        tax-rate="taxRate"
-        on-edit="taxRateListCtrl.onEdit({taxRate: taxRate})"
-        on-after-delete="taxRateListCtrl.onAfterDelete({taxRate: taxRate})">
-      </tax-rate>
-    </card-item-list>
-  </div>
+<div class="tax-list tax-rate-list">
+  <card-item-list
+    has-new="true"
+    tooltip="{{'Add new tax rate' | translate}}"
+    on-click-new="taxRateListCtrl.onCreate()"
+    collection="taxRateListCtrl.taxRates">
+    <tax-rate
+      has-actions="true"
+      ng-repeat="taxRate in taxRateListCtrl.taxRates | orderBy: id"
+      tax-rate="taxRate"
+      on-edit="taxRateListCtrl.onEdit({taxRate: taxRate})"
+      on-after-delete="taxRateListCtrl.onAfterDelete({taxRate: taxRate})">
+    </tax-rate>
+  </card-item-list>
 </div>
