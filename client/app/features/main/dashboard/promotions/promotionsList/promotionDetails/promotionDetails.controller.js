@@ -116,7 +116,7 @@ export default class promotionDetailsController {
   }
 
   /* @ngInject */
-  constructor($q, $scope, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, APIErrorCode, StateService, gettextCatalog, promotion, promotions) {
+  constructor($q, $scope, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, APIErrorCode, StateService, gettextCatalog, promotion, promotions, entities) {
     "ngInject";
     this.$q = $q;
     this.$stateParams = $stateParams;
@@ -138,7 +138,7 @@ export default class promotionDetailsController {
     this.originalPromotion = angular.copy(promotion);
     this.template = 'promotion';
     if (StateService.isChannel) {
-      this.params.entities = StateService.channel.entities;
+      this.params.entities = entities;
       this.params.entities.channel = StateService.channel;
       this.onSuccessCallback = this.onSuccessForChannel;
 

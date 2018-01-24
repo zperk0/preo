@@ -17,9 +17,10 @@ export default class usersPromotionsController {
         this.$state.go("main.dashboard.promotions");
         this.contextual.close();
       }, () => {
-        this.$state.go("main.dashboard.promotions");
         this.Snack.showError(this.ErrorService.DEFAULT.message);
         this.Spinner.hide("add-users-promotion");
+        this.$state.go("main.dashboard.promotions");
+        this.contextual.close();
       });
         
     }, (err) => {

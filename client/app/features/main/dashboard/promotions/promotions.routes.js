@@ -4,7 +4,7 @@ import usersController from './users/users.controller';
 import permissionsResolve from './permissions.resolve';
 import promotionsResolve from './promotions.resolve';
 import promotionsDetailsController from './promotionsList/promotionDetails/promotionDetails.controller';
-// import entitiesResolve from './entities.resolve';
+import entitiesResolve from 'app/components/contextual/contextualDrawer/entities/entities.resolve';
 
 /**
  * Routing function for promotions
@@ -21,7 +21,7 @@ export default function routes($stateProvider, Permissions) {
     resolve: {
       promotions: promotionsResolve,
       permissions: permissionsResolve,
-    //  entities: entitiesResolve
+      entities: entitiesResolve
     }
   });
 
