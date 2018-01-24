@@ -176,13 +176,11 @@ export default class contextualDrawerEventsImportController {
     this.selectedEvents = [];
 
     $scope.$on(BroadcastEvents.ON_CONTEXTUAL_DRAWER_OPEN, (event, args) => {
-      if(args.id === 'eventsImport'){
-        this.entityChanged = false;
-        this.isImportMode = false;
-        this.isEditMode = false;
-        this.linkToExistentEvent = false;
-        this.init();
-      }
+      this.entityChanged = false;
+      this.isImportMode = false;
+      this.isEditMode = false;
+      this.linkToExistentEvent = false;
+      this.init();
     });
   }
 

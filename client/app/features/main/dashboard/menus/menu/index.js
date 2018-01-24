@@ -1,9 +1,9 @@
 // Import Style
 import './menu.scss';
 
-import spinner from '../../../../../components/spinner';
-import breadcrumb from '../../../../../components/breadcrumb';
-import contextual from '../../../../../components/contextual';
+import spinner from 'app/components/spinner';
+import breadcrumb from 'app/components/breadcrumb';
+import contextual from 'app/components/contextual';
 
 // Import internal modules
 import controller from './menu.controller';
