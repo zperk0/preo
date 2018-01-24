@@ -1,17 +1,15 @@
-<div class="tax-group-list">
-  <div>
-    <card-item-list
-      has-new="true"
-      tooltip="{{'Add new tax group' | translate}}"
-      on-click-new="taxGroupListCtrl.onCreate()"
-      collection="taxGroupListCtrl.taxGroups">
-      <tax-group
-        has-actions="true"
-        ng-repeat="taxGroup in taxGroupListCtrl.taxGroups | orderBy: id"
-        tax-group="taxGroup"
-        on-edit="taxGroupListCtrl.onEdit({taxGroup: taxGroup})"
-        on-after-delete="taxGroupListCtrl.onAfterDelete({taxGroup: taxGroup})">
-      </tax-group>
-    </card-item-list>
-  </div>
+<div class="tax-list tax-group-list">
+  <card-item-list
+    has-new="true"
+    tooltip="{{'Add new tax group' | translate}}"
+    on-click-new="taxGroupListCtrl.onCreate()"
+    collection="taxGroupListCtrl.taxGroups">
+    <tax-group
+      has-actions="true"
+      ng-repeat="taxGroup in taxGroupListCtrl.taxGroups | orderBy: id"
+      tax-group="taxGroup"
+      on-edit="taxGroupListCtrl.onEdit({taxGroup: taxGroup})"
+      on-after-delete="taxGroupListCtrl.onAfterDelete({taxGroup: taxGroup})">
+    </tax-group>
+  </card-item-list>
 </div>

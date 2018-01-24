@@ -10,7 +10,7 @@ export default class taxGroupsController {
 
   onEdit(taxGroup) {
     this.$state.go('main.dashboard.taxes.taxGroups.edit', {
-      taxGroupId: taxGroup.id
+      taxId: taxGroup.id
     });
   }
 
@@ -25,8 +25,20 @@ export default class taxGroupsController {
   constructor($scope, $state, taxGroups) {
     'ngInject';
     // Dependencies
+    this.$scope = $scope;
     this.$state = $state;
     // Resolves and Defaults
     this.taxGroups = taxGroups;
+    this.disabledSticky = true;
+
+    const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
+      if (viewName.indexOf('taxDetailsView') === 0) {
+        this.disabledSticky = false;
+      }
+    });
+
+    $scope.$on('$destroy', () => {
+      onViewContentLoaded && onViewContentLoaded();
+    });
   }
 }

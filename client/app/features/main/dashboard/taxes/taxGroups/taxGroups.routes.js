@@ -57,7 +57,7 @@ export default function routes($stateProvider, Permissions) {
   });
 
   $stateProvider.state('main.dashboard.taxes.taxGroups.edit', {
-    url: '/:taxGroupId',
+    url: '/:taxId',
     views: {
       taxDetailsView:  {
         controller: taxGroupDetailsController.UID,
@@ -69,7 +69,7 @@ export default function routes($stateProvider, Permissions) {
       taxGroup: ($q, $state, $stateParams, $timeout, taxGroups) => {
         'ngInject';
 
-        const taxGroupId = parseInt($stateParams.taxGroupId, 10);
+        const taxGroupId = parseInt($stateParams.taxId, 10);
         const taxGroup = taxGroups.find((taxGroupItem) => {
           return taxGroupItem.id === taxGroupId;
         });
