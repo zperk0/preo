@@ -7,7 +7,7 @@
   >
   <card-item-title has-visible="true">
     <div class="external-event__details">
-    <span class="event__name ellipsis">{{event.name}} </span>
+    <span class="event__name ellipsis" ng-if="event.name">{{event.name}} </span>
     <span class="event__date ellipsis"> {{event.eventDateFormated}}</span>
     </div>
   </card-item-title>
