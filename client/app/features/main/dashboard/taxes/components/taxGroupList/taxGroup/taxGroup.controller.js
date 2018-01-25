@@ -3,6 +3,12 @@ export default class taxGroupController {
     return 'taxGroupController';
   }
 
+  isBlockedForVenue() {
+    const {StateService, taxGroup} = this;
+    return taxGroup.sourceId && taxGroup.venueId
+      && angular.isObject(StateService.venue) && StateService.venue.id;
+  }
+
   onDelete() {
     const {DialogService, LabelService, ErrorService, Snack, Spinner, gettextCatalog, taxGroup} = this;
     const LOADER_KEY = 'tax-group-delete';
@@ -31,8 +37,9 @@ export default class taxGroupController {
   }
 
   /* @ngInject */
-  constructor(DialogService, LabelService, ErrorService, Spinner, Snack, gettextCatalog) {
+  constructor(StateService, DialogService, LabelService, ErrorService, Spinner, Snack, gettextCatalog) {
     'ngInject';
+    this.StateService = StateService;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;

@@ -45,4 +45,9 @@
   top:64px;
   padding: 12px 24px;
   line-height: 24px;
+
+  &.sub-toolbar-buttons {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }

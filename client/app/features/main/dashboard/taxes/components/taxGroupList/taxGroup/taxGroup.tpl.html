@@ -9,6 +9,7 @@
     </card-item-title>
 
     <card-item-actions
+      is-blocked-for-edit="taxGroupCtrl.isBlockedForVenue()"
       on-delete="taxGroupCtrl.onDelete()"
       on-edit="taxGroupCtrl.onEdit({taxGroup: taxGroupCtrl.taxGroup})">
     </card-item-actions>
