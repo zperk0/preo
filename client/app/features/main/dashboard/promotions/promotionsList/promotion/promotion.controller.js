@@ -31,7 +31,9 @@ export default class promotionController {
   }
 
   isSelected() {
-    return this.promotion && +this.promotion.id === +this.$stateParams.promotionId;
+    return this.promotion
+        && (+this.promotion.id === +this.$stateParams.promotionId ||
+            (!this.promotion.id && !this.$stateParams.promotionId));
   }
 
   updatePromotion(){
@@ -46,31 +48,6 @@ export default class promotionController {
     })
   }
 
-  savePromotion(){
-    return this.$q((resolve,reject)=>{
-      this.Spinner.show("saving-promotion");
-      Preoday.Offer.create(this.promotion)
-        .then((newPromotion)=>{
-          this.Spinner.hide('saving-promotion')
-          console.log("promotion-saved",this.promotion)
-          resolve(newPromotion);
-      },(err)=>{
-        this.Spinner.hide('saving-promotion');
-        reject(err);
-      })
-    })
-  }
-
-  checkPromotionValidity() {
-    if (this.promotion.endDate) {
-      let finalDate = new Date(this.promotion.endDate);
-      let now = new Date();
-      if (finalDate < now) {
-        this.onPause();
-      }
-    }
-  }
-
   onAddUser() {
     this.$state.go("main.dashboard.promotions.users", {promotionId: this.promotion.id});
   }
@@ -79,56 +56,11 @@ export default class promotionController {
     return this.promotion.global === 0;
   }
 
-  contextualMenuSuccess(entity){
-    this.Spinner.show("save-update-promotion");
-    if (this.promotion && entity && entity.name){
-
-      this.promotion = entity;
-      var saveOrUpdate = this.promotion.id ? this.updatePromotion.bind(this) : this.savePromotion.bind(this);
-      saveOrUpdate().then((newPromotion)=>{
-
-        this.promotion.$deleted = false;
-        this.promotion.$selected = false;
-
-        this.$timeout(() => {
-          angular.extend(this.promotion, newPromotion);
-          this.checkPromotionValidity();
-          this.contextualMenu.hide();
-          this.Spinner.hide("save-update-promotion");
-          this.Snack.show(this.LabelService.SNACK_PROMOTION_SAVED);
-        });
-
-      }, (err)=>{
-        console.log('error on save promotions', err);
-        this.Spinner.hide("save-update-promotion");
-        if (err && err.errorCode && err.errorCode === this.APIErrorCode.EXISTING_OFFER_CODE) {
-          this.Snack.showError(this.LabelService.SNACK_PROMOTION_EXISTING_CODE);
-        } else {
-          this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
-        }
-
-      }). catch((err)=>{
-        console.error('error on save promotions', err);
-        this.Spinner.hide("save-update-promotion");
-        if (err && err.errorCode && err.errorCode === this.APIErrorCode.EXISTING_OFFER_CODE) {
-          this.Snack.showError(this.LabelService.SNACK_PROMOTION_EXISTING_CODE);
-        } else {
-          this.Snack.showError(this.LabelService.SNACK_PROMOTION_SAVED_ERROR);
-        }
-      })
-    }
-  }
-
-  onEdit ($event) {
-    this.originalPromotion  = angular.copy(this.promotion);
-    this.cardItemList.selectItem(this.promotion);
-    this.showContextual();
-    $event.stopPropagation();
+  isBlockedForVenue() {
+    return this.promotion.sourceId && this.promotion.sourceId > 0 && this.StateService.venue && this.StateService.venue.id;
   }
 
 // TODO make resume button active when promotion is active but expiration date has ended
-
-
   onPause(newStatus){
 
     const updateActiveStatus = ()=>{
@@ -152,29 +84,8 @@ export default class promotionController {
     }
   }
 
-  restoreOriginalValues() {
-    if (this.originalPromotion){
-      angular.extend(this.promotion, this.originalPromotion);
-      this.originalPromotion = false;
-    }
-  }
-
-  contextualMenuCancel() {
-
-    this.restoreOriginalValues();
-    this.promotion.$selected = false;
-
-    if (this.promotion && !this.promotion.id) {
-      this.cardItemList.deleteItem(this.promotion);
-    }
-  }
-
-  showContextual () {
-    this.contextual.showMenu(this.type, this.promotion, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-  }
-
   /* @ngInject */
-  constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, contextual, contextualMenu, APIErrorCode) {
+  constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, APIErrorCode, StateService, gettextCatalog) {
     "ngInject";
     this.$q = $q;
     this.$stateParams = $stateParams;
@@ -186,13 +97,7 @@ export default class promotionController {
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
-    this.contextualMenu = contextualMenu;
-    this.contextual = contextual;
-    this.type = 'promotion';
     this.APIErrorCode = APIErrorCode;
-    console.log("state params, ", $stateParams.promotionId, this.promotion.id);
-    if (this.promotion && !this.promotion.id || $stateParams.promotionId && $stateParams.promotionId == this.promotion.id) {
-      this.showContextual();
-    }
+    this.StateService = StateService;
   }
 }

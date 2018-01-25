@@ -1,5 +1,5 @@
 <div class='promotion'
-      ng-attr-data-id="{{promotionCtrl.promotion.id}}">
+      ng-attr-data-id="{{promotionCtrl.promotion.id || 'new'}}">
   <card-item  has-actions="true"
               deleted="promotionCtrl.promotion.$deleted"
               selected="promotionCtrl.isSelected()"
@@ -9,11 +9,12 @@
     </card-item-title>
 
     <card-item-actions on-delete="promotionCtrl.onDelete()"
-                       on-edit="promotionCtrl.onEdit($event)"
+                       on-edit="promotionCtrl.onEdit({promotion: promotionCtrl.promotion})"
                        on-pause="promotionCtrl.onPause(newStatus)"
                        is-paused="promotionCtrl.isPaused()"
                        on-add-user="promotionCtrl.onAddUser()"
                        is-add-user="promotionCtrl.isAddUser()"
+                       is-blocked-for-edit="promotionCtrl.isBlockedForVenue()"
                         ></card-item-actions>
   </card-item>
 </div>

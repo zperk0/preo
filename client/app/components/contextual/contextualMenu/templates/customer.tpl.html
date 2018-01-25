@@ -33,5 +33,7 @@
         <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityPhone.$error.maxlength}">Max length is 100.</div>
       </div>
   </md-input-container>
+  <md-input-container class="md-block no-spacer">
+    <marketing-checkbox ng-model="contextualMenuCtrl.entity"></marketing-checkbox>
+  </md-input-container>
 </md-card-content>
-

@@ -18,7 +18,7 @@ export default class userSelectListController {
     } = this;
 
     Spinner.show('user-search');
-    StateService.venue.searchCustomers(this.searchLabel).then((data) => {
+    StateService.searchUser(this.searchLabel).then((data) => {
       this.userList = data;
       this.alreadySearch = true;
       Spinner.hide('user-search');

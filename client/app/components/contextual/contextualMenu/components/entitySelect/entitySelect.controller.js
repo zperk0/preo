@@ -8,6 +8,10 @@ export default class entitySelectController {
       inviteUserRoles
     } = this;
 
+    if (this.isChannelDisabled()) {
+      return;
+    }
+
     if (inviteUserRoles.channelId !== null) {
       inviteUserRoles.channelId = null;
     } else {
@@ -19,6 +23,10 @@ export default class entitySelectController {
 
   isChannelSelected() {
     return this.inviteUserRoles.channelId === this.channel.id;
+  }
+
+  isChannelDisabled() {
+    return this.isOperator();
   }
 
   toggleGroup(venueGroup) {
@@ -85,6 +93,7 @@ export default class entitySelectController {
            }).length > 0;
   }
 
+  // this method is used only by inviteUsers screen because if the user being add is an operator, its only allowed select Channel option.
   isOperator() {
     return this.inviteUserRoles.role === this.UserRole.OPERATOR;
   }
@@ -103,7 +112,11 @@ export default class entitySelectController {
       if (this.isOperator()) {
         this.inviteUserRoles.venueIds = [];
         this.inviteUserRoles.groupIds = [];
+
+        if (angular.isObject(this.channel)) {
+          this.inviteUserRoles.channelId = this.channel.id;
+        }
       }
-    })
+    });
   }
 }

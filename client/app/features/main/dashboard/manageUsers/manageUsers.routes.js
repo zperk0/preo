@@ -49,6 +49,7 @@ export default function routes($stateProvider, Permissions) {
               venueId: StateService.venue && StateService.venue.id,
               channelId: StateService.channel && StateService.channel.id,
               createdBy: UserService.user.id,
+              domain: StateService.domainId
             });
 
             invites.push(invite);

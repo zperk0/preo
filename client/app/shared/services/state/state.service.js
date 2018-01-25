@@ -377,6 +377,21 @@ export default class StateService {
     }
   }
 
+  getOffers() {
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.getOffers();
+    } else if (venue) {
+      return venue.getOffers();
+    } else {
+      console.warn('StateService [getOffers] - there is no channel and venue set');
+    }
+  }
+
   removeUser(user, userRole) {
 
     const {
@@ -468,6 +483,27 @@ export default class StateService {
     return this.VenueService.updateVenue(this.venue);
   }
 
+  searchUser(value) {
+    const obj = {
+      search: value,
+      orderBy: 'firstName'
+    };
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.searchCustomers(obj);
+    } else if (venue) {
+      return venue.searchCustomers(value);
+    } else {
+      console.warn('StateService [searchUser] - there is no channel and venue set');
+    }
+
+  }
+
   searchCustomers(value) {
 
     this.isSearchingCustomers = true;
@@ -493,6 +529,7 @@ export default class StateService {
   }
 
   getOperateUrl() {
+    console.log('dexa bri -->>', this.channel && this.channel.callCenter && this.channel.callCenter.operateUrl);
     return this.channel && this.channel.callCenter && this.channel.callCenter.operateUrl;
   }
 

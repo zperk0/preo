@@ -3,12 +3,14 @@
     <card-item-list
         has-new="true"
         tooltip="{{ 'Add promotion' | translate }}"
-        on-click-new="promotionsListCtrl.showCreate()"
+        on-click-new="promotionsListCtrl.onCreate()"
         collection="promotionsListCtrl.promotions">
         <promotion
           has-actions="true"
           ng-repeat="promotion in promotionsListCtrl.promotions | orderBy: id"
-          promotion="promotion">
+          promotion="promotion"
+          on-edit="promotionsListCtrl.onEdit({promotion: promotion})"
+          on-after-delete="promotionsListCtrl.onAfterDelete({promotion: promotion})">
         </promotion>
     </card-item-list>
   </div>

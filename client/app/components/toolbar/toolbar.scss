@@ -43,5 +43,6 @@
   position: fixed;
   z-index: $subToolbarZIndex;
   top:64px;
-  padding-left:24px;
+  padding: 12px 24px;
+  line-height: 24px;
 }

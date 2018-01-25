@@ -20,7 +20,9 @@ export default class userRoleSelectController {
           FeatureService.hasVoucherFeature() ? gettextCatalog.getString("Gift Vouchers") : '',
           gettextCatalog.getString("Venue Settings"),
           gettextCatalog.getString("Analytics"),
-          gettextCatalog.getString("Manage Users")
+          gettextCatalog.getString("Manage Users"),
+          gettextCatalog.getString("Create new customers"),
+          gettextCatalog.getString("Place orders")
         ]
       },
       MANAGER:{

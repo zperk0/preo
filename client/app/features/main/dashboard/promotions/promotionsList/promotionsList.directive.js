@@ -4,7 +4,10 @@ export default function promotionsList(){
   return {
     restrict: 'E',
     scope: {
-      promotions:"="
+      promotions:"=",
+      onCreate: '&?',
+      onEdit: '&?',
+      onAfterDelete: '&?'
     },
     template: require("./promotionsList.tpl.html"),
     controller: controller.UID,
