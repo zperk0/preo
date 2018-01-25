@@ -18,7 +18,7 @@ export default class ExternalService {
     if(this.TMdata){
       this.TMdata.forEach((x) => {  
        //events need to be show formatted
-       x.showName = moment(x.eventDate).format('L')+ " - " +x.name,           
+       x.eventDateFormated = moment(x.eventDate).format('llll'),         
        x.$selected = false           
       });
     }

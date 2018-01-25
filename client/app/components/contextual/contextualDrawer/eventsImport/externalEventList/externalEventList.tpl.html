@@ -6,7 +6,10 @@
   ng-click="externalEventListCtrl.selectEvent(event)"
   >
   <card-item-title has-visible="true">
-    <span>{{event.showName}} </span>
+    <div class="external-event__details">
+    <span class="event__name ellipsis">{{event.name}} </span>
+    <span class="event__date ellipsis"> {{event.eventDateFormated}}</span>
+    </div>
   </card-item-title>
 
   <card-item-actions ng-if="externalEventListCtrl.hasActions" on-delete="externalEventListCtrl.onDelete(event)"></card-item-actions> 
