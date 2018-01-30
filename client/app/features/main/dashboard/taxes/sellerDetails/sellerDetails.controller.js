@@ -20,9 +20,8 @@ export default class sellerDetailsController {
       : this.onCreate.bind(this);
   }
 
-  onPublish(selected) {
+  onPublish(entities) {
     const {taxSettings, DialogService, ErrorService, LabelService, Spinner, Snack, gettextCatalog, contextual} = this;
-    angular.extend(taxSettings, {entities: selected});
 
     if (angular.isUndefined(taxSettings.id)) {
       // Hide drawer
@@ -36,7 +35,7 @@ export default class sellerDetailsController {
     const LOADER_KEY = 'tax-settings-publish';
 
     Spinner.show(LOADER_KEY);
-    taxSettings.publish()
+    taxSettings.publish(entities)
       .then((res) => {
         // Published success
         Snack.show(gettextCatalog.getString('Seller details published'));
