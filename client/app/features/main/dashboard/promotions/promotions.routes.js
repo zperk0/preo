@@ -60,16 +60,17 @@ export default function routes($stateProvider, Permissions) {
       views: {
         promotionsView:  {
           controller: promotionsDetailsController.UID,
+          requiresPermission:Permissions.OFFERS,
           controllerAs: '$promotionDetails',
           template: require('./promotionsList/promotionDetails/promotionDetails.tpl.html')
         }
       },
       resolve: {
-        promotion: (StateService, promotions, authenticated) => {
+        promotion: (StateService, promotions) => {
           'ngInject';
 
           const offer = new Preoday.Offer({
-            entitiesInvited: {
+            entities: {
               venueIds: StateService.venue && StateService.venue.id ? [StateService.venue.id] : [],
               groupIds: [],
               channelId: null
@@ -107,6 +108,7 @@ export default function routes($stateProvider, Permissions) {
       views: {
         promotionsView:  {
           controller: promotionsDetailsController.UID,
+          requiresPermission:Permissions.OFFERS,
           controllerAs: '$promotionDetails',
           template: require('./promotionsList/promotionDetails/promotionDetails.tpl.html')
         }

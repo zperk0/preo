@@ -15,7 +15,10 @@ export default class promotionsController {
    }
 
    onAfterDelete(promotion) {
+    console.log('promotion ->>', promotion);
+
      const indexPromotion = this.promotions.indexOf(promotion);
+     console.log('list ->>>>', indexPromotion , this.promotions);
      if (indexPromotion > -1) {
        this.promotions.splice(indexPromotion, 1);
      }

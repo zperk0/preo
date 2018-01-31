@@ -50,13 +50,13 @@
     </md-tab>
     <md-tab tabindex="2" ng-if="contextualMenuCtrl.params.entities.channel">
       <md-tab-label>
-        <div ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasUserVenuesTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity.entitiesInvited)}" class="md-tab-label">
+        <div ng-class="{'has-error': contextualMenuCtrl.ValidationService.hasUserVenuesTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity.entities)}" class="md-tab-label">
           <span>{{ 'Venues' | translate }}</span>
         </div>
       </md-tab-label>
       <md-tab-body>
         <div class="userInvite-venues-tab-content">
-          <entity-select entities="contextualMenuCtrl.params.entities" invite-user-roles="contextualMenuCtrl.entity.entitiesInvited"></entity-select>
+          <entity-select entities="contextualMenuCtrl.params.entities" invite-user-roles="contextualMenuCtrl.entity.entities"></entity-select>
         </div>
       </md-tab-body>
     </md-tab>

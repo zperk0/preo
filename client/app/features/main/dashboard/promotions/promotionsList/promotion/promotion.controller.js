@@ -9,9 +9,9 @@ export default class promotionController {
           this.Spinner.show("promotion-delete");
           this.promotion.remove()
             .then(()=>{
-              this.cardItemList.onItemDeleted(this.promotion);
-              if (this.onItemDeleted){
-                this.onItemDeleted({item:this.promotion});
+              //this.cardItemList.onItemDeleted(this.promotion);
+              if (this.onAfterDelete){
+                this.onAfterDelete({promotion:this.promotion});
               }
               this.Snack.show(this.LabelService.SNACK_PROMOTION_DELETED);
               this.Spinner.hide("promotion-delete");
@@ -85,7 +85,7 @@ export default class promotionController {
   }
 
   /* @ngInject */
-  constructor($q, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, APIErrorCode, StateService, gettextCatalog) {
+  constructor($q, $stateParams, $scope, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, APIErrorCode, StateService, gettextCatalog, BroadcastEvents) {
     "ngInject";
     this.$q = $q;
     this.$stateParams = $stateParams;
@@ -99,5 +99,10 @@ export default class promotionController {
     this.ErrorService = ErrorService;
     this.APIErrorCode = APIErrorCode;
     this.StateService = StateService;
+
+    $scope.$on(BroadcastEvents.ON_PAUSE_PROMOTION, (event, args) => {
+      if(args.id === this.promotion.id)
+        this.onPause();
+    });
   }
 }

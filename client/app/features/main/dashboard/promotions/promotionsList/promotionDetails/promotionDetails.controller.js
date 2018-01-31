@@ -11,7 +11,10 @@ export default class promotionDetailsController {
         this.Spinner.hide('saving-promotion')
         console.log("promotion-saved",this.promotion)
         resolve(newPromotion);
-      },reject)
+      },(err)=>{
+        this.Spinner.hide('saving-promotion');
+        reject(err);
+      })
     })
   }
 
@@ -35,7 +38,7 @@ export default class promotionDetailsController {
       let finalDate = new Date(this.promotion.endDate);
       let now = new Date();
       if (finalDate < now) {
-        this.onPause();
+        this.$rootScope.$broadcast(this.BroadcastEvents.ON_PAUSE_PROMOTION, {id: this.promotion.id});
       }
     }
   }
@@ -54,9 +57,9 @@ export default class promotionDetailsController {
     } = this;
 
     if (!entity.name || (
-              !entity.entitiesInvited.venueIds.length &&
-              !entity.entitiesInvited.groupIds.length &&
-              !entity.entitiesInvited.channelId)) {
+              !entity.entities.venueIds.length &&
+              !entity.entities.groupIds.length &&
+              !entity.entities.channelId)) {
 
       DialogService.show(ErrorService.CHANNEL_ENTITIES_REQUIRED.title, ErrorService.CHANNEL_ENTITIES_REQUIRED.message, [{
         name: LabelService.CONFIRMATION
@@ -116,7 +119,7 @@ export default class promotionDetailsController {
   }
 
   /* @ngInject */
-  constructor($q, $scope, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, APIErrorCode, StateService, gettextCatalog, promotion, promotions, entities) {
+  constructor($q, $scope, $rootScope, $stateParams, $state, Spinner, Snack, $timeout, DialogService, LabelService, ErrorService, APIErrorCode, StateService, gettextCatalog, promotion, promotions, entities, BroadcastEvents) {
     "ngInject";
     this.$q = $q;
     this.$stateParams = $stateParams;
@@ -131,6 +134,8 @@ export default class promotionDetailsController {
     this.APIErrorCode = APIErrorCode;
     this.StateService = StateService;
     this.promotion = promotion;
+    this.$rootScope = $rootScope;
+    this.BroadcastEvents = BroadcastEvents;
     console.log("state params, ", $stateParams.promotionId, promotion.id);
 
     this.params = {};
