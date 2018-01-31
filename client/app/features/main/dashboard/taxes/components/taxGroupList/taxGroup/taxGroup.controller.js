@@ -30,7 +30,6 @@ export default class taxGroupController {
     const {Spinner, Snack, gettextCatalog, taxGroup, $delete} = this;
     const LOADER_KEY = 'tax-group-delete';
 
-    console.log('[TaxGroupController] onDelete {$delete}', $delete);
     Spinner.show(LOADER_KEY);
 
     taxGroup.remove($delete)

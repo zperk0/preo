@@ -21,8 +21,8 @@ export default function taxSettingsResolve($q, TaxesService, StateService, Spinn
           channelId: StateService.channel && StateService.channel.id,
           venueId: StateService.venue && StateService.venue.id
         });
-        // Resolve as new Tax Setting
-        deferred.resolve(taxSettings);
+        // Resolve as new Tax Settings
+        return deferred.resolve(taxSettings);
       }
       deferred.reject(err);
     });
