@@ -10,7 +10,7 @@
 
     <card-item-actions
       is-blocked-for-edit="taxGroupCtrl.isBlockedForVenue()"
-      on-delete="taxGroupCtrl.onDelete()"
+      on-delete="taxGroupCtrl.onBeforeDelete()"
       on-edit="taxGroupCtrl.onEdit({taxGroup: taxGroupCtrl.taxGroup})">
     </card-item-actions>
   </card-item>

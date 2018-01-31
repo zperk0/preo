@@ -9,42 +9,61 @@ export default class taxGroupController {
       && angular.isObject(StateService.venue) && StateService.venue.id;
   }
 
-  onDelete() {
-    const {DialogService, LabelService, ErrorService, Snack, Spinner, gettextCatalog, taxGroup} = this;
-    const LOADER_KEY = 'tax-group-delete';
+  onConfirmDelete() {
+    const {DialogService, LabelService} = this;
+
+    DialogService.delete(LabelService.CONFIRMATION_TITLE, LabelService.CONTENT_TAX_GROUP_ASSIGNED_TO_ITEM)
+      .then(() => {
+        this.$delete = true;
+        this.onDelete();
+      });
+  }
+
+  onBeforeDelete() {
+    const {DialogService, LabelService} = this;
 
     DialogService.delete(LabelService.TITLE_DELETE_TAX_GROUP, LabelService.CONTENT_DELETE_TAX_GROUP)
-      .then(() => {
-        Spinner.show(LOADER_KEY);
+      .then(this.onDelete.bind(this));
+  }
 
-        taxGroup.remove()
-          .then(() => {
-            if (angular.isFunction(this.onAfterDelete)) {
-              this.onAfterDelete({taxGroup: taxGroup});
-            }
-            Snack.show(gettextCatalog.getString('Tax group deleted'));
-            Spinner.hide(LOADER_KEY);
-          }).catch((err) => {
-            if (err.status && err.status == 409){
-              DialogService.show(ErrorService.TAX_GROUP_ASSIGNED_TO_ITEM.title, ErrorService.TAX_GROUP_ASSIGNED_TO_ITEM.message, [{
-                name: gettextCatalog.getString('Got it')
-              }]);
-            }
-            Spinner.hide(LOADER_KEY);
-            Snack.showError(gettextCatalog.getString('Tax group not deleted'));
-          });
+  onDelete() {
+    const {Spinner, Snack, gettextCatalog, taxGroup, $delete} = this;
+    const LOADER_KEY = 'tax-group-delete';
+
+    console.log('[TaxGroupController] onDelete {$delete}', $delete);
+    Spinner.show(LOADER_KEY);
+
+    taxGroup.remove($delete)
+      .then(() => {
+        if (angular.isFunction(this.onAfterDelete)) {
+          this.onAfterDelete({taxGroup: taxGroup});
+        }
+        Snack.show(gettextCatalog.getString('Tax group deleted'));
+      }).catch((err) => {
+        // If there are menu items using this tax group, confirm first
+        if (err.status && err.status == 409) {
+          return this.onConfirmDelete();
+        }
+        Snack.showError(gettextCatalog.getString('Tax group not deleted'));
+      }).finally(() => {
+        // Hide spinner loader
+        Spinner.hide(LOADER_KEY);
+        // Reset `delete` confirmation
+        this.$delete = false;
       });
   }
 
   /* @ngInject */
-  constructor(StateService, DialogService, LabelService, ErrorService, Spinner, Snack, gettextCatalog) {
+  constructor(StateService, DialogService, LabelService, Spinner, Snack, gettextCatalog) {
     'ngInject';
     this.StateService = StateService;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
-    this.ErrorService = ErrorService;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.gettextCatalog = gettextCatalog;
+
+    // Defaults
+    this.$delete = false;
   }
 }

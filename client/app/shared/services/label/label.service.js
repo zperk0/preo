@@ -68,8 +68,11 @@ export default class LabelService {
     this.CONTENT_DELETE_OUTLET = gettextCatalog.getString("Are you sure you want to delete this outlet?");
 
     //TAXES
+		// SELLER DETAILS
     this.SNACK_SELLER_SUCCESS = gettextCatalog.getString("Seller details saved");
     this.SNACK_SELLER_ERROR = gettextCatalog.getString("Seller details not saved");
+		// TAX GROUPS
+    this.CONTENT_TAX_GROUP_ASSIGNED_TO_ITEM = "There are menu items currently using this tax group. Are you sure you want to delete?";
 
     this.TITLE_DELETE_COLLECTION_SLOT = gettextCatalog.getString("Delete collection slot?");
     this.CONTENT_DELETE_COLLECTION_SLOT = gettextCatalog.getString("Are you sure you want to delete this collection slot?");
