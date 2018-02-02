@@ -14,7 +14,6 @@ export default class taxGroupController {
 
     DialogService.delete(LabelService.CONFIRMATION_TITLE, LabelService.CONTENT_TAX_GROUP_ASSIGNED_TO_ITEM)
       .then(() => {
-        this.$delete = true;
         this.onDelete();
       });
   }
@@ -23,22 +22,18 @@ export default class taxGroupController {
     const {DialogService, LabelService} = this;
 
     DialogService.delete(LabelService.TITLE_DELETE_TAX_GROUP, LabelService.CONTENT_DELETE_TAX_GROUP)
-      .then(this.onDelete.bind(this));
+      .then(this.canDelete.bind(this));
   }
 
-  onDelete() {
-    const {Spinner, Snack, gettextCatalog, taxGroup, $delete} = this;
-    const LOADER_KEY = 'tax-group-delete';
+  canDelete() {
+    const {Spinner, Snack, gettextCatalog, taxGroup} = this;
+    const LOADER_KEY = 'tax-group-can-delete';
 
     Spinner.show(LOADER_KEY);
 
-    taxGroup.remove($delete)
-      .then(() => {
-        if (angular.isFunction(this.onAfterDelete)) {
-          this.onAfterDelete({taxGroup: taxGroup});
-        }
-        Snack.show(gettextCatalog.getString('Tax group deleted'));
-      }).catch((err) => {
+    taxGroup.canRemove()
+      .then(this.onDelete.bind(this))
+      .catch((err) => {
         // If there are menu items using this tax group, confirm first
         if (err.status && err.status == 409) {
           return this.onConfirmDelete();
@@ -47,8 +42,27 @@ export default class taxGroupController {
       }).finally(() => {
         // Hide spinner loader
         Spinner.hide(LOADER_KEY);
-        // Reset `delete` confirmation
-        this.$delete = false;
+      });
+  }
+
+  onDelete() {
+    const {Spinner, Snack, gettextCatalog, taxGroup} = this;
+    const LOADER_KEY = 'tax-group-delete';
+
+    Spinner.show(LOADER_KEY);
+
+    taxGroup.remove()
+      .then(() => {
+        if (angular.isFunction(this.onAfterDelete)) {
+          this.onAfterDelete({taxGroup: taxGroup});
+        }
+        Snack.show(gettextCatalog.getString('Tax group deleted'));
+      }).catch((err) => {
+        // Display error message
+        Snack.showError(gettextCatalog.getString('Tax group not deleted'));
+      }).finally(() => {
+        // Hide spinner loader
+        Spinner.hide(LOADER_KEY);
       });
   }
 
@@ -61,8 +75,5 @@ export default class taxGroupController {
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.gettextCatalog = gettextCatalog;
-
-    // Defaults
-    this.$delete = false;
   }
 }
