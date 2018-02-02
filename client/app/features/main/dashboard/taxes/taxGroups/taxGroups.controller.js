@@ -10,7 +10,7 @@ export default class taxGroupsController {
 
   onEdit(taxGroup) {
     this.$state.go('main.dashboard.taxes.taxGroups.edit', {
-      taxId: taxGroup.id
+      taxGroupId: taxGroup.id
     });
   }
 

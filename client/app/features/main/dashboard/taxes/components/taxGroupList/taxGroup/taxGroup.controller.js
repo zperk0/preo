@@ -3,6 +3,13 @@ export default class taxGroupController {
     return 'taxGroupController';
   }
 
+  isSelected() {
+    const {$stateParams, taxGroup} = this;
+    return angular.isObject(taxGroup)
+      && (taxGroup.id == $stateParams.taxGroupId)
+      || (!taxGroup.id && !$stateParams.taxGroupId);
+  }
+
   isBlockedForVenue() {
     const {StateService, taxGroup} = this;
     return taxGroup.sourceId && taxGroup.venueId
@@ -67,7 +74,7 @@ export default class taxGroupController {
   }
 
   /* @ngInject */
-  constructor(StateService, DialogService, LabelService, Spinner, Snack, gettextCatalog) {
+  constructor(StateService, DialogService, LabelService, Spinner, Snack, gettextCatalog, $stateParams) {
     'ngInject';
     this.StateService = StateService;
     this.DialogService = DialogService;
@@ -75,5 +82,6 @@ export default class taxGroupController {
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.gettextCatalog = gettextCatalog;
+    this.$stateParams = $stateParams;
   }
 }

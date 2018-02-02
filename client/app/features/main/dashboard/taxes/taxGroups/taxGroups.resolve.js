@@ -8,11 +8,12 @@ export default function taxGroupsResolve($q, TaxesService, Spinner, authenticate
   Spinner.show(LOADER_KEY);
   TaxesService.getTaxGroups(true)
     .then((taxGroups) => {
-      Spinner.hide(LOADER_KEY);
       deferred.resolve(taxGroups);
     }).catch((err) => {
-      Spinner.hide(LOADER_KEY);
       deferred.reject(err);
+    })
+    .finally(() => {
+      Spinner.hide(LOADER_KEY);
     });
 
   return deferred.promise;

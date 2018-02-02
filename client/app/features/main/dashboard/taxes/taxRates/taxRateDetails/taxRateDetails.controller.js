@@ -28,7 +28,6 @@ export default class taxRateDetailsController {
         this.$saved = true;
 
         taxRate.$deleted = false;
-        taxRate.$selected = false;
 
         $timeout(() => {
           angular.extend(taxRate, data);
@@ -70,7 +69,6 @@ export default class taxRateDetailsController {
         // Reset editable `taxRate` to original value
         if (this.taxRate.id && !this.$saved) {
           angular.extend(this.taxRate, this.originalTaxRate);
-          this.taxRate.$selected = false;
         } else if (!this.taxRate.id) {
           // Remove `new taxRate` object
           const indexTaxRate = this.taxRates.indexOf(taxRate);

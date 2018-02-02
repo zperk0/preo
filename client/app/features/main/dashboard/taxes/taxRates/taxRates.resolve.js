@@ -8,11 +8,12 @@ export default function taxRatesResolve($q, TaxesService, Spinner, authenticated
   Spinner.show(LOADER_KEY);
   TaxesService.getTaxRates(true)
     .then((taxRates) => {
-      Spinner.hide(LOADER_KEY);
       deferred.resolve(taxRates);
     }).catch((err) => {
-      Spinner.hide(LOADER_KEY);
       deferred.reject(err);
+    })
+    .finally(() => {
+      Spinner.hide(LOADER_KEY);
     });
 
   return deferred.promise;

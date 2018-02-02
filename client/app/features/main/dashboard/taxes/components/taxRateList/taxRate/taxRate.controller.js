@@ -3,6 +3,13 @@ export default class taxRateController {
     return 'taxRateController';
   }
 
+  isSelected() {
+    const {$stateParams, taxRate} = this;
+    return angular.isObject(taxRate)
+      && (taxRate.id == $stateParams.taxRateId)
+      || (!taxRate.id && !$stateParams.taxRateId);
+  }
+
   onDelete() {
     const {DialogService, LabelService, ErrorService, Snack, Spinner, gettextCatalog, taxRate} = this;
     const LOADER_KEY = 'tax-rate-delete';
@@ -31,7 +38,7 @@ export default class taxRateController {
   }
 
   /* @ngInject */
-  constructor(DialogService, LabelService, ErrorService, Spinner, Snack, gettextCatalog) {
+  constructor(DialogService, LabelService, ErrorService, Spinner, Snack, gettextCatalog, $stateParams) {
     'ngInject';
     this.DialogService = DialogService;
     this.LabelService = LabelService;
@@ -39,5 +46,6 @@ export default class taxRateController {
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.gettextCatalog = gettextCatalog;
+    this.$stateParams = $stateParams;
   }
 }

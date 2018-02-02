@@ -43,8 +43,7 @@ export default function routes($stateProvider, Permissions) {
 
         const taxRate = new Preoday.TaxRate({
           venueId: StateService.venue && StateService.venue.id,
-          channelId: StateService.channel && StateService.channel.id,
-          $selected: true
+          channelId: StateService.channel && StateService.channel.id
         });
 
         taxRates.push(taxRate);
@@ -54,7 +53,7 @@ export default function routes($stateProvider, Permissions) {
   });
 
   $stateProvider.state('main.dashboard.taxes.taxRates.edit', {
-    url: '/:taxId',
+    url: '/:taxRateId',
     views: {
       taxDetailsView:  {
         controller: taxRateDetailsController.UID,
@@ -66,13 +65,12 @@ export default function routes($stateProvider, Permissions) {
       taxRate: ($q, $state, $stateParams, $timeout, taxRates) => {
         'ngInject';
 
-        const taxRateId = parseInt($stateParams.taxId, 10);
+        const taxRateId = parseInt($stateParams.taxRateId, 10);
         const taxRate = taxRates.find((taxRateItem) => {
           return taxRateItem.id === taxRateId;
         });
 
         if (angular.isObject(taxRate)) {
-          taxRate.$selected = true;
           return $q.when(taxRate);
         }
 

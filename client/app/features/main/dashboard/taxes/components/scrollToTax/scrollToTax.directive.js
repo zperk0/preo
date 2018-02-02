@@ -13,7 +13,8 @@ export default function scrollToTax($rootScope, $stateParams, $timeout) {
 
       // GET current `parent` controller
       const $ctrl = element.parent().controller();
-      const taxId = $stateParams.taxId || 'new';
+      const taxId = $stateParams.taxGroupId || $stateParams.taxRateId || 'new';
+      console.log('[ScrollTo] tax id = ', taxId);
 
       $timeout(() => {
         $ctrl.$scope.$broadcast('$scrollToChildElement', '.tax-list .tax-list-item[data-id="'+ taxId +'"]');

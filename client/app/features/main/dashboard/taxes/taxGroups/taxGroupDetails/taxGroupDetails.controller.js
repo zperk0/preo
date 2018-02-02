@@ -55,7 +55,6 @@ export default class taxGroupDetailsController {
         this.$saved = true;
 
         taxGroup.$deleted = false;
-        taxGroup.$selected = false;
 
         $timeout(() => {
           angular.extend(taxGroup, data);
@@ -134,7 +133,6 @@ export default class taxGroupDetailsController {
         // Reset editable `taxGroup` to original value
         if (this.taxGroup.id && !this.$saved) {
           angular.extend(this.taxGroup, this.originalTaxGroup);
-          this.taxGroup.$selected = false;
         } else if (!this.taxGroup.id) {
           // Remove `new taxGroup` object
           const indexTaxGroup = this.taxGroups.indexOf(taxGroup);
