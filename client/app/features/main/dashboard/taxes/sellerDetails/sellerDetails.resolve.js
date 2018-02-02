@@ -9,12 +9,8 @@ export default function taxSettingsResolve($q, TaxesService, StateService, Spinn
 
   TaxesService.getTaxSettings(true)
     .then((taxSettings) => {
-      Spinner.hide(LOADER_KEY);
-      // Tax Settings found, `$editing` property
-      taxSettings.$editing = true;
       deferred.resolve(taxSettings);
     }).catch((err) => {
-      Spinner.hide(LOADER_KEY);
       // Add new Tax Settings
       if (angular.isObject(err) && err.status && err.status == 404) {
         const taxSettings = new Preoday.TaxSettings({
@@ -25,6 +21,9 @@ export default function taxSettingsResolve($q, TaxesService, StateService, Spinn
         return deferred.resolve(taxSettings);
       }
       deferred.reject(err);
+    })
+    .finally(() => {
+      Spinner.hide(LOADER_KEY);
     });
 
   return deferred.promise;

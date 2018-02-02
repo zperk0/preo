@@ -15,7 +15,7 @@ export default class sellerDetailsController {
   }
 
   onSave() {
-    return this.taxSettings.$editing
+    return this.taxSettings.id
       ? this.onUpdate.bind(this)
       : this.onCreate.bind(this);
   }
@@ -86,8 +86,6 @@ export default class sellerDetailsController {
     onSave()
       .then((taxSettings) => {
         angular.extend(this.taxSettings, taxSettings);
-        this.taxSettings.$editing = true;
-
         this.$timeout(() => {
           this.isSaving = false;
           this.isError = false;
