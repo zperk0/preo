@@ -11,6 +11,10 @@ export default function venueCurrency(StateService){
 
       function _getCurrency() {
 
+        if (StateService.channel) {
+          return StateService.channel.ccy;
+        }
+
         if (StateService.venue) {
           return StateService.venue.ccy;
         }

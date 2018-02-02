@@ -495,9 +495,9 @@ export default class StateService {
     } = this;
 
     if (channel) {
-      return channel.searchCustomers(obj);
+      return channel.searchCustomers(obj, this.domainId);
     } else if (venue) {
-      return venue.searchCustomers(value);
+      return venue.searchCustomers(value, this.domainId);
     } else {
       console.warn('StateService [searchUser] - there is no channel and venue set');
     }

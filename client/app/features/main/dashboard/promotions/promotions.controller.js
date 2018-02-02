@@ -15,6 +15,7 @@ export default class promotionsController {
    }
 
    onAfterDelete(promotion) {
+
      const indexPromotion = this.promotions.indexOf(promotion);
      if (indexPromotion > -1) {
        this.promotions.splice(indexPromotion, 1);
