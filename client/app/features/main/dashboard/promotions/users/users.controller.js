@@ -17,9 +17,10 @@ export default class usersPromotionsController {
         this.$state.go("main.dashboard.promotions");
         this.contextual.close();
       }, () => {
-
         this.Snack.showError(this.ErrorService.DEFAULT.message);
         this.Spinner.hide("add-users-promotion");
+        this.$state.go("main.dashboard.promotions");
+        this.contextual.close();
       });
         
     }, (err) => {
@@ -33,7 +34,7 @@ export default class usersPromotionsController {
   }
 
   /* @ngInject */
-  constructor($q, $state, $timeout, Spinner, Snack, DialogService, ErrorService, LabelService, contextual, promotion) {
+  constructor($q, $state, $timeout, Spinner, Snack, DialogService, ErrorService, LabelService, contextual, promotion, StateService) {
     "ngInject";
     this.$state = $state;
     this.Spinner = Spinner;
@@ -44,6 +45,7 @@ export default class usersPromotionsController {
     this.LabelService = LabelService;
     this.contextual = contextual;
     this.promotion = promotion;
+    this.StateService = StateService;
 
     $timeout(() => {
       this.init();

@@ -377,6 +377,21 @@ export default class StateService {
     }
   }
 
+  getOffers() {
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.getOffers();
+    } else if (venue) {
+      return venue.getOffers();
+    } else {
+      console.warn('StateService [getOffers] - there is no channel and venue set');
+    }
+  }
+
   removeUser(user, userRole) {
 
     const {
@@ -466,6 +481,27 @@ export default class StateService {
   updateVenue() {
 
     return this.VenueService.updateVenue(this.venue);
+  }
+
+  searchUser(value) {
+    const obj = {
+      search: value,
+      orderBy: 'firstName'
+    };
+
+    const {
+      channel,
+      venue
+    } = this;
+
+    if (channel) {
+      return channel.searchCustomers(obj, this.domainId);
+    } else if (venue) {
+      return venue.searchCustomers(value, this.domainId);
+    } else {
+      console.warn('StateService [searchUser] - there is no channel and venue set');
+    }
+
   }
 
   searchCustomers(value) {

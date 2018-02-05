@@ -1,0 +1,44 @@
+@import "client/app/shared/styles/variables";
+
+.promotions {
+  position: relative;
+
+  sticky-scroll {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main-content-right {
+    transition: width 0.2s linear, max-width 0.2s linear;
+    z-index: $subToolbarZIndex + 1 !important;
+
+    &.disable-transition {
+      transition: none;
+    }
+
+    &.preo-sticky {
+      right: 24px + $scrollBarWidth;
+    }
+  }
+}
+
+[class*="main-dashboard-promotions"] {
+  .main-ui-view {
+    overflow-y: hidden;
+  }
+}
+
+@media (max-width: 1280px) {
+  .promotions {
+    .main-content-right {
+      &.preo-sticky {
+        padding-left: 1px; // hotfix to keep the contextual in the same position when scroll
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import controller from './promotionTabs.controller'
+
 export default function promotionTabs(BroadcastEvents, StateService, EventService){
   "ngInject";
   return {
@@ -6,11 +8,14 @@ export default function promotionTabs(BroadcastEvents, StateService, EventServic
       promotion:"=",
     },
     template: require("./promotionTabs.tpl.html"),
-    replace:true,
-    require:'^contextualMenu',
-    link: (scope, el, attr, contextualMenuCtrl) => {
-      scope.contextualMenuCtrl = contextualMenuCtrl;
-      scope.selectedTabIndex = 0;
+    controller: controller.UID,
+    controllerAs: "$promotionDetails",
+    bindToController: true,
+    require:['promotionTabs', '^contextualMenu'],
+    link: (scope, el, attr, ctrls) => {
+     // ctrls[0].contextualMenuCtrl = ctrls[1];
+      scope.contextualMenuCtrl = ctrls[1];
+      scope.contextualMenuCtrl.contextualForm.selectedTabIndex = 0;
 
       scope.venue = StateService.venue;
 
@@ -46,9 +51,9 @@ export default function promotionTabs(BroadcastEvents, StateService, EventServic
       scope.$on(BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED, () => {
         console.log("form submitted", scope.selectedTabIndex, scope.hasBasicTabErrors(), scope.hasAdvancedTabErrors())
         if (scope.selectedTabIndex === 1 && scope.hasBasicTabErrors() && !scope.hasAdvancedTabErrors()) {
-          scope.selectedTabIndex = 0;
+          scope.contextualMenuCtrl.contextualForm.selectedTabIndex = 0;
         } else if (scope.selectedTabIndex === 0 && scope.hasAdvancedTabErrors() && !scope.hasBasicTabErrors()){
-          scope.selectedTabIndex = 1;
+          scope.contextualMenuCtrl.contextualForm.selectedTabIndex = 1;
         }
       });
 

@@ -27,7 +27,7 @@
           <span translate>Apply to a customer account</span>
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItemActionsCtrl.onPause" ng-show="!cardItemActionsCtrl.isPaused" class="md-icon-button" ng-click="cardItemActionsCtrl.onPause({newStatus:false})">
+      <md-button ng-if="cardItemActionsCtrl.onPause && !cardItemActionsCtrl.isBlockedForEdit" ng-show="!cardItemActionsCtrl.isPaused" class="md-icon-button" ng-click="cardItemActionsCtrl.onPause({newStatus:false})">
         <icon>pause_circle_outline</icon> <!-- pause_circle_outline -->
         <md-tooltip md-direction="bottom">
           <span translate>Pause this promotion</span>
@@ -45,7 +45,7 @@
           {{'Duplicate' | translate}}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItemActionsCtrl.onDelete" class="md-icon-button delete" ng-click="cardItemActionsCtrl.onDelete({$event:$event})">
+      <md-button ng-if="cardItemActionsCtrl.onDelete && !cardItemActionsCtrl.isBlockedForEdit" class="md-icon-button delete" ng-click="cardItemActionsCtrl.onDelete({$event:$event})">
         <icon>delete</icon>
         <md-tooltip md-direction="bottom">
           {{'Delete' | translate}}
@@ -63,7 +63,7 @@
           {{ cardItemActionsCtrl.addLocationMessage }}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItemActionsCtrl.onEdit" class="md-icon-button" ng-click="cardItemActionsCtrl.onEdit({$event:$event})">
+      <md-button ng-if="cardItemActionsCtrl.onEdit && !cardItemActionsCtrl.isBlockedForEdit" class="md-icon-button" ng-click="cardItemActionsCtrl.onEdit({$event:$event})">
         <icon>edit</icon>
         <md-tooltip md-direction="bottom">
           {{'Edit' | translate}}
@@ -111,6 +111,15 @@
         <icon>sync</icon>
         <md-tooltip md-direction="bottom">
           {{ cardItemActionsCtrl.syncMessage }}
+        </md-tooltip>
+      </md-button>
+
+      <md-button ng-if="cardItemActionsCtrl.isBlockedForEdit"
+                 class="md-icon-button"
+                 >
+       <icon>lock_outline</icon>
+        <md-tooltip md-direction="bottom">
+          {{ 'This item can only be edited at channel level' | translate }}
         </md-tooltip>
       </md-button>
     </div>

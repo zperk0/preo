@@ -4,7 +4,9 @@ export default function promotion(){
   return {
     restrict: 'E',
     scope: {
-      promotion:"="
+      promotion:"=",
+      onEdit: '&?',
+      onAfterDelete: '&?'
     },
     template: require("./promotion.tpl.html"),
     controller: controller.UID,

@@ -1,12 +1,15 @@
 
 import controller from './promotions.controller';
 import usersController from './users/users.controller';
+import permissionsResolve from './permissions.resolve';
+import promotionsResolve from './promotions.resolve';
+import promotionsDetailsController from './promotionsList/promotionDetails/promotionDetails.controller';
+import entitiesResolve from 'app/components/contextual/contextualDrawer/entities/entities.resolve';
 
 /**
  * Routing function for promotions
  * @param  $stateProvider
  */
-
 export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.promotions", {
@@ -16,34 +19,12 @@ export default function routes($stateProvider, Permissions) {
     requiresPermission:Permissions.OFFERS,
     controllerAs: "promotionsCtrl",
     resolve: {
-      promotions: ($q, Spinner, StateService, authenticated) => {
-
-        if (!StateService.venue) {
-          return $q.reject();
-        }
-
-        const deferred = $q.defer()
-        Spinner.show("fetch-promo");
-        Preoday.Offer.getByVenueId(StateService.venue.id).then((promotions)=>{
-
-            Spinner.hide("fetch-promo");
-            deferred.resolve(promotions);
-          }, (err)=>{
-
-            Spinner.hide("fetch-promo");
-            console.log("error", err)
-            deferred.reject(err);
-          }) .catch((err)=>{
-
-            Spinner.hide("fetch-promo");
-            console.log("error", err)
-            deferred.reject(err);
-          });
-
-        return deferred.promise;
-      }
+      promotions: promotionsResolve,
+      permissions: permissionsResolve,
+      entities: entitiesResolve
     }
   });
+
   $stateProvider.state("main.dashboard.promotions.users", {
     url: "/:promotionId/users",
 
@@ -73,4 +54,85 @@ export default function routes($stateProvider, Permissions) {
     }
     }}
   });
+
+  $stateProvider.state('main.dashboard.promotions.new', {
+      url: '/new',
+      views: {
+        promotionsView:  {
+          controller: promotionsDetailsController.UID,
+          requiresPermission:Permissions.OFFERS,
+          controllerAs: '$promotionDetails',
+          template: require('./promotionsList/promotionDetails/promotionDetails.tpl.html')
+        }
+      },
+      resolve: {
+        promotion: (StateService, promotions) => {
+          'ngInject';
+
+          const offer = new Preoday.Offer({
+            entities: {
+              venueIds: StateService.venue && StateService.venue.id ? [StateService.venue.id] : [],
+              groupIds: [],
+              channelId: null
+             // channelId: this.StateService.channel && this.StateService.channel.id,
+            },
+            venueId: StateService.venue && StateService.venue.id,
+            channelId: StateService.channel && StateService.channel.id,
+            "type": "FIXED",
+            "name": "",
+            "displayName":"",
+            "paymentType": null,
+            "items": null,
+            "amount": null,
+            "startDate":null,
+            "endDate": null,
+            "minBasket": 0,
+            "maxUserClaims": null,
+            "apply": "ALWAYS",
+            "now":true,
+            "firstOrder": 0,
+            "visible": 0,
+            "active": 1,
+            "global": 1,
+            $selected:true
+          });
+
+          promotions.push(offer);
+          return offer;
+        }
+      }
+    });
+
+    $stateProvider.state('main.dashboard.promotions.edit', {
+      url: '/:promotionId',
+      views: {
+        promotionsView:  {
+          controller: promotionsDetailsController.UID,
+          requiresPermission:Permissions.OFFERS,
+          controllerAs: '$promotionDetails',
+          template: require('./promotionsList/promotionDetails/promotionDetails.tpl.html')
+        }
+      },
+      resolve: {
+        promotion: ($q, $state, $stateParams, $timeout, promotions) => {
+          'ngInject';
+
+          const promotionId = parseInt($stateParams.promotionId, 10);
+          const offer = promotions.find((promotionItem) => {
+            return promotionItem.id === promotionId;
+          });
+
+          if (angular.isObject(offer)) {
+            offer.$selected = true;
+            return $q.when(offer);
+          }
+
+          $timeout(() => {
+            $state.go('main.dashboard.promotions');
+          });
+
+          return $q.reject();
+        }
+      }
+    });
 }
