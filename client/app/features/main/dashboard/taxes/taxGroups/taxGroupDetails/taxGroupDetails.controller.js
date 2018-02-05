@@ -31,7 +31,7 @@ export default class taxGroupDetailsController {
   }
 
   onSave(entity) {
-    const {taxGroup, StateService, Spinner, Snack, $timeout, $state, gettextCatalog} = this;
+    const {taxGroup, StateService, DialogService, ErrorService, LabelService, Spinner, Snack, $timeout, $state, gettextCatalog} = this;
     const LOADER_KEY = 'tax-group-save';
 
     if (!angular.isObject(taxGroup)
@@ -42,7 +42,9 @@ export default class taxGroupDetailsController {
 
     if (StateService.isChannel && !this.validateEntities()) {
       // Extra validation for channels to check any selected entity before save
-      return;
+      return DialogService.show(ErrorService.CHANNEL_ENTITIES_REQUIRED.title, ErrorService.CHANNEL_ENTITIES_REQUIRED.message, [{
+        name: LabelService.CONFIRMATION
+      }]);
     }
 
     // Set `entities` for channel
@@ -73,12 +75,15 @@ export default class taxGroupDetailsController {
     this.$state.go('main.dashboard.taxes.taxGroups');
   }
 
-  constructor($scope, $state, $timeout, StateService, BroadcastEvents, Spinner, Snack, gettextCatalog, taxGroups, taxGroup, entities) {
+  constructor($scope, $state, $timeout, StateService, DialogService, ErrorService, LabelService, BroadcastEvents, Spinner, Snack, gettextCatalog, taxGroups, taxGroup, entities) {
     'ngInject';
     // Dependencies
     this.$state = $state;
     this.$timeout = $timeout;
     this.StateService = StateService;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
+    this.LabelService = LabelService;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.gettextCatalog = gettextCatalog;
