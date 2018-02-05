@@ -10,6 +10,8 @@ export default class StyleService {
     return this.$q((resolve, reject)=>{
       Preoday.WebSettings.get(this.venueId, this.channelId)
       .then((webSettings)=>{
+
+        this.webSettingsModel = webSettings;
         resolve(webSettings);
       },()=>{ //api returns 404 if not found
         resolve({})
@@ -148,5 +150,7 @@ export default class StyleService {
     };
 
     this.colorsModel = {};
+
+    this.webSettingsModel = {};
   }
 }

@@ -57,7 +57,8 @@ export default class contextualDrawerStyleController {
           this.model.channelId = this.channelId;
           return Preoday.WebSettings.save(this.model)
             .then((webSettings)=>{
-              this.model = webSettings
+              this.model = webSettings;
+              angular.extend(this.StyleService.webSettingsModel, webSettings);
             })
         }
     })
@@ -114,7 +115,9 @@ export default class contextualDrawerStyleController {
   }
 
   getWebSettings(){
-    return Preoday.WebSettings.get(this.venueId, this.channelId)
+
+    return this.StyleService.getWebSettings()
+   // return Preoday.WebSettings.get(this.venueId, this.channelId)
       .then((webSettings)=>{
         this.model = webSettings;
         console.log("got spinner")
@@ -140,7 +143,7 @@ export default class contextualDrawerStyleController {
 
 
 
-  constructor($q, $scope, $mdSidenav, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout, gettextCatalog, $rootScope, LabelService, StateService) {
+  constructor($q, $scope, $mdSidenav, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout, gettextCatalog, $rootScope, LabelService, StateService, StyleService) {
     "ngInject";
     this.$q = $q;
     this.LabelService = LabelService;
@@ -148,6 +151,7 @@ export default class contextualDrawerStyleController {
     Spinner.show('style-drawer');
     this.$stateParams = $stateParams;
     this.StateService = StateService;
+    this.StyleService = StyleService;
 
     this.venueId = StateService.venue && StateService.venue.id;
     this.channelId = StateService.channel && StateService.channel.id;
