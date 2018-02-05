@@ -18,6 +18,10 @@ export default class webordersController {
     })
   }
 
+  onPublish(entities) {
+
+  }
+
   receiveMessage(event){
       var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
       let originToCompare = origin.split("//")[1].split("/")[0]
@@ -66,42 +70,75 @@ export default class webordersController {
     window.location.reload();
   }
 
-  constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout, StateService) {
-    "ngInject";
-    this.$timeout = $timeout;
-    this.$window=$window;
-    this.webordersUrl = $window._PREO_DATA._WEBORDERS;
-    this.webordersEditUrl = $window._PREO_DATA._WEBORDERS_EDIT
+  init(permalink, editorid) {
+    const editor = editorid ? 'editor=' + editorid : 'editor=true';
 
     if (this.webordersUrl.indexOf('://localhost') !== -1) {
 
-     this.webordersUrl += '?permalink=' + StateService.venue.permalink;
-     this.webordersEditUrl += '?permalink=' + StateService.venue.permalink + '&editor=true';
+     this.webordersUrl += '?permalink=' + permalink;
+     this.webordersEditUrl += '?permalink=' + permalink + '&' + editor;
     } else {
-      this.webordersUrl += StateService.venue.permalink;
-      this.webordersEditUrl += StateService.venue.permalink + '?editor=true';
+      this.webordersUrl += permalink;
+      this.webordersEditUrl += permalink + '?' + editor;
     }
 
+    if (!this.$window.hasListener){
+      this.$window.addEventListener("message", this.receiveMessage.bind(this), false);
+      this.$window.hasListener = true;
+
+      this.$rootScope.$on('$locationChangeSuccess', this.toggleDrawer.bind(this))
+    }
+
+    this.Spinner.show('iframe');
+  //  this.Spinner = Spinner;
+    this.zoomLevel = 1;
+    this.zoomInterval = 0.05;
+    this.toggleDrawer();
+    this.iframeError = this.$timeout(()=>{
+      this.iframeFailed = true;
+      this.Spinner.hide('iframe');
+    },60000);
+  }
+
+  constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout, StateService, DialogService, ErrorService, entities) {
+    "ngInject";
+    this.$timeout = $timeout;
+    this.$window=$window;
+
+    this.webordersUrl = $window._PREO_DATA._WEBORDERS;
+    this.webordersEditUrl = $window._PREO_DATA._WEBORDERS_EDIT
+    var permalink = '';
+    var editorId = null;
     this.$scope = $scope;
-    if (!$window.hasListener){
-      $window.addEventListener("message", this.receiveMessage.bind(this), false);
-      $window.hasListener = true;
-
-      $rootScope.$on('$locationChangeSuccess', this.toggleDrawer.bind(this))
-    }
-
-
-    Spinner.show('iframe');
+    this.$rootScope = $rootScope;
+    this.$window = $window;
     this.Spinner = Spinner;
     this.$location = $location;
     this.contextual = contextual;
     this.contextualDrawer = contextualDrawer;
-    this.zoomLevel = 1;
-    this.zoomInterval = 0.05;
-    this.toggleDrawer();
-    this.iframeError = $timeout(()=>{
-      this.iframeFailed = true;
-      this.Spinner.hide('iframe');
-    },60000);
+
+    if(StateService.channel) {
+      this.isChannel = StateService.isChannel;
+      this.entities = entities;
+      this.entities.channel = StateService.channel;
+
+      StateService.channel.findWebSettingAndVenuePermalink()
+      .then((data) => {
+        permalink = data.permalink;
+
+        if(data.webSettings) {
+          editorId = data.webSettings.id;
+        }
+
+        this.init(permalink, editorId);
+      }, () => {
+        DialogService.show(ErrorService.errorTitle, ErrorService.FAILED_LOADING_STYLING.message, [{
+          name: gettextCatalog.getString('OK')
+        }]);
+      });
+    } else {
+      permalink = StateService.venue.permalink;
+      this.init(permalink);
+    }
   }
 }

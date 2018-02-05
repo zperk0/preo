@@ -22,7 +22,7 @@ export default class contextualDrawerStyleController {
       let img = imageObject[0];
       if (img){
         if (img.$save) {
-          let p = Preoday.VenueImage.saveToCdn(img.$image, this.StateService.venue.id)
+          let p = Preoday.VenueImage.saveToCdn(img.$image, this.venueId, this.channelId)
             .then((itemImage) => {
               angular.extend(this.StyleService.imagesModel[img.type], {src:itemImage.image});
           })
@@ -78,7 +78,8 @@ export default class contextualDrawerStyleController {
         if (t.id){
           promises.push(t.update());
         } else{
-          t.venueId=this.StateService.venue.id;
+          t.venueId= this.venueId;
+          t.channelId = this.channelId;
           t.active = 1;
           promises.push(Preoday.TemplateFragment.create(t));
         }
@@ -104,7 +105,8 @@ export default class contextualDrawerStyleController {
             if(img.id){
               promises.push(img.update());
             } else {
-              img.venueId=this.StateService.venue.id;
+              img.venueId= this.venueId;
+              img.channelId = this.channelId;
               promises.push(Preoday.VenueImage.create(img).then((newImg)=>{
                 angular.extend(this.StyleService.imagesModel[img.type], newImg);
               }))
@@ -181,6 +183,9 @@ export default class contextualDrawerStyleController {
     this.contextualDrawer = contextualDrawer;
     this.gettextCatalog = gettextCatalog;
     this.StateService = StateService;
+
+    this.venueId = StateService.venue && StateService.venue.id;
+    this.channelId = StateService.channel && StateService.channel.id;
 
       this.styles = [
         {

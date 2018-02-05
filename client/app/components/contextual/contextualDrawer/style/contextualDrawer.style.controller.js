@@ -17,7 +17,7 @@ export default class contextualDrawerStyleController {
       let img = imageObject[0];
       if (img){
         if (img.$save) {
-          let p = Preoday.VenueImage.saveToCdn(img.$image, this.StateService.venue.id)
+          let p = Preoday.VenueImage.saveToCdn(img.$image, this.venueId, this.channelId)
             .then((itemImage) => {
               this.model[key] = itemImage.image;
           })
@@ -48,12 +48,14 @@ export default class contextualDrawerStyleController {
   this.Spinner.show('style-saving');
   return this._saveImages()
     .then(()=>{
-          if (this.model.venueId){
+          if (this.model.id){
           this.model.primaryColourHover = this.model.primaryColour;
           return this.model.update(); //Preoday.VenueWebSettings.update()
         } else {
           this.model.primaryColourHover = this.model.primaryColour;
-          return Preoday.VenueWebSettings.save(this.model, this.StateService.venue.id)
+          this.model.venueId =  this.venueId;
+          this.model.channelId = this.channelId;
+          return Preoday.WebSettings.save(this.model)
             .then((webSettings)=>{
               this.model = webSettings
             })
@@ -112,7 +114,7 @@ export default class contextualDrawerStyleController {
   }
 
   getWebSettings(){
-    return Preoday.VenueWebSettings.get(this.StateService.venue.id)
+    return Preoday.WebSettings.get(this.venueId, this.channelId)
       .then((webSettings)=>{
         this.model = webSettings;
         console.log("got spinner")
@@ -147,6 +149,9 @@ export default class contextualDrawerStyleController {
     this.$stateParams = $stateParams;
     this.StateService = StateService;
 
+    this.venueId = StateService.venue && StateService.venue.id;
+    this.channelId = StateService.channel && StateService.channel.id;
+
     this.getWebSettings().then(()=>{
       this._restoreImages();
       this.originalModel = angular.copy(this.model);
@@ -164,8 +169,6 @@ export default class contextualDrawerStyleController {
     this.$timeout = $timeout;
     this.Spinner = Spinner;
     this.Snack = Snack;
-
-
 
     this.styles = [
     {

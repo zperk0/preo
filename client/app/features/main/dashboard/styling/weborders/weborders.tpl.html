@@ -1,7 +1,8 @@
 <div class='styling-weborders' layout="column">
   <div class="sub-toolbar" layout="row" layout-align="start center">
+    <publish-venues ng-if="vm.isChannel"> </publish-venues>
+    <md-button flex class='weborders-link md-primary md-hue-2' target='_blank' href="{{vm.webordersUrl}}" >{{ 'Preview in browser' | translate}}</md-button>
     <span translate>View:</span> <md-button class='md-icon-button' ng-click="vm.increaseZoom()"><icon>add_circle</icon></md-button> <span class='zoom-level'>{{vm.zoomLevel | percent:0}}</span> <md-button  class='md-icon-button' ng-click="vm.decreaseZoom()"><icon >remove_circle</icon></md-button>
-    <md-button flex class='weborders-link md-primary md-hue-2' target='_blank' href="{{vm.webordersUrl}}" >{{ 'Show web orders' | translate}}</md-button>
   </div>
   <div class='iframe-error' ng-if="vm.iframeFailed">
       <span translate>There was a problem loading this page. <span class='fake-link' ng-click="vm.reload()" translate>Retry</span></span>
@@ -10,4 +11,9 @@
   <div class="iframe-content" ng-if="!vm.iframeFailed">
   	<iframe class='zoom-level-{{(vm.zoomLevel*100).toFixed()}}' id='web-orders-iframe' src='{{vm.webordersEditUrl | sanitize}}'></iframe>
   </div>
+
+  <contextual-drawer-entities ng-if="vm.isChannel"
+      entities="vm.entities"
+      callback="vm.onPublish(model)">
+  </contextual-drawer-entities>
 </div>
