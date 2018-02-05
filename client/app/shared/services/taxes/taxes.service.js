@@ -2,63 +2,97 @@
 
 export default class TaxesService {
 
-  static get UID(){
-    return "TaxesService";
+  static get UID() {
+    return 'TaxesService';
   }
 
-  getTaxGroups(forceRefresh = false){
-    var venueId = this.StateService.venue.id;
-    console.log("TaxesService - Fetching taxe groups")
-    return this.$q((resolve,reject)=>{
-      if (!forceRefresh && this.taxGroups){
-        console.log("TaxesService - Skip fetching tax groups")
-        return resolve(this.taxGroups);
+  getTaxSettings(forceRefresh = false) {
+    console.log('[TaxesService] resolve fetching tax settings');
+    return this.$q((resolve, reject) => {
+      if (!forceRefresh && angular.isObject(this.settings)) {
+        return resolve(this.settings);
       }
-      Preoday.TaxGroup.getByVenueId(venueId)
-        .then((taxGroups)=>{
-          this.taxGroups = taxGroups;
-          console.log("TaxesService - resolve fetching tax groups")
-          resolve(taxGroups);
-        }, (err)=>{
-          console.error("Error fetching taxGroups : ", err)
-          reject();
-      }).catch((err)=>{
-        console.error("Error fetching taxGroups : ", err)
-        reject();
-      })
-    })
 
+      this.fetchSettings()
+        .then(settings => {
+          console.log('[TaxesService] resolve fetching tax settings');
+          this.settings = settings;
+          resolve(settings);
+        }).catch(err => {
+          console.log('[TaxesService] error fetching tax settings');
+          reject(err);
+        });
+    });
   }
 
-  getTaxRates(forceRefresh = false){
-    var venueId = this.StateService.venue.id;
-    console.log("TaxesService - Fetching taxes")
-    return this.$q((resolve,reject)=>{
-      if (!forceRefresh && this.taxRates){
-        console.log("TaxesService - Skip fetching tax rates")
-        return resolve(this.taxRates);
+  getTaxGroups(forceRefresh = false) {
+    console.log('[TaxesService] fetching tax groups');
+    return this.$q((resolve, reject) => {
+      if (!forceRefresh && angular.isArray(this.groups)) {
+        return resolve(this.groups);
       }
-      Preoday.TaxRate.getByVenueId(venueId)
-        .then((taxGroups)=>{
-          this.taxGroups = taxGroups;
-          console.log("TaxesService - resolve fetching tax rates")
-          resolve(taxGroups);
-        }, (err)=>{
-          console.error("Error fetching taxRates : ", err)
-          reject();
-      }).catch((err)=>{
-        console.error("Error fetching taxRates : ", err)
-        reject();
-      })
-    })
 
+      this.fetchGroups()
+        .then(groups => {
+          console.log('[TaxesService] resolve fetching tax groups');
+          this.groups = groups;
+          resolve(groups);
+        }).catch(err => {
+          console.log('[TaxesService] error fetching tax groups');
+          reject(err);
+        });
+    });
+  }
+
+  getTaxRates(forceRefresh = false) {
+    console.log('TaxesService - Fetching tax rates')
+    return this.$q((resolve, reject) => {
+      if (!forceRefresh && angular.isArray(this.rates)) {
+        return resolve(this.rates);
+      }
+
+      this.fetchRates()
+        .then(rates => {
+          console.log('[TaxesService] resolve fetching tax rates');
+          this.rates = rates;
+          resolve(rates);
+        }).catch(err => {
+          console.log('[TaxesService] error fetching tax rates', err);
+          reject(err);
+        });
+    });
+  }
+
+  fetchSettings() {
+    const {StateService} = this;
+    if (StateService.isChannel) {
+      return StateService.channel.getTaxSettings();
+    }
+    return StateService.venue.getTaxSettings();
+  }
+
+  fetchGroups() {
+    const {StateService} = this;
+    if (StateService.isChannel) {
+      return StateService.channel.getTaxGroups();
+    }
+    return StateService.venue.getTaxGroups();
+  }
+
+  fetchRates() {
+    const {StateService} = this;
+    if (StateService.isChannel) {
+      return StateService.channel.getTaxRates();
+    }
+    return StateService.venue.getTaxRates();
   }
 
   constructor($q, StateService) {
-    "ngInject";
+    'ngInject';
     this.$q = $q;
     this.StateService = StateService;
-    this.taxGroups = false
-    this.taxRates = false
+    this.settings = null;
+    this.groups = null;
+    this.rates = null;
   }
 }

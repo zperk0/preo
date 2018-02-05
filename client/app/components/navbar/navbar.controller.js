@@ -84,7 +84,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("Tax Rates"), id:"taxRates"},
         {name: gettextCatalog.getString("Tax Groups"), id:"taxGroups"}
       ],shouldShow:function(){
-        return !isChannel && PermissionService.hasPermission(Permissions.TAXES)
+        return PermissionService.hasPermission(Permissions.TAXES)
       }},
        {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments",shouldShow:function(){
         return !isChannel && PermissionService.hasPermission(Permissions.ACCOUNT)

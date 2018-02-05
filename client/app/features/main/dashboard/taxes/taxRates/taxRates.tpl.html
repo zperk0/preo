@@ -1,10 +1,24 @@
-<div flex class="tax-rates">
-  <div class='layout-left-right'>
-    <div class='main-content-left'>
-      <tax-rate-list
-           tax-rates="taxRatesCtrl.taxRates">
-       </tax-rate-list>
+<div class="tax-rates" flex>
+  <sticky-scroll scroll-to-child-element scroll-to-child-element-offset="24" scroll-on-init="false">
+    <div class="layout-left-right">
+      <div class="main-content-left">
+        <tax-rate-list
+          tax-rates="$taxRates.taxRates"
+          on-create="$taxRates.onCreate()"
+          on-edit="$taxRates.onEdit(taxRate)"
+          on-after-delete="$taxRates.onAfterDelete(taxRate)">
+        </tax-rate-list>
+      </div>
+      <ui-view name="taxDetailsView" class="main-content-right"
+        sticky offset="24"
+        sticky-class="preo-sticky"
+        disabled-sticky="$taxRates.disabledSticky"
+        scroll-to-tax
+        content-right-resize
+        keep-width="true"
+        use-placeholder="false"
+        media-query="min-width: 1024px">
+      </ui-view>
     </div>
-    <div class='main-content-right' media-query="min-width: 1024px" sticky offset="88" contextual-menu-holder></div>
-  </div>
+  </sticky-scroll>
 </div>
