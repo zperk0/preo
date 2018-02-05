@@ -19,7 +19,7 @@ export default class taxGroupController {
   onConfirmDelete() {
     const {DialogService, LabelService} = this;
 
-    DialogService.delete(LabelService.CONFIRMATION_TITLE, LabelService.CONTENT_TAX_GROUP_ASSIGNED_TO_ITEM)
+    DialogService.delete(LabelService.CONFIRMATION_TITLE, LabelService.CONTENT_TAX_GROUP_ASSIGNED_TO_ITEM_OR_FEE)
       .then(() => {
         this.onDelete();
       });
