@@ -9,6 +9,15 @@
           on-after-delete="manageGroupsCtrl.onAfterDelete(venueGroup)">
         </venue-group-list>
       </div>
+      <ui-view name="venueGroupDetailsView" class="main-content-right"
+        sticky offset="24"
+        sticky-class="preo-sticky"
+        disabled-sticky="manageGroupsCtrl.disabledSticky"
+        content-right-resize
+        keep-width="true"
+        use-placeholder="false"
+        media-query="min-width: 1024px">
+      </ui-view>
     </div>
   </sticky-scroll>
 </div>
