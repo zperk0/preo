@@ -32,8 +32,8 @@ export default class venueGroupDetailsController {
     }
 
     if (!this.validateEntities()) {
-      // Extra validation for channels to check any selected entity before save
-      return DialogService.show(ErrorService.CHANNEL_ENTITIES_REQUIRED.title, ErrorService.CHANNEL_ENTITIES_REQUIRED.message, [{
+      // Extra validation to check at least 2 selected venues before save
+      return DialogService.show(ErrorService.VENUE_GROUP_MIN_REQUIRED.title, ErrorService.VENUE_GROUP_MIN_REQUIRED.message, [{
         name: LabelService.CONFIRMATION
       }]);
     }

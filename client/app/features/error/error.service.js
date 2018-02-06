@@ -86,6 +86,9 @@ export default class ErrorService {
     this.DELETE_CURRENT_USER = {code:'DELETE_CURRENT_USER', message:this.gettextCatalog.getString("It is not possible to delete your own user."), title: ''};
     this.DELETE_ACCOUNT_ERROR = {code:'DELETE_ACCOUNT_ERROR', message:this.gettextCatalog.getString("There was a problem deleting your account. Please contact support."), title: this.gettextCatalog.getString("Sorry")};
 
+    // MANAGE GROUPS
+    this.VENUE_GROUP_MIN_REQUIRED = {code:'VENUE_GROUP_MIN_REQUIRED', message: this.gettextCatalog.getString("You must select 2 or more venues to create a group."), title: this.gettextCatalog.getString("Couldn't create group")};
+
     // EXPIRED SESSION
     this.EXPIRED_SESSION = {code:'EXPIRED_SESSION', message:this.gettextCatalog.getString("Your session has expired. Please login again."), title:this.gettextCatalog.getString('Timeout')};
 
