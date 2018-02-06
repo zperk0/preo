@@ -14,6 +14,13 @@ export default class manageGroupsController {
     });
   }
 
+  onAfterDelete(venueGroup) {
+    const indexVenueGroup = this.entities.venueGroups.indexOf(venueGroup);
+    if (indexVenueGroup > -1) {
+      this.entities.venueGroups.splice(indexVenueGroup, 1);
+    }
+  }
+
   /* @ngInject */
   constructor($scope, $state, entities) {
     'ngInject';
