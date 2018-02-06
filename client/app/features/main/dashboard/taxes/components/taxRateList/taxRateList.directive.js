@@ -1,18 +1,20 @@
+
 import controller from './taxRateList.controller'
 
-export default function taxRateList(){
-  "ngInject";
+export default function taxRateList() {
+  'ngInject';
+
   return {
     restrict: 'E',
     scope: {
-      taxRates:"="
+      taxRates: '=',
+      onCreate: '&?',
+      onEdit: '&?',
+      onAfterDelete: '&?'
     },
-    template: require("./taxRateList.tpl.html"),
+    template: require('./taxRateList.tpl.html'),
     controller: controller.UID,
-    controllerAs: "taxRateListCtrl",
-    bindToController: true,
-    link: (scope, el, attr, ctrl) => {
-
-    }
-  }
+    controllerAs: 'taxRateListCtrl',
+    bindToController: true
+  };
 }

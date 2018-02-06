@@ -1,18 +1,20 @@
-import controller from './taxGroupList.controller'
 
-export default function taxGroupList(){
-  "ngInject";
+import controller from './taxGroupList.controller';
+
+export default function taxGroupList() {
+  'ngInject';
+
   return {
     restrict: 'E',
     scope: {
-      taxGroups:"="
+      taxGroups: '=',
+      onCreate: '&?',
+      onEdit: '&?',
+      onAfterDelete: '&?'
     },
-    template: require("./taxGroupList.tpl.html"),
+    template: require('./taxGroupList.tpl.html'),
     controller: controller.UID,
-    controllerAs: "taxGroupListCtrl",
-    bindToController: true,
-    link: (scope, el, attr, ctrl) => {
-
-    }
-  }
+    controllerAs: 'taxGroupListCtrl',
+    bindToController: true
+  };
 }

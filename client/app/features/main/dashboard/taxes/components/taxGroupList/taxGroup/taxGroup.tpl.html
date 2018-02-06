@@ -1,15 +1,17 @@
-<div class='taxGroup'
-      ng-attr-data-id="{{taxGroupCtrl.taxGroup.id}}">
-  <card-item  has-actions="true"
-              deleted="taxGroupCtrl.taxGroup.$deleted"
-              selected="taxGroupCtrl.taxGroup.$selected"
-              class='small'>
+<div class="tax-list-item tax-group" ng-attr-data-id="{{taxGroupCtrl.taxGroup.id || 'new'}}">
+  <card-item class="small"
+    has-actions="true"
+    deleted="taxGroupCtrl.taxGroup.$deleted"
+    selected="taxGroupCtrl.isSelected()">
+
     <card-item-title has-visible="false">
-        <span>{{taxGroupCtrl.taxGroup.name}} </span>
+      <span>{{taxGroupCtrl.taxGroup.name}}</span>
     </card-item-title>
 
-    <card-item-actions on-delete="taxGroupCtrl.onDelete()"
-                       on-edit="taxGroupCtrl.onEdit($event)"
-                        ></card-item-actions>
+    <card-item-actions
+      is-blocked-for-edit="taxGroupCtrl.isBlockedForVenue()"
+      on-delete="taxGroupCtrl.onBeforeDelete()"
+      on-edit="taxGroupCtrl.onEdit({taxGroup: taxGroupCtrl.taxGroup})">
+    </card-item-actions>
   </card-item>
 </div>

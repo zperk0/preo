@@ -486,6 +486,7 @@ export default class StateService {
   searchUser(value) {
     const obj = {
       search: value,
+      limit: 30,
       orderBy: 'firstName'
     };
 
@@ -497,7 +498,7 @@ export default class StateService {
     if (channel) {
       return channel.searchCustomers(obj, this.domainId);
     } else if (venue) {
-      return venue.searchCustomers(value, this.domainId);
+      return venue.searchCustomers(obj, this.domainId);
     } else {
       console.warn('StateService [searchUser] - there is no channel and venue set');
     }

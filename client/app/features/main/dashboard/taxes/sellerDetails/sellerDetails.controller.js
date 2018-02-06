@@ -1,128 +1,129 @@
 
 export default class sellerDetailsController {
   static get UID(){
-    return "sellerDetailsController"
+    return 'sellerDetailsController';
   }
 
-  saveNewSettings(){
-
-    //Pre populate taxName with default value
+  onCreate() {
+    // Pre populate taxName with default value
     this.taxSettings.taxName = this.gettextCatalog.getString('VAT Number');
-
-    return Preoday.VenueTaxSettings.save(angular.extend({},this.taxSettings, {venueId:this.StateService.venue.id})); //extend so if this fails for any reason it still triggers a save instead of update
+    return Preoday.TaxSettings.save(this.taxSettings);
   }
 
-  updateSettings(){
+  onUpdate() {
     return this.taxSettings.update();
   }
 
-  saveOrUpdate(){
-    return this.taxSettings.venueId ? this.updateSettings.bind(this) : this.saveNewSettings.bind(this);
+  onSave() {
+    return this.taxSettings.id
+      ? this.onUpdate.bind(this)
+      : this.onCreate.bind(this);
   }
 
-   debounce(func, wait, immediate) {
-      console.log("debouncing");
-      return () => {
-        var context = this, args = arguments;
-        var later = function() {
-          context.debounceTimeout = null;
-          console.log("in later", immediate)
-          if (!immediate) func.apply(context, args);
-        };
-        var callNow = immediate && !context.debounceTimeout;
-        clearTimeout(context.debounceTimeout);
-        context.debounceTimeout = setTimeout(later, wait);
-        console.log("if call now", callNow);
-        if (callNow) func.apply(context, args);
-      };
-    };
+  onPublish(entities) {
+    const {taxSettings, DialogService, ErrorService, LabelService, Spinner, Snack, gettextCatalog, contextual} = this;
 
-    debounceUpdate(){
-      this.sellerForm.$setSubmitted();
-      this.isSaving = true;
-      if (this.sellerForm.$valid){
-        this.debounce(this.doUpdate.bind(this), 1000)()
-      } else {
-        this.$timeout(()=>{ //in a timeout to prevent super fast results
-          this.isSaving = false;
-          this.isError = true;
-        }, 500)
-      }
+    if (angular.isUndefined(taxSettings.id)) {
+      // Hide drawer
+      contextual.hide();
+      // Display error message
+      return DialogService.show(ErrorService.TAX_SETTINGS_REQUIRED_ID_TO_PUBLISH.title, ErrorService.TAX_SETTINGS_REQUIRED_ID_TO_PUBLISH.message, [{
+        name: LabelService.CONFIRMATION
+      }]);
     }
 
-  doUpdate(){
-    var saveOrUpdate = this.saveOrUpdate();
-    try {
-        saveOrUpdate()
-        .then((taxSettings)=>{
-          angular.extend(this.taxSettings,taxSettings);
-          this.$timeout(()=>{
-              this.isSaving = false;
-              this.isError = false;
-            })
-          }, (err)=>{
-            console.error(err)
-            this.$timeout(()=>{
-              this.isSaving = false;
-              this.isError = true;
-            })
-          }).catch((err)=>{
-            console.error(err)
-            this.$timeout(()=>{
-              this.isSaving = false;
-              this.isError = true;
-            })
-          })
-      } catch(e){
-        console.error(e)
-        this.$timeout(()=>{
+    const LOADER_KEY = 'tax-settings-publish';
+
+    Spinner.show(LOADER_KEY);
+    taxSettings.publish(entities)
+      .then((res) => {
+        // Published success
+        Snack.show(gettextCatalog.getString('Seller details published'));
+        contextual.hide();
+      })
+      .catch((err) => {
+        // Failed to publish
+        Snack.showError(gettextCatalog.getString('Error publishing to venues'));
+      })
+      .finally(() => {
+        Spinner.hide(LOADER_KEY);
+      });
+  }
+
+  debounce(func, wait, immediate) {
+    console.log('debouncing');
+    return () => {
+      var context = this, args = arguments;
+      var later = function() {
+        context.debounceTimeout = null;
+        console.log('in later', immediate)
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !context.debounceTimeout;
+      clearTimeout(context.debounceTimeout);
+      context.debounceTimeout = setTimeout(later, wait);
+      console.log('if call now', callNow);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
+  debounceUpdate() {
+    this.sellerForm.$setSubmitted();
+    this.isSaving = true;
+    if (this.sellerForm.$valid) {
+      this.debounce(this.doUpdate.bind(this), 1000)();
+    } else {
+      // prevent super fast results
+      this.$timeout(() => {
+        this.isSaving = false;
+        this.isError = true;
+      }, 500);
+    }
+  }
+
+  doUpdate() {
+    const onSave = this.onSave();
+    onSave()
+      .then((taxSettings) => {
+        angular.extend(this.taxSettings, taxSettings);
+        this.$timeout(() => {
+          this.isSaving = false;
+          this.isError = false;
+        });
+      }).catch((err) => {
+        console.error(err);
+        this.$timeout(() => {
           this.isSaving = false;
           this.isError = true;
-        })
-      }
-    return saveOrUpdate;
-  }
-
-  init(){
-    this.Spinner.show("seller-details");
-    return Preoday.VenueTaxSettings.get(this.StateService.venue.id)
-      .then((taxSettings)=>{
-        this.taxSettings = taxSettings;
-        this.Spinner.hide("seller-details");
-      }, (err)=>{
-        if (err && err.status && err.status == 404){
-          this.taxSettings = new Preoday.VenueTaxSettings();
-        } else {
-          this.showError();
-        }
-        this.Spinner.hide("seller-details");
-      })
-  }
-
-  showError(){
-    this.$timeout(()=>{
-      this.showError = true;
-      this.Spinner.hide("seller-details");
-    })
+        });
+      });
+    return onSave;
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout, gettextCatalog, StateService) {
-    "ngInject";
-    this.showError = false;
-    this.isError = false;
-    this.isSaving = false;
-    this.debounceTimeout = null;
-    this.Spinner = Spinner;
-    this.Snack = Snack;
-    this.$stateParams = $stateParams;
+  constructor(StateService, DialogService, ErrorService, LabelService, Spinner, Snack, $timeout, gettextCatalog, contextual, entities, taxSettings) {
+    'ngInject';
+    this.StateService = StateService;
+    this.DialogService = DialogService;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
-    this.StateService = StateService;
+    this.Spinner = Spinner;
+    this.Snack = Snack;
     this.$timeout = $timeout;
     this.gettextCatalog = gettextCatalog;
+    this.contextual = contextual;
 
-    this.init();
+    // Defaults
+    this.isError = false;
+    this.isSaving = false;
+    this.isChannel = StateService.isChannel;
+    this.debounceTimeout = null;
+
+    // Tax Settings
+    this.taxSettings = taxSettings;
+
+    // Entities
+    this.entities = entities;
+    this.entities.channel = StateService.channel;
   }
 }
-

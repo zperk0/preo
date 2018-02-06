@@ -1,15 +1,16 @@
-<div class='taxRate'
-      ng-attr-data-id="{{taxRateCtrl.taxRate.id}}">
-  <card-item  has-actions="true"
-              deleted="taxRateCtrl.taxRate.$deleted"
-              selected="taxRateCtrl.taxRate.$selected"
-              class='small'>
+<div class="tax-list-item tax-rate" ng-attr-data-id="{{taxRateCtrl.taxRate.id || 'new'}}">
+  <card-item class="small"
+    has-actions="true"
+    deleted="taxRateCtrl.taxRate.$deleted"
+    selected="taxRateCtrl.isSelected()">
+
     <card-item-title has-visible="false">
-        <span>{{taxRateCtrl.taxRate.name}} </span>
+      <span>{{taxRateCtrl.taxRate.name}}</span>
     </card-item-title>
 
-    <card-item-actions on-delete="taxRateCtrl.onDelete()"
-                       on-edit="taxRateCtrl.onEdit($event)"
-                        ></card-item-actions>
+    <card-item-actions
+      on-delete="taxRateCtrl.onDelete()"
+      on-edit="taxRateCtrl.onEdit({taxRate: taxRateCtrl.taxRate})">
+    </card-item-actions>
   </card-item>
 </div>

@@ -1,0 +1,32 @@
+// Taxes
+@import "client/app/shared/styles/variables";
+
+.tax-rates,
+.tax-groups {
+	position: relative;
+
+	sticky-scroll {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow-y: scroll;
+		width: 100%;
+		height: 100%;
+	}
+
+	.main-content-right {
+		transition: width 0.2s linear, max-width 0.2s linear;
+		z-index: $subToolbarZIndex + 1 !important;
+
+		&.disable-transition { transition: none; }
+
+		&.preo-sticky { right: 9 + $scrollBarWidth; }
+	}
+}
+
+
+[class*="main-dashboard-taxes-taxRates"],
+[class*="main-dashboard-taxes-taxGroups"] {
+	.main-ui-view { overflow-y: hidden; }
+}

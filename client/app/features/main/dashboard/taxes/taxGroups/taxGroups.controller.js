@@ -1,38 +1,44 @@
 
 export default class taxGroupsController {
   static get UID(){
-    return "taxGroupsController"
+    return 'taxGroupsController';
   }
 
+  onCreate() {
+    this.$state.go('main.dashboard.taxes.taxGroups.create');
+  }
 
-  init(){
-    this.Spinner.show("fetch-tax");
-    this.TaxesService.getTaxGroups(true)
-      .then((taxGroups)=>{
-        this.taxGroups = taxGroups;
-        this.Spinner.hide("fetch-tax");
-      }, (err)=>{
-        this.Spinner.hide("fetch-tax");
-        console.log("error", err)
-        this.isError = true;
-      }) .catch((err)=>{
-        this.Spinner.hide("fetch-tax");
-        console.log("error", err)
-        this.isError = true;
-      })
+  onEdit(taxGroup) {
+    this.$state.go('main.dashboard.taxes.taxGroups.edit', {
+      taxGroupId: taxGroup.id
+    });
+  }
+
+  onAfterDelete(taxGroup) {
+    const indexTaxGroup = this.taxGroups.indexOf(taxGroup);
+    if (indexTaxGroup > -1) {
+      this.taxGroups.splice(indexTaxGroup, 1);
+    }
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack,ErrorService, LabelService, TaxesService,  $timeout) {
-    "ngInject";
-    this.Spinner = Spinner;
-    this.Snack = Snack;
-    this.ErrorService = ErrorService;
-    this.LabelService = LabelService;
-    this.TaxesService = TaxesService;
-    this.isError = false;
-    this.$timeout = $timeout;
-    this.init();
+  constructor($scope, $state, taxGroups) {
+    'ngInject';
+    // Dependencies
+    this.$scope = $scope;
+    this.$state = $state;
+    // Resolves and Defaults
+    this.taxGroups = taxGroups;
+    this.disabledSticky = true;
 
+    const onViewContentLoaded = $scope.$on('$viewContentLoaded', (event, viewName) => {
+      if (viewName.indexOf('taxDetailsView') === 0) {
+        this.disabledSticky = false;
+      }
+    });
+
+    $scope.$on('$destroy', () => {
+      onViewContentLoaded && onViewContentLoaded();
+    });
   }
 }
