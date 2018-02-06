@@ -209,7 +209,8 @@ export default class contextualDrawerEventsImportController {
       var uniqueId = 0;
       this.entity.externalEvents.forEach((x) => {
         x.id = uniqueId; // cardItemList uses id
-        x.showName = moment(x.eventDate).format('L')+ " - " +this.entity.name;
+        x.eventDateFormated = moment(x.eventDate).format('llll');
+        x.name = this.entity.name;
         x.$deleted = false;
         x.$selected = false;
         uniqueId++;
