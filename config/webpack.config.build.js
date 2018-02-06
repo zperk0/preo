@@ -104,6 +104,13 @@ var plugins =  [
   }),
   new HtmlWebpackPlugin({
     template:'./client/v1/index.php',
+    chunks:['manageGroups','app','vendor'],
+    chunksSortMode: chunkSort,
+    inject:true,
+    filename:'manageGroups/index.php'
+  }),
+  new HtmlWebpackPlugin({
+    template:'./client/v1/index.php',
     chunks:['customTags','app','vendor'],
     chunksSortMode: chunkSort,
     inject:true,

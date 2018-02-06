@@ -40,6 +40,7 @@ function fixFiles(){
     './dist/menus/index.php',
     './dist/venueSettings/index.php',
     './dist/manageUsers/index.php',
+    './dist/manageGroups/index.php',
     './dist/notifications/index.php',
     './dist/updateExternalMenus/index.php'
   ];

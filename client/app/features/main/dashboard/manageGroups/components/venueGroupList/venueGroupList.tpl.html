@@ -1,0 +1,15 @@
+<div class="venue-group-list">
+  <card-item-list
+    has-new="true"
+    tooltip="{{'Add new venue group' | translate}}"
+    on-click-new="venueGroupListCtrl.onCreate()"
+    collection="venueGroupListCtrl.venueGroups">
+    <venue-group
+      has-actions="true"
+      ng-repeat="venueGroup in venueGroupListCtrl.venueGroups | orderBy: id"
+      venue-group="venueGroup"
+      on-edit="venueGroupListCtrl.onEdit({venueGroup: venueGroup})"
+      on-after-delete="venueGroupListCtrl.onAfterDelete({venueGroup: venueGroup})">
+    </venue-group>
+  </card-item-list>
+</div>
