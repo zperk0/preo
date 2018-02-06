@@ -18,6 +18,7 @@ export default class manageGroupsController {
   constructor($scope, $state, entities) {
     'ngInject';
     // Dependencies
+    this.$scope = $scope;
     this.$state = $state;
     // Resolve and Defaults
     this.entities = entities;
