@@ -1,3 +1,6 @@
+<div class="sub-toolbar" layout="row" ng-if="vm.isChannel" layout-align="start center">
+  <publish-venues> </publish-venues>
+</div>
 <div class="styling-mobileapp">
   <div class="iphone">
 
@@ -26,3 +29,8 @@
     </div>
   </div>
 </div>
+
+<contextual-drawer-entities ng-if="vm.isChannel"
+    entities="vm.entities"
+    callback="vm.onPublish(model)">
+</contextual-drawer-entities>

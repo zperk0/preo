@@ -20,6 +20,33 @@ export default class webordersController {
 
   onPublish(entities) {
 
+    const { Spinner, StyleService, StateService, Snack, DialogService, ErrorService, gettextCatalog, LabelService} = this;
+
+    const webSettingsId = StyleService.modelIds && StyleService.modelIds.webSettings;
+
+    if (!webSettingsId) {
+     return DialogService.show(ErrorService.errorTitle, ErrorService.STYLE_REQUIRED_ID_PUBLISH.message, [{
+        name: gettextCatalog.getString('OK')
+      }]);
+    }
+
+    const LOADER_KEY = 'publishing-venues-style-weborders';
+
+    Spinner.show(LOADER_KEY);
+    StateService.channel.publishWebSettings(webSettingsId, entities)
+    .then(() => {
+      Snack.show(LabelService.SNACK_STYLE_PUBLISHED);
+      Spinner.hide(LOADER_KEY);
+    }, (err) => {
+      console.log('Error publishing weborders to venues:', err);
+      Spinner.hide(LOADER_KEY);
+      Snack.showError(ErrorService.DEFAULT);
+    })
+    .catch((err) => {
+      console.log('Catch - Error publishing weborders to venues:', err);
+      Spinner.hide(LOADER_KEY);
+      Snack.showError(ErrorService.DEFAULT);
+    });
   }
 
   receiveMessage(event){
@@ -100,13 +127,13 @@ export default class webordersController {
     },60000);
   }
 
-  constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout, StateService, DialogService, ErrorService, entities) {
+  constructor($scope, $stateParams, Snack, Spinner, contextual, $location, contextualDrawer, LabelService,  StyleService, $rootScope, $window, $timeout, StateService, DialogService, ErrorService, gettextCatalog, entities) {
     "ngInject";
     this.$timeout = $timeout;
     this.$window=$window;
 
     this.webordersUrl = $window._PREO_DATA._WEBORDERS;
-    this.webordersEditUrl = $window._PREO_DATA._WEBORDERS_EDIT
+    this.webordersEditUrl = $window._PREO_DATA._WEBORDERS_EDIT;
     var permalink = '';
     var editorId = null;
     this.$scope = $scope;
@@ -116,6 +143,13 @@ export default class webordersController {
     this.$location = $location;
     this.contextual = contextual;
     this.contextualDrawer = contextualDrawer;
+    this.StateService = StateService;
+    this.DialogService = DialogService;
+    this.gettextCatalog = gettextCatalog;
+    this.ErrorService = ErrorService;
+    this.LabelService = LabelService;
+    this.StyleService = StyleService;
+    this.Snack = Snack;
 
     if(StateService.channel) {
       this.isChannel = StateService.isChannel;

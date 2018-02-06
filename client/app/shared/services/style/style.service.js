@@ -11,7 +11,7 @@ export default class StyleService {
       Preoday.WebSettings.get(this.venueId, this.channelId)
       .then((webSettings)=>{
 
-        this.webSettingsModel = webSettings;
+        this.modelIds.webSettings = webSettings.id;
         resolve(webSettings);
       },()=>{ //api returns 404 if not found
         resolve({})
@@ -28,6 +28,7 @@ export default class StyleService {
             let ts = templates.filter((t)=>t.type ==='ORDER_PLACED_EMAIL_FOOTER');
             if (ts && ts.length){
               this.templatesModel[ts[0].type] = ts[0];
+              this.modelIds.templateFragment = ts[0].id;
             }
           }
           console.log("resolving templates", this.templatesModel);
@@ -85,6 +86,7 @@ export default class StyleService {
         .then((data)=>{
           if(data) {
             this.mobileExtendModels(data);
+            this.modelIds.mobile = data.id;
           }
 
           resolve(data);
@@ -105,6 +107,7 @@ export default class StyleService {
             let ts = images.filter((t)=>t.type ==='EMAIL_BANNER');
             if (ts && ts.length){
               this.imagesModel[ts[0].type] = ts[0];
+              this.modelIds.image = ts[0].id;
             }
           }
           resolve(this.imagesModel)
@@ -151,6 +154,6 @@ export default class StyleService {
 
     this.colorsModel = {};
 
-    this.webSettingsModel = {};
+    this.modelIds = {};
   }
 }

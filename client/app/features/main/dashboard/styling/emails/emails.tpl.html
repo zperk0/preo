@@ -1,6 +1,10 @@
 <div class='styling-emails' flex="grow" layout="column">
   <div class="sub-toolbar" layout="row" layout-align="start center">
-    <span translate>View:</span> <md-button class='md-icon-button' ng-click="emailsCtrl.increaseZoom()"><icon>add_circle</icon></md-button> <span class='zoom-level'>{{emailsCtrl.zoomLevel | percent:0}}</span> <md-button  class='md-icon-button' ng-click="emailsCtrl.decreaseZoom()"><icon >remove_circle</icon></md-button>
+    <publish-venues ng-if="emailsCtrl.isChannel"> </publish-venues>
+    <div class="zoom-class" layout="row"> 
+      <span translate>View:</span> <md-button class='md-icon-button' ng-click="emailsCtrl.increaseZoom()"><icon>add_circle</icon></md-button> <span class='zoom-level'>{{emailsCtrl.zoomLevel | percent:0}}</span> <md-button  class='md-icon-button' ng-click="emailsCtrl.decreaseZoom()"><icon >remove_circle</icon></md-button>
+    </div>
+
   </div>
   <div class="email-content zoom-level-{{(emailsCtrl.zoomLevel*100).toFixed()}}">
     <table class="table-body" style="border-collapse:collapse;color:#4C4C4C;font-family:Helvetica;font-size:12px;line-height:12px;Margin:0;width:800px">
@@ -134,5 +138,9 @@
       </tbody>
     </table>
   </div>
+  <contextual-drawer-entities ng-if="emailsCtrl.isChannel"
+      entities="emailsCtrl.entities"
+      callback="emailsCtrl.onPublish(model)">
+  </contextual-drawer-entities>
 </div>
 

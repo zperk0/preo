@@ -116,6 +116,7 @@ export default class ErrorService {
 
     // STYLING
     this.FAILED_LOADING_STYLING = {code:'FAILED_LOADING_STYLING', message:this.gettextCatalog.getString("This is app is not configured to allow styling Web Orders. Please contact the support team.")};
+    this.STYLE_REQUIRED_ID_PUBLISH = {code: 'STYLE_REQUIRED_ID_PUBLISH', message: this.gettextCatalog.getString('You cannot publish to venues without create a style to channel.'), title: this.gettextCatalog.getString('Sorry')};
   }
 
   constructor(gettextCatalog, $state, DialogService) {
