@@ -32,12 +32,12 @@ export default class mobileAppController {
     }, (err) => {
       console.log('Error publishing mobile-style to venues:', err);
       Spinner.hide(LOADER_KEY);
-      Snack.showError(ErrorService.DEFAULT);
+      Snack.showError(ErrorService.DEFAULT.message);
     })
     .catch((err) => {
       console.log('Catch - Error publishing mobile-style to venues:', err);
       Spinner.hide(LOADER_KEY);
-      Snack.showError(ErrorService.DEFAULT);
+      Snack.showError(ErrorService.DEFAULT.message);
     });
   }
 

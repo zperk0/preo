@@ -34,19 +34,19 @@ export default class emailsController {
 
     Spinner.show(LOADER_KEY);
     StateService.channel.publishTemplateFragments(fragmentId, entities)
-    .then(StateService.channel.publishImages.bind(this, imageId, entities))
+    .then(StateService.channel.publishImages.bind(this.StateService.channel, imageId, entities))
     .then(() => {
       Snack.show(LabelService.SNACK_STYLE_PUBLISHED);
       Spinner.hide(LOADER_KEY);
     }, (err) => {
       console.log('Error publishing email-style to venues:', err);
       Spinner.hide(LOADER_KEY);
-      Snack.showError(ErrorService.DEFAULT);
+      Snack.showError(ErrorService.DEFAULT.message);
     })
     .catch((err) => {
       console.log('Catch - Error publishing email-style to venues:', err);
       Spinner.hide(LOADER_KEY);
-      Snack.showError(ErrorService.DEFAULT);
+      Snack.showError(ErrorService.DEFAULT.message);
     });
   }
 

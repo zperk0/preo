@@ -40,12 +40,12 @@ export default class webordersController {
     }, (err) => {
       console.log('Error publishing weborders to venues:', err);
       Spinner.hide(LOADER_KEY);
-      Snack.showError(ErrorService.DEFAULT);
+      Snack.showError(ErrorService.DEFAULT.message);
     })
     .catch((err) => {
       console.log('Catch - Error publishing weborders to venues:', err);
       Spinner.hide(LOADER_KEY);
-      Snack.showError(ErrorService.DEFAULT);
+      Snack.showError(ErrorService.DEFAULT.message);
     });
   }
 

@@ -1,7 +1,7 @@
 <div class='styling-weborders' layout="column">
   <div class="sub-toolbar" layout="row" layout-align="start center">
     <publish-venues ng-if="vm.isChannel"> </publish-venues>
-    <md-button flex class='weborders-link md-primary md-hue-2' target='_blank' href="{{vm.webordersUrl}}" >{{ 'Preview in browser' | translate}}</md-button>
+    <md-button flex ng-if="!vm.isChannel" class='weborders-link md-primary md-hue-2' target='_blank' href="{{vm.webordersUrl}}" >{{ 'Preview in browser' | translate}}</md-button>
     <div class="zoom-class" layout="row"> 
       <span translate>View:</span> <md-button class='md-icon-button' ng-click="vm.increaseZoom()"><icon>add_circle</icon></md-button> <span class='zoom-level'>{{vm.zoomLevel | percent:0}}</span> <md-button  class='md-icon-button' ng-click="vm.decreaseZoom()"><icon >remove_circle</icon></md-button>
     </div>
