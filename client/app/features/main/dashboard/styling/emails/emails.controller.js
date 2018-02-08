@@ -19,10 +19,10 @@ export default class emailsController {
 
   onPublish(entities) {
 
-    const { Spinner, StyleService, StateService, Snack, DialogService, ErrorService, gettextCatalog, LabelService} = this;
+    const { Spinner, StyleService, StateService, Snack, DialogService, ErrorService, contextual, gettextCatalog, LabelService} = this;
 
-    const fragmentId = StyleService.modelIds && StyleService.modelIds.templateFragment;
-    const imageId = StyleService.modelIds && StyleService.modelIds.image;
+    const fragmentId = StyleService.templatesModel && StyleService.templatesModel[StyleService.emailFootType] && StyleService.templatesModel[StyleService.emailFootType].id;
+    const imageId = StyleService.imagesModel && StyleService.imagesModel[StyleService.emailBannerType] && StyleService.imagesModel[StyleService.emailBannerType].id;
 
     if (!fragmentId && !imageId) {
      return DialogService.show(ErrorService.errorTitle, ErrorService.STYLE_REQUIRED_ID_PUBLISH.message, [{
@@ -36,6 +36,7 @@ export default class emailsController {
     StateService.channel.publishTemplateFragments(fragmentId, entities)
     .then(StateService.channel.publishImages.bind(this.StateService.channel, imageId, entities))
     .then(() => {
+      contextual.hide();
       Snack.show(LabelService.SNACK_STYLE_PUBLISHED);
       Spinner.hide(LOADER_KEY);
     }, (err) => {

@@ -11,7 +11,10 @@ export default class StyleService {
       Preoday.WebSettings.get(this.venueId, this.channelId)
       .then((webSettings)=>{
 
-        this.modelIds.webSettings = webSettings.id;
+        if (webSettings) {
+          this.webSettingsModel = webSettings;
+        }
+
         resolve(webSettings);
       },()=>{ //api returns 404 if not found
         resolve({})
@@ -25,10 +28,9 @@ export default class StyleService {
       Preoday.TemplateFragment.get(this.venueId, this.channelId)
         .then((templates)=>{
           if (templates && templates.length){
-            let ts = templates.filter((t)=>t.type ==='ORDER_PLACED_EMAIL_FOOTER');
+            let ts = templates.filter((t)=>t.type === this.emailFootType);
             if (ts && ts.length){
               this.templatesModel[ts[0].type] = ts[0];
-              this.modelIds.templateFragment = ts[0].id;
             }
           }
           console.log("resolving templates", this.templatesModel);
@@ -86,7 +88,7 @@ export default class StyleService {
         .then((data)=>{
           if(data) {
             this.mobileExtendModels(data);
-            this.modelIds.mobile = data.id;
+            this.mobileSettings = data;
           }
 
           resolve(data);
@@ -104,10 +106,10 @@ export default class StyleService {
       return Preoday.VenueImage.get(this.venueId, this.channelId)
         .then((images)=>{
           if (images && images.length){
-            let ts = images.filter((t)=>t.type ==='EMAIL_BANNER');
+            let ts = images.filter((t)=>t.type === this.emailBannerType);
             if (ts && ts.length){
               this.imagesModel[ts[0].type] = ts[0];
-              this.modelIds.image = ts[0].id;
+            //  this.modelIds.image = ts[0].id;
             }
           }
           resolve(this.imagesModel)
@@ -145,15 +147,17 @@ export default class StyleService {
     this.venueId = StateService.venue && StateService.venue.id;
     this.channelId = StateService.channel && StateService.channel.id;
 
+    this.emailBannerType = 'EMAIL_BANNER';
+    this.emailFootType = 'ORDER_PLACED_EMAIL_FOOTER';
+
     this.initTemplates();
     this.imagesModel = {
       EMAIL_BANNER: new Preoday.VenueImage({
-        type:"EMAIL_BANNER"
+        type: this.emailBannerType
       }),
     };
 
+    this.webSettingsModel = {};
     this.colorsModel = {};
-
-    this.modelIds = {};
   }
 }

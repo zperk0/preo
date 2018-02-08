@@ -20,9 +20,9 @@ export default class webordersController {
 
   onPublish(entities) {
 
-    const { Spinner, StyleService, StateService, Snack, DialogService, ErrorService, gettextCatalog, LabelService} = this;
+    const { Spinner, StyleService, StateService, Snack, DialogService, ErrorService, contextual, gettextCatalog, LabelService} = this;
 
-    const webSettingsId = StyleService.modelIds && StyleService.modelIds.webSettings;
+    const webSettingsId = StyleService.webSettingsModel && StyleService.webSettingsModel.id;
 
     if (!webSettingsId) {
      return DialogService.show(ErrorService.errorTitle, ErrorService.STYLE_REQUIRED_ID_PUBLISH.message, [{
@@ -35,6 +35,7 @@ export default class webordersController {
     Spinner.show(LOADER_KEY);
     StateService.channel.publishWebSettings(webSettingsId, entities)
     .then(() => {
+      contextual.hide();
       Snack.show(LabelService.SNACK_STYLE_PUBLISHED);
       Spinner.hide(LOADER_KEY);
     }, (err) => {

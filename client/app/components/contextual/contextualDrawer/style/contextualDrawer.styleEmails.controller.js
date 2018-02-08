@@ -81,7 +81,9 @@ export default class contextualDrawerStyleController {
           t.venueId= this.venueId;
           t.channelId = this.channelId;
           t.active = 1;
-          promises.push(Preoday.TemplateFragment.create(t));
+          promises.push(Preoday.TemplateFragment.create(t).then((newTemp) => {
+            angular.extend(this.StyleService.templatesModel[t.type], newTemp);
+          }));
         }
       })
       this.$q.all(promises).then(function(){

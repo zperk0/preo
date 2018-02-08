@@ -12,9 +12,9 @@ export default class mobileAppController {
 
   onPublish(entities) {
 
-    const { Spinner, StyleService, StateService, Snack, DialogService, ErrorService, gettextCatalog, LabelService} = this;
+    const { Spinner, StyleService, StateService, Snack, DialogService, ErrorService, contextual, gettextCatalog, LabelService} = this;
 
-    const mobileSettingsId = StyleService.modelIds && StyleService.modelIds.mobile;
+    const mobileSettingsId = StyleService.mobileSettings && StyleService.mobileSettings.id;
 
     if (!mobileSettingsId) {
      return DialogService.show(ErrorService.errorTitle, ErrorService.STYLE_REQUIRED_ID_PUBLISH.message, [{
@@ -27,6 +27,7 @@ export default class mobileAppController {
     Spinner.show(LOADER_KEY);
     StateService.channel.publishMobileSettings(mobileSettingsId, entities)
     .then(() => {
+      contextual.hide();
       Snack.show(LabelService.SNACK_STYLE_PUBLISHED);
       Spinner.hide(LOADER_KEY);
     }, (err) => {

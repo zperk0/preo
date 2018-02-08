@@ -169,6 +169,7 @@ export default class contextualDrawerStyleMobileController {
         Preoday.MobileSettings.save(this.model.mobileSettings)
         .then((newSettings) => {
           angular.extend(this.model.mobileSettings, newSettings);
+          angular.extend(this.StyleService.mobileSettings, newSettings);
           this.StyleService.mobileExtendModels(newSettings);
           resolve(newSettings);
         })
