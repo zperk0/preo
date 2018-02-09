@@ -1,5 +1,5 @@
 // Resolves
-import entitiesResolve from 'app/components/contextual/contextualDrawer/entities/entities.resolve';
+import entitiesResolve from 'app/shared/resolves/entities.resolve';
 import taxSettingsResolve from './sellerDetails.resolve';
 
 // Controllers
