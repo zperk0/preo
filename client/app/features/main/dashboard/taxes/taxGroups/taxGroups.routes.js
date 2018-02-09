@@ -1,6 +1,6 @@
 // Resolves
 import taxGroupsResolve from './taxGroups.resolve';
-import entitiesResolve from 'app/components/contextual/contextualDrawer/entities/entities.resolve';
+import entitiesResolve from 'app/shared/resolves/entities.resolve';
 
 // Controllers
 import taxGroupsController from './taxGroups.controller';
