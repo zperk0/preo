@@ -20,6 +20,21 @@ export default function routes($stateProvider, Permissions) {
     requiresPermission: Permissions.ACCOUNT,
     template: require('./manageGroups.tpl.html'),
     resolve: {
+      access: ($q, $timeout, $state, StateService, authenticated) => {
+        'ngInject';
+
+        if (StateService.isChannel) {
+          return $q.when();
+        }
+
+        $timeout(() => {
+          $state.go('main.dashboard.home', {
+            entityId: StateService.entityId
+          });
+        });
+
+        return $q.reject();
+      },
       entities: entitiesResolve
     }
   });
