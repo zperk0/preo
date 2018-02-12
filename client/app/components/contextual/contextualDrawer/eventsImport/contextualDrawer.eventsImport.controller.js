@@ -58,9 +58,14 @@ export default class contextualDrawerEventsImportController {
       return;
     }
 
+    // after insert, the get method must return only occurrences after >= last week
+    let params = {};
+    params.after = moment().subtract(7, 'days').format('YYYY-MM-DD');
+
     this.showSpinner();
     if(this.entity){
-      this.ExternalService.addTMEventToExistentEvent(this.entity.id,this.venueId, this.selectedEvents)
+
+      this.ExternalService.addTMEventToExistentEvent(this.entity.id,this.venueId, this.selectedEvents, params)
       .then((data) => {
 
         this.Snack.show(this.gettextCatalog.getString("Events imported successfully."));
@@ -80,7 +85,7 @@ export default class contextualDrawerEventsImportController {
     }
     else{
 
-      this.ExternalService.importTicketMasterEventToPreoday(this.venueId, this.selectedEvents, this.slots.pickupSlots)
+      this.ExternalService.importTicketMasterEventToPreoday(this.venueId, this.selectedEvents, this.slots.pickupSlots, params)
       .then((data) => {
 
         this.cleanData(true);

@@ -79,10 +79,10 @@ export default class ExternalService {
 
   }
 
-  deleteTMEventOfPreodayEvent(eventId, domainId, externalEventId){
+  deleteTMEventOfPreodayEvent(eventId, domainId, externalEventId, params){
     return this.$q((resolve,reject)=>{
 
-      Preoday.External.deleteTMEventOfPreodayEvent(eventId, domainId, externalEventId)
+      Preoday.External.deleteTMEventOfPreodayEvent(eventId, domainId, externalEventId, params)
         .then((events)=>{
           
           console.log("ExternalService - delete event successfull")
@@ -98,10 +98,10 @@ export default class ExternalService {
 
   }
 
-  addTMEventToExistentEvent(eventId, venueId, tmEvents){
+  addTMEventToExistentEvent(eventId, venueId, tmEvents, params){
     return this.$q((resolve,reject)=>{
       
-      Preoday.External.addTMEventToExistentEvent(eventId, venueId, tmEvents)
+      Preoday.External.addTMEventToExistentEvent(eventId, venueId, tmEvents, params)
         .then((event)=>{
           
           console.log("ExternalService - Reesolve add tmEvents to Event")
@@ -111,25 +111,6 @@ export default class ExternalService {
           reject();
       }).catch((err)=>{
         console.error("Error adding events to existent eventId: ", err)
-        reject();
-      })
-    })
-
-  }
-
-  getTMEventsLinkedtoEventId(venueId, eventId){
-    return this.$q((resolve,reject)=>{
-      
-      Preoday.External.getTMEventsLinkedtoEventId(venueId, eventId)
-        .then((events)=>{
-          
-          console.log("ExternalService - Reesolve get events by eventId")
-          resolve(events);
-        }, (err)=>{
-          console.error("Error fetching events of existent eventId: ", err)
-          reject();
-      }).catch((err)=>{
-        console.error("Error fetching events of existent eventId: ", err)
         reject();
       })
     })
