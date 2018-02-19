@@ -1,25 +1,20 @@
+// @component
+// tax-group-form
 .tax-group-form {
+  .tax-rate-select {
+    margin-top: 24px; // 12px (before `manage groups` styles)
 
-  .tax-rate-select-content {
-    margin-top: 24px;
+    // Checkboxes
+    md-checkbox {
+      display: block;
+      margin-bottom: 16px; // 12px (before `manage groups` styles)
+      color: rgba(0,0,0,0.5);
 
-    .label-title {
-      color: #424242;
-      font-size: 16px;
+      .md-label,
+      .md-label span { line-height: 20px !important; }
     }
 
-    .tax-rate-select {
-      margin-top: 12px;
-
-      md-checkbox {
-        display: block;
-        color: rgba(0,0,0,0.5);
-        margin-bottom: 12px;
-      }
-
-      .content-spinner {
-        text-align: center;
-      }
-    }
+    // Spinner
+    .content-spinner { text-align: center; }
   }
 }

@@ -93,6 +93,9 @@ export default class LabelService {
     this.TITLE_DELETE_TAX_RATE = gettextCatalog.getString("Delete tax rate?");
     this.CONTENT_DELETE_TAX_RATE = gettextCatalog.getString("Are you sure you want to delete this tax rate?");
 
+    this.TITLE_DELETE_VENUE_GROUP = gettextCatalog.getString("Delete venue group?");
+    this.CONTENT_DELETE_VENUE_GROUP = gettextCatalog.getString("Are you sure you want to delete this venue group?");
+
     this.SNACK_VENUE_DETAILS_SUCCESS = gettextCatalog.getString("Venue details saved");
     this.SNACK_VENUE_DETAILS_ERROR = gettextCatalog.getString("Venue details not saved");
 

@@ -1,0 +1,16 @@
+<div class="venue-group" ng-attr-data-id="{{venueGroupCtrl.venueGroup.id || 'new'}}">
+  <card-item class="small"
+    has-actions="true"
+    deleted="venueGroupCtrl.venueGroup.$deleted"
+    selected="venueGroupCtrl.isSelected()">
+
+    <card-item-title has-visible="false">
+      <span>{{venueGroupCtrl.venueGroup.name}}</span>
+    </card-item-title>
+
+    <card-item-actions
+      on-delete="venueGroupCtrl.onBeforeDelete()"
+      on-edit="venueGroupCtrl.onEdit({venueGroup: venueGroupCtrl.venueGroup})">
+    </card-item-actions>
+  </card-item>
+</div>

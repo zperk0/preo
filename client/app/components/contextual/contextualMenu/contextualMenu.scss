@@ -94,6 +94,34 @@ $channelNameHeight: 37px;
     }
   }
 
+  .contextual-menu-venue-group md-card-content,
+  .contextual-menu-tax-group md-card-content {
+    padding-right: 0;
+    padding-left: 0;
+
+    md-input-container {
+      margin: 18px 24px 24px;
+    }
+  }
+
+  .contextual-menu-venue-group .venue-group-select-content,
+  .contextual-menu-tax-group .tax-rate-select-content {
+    padding: 24px 24px 0 24px;
+    border-top: 2px solid #efefef;
+
+    .label-title {
+      font-size: 16px;
+      color: #424242;
+    }
+  }
+
+  .contextual-menu-venue-group {
+    .venue-group-select .checkbox-wrapper {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
   .contextual-menu-event, .contextual-menu-outlet, .contextual-menu-collection-slot, .contextual-menu-event-schedule, .menu-item-advanced, .contextual-menu-item {
     .md-errors-spacer {
       display: none;

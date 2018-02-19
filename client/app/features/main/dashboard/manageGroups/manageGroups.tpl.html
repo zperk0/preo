@@ -1,0 +1,24 @@
+<div class="manage-groups" flex>
+  <sticky-scroll scroll-to-child-element scroll-to-child-element-offset="24" scroll-on-init="false">
+    <div class="layout-left-right">
+      <div class="main-content-left">
+        <venue-group-list
+          venue-groups="manageGroupsCtrl.entities.venueGroups"
+          on-create="manageGroupsCtrl.onCreate()"
+          on-edit="manageGroupsCtrl.onEdit(venueGroup)"
+          on-after-delete="manageGroupsCtrl.onAfterDelete(venueGroup)">
+        </venue-group-list>
+      </div>
+      <ui-view name="venueGroupDetailsView" class="main-content-right"
+        sticky offset="24"
+        sticky-class="preo-sticky"
+        disabled-sticky="manageGroupsCtrl.disabledSticky"
+        scroll-to-venue-group
+        content-right-resize
+        keep-width="true"
+        use-placeholder="false"
+        media-query="min-width: 1024px">
+      </ui-view>
+    </div>
+  </sticky-scroll>
+</div>
