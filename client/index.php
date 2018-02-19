@@ -9,6 +9,7 @@ $webordersEdit = "https://menus-v2-demo.preoday.com/";
 $webappV1 = "https://app-demo.preoday.com/";
 $preoBaseUrl = '';
 $analytics = '';
+$zendesk = '';
 $sessionId = session_id();
 $rollbarEnv = null;
 $rollbarTokenClient = '';
@@ -86,6 +87,10 @@ if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
     $analytics .=" </script>";
 }
 
+if (isset($_SERVER["PREO_PWA_ZENDESK"])){
+    $zendesk .='<script type="text/javascript">window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set._.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");$.src="https://v2.zopim.com/?'.$_SERVER["PREO_PWA_ZENDESK"].'";z.t=+new Date;$.type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");$zopim(function() {$zopim.livechat.button.setPosition("bl");$zopim.livechat.window.setPosition("bl");});</script>';
+}
+
 $pathIndexHTML = './index.html';
 $contentsIndexHTML = file_get_contents($pathIndexHTML);
 
@@ -107,6 +112,7 @@ $overrides .= "</script>";
 $contentsIndexHTML = str_replace('@@FAVICON', $favicon, $contentsIndexHTML);
 $contentsIndexHTML = str_replace('<!-- @@OVERRIDES -->', $overrides, $contentsIndexHTML);
 $contentsIndexHTML = str_replace('<!-- @@ANALYTICS -->', $analytics, $contentsIndexHTML);
+$contentsIndexHTML = str_replace('<!-- @@ZENDESK -->', $zendesk, $contentsIndexHTML);
 
 // CSS Override Styles
 $cssOverridePath = './overrides/'. $cssOverride . '/override.css';
