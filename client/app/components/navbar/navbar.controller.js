@@ -132,7 +132,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
         {name: gettextCatalog.getString("Emails"), id:"emails"}
       ],shouldShow:function(){
-        return !isChannel && PermissionService.hasPermission(Permissions.VENUE_CREATE)
+        return PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       // {name: gettextCatalog.getString("Group Bookings"), icon:"people", id:"bookings", children:[
       //   {name: gettextCatalog.getString("Settings"), id:"bookingSettings"},

@@ -1,7 +1,7 @@
 .styling-view {
 	width: 100%;
 
-    .zoom-level-100{
+  .zoom-level-100{
     transform:scale(1)
   }
   .zoom-level-95{
@@ -34,4 +34,22 @@
   .zoom-level-50{
     transform:scale(.5)
   }
+
+  .sub-toolbar {
+    > :first-child {
+      padding-right: 20px;
+    }
+  }
+
+  .weborders-link{
+    max-width: 161px;
+  }
+
+  .zoom-class {
+    position: fixed;
+    right: 16px;
+    vertical-align: center;
+    align-items:  center;
+  }
+
 }

@@ -20,7 +20,7 @@ export default class contextualDrawerStyleMobileController {
       let img = imageObject[0];
       if (img){
         if (img.$save) {
-          let p = Preoday.VenueImage.saveToCdn(img.$image, this.StateService.venue.id)
+          let p = Preoday.VenueImage.saveToCdn(img.$image, this.venueId, this.channelId)
           .then((itemImage) => {
 
             if (this.StyleService.imagesModel[key]) {
@@ -90,7 +90,8 @@ export default class contextualDrawerStyleMobileController {
                 if(venueImage.id){
                   promises.push(venueImage.update());
                 } else {
-                  venueImage.venueId = this.StateService.venue.id;
+                  venueImage.venueId = this.venueId;
+                  venueImage.channelId = this.channelId;
                   promises.push(
                     Preoday.VenueImage.create(venueImage)
                     .then((newImg)=>{
@@ -161,9 +162,14 @@ export default class contextualDrawerStyleMobileController {
           reject(err);
         });
       } else {
-        Preoday.VenueMobileSettings.save(this.model.mobileSettings, this.StateService.venue.id)
+
+        this.model.mobileSettings.venueId = this.venueId;
+        this.model.mobileSettings.channelId = this.channelId;
+
+        Preoday.MobileSettings.save(this.model.mobileSettings)
         .then((newSettings) => {
           angular.extend(this.model.mobileSettings, newSettings);
+          angular.extend(this.StyleService.mobileSettings, newSettings);
           this.StyleService.mobileExtendModels(newSettings);
           resolve(newSettings);
         })
@@ -270,6 +276,9 @@ export default class contextualDrawerStyleMobileController {
 
     this.drawerKey = 'mobileWallpaper';
 
+    this.venueId = StateService.venue && StateService.venue.id;
+    this.channelId = StateService.channel && StateService.channel.id;
+
     this.styles = [{
       id: this.drawerKey,
       name: this.gettextCatalog.getString("Splash screen background"),
@@ -293,7 +302,7 @@ export default class contextualDrawerStyleMobileController {
     this.showSpinner();
     this.StyleService.getMobileSettings()
     .then((data)=>{
-      this.model.mobileSettings = data ? data : new Preoday.VenueMobileSettings();
+      this.model.mobileSettings = data ? data : new Preoday.MobileSettings();
       this.model.images = this.StyleService.imagesModel;
       this.model.colors = this.StyleService.colorsModel;
 

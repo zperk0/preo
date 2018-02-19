@@ -197,5 +197,7 @@ export default class LabelService {
 
 		this.CONTENT_CANCEL_CUSTOMER_ORDER = gettextCatalog.getString('Are you sure you want to cancel this order?');
 		this.CONTENT_AMEND_CUSTOMER_ORDER = gettextCatalog.getString('Are you sure you want to amend this order?');
+
+    this.SNACK_STYLE_PUBLISHED = gettextCatalog.getString('Style published with success');
   }
 }

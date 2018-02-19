@@ -8,8 +8,13 @@ export default class StyleService {
 
  getWebSettings(){
     return this.$q((resolve, reject)=>{
-      Preoday.VenueWebSettings.get(this.StateService.venue.id)
+      Preoday.WebSettings.get(this.venueId, this.channelId)
       .then((webSettings)=>{
+
+        if (webSettings) {
+          this.webSettingsModel = webSettings;
+        }
+
         resolve(webSettings);
       },()=>{ //api returns 404 if not found
         resolve({})
@@ -20,10 +25,10 @@ export default class StyleService {
   getTemplates(){
     console.log("getting templates");
     return this.$q((resolve, reject)=>{
-      Preoday.TemplateFragment.get(this.StateService.venue.id)
+      Preoday.TemplateFragment.get(this.venueId, this.channelId)
         .then((templates)=>{
           if (templates && templates.length){
-            let ts = templates.filter((t)=>t.type ==='ORDER_PLACED_EMAIL_FOOTER');
+            let ts = templates.filter((t)=>t.type === this.emailFootType);
             if (ts && ts.length){
               this.templatesModel[ts[0].type] = ts[0];
             }
@@ -41,7 +46,7 @@ export default class StyleService {
 
   getMobileImages(type) {
     return this.$q((resolve, reject)=>{
-      return Preoday.VenueImage.get(this.StateService.venue.id)
+      return Preoday.VenueImage.get(this.venueId, this.channelId)
         .then((images)=>{
           if (images && images.length){
             let ts = images.filter((t)=>t.type === type);
@@ -79,10 +84,11 @@ export default class StyleService {
 
   getMobileSettings() {
     return this.$q((resolve, reject)=>{
-      return Preoday.VenueMobileSettings.get(this.StateService.venue.id, "images")
+      return Preoday.MobileSettings.get(this.venueId, this.channelId, "images")
         .then((data)=>{
           if(data) {
             this.mobileExtendModels(data);
+            this.mobileSettings = data;
           }
 
           resolve(data);
@@ -97,12 +103,13 @@ export default class StyleService {
   getImages(){
     console.log("getting images");
     return this.$q((resolve, reject)=>{
-      return Preoday.VenueImage.get(this.StateService.venue.id)
+      return Preoday.VenueImage.get(this.venueId, this.channelId)
         .then((images)=>{
           if (images && images.length){
-            let ts = images.filter((t)=>t.type ==='EMAIL_BANNER');
+            let ts = images.filter((t)=>t.type === this.emailBannerType);
             if (ts && ts.length){
               this.imagesModel[ts[0].type] = ts[0];
+            //  this.modelIds.image = ts[0].id;
             }
           }
           resolve(this.imagesModel)
@@ -115,9 +122,10 @@ export default class StyleService {
   }
 
   initTemplates(){
-    var venue = this.StateService.venue.name;
-    var contact = this.StateService.venue.settings.deliveryPhone;
-    var msg = this.gettextCatalog.getString("If there are any problems, please contact {{venue}}'s staff",{venue:venue});
+    var channel = this.StateService.channel && this.StateService.channel.name;
+    var venue = this.StateService.venue && this.StateService.venue.name;
+    var contact = this.StateService.venue && this.StateService.venue.settings.deliveryPhone;
+    var msg = this.gettextCatalog.getString("If there are any problems, please contact {{entity}}'s staff",{entity: channel || venue});
     if (contact){
       msg = this.gettextCatalog.getString("If there are any problems, please contact {{venue}} on {{contact}}",{venue:venue, contact:contact})
     }
@@ -136,13 +144,20 @@ export default class StyleService {
     this.LabelService = LabelService;
     this.gettextCatalog = gettextCatalog;
 
+    this.venueId = StateService.venue && StateService.venue.id;
+    this.channelId = StateService.channel && StateService.channel.id;
+
+    this.emailBannerType = 'EMAIL_BANNER';
+    this.emailFootType = 'ORDER_PLACED_EMAIL_FOOTER';
+
     this.initTemplates();
     this.imagesModel = {
       EMAIL_BANNER: new Preoday.VenueImage({
-        type:"EMAIL_BANNER"
+        type: this.emailBannerType
       }),
     };
 
+    this.webSettingsModel = {};
     this.colorsModel = {};
   }
 }

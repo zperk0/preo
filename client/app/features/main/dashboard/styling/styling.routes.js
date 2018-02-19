@@ -1,5 +1,6 @@
 
 import controller from './styling.controller';
+import entitiesResolve from 'app/shared/resolves/entities.resolve';
 
 /**
  * Routing function for styling
@@ -15,6 +16,7 @@ export default function routes($stateProvider, Permissions) {
     controllerAs: "vm",
     requiresPermission:Permissions.VENUE_CREATE,
     resolve :{
+      entities: entitiesResolve,
       auth:(authenticated)=>{
         return authenticated
       }
