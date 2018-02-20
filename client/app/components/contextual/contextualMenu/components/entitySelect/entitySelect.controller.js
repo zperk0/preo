@@ -22,7 +22,10 @@ export default class entitySelectController {
   }
 
   isChannelSelected() {
-    return this.inviteUserRoles.channelId === this.channel.id;
+    const {channel, inviteUserRoles} = this;
+
+    return angular.isObject(channel)
+      && inviteUserRoles.channelId === channel.id;
   }
 
   isChannelDisabled() {

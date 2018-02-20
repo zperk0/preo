@@ -1,0 +1,21 @@
+<div class="contextual-menu-venue-group">
+  <md-card-content>
+    <md-input-container class="md-block no-spacer">
+      <label translate>Group name</label>
+      <input type="text" required name="name" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
+      <div ng-messages="contextualMenuCtrl.contextualForm.name.$error">
+        <div ng-message="required" translate>This is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.name.$error.maxlength}">Max length is 100.</div>
+      </div>
+   </md-input-container>
+   <div class="venue-group-select-content">
+     <label class="label-title" translate>Choose venues:</label>
+     <div class="venue-group-select">
+       <entity-select
+         entities="contextualMenuCtrl.params.entities"
+         invite-user-roles="contextualMenuCtrl.params.selected">
+       </entity-select>
+     </div>
+   </div>
+  </md-card-content>
+</div>

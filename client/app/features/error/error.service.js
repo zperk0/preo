@@ -86,6 +86,9 @@ export default class ErrorService {
     this.DELETE_CURRENT_USER = {code:'DELETE_CURRENT_USER', message:this.gettextCatalog.getString("It is not possible to delete your own user."), title: ''};
     this.DELETE_ACCOUNT_ERROR = {code:'DELETE_ACCOUNT_ERROR', message:this.gettextCatalog.getString("There was a problem deleting your account. Please contact support."), title: this.gettextCatalog.getString("Sorry")};
 
+    // MANAGE GROUPS
+    this.VENUE_GROUP_MIN_REQUIRED = {code:'VENUE_GROUP_MIN_REQUIRED', message: this.gettextCatalog.getString("You must select 2 or more venues to create a group."), title: this.gettextCatalog.getString("Couldn't create group")};
+
     // EXPIRED SESSION
     this.EXPIRED_SESSION = {code:'EXPIRED_SESSION', message:this.gettextCatalog.getString("Your session has expired. Please login again."), title:this.gettextCatalog.getString('Timeout')};
 
@@ -113,6 +116,11 @@ export default class ErrorService {
     // OPERATOR
     this.REQUIRED_CHANNEL_OPERATOR_URL = {code: 'REQUIRED_CHANNEL_OPERATOR_URL', message: this.gettextCatalog.getString('This app is not configured to place an order. Please contact the support team.')};
     this.ORDER_STATUS_NOT_CANCELLABLE = {code: 'ORDER_STATUS_NOT_CANCELLABLE', message: this.gettextCatalog.getString('This order can no longer be changed or cancelled. Please contact the venue directly.'), title:this.gettextCatalog.getString('Function not available')};
+
+
+    // STYLING
+    this.FAILED_LOADING_STYLING = {code:'FAILED_LOADING_STYLING', message:this.gettextCatalog.getString("This is app is not configured to allow styling Web Orders. Please contact the support team.")};
+    this.STYLE_REQUIRED_ID_PUBLISH = {code: 'STYLE_REQUIRED_ID_PUBLISH', message: this.gettextCatalog.getString('You cannot publish to venues without create a style to channel.'), title: this.gettextCatalog.getString('Sorry')};
   }
 
   constructor(gettextCatalog, $state, DialogService) {

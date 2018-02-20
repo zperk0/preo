@@ -69,6 +69,7 @@ module.exports = function(ENV, options) {
       taxes: './client/app/features/main/dashboard/taxes/index.js',
       analytics: './client/app/features/main/dashboard/analytics/index.js',
       manageUsers: './client/app/features/main/dashboard/manageUsers/index.js',
+      manageGroups: './client/app/features/main/dashboard/manageGroups/index.js',
       updateExternalMenus: './client/app/features/main/dashboard/updateExternalMenus/index.js',
       customTags: './client/app/features/main/dashboard/customTags/index.js',
       customers: './client/app/features/main/dashboard/customers/index.js',
@@ -209,12 +210,10 @@ module.exports = function(ENV, options) {
       new HtmlWebpackPlugin({
         template:'./client/index.html',
         chunksSortMode: chunkSort,
-        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'updateExternalMenus', 'customTags', 'customers', 'app','vendor'],
+        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'manageGroups', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'updateExternalMenus', 'customTags', 'customers', 'app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),
     ]
   }
 }
-
-

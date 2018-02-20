@@ -123,12 +123,16 @@ export default class navbarController {
       {name: gettextCatalog.getString("Manage Users"), icon:"account_box", id:"manageUsers",shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ACCOUNT)
       }},
+      {name: gettextCatalog.getString("Manage Groups"), icon: "group_work", id: "manageGroups", shouldShow: function() {
+        return isChannel
+          && PermissionService.hasPermission(Permissions.ACCOUNT)
+      }},
       {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
       {name: gettextCatalog.getString("Mobile App"), id:"mobileApp"},
         {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
         {name: gettextCatalog.getString("Emails"), id:"emails"}
       ],shouldShow:function(){
-        return !isChannel && PermissionService.hasPermission(Permissions.VENUE_CREATE)
+        return PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       // {name: gettextCatalog.getString("Group Bookings"), icon:"people", id:"bookings", children:[
       //   {name: gettextCatalog.getString("Settings"), id:"bookingSettings"},
